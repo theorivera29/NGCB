@@ -1,0 +1,29 @@
+{
+    "projects": [
+        {
+            "project_id": 1,
+            "project_name": "NGCB Expansion Site",
+            "project_address": "Luneta Hill, Baguio City",
+            "start_date": "07/24/2017",
+            "end_date": "03/16/2019",
+            "status": "Open"
+        },
+        {
+            "project_id": 2,
+            "project_name": "SOGO Hotel Baguio",
+            "project_address": "Engineers Hill, Baguio City",
+            "start_date": "03/6/2018",
+            "end_date": "12/13/2020",
+            "status": "Closed"
+        },
+        {
+            "project_id": 3,
+            "project_name": "Skyranch Baguio",
+            "project_address": "Luneta Hill, Baguio City",
+            "start_date": "08/30/2015",
+            "end_date": "12/18/2017",
+            "status": "Open",
+            "reopen_date": "2/28/2018"
+        }
+    ]
+}

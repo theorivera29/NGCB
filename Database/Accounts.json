@@ -1,0 +1,41 @@
+{
+    "accounts": [
+        {
+            "Account_ID": 1,
+            "First_Name": "Ray",
+            "Last_Name": "Servidad",
+            "Username": "admin",
+            "Email": "servidad.ray@gmail.com",
+            "Password": "admin",
+            "Account_Type": "Admin"
+        },
+        {
+            "Account_ID": 2163227,
+            "First_Name": "Ray",
+            "Last_Name": "Servidad",
+            "Username": "r.servidad",
+            "Email": "servidad.ray@gmail.com",
+            "Password": "p@s$w0rD",
+            "Account_Type": "Materials Engineer"
+        },
+        {
+            "Account_ID": 2164019,
+            "First_Name": "Harold",
+            "Last_Name": "Vinluan",
+            "Username": "harold_V",
+            "Email": "harold_vinluan@gmail.com",
+            "Password": "vinluan2011",
+            "Account_Type": "View Only"
+        },
+        {
+            "Account_ID": 12345,
+            "First_Name": "Mikka",
+            "Last_Name": "Tuguinay",
+            "Username": "mikka_tuguinay",
+            "Email": "tuguinay_mikka12@gmail.com",
+            "Password": "mikka1234",
+            "Account_Type": "View Only"
+            
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "categories": [
+        {
+            "category_id": 1,
+            "category_name": "Formworks"
+        },
+        {
+            "category_id": 2,
+            "category_name": "Electrical"
+        },
+        {
+            "category_id": 3,
+            "category_name": "Plumbing"
+        },
+        {
+            "category_id": 4,
+            "category_name": "Blades"
+            
+        },
+        {
+            "category_id": 5,
+            "category_name": "Table Forms"
+        },
+        {
+            "category_id": 6,
+            "category_name": "Others"
+        }
+    ]
+}

@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>PROTOTYPE</title>
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <style>
+    .modal {
+      width: 80% !important;
+      height: 80% !important;
+    }
+
+    tr,
+    tr>td {
+      border: 1px solid black
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="row"></div>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Particularsasdasdadasdasdadadasdasd</th>
+        <th>Previous Material stock</th>
+        <th>Delivered material as of December 2018</th>
+        <th>Materials pulled out as of December 2018</th>
+        <th>Accumulated materials delivered</th>
+        <th>Materials on site as of December 2018</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><a class="modal-trigger" href="#modal1">Cup brush 4"</a></td>
+        <td>20 pcs</td>
+        <td>10</td>
+        <td>-</td>
+        <td>30 pcs</td>
+        <td>30 pcs</td>
+      </tr>
+      <tr>
+        <td><a class="modal-trigger" href="#modal1">Cup Brush 7"</a></td>
+        <td>30 pcs</td>
+        <td>0</td>
+        <td>10</td>
+        <td>20 pcs</td>
+        <td>20 pcs</td>
+      </tr>
+      <tr>
+        <td><a class="modal-trigger" href="#modal1">Cup Wheel 7"</a></td>
+        <td>20 pcs</td>
+        <td>15</td>
+        <td>-</td>
+        <td>35 pcs</td>
+        <td>35 pcs</td>
+      </tr>
+      <tr>
+        <td><a class="modal-trigger" href="#modal1">Cutting disk 4"</a></td>
+        <td>55 pcs</td>
+        <td>0</td>
+        <td>20</td>
+        <td>35 pcs</td>
+        <td>35 pcs</td>
+      </tr>
+      <tr>
+          <td><a class="modal-trigger" href="#modal1">Cup disk 7"</a></td>
+        <td>15 pcs</td>
+        <td>15</td>
+        <td>-</td>
+        <td>30 pcs</td>
+        <td>30 pcs</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <table class="striped">
+        <h5>DELIVER IN</h5>
+        <thead>
+          <tr>
+            <th>Date:</th>
+            <th>Quantity:</th>
+            <th>Unit:</th>
+            <th>Supplied by:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+          </tr>
+          <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+          </tr>
+          <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+          </tr>
+          <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="striped">
+        <h5>USAGE IN</h5>
+        <thead>
+          <tr>
+            <th>Date:</th>
+            <th>Quantity:</th>
+            <th>Unit:</th>
+            <th>Pulled out by:</th>
+            <th>Area of usage:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>            
+          </tr>
+          <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+          </tr>
+          <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+          </tr>
+          <tr>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+            <td contenteditable='true'></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">SAVE CHANGES</a>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script>
+    var elem = document.querySelector('.modal');
+    var instance = M.Modal.init(elem);
+  </script>
+</body>
+
+</html>

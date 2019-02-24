@@ -3,16 +3,12 @@
 <html>
 
 <head>
-  <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
-  <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" text="type/css" href="../style.css">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
@@ -75,64 +71,78 @@
     </div>
   </nav>
 
-  <!--Calendar and To do-->
-  <div class="row ">
-    <div class="col s6 calendar-container">
-      <div class="datepicker">
-        <span>Calendar</span>
-        <input type="text" class="datepicker datepicker1">
+  <!--Calendar and To do Row-->
+  <div class="row">
+    <!--Start Calendar and To-do Container-->
+    <div class="col s6 Calendar-Todo-Container">
+      <div class="Panel-Header">
+        <span>CALENDAR AND TO-DO</span>
       </div>
-      <div class="card card-content white-text">
-        <span class="card-title">To-do</span>
+      <div class="Calendar-Container">
+        <span id="text-headers">Calendar:</span>
+        <input type="text" class="datepicker">
+      </div>
+      <div class="card card-content">
         <div class="row">
-          <div class="input-field col s8">
-            <input id="icon_prefix" type="text">
-            <label for="icon_prefix">Input to-do here</label>
+          <div class="input-field input-field-todo col s8">
+            <textarea id="todo_area" class="materialize-textarea"></textarea>
+            <label for="todo_area" id="todo-label">Input to-do here</label>
           </div>
-          <a class="waves-effect waves-light btn"><i class="material-icons right">note_add</i>Add to-do</a>
         </div>
       </div>
+      <a class="waves-effect waves-light btn todo-btn"><i class="material-icons right">note_add</i>Add to-do</a>
     </div>
 
-    <div class="card col s5 To-do">
-        <p>
-          This is my task today
-        </p>
-    
+    <div class="col s5 Task-Container">
+      <div class="Panel-Header">
+        <span>TO-DO TASK</span>
       </div>
+      <div class="">
+        <span id="text-headers">Tasks Today:</span>
+      </div>
+      <div class="">
+        <span id="text-headers">Tasks Tomorrow:</span>
+      </div>
+      <a class="waves-effect waves-light btn task-btn"><i class="material-icons right">note_add</i>View All Task</a>
+    </div>
   </div>
-  </div>
-
-  
 
   <div class="row ">
     <!--Table-->
-    <table class="striped responsive-table col s10 offset-m1 centered">
-      <h2>Notifications</h2>
-      <thead>
-        <tr>
-          <th>Material Name</th>
-          <th>Category</th>
-          <th>Quantity Remaining</th>
-          <th>Quantifier</th>
-        </tr>
-      </thead>
+    <table class="striped responsive-table col s10 centered">
+      <div class="Material-Left-Container">
+        <div class="Panel-Header">
+          <span>Materials</span>
+        </div>
 
-      <tbody>
-        <tr>
-          <td>Cup brush 4"</td>
-          <td>20 pcs</td>
-          <td>10</td>
-          <td>pc</td>
-        </tr>
-        <tr>
-          <td>Cup brush 4"</td>
-          <td>20 pcs</td>
-          <td>10</td>
-        </tr>
-      </tbody>
+        <thead>
+          <tr>
+            <th>Material Name</th>
+            <th>Category</th>
+            <th>Quantity Remaining</th>
+            <th>Quantifier</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Cup brush 4"</td>
+            <td>20 pcs</td>
+            <td>10</td>
+            <td>pc</td>
+          </tr>
+          <tr>
+            <td>Cup brush 4"</td>
+            <td>20 pcs</td>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </div>
     </table>
   </div>
+
+
+
 
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

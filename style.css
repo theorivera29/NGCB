@@ -1,3 +1,112 @@
-html, body {
-    height: 100%;
+@font-face {
+  font-family: 'chapaza';
+  src: url('../fonts/Chapaza.ttf');
+}
+
+@font-face {
+  font-family: 'Clone';
+  src: url('../fonts/Clone.otf');
+}
+
+body {
+  background-color: #F9F9FF;
+}
+
+nav {
+  background-color: #206275 !important;
+}
+
+#NGCB {
+  float: right;
+  padding-right: 2%;
+  color: #CCB366;
+  font-family: chapaza;
+}
+
+.Calendar-Todo-Container {
+  background-color: #9DD4E4;
+  margin-top: 1%;
+  margin-left: 2% !important;
+  border-radius: 5%;
+}
+
+.Panel-Header {
+  font-size: 20px;
+  color: #03120D;
+  background-color: #FCE3AE;
+  padding: 1%;
+  border-spacing: 0;
+  border-collapse: collapse !important;
+  text-align: center;
+  font-family: Clone;
+  
+}
+
+.Calendar-Container {
+  padding-top: 2%;
+}
+
+#text-headers {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.datepicker {
+  width: 20% !important;
+  min-width: 18% !important;
+  max-width: 20%;
+  text-align: center;
+}
+
+.input-field-todo {
+  width: 95% !important;
+  padding-top: 1%;
+  padding-left: 5% !important;
+  color: black !important;
+  border-radius: 5% !important;
+  
+}
+
+.materialize-textarea {
+  border-radius: 4% !important;
+}
+
+#todo-label {
+  padding-left: 5% !important;
+  margin-top: 2%;
+  font-size: 20px;
+}
+
+.todo-btn {
+  float: right !important;
+  margin-bottom: 2%;
+  color: #03120D !important;
+  background-color: #ECF5F8 !important;
+}
+
+.Task-Container {
+  background-color: #9DD4E4;
+  margin-top: 1%;
+  margin-left: 1% !important;
+  padding-bottom: 1% !important;
+  border-radius: 2%;
+  width: 45% !important;
+}
+
+.task-btn{
+  float: right !important;
+  margin-bottom: 2%;
+  color: #03120D !important;
+  background-color: #ECF5F8 !important;
+}
+
+.Material-Left-Container{
+  background-color: #E3EDF0;
+margin-top: 1%;
+margin-left: 2% !important;
+padding-top: 1% !important;
+padding-bottom: 1% !important;
+border-radius: 2%;
+width: 96% !important;
 }

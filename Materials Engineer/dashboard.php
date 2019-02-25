@@ -1,3 +1,12 @@
+  <?php
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
+  ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -13,17 +22,21 @@
 
 <body>
   <nav>
-    <div class="nav-wrapper">
-      <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons" id="menuIcon">menu</i></a>
+  <div class="nav-wrapper">
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
       <h4 id="NGCB">New Golden City Builders</h4>
-      <ul class="side-nav" id="mobile-demo">
+      <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
         <li class="collection-item avatar">
           <img src="../Images/pic.jpg" alt="" class="circle">
-          <span class="title">Jam Spica Rocafort</span>
-          <span class="title">Materials Engineer</span>
-          <!--DAPAT NAME NUNG ENGINEER LALABAS HERE-->
-
-          <!--DAPAT MATERIALS ENGINEER LALABAS DITO, DIKO S URE KUNG AHRD CODED-->
+          <?php 
+            if(isset($_SESSION['username'])) {
+              $username = $_SESSION['username'];
+              $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+              $result = mysqli_query($conn, $sql);
+              $row = mysqli_fetch_row($result);
+          ?>
+          <span class="title"><?php echo $row[1]." ".$row[2]; ?></span>
+          <span class="title"><?php echo $row[5]; }?></span>
         </li>
         <li>
           <div class="divider"></div>
@@ -37,7 +50,7 @@
             <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
             <div class="collapsible-body">
               <ul>
-                <li><a class="waves-effect waves-blue" href="projects.html">Projects</a></li>
+                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
                 <li><a class="waves-effect waves-blue" href="#">Site Materials</a></li>
                 <li><a class="waves-effect waves-blue" href="#">Category</a></li>
               </ul>
@@ -66,7 +79,9 @@
         <li>
           <div class="divider"></div>
         </li>
-        <li>Logout</li>
+        <li>
+          <a href="logout.php">Logout</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -123,20 +138,22 @@
             <th>Quantifier</th>
           </tr>
         </thead>
-
+        <?php 
+            $sql = "SELECT * FROM materials LIMIT 5;";
+            $result = mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_array($result)) {
+        ?>
         <tbody>
           <tr>
-            <td>Cup brush 4"</td>
-            <td>20 pcs</td>
-            <td>10</td>
-            <td>pc</td>
-          </tr>
-          <tr>
-            <td>Cup brush 4"</td>
-            <td>20 pcs</td>
-            <td>10</td>
+            <td><?php echo $row[1] ?></td>
+            <td><?php echo $row[9] ?></td>
+            <td><?php echo $row[6] ?></td>
+            <td><?php echo $row[8] ?></td>
           </tr>
         </tbody>
+        <?php
+            }
+        ?>
       </div>
     </table>
   </div>

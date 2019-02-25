@@ -1,9 +1,10 @@
 <?php
-    $host = '127.0.0.1';
-    $user = 'root';
-    $pass = '';
-    $db = 'ngcb';
-    $conn = mysqli_connect($host, $user, $pass, $db) or die('Cannot connect to db');
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,19 +30,22 @@
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
-                <li class="collection-item avatar">
-                    <img src="../Images/pic.jpg" alt="" class="circle">
-                    <span class="title">Jam Spica Rocafort</span>
-                    <span class="title">Materials Engineer</span>
-                    <!--DAPAT NAME NUNG ENGINEER LALABAS HERE-->
-
-                    <!--DAPAT MATERIALS ENGINEER LALABAS DITO, DIKO S URE KUNG AHRD CODED-->
-
-                </li>
+            <li class="collection-item avatar">
+                <img src="../Images/pic.jpg" alt="" class="circle">
+                <?php 
+                    if(isset($_SESSION['username'])) {
+                    $username = $_SESSION['username'];
+                    $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_row($result);
+                ?>
+                <span class="title"><?php echo $row[1]." ".$row[2]; ?></span>
+                <span class="title"><?php echo $row[5]; }?></span>
+            </li>
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -95,8 +99,8 @@
             <div id="ongoing" class="col s12">
                 <div class="row">
                     <?php 
-                        $result = mysqli_query($conn, "SELECT * FROM projects WHERE status = 'open';");
-                        $num_rows = mysqli_num_rows($result);
+                        $sql = "SELECT * FROM projects WHERE status = 'open';";
+                        $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_array($result)) {
                             ?>
                                 <div class="col s12 m6">
@@ -115,8 +119,7 @@
                                                     if (strtotime($row[3]) > strtotime ($row[4])) {
                                                         ?>
                                                             <div class="row">
-                                                                <a href="#closeModal" class="waves-effect waves-light btn red modal-trigger" >Close
-                                                                    Project</a>
+                                                                <a href="#closeModal" class="waves-effect waves-light btn red modal-trigger" >Close Project</a>
                                                             </div>
                                                         <?php
                                                     }
@@ -147,8 +150,7 @@
                                                 <p>Start Date: <?php echo $row[3] ?> </p>
                                                 <p>End Date: <?php echo $row[4] ?> </p>
                                                 <div class="row">
-                                                    <a href="#reopenModal" class="waves-effect waves-light btn green modal-trigger">Re-open
-                                                        Project</a>
+                                                    <a href="#reopenModal" class="waves-effect waves-light btn green modal-trigger">Re-open Project</a>
                                                 </div>
                                             </div>
                                         </center>

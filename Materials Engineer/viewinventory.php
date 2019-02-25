@@ -1,3 +1,12 @@
+<?php
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -23,12 +32,15 @@
             <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
                 <li class="collection-item avatar">
                     <img src="../Images/pic.jpg" alt="" class="circle">
-                    <span class="title">Jam Spica Rocafort</span>
-                    <span class="title">Materials Engineer</span>
-                    <!--DAPAT NAME NUNG ENGINEER LALABAS HERE-->
-
-                    <!--DAPAT MATERIALS ENGINEER LALABAS DITO, DIKO S URE KUNG AHRD CODED-->
-
+                    <?php 
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
+                    <span class="title"><?php echo $row[1]." ".$row[2]; ?></span>
+                    <span class="title"><?php echo $row[5]; }?></span>
                 </li>
                 <li>
                     <div class="divider"></div>
@@ -71,7 +83,9 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Logout</li>
+                <li>
+                    <a href="logout.php">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>

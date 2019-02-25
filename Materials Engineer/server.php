@@ -1,9 +1,6 @@
 <?php
-    $host = '127.0.0.1';
-	$user = 'root';
-	$pass = '';
-	$db = 'ngcb';
-    $conn = mysqli_connect($host, $user, $pass, $db) or die('Cannot connect to db');
+    include "db_connection.php";
+  
     
     if (isset($_POST['login'])) {
         session_start();
@@ -17,11 +14,12 @@
         if(password_verify($password, $hash_password)) {
             $_SESSION['username'] = $username; 
             $_SESSION['loggedin'] = true;
-            header("location: http://127.0.0.1/Materials%20Engineer/dashboard.php");
+            // header("location: http://127.0.0.1/22619/Materials%20Engineer/dashboard.php");
+            header("location: http://127.0.0.1/22619/Materials%20Engineer/dashboard.php");
             exit;
         }else {
             $_SESSION['login_error'] = true;
-            header("location: http://127.0.0.1/Materials%20Engineer/loginpage.php");
+            header("location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php");
             exit;
         } 
     }

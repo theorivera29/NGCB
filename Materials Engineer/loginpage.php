@@ -7,26 +7,34 @@
     </head>
 
     <body>
-        <!--Login Container-->
         <div class="loginContainer container h-100 d-flex justify-content-center">
             <div class="jumbotron my-auto">
                 <h2>New Golden City Builders</h2>
                 <h2>Login</h2>
-                <form>
+                <form action="server.php" method="POST">
                     <div class="form-group">
-                        <input class="form-control form-control-lg" type="username" id="inputLoginUsername" placeholder="username">
+                        <input class="form-control form-control-lg" type="text" name="username" id="inputLoginUsername" placeholder="username">
                     </div>
                     <div class="form-group">
-                        <input class="form-control form-control-lg" type="password" id="inputLoginPassword" placeholder="password">
+                        <input class="form-control form-control-lg" type="password " name="password" id="inputLoginPassword" placeholder="password">
                     </div>
                     <div class="">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div>                   
+                        <button type="submit" name="login" value="Login" class="btn btn-primary btn-block">Login</button>
+                    </div>  
+                    <div>
+                        <?php
+                            session_start();
+                            if(isset($_SESSION['login_error'])) {
+                                echo "Incorrect username or password.";
+                                unset($_SESSION['login_error']);
+                            }
+                        ?>
+                    </div>                 
                     <div class="d-flex flex-row">
-                        <p class="p-2"><a href="createaccount.html">Create Account</p>
-                        <p class="p-2"><a href="forgotpassword.html">Forgot Password</p>
+                        <p class="p-2"><a href="createaccount.php">Create Account</p>
+                        <p class="p-2"><a href="forgotpassword.php">Forgot Password</p>
                     </div>
-                </form>
+                </form> 
             </div>
         </div>
     </body>

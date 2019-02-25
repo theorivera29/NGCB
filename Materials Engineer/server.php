@@ -41,7 +41,7 @@
 		$email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $account_type = "Materials Engineer";
-       // $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
         $sql = "SELECT accounts_username from accounts where accounts_username = '$username' ";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
@@ -66,9 +66,13 @@
         if($count != 1) {
             $sql = "INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status)
                     VALUES ('$projects_name', '$projects_address', '$start_date', '$end_date', 'open')";
-            mysqli_query($conn,$sql);
-            header("location: http://127.0.0.1/Materials%20Engineer/dashboard.php");
-            exit;
+            if (mysqli_query($conn,$sql)) {
+                echo "Success";
+            } else {
+                echo $conn->error;
+            }
+            // header("location: http://127.0.0.1/Materials%20Engineer/dashboard.php");
+            // exit;
         }
     }
     

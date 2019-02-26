@@ -48,7 +48,7 @@
             $sql = "INSERT INTO accounts (accounts_fname, accounts_lname, accounts_email, accounts_username, accounts_password, accounts_type)
                     VALUES ('$firstname', '$lastname', '$email', '$username', '$password', '$account_type')";
             mysqli_query($conn,$sql);
-            header("Location: http://127.0.0.1/Materials%20Engineer/loginpage.php");
+            header("Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php");
             exit;
         }
     }

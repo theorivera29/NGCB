@@ -1,9 +1,9 @@
-  <?php
+<?php
     include "db_connection.php";
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/Project/Materials%20Engineer/loginpage.php');
     }
   ?>
 
@@ -13,6 +13,7 @@
 
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
   <link rel="stylesheet" text="type/css" href="../style.css">
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -51,7 +52,7 @@
             <div class="collapsible-body">
               <ul>
                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
-                <li><a class="waves-effect waves-blue" href="#">Site Materials</a></li>
+                <li><a class="waves-effect waves-blue" href="sitematerials.html">Site Materials</a></li>
                 <li><a class="waves-effect waves-blue" href="#">Category</a></li>
               </ul>
             </div>
@@ -124,10 +125,11 @@
 
   <div class="row ">
     <!--Table-->
-    <table class="striped responsive-table col s10 centered">
-      <div class="Material-Left-Container">
+    <div class="col s10 Material-Left-Container">
+    <table class="striped responsive-table ">
+     
         <div class="Panel-Header">
-          <span>Materials</span>
+          <span>MATERIALS</span>
         </div>
 
         <thead>
@@ -154,8 +156,7 @@
         <?php
             }
         ?>
-      </div>
-    </table>
+        </table>  
   </div>
 
 

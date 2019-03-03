@@ -28,6 +28,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
+        <h4 id="NGCB">New Golden City Builders</h4>
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
             <li class="collection-item avatar">
@@ -54,8 +55,8 @@
                         <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="#">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Site Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.html">Site Materials</a></li>
                                 <li><a class="waves-effect waves-blue" href="#">Category</a></li>
                             </ul>
                         </div>
@@ -86,8 +87,16 @@
             </ul>
         </div>
     </nav>
-
+    <div class="row">
+            <div class="col s12 right-align">
+                <a href="#addProjectModal" class="waves-effect waves-light btn modal-trigger">
+                    <i class="material-icons left">add_circle_outline</i>Add Project</a>
+                <a href="#deleteProjectModal" class="waves-effect waves-light btn modal-trigger">
+                    <i class="material-icons left">edit</i>Delete Project</a>
+            </div>
+        </div>        
     <div class="container">
+   
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -99,7 +108,7 @@
             <div id="ongoing" class="col s12">
                 <div class="row">
                     <?php 
-                        $sql = "SELECT * FROM projects WHERE status = 'open';";
+                        $sql = "SELECT * FROM projects WHERE projects_status = 'open';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_array($result)) {
                             ?>
@@ -112,7 +121,10 @@
                                                 <p>Start Date: <?php echo $row[3] ?> </p>
                                                 <p>End Date: <?php echo $row[4] ?> </p>
                                                 <div class="row">
-                                                    <a class="waves-effect waves-light btn">View Inventory</a>
+                                                    <form action="server.php" method="POST">
+                                                        <input type="hidden" name="projects_name" value="<?php echo $row[1]?>"> 
+                                                        <button class="waves-effect waves-light btn" type="submit" name="view_inventory">View Inventory</button>
+                                                    </form>
                                                     <a href="#editModal" class="waves-effect waves-light btn modal-trigger">Edit</a>
                                                 </div>
                                                 <?php 
@@ -137,7 +149,7 @@
             <div id="closed" class="col s12">
             <div class="row">
                     <?php 
-                        $result = mysqli_query($conn, "SELECT * FROM projects WHERE status = 'closed';");
+                        $result = mysqli_query($conn, "SELECT * FROM projects WHERE projects_status = 'closed';");
                         $num_rows = mysqli_num_rows($result);
                         while($row = mysqli_fetch_array($result)) {
                             ?>
@@ -216,7 +228,50 @@
         <div class="modal-footer">
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Save Changes</a>
         </div>
+        
     </div>
+    
+    <div id="addProjectModal" class="modal">
+        <div class="modal-content">
+            <h4>Add Project</h4>
+            
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="New project name" id="new_project_name" type="text" class="validate">
+                        <label class="active" for="new_project_name">Project Name:</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="New address" id="new_address" type="text" class="validate">
+                        <label for="new_address">Address:</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="New start date" id="new_sdate" type="text" class="validate">
+                        <label for="new_sdate">Start date:</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="New end date" id="new_edate" type="text" class="validate">
+                        <label for="new_edate">End date:</label>
+                    </div>
+                </div>
+            
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Save Changes</a>
+        </div>
+        
+    </div>
+
+    <div id="deleteProjectModal" class="modal">
+        <div class="modal-content">
+            <h4>Delete Project?</h4>
+            <p>Are you sure you want to delete this project? </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+        </div>
+    </div>
+    
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>

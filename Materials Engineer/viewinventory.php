@@ -47,7 +47,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Dashboard</li>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -56,9 +56,9 @@
                         <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="#">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Site Materials</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Category</a></li>
+                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.html">Site Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="category.html">Category</a></li>
                             </ul>
                         </div>
                     </li>
@@ -71,7 +71,7 @@
                         <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="#">Fill out Hauling Form</a></li>
+                                <li><a class="waves-effect waves-blue" href="hauling.html">Fill out Hauling Form</a></li>
                                 <li><a class="waves-effect waves-blue" href="#">View Hauled Materials</a></li>
                             </ul>
                         </div>

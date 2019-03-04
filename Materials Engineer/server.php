@@ -113,5 +113,8 @@
         }
     }
 
-    
+    if(isset($_POST['view_inventory'])) {
+        $projects_name = $_POST['projects_name'];
+        header("location: http://localhost/NGCB/Materials Engineer/viewinventory.php?projects_name=$projects_name");
+    }
 ?>

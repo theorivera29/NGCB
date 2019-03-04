@@ -51,7 +51,7 @@
                                 <label for="password">Password</label>
                             </div>
                             
-                           <!--ETO VINCENT-->
+                           
                            <div class="col s12 m10 offset-m1">
                                 <form action="#">
                                     <p>
@@ -67,7 +67,7 @@
                             </div>
 
 
-                            <!--HANGGANG HERE-->
+                           
                             
                             <div class="row center">
                                 <a class="btn waves-effect waves-light" type="submit" name="action" href="createaccount.html">Create

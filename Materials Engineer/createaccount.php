@@ -23,58 +23,58 @@
             <div class="col s12 m6 offset-m3">
                 <div class="card white darken-1">
                     <div class="card-content black-text">
-                        <h2 class="card-title center-align">New Golden City Builders</h2>
-                        <h2 class="card-title center-align">Create Account</h2>
-                        <div class="row">
-                            <div class="input-field col s12 m10 offset-m1">
-                                <input id="firstname" name="first name" type="text" class="validate">
-                                <label for="firstname">First Name</label>
-                            </div>
+                        <form action="server.php" method="POST">
+                            <h2 class="card-title center-align">New Golden City Builders</h2>
+                            <h2 class="card-title center-align">Create Account</h2>
+                            <div class="row">
+                                <div class="input-field col s12 m10 offset-m1">
+                                    <input id="firstname" name="firstname" type="text" class="validate">
+                                    <label for="firstname">First Name</label>
+                                </div>
 
-                            <div class="input-field col s12 m8 offset-m1">
-                                <input id="lastname" name="lastname" type="text" class="validate">
-                                <label for="lastname">Last Name</label>
-                            </div>
+                                <div class="input-field col s12 m8 offset-m1">
+                                    <input id="lastname" name="lastname" type="text" class="validate">
+                                    <label for="lastname">Last Name</label>
+                                </div>
 
-                            <div class="input-field col s12 m10 offset-m1">
-                                <input id="username" name="username" type="text" class="validate">
-                                <label for="username">Username</label>
-                            </div>
+                                <div class="input-field col s12 m10 offset-m1">
+                                    <input id="username" name="username" type="text" class="validate">
+                                    <label for="username">Username</label>
+                                </div>
 
-                            <div class="input-field col s12 m10 offset-m1">
-                                <input id="email" name="email" type="text" class="validate">
-                                <label for="email">Email</label>
-                            </div>
+                                <div class="input-field col s12 m10 offset-m1">
+                                    <input id="email" name="email" type="text" class="validate">
+                                    <label for="email">Email</label>
+                                </div>
 
-                            <div class="input-field col s12 m10 offset-m1">
-                                <input id="password" name="password" type="text" class="validate">
-                                <label for="password">Password</label>
-                            </div>
+                                <div class="input-field col s12 m10 offset-m1">
+                                    <input id="password" name="password" type="text" class="validate">
+                                    <label for="password">Password</label>
+                                </div>
+                                
                             
-                           
-                           <div class="col s12 m10 offset-m1">
-                                <form action="#">
+                            <div class="col s12 m10 offset-m1">
                                     <p>
                                         <span>Account Type</span>
                                         <label>
-                                            <input class="with-gap" name="group1" type="radio" checked />
+                                            <input class="with-gap" name="account_type" type="radio" checked value="Materials Engineer"/>
                                             <span>Materials Engineer</span>
-                                            <input class="with-gap" name="group1" type="radio" checked />
+                                            <input class="with-gap" name="account_type" type="radio" checked value="View Only"/>
                                             <span>View Only</span>
                                         </label>
                                     </p>
-                                </form>
-                            </div>
+                                </div>
 
 
-                           
                             
-                            <div class="row center">
-                                <a class="btn waves-effect waves-light" type="submit" name="action" href="createaccount.html">Create
-                                    An Account</a>
-                                    <a class="waves-effect waves-light btn" type="submit" name="action" href="loginpage.html">Cancel</a>
+                                
+                                <div class="row center">
+                                    <button class="btn waves-effect waves-light" type="submit" name="create_account">Create
+                                        An Account</button>
+                                        <a class="waves-effect waves-light btn" href="loginpage.php">Cancel</a>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

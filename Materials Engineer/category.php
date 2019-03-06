@@ -1,3 +1,12 @@
+<?php
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -34,7 +43,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.php">Dashboard</a></li>
+                <li>Dashboard</li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -43,9 +52,9 @@
                         <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Site Materials</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Category</a></li>
+                            <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
                         </div>
                     </li>
@@ -58,7 +67,7 @@
                         <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="">Fill out Hauling Form</a></li>
+                                <li><a class="waves-effect waves-blue" href="#">Fill out Hauling Form</a></li>
                                 <li><a class="waves-effect waves-blue" href="#">View Hauled Materials</a></li>
                             </ul>
                         </div>
@@ -79,7 +88,7 @@
         </div>
     </nav>
 
-    
+    <div class="content">
         <div class="row">
             <div class="col s12 right-align">
                 <a href="#addcategoryModal" class="waves-effect waves-light btn modal-trigger">
@@ -88,7 +97,7 @@
                     <i class="material-icons left">edit</i>Edit Category</a>
             </div>
         </div>
-    
+    </div>
 
 
     <!-- ADD CATEGORY MODAL -->
@@ -138,39 +147,25 @@
     </div>
     
      <div class="row"></div>
-  <div class="row">
-    <div class="col s3">
-      <div class="card blue-grey darken-1">
-        <a href=blade.html>
-          <div class="card-content white-text">
-            <span class="card-title">Blades</span>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="col s3">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Lubricants</span>
+    <?php
+        $sql = "SELECT categories_name FROM  categories;";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)) {
+    ?>
+        <div class="row">
+            <div class="col s3">
+                <div class="card blue-grey darken-1">
+                    <!-- <a href=blade.html> -->
+                    <div class="card-content white-text">
+                        <span class="card-title"><?php echo $row[0] ;?></span>
+                    </div>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col s3">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Table Forms</span>
-        </div>
-      </div>
-    </div>
-    <div class="col s3">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Formworks</span>
-        </div>
-      </div>
-    </div>
-  </div>
-   
+    <?php
+        }
+    ?>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

@@ -53,7 +53,7 @@
               <ul>
                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
                 <li><a class="waves-effect waves-blue" href="sitematerials.html">Site Materials</a></li>
-                <li><a class="waves-effect waves-blue" href="category.html">Category</a></li>
+                <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
               </ul>
             </div>
           </li>
@@ -66,8 +66,8 @@
             <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
             <div class="collapsible-body">
               <ul>
-                <li><a class="waves-effect waves-blue" href="hauling.html">Fill out Hauling Form</a></li>
-                <li><a class="waves-effect waves-blue" href="hauled%20items.html">View Hauled Materials</a></li>
+                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
+                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
               </ul>
             </div>
           </li>

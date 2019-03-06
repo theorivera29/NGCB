@@ -46,10 +46,10 @@
                             }
                             ?>
                             <div class="row">
-                                <!-- <div class="col s12 m6 offset-m1">
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">Create An
-                                        Account</button>
-                                </div> -->
+                                <div class="col s12 m6 offset-m1">
+                                    <a href="createaccount.php" class="btn waves-effect waves-light" type="submit" name="action">Create An
+                                        Account</a>
+                                </div>
                                 <div class="col s12 m4 offset-m1">
                                     <button class="btn waves-effect waves-light" type="submit"  name="login">Login</button>
                                 </div>

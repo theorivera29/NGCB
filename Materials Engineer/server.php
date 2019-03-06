@@ -4,8 +4,8 @@
     
     if (isset($_POST['login'])) {
         session_start();
-        $username = $_POST['username'];
-        $password = $_POST['password']; 
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']); 
         $sql = "SELECT accounts_password FROM accounts WHERE accounts_username = '$username'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
@@ -14,7 +14,6 @@
         if(password_verify($password, $hash_password)) {
             $_SESSION['username'] = $username; 
             $_SESSION['loggedin'] = true;
-            // header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
             exit;
         }else {
@@ -64,43 +63,24 @@
         if($count != 1) {
             $sql = "INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status)
                     VALUES ('$projects_name', '$projects_address', '$start_date', '$end_date', 'open')";
-            if (mysqli_query($conn,$sql)) {
-                echo "Success";
-            } else {
-                echo $conn->error;
-            }
-            // header("location: http://127.0.0.1/Materials%20Engineer/dashboard.php");
-            // exit;
+            mysqli_query($conn,$sql);
+            header("Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php");
+            exit;
         }
     }
     
     if (isset($_POST['close_project'])) {
-        $projects_name = "NGCB Expansion Site";
-        $sql = "SELECT projects_id FROM projects WHERE projects_name = '$projects_name'";
-        $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
-        $row = mysqli_fetch_row($result);
-        $projects_id = $row[0];
-        if($count == 1) {
-            $sql = "UPDATE projects SET projects_status = 'closed' WHERE projects_id = $projects_id;";
-            if (mysqli_query($conn,$sql)) {
-                echo "Success";
-            } else {
-                echo $conn->error;
-            }
-        }    
+        $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
+        $sql = "UPDATE projects SET projects_status = 'closed' WHERE projects_name = '$projects_name';";
+        mysqli_query($conn,$sql);
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
     }
 
     if (isset($_POST['reopen_project'])) {
-        $projects_name = "NGCB Expansion Site";
-        $sql = "SELECT projects_id FROM projects WHERE projects_name = '$projects_name'";
-        $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
-        $row = mysqli_fetch_row($result);
-        $projects_id = $row[0];
-        if($count == 1) {
-            $sql = "UPDATE projects SET projects_status = 're-opened' WHERE projects_id = $projects_id;";
-        }
+        $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
+        $sql = "UPDATE projects SET projects_status = 'open' WHERE projects_name = '$projects_name';";
+        mysqli_query($conn,$sql);
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
     }
 
     if(isset($_POST['create_project'])) {
@@ -113,8 +93,37 @@
         }
     }
 
+    if(isset($_POST['edit_project'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
+        if(isset($_POST['new_project_name'])) {
+            $new_project_name = $_POST['new_project_name'];
+            echo $new_project_name;
+            $sql = "UPDATE projects SET projects_name = '$new_project_name' WHERE projects_name = '$projects_name';";
+            mysqli_query($conn,$sql);
+        }
+
+        if(isset($_POST['new_address'])) {
+            $new_address = mysqli_real_escape_string($conn, $_POST['new_address']);
+            $sql = "UPDATE projects SET projects_address = '$new_address' WHERE projects_name = '$projects_name';";
+            mysqli_query($conn, $sql);
+        }
+
+        if(isset($_POST['new_sdate'])) {
+            $new_sdate = mysqli_real_escape_string($conn, $_POST['new_sdate']);
+            $sql = "UPDATE projects SET projects_sdate = '$new_sdate' WHERE projects_name = '$projects_name';";
+            mysqli_query($conn, $sql);
+        }
+
+        if(isset($_POST['new_edate'])) {
+            $new_edate = mysqli_real_escape_string($conn, $_POST['new_edate']);
+            $sql = "UPDATE projects SET projects_edate = '$new_edate' WHERE projects_name = '$projects_name';";
+            mysqli_query($conn, $sql);
+        }
+        
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+    } 
     if(isset($_POST['view_inventory'])) {
-        $projects_name = $_POST['projects_name'];
-        header("location: http://localhost/NGCB/Materials Engineer/viewinventory.php?projects_name=$projects_name");
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
     }
 ?>

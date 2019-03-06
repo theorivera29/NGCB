@@ -23,19 +23,20 @@
 body {}
 
 nav {
-  background-color: #097392 !important;
+  background-color: #0B2027 !important;
+  
 }
 
 #NGCB {
   float: right;
-  padding-right: 2%;
-  color: #E8CC1E;
-  font-family: Rose;
+  padding-right: 3%;
+  color: #E8CC13;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Style for Dashboard */
 .Calendar-Todo-Container {
-  background-color: #F0F1F2;
+  background-color: #ECF8F8z;
   margin-top: 1%;
   margin-left: 2% !important;
   border-radius: 5%;
@@ -45,12 +46,13 @@ nav {
 .Panel-Header {
   font-size: 20px;
   color: #F0FCF6;
-  background-color: #4C99AF;
+  background-color: #0B2027;
   padding: 1%;
   border-spacing: 0;
   border-collapse: collapse !important;
   text-align: center;
   border-radius: 7% !important;
+  
 }
 
 .Calendar-Container {

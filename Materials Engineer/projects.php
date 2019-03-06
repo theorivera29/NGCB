@@ -196,7 +196,7 @@
             <form action="server.php" method="POST">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
                 <input type="hidden" name="close_project_name" value=" />
-                <button type="submit" name="close_project" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                <button type="submit name="close_project" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
             </form>
         </div>
     </div>

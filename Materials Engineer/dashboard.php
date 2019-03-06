@@ -121,6 +121,18 @@
       </div>
       <a class="waves-effect waves-light btn task-btn"><i class="material-icons right">note_add</i>View All Task</a>
     </div>
+    <div class="col s5 Task-Container">
+      <div class="Panel-Header">
+        <span>CURRENT PROJECTS</span>
+      </div>
+      <div class="">
+        <span id="text-headers">Expansion</span>
+      </div>
+      <div class="">
+        <span id="text-headers">SAMPLE</span>
+      </div>
+      <a class="waves-effect waves-light btn task-btn"><i class="material-icons right">note_add</i>View All Task</a>
+    </div>
   </div>
 
   <div class="row ">

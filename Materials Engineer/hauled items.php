@@ -1,8 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html>
 
 <head>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
   <link rel="stylesheet" text="type/css" href="../style.css">
   <!--Import Google Icon Font-->
@@ -12,6 +13,70 @@
 </head>
 
 <body>
+  <nav>
+  <div class="nav-wrapper">
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+      <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
+      <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
+        <li class="collection-item avatar">
+          <img src="../Images/pic.jpg" alt="" class="circle">
+          <?php 
+            if(isset($_SESSION['username'])) {
+              $username = $_SESSION['username'];
+              $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+              $result = mysqli_query($conn, $sql);
+              $row = mysqli_fetch_row($result);
+          ?>
+          <span class="title"><?php echo $row[1]." ".$row[2]; ?></span>
+          <span class="title"><?php echo $row[5]; }?></span>
+        </li>
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li>Dashboard</li>
+        <li>
+          <div class="divider"></div>
+        </li>
+        <ul class="collapsible">
+          <li>
+            <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                <li><a class="waves-effect waves-blue" href="sitematerials.html">Site Materials</a></li>
+                <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <li>
+          <div class="divider"></div>
+        </li>
+        <ul class="collapsible">
+          <li>
+            <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
+                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li><a class="waves-effect waves-blue" href="report.php">Report</a></li>
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li>
+          <a href="logout.php">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
     <div class="container">
         <div class="card">

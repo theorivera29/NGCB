@@ -36,7 +36,7 @@ nav {
 
 /* Style for Dashboard */
 .Calendar-Todo-Container {
-  background-color: #ECF8F8z;
+  background-color: #ECF8F8;
   margin-top: 1%;
   margin-left: 2% !important;
   border-radius: 5%;
@@ -95,7 +95,7 @@ nav {
   float: right !important;
   margin-bottom: 2%;
   color: #EDE1D1 !important;
-  background-color: #383838 !important;
+  background-color: #0B2027 !important;
 }
 
 .Task-Container {

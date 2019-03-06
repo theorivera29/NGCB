@@ -79,102 +79,117 @@
         </div>
     </nav>
 
-     <div class="row">
+    <div class="row">
         <div class="col s12 m10 offset-m1">
             <div class="card light-blue lighten-5">
                 <div class="card-content black-text">
                     <h4>Hauling Form</h4>
                     <div class="row">
-                        <div class="col s4">
+                        <div class="col s8">
                             <label>Date:</label>
                             <input id="test" type="date" class="datepicker" value="05/03/2019">
                         </div>
-                        <div class="input-field col s3 offset-m5 right-align">
+                        <div class="input-field col s2 offset-s2 right-align">
                             <input id="formnumber" type="text" class="validate">
                             <label for="formnumber">Form Number:</label>
                         </div>
-                        <div class="input-field col s10 left-align ">
-                            <input id="delivername" type="text" class="validate">
-                            <label for="delivername">Deliver To:</label>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <div>
+                                <div class="input-field col s12 left-align ">
+                                    <input id="delivername" type="text" class="validate">
+                                    <label for="delivername">Deliver To:</label>
+                                </div>
+                                <div class="input-field col s12 left-align ">
+                                    <input id="hauledfrom" type="text" class="validate">
+                                    <label for="hauledfrom">Hauled From :</label>
+                                </div>
+                            </div>
                         </div>
-                        <div class="input-field col s10 left-align ">
-                            <input id="hauledfrom" type="text" class="validate">
-                            <label for="hauledfrom">Hauled From :</label>
+                    </div>
+                    <div class="col s12">
+                        <table class="striped centered">
+                            <thead>
+                                <tr>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Articles</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td contenteditable='true'>5</td>
+                                    <td contenteditable='true'>pcs</td>
+                                    <td contenteditable='true'>Triangular post 4mm</td>
+                                </tr>
+                                <tr>
+                                    <td contenteditable='true'>4</td>
+                                    <td contenteditable='true'>pcs</td>
+                                    <td contenteditable='true'>Beam truss 3mm</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <div class="input-field col s10 left-align ">
+                                <input id="hauledby" type="text" class="validate">
+                                <label for="hauledby">Hauled by :</label>
+                            </div>
+                            <div class="input-field col s10 left-align ">
+                                <input id="warehouseman" type="text" class="validate">
+                                <label for="warehouseman">Warehouseman:</label>
+                            </div>
+                            <div class="input-field col s10 left-align ">
+                                <input id="approvedby" type="text" class="validate">
+                                <label for="approvedby">Approved By:</label>
+                            </div>
                         </div>
-                        <div class="col s12">
+                        <div class="col s6">
                             <table class="striped centered">
                                 <thead>
+
                                     <tr>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Articles</th>
+                                        <th> </th>
+                                        <th>Truck details</th>
+                                        <th> </th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>Type:</td>
+                                        <td contenteditable='true'></td>
                                     </tr>
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>Plate No.:</td>
+                                        <td contenteditable='true'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>P.O/R.S No.:</td>
+                                        <td contenteditable='true'></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hauler DR No.:</td>
+                                        <td contenteditable='true'></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <div class="input-field col s10 left-align ">
-                            <input id="hauledby" type="text" class="validate">
-                            <label for="hauledby">Hauled by :</label>
-                        </div>
-                        <div class="input-field col s10 left-align ">
-                            <input id="warehouseman" type="text" class="validate">
-                            <label for="warehouseman">Warehouseman:</label>
-                        </div>
-                        <div class="input-field col s10 left-align ">
-                            <input id="approvedby" type="text" class="validate">
-                            <label for="approvedby">Approved By:</label>
-                        </div>
-                        <div class="col s12">
-                            <h5>
-                                Truck Details
-                            </h5>
-                            <table class="striped centered">
-                                <thead>
-
-                                    <tr>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Articles</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
-                    <div class="card-action right-align">
-                        <button>Cancel</button>
-                        <button>Save</button>
-                    </div>
+                </div>
+                <div class="card-action right-align">
+                    <a class="waves-effect waves-light btn green">Save</a>
+                    <a class="waves-effect waves-light btn red">Cancel</a>
                 </div>
             </div>
         </div>
-    
+    </div>
+
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -194,13 +209,14 @@
             $('.modal-trigger').leanModal();
 
         });
-        
+
         $(document).ready(function() {
             $(".datepicker").pickadate({
                 closeOnSelect: true,
                 format: "dd/mm/yyyy"
             });
         });
+
     </script>
 
 </body>

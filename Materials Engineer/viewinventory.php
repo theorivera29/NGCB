@@ -29,6 +29,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+             <h4 id="NGCB">New Golden City Builders</h4>
             <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
                 <li class="collection-item avatar">
                     <img src="../Images/pic.jpg" alt="" class="circle">
@@ -92,7 +93,6 @@
         </div>
     </nav>
 
-    <div class="content">
         <div class="row">
             <div class="col s12 right-align">
                 <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger">
@@ -101,43 +101,70 @@
                     <i class="material-icons left">edit</i>Edit Material</a>
             </div>
         </div>
+        
+        <div class="container">
         <div class="row">
             <div class="col s12 light-blue lighten-5">
-                <table class="centered">
+                <table>
                     <thead>
                         <tr>
                             <th>Particulars</th>
-                            <th>Previous Material Stock</th>
-                            <th>Delivered Material as of CURRENT DATE</th>
-                            <th>Material Pulled out as of CURRENT DATE</th>
-                            <th>Accumulate of Materials Delivered</th>
-                            <th>Material on Site as of CURRENT DATE</th>
-                            <th> Action</th>
+                            <th id="merge-two-cell">Previous Material Stock</th>
+                            <th>Delivered Material as of
+                                <!--DATE MONTH AND YEAR ONLY BACKEND-->
+                            </th>
+                            <th id="merge-two-cell">Material pulled out as of
+                                <!--DATE MONTH AND YEAR ONLY BACKEND-->
+                            </th>
+                            <th>Accumulated Materials Delivered</th>
+                            <th id="merge-two-cell">Material on site as of
+                                <!--DATE MONTH AND YEAR ONLY BACKEND-->
+                            </th>
+                            <th>Project</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <!-- LALABAS LANG TO IF MAY ITEM NA NAKALAGAY, HINDI KO ALAM IF PAANO AYA ICOCOMMENT KO MUNA TO
-                        <a href="#" class="waves-effect waves-teal btn modal-trigger">Open</a>
-                        <a href="#" class="waves-effect waves-red btn modal-trigger">Delete</a>
-                        -->
-
+                            <td id="merge-ten-cell">Category
+                                <!--Category-->
                             </td>
                         </tr>
-
+                        <tr>
+                            <td>Sample
+                                <!--MATERIAL-->
+                            </td>
+                            <td>
+                                <!--Quantity-->
+                            </td>
+                            <td>
+                                <!--Quantifier-->
+                            </td>
+                            <td>
+                                <!--Quantity-->
+                            </td>
+                            <td>
+                                <!--Quantity-->
+                            </td>
+                            <td>
+                                <!--Quantifier-->
+                            </td>
+                            <td>
+                                <!--Quantity-->
+                            </td>
+                            <td>
+                                <!--Quantity-->
+                            </td>
+                            <td>
+                                <!--Quantifier-->
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
+        </div>
+    
 
 
 
@@ -181,25 +208,28 @@
     <!-- ADD STOCKCARD MODAL -->
     <div id="addstockcardModal" class="modal modal-fixed-footer">
         <div class="modal-content">
+            <h4>Add Stockcard for SAMPLE MATERIAL</h4>
+            <!--BACKEND--MAPAPALITAN YUNG "SAMPLE MATERIAL"-->
             <table class="centered">
                 <thead>
                     <tr>
                         <th>Date</th>
                         <th>Quantity</th>
                         <th>Unit</th>
-                        <th>Supplied By</th>
+                        <th id="merge-two-cell">Supplied By </th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>Sample DATE</td>
+                        <td>Sample QUANTITY</td>
+                        <td>Sample UNIT</td>
+                        <td>Sample SUPPLIED BY</td>
                     </tr>
                 </tbody>
             </table>
+
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>

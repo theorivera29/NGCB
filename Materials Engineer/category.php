@@ -52,7 +52,7 @@
                         <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                            <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
                                 <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
                                 <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
@@ -114,15 +114,15 @@
                     <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a>
                 </div>
             </div>
-            
+
         </div>
-         <div class="modal-footer">
+        <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
         </div>
     </div>
 
-<!-- EDIT MATERIAL MODAL -->
+    <!-- EDIT MATERIAL MODAL -->
     <div id="editcategoryModal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Edit Category</h4>
@@ -145,24 +145,30 @@
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
         </div>
     </div>
-    
-     <div class="row"></div>
+
+    <div class="row"></div>
     <?php
         $sql = "SELECT categories_name FROM  categories;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-        <div class="row">
-            <div class="col s3">
-                <div class="card blue-grey darken-1">
-                    <!-- <a href=blade.html> -->
-                    <div class="card-content white-text">
-                        <span class="card-title"><?php echo $row[0] ;?></span>
-                    </div>
-                    </a>
+    <div class="row">
+        <div class="col s3">
+            <div class="card blue-grey darken-1">
+                <!-- <a href=blade.html> -->
+                <div class="card-content white-text">
+                    <span class="card-title">
+                        <?php echo $row[0] ;?></span>
+                </div>
+                <div class="row">
+                    <form action="server.php" method="POST">
+                        <input type="hidden" name="categories_name" value="<?php echo $row[0]?>">
+                        <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     <?php
         }
     ?>
@@ -185,6 +191,7 @@
             $('.modal-trigger').leanModal();
 
         });
+
     </script>
 
 </body>

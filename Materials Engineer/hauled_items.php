@@ -1,40 +1,51 @@
+<?php
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
+?>
+
+
 <!DOCTYPE html>
 
 <html>
 
 <head>
-    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
-    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" text="type/css" href="../style.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-            <h4 id="NGCB">New Golden City Builders</h4>
+            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
                 <li class="collection-item avatar">
                     <img src="../Images/pic.jpg" alt="" class="circle">
-                    <span class="title">Jam Spica Rocafort</span>
-                    <span class="title">Materials Engineer</span>
-                    <!--DAPAT NAME NUNG ENGINEER LALABAS HERE-->
-
-                    <!--DAPAT MATERIALS ENGINEER LALABAS DITO, DIKO SURE KUNG AHRD CODED-->
-
+                    <?php 
+            if(isset($_SESSION['username'])) {
+              $username = $_SESSION['username'];
+              $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+              $result = mysqli_query($conn, $sql);
+              $row = mysqli_fetch_row($result);
+          ?>
+                    <span class="title">
+                        <?php echo $row[1]." ".$row[2]; ?></span>
+                    <span class="title">
+                        <?php echo $row[5]; }?></span>
                 </li>
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.html">Dashboard</a></li>
+                <li>Dashboard</li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -43,9 +54,9 @@
                         <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="#">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Site Materials</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Category</a></li>
+                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.html">Site Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
                         </div>
                     </li>
@@ -64,6 +75,7 @@
                         </div>
                     </li>
                 </ul>
+
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -71,71 +83,59 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Logout</li>
+                <li>
+                    <a href="logout.php">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col s12 right-align">
-            <a href="#addcategoryModal" class="waves-effect waves-light btn modal-trigger">
-                <i class="material-icons left">print</i>Generate Report</a>
-        </div>
-    </div>
     <div class="container">
-    <div class="row">
-        <div class="col s12 light-blue lighten-5">
-            <table class="centered">
+        <div class="card">
+            <table class="striped centered">
                 <thead>
                     <tr>
-                        <th>Particulars</th>
-                        <th>Previous Material Stock</th>
-                        <th>Delivered Material as of CURRENT DATE</th>
-                        <th>Material Pulled out as of CURRENT DATE</th>
-                        <th>Accumulate of Materials Delivered</th>
-                        <th>Material on Site as of CURRENT DATE</th>
+                        <th>Hauling forms</th>
+                        <th>Date</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-
+                <?php
+        $sql = "SELECT * FROM  hauling;";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)) {
+    ?>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                        </td>
-                    </tr>
-
+                    <td>
+                        <?php echo $row[1] ;?>
+                    </td>
+                    <td><?php echo $row[2] ;?></td>
+                    <td>adasd</td>
                 </tbody>
+                <?php
+        }
+    ?>
             </table>
+
         </div>
     </div>
+
+
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h4>Delete hauling form?</h4>
+            <p>Are you sure you want to delete this form?</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+        </div>
     </div>
-    
 
-
-
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script src="js/materialize.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.modal-trigger').leanModal();
-        });
-
-        // SIDEBAR
-        $(document).ready(function() {
-            $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
-                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
-            });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
         });
 
     </script>

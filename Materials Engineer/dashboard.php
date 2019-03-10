@@ -67,7 +67,7 @@
             <div class="collapsible-body">
               <ul>
                 <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
+                <li><a class="waves-effect waves-blue" href="hauled_items.php">View Hauled Materials</a></li>
               </ul>
             </div>
           </li>

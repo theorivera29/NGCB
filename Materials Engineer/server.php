@@ -134,6 +134,10 @@
         $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id");
     }
+    if(isset($_POST['view_hauled'])) {
+        $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/open%20hauling.php?hauling_no=$hauling_no");
+    }
 
     
 ?>

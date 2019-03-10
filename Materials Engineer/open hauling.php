@@ -67,8 +67,8 @@
                         <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="hauled_items.php">View Hauled Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="#">Fill out Hauling Form</a></li>
+                                <li><a class="waves-effect waves-blue" href="#">View Hauled Materials</a></li>
                             </ul>
                         </div>
                     </li>
@@ -77,7 +77,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue white-text" href="report.php">Report</a></li>
+                <li>Report</li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -87,20 +87,26 @@
             </ul>
         </div>
     </nav>
-
+                        <?php
+                            $hauling_no = $_GET['hauling_no'];
+                            $sql = "SELECT * FROM hauling WHERE hauling_no = '$hauling_no';";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_row($result)){
+                        ?>  
     <div class="row">
         <div class="col s12 m10 offset-m1">
             <div class="card light-blue lighten-5">
                 <div class="card-content black-text">
+
                     <h4>Hauling Form</h4>
                     <div class="row">
                         <div class="col s8">
-                            <label>Date:</label>
+                            <label><?php echo $row[2]?></label>
                             <input id="test" type="date" class="datepicker" value="05/03/2019">
                         </div>
                         <div class="input-field col s2 offset-s2 right-align">
                             <input id="formnumber" type="text" class="validate">
-                            <label for="formnumber">Form Number:</label>
+                            <label for="formnumber"><?php echo $row[1]?></label>
                         </div>
                     </div>
                     <div class="row">
@@ -108,11 +114,11 @@
                             <div>
                                 <div class="input-field col s12 left-align ">
                                     <input id="delivername" type="text" class="validate">
-                                    <label for="delivername">Deliver To:</label>
+                                    <label for="delivername"><?php echo $row[3]?></label>
                                 </div>
                                 <div class="input-field col s12 left-align ">
                                     <input id="hauledfrom" type="text" class="validate">
-                                    <label for="hauledfrom">Hauled From :</label>
+                                    <label for="hauledfrom"><?php echo $row[4]?></label>
                                 </div>
                             </div>
                         </div>
@@ -129,14 +135,9 @@
 
                             <tbody>
                                 <tr>
-                                    <td contenteditable='true'>5</td>
-                                    <td contenteditable='true'>pcs</td>
-                                    <td contenteditable='true'>Triangular post 4mm</td>
-                                </tr>
-                                <tr>
-                                    <td contenteditable='true'>4</td>
-                                    <td contenteditable='true'>pcs</td>
-                                    <td contenteditable='true'>Beam truss 3mm</td>
+                                    <td><?php echo $row[5]?></td>
+                                    <td><?php echo $row[6]?></td>
+                                    <td><?php echo $row[7]?></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -146,15 +147,15 @@
                         <div class="col s6">
                             <div class="input-field col s10 left-align ">
                                 <input id="hauledby" type="text" class="validate">
-                                <label for="hauledby">Hauled by :</label>
+                                <label for="hauledby"><?php echo $row[8]?></label>
                             </div>
                             <div class="input-field col s10 left-align ">
                                 <input id="warehouseman" type="text" class="validate">
-                                <label for="warehouseman">Warehouseman:</label>
+                                <label for="warehouseman"><?php echo $row[9]?></label>
                             </div>
                             <div class="input-field col s10 left-align ">
                                 <input id="approvedby" type="text" class="validate">
-                                <label for="approvedby">Approved By:</label>
+                                <label for="approvedby"><?php echo $row[10]?></label>
                             </div>
                         </div>
                         <div class="col s6">
@@ -171,44 +172,32 @@
                                 <tbody>
                                     <tr>
                                         <td>Type:</td>
-                                        <td contenteditable='true'></td>
+                                        <td><?php echo $row[11]?></td>
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td contenteditable='true'></td>
+                                        <td><?php echo $row[12]?></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>
-                                        <td contenteditable='true'></td>
+                                        <td><?php echo $row[13]?></td>
                                     </tr>
                                     <tr>
                                         <td>Hauler DR No.:</td>
-                                        <td contenteditable='true'></td>
+                                        <td><?php echo $row[14]?></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-
-                    </div>
-                </div>
-                <?php
-        $sql = "SELECT * FROM  hauling;";
-        $result = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_array($result)) {
+                        <?php
+        }
     ?>
-                <div class="card-action right-align">
-                <form action="server.php" method="POST">
-                <input type="hidden" name="hauling_no" value = "<?php echo $row[1];?>">
-                    <a class="waves-effect waves-light btn green" type="submit" name="create_hauling">Save</a>
-                </form>
-                    <a class="waves-effect waves-light btn red">Cancel</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php
-        }
-    ?>
+
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

@@ -108,24 +108,20 @@
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>
-                            <th>Delivered Material as of <?php echo date("F Y"); ?></th>
-                            <th>Material Pulled out as of <?php echo date("F Y"); ?></th>
+                            <th>Delivered Material as of CURRENT DATE</th>
+                            <th>Material Pulled out as of CURRENT DATE</th>
                             <th>Accumulate of Materials Delivered</th>
-                            <th>Material on Site as of <?php echo date("F Y"); ?>   </th>
+                            <th>Material on Site as of CURRENT DATE</th>
+                            <th> Action</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php 
-                            $projects_name = $_GET['projects_name'];
-                            $sql = "SELECT * FROM materials 
-                            INNER JOIN projects ON materials.mat_project = projects.projects_id 
-                            INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
-                            WHERE materials.mat_project = '$projects_name';";
+                            $categories_id = $_GET['categories_id'];
+                            $sql = "SELECT * FROM materials WHERE mat_categ = '$categories_id';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>  
-
                         <tr>
                             <td><?php echo $row[1] ?></td>
                             <td><?php echo $row[2] ?></td>
@@ -154,49 +150,47 @@
 
     <!-- ADD MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer">
-        <form action="server.php" method="POST">
-            <div class="modal-content">
-                <h4>Add Material</h4>
-                <div class="row">
+        <div class="modal-content">
+            <h4>Add Material</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="materialname" name="materialname" type="text" class="validate">
+                    <label for="materialname">Material Name:</label>
+                </div>
+                <div class="col s12">
+                    <label>Category:</label>
+
                     <div class="input-field col s12">
-                        <input id="materialname" name="materialname" type="text" class="validate">
-                        <label for="materialname">Material Name:</label>
-                    </div>
-                    <div class="col s12">
-                        <label>Category:</label>
+                        <select class="browser-default">
+                            <option value="" disabled selected>Choose your option</option>
+                            <?php
+                                $sql = "SELECT categories_name FROM categories;";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                         
 
-                        <div class="input-field col s12">
-                            <select class="browser-default" name="categories">
-                                <option value="" disabled selected>Choose your option</option>
-                                <?php
-                                    $sql = "SELECT * FROM categories;";
-                                    $result = mysqli_query($conn, $sql);
-                                    while($row = mysqli_fetch_row($result)) {                         
+                            ?>
+                            <option value="1"> <?php echo $row[0]; ?></option>
 
-                                ?>
-                                <option value="<?php echo $row[0]; ?>"> <?php echo $row[1]; ?></option>
-
-                                <?php 
-                                    }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-field col s5">
-                        <input id="quantifier" name="quantifier" type="text" class="validate">
-                        <label for="quantifier">Quantifier:</label>
-                    </div>
-                    <div class="input-field col s7">
-                        <input id="minquantity" name="minquantity" type="text" class="validate">
-                        <label for="minquantity">Minimum quantity of materials when to be quantified:</label>
+                            <?php 
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
+                <div class="input-field col s5">
+                    <input id="quantifier" name="quantifier" type="text" class="validate">
+                    <label for="quantifier">Quantifier:</label>
+                </div>
+                <div class="input-field col s7">
+                    <input id="minquantity" name="minquantity" type="text" class="validate">
+                    <label for="minquantity">Minimum quantity of materials when to be quantified:</label>
+                </div>
             </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</a>
-            </div>
-        </form>                
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+            <a href="#addstockcardModal" class="waves-effect waves-teal btn-flat modal-trigger">Next</a>
+        </div>
     </div>
 
     <!-- ADD STOCKCARD MODAL -->

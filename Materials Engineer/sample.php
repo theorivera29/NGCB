@@ -1,18 +1,10 @@
-<?php
-    include "db_connection.php";
-    session_start();
-
-    if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
-    }
-?>
-
 <!DOCTYPE html>
 
 <html>
 
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" text="type/css" href="../style.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,7 +16,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-            <h4 id="NGCB">New Golden City Builders</h4>
+            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
                 <li class="collection-item avatar">
                     <img src="../Images/pic.jpg" alt="" class="circle">
@@ -43,7 +35,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.php">Dashboard</a></li>
+                <li>Dashboard</li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -53,7 +45,7 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.html">Site Materials</a></li>
                                 <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
                         </div>
@@ -68,7 +60,7 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="hauled items.php">View Hauled Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
                             </ul>
                         </div>
                     </li>
@@ -77,7 +69,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue white-text" href="report.php">Report</a></li>
+                <li><a class="waves-effect waves-blue" href="report.php">Report</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -88,66 +80,22 @@
         </div>
     </nav>
 
-    <div class="content">
-        <div class="row">
-            <div class="col s12 right-align">
-                <a href="#addcategoryModal" class="waves-effect waves-light btn modal-trigger">
-                    <i class="material-icons left">add_circle_outline</i>Add Category</a>
-                <a href="#editcategoryModal" class="waves-effect waves-light btn modal-trigger">
-                    <i class="material-icons left">edit</i>Edit Category</a>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ADD CATEGORY MODAL -->
-    <div id="addcategoryModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Add Category</h4>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="categoryname" type="text" class="validate">
-                    <label for="categoryname">Category Name:</label>
-                </div>
-
-                <div class="input-field col s12">
-                    <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a>
-                </div>
-            </div>
-
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
-        </div>
-    </div>
-
-    <!-- EDIT MATERIAL MODAL -->
-    <div id="editcategoryModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Edit Category</h4>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input disabled value=" Sample Category OLD Name" id="disabled" type="text" class="validate">
-                    <label for="disabled">Old Category Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="materialname" type="text" class="validate">
-                    <label for="materialname">New Category Name:</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
-        </div>
-    </div>
-
-    <div class="row"></div>
-    <?php
+    <div class="container">
+        <div class="card">
+            <table class="striped centered">
+                <thead>
+                    <tr>
+                        <th>Hauling forms</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                        <td>asd</td>
+                        <td>asd</td>
+                        <td>adasd</td>
+            </table>
+            
+            <?php
         $sql = "SELECT * FROM  categories;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
@@ -172,28 +120,28 @@
     <?php
         }
     ?>
+        </div>
+    </div>
 
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h4>Delete hauling form?</h4>
+            <p>Are you sure you want to delete this form?</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+        </div>
+    </div>
+
+    <script src="js/materialize.min.js"></script>
     <script>
-        // SIDEBAR
         $(document).ready(function() {
-            $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
-                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
-            });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
-
             $('.modal-trigger').leanModal();
-
         });
 
     </script>
-
 </body>
 
 </html>

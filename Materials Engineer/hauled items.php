@@ -112,7 +112,7 @@
                     <td><?php echo $row[2] ;?></td>
                     <td>
                         <form action="server.php" method="POST">
-                            <input type="hidden" name="view_hauled">
+                            <input type="hidden" name="hauling_no" value = "<?php echo $row[1]?>">
                               <button class="waves-effect waves-light btn" type="submit" name="view_hauled">View</button>
                         </form>
                     </td>

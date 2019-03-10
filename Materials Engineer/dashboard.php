@@ -42,7 +42,7 @@
         <li>
           <div class="divider"></div>
         </li>
-        <li>Dashboard</li>
+        <li><a href="dashboard.php">Dashboard</a></li>
         <li>
           <div class="divider"></div>
         </li>
@@ -76,7 +76,7 @@
         <li>
           <div class="divider"></div>
         </li>
-        <li>Report</li>
+        <li><a href="report.php.php">Dashboard</a></li>
         <li>
           <div class="divider"></div>
         </li>
@@ -101,7 +101,7 @@
       <div class="card card-content">
         <div class="row">
           <div class="input-field input-field-todo col s8">
-            <textarea id="todo_area" class="materialize-textarea"></textarea>
+            <textarea id="todo_area" class="materialize-textarea todo"></textarea>
             <label for="todo_area" id="todo-label">Input to-do here</label>
           </div>
         </div>
@@ -114,14 +114,14 @@
         <span>TO-DO TASK</span>
       </div>
       <div class="">
-        <span id="text-headers">Tasks Today:</span>
+        <span id="text-headers">Task Today:</span>
       </div>
       <div class="">
-        <span id="text-headers">Tasks Tomorrow:</span>
+        <span id="text-headers">Task Tomorrow:</span>
       </div>
       <a class="waves-effect waves-light btn task-btn"><i class="material-icons right">note_add</i>View All Task</a>
     </div>
-    <div class="col s5 Task-Container">
+    <div class="col s5  Task-Container">
       <div class="Panel-Header">
         <span>CURRENT PROJECTS</span>
       </div>
@@ -131,7 +131,7 @@
       <div class="">
         <span id="text-headers">SAMPLE</span>
       </div>
-      <a class="waves-effect waves-light btn task-btn"><i class="material-icons right">note_add</i>View All Task</a>
+      <a class="waves-effect waves-light btn task-btn"><i class="material-icons right">note_add</i>View All Project</a>
     </div>
   </div>
 

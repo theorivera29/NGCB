@@ -39,8 +39,10 @@
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_fetch_row($result);
                     ?>
-                    <span class="title"><?php echo $row[1]." ".$row[2]; ?></span>
-                    <span class="title"><?php echo $row[5]; }?></span>
+                    <span class="title">
+                        <?php echo $row[1]." ".$row[2]; ?></span>
+                    <span class="title">
+                        <?php echo $row[5]; }?></span>
                 </li>
                 <li>
                     <div class="divider"></div>
@@ -87,14 +89,14 @@
         </div>
     </nav>
 
-   
-        <div class="row">
-            <div class="col s12 right-align">
-                <a href="#addProjectModal" class="waves-effect waves-light btn modal-trigger">
-                    <i class="material-icons left">add_circle_outline</i>Add Project</a>
-            </div>
+
+    <div class="row">
+        <div class="col s12 right-align">
+            <a href="#addProjectModal" class="waves-effect waves-light btn modal-trigger">
+                <i class="material-icons left">add_circle_outline</i>Add Project</a>
         </div>
-        <div class="container">
+    </div>
+    <div class="container">
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -113,10 +115,17 @@
                     <div class="col s12 m6">
                         <div class="card blue-grey darken-1 center">
                             <div class="card-content white-text">
-                                <span class="card-title"> <?php echo $row[1] ?> </span>
-                                <p> <?php echo $row[2] ?> </p>
-                                <p>Start Date: <?php echo $row[3] ?> </p>
-                                <p>End Date: <?php echo $row[4] ?> </p>
+                                <span class="card-title">
+                                    <?php echo $row[1] ?> </span>
+                                <p>
+                                    <?php echo $row[2] ?>
+                                </p>
+                                <p>Start Date:
+                                    <?php echo $row[3] ?>
+                                </p>
+                                <p>End Date:
+                                    <?php echo $row[4] ?>
+                                </p>
                                 <div class="row">
                                     <form action="server.php" method="POST">
                                         <input type="hidden" name="projects_name" value="<?php echo $row[1]?>">
@@ -141,7 +150,9 @@
             </div>
             <div id="editModal" class="modal">
                 <div class="modal-content">
-                    <h4>Edit Project: <?php echo $row[1]; ?></h4>
+                    <h4>Edit Project:
+                        <?php echo $row[1]; ?>
+                    </h4>
                     <form action="server.php" method="POST">
                         <div class="row">
                             <div class="input-field col s6">
@@ -163,9 +174,9 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                        <input type="hidden" name="project_name" value='<?php echo $row[1]; ?>'>
-                        <button name="edit_project" class="modal-action modal-close waves-effect waves-green btn-flat">Save Changes<button>
-                    </form>
+                    <input type="hidden" name="project_name" value='<?php echo $row[1]; ?>'>
+                    <button name="edit_project" class="modal-action modal-close waves-effect waves-green btn-flat">Save Changes<button>
+                            </form>
                 </div>
             </div>
 
@@ -196,10 +207,17 @@
                     <div class="col s12 m6">
                         <div class="card blue-grey darken-1 center">
                             <div class="card-content white-text">
-                                <span class="card-title"> <?php echo $row[1] ?> </span>
-                                <p> <?php echo $row[2] ?> </p>
-                                <p>Start Date: <?php echo $row[3] ?> </p>
-                                <p>End Date: <?php echo $row[4] ?> </p>
+                                <span class="card-title">
+                                    <?php echo $row[1] ?> </span>
+                                <p>
+                                    <?php echo $row[2] ?>
+                                </p>
+                                <p>Start Date:
+                                    <?php echo $row[3] ?>
+                                </p>
+                                <p>End Date:
+                                    <?php echo $row[4] ?>
+                                </p>
                                 <div class="row">
                                     <a href="#reopenModal" class="waves-effect waves-light btn green modal-trigger">Re-open Project</a>
                                 </div>
@@ -246,11 +264,11 @@
                         <input placeholder="New end date" id="new_edate" type="text" class="validate">
                         <label for="new_edate">End date:</label>
                     </div>
-                </div> 
-            </div>
-            <div class="modal-footer">
-                <button class=" modal-action modal-close waves-effect waves-green btn-flat">Save Changes</button>
-            </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button class=" modal-action modal-close waves-effect waves-green btn-flat">Save Changes</button>
+        </div>
         </form>
     </div>
 
@@ -267,6 +285,18 @@
     <?php
                         }
     ?>
+    
+     <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+   
+   
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
@@ -286,6 +316,7 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
         });
+
     </script>
 </body>
 

@@ -76,7 +76,7 @@
         <li>
           <div class="divider"></div>
         </li>
-        <li>Report</li>
+        <li><a class="waves-effect waves-blue white-text" href="report.php">Report</a></li>
         <li>
           <div class="divider"></div>
         </li>

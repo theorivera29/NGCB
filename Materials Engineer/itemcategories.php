@@ -117,8 +117,8 @@
                     </thead>
                     <tbody>
                         <?php 
-                            $categories_name = $_GET['categories_name'];
-                            $sql = "SELECT * FROM materials WHERE mat_categ = '$categories_name';";
+                            $categories_id = $_GET['categories_id'];
+                            $sql = "SELECT * FROM materials WHERE mat_categ = '$categories_id';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>  

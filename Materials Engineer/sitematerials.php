@@ -190,8 +190,20 @@
                                     <th>Supplied By</th>
                                 </tr>
                             </thead>
-
                             <tbody>
+                                <?php
+                                $sql = "SELECT mat_name FROM materials;";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                         
+
+                            ?>
+                                <h1>
+                                    <?php echo $row[0]; ?>
+                                </h1>
+
+                                <?php 
+                                }
+                            ?>
                                 <tr>
                                     <td contenteditable="true"></td>
                                     <td contenteditable="true"></td>

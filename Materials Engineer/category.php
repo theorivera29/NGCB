@@ -148,7 +148,7 @@
 
     <div class="row"></div>
     <?php
-        $sql = "SELECT categories_name FROM  categories;";
+        $sql = "SELECT * FROM  categories;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
@@ -158,11 +158,11 @@
                 <!-- <a href=blade.html> -->
                 <div class="card-content white-text">
                     <span class="card-title">
-                        <?php echo $row[0] ;?></span>
+                        <?php echo $row[1] ;?></span>
                 </div>
                 <div class="row">
                     <form action="server.php" method="POST">
-                        <input type="hidden" name="categories_name" value="<?php echo $row[0]?>">
+                        <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
                         <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
                     </form>
                 </div>

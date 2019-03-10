@@ -1,13 +1,3 @@
-<?php
-    include "db_connection.php";
-    session_start();
-
-    if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
-    }
-?>
-
-
 <!DOCTYPE html>
 
 <html>
@@ -100,23 +90,36 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <?php
-        $sql = "SELECT * FROM  hauling;";
+                        <td>asd</td>
+                        <td>asd</td>
+                        <td>adasd</td>
+            </table>
+            
+            <?php
+        $sql = "SELECT * FROM  categories;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-                <tbody>
-                    <td>
-                        <?php echo $row[1] ;?>
-                    </td>
-                    <td><?php echo $row[2] ;?></td>
-                    <td>adasd</td>
-                </tbody>
-                <?php
+    <div class="row">
+        <div class="col s3">
+            <div class="card blue-grey darken-1">
+                <!-- <a href=blade.html> -->
+                <div class="card-content white-text">
+                    <span class="card-title">
+                        <?php echo $row[1] ;?></span>
+                </div>
+                <div class="row">
+                    <form action="server.php" method="POST">
+                        <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
+                        <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
         }
     ?>
-            </table>
-
         </div>
     </div>
 

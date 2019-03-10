@@ -34,7 +34,6 @@
                                     <a href="loginpage.php" class="btn waves-effect waves-light" type="submit" name="action">Cancel</a>
                                 </div>
                             </div>
-
                         </div>
                         </form>
 

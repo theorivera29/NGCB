@@ -43,7 +43,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Dashboard</li>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -67,8 +67,8 @@
                         <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="#">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">View Hauled Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
+                                <li><a class="waves-effect waves-blue" href="hauled items.php">View Hauled Materials</a></li>
                             </ul>
                         </div>
                     </li>

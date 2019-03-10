@@ -110,7 +110,12 @@
                         <?php echo $row[1] ;?>
                     </td>
                     <td><?php echo $row[2] ;?></td>
-                    <td>adasd</td>
+                    <td>
+                        <form action="server.php" method="POST">
+                            <input type="hidden" name="view_hauled">
+                              <button class="waves-effect waves-light btn" type="submit" name="view_hauled">View</button>
+                        </form>
+                    </td>
                 </tbody>
                 <?php
         }

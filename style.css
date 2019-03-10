@@ -29,9 +29,9 @@ nav {
 
 #NGCB {
   float: right;
-  padding-right: 3%;
+  padding-right: 2%;
   color: #E8CC13;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: Didact;
 }
 
 /* Style for Dashboard */
@@ -62,7 +62,6 @@ nav {
 #text-headers {
   font-weight: bold;
   font-size: 20px;
-  font-family: ;
 }
 
 .datepicker {
@@ -83,7 +82,6 @@ nav {
 
 .materialize-textarea {
   border-radius: 4% !important;
-  background-color: ;
 }
 
 #todo-label {
@@ -95,8 +93,8 @@ nav {
 .todo-btn {
   float: right !important;
   margin-bottom: 2%;
-  color: BLACK !important;
-  background-color: #538CB2 !important;
+  color: #0D1F2D !important;
+  background-color: #ffffff !important;
 }
 
 .Task-Container {
@@ -111,8 +109,8 @@ nav {
 .task-btn {
   float: right !important;
   margin-bottom: 2%;
-  color: BLACK !important;
-  background-color: #E8CC13 !important;
+  color: #0D1F2D !important;
+  background-color: #ffffff !important;
 }
 
 .Material-Left-Container {
@@ -125,6 +123,7 @@ nav {
   border: 2px solid #97A0A5;
   text-align: center;
 }
+
 
 /* Style for Site > Project */
 

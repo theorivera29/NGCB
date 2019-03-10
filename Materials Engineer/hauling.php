@@ -1,3 +1,12 @@
+<?php
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -182,14 +191,24 @@
 
                     </div>
                 </div>
+                <?php
+        $sql = "SELECT * FROM  hauling;";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)) {
+    ?>
                 <div class="card-action right-align">
-                    <a class="waves-effect waves-light btn green">Save</a>
+                <form action="server.php" method="POST">
+                <input type="hidden" name="hauling_no" value = "<?php echo $row[1];?>">
+                    <a class="waves-effect waves-light btn green" type="submit" name="create_hauling">Save</a>
+                </form>
                     <a class="waves-effect waves-light btn red">Cancel</a>
                 </div>
             </div>
         </div>
     </div>
-
+    <?php
+        }
+    ?>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

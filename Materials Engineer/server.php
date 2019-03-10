@@ -134,9 +134,38 @@
         $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id");
     }
+
     if(isset($_POST['view_hauled'])) {
         $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/open%20hauling.php?hauling_no=$hauling_no");
+    }
+
+    if (isset($_POST['create_hauling'])) {
+        $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
+        $hauling_date = mysqli_real_escape_string($conn, $_POST['hauling_date']);
+		$hauling_deliverTo = mysqli_real_escape_string($conn, $_POST['hauling_deliverTo']);
+        $hauling_hauledFrom = mysqli_real_escape_string($conn, $_POST['hauling_hauledFrom']);
+        $hauling_quantity = mysqli_real_escape_string($conn, $_POST['hauling_quantity']);
+        $hauling_unit = mysqli_real_escape_string($conn, $_POST['hauling_unit']);
+        $hauling_matname = mysqli_real_escape_string($conn, $_POST['hauling_matname']);
+        $hauling_hauledBy = mysqli_real_escape_string($conn, $_POST['hauling_hauledBy']);
+        $hauling_warehouseman = mysqli_real_escape_string($conn, $_POST['hauling_warehouseman']);
+        $hauling_approvedBy = mysqli_real_escape_string($conn, $_POST['hauling_approvedBy']);
+        $hauling_truckDetailsType = mysqli_real_escape_string($conn, $_POST['hauling_truckDetailsType']);
+        $hauling_truckDetailsPlateNo = mysqli_real_escape_string($conn, $_POST['hauling_truckDetailsPlateNo']);
+        $hauling_truckDetailsPo = mysqli_real_escape_string($conn, $_POST['hauling_truckDetailsPo']);
+        $hauling_truckDetailsHaulerDr = mysqli_real_escape_string($conn, $_POST['hauling_truckDetailsHaulerDr']);
+        
+        $sql = "SELECT hauling_no from hauling where hauling_no = '$hauling_no';";
+        $result = mysqli_query($conn,$sql);
+        $count = mysqli_num_rows($result);
+        if($count != 1) {
+            $sql = "INSERT INTO hauling (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, hauling_hauledBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, hauling_truckDetailsPo, hauling_truckDetailsHaulerDr)
+                    VALUES ($hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, $hauling_unit, $hauling_matname, $hauling_hauledBy, $hauling_warehouseman, $hauling_approvedBy, $hauling_truckDetailsType, $hauling_truckDetailsPlateNo, $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr)";
+            mysqli_query($conn,$sql);
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauled%20items.php");
+            exit();
+        }
     }
 
     

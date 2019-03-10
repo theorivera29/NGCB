@@ -153,16 +153,24 @@
           </tr>
         </thead>
         <?php 
-            $sql = "SELECT * FROM materials LIMIT 5;";
+            $sql = "SELECT 
+            materials.mat_name, 
+            categories.categories_name, 
+            stockcard.stockcard_quantity, 
+            materials.mat_unit 
+            FROM materials 
+            INNER JOIN categories ON materials.mat_categ = categories.categories_id 
+            INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id 
+            WHERE materials.mat_notif >= stockcard.stockcard_quantity;";
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_array($result)) {
         ?>
         <tbody>
           <tr>
+            <td><?php echo $row[0] ?></td>
             <td><?php echo $row[1] ?></td>
-            <td><?php echo $row[9] ?></td>
-            <td><?php echo $row[6] ?></td>
-            <td><?php echo $row[8] ?></td>
+            <td><?php echo $row[2] ?></td>
+            <td><?php echo $row[3] ?></td>
           </tr>
         </tbody>
         <?php

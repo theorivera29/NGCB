@@ -24,7 +24,26 @@ body {}
 
 nav {
     background-color: #173753 !important;
+}
 
+.side-nav{
+    background-color: #ECF5F8 !important;
+    color: black !important;
+}
+
+.login-btn{
+    width: 100% !important;
+    padding-bottom: 2% !important;
+    color:  #ffffff !important;
+    background-color: #4C99AF !important;
+}
+
+#create-account-btn {
+    margin-top: 6% !important;
+}
+
+.icon{
+    color: #0D1F2D;
 }
 
 #NGCB {

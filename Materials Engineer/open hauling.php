@@ -101,24 +101,24 @@
                     <h4>Hauling Form</h4>
                     <div class="row">
                         <div class="col s8">
-                            <label><?php echo $row[2]?></label>
-                            <input id="test" type="date" class="datepicker" value="05/03/2019">
+                            <label>Date:</label>
+                            <input id="test" type="date" class="datepicker" disabled value="<?php echo $row[2]?>">
                         </div>
                         <div class="input-field col s2 offset-s2 right-align">
-                            <input id="formnumber" type="text" class="validate">
-                            <label for="formnumber"><?php echo $row[1]?></label>
+                            <input disabled value="<?php echo $row[1]?>" id="formnumber" type="text" class="validate" >
+                            <label for="formnumber">Form No.:</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s6">
                             <div>
                                 <div class="input-field col s12 left-align ">
-                                    <input id="delivername" type="text" class="validate">
-                                    <label for="delivername"><?php echo $row[3]?></label>
+                                    <input disabled value="<?php echo $row[3]?>" id="delivername" type="text" class="validate">
+                                    <label for="delivername">Deliver To:</label>
                                 </div>
                                 <div class="input-field col s12 left-align ">
-                                    <input id="hauledfrom" type="text" class="validate">
-                                    <label for="hauledfrom"><?php echo $row[4]?></label>
+                                    <input disabled value="<?php echo $row[4]?>" id="hauledfrom" type="text" class="validate">
+                                    <label for="hauledfrom">Hauled From:</label>
                                 </div>
                             </div>
                         </div>
@@ -146,16 +146,16 @@
                     <div class="row">
                         <div class="col s6">
                             <div class="input-field col s10 left-align ">
-                                <input id="hauledby" type="text" class="validate">
-                                <label for="hauledby"><?php echo $row[8]?></label>
+                                <input disabled value="<?php echo $row[8]?>" id="hauledby" type="text" class="validate">
+                                <label for="hauledby">Hauled By:</label>
                             </div>
                             <div class="input-field col s10 left-align ">
-                                <input id="warehouseman" type="text" class="validate">
-                                <label for="warehouseman"><?php echo $row[9]?></label>
+                                <input disabled value="<?php echo $row[9]?>" id="warehouseman" type="text" class="validate">
+                                <label for="warehouseman">Warehouseman:</label>
                             </div>
                             <div class="input-field col s10 left-align ">
-                                <input id="approvedby" type="text" class="validate">
-                                <label for="approvedby"><?php echo $row[10]?></label>
+                                <input disabled value="<?php echo $row[10]?>" id="approvedby" type="text" class="validate">
+                                <label for="approvedby">Approved By:</label>
                             </div>
                         </div>
                         <div class="col s6">

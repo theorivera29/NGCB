@@ -24,7 +24,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-            <h4 id="NGCB">New Golden City Builders</h4>
+            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
                 <li class="collection-item avatar">
                     <img src="../Images/pic.jpg" alt="" class="circle">
@@ -88,7 +88,7 @@
         </div>
     </nav>
 
-    <div class="content">
+    
         <div class="row">
             <div class="col s12 right-align">
                 <a href="#addcategoryModal" class="waves-effect waves-light btn modal-trigger">
@@ -97,7 +97,7 @@
                     <i class="material-icons left">edit</i>Edit Category</a>
             </div>
         </div>
-    </div>
+  
 
 
     <!-- ADD CATEGORY MODAL -->

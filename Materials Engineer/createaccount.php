@@ -32,7 +32,7 @@
                                     <label for="firstname">First Name</label>
                                 </div>
 
-                                <div class="input-field col s12 m8 offset-m1">
+                                <div class="input-field col s12 m10 offset-m1">
                                     <input id="lastname" name="lastname" type="text" class="validate">
                                     <label for="lastname">Last Name</label>
                                 </div>
@@ -54,15 +54,17 @@
                                 
                             
                             <div class="col s12 m10 offset-m1">
-                                    <p>
+                                    
                                         <span>Account Type</span>
+                                        <div class="row">
                                         <label>
                                             <input class="with-gap" name="account_type" type="radio" checked value="Materials Engineer"/>
                                             <span>Materials Engineer</span>
                                             <input class="with-gap" name="account_type" type="radio" checked value="View Only"/>
                                             <span>View Only</span>
                                         </label>
-                                    </p>
+                                        </div>
+                                    
                                 </div>
 
 

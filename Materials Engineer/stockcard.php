@@ -20,6 +20,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
                 <li class="collection-item avatar">
                     <img src="../Images/pic.jpg" alt="" class="circle">

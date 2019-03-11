@@ -16,25 +16,25 @@
 
     <div class="container">
         <div class="row">
-            <div class="col s12 m6 offset-m3">
+            <div class="col s12 m5 offset-m4">
                 <div class="card white darken-1">
-                    <div class="card-content black-text">
+                    <div class="card-content">
                         <h2 class="card-title center-align">New Golden City Builders</h2>
                         <h2 class="card-title center-align">Login</h2>
                         <form action="server.php" method="POST">
-                            <div class="row">
+                            <div class="row center-align">
                                 <div class="input-field col s12 m10 offset-m1">
-                                    <i class="material-icons prefix">account_circle</i>
+                                    <i class="material-icons prefix icon">account_circle</i>
                                     <input placeholder="username" id="login-username" name="username" type="text" class="validate">
                                 </div>
 
                                 <div class="input-field col s12 m10 offset-m1">
-                                    <i class="material-icons prefix">lock_outline</i>
+                                    <i class="material-icons prefix icon">lock_outline</i>
                                     <input placeholder="password" id="login-password" name="password" type="password" class="validate">
                                 </div>
 
                                 <div class="row">
-                                    <div class="col s12 offset-m7">
+                                    <div class="col s12 offset-m3">
                                         <a href="">Forgot Password</a>
                                     </div>
                                 </div>
@@ -45,13 +45,11 @@
                                 unset($_SESSION['login_error']);
                             }
                             ?>
-                                <div class="row">
-                                    <div class="col s12 m6 offset-m1">
-                                        <a href="createaccount.php" class="btn waves-effect waves-light" type="submit" name="action">Create An Account</a>
+                                <div class="row">                                    
+                                    <div class="col s12 m10 offset-m1">
+                                        <button class="btn waves-effect waves-light login-btn" type="submit" name="login">Login</button>
                                     </div>
-                                    <div class="col s12 m4 offset-m1">
-                                        <button class="btn waves-effect waves-light" type="submit" name="login">Login</button>
-                                    </div>
+                                    <a href="createaccount.php" id="create-account-btn" name="action">Create An Account</a>
                                 </div>
 
                             </div>

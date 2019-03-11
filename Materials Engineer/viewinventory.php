@@ -92,7 +92,7 @@
         </div>
     </nav>
 
-    <div class="content">
+    
         <div class="row">
             <div class="col s12 right-align">
                 <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger">
@@ -101,6 +101,7 @@
                     <i class="material-icons left">edit</i>Edit Material</a>
             </div>
         </div>
+        <div class="container">
         <div class="row">
             <div class="col s12 light-blue lighten-5">
                 <table class="centered">

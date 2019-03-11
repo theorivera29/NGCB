@@ -1,21 +1,21 @@
 @font-face {
-  font-family: 'chapaza';
-  src: url('../fonts/Chapaza.ttf');
+    font-family: 'chapaza';
+    src: url('../fonts/Chapaza.ttf');
 }
 
 @font-face {
-  font-family: 'Clone';
-  src: url('../fonts/Clone.otf');
+    font-family: 'Clone';
+    src: url('../fonts/Clone.otf');
 }
 
 @font-face {
-  font-family: 'Rose';
-  src: url('../fonts/Rose.otf');
+    font-family: 'Rose';
+    src: url('../fonts/Rose.otf');
 }
 
 @font-face {
-  font-family: 'Didact';
-  src: url('../fonts/Didact.ttf');
+    font-family: 'Didact';
+    src: url('../fonts/Didact.ttf');
 }
 
 
@@ -23,108 +23,126 @@
 body {}
 
 nav {
-  background-color: #173753 !important;
-  
+    background-color: #173753 !important;
+
 }
 
 #NGCB {
-  float: right;
-  padding-right: 2%;
-  color: #E8CC13;
-  font-family: Didact;
+    float: right;
+    padding-right: 2%;
+    color: #E8CC13;
+    font-family: Didact;
 }
 
 /* Style for Dashboard */
 .Calendar-Todo-Container {
-  background-color: #F0F1F2;
-  margin-top: 1%;
-  margin-left: 2% !important;
-  border-radius: 5%;
-  border: 2px solid #3E3E3F;
+    background-color: #F0F1F2;
+    margin-top: 1%;
+    margin-left: 2% !important;
+    border-radius: 5%;
+    border: 2px solid #3E3E3F;
 }
 
 .Panel-Header {
-  font-size: 20px;
-  color: #F0FCF6;
-  background-color: #1A5D89;
-  padding: 1%;
-  border-spacing: 0;
-  border-collapse: collapse !important;
-  text-align: center;
-  border-radius: 7% !important;
-  
+    font-size: 20px;
+    color: #F0FCF6;
+    background-color: #1A5D89;
+    padding: 1%;
+    border-spacing: 0;
+    border-collapse: collapse !important;
+    text-align: center;
+    border-radius: 7% !important;
+
 }
 
 .Calendar-Container {
-  padding-top: 2%;
+    padding-top: 2%;
 }
 
 #text-headers {
-  font-weight: bold;
-  font-size: 20px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .datepicker {
-  width: 20% !important;
-  min-width: 18% !important;
-  max-width: 20%;
-  text-align: center;
+    width: 20% !important;
+    min-width: 18% !important;
+    max-width: 20%;
+    text-align: center;
 }
 
 .input-field-todo {
-  width: 95% !important;
-  padding-top: 1%;
-  padding-left: 5% !important;
-  color: black !important;
-  border-radius: 5% !important;
+    width: 95% !important;
+    padding-top: 1%;
+    padding-left: 5% !important;
+    color: black !important;
+    border-radius: 5% !important;
 
 }
 
 .materialize-textarea {
-  border-radius: 4% !important;
+    border-radius: 4% !important;
 }
 
 #todo-label {
-  padding-left: 5% !important;
-  margin-top: 2%;
-  font-size: 21px;
+    padding-left: 5% !important;
+    margin-top: 2%;
+    font-size: 21px;
 }
 
 .todo-btn {
-  float: right !important;
-  margin-bottom: 2%;
-  color: #0D1F2D !important;
-  background-color: #ffffff !important;
+    float: right !important;
+    margin-bottom: 2%;
+    color: #0D1F2D !important;
+    background-color: #ffffff !important;
 }
 
 .Task-Container {
-  background-color: #F0F1F2;
-  margin-top: 1%;
-  margin-left: 1% !important;
-  border-radius: 5%;
-  border: 2px solid #3E3E3F;
-  width: 45% !important;
+    background-color: #F0F1F2;
+    margin-top: 1%;
+    margin-left: 1% !important;
+    border-radius: 5%;
+    border: 2px solid #3E3E3F;
+    width: 45% !important;
 }
 
 .task-btn {
-  float: right !important;
-  margin-bottom: 2%;
-  color: #0D1F2D !important;
-  background-color: #ffffff !important;
+    float: right !important;
+    margin-bottom: 2%;
+    color: #0D1F2D !important;
+    background-color: #ffffff !important;
 }
 
 .Material-Left-Container {
-  background-color: #F0F1F2;
-  margin-top: 1%;
-  margin-left: 2% !important;
-  padding-bottom: 1% !important;
-  border-radius: 2%;
-  width: 96% !important;
-  border: 2px solid #97A0A5;
-  text-align: center;
+    background-color: #F0F1F2;
+    margin-top: 1%;
+    margin-left: 2% !important;
+    padding-bottom: 1% !important;
+    border-radius: 2%;
+    width: 96% !important;
+    border: 2px solid #97A0A5;
+    text-align: center;
 }
 
 
 /* Style for Site > Project */
+.projects-btn {
+    background-color: #1A5D89 !important;
+    color: white !important;
+}
+
 
 /* Style for Site > Site Materials */
+
+
+/* Style for Site > Category */
+.category-btn {
+    background-color: #1A5D89 !important;
+    color: white !important;
+}
+
+/* Style for Report*/
+.report-btn {
+    background-color: #1A5D89 !important;
+    color: white !important;
+}

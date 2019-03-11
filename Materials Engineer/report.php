@@ -78,7 +78,7 @@
 
     <div class="row">
         <div class="col s12 right-align">
-            <a href="#addcategoryModal" class="waves-effect waves-light btn modal-trigger">
+            <a href="#addcategoryModal" class="waves-effect waves-light btn report-btn modal-trigger">
                 <i class="material-icons left">print</i>Generate Report</a>
         </div>
     </div>

@@ -93,7 +93,7 @@
 
     <div class="row">
         <div class="col s12 right-align">
-            <a href="#addProjectModal" class="waves-effect waves-light btn modal-trigger add-btn">
+            <a href="#addProjectModal" class="waves-effect waves-light btn projects-btn modal-trigger add-btn">
                 <i class="material-icons left">add_circle_outline</i>Add Project</a>
         </div>
     </div>

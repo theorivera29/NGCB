@@ -91,9 +91,9 @@
     
         <div class="row">
             <div class="col s12 right-align">
-                <a href="#addcategoryModal" class="waves-effect waves-light btn modal-trigger">
+                <a href="#addcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
                     <i class="material-icons left">add_circle_outline</i>Add Category</a>
-                <a href="#editcategoryModal" class="waves-effect waves-light btn modal-trigger">
+                <a href="#editcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
                     <i class="material-icons left">edit</i>Edit Category</a>
             </div>
         </div>

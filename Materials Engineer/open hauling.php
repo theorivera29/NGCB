@@ -43,7 +43,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Dashboard</li>
+                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -53,8 +53,8 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Site Materials</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Category</a></li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
                         </div>
                     </li>

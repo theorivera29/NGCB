@@ -43,7 +43,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Dashboard</li>
+                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -197,10 +197,10 @@
         while($row = mysqli_fetch_array($result)) {
     ?>
                 <div class="card-action right-align">
-                <form action="server.php" method="POST">
-                <input type="hidden" name="hauling_no" value = "<?php echo $row[1];?>">
-                    <a class="waves-effect waves-light btn green" type="submit" name="create_hauling">Save</a>
-                </form>
+                    <form action="server.php" method="POST">
+                        <input type="hidden" name="hauling_no" value="<?php echo $row[1];?>">
+                        <a class="waves-effect waves-light btn green" type="submit" name="create_hauling">Save</a>
+                    </form>
                     <a class="waves-effect waves-light btn red">Cancel</a>
                 </div>
             </div>

@@ -47,7 +47,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -84,7 +84,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li href="logout.php">Logout</li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -285,18 +285,18 @@
     <?php
                         }
     ?>
-    
-     <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-   
-   
+
+
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>

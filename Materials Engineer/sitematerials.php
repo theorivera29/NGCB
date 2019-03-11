@@ -48,7 +48,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Dashboard</li>
+                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>

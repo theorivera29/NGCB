@@ -33,7 +33,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Dashboard</li>
+                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -71,7 +71,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Logout</li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -288,6 +288,7 @@
             $('.modal-trigger').leanModal();
 
         });
+
     </script>
 
 </body>

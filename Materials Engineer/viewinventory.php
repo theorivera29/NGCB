@@ -47,7 +47,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Dashboard</li>
+                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -56,7 +56,7 @@
                         <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                            <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
                                 <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
                                 <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
@@ -108,10 +108,16 @@
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>
-                            <th>Delivered Material as of <?php echo date("F Y"); ?></th>
-                            <th>Material Pulled out as of <?php echo date("F Y"); ?></th>
+                            <th>Delivered Material as of
+                                <?php echo date("F Y"); ?>
+                            </th>
+                            <th>Material Pulled out as of
+                                <?php echo date("F Y"); ?>
+                            </th>
                             <th>Accumulate of Materials Delivered</th>
-                            <th>Material on Site as of <?php echo date("F Y"); ?>   </th>
+                            <th>Material on Site as of
+                                <?php echo date("F Y"); ?>
+                            </th>
                         </tr>
                     </thead>
 
@@ -124,22 +130,34 @@
                             WHERE materials.mat_project = '$projects_name';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
-                        ?>  
+                        ?>
 
                         <tr>
-                            <td><?php echo $row[1] ?></td>
-                            <td><?php echo $row[2] ?></td>
-                            <td><?php echo $row[3] ?></td>
-                            <td><?php echo $row[4] ?></td>
-                            <td><?php echo $row[5] ?></td>
-                            <td><?php echo $row[6] ?></td>
+                            <td>
+                                <?php echo $row[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[3] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[4] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[5] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[6] ?>
+                            </td>
                             <td> </td>
                         </tr>
 
                         <?php    
                             }
                         ?>
-                                <!-- LALABAS LANG TO IF MAY ITEM NA NAKALAGAY, HINDI KO ALAM IF PAANO AYA ICOCOMMENT KO MUNA TO
+                        <!-- LALABAS LANG TO IF MAY ITEM NA NAKALAGAY, HINDI KO ALAM IF PAANO AYA ICOCOMMENT KO MUNA TO
                         <a href="#" class="waves-effect waves-teal btn modal-trigger">Open</a>
                         <a href="#" class="waves-effect waves-red btn modal-trigger">Delete</a>
                         -->
@@ -174,7 +192,9 @@
                                     while($row = mysqli_fetch_row($result)) {                         
 
                                 ?>
-                                <option value="<?php echo $row[0]; ?>"> <?php echo $row[1]; ?></option>
+                                <option value="<?php echo $row[0]; ?>">
+                                    <?php echo $row[1]; ?>
+                                </option>
 
                                 <?php 
                                     }
@@ -196,7 +216,7 @@
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
                 <button type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</a>
             </div>
-        </form>                
+        </form>
     </div>
 
     <!-- ADD STOCKCARD MODAL -->
@@ -237,7 +257,7 @@
             <h5>Old Material Information:</h5>
             <div class="row">
                 <div class="input-field col s6">
-                    <input disabled value=" Sample Material Name" id="disabled" type="text" class="validate" >
+                    <input disabled value=" Sample Material Name" id="disabled" type="text" class="validate">
                     <label for="disabled">Material Name</label>
                 </div>
                 <div class="input-field col s6">
@@ -270,7 +290,9 @@
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)) {                        
                         ?>
-                        <option value="1"> <?php echo $row[0]; ?></option>
+                        <option value="1">
+                            <?php echo $row[0]; ?>
+                        </option>
 
                         <?php 
                             }

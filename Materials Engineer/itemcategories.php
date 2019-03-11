@@ -47,7 +47,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Dashboard</li>
+                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -56,7 +56,7 @@
                         <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                            <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
                                 <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
                                 <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
@@ -121,21 +121,33 @@
                             $sql = "SELECT * FROM materials WHERE mat_categ = '$categories_id';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
-                        ?>  
+                        ?>
                         <tr>
-                            <td><?php echo $row[1] ?></td>
-                            <td><?php echo $row[2] ?></td>
-                            <td><?php echo $row[3] ?></td>
-                            <td><?php echo $row[4] ?></td>
-                            <td><?php echo $row[5] ?></td>
-                            <td><?php echo $row[6] ?></td>
+                            <td>
+                                <?php echo $row[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[3] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[4] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[5] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[6] ?>
+                            </td>
                             <td> </td>
                         </tr>
 
                         <?php    
                             }
                         ?>
-                                <!-- LALABAS LANG TO IF MAY ITEM NA NAKALAGAY, HINDI KO ALAM IF PAANO AYA ICOCOMMENT KO MUNA TO
+                        <!-- LALABAS LANG TO IF MAY ITEM NA NAKALAGAY, HINDI KO ALAM IF PAANO AYA ICOCOMMENT KO MUNA TO
                         <a href="#" class="waves-effect waves-teal btn modal-trigger">Open</a>
                         <a href="#" class="waves-effect waves-red btn modal-trigger">Delete</a>
                         -->
@@ -169,7 +181,9 @@
                                 while($row = mysqli_fetch_row($result)) {                         
 
                             ?>
-                            <option value="1"> <?php echo $row[0]; ?></option>
+                            <option value="1">
+                                <?php echo $row[0]; ?>
+                            </option>
 
                             <?php 
                                 }
@@ -231,7 +245,7 @@
             <h5>Old Material Information:</h5>
             <div class="row">
                 <div class="input-field col s6">
-                    <input disabled value=" Sample Material Name" id="disabled" type="text" class="validate" >
+                    <input disabled value=" Sample Material Name" id="disabled" type="text" class="validate">
                     <label for="disabled">Material Name</label>
                 </div>
                 <div class="input-field col s6">
@@ -264,7 +278,9 @@
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)) {                        
                         ?>
-                        <option value="1"> <?php echo $row[0]; ?></option>
+                        <option value="1">
+                            <?php echo $row[0]; ?>
+                        </option>
 
                         <?php 
                             }

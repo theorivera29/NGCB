@@ -34,7 +34,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -71,7 +71,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Logout</li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -83,38 +83,38 @@
         </div>
     </div>
     <div class="container">
-    <div class="row">
-        <div class="col s12 light-blue lighten-5">
-            <table class="centered">
-                <thead>
-                    <tr>
-                        <th>Particulars</th>
-                        <th>Previous Material Stock</th>
-                        <th>Delivered Material as of CURRENT DATE</th>
-                        <th>Material Pulled out as of CURRENT DATE</th>
-                        <th>Accumulate of Materials Delivered</th>
-                        <th>Material on Site as of CURRENT DATE</th>
-                    </tr>
-                </thead>
+        <div class="row">
+            <div class="col s12 light-blue lighten-5">
+                <table class="centered">
+                    <thead>
+                        <tr>
+                            <th>Particulars</th>
+                            <th>Previous Material Stock</th>
+                            <th>Delivered Material as of CURRENT DATE</th>
+                            <th>Material Pulled out as of CURRENT DATE</th>
+                            <th>Accumulate of Materials Delivered</th>
+                            <th>Material on Site as of CURRENT DATE</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                            </td>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    </div>
-    
+
 
 
 

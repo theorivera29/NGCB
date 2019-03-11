@@ -71,8 +71,8 @@
                         <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="#">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">View Hauled Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
+                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
                             </ul>
                         </div>
                     </li>
@@ -81,7 +81,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>Report</li>
+                <li><a class="waves-effect waves-blue white-text" href="report.php">Report</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>

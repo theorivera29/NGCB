@@ -43,9 +43,9 @@
                         <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="#">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Site Materials</a></li>
-                                <li><a class="waves-effect waves-blue" href="#">Category</a></li>
+                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
                         </div>
                     </li>

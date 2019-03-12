@@ -29,6 +29,11 @@ nav {
 .side-nav{
     background-color: #ECF5F8 !important;
     color: black !important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+}
+
+.collapsible-header {
+    color: black !important;
 }
 
 .login-btn{
@@ -160,6 +165,9 @@ nav {
     color: white !important;
 }
 
+th{
+    text-align: center !important;
+}
 /* Style for Report*/
 .report-btn {
     background-color: #1A5D89 !important;

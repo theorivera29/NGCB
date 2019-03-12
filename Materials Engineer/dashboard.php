@@ -50,7 +50,7 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -65,7 +65,7 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
@@ -78,7 +78,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue white-text" href="report.php">Report</a></li>
+                <li><a class="waves-effect waves-blue" href="report.php">Report</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>

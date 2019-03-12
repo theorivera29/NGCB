@@ -23,11 +23,11 @@
 </head>
 
 <body>
-    <nav>
+<nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
-            <ul class="side-nav blue-grey lighten-2" id="mobile-demo">
+            <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
                     <img src="../Images/pic.jpg" alt="" class="circle">
                     <?php 
@@ -45,17 +45,17 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue white-text" href="dashboard.php">Dashboard</a></li>
+                <li><a href="dashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header  waves-effect waves-blue white-text">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="sitematerials.html">Site Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
                                 <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
                         </div>
@@ -66,7 +66,7 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue white-text">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
@@ -79,7 +79,7 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue white-text" href="report.php">Report</a></li>
+                <li><a class="waves-effect waves-blue" href="report.php">Report</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>

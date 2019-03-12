@@ -40,15 +40,18 @@
 		$username = mysqli_real_escape_string($conn, $_POST['username']);
 		$email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
-        $account_type = "Materials Engineer";
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
         $sql = "SELECT accounts_username from accounts where accounts_username = '$username' ";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
         if($count != 1) {
             $password = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO accounts (accounts_fname, accounts_lname, accounts_email, accounts_username, accounts_password, accounts_type)
-                    VALUES ('$firstname', '$lastname', '$email', '$username', '$password', '$account_type')";
+            $sql = "INSERT INTO accounts 
+            (accounts_fname, accounts_lname, accounts_username, accounts_password, 
+            accounts_type, accounts_email, accounts_image, accounts_deletable) 
+            VALUES 
+            ('$firstname', '$lastname', '$username', '$password', 
+            '$account_type', '$email', NULL, 'yes');";
             mysqli_query($conn,$sql);
             header("Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php");
             exit;
@@ -84,16 +87,6 @@
         $sql = "UPDATE projects SET projects_status = 'open' WHERE projects_name = '$projects_name';";
         mysqli_query($conn,$sql);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
-    }
-
-    if(isset($_POST['create_project'])) {
-        $categories_name = mysqli_real_escape_string($conn, $_POST['categories_name']);
-        $sql = "SELECT categories_name FROM categories WHERE categories_name = '$categories_name'; ";
-        $result = mysqli_query($conn, $sql);
-        $count = mysqli_num_rows($result);
-        if ($count != 1) {
-            $sql = "INSERT INTO categories (categories_name) VALUES ('$categories_name');";
-        }
     }
 
     if(isset($_POST['edit_project'])) {
@@ -167,6 +160,4 @@
             exit();
         }
     }
-
-    
 ?>

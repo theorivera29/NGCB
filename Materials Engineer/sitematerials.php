@@ -100,17 +100,14 @@
                     <th>Particulars</th>
                     <th id="merge-two-cell">Previous Material Stock</th>
                     <th>Delivered Material as of
-                        <?php echo date("M. Y"); ?>
-                        <!--DATE MONTH AND YEAR ONLY BACKEND-->
+                        <?php echo date("F Y"); ?>
                     </th>
                     <th id="merge-two-cell">Material pulled out as of
-                        <?php echo date("M. Y"); ?>
-                        <!--DATE MONTH AND YEAR ONLY BACKEND-->
+                        <?php echo date("F Y"); ?>
                     </th>
                     <th>Accumulated Materials Delivered</th>
                     <th id="merge-two-cell">Material on site as of
-                        <?php echo date("M. Y"); ?>
-                        <!--DATE MONTH AND YEAR ONLY BACKEND-->
+                        <?php echo date("F Y"); ?>
                     </th>
                     <th>Project</th>
                 </tr>
@@ -118,7 +115,9 @@
 
             <tbody>
                 <?php 
-                    $sql_categ = "SELECT DISTINCT mat_categ FROM materials;";
+                    $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
+                    INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                    ORDER BY categories.categories_name;";
                     $result = mysqli_query($conn, $sql_categ);
                     $categories = array();
                     while($row_categ = mysqli_fetch_assoc($result)){
@@ -126,25 +125,40 @@
                     }
 
                     foreach($categories as $data) {
-                    $categ = $data['mat_categ'];
+                    $categ = $data['categories_name'];
                 ?>
                 <tr>
                     <td id="merge-ten-cell"> <b>
                             <?php echo $categ; ?></b></td>
                 </tr>
                 <?php 
-                        $sql = "SELECT * FROM materials WHERE mat_categ = '$categ';";
+                        $sql = "SELECT 
+                        materials.mat_name, 
+                        materials.mat_prevStock, 
+                        stockcard.stockcard_totalDelivered, 
+                        stockcard.stockcard_totalPulledOut, 
+                        (stockcard.stockcard_totalDelivered + materials.mat_prevStock), 
+                        stockcard.stockcard_quantity,
+                        projects.projects_name
+                        FROM materials 
+                        INNER JOIN projects ON materials.mat_project = projects.projects_id 
+                        INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
+                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                        WHERE categories.categories_name = '$categ';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
                 <tr>
                     <td>
                         <form action="server.php" method="POST">
-                            <input type="hidden" name="projects_name" value="<?php echo $row[1]?>">
+                            <input type="hidden" name="material_name" value="<?php echo $row[0]?>">
                             <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
-                                <?php echo $row[1] ?></a>
+                                <?php echo $row[0] ?></a>
                         </form>
 
+                    </td>
+                    <td>
+                        <?php echo $row[1] ?>
                     </td>
                     <td>
                         <?php echo $row[2] ?>
@@ -160,9 +174,6 @@
                     </td>
                     <td>
                         <?php echo $row[6] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[7] ?>
                     </td>
                     <?php 
                         }

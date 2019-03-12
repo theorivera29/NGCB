@@ -148,7 +148,7 @@
 
     <div class="row"></div>
     <?php
-        $sql = "SELECT * FROM  categories;";
+        $sql = "SELECT * FROM  categories ORDER BY categories_name;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>

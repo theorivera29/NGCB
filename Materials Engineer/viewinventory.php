@@ -126,44 +126,33 @@
                     <tbody>
                         <?php 
                             $projects_name = $_GET['projects_name'];
-                            $sql = "SELECT * FROM materials 
+                            $sql = "SELECT 
+                            materials.mat_name, 
+                            materials.mat_prevStock, 
+                            stockcard.stockcard_totalDelivered, 
+                            stockcard.stockcard_totalPulledOut, 
+                            (stockcard.stockcard_totalDelivered + materials.mat_prevStock), 
+                            stockcard.stockcard_quantity 
+                            FROM materials 
                             INNER JOIN projects ON materials.mat_project = projects.projects_id 
                             INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
-                            WHERE materials.mat_project = '$projects_name';";
+                            WHERE projects.projects_name = '$projects_name';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
-                        ?>
+                        ?>  
 
                         <tr>
-                            <td>
-                                <?php echo $row[1] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[2] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[3] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[4] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[5] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[6] ?>
-                            </td>
+                            <td><?php echo $row[0] ?></td>
+                            <td><?php echo $row[1] ?></td>
+                            <td><?php echo $row[2] ?></td>
+                            <td><?php echo $row[3] ?></td>
+                            <td><?php echo $row[4] ?></td>
+                            <td><?php echo $row[5] ?></td>
                             <td> </td>
                         </tr>
-
                         <?php    
                             }
                         ?>
-                        <!-- LALABAS LANG TO IF MAY ITEM NA NAKALAGAY, HINDI KO ALAM IF PAANO AYA ICOCOMMENT KO MUNA TO
-                        <a href="#" class="waves-effect waves-teal btn modal-trigger">Open</a>
-                        <a href="#" class="waves-effect waves-red btn modal-trigger">Delete</a>
-                        -->
-
                     </tbody>
                 </table>
             </div>

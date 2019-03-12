@@ -66,9 +66,6 @@
                                         </div>
                                     
                                 </div>
-
-
-                            
                                 
                                 <div class="row center">
                                     <button class="btn waves-effect waves-light" type="submit" name="create_account">Create

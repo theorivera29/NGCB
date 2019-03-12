@@ -256,37 +256,34 @@
     <div id="editmaterialModal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Edit Material</h4>
-            <h5>Old Material Information:</h5>
+            <h5>Select Material to Edit:</h5>
             <div class="row">
-                <div class="input-field col s6">
-                    <input disabled value=" Sample Material Name" id="disabled" type="text" class="validate">
-                    <label for="disabled">Material Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input disabled value="Sample Category" id="disabled" type="text" class="validate">
-                    <label for="disabled">Category</label>
-                </div>
-                <div class="input-field col s6">
-                    <input disabled value=" Sample Quantifier" id="disabled" type="text" class="validate">
-                    <label for="disabled">Quantifier</label>
-                </div>
-                <div class="input-field col s6">
-                    <input disabled value=" Sample Minimum Quantity" id="disabled" type="text" class="validate">
-                    <label for="disabled">Minimum quantity of materials when to be quantified:</label>
+            <div class="input-field col s6">
+                    <select class="browser-default">
+                        <option value="" disabled selected>Choose your option</option>
+                        <?php
+                            $sql = "SELECT categories_name FROM categories;";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_row($result)) {                        
+                        ?>
+                        <option value="1">
+                            <?php echo $row[0]; ?>
+                        </option>
+
+                        <?php 
+                            }
+                        ?>
+                    </select>
                 </div>
             </div>
             <h5>New Material Information:</h5>
             <div class="row">
-                <div class="input-field col s6">
-                    <input id="materialname" type="text" class="validate">
-                    <label for="materialname">Material Name:</label>
-                </div>
                 <div class="col s6">
                     <label>Category:</label>
                 </div>
                 <div class="input-field col s6">
                     <select class="browser-default">
-                        <option value="" disabled selected>Choose your option</option>
+                        <option value="">Choose your option</option>
                         <?php
                             $sql = "SELECT categories_name FROM categories;";
                             $result = mysqli_query($conn, $sql);

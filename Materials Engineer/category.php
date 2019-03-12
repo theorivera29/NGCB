@@ -128,9 +128,23 @@
         <div class="modal-content">
             <h4>Edit Category</h4>
             <div class="row">
-                <div class="input-field col s12">
-                    <input disabled value=" Sample Category OLD Name" id="disabled" type="text" class="validate">
-                    <label for="disabled">Old Category Name</label>
+            <h5>Select category</h5>
+            <div class="input-field col s6">
+                    <select class="browser-default">
+                        <option value="">Choose your option</option>
+                        <?php
+                            $sql = "SELECT categories_name FROM categories;";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_row($result)) {                        
+                        ?>
+                        <option value="1">
+                            <?php echo $row[0]; ?>
+                        </option>
+
+                        <?php 
+                            }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="row">

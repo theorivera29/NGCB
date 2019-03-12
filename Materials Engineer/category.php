@@ -124,40 +124,42 @@
 
     <!-- EDIT MATERIAL MODAL -->
     <div id="editcategoryModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Edit Category</h4>
-            <div class="row">
-            <h5>Select category</h5>
-            <div class="input-field col s6">
-                    <select class="browser-default">
-                        <option value="">Choose your option</option>
-                        <?php
-                            $sql = "SELECT categories_name FROM categories;";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_row($result)) {                        
-                        ?>
-                        <option value="1">
-                            <?php echo $row[0]; ?>
-                        </option>
+        <form action="server.php" method="POST">
+            <div class="modal-content">
+                <h4>Edit Category</h4>
+                <div class="row">
+                <h5>Select category</h5>
+                <div class="input-field col s6">
+                        <select class="browser-default" name="category_name">
+                            <option>Choose your option</option>
+                            <?php
+                                $sql = "SELECT categories_name FROM categories;";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                        
+                            ?>
+                            <option value="<?php echo $row[0]; ?>">
+                                <?php echo $row[0]; ?>
+                            </option>
 
-                        <?php 
-                            }
-                        ?>
-                    </select>
+                            <?php 
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="materialname" type="text" class="validate" name="new_category_name">
+                        <label for="materialname">New Category Name:</label>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="materialname" type="text" class="validate">
-                    <label for="materialname">New Category Name:</label>
-                </div>
-            </div>
-        </div>
 
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
-        </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="edit_category">Save</button>
+            </div>
+        </form>
     </div>
 
     <div class="row"></div>
@@ -169,7 +171,6 @@
     <div class="row">
         <div class="col s3">
             <div class="card blue-grey darken-1">
-                <!-- <a href=blade.html> -->
                 <div class="card-content white-text">
                     <span class="card-title">
                         <?php echo $row[1] ;?></span>

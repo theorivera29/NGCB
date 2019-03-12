@@ -173,4 +173,20 @@
             exit();
         }
     }
+
+    if (isset($_POST['edit_category'])) {
+        $category_name = mysqli_real_escape_string($conn, $_POST['category_name']);
+        $new_category_name = mysqli_real_escape_string($conn, $_POST['new_category_name']);
+        $sql = "SELECT categories_name FROM categories WHERE categories_name = '$category_name'";
+        $result = mysqli_query($conn,$sql);
+        $count = mysqli_num_rows($result);
+        $row = mysqli_fetch_row($result);
+        $projects_id = $row[0];
+        if($count == 1) {
+            $sql = "UPDATE categories SET categories_name = '$new_category_name' WHERE categories_name = '$category_name';";
+            mysqli_query($conn, $sql);
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");
+            exit();
+        }
+    }
 ?>

@@ -109,10 +109,11 @@
                     <input id="categoryname" type="text" class="validate">
                     <label for="categoryname">Category Name:</label>
                 </div>
-
+                <!--
                 <div class="input-field col s12">
                     <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a>
                 </div>
+            -->
             </div>
 
         </div>

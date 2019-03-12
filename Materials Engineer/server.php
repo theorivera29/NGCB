@@ -155,8 +155,21 @@
         if($count != 1) {
             $sql = "INSERT INTO hauling (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, hauling_hauledBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, hauling_truckDetailsPo, hauling_truckDetailsHaulerDr)
                     VALUES ($hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, $hauling_unit, $hauling_matname, $hauling_hauledBy, $hauling_warehouseman, $hauling_approvedBy, $hauling_truckDetailsType, $hauling_truckDetailsPlateNo, $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr)";
-            mysqli_query($conn,$sql);
+            mysqli_query($conn, $sql);
             header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauled%20items.php");
+            exit();
+        }
+    }
+
+    if(isset($_POST['create_category'])) {
+        $category_name = mysqli_real_escape_string($conn, $_POST['category_name']);
+        $sql = "SELECT categories_name FROM categories WHERE categories_name = '$category_name'; ";
+        $result = mysqli_query($conn, $sql);
+        $count = mysqli_num_rows($result);
+        if ($count != 1) {
+            $sql = "INSERT INTO categories (categories_name) VALUES ('$category_name');";
+            mysqli_query($conn, $sql);
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");
             exit();
         }
     }

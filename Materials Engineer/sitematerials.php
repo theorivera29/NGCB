@@ -144,7 +144,8 @@
                         INNER JOIN projects ON materials.mat_project = projects.projects_id 
                         INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                        WHERE categories.categories_name = '$categ';";
+                        WHERE categories.categories_name = '$categ'
+                        ORDER BY materials.mat_name;";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>

@@ -102,24 +102,24 @@
 
     <!-- ADD CATEGORY MODAL -->
     <div id="addcategoryModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Add Category</h4>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="categoryname" type="text" class="validate">
-                    <label for="categoryname">Category Name:</label>
-                </div>
-
-                <div class="input-field col s12">
-                    <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a>
+        <form action="server.php" method="POST">
+            <div class="modal-content">                                               
+                <h4>Add Category</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="categoryname" type="text" class="validate" name="category_name">
+                        <label for="categoryname">Category Name:</label>
+                    </div>
+                    <!-- <div class="input-field col s12">
+                        <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a>
+                    </div> -->
                 </div>
             </div>
-
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
-        </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="create_category">Save</button>
+            </div>
+        </form>
     </div>
 
     <!-- EDIT MATERIAL MODAL -->

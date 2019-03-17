@@ -161,10 +161,11 @@ nav {
 
 
 /* Style for Site > Category */
-.category-btn {
+.category-btn, .itemcategory-btn{
     background-color: #1A5D89 !important;
     color: white !important;
 }
+
 
 th{
     text-align: center !important;

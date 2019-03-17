@@ -23,7 +23,7 @@
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
-                    <img src="../Images/pic.jpg" alt="" class="circle">
+                
                     <?php 
             if(isset($_SESSION['username'])) {
               $username = $_SESSION['username'];

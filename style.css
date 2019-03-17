@@ -26,7 +26,7 @@ nav {
     background-color: #173753 !important;
 }
 
-.side-nav{
+.side-nav {
     background-color: #ECF5F8 !important;
     color: black !important;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
@@ -36,10 +36,10 @@ nav {
     color: black !important;
 }
 
-.login-btn{
+.login-btn {
     width: 100% !important;
     padding-bottom: 2% !important;
-    color:  #ffffff !important;
+    color: #ffffff !important;
     background-color: #4C99AF !important;
 }
 
@@ -47,7 +47,7 @@ nav {
     margin-top: 6% !important;
 }
 
-.icon{
+.icon {
     color: #0D1F2D;
 }
 
@@ -156,20 +156,36 @@ nav {
     color: white !important;
 }
 
+.viewinventory-btn,
+.edit-btn,
+.reopen-btn {
+    color: #0D1F2D !important;
+    background-color: #ffffff !important;
+}
+
 
 /* Style for Site > Site Materials */
-
-
-/* Style for Site > Category */
-.category-btn, .itemcategory-btn{
+.matname-btn {
     background-color: #1A5D89 !important;
     color: white !important;
 }
 
+/* Style for Site > Category */
+.category-btn,
+.itemcategory-btn {
+    background-color: #1A5D89 !important;
+    color: white !important;
+}
 
-th{
+.viewcategory-btn{
+    color: #0D1F2D !important;
+    background-color: #ffffff !important;
+}
+
+th {
     text-align: center !important;
 }
+
 /* Style for Report*/
 .report-btn {
     background-color: #1A5D89 !important;
@@ -179,7 +195,7 @@ th{
 
 /* Style for admin*/
 
-.Cards-Container{
+.Cards-Container {
     background-color: #F0F1F2;
     margin-top: 2%;
     margin-left: 2% !important;
@@ -188,17 +204,17 @@ th{
     width: 30% !important;
 }
 
-.Account-Container{
-   background-color: #E78C1E;
-   color: white;
+.Account-Container {
+    background-color: #E78C1E;
+    color: white;
 }
 
-.Account-Creation-Container{
+.Account-Creation-Container {
     background-color: #4F6438;
     color: white;
 }
 
-.Password-Reset-Container{
+.Password-Reset-Container {
     background-color: #0B415E;
     color: white;
 }

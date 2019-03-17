@@ -26,13 +26,13 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
-                
+
                     <?php 
             if(isset($_SESSION['username'])) {
               $username = $_SESSION['username'];
@@ -133,9 +133,13 @@
                                 <div class="row">
                                     <form action="server.php" method="POST">
                                         <input type="hidden" name="projects_name" value="<?php echo $row[1]?>">
-                                        <button class="waves-effect waves-light btn" type="submit" name="view_inventory">View Inventory</button>
+                                        <div class="row">
+                                            <button class="waves-effect waves-light btn viewinventory-btn" type="submit" name="view_inventory">View Inventory</button>
+                                        </div>
+                                        <div class="row">
+                                            <a href="#editModal" class="waves-effect waves-light btn edit-btn modal-trigger">Edit</a>
+                                        </div>
                                     </form>
-                                    <a href="#editModal" class="waves-effect waves-light btn modal-trigger">Edit</a>
                                 </div>
                                 <?php 
                                     if (strtotime($row[3]) > strtotime ($row[4])) {
@@ -152,6 +156,7 @@
 
                 </div>
             </div>
+            
             <div id="editModal" class="modal">
                 <div class="modal-content">
                     <h4>Edit Project:
@@ -176,11 +181,14 @@
                                 <label for="new_edate">End date:</label>
                             </div>
                         </div>
+                        </form>
                 </div>
+                
                 <div class="modal-footer">
+                   
                     <input type="hidden" name="project_name" value='<?php echo $row[1]; ?>'>
-                    <button name="edit_project" class="modal-action modal-close waves-effect waves-green btn-flat">Save Changes<button>
-                            </form>
+                    <button name="edit_project" class="modal-action modal-close waves-effect waves-green btn-flat">Save Changes</button>
+                            
                 </div>
             </div>
 
@@ -223,7 +231,7 @@
                                     <?php echo $row[4] ?>
                                 </p>
                                 <div class="row">
-                                    <a href="#reopenModal" class="waves-effect waves-light btn green modal-trigger">Re-open Project</a>
+                                    <a href="#reopenModal" class="waves-effect waves-light btn reopen-btn modal-trigger">Re-open Project</a>
                                 </div>
                             </div>
                         </div>

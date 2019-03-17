@@ -178,15 +178,11 @@
                     <div class="row">
                         <form action="server.php" method="POST">
                             <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
-                            <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
+                            <button class="waves-effect waves-light btn viewcategory-btn" type="submit" name="view_category">View Inventory</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <form action="server.php" method="POST">
-                        <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
-                        <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
-                    </form>
         </div>
          <?php
         }

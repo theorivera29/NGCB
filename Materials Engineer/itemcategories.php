@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
@@ -93,15 +93,16 @@
         </div>
     </nav>
 
-    <div class="content">
-        <div class="row">
-            <div class="col s12 right-align">
-                <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger">
-                    <i class="material-icons left">add_circle_outline</i>Add Material</a>
-                <a href="#editmaterialModal" class="waves-effect waves-light btn modal-trigger">
-                    <i class="material-icons left">edit</i>Edit Material</a>
-            </div>
+
+    <div class="row">
+        <div class="col s12 right-align">
+            <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger">
+                <i class="material-icons left">add_circle_outline</i>Add Material</a>
+            <a href="#editmaterialModal" class="waves-effect waves-light btn modal-trigger">
+                <i class="material-icons left">edit</i>Edit Material</a>
         </div>
+    </div>
+    <div class="container">
         <div class="row">
             <div class="col s12 light-blue lighten-5">
                 <table class="centered">

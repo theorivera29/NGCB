@@ -162,7 +162,7 @@
         </form>
     </div>
 
-    <div class="row"></div>
+   
     <?php
         $sql = "SELECT * FROM  categories ORDER BY categories_name;";
         $result = mysqli_query($conn, $sql);
@@ -170,9 +170,9 @@
     ?>
     <div class="row">
         <div class="col s3">
-            <div class="card blue-grey darken-1">
+            <div class="card blue-grey darken-1 center">
                 <div class="card-content white-text">
-                    <span class="card-title">
+                    <span class="card-title ">
                         <?php echo $row[1] ;?></span>
                 </div>
                 <div class="row">

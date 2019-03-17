@@ -189,5 +189,16 @@ th{
 }
 
 .Account-Container{
-   
+   background-color: #E78C1E;
+   color: white;
+}
+
+.Account-Creation-Container{
+    background-color: #4F6438;
+    color: white;
+}
+
+.Password-Reset-Container{
+    background-color: #0B415E;
+    color: white;
 }

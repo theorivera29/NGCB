@@ -177,7 +177,7 @@
                         <?php echo $row[1] ;?></span>
                     <div class="row">
                         <form action="server.php" method="POST">
-                            <!--<input type="hidden" name="categories_id" value="<?php echo $row[0]?>">-->
+                            <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
                             <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
                         </form>
                     </div>

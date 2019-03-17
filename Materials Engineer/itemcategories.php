@@ -102,7 +102,18 @@
                 <i class="material-icons left">edit</i>Edit Material</a>
         </div>
     </div>
+    
     <div class="container">
+       <?php
+        $categories_id = $_GET['categories_id'];
+        $sql = "SELECT * FROM  categories WHERE categories_id = '$categories_id';";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)) {
+    ?>
+       <h4><?php echo $row[1] ;?></h4>
+       <?php
+        }
+    ?>
         <div class="row">
             <div class="col s12 light-blue lighten-5">
                 <table class="centered">

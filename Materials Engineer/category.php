@@ -21,7 +21,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
@@ -88,22 +88,22 @@
         </div>
     </nav>
 
-    
-        <div class="row">
-            <div class="col s12 right-align">
-                <a href="#addcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
-                    <i class="material-icons left">add_circle_outline</i>Add Category</a>
-                <a href="#editcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
-                    <i class="material-icons left">edit</i>Edit Category</a>
-            </div>
+
+    <div class="row">
+        <div class="col s12 right-align">
+            <a href="#addcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
+                <i class="material-icons left">add_circle_outline</i>Add Category</a>
+            <a href="#editcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
+                <i class="material-icons left">edit</i>Edit Category</a>
         </div>
-  
+    </div>
+
 
 
     <!-- ADD CATEGORY MODAL -->
     <div id="addcategoryModal" class="modal modal-fixed-footer">
         <form action="server.php" method="POST">
-            <div class="modal-content">                                               
+            <div class="modal-content">
                 <h4>Add Category</h4>
                 <div class="row">
                     <div class="input-field col s12">
@@ -128,8 +128,8 @@
             <div class="modal-content">
                 <h4>Edit Category</h4>
                 <div class="row">
-                <h5>Select category</h5>
-                <div class="input-field col s6">
+                    <h5>Select category</h5>
+                    <div class="input-field col s6">
                         <select class="browser-default" name="category_name">
                             <option>Choose your option</option>
                             <?php
@@ -162,25 +162,26 @@
         </form>
     </div>
 
-   
+
     <?php
         $sql = "SELECT * FROM  categories ORDER BY categories_name;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
     <div class="row">
-        <div class="col s3">
+        <div class="col s12 m3">
             <div class="card blue-grey darken-1 center">
                 <div class="card-content white-text">
                     <span class="card-title ">
                         <?php echo $row[1] ;?></span>
+                    <div class="row">
+                        <form action="server.php" method="POST">
+                            <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
+                            <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="row">
-                    <form action="server.php" method="POST">
-                        <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
-                        <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
-                    </form>
-                </div>
+
             </div>
         </div>
     </div>

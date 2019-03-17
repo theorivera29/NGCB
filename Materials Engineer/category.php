@@ -27,7 +27,6 @@
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
-                    <img src="../Images/pic.jpg" alt="" class="circle">
                     <?php 
             if(isset($_SESSION['username'])) {
               $username = $_SESSION['username'];
@@ -170,7 +169,8 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-        <div class="col s12 m3">
+    <div class="row">
+        <div class="col s3 m3 category-container">
             <div class="card blue-grey darken-1 center">
                 <div class="card-content white-text">
                     <span class="card-title ">
@@ -182,8 +182,11 @@
                         </form>
                     </div>
                 </div>
-
             </div>
+            <form action="server.php" method="POST">
+                        <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
+                        <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
+                    </form>
         </div>
          <?php
         }

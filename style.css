@@ -56,6 +56,7 @@ nav {
     padding-right: 2%;
     color: #E8CC13;
     font-family: Didact;
+    margin-bottom: 0;
 }
 
 /* Style for Dashboard */
@@ -173,4 +174,31 @@ th{
 .report-btn {
     background-color: #1A5D89 !important;
     color: white !important;
+}
+
+
+/* Style for admin*/
+
+.Cards-Container{
+    background-color: #F0F1F2;
+    margin-top: 2%;
+    margin-left: 2% !important;
+    border-radius: 3%;
+    border: 1px solid #3E3E3F;
+    width: 30% !important;
+}
+
+.Account-Container{
+   background-color: #E78C1E;
+   color: white;
+}
+
+.Account-Creation-Container{
+    background-color: #4F6438;
+    color: white;
+}
+
+.Password-Reset-Container{
+    background-color: #0B415E;
+    color: white;
 }

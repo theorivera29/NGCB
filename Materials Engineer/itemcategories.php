@@ -96,9 +96,9 @@
 
     <div class="row">
         <div class="col s12 right-align">
-            <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger">
+            <a href="#addmaterialModal" class="waves-effect waves-light btn itemcategory-btn modal-trigger">
                 <i class="material-icons left">add_circle_outline</i>Add Material</a>
-            <a href="#editmaterialModal" class="waves-effect waves-light btn modal-trigger">
+            <a href="#editmaterialModal" class="waves-effect waves-light btn itemcategory-btn modal-trigger">
                 <i class="material-icons left">edit</i>Edit Material</a>
         </div>
     </div>

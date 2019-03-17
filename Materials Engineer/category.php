@@ -163,12 +163,13 @@
     </div>
 
 
-    <?php
+    
+    <div class="row">
+       <?php
         $sql = "SELECT * FROM  categories ORDER BY categories_name;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-    <div class="row">
         <div class="col s12 m3">
             <div class="card blue-grey darken-1 center">
                 <div class="card-content white-text">
@@ -176,7 +177,7 @@
                         <?php echo $row[1] ;?></span>
                     <div class="row">
                         <form action="server.php" method="POST">
-                            <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
+                            <!--<input type="hidden" name="categories_id" value="<?php echo $row[0]?>">-->
                             <button class="waves-effect waves-light btn" type="submit" name="view_category">View Inventory</button>
                         </form>
                     </div>
@@ -184,10 +185,11 @@
 
             </div>
         </div>
-    </div>
-    <?php
+         <?php
         }
     ?>
+    </div>
+   
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

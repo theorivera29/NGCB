@@ -65,12 +65,19 @@ body {}
 
 nav {
     background-color: #173753 !important;
+    color: black !important;
+    font-size: 20px !important;
+    font-family: Clone;
 }
 
 .side-nav {
     background-color: #ECF5F8 !important;
+}
+
+.side-nav a{
     color: black !important;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+    font-size: 20px !important;
+    font-family: Clone;
 }
 
 .collapsible-header {
@@ -118,7 +125,6 @@ nav {
     border-collapse: collapse !important;
     text-align: center;
     border-radius: 7% !important;
-
 }
 
 .Calendar-Container {
@@ -204,11 +210,34 @@ nav {
     background-color: #ffffff !important;
 }
 
+.viewinventory-btn{
+    margin-top: 2% !important;
+}
+
+.view-inventory-container{
+    width: 90% !important;
+    margin-left: 5%;
+    margin-right: 5%;
+}
 
 /* Style for Site > Site Materials */
 .matname-btn {
     background-color: #1A5D89 !important;
     color: white !important;
+}
+
+.site-materials-container{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+}
+
+.merge-ten-cell{
+    column-span: 10;
+}
+.site-materials-content{
+    padding: 5%;
 }
 
 /* Style for Site > Category */

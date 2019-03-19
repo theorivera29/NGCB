@@ -96,15 +96,14 @@
     
         <div class="row">
             <div class="col s12 right-align">
-                <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger">
+                <a href="#addmaterialModal" class="waves-effect waves-light btn projects-btn modal-trigger add-material-btn">
                     <i class="material-icons left">add_circle_outline</i>Add Material</a>
-                <a href="#editmaterialModal" class="waves-effect waves-light btn modal-trigger">
+                <a href="#editmaterialModal" class="waves-effect waves-light btn projects-btn modal-trigger edit-material-btn">
                     <i class="material-icons left">edit</i>Edit Material</a>
             </div>
         </div>
-        <div class="container">
-        <div class="row">
-            <div class="col s12 light-blue lighten-5">
+        <div class="view-inventory-container ">
+            <div class="light-blue lighten-5 ">
                 <table class="centered">
                     <thead>
                         <tr>
@@ -156,7 +155,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        
     </div>
 
 

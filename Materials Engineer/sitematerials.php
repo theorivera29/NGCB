@@ -93,10 +93,9 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row">
-            <div class="col s12 light-blue lighten-5">
-                <table class="centered">
+    <div class="site-materials-container">
+            <div class="light-blue lighten-5">
+                <table class="striped centered site-materials-content">
                     <thead>
                         <tr>
                             <th>Particulars</th>
@@ -187,7 +186,7 @@
                 ?>
                     </tbody>
                 </table>
-            </div>
+            
         </div>
 
         <!--MODAL-->

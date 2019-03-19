@@ -14,15 +14,15 @@
 
 <body>
 
-    <div class="container">
+    <div class="container login-container">
         <div class="row">
             <div class="col s12 m5 offset-m4">
                 <div class="card white darken-1">
-                    <div class="card-content">
-                        <h2 class="card-title center-align">New Golden City Builders</h2>
-                        <h2 class="card-title center-align">Login</h2>
+                    <div class="card-content login-image">
+                        <h2 class="card-title center-align Login-Header">New Golden City Builders</h2>
+                        <h2 class="card-title center-align Login-Header">Login</h2>
                         <form action="server.php" method="POST">
-                            <div class="row center-align">
+                            <div class="row center-align login-content">
                                 <div class="input-field col s12 m10 offset-m1">
                                     <i class="material-icons prefix icon">account_circle</i>
                                     <input placeholder="username" id="login-username" name="username" type="text" class="validate">

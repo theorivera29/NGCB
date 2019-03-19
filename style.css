@@ -18,7 +18,48 @@
     src: url('../fonts/Didact.ttf');
 }
 
+@font-face {
+    font-family: 'Marvelous';
+    src: url('../fonts/Marvelous.ttf');
+}
 
+
+/*Login Style*/
+
+.login-container{
+    margin-top: 5% !important;
+    
+}
+
+.Login-Header{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #0376A8;
+    font-size: 35px !important;
+}
+
+.login-image{
+    background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('pictures/NGCB.png');
+    background-repeat:no-repeat;
+    background-position-x: 50%;
+    background-position-y: 5%;
+    
+}
+
+.login-content{
+    padding-top: 5%;
+}
+
+#login-username{
+    padding-left: 2%;
+}
+
+#login-password{
+    padding-left: 2%;
+}
+
+#create-account-btn{
+    padding-top: 20% !important;
+}
 
 body {}
 

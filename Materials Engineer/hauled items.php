@@ -92,7 +92,7 @@
     <div class="container">
         <div class="card">
             <table class="striped centered">
-                <thead>
+                <thead class="hauled-items-head">
                     <tr>
                         <th>Hauling forms</th>
                         <th>Date</th>
@@ -114,7 +114,7 @@
                     <td>
                         <form action="server.php" method="POST">
                             <input type="hidden" name="hauling_no" value="<?php echo $row[1]?>">
-                            <button class="waves-effect waves-light btn" type="submit" name="view_hauled">View</button>
+                            <button class="waves-effect waves-light btn view-hauled-item-btn" type="submit" name="view_hauled">View</button>
                         </form>
                     </td>
                 </tbody>

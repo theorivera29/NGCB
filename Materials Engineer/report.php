@@ -102,11 +102,11 @@
             </form>
         </div>
     </div>
-    <div class="container">
+    <div class="report-container">
         <div class="row">
             <div class="col s12 light-blue lighten-5">
-                <table class="centered">
-                    <thead>
+                <table class=" striped centered">
+                    <thead class="report-head">
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>

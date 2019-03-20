@@ -102,7 +102,7 @@
         </div>
     </div>
     
-    <div class="container">
+    <div class="item-categories">
        <?php
         $categories_id = $_GET['categories_id'];
         $sql = "SELECT * FROM  categories WHERE categories_id = '$categories_id';";
@@ -114,9 +114,9 @@
         }
     ?>
         <div class="row">
-            <div class="col s12 light-blue lighten-5">
-                <table class="centered">
-                    <thead>
+            <div class="col s12">
+                <table class="centered ">
+                    <thead class="item-categories-head"> 
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>
@@ -300,8 +300,8 @@
                     </select>
                 </div>
                 <div class="input-field col s5">
-                    <input id="quantifier" name="quantifier" type="text" class="validate">
-                    <label for="quantifier">Quantifier:</label>
+                    <input id="unit" name="unit" type="text" class="validate">
+                    <label for="unit">Unit:</label>
                 </div>
                 <div class="input-field col s7">
                     <input id="minquantity" name="minquantity" type="text" class="validate">

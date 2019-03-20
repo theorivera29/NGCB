@@ -102,10 +102,10 @@
                     <i class="material-icons left">edit</i>Edit Material</a>
             </div>
         </div>
-        <div class="view-inventory-container ">
+        <div class="view-inventory-container">
             <div class="light-blue lighten-5 ">
-                <table class="centered">
-                    <thead>
+                <table class="striped centered view-inventory">
+                    <thead class="view-inventory-head">
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>

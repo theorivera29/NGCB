@@ -222,22 +222,30 @@ nav {
 }
 
 .site-materials-container{
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
     margin-top: 2%;
 }
 
-.merge-ten-cell{
-    column-span: 10;
-}
 .site-materials-content{
     padding: 5%;
 }
 
-th{
-    background-color: #29525E !important;
+.site-materials-head > tr > th{
+    background-color: #0B415E !important;
+    font-size: 19px;
+    border-radius: 2%;
+    color: white;
 }
+
+.td-category{
+    text-align: left !important;
+    background-color: #EBF0F7;
+    padding-left: 2%;
+    font-size: 20px;
+}
+
 
 /* Style for Site > Category */
 .category-btn,

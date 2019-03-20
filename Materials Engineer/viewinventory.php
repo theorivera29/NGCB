@@ -269,7 +269,7 @@
                 <div class="col s6">
                     <label>Category:</label>
                 </div>
-                <div class="input-field col s6">
+                <div class="input-field col s12">
                     <select class="browser-default">
                         <option value="">Choose your option</option>
                         <?php

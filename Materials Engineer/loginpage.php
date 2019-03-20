@@ -45,12 +45,14 @@
                                 unset($_SESSION['login_error']);
                             }
                             ?>
-                                <div class="row">                                    
+                                <div class="row">
                                     <div class="col s12 m10 offset-m1">
                                         <button class="btn waves-effect waves-light login-btn" type="submit" name="login">Login</button>
                                     </div>
-                                    <a href="createaccount.php" id="create-account-btn" name="action">Create An Account</a>
                                 </div>
+                                    <div class="row">
+                                        <a href="createaccount.php" id="create-account-btn" name="action">Create An Account</a>
+                                    </div>
 
                             </div>
                         </form>

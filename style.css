@@ -25,12 +25,6 @@
 
 
 /*Login Style*/
-
-.login-container{
-    margin-top: 5% !important;
-    
-}
-
 .Login-Header{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #0376A8;
@@ -69,6 +63,7 @@ nav {
     font-size: 20px !important;
     font-family: Clone;
 }
+
 
 .side-nav {
     background-color: #ECF5F8 !important;
@@ -238,6 +233,10 @@ nav {
 }
 .site-materials-content{
     padding: 5%;
+}
+
+th{
+    background-color: #29525E !important;
 }
 
 /* Style for Site > Category */

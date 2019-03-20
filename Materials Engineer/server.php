@@ -70,7 +70,7 @@
             $sql = "INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status)
                     VALUES ('$projects_name', '$projects_address', '$start_date', '$end_date', 'open')";
             mysqli_query($conn,$sql);
-            header("Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php");
+            header("Location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
             exit;
         }
     }

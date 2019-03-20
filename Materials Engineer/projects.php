@@ -255,8 +255,8 @@
         </div>
     </div>
 
-    <div id="addProjectModal" class="modal">
-        <div class="modal-content">
+    <div id="addProjectModal" class="modal modal-fixed-footer">
+        <div class="modal-content ">
             <h4>Add Project</h4>
             <form action="server.php" method="POST">
                 <div class="row">
@@ -284,7 +284,7 @@
         </form>
     </div>
 
-    <div id="deleteProjectModal" class="modal">
+    <div id="deleteProjectModal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Delete Project?</h4>
             <p>Are you sure you want to delete this project? </p>

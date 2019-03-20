@@ -198,6 +198,7 @@ nav {
     color: white !important;
 }
 
+.view-hauled-item-btn,
 .viewinventory-btn,
 .edit-btn,
 .reopen-btn {
@@ -210,11 +211,25 @@ nav {
 }
 
 .view-inventory-container{
-    width: 90% !important;
-    margin-left: 5%;
-    margin-right: 5%;
+    width: 96% !important;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
+.view-inventory-head > tr > th{
+    background-color: #0B415E !important;
+    font-size: 19px;
+    border-radius: 2%;
+    color: white;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.view-inventory{
+    background-color: #DEE0E1;
+    font-size: 19px;
+
+}
 /* Style for Site > Site Materials */
 .matname-btn {
     background-color: #1A5D89 !important;
@@ -259,9 +274,51 @@ nav {
     background-color: #ffffff !important;
 }
 
+.category-title{
+    font-size: 30px !important;
+}
+
+.view-inventory-btn{
+    background-color: #ffffff !important;
+    color: #0D1F2D !important;
+}
+
 th {
     text-align: center !important;
 }
+
+.category-cards{
+    background-color: #E8CC13 !important;
+    border-radius: 2% !important;
+    color: black;
+}
+
+.item-categories{
+    width: 96% !important;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.item-categories-head > tr > th{
+    background-color: #0B415E !important;
+    font-size: 19px;
+    border-radius: 2%;
+    color: white;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+/*Style for Hauling*/
+.hauled-items-head > tr > th{
+    background-color: #0B415E !important;
+    font-size: 19px;
+    border-radius: 2%;
+    color: white;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.view-hauled-item-btn
 
 /* Style for Report*/
 .report-btn {
@@ -269,6 +326,17 @@ th {
     color: white !important;
 }
 
+.report-head > tr > th{
+    background-color: #0B415E !important;
+    font-size: 19px;
+    border-radius: 2%;
+    color: white;
+}
+.report-container{
+    width: 96% !important;
+    margin-left: 2%;
+    margin-right: 2%;
+}
 
 /* Style for admin*/
 

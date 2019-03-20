@@ -318,8 +318,10 @@ th {
     padding-left: 2%;
 }
 
-.view-hauled-item-btn
 
+.hauling-form{
+    background-color: #CED0D2 !important;
+}
 /* Style for Report*/
 .report-btn {
     background-color: #1A5D89 !important;

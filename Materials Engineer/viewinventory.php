@@ -204,7 +204,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</a>
+                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</button>
             </div>
         </form>
     </div>
@@ -224,10 +224,10 @@
 
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
+                            <td contenteditable="true"></td>
                     </tr>
                 </tbody>
             </table>

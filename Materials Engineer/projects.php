@@ -157,7 +157,7 @@
                 </div>
             </div>
             
-            <div id="editModal" class="modal">
+            <div id="editModal" class="modal modal-fixed-footer">
                 <div class="modal-content">
                     <h4>Edit Project:
                         <?php echo $row[1]; ?>
@@ -185,14 +185,15 @@
                 </div>
                 
                 <div class="modal-footer">
-                   
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>  
                     <input type="hidden" name="project_name" value='<?php echo $row[1]; ?>'>
                     <button name="edit_project" class="modal-action modal-close waves-effect waves-green btn-flat">Save Changes</button>
+                         
                             
                 </div>
             </div>
 
-            <div id="closeModal" class="modal">
+            <div id="closeModal" class="modal modal-fixed-footer">
                 <div class="modal-content">
                     <h4>Close Project?</h4>
                     <p>Are you sure you want to close this project?</p>
@@ -241,7 +242,7 @@
         </div>
     </div>
 
-    <div id="reopenModal" class="modal">
+    <div id="reopenModal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Re-open Project?</h4>
             <p>Are you sure you want to re-open this project?</p>

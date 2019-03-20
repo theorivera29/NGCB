@@ -95,19 +95,19 @@
 
     <div class="site-materials-container">
             <div class="light-blue lighten-5">
-                <table class="striped centered site-materials-content">
-                    <thead>
+                <table class="centered site-materials-content">
+                    <thead class="site-materials-head">
                         <tr>
                             <th>Particulars</th>
-                            <th id="merge-two-cell">Previous Material Stock</th>
+                            <th>Previous Material Stock</th>
                             <th>Delivered Material as of
                                 <?php echo date("F Y"); ?>
                             </th>
-                            <th id="merge-two-cell">Material pulled out as of
+                            <th>Material pulled out as of
                                 <?php echo date("F Y"); ?>
                             </th>
                             <th>Accumulated Materials Delivered</th>
-                            <th id="merge-two-cell">Material on site as of
+                            <th>Material on site as of
                                 <?php echo date("F Y"); ?>
                             </th>
                             <th>Project</th>
@@ -129,7 +129,7 @@
                     $categ = $data['categories_name'];
                 ?>
                         <tr>
-                            <td id="merge-ten-cell"> <b>
+                            <td colspan="10" class="td-category"> <b>
                                     <?php echo $categ; ?></b></td>
                         </tr>
                         <?php 

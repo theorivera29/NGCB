@@ -186,7 +186,6 @@
                 ?>
                     </tbody>
                 </table>
-            
         </div>
 
         <!--MODAL-->
@@ -194,65 +193,55 @@
             <div class="modal-content">
                 <div class="content">
                     <div class="row">
-                        <div class="col s12 light-blue lighten-3">
-                            <?php
-                            $sql = "SELECT * FROM  materials WHERE mat_name=mat_name;";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_array($result)) {
-                            ?>
-                            <h4>
-                                <?php echo $row[1] ;?>
-                            </h4>
-                            <?php
-                            }
-                            ?>
-                            <h4>DELIVER IN</h4>
-                            <table class="centered blue-grey lighten-5">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Supplied By</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td contenteditable="true"></td>
-                                        <td contenteditable="true"></td>
-                                        <td contenteditable="true"></td>
-                                        <td contenteditable="true"></td>
-                                    </tr>
+                        <form action="server.php" method="POST">
+                            <div class="col s12 light-blue lighten-3">
+                                <h4>DELIVER IN</h4>
+                                <table class="centered blue-grey lighten-5">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                            <th>Supplied By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td contenteditable="true"><input type="date" name="dev_date"></td>
+                                            <td contenteditable="true"><input type="text" name="dev_quantity"></td>
+                                            <td contenteditable="true"><input type="text" name="dev_unit"></td>
+                                            <td contenteditable="true"><input type="text" name="dev_supp"></td>
+                                        </tr>
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col s12 light-blue lighten-3">
-                            <h4>USAGE IN</h4>
-                            <table class="centered blue-grey lighten-5">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Pulled Out By</th>
-                                        <th>Area of Usage</th>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col s12 light-blue lighten-3">
+                                <h4>USAGE IN</h4>
+                                <table class="centered blue-grey lighten-5">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                            <th>Pulled Out By</th>
+                                            <th>Area of Usage</th>
 
-                                    </tr>
-                                </thead>
+                                        </tr>
+                                    </thead>
 
-                                <tbody>
-                                    <tr>
-                                        <td contenteditable="true"></td>
-                                        <td contenteditable="true"></td>
-                                        <td contenteditable="true"></td>
-                                        <td contenteditable="true"></td>
-                                        <td contenteditable="true"></td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
+                                    <tbody>
+                                        <tr>
+                                            <td contenteditable="true"><input type="date" name="us_date"></td>
+                                            <td contenteditable="true"><input type="text" name="us_quantity"></td>
+                                            <td contenteditable="true"><input type="text" name="us_unit"></td>
+                                            <td contenteditable="true"><input type="text" name="us_pull"></td>
+                                            <td contenteditable="true"><input type="text" name="us_area"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

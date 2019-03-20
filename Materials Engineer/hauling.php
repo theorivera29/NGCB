@@ -90,124 +90,110 @@
     <div class="row">
         <div class="col s12 m10 offset-m1">
             <div class="card light-blue lighten-5">
-                <div class="card-content black-text">
-                    <h4>Hauling Form</h4>
-                    <div class="row">
-                        <div class="col s8">
-                            <label>Date:</label>
-                            <input id="test" type="date" class="datepicker" value="05/03/2019">
+                <form action="server.php" method="POST">
+                    <div class="card-content black-text">
+                        <h4>Hauling Form</h4>
+                        <div class="row">
+                            <div class="col s8">
+                                <label>Date:</label>
+                                <input id="test" type="date" class="datepicker" name="date">
+                            </div>
+                            <div class="input-field col s2 offset-s2 right-align">
+                                <input id="formnumber" type="text" class="validate" name="formnumber">
+                                <label for="formnumber">Form Number:</label>
+                            </div>
                         </div>
-                        <div class="input-field col s2 offset-s2 right-align">
-                            <input id="formnumber" type="text" class="validate">
-                            <label for="formnumber">Form Number:</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s6">
-                            <div>
-                                <div class="input-field col s12 left-align ">
-                                    <input id="delivername" type="text" class="validate">
-                                    <label for="delivername">Deliver To:</label>
+                        <div class="row">
+                            <div class="col s6">
+                                <div>
+                                    <div class="input-field col s12 left-align ">
+                                        <input id="delivername" type="text" class="validate" name="delivername">
+                                        <label for="delivername">Deliver To:</label>
+                                    </div>
+                                    <div class="input-field col s12 left-align ">
+                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom">
+                                        <label for="hauledfrom">Hauled From :</label>
+                                    </div>
                                 </div>
-                                <div class="input-field col s12 left-align ">
-                                    <input id="hauledfrom" type="text" class="validate">
-                                    <label for="hauledfrom">Hauled From :</label>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s12">
-                        <table class="striped centered">
-                            <thead>
-                                <tr>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                    <th>Articles</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td contenteditable='true'>5</td>
-                                    <td contenteditable='true'>pcs</td>
-                                    <td contenteditable='true'>Triangular post 4mm</td>
-                                </tr>
-                                <tr>
-                                    <td contenteditable='true'>4</td>
-                                    <td contenteditable='true'>pcs</td>
-                                    <td contenteditable='true'>Beam truss 3mm</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s6">
-                            <div class="input-field col s10 left-align ">
-                                <input id="hauledby" type="text" class="validate">
-                                <label for="hauledby">Hauled by :</label>
-                            </div>
-                            <div class="input-field col s10 left-align ">
-                                <input id="warehouseman" type="text" class="validate">
-                                <label for="warehouseman">Warehouseman:</label>
-                            </div>
-                            <div class="input-field col s10 left-align ">
-                                <input id="approvedby" type="text" class="validate">
-                                <label for="approvedby">Approved By:</label>
-                            </div>
-                        </div>
-                        <div class="col s6">
+                        <div class="col s12">
                             <table class="striped centered">
                                 <thead>
-
                                     <tr>
-                                        <th> </th>
-                                        <th>Truck details</th>
-                                        <th> </th>
+                                        <th>Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Articles</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td>Type:</td>
-                                        <td contenteditable='true'></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Plate No.:</td>
-                                        <td contenteditable='true'></td>
-                                    </tr>
-                                    <tr>
-                                        <td>P.O/R.S No.:</td>
-                                        <td contenteditable='true'></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hauler DR No.:</td>
-                                        <td contenteditable='true'></td>
+                                        <td><input type="text" name="quantity[]"></td>
+                                        <td><input type="text" name="unit[]"></td>
+                                        <td><input type="text" name="articles[]"></td>
                                     </tr>
                                 </tbody>
                             </table>
+                                <input type="button" class="add-row" value="Add Row">
                         </div>
 
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="input-field col s10 left-align ">
+                                    <input id="hauledby" type="text" class="validate" name="hauledby">
+                                    <label for="hauledby">Hauled by :</label>
+                                </div>
+                                <div class="input-field col s10 left-align ">
+                                    <input id="warehouseman" type="text" class="validate" name="warehouseman">
+                                    <label for="warehouseman">Warehouseman:</label>
+                                </div>
+                                <div class="input-field col s10 left-align ">
+                                    <input id="approvedby" type="text" class="validate" name="approvedby">
+                                    <label for="approvedby">Approved By:</label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <table class="striped centered">
+                                    <thead>
+
+                                        <tr>
+                                            <th> </th>
+                                            <th>Truck details</th>
+                                            <th> </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Type:</td>
+                                            <td><input type="text" name="truck_type"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Plate No.:</td>
+                                            <td><input type="text" name="truck_plate"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>P.O/R.S No.:</td>
+                                            <td><input type="text" name="truck_po"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hauler DR No.:</td>
+                                            <td><input type="text" name="truck_hauler"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <?php
-        $sql = "SELECT * FROM  hauling;";
-        $result = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_array($result)) {
-    ?>
-                <div class="card-action right-align">
-                    <form action="server.php" method="POST">
-                        <input type="hidden" name="hauling_no" value="<?php echo $row[1];?>">
-                        <a class="waves-effect waves-light btn green" type="submit" name="create_hauling">Save</a>
-                    </form>
-                    <a class="waves-effect waves-light btn red">Cancel</a>
-                </div>
+                    <div class="card-action right-align">
+                            <button class="waves-effect waves-light btn green" type="submit" name="create_hauling">Save</button>
+                        <a class="waves-effect waves-light btn red">Cancel</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <?php
-        }
-    ?>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -235,6 +221,19 @@
             });
         });
 
+        $(document).ready(function(){
+            $(".add-row").click(function(){
+                var quantity = $("#name").val();
+                var unit = $("#email").val();
+                var articles = $('#articles').val();
+                var markup = "<tr>"
+                                +"<td><input type=\"text\" name=\"quantity[]\"></td>"
+                                +"<td><input type=\"text\" name=\"unit[]\"></td>"
+                                +"<td><input type=\"text\" name=\"articles[]\"></td>"
+                            +"</tr>;"
+                $("table tbody").append(markup);
+            });
+        });
     </script>
 
 </body>

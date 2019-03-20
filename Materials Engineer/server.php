@@ -162,16 +162,19 @@
     }
 
     if(isset($_POST['create_category'])) {
-        $category_name = mysqli_real_escape_string($conn, $_POST['category_name']);
-        $sql = "SELECT categories_name FROM categories WHERE categories_name = '$category_name'; ";
-        $result = mysqli_query($conn, $sql);
-        $count = mysqli_num_rows($result);
-        if ($count != 1) {
-            $sql = "INSERT INTO categories (categories_name) VALUES ('$category_name');";
-            mysqli_query($conn, $sql);
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");
-            exit();
+        $arr_size = count($_POST['category_name']);
+        for ($x = 0; $x != $arr_size; $x++) {
+            $category_name = $_POST['category_name'][$x];
+            $sql = "SELECT categories_name FROM categories WHERE categories_name = '$category_name'; ";
+            $result = mysqli_query($conn, $sql);
+            $count = mysqli_num_rows($result);
+            if ($count != 1) {
+                $sql = "INSERT INTO categories (categories_name) VALUES ('$category_name');";
+                mysqli_query($conn, $sql);
+            }
         }
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");
+        exit();
     }
 
     if (isset($_POST['edit_category'])) {
@@ -187,6 +190,25 @@
             mysqli_query($conn, $sql);
             header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");
             exit();
+        }
+    }
+
+    if(isset($_POST['create_hauling'])) {
+        $date = mysqli_real_escape_string($conn, $_POST['date']);
+        $formnumber = mysqli_real_escape_string($conn, $_POST['formnumber']);
+        $delivername = mysqli_real_escape_string($conn, $_POST['delivername']);
+        $hauledfrom = mysqli_real_escape_string($conn, $_POST['hauledfrom']);
+        $hauledby = mysqli_real_escape_string($conn, $_POST['hauledby']);
+        $warehouseman = mysqli_real_escape_string($conn, $_POST['warehouseman']);
+        $approvedby = mysqli_real_escape_string($conn, $_POST['approvedby']);
+        $truck_type = mysqli_real_escape_string($conn, $_POST['truck_type']);
+        $truck_plate = mysqli_real_escape_string($conn, $_POST['truck_plate']);
+        $truck_po = mysqli_real_escape_string($conn, $_POST['truck_po']);
+        $truck_hauler = mysqli_real_escape_string($conn, $_POST['truck_hauler']);
+
+        $arr_size = count($_POST['quantity']);
+        for($x = 0; $x!=$arr_size; $x++) {
+            
         }
     }
 ?>

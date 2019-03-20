@@ -106,12 +106,22 @@
                 <h4>Add Category</h4>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="categoryname" type="text" class="validate" name="category_name">
-                        <label for="categoryname">Category Name:</label>
+                        Category Name:
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input id="categoryname" type="text" class="validate" name="category_name[]">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
                     </div>
-                    <!-- <div class="input-field col s12">
-                        <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a>
-                    </div> -->
+                                
+                    <div class="input-field col s12">
+                        <button type="button" class="add-row">Add Category<i class="material-icons left">add_circle_outline</i></button>
+                        <!-- <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a> -->
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -207,8 +217,16 @@
 
             $('.modal-trigger').leanModal();
 
+            $(".add-row").click(function(){
+                var quantity = $("#name").val();
+                var unit = $("#email").val();
+                var articles = $('#articles').val();
+                var markup = "<tr>"
+                                +"<td><input type=\"text\" name=\"category_name[]\"></td>"
+                            +"</tr>;"
+                $("table tbody").append(markup);
+            });
         });
-
     </script>
 
 </body>

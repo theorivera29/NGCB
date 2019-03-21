@@ -89,9 +89,9 @@
 
     <div class="row">
         <div class="col s12 m10 offset-m1">
-            <div class="card hauling-form lighten-5">
+            <div class="card hauling-form">
                 <form action="server.php" method="POST">
-                    <div class="card-content black-text">
+                    <div class="card-content">
                         <h4>Hauling Form</h4>
                         <div class="row">
                             <div class="col s8">

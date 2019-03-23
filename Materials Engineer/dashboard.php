@@ -115,13 +115,24 @@
             </div>
             <div class="">
                 <span id="text-headers">Task Today:</span>
+            <?php 
+            $sql = "SELECT * FROM todo WHERE todo.todoOf = 'wew';";
+            $result = mysqli_query($conn, $sql);
+            while($row = mysqli_fetch_array($result)) {
+            ?>
+                <h5>
+                    <?php echo $row[2] ;?>
+                </h5>
+            <?php
+            }
+            ?>
             </div>
             <div class="">
                 <span id="text-headers">Task Tomorrow:</span>
             </div>
-            <a class="waves-effect waves-light btn task-btn" name="viewtodo"><i class="material-icons right">note_add</i>View All Task</a>
 
         </div>
+
     </div>
 
     <div class="row ">

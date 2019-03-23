@@ -15,6 +15,7 @@
             true
 //            password_verify($password, $hash_password)
         ) {
+            $_SESSION['wew']= $row[0];
             $_SESSION['username'] = $username; 
             $_SESSION['loggedin' ] = true;
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");

@@ -116,7 +116,7 @@
             <div class="">
                 <span id="text-headers">Task Today:</span>
             <?php 
-            $sql = "SELECT * FROM todo WHERE todo.todoOf = 'wew';";
+            $sql = "SELECT * FROM todo WHERE todo.todoOf = 2;";
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_array($result)) {
             ?>

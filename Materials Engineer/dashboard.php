@@ -91,7 +91,7 @@
     <!--Calendar and To do Row-->
     <div class="row">
         <!--Start Calendar and To-do Container-->
-        <div class="col s6 Calendar-Todo-Container">
+        <div class="col s4 Calendar-Todo-Container">
             <div class="Panel-Header">
                 <span>CALENDAR AND TO-DO</span>
             </div>
@@ -101,7 +101,7 @@
             </div>
             <div class="card card-content">
                 <div class="row">
-                    <div class="input-field input-field-todo col s8">
+                    <div class="input-field input-field-todo">
                         <textarea id="todo_area" class="materialize-textarea todo"></textarea>
                         <label for="todo_area" id="todo-label">Input to-do here</label>
                     </div>
@@ -109,8 +109,7 @@
             </div>
             <a class="waves-effect waves-light btn todo-btn"><i class="material-icons right">note_add</i>Add to-do</a>
         </div>
-
-        <div class="col s5 Task-Container">
+        <div class="col s7 Calendar-Todo-Container">
             <div class="Panel-Header">
                 <span>TO-DO TASK</span>
             </div>
@@ -120,26 +119,15 @@
             <div class="">
                 <span id="text-headers">Task Tomorrow:</span>
             </div>
-            <a class="waves-effect waves-light btn task-btn"><i class="material-icons right">note_add</i>View All Task</a>
-        </div>
-        <div class="col s5  Task-Container">
-            <div class="Panel-Header">
-                <span>CURRENT PROJECTS</span>
-            </div>
-            <div class="">
-                <span id="text-headers">Expansion</span>
-            </div>
-            <div class="">
-                <span id="text-headers">SAMPLE</span>
-            </div>
-            <a class="waves-effect waves-light btn task-btn"><i class="material-icons right">note_add</i>View All Project</a>
+            <a class="waves-effect waves-light btn task-btn" name="viewtodo"><i class="material-icons right">note_add</i>View All Task</a>
+
         </div>
     </div>
 
     <div class="row ">
         <!--Table-->
         <div class="col s10 Material-Left-Container">
-            <table class="striped responsive-table ">
+            <table class="striped responsive-table centered">
 
                 <div class="Panel-Header">
                     <span>MATERIALS</span>

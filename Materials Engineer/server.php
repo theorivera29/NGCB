@@ -208,4 +208,8 @@
             
         }
     }
+    if(isset($_POST['viewtodo'])) {
+        $todoOf = mysqli_real_escape_string($conn, $_POST['todoOf']);
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php?todoOf=$todoOf");
+    }
 ?>

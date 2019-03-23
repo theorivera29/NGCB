@@ -26,13 +26,13 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
-                
+
                     <?php 
             if(isset($_SESSION['username'])) {
               $username = $_SESSION['username'];
@@ -93,7 +93,18 @@
         </div>
     </nav>
 
-    
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s3"><a href="#sitematerials">Site Materials</a></li>
+                    <li class="tab col s3"><a href="#categories">Categories</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="sitematerials" class="col s12">
         <div class="row">
             <div class="col s12 right-align">
                 <a href="#addmaterialModal" class="waves-effect waves-light btn projects-btn modal-trigger add-material-btn">
@@ -138,15 +149,27 @@
                             WHERE projects.projects_name = '$projects_name';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
-                        ?>  
+                        ?>
 
                         <tr>
-                            <td><?php echo $row[0] ?></td>
-                            <td><?php echo $row[1] ?></td>
-                            <td><?php echo $row[2] ?></td>
-                            <td><?php echo $row[3] ?></td>
-                            <td><?php echo $row[4] ?></td>
-                            <td><?php echo $row[5] ?></td>
+                            <td>
+                                <?php echo $row[0] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[3] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[4] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[5] ?>
+                            </td>
                             <td> </td>
                         </tr>
                         <?php    
@@ -155,11 +178,45 @@
                     </tbody>
                 </table>
             </div>
-        
+        </div>
     </div>
 
 
-
+    <div id="categories" class="col s12">
+        <div class="row">
+            <div class="col s12 right-align">
+                <a href="#addcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
+                    <i class="material-icons left">add_circle_outline</i>Add Category</a>
+                <a href="#editcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
+                    <i class="material-icons left">edit</i>Edit Category</a>
+            </div>
+        </div>
+        <?php
+        $sql = "SELECT * FROM  categories ORDER BY categories_name;";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)) {
+    ?>
+        <div class="row">
+            <div class="col s3 m3 category-container">
+                <div class="card center">
+                    <div class="card-content category-cards">
+                        <span class="card-title category-title">
+                            <?php echo $row[1] ;?>
+                        </span>
+                        <div class="row">
+                            <form action="server.php" method="POST">
+                                <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
+                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    ?>
+        </div>
+    </div>
     <!-- ADD MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer">
         <form action="server.php" method="POST">
@@ -225,9 +282,9 @@
                 <tbody>
                     <tr>
                         <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
                     </tr>
                 </tbody>
             </table>
@@ -246,7 +303,7 @@
             <h4>Edit Material</h4>
             <h5>Select Material to Edit:</h5>
             <div class="row">
-            <div class="input-field col s6">
+                <div class="input-field col s6">
                     <select class="browser-default">
                         <option value="" disabled selected>Choose your option</option>
                         <?php
@@ -302,7 +359,110 @@
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
         </div>
     </div>
+    <!-- ADD CATEGORY MODAL -->
+    <div id="addcategoryModal" class="modal modal-fixed-footer">
+        <form action="server.php" method="POST">
+            <div class="modal-content">
+                <h4>Add Category</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        Category Name:
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input id="categoryname" type="text" class="validate" name="category_name[]">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
+                    <div class="input-field col s12">
+                        <button type="button" class="add-row">Add Category<i class="material-icons left">add_circle_outline</i></button>
+                        <!-- <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="create_category">Save</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- EDIT MATERIAL MODAL -->
+    <div id="editcategoryModal" class="modal modal-fixed-footer">
+        <form action="server.php" method="POST">
+            <div class="modal-content">
+                <h4>Edit Category</h4>
+                <div class="row">
+                    <h5>Select category</h5>
+                    <div class="input-field col s6">
+                        <select class="browser-default" name="category_name">
+                            <option>Choose your option</option>
+                            <?php
+                                $sql = "SELECT categories_name FROM categories;";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                        
+                            ?>
+                            <option value="<?php echo $row[0]; ?>">
+                                <?php echo $row[0]; ?>
+                            </option>
+
+                            <?php 
+                                }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="materialname" type="text" class="validate" name="new_category_name">
+                        <label for="materialname">New Category Name:</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="edit_category">Save</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script>
+        // SIDEBAR
+        $(document).ready(function() {
+            $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 300
+                edge: 'left', // Choose the horizontal origin
+                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true // Choose whether you can drag to open on touch screens
+            });
+            // START OPEN
+            $('.button-collapse').sideNav('show');
+
+            $('.modal-trigger').leanModal();
+
+            $(".add-row").click(function() {
+                var quantity = $("#name").val();
+                var unit = $("#email").val();
+                var articles = $('#articles').val();
+                var markup = "<tr>" +
+                    "<td><input type=\"text\" name=\"category_name[]\"></td>" +
+                    "</tr>;"
+                $("table tbody").append(markup);
+            });
+        });
+
+    </script>
 
 
     <!--Import jQuery before materialize.js-->

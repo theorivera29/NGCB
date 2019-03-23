@@ -106,14 +106,14 @@
     ?>
                 <tbody>
                     <td>
+                        <?php echo $row[0] ;?>
+                    </td>
+                    <td>
                         <?php echo $row[1] ;?>
                     </td>
                     <td>
-                        <?php echo $row[2] ;?>
-                    </td>
-                    <td>
                         <form action="server.php" method="POST">
-                            <input type="hidden" name="hauling_no" value="<?php echo $row[1]?>">
+                            <input type="hidden" name="hauling_no" value="<?php echo $row[0]?>">
                             <button class="waves-effect waves-light btn view-hauled-item-btn" type="submit" name="view_hauled">View</button>
                         </form>
                     </td>

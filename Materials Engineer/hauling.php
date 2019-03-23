@@ -129,13 +129,12 @@
 
                                 <tbody>
                                     <tr>
-                                        <td><input type="text" name="quantity[]"></td>
-                                        <td><input type="text" name="unit[]"></td>
-                                        <td><input type="text" name="articles[]"></td>
+                                        <td><input type="text" name="quantity" id="quantity"></td>
+                                        <td><input type="text" name="unit" id="unit"></td>
+                                        <td><input type="text" name="articles" id="articles"></td>
                                     </tr>
                                 </tbody>
                             </table>
-                                <input type="button" class="add-row" value="Add Row">
                         </div>
 
                         <div class="row">
@@ -167,19 +166,19 @@
                                     <tbody>
                                         <tr>
                                             <td>Type:</td>
-                                            <td><input type="text" name="truck_type"></td>
+                                            <td><input type="text" name="truck_type" id="truck_type"></td>
                                         </tr>
                                         <tr>
                                             <td>Plate No.:</td>
-                                            <td><input type="text" name="truck_plate"></td>
+                                            <td><input type="text" name="truck_plate" id="truck_plate"></td>
                                         </tr>
                                         <tr>
                                             <td>P.O/R.S No.:</td>
-                                            <td><input type="text" name="truck_po"></td>
+                                            <td><input type="text" name="truck_po" id="truck_po"></td>
                                         </tr>
                                         <tr>
                                             <td>Hauler DR No.:</td>
-                                            <td><input type="text" name="truck_hauler"></td>
+                                            <td><input type="text" name="truck_hauler" id="truck_hauler"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -187,7 +186,7 @@
                         </div>
                     </div>
                     <div class="card-action right-align">
-                            <button class="waves-effect waves-light btn green" type="submit" name="create_hauling">Save</button>
+                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="create_hauling">Save</button>
                         <a class="waves-effect waves-light btn red">Cancel</a>
                     </div>
                 </form>
@@ -217,7 +216,7 @@
         $(document).ready(function() {
             $(".datepicker").pickadate({
                 closeOnSelect: true,
-                format: "dd/mm/yyyy"
+                format: "yyyy-mm-dd"
             });
         });
 

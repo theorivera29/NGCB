@@ -102,10 +102,10 @@
                     <div class="row">
                         <div class="col s8">
                             <label>Date:</label>
-                            <input id="test" type="date" class="datepicker" disabled value="<?php echo $row[2]?>">
+                            <input id="test" type="date" class="datepicker" disabled value="<?php echo $row[1]?>">
                         </div>
                         <div class="input-field col s2 offset-s2 right-align">
-                            <input disabled value="<?php echo $row[1]?>" id="formnumber" type="text" class="validate" >
+                            <input disabled value="<?php echo $row[0]?>" id="formnumber" type="text" class="validate" >
                             <label for="formnumber">Form No.:</label>
                         </div>
                     </div>
@@ -113,11 +113,11 @@
                         <div class="col s6">
                             <div>
                                 <div class="input-field col s12 left-align ">
-                                    <input disabled value="<?php echo $row[3]?>" id="delivername" type="text" class="validate">
+                                    <input disabled value="<?php echo $row[2]?>" id="delivername" type="text" class="validate">
                                     <label for="delivername">Deliver To:</label>
                                 </div>
                                 <div class="input-field col s12 left-align ">
-                                    <input disabled value="<?php echo $row[4]?>" id="hauledfrom" type="text" class="validate">
+                                    <input disabled value="<?php echo $row[3]?>" id="hauledfrom" type="text" class="validate">
                                     <label for="hauledfrom">Hauled From:</label>
                                 </div>
                             </div>
@@ -135,9 +135,9 @@
 
                             <tbody>
                                 <tr>
+                                    <td><?php echo $row[4]?></td>
                                     <td><?php echo $row[5]?></td>
                                     <td><?php echo $row[6]?></td>
-                                    <td><?php echo $row[7]?></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -146,15 +146,15 @@
                     <div class="row">
                         <div class="col s6">
                             <div class="input-field col s10 left-align ">
-                                <input disabled value="<?php echo $row[8]?>" id="hauledby" type="text" class="validate">
+                                <input disabled value="<?php echo $row[7]?>" id="hauledby" type="text" class="validate">
                                 <label for="hauledby">Hauled By:</label>
                             </div>
                             <div class="input-field col s10 left-align ">
-                                <input disabled value="<?php echo $row[9]?>" id="warehouseman" type="text" class="validate">
+                                <input disabled value="<?php echo $row[8]?>" id="warehouseman" type="text" class="validate">
                                 <label for="warehouseman">Warehouseman:</label>
                             </div>
                             <div class="input-field col s10 left-align ">
-                                <input disabled value="<?php echo $row[10]?>" id="approvedby" type="text" class="validate">
+                                <input disabled value="<?php echo $row[9]?>" id="approvedby" type="text" class="validate">
                                 <label for="approvedby">Approved By:</label>
                             </div>
                         </div>
@@ -172,19 +172,19 @@
                                 <tbody>
                                     <tr>
                                         <td>Type:</td>
-                                        <td><?php echo $row[11]?></td>
+                                        <td><?php echo $row[10]?></td>
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td><?php echo $row[12]?></td>
+                                        <td><?php echo $row[11]?></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>
-                                        <td><?php echo $row[13]?></td>
+                                        <td><?php echo $row[12]?></td>
                                     </tr>
                                     <tr>
                                         <td>Hauler DR No.:</td>
-                                        <td><?php echo $row[14]?></td>
+                                        <td><?php echo $row[13]?></td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -115,7 +115,7 @@ nav {
     margin-top: 1%;
     margin-left: 2% !important;
     border-radius: 2%;
-    border: 2px solid #3E3E3F;
+    border: 2px solid #97A0A5;
     height: 350px;
 }
 
@@ -209,12 +209,13 @@ nav {
     text-align: center;
 }
 
-
-/* Style for Site > Project */
-.projects-btn {
+.button {
     background-color: #1A5D89 !important;
     color: white !important;
 }
+
+/* Style for Site > Project */
+
 
 .view-hauled-item-btn,
 .viewinventory-btn,
@@ -281,11 +282,6 @@ nav {
 
 
 /* Style for Site > Category */
-.category-btn,
-.itemcategory-btn {
-    background-color: #1A5D89 !important;
-    color: white !important;
-}
 
 .viewcategory-btn{
     color: #0D1F2D !important;

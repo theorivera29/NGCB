@@ -93,7 +93,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -104,13 +104,12 @@
         </div>
     </div>
 
+    <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
         <div class="row">
-            <div class="col s12 right-align">
-                <a href="#addmaterialModal" class="waves-effect waves-light btn projects-btn modal-trigger add-material-btn">
+            <div class="col s11 right-align">
+                <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
                     <i class="material-icons left">add_circle_outline</i>Add Material</a>
-                <a href="#editmaterialModal" class="waves-effect waves-light btn projects-btn modal-trigger edit-material-btn">
-                    <i class="material-icons left">edit</i>Edit Material</a>
             </div>
         </div>
         <div class="view-inventory-container">
@@ -130,6 +129,7 @@
                             <th>Material on Site as of
                                 <?php echo date("F Y"); ?>
                             </th>
+                            <th> Action</th>
                         </tr>
                     </thead>
 
@@ -170,7 +170,7 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
-                            <td> </td>
+                            <td> <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a> </td>
                         </tr>
                         <?php    
                             }
@@ -181,22 +181,23 @@
         </div>
     </div>
 
-
+    <!--SITE CATEGORIES-->
     <div id="categories" class="col s12">
         <div class="row">
             <div class="col s12 right-align">
-                <a href="#addcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
+                <a href="#addcategoryModal" class="waves-effect waves-light btn button modal-trigger">
                     <i class="material-icons left">add_circle_outline</i>Add Category</a>
-                <a href="#editcategoryModal" class="waves-effect waves-light btn category-btn modal-trigger">
+                <a href="#editcategoryModal" class="waves-effect waves-light btn button modal-trigger">
                     <i class="material-icons left">edit</i>Edit Category</a>
             </div>
         </div>
-        <?php
+
+        <div class="row">
+            <?php
         $sql = "SELECT * FROM  categories ORDER BY categories_name;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-        <div class="row">
             <div class="col s3 m3 category-container">
                 <div class="card center">
                     <div class="card-content category-cards">
@@ -359,6 +360,7 @@
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
         </div>
     </div>
+
     <!-- ADD CATEGORY MODAL -->
     <div id="addcategoryModal" class="modal modal-fixed-footer">
         <form action="server.php" method="POST">
@@ -479,6 +481,7 @@
             });
             // START OPEN
             $('.button-collapse').sideNav('show');
+
 
             $('.modal-trigger').leanModal();
 

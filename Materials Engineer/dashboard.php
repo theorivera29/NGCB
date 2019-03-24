@@ -109,13 +109,15 @@
             </div>
             <a class="waves-effect waves-light btn todo-btn"><i class="material-icons right">note_add</i>Add to-do</a>
         </div>
+
+        <!--To-do Container-->
         <div class="col s7 Task-Todo-Container">
             <div class="Panel-Header">
-                <span>TO-DO TASK</span>
-            </div>
+                    <span>TO-DO TASK</span>
+                </div>
             <div class="">
                 <span id="text-headers">Tasks</span>
-            <?php 
+                <?php 
             $sql = "SELECT * FROM todo WHERE todo.todoOf = 2;";
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_array($result)) {
@@ -123,14 +125,14 @@
                 <h5>
                     <?php echo $row[2] ;?>
                 </h5>
-            <?php
+                <?php
             }
             ?>
             </div>
-       </div>
-
+        </div>
     </div>
 
+    <!--Materials Container-->
     <div class="row ">
         <!--Table-->
         <div class="Material-Left-Container">
@@ -183,25 +185,26 @@
         ?>
             </table>
         </div>
+    </div>
 
 
 
 
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
-        <script>
-            // SIDEBAR
-            $(document).ready(function() {
-                $('.button-collapse').sideNav({
-                    menuWidth: 300, // Default is 300
-                    edge: 'left', // Choose the horizontal origin
-                    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                    draggable: true // Choose whether you can drag to open on touch screens
-                });
-                // START OPEN
-                $('.button-collapse').sideNav('show');
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script>
+        // SIDEBAR
+        $(document).ready(function() {
+            $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 300
+                edge: 'left', // Choose the horizontal origin
+                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true // Choose whether you can drag to open on touch screens
             });
+            // START OPEN
+            $('.button-collapse').sideNav('show');
+
 
             //DATEPICKER
             $('.datepicker').pickadate({
@@ -213,38 +216,40 @@
                 closeOnSelect: false // Close upon selecting a date,
             });
 
-            const btn = document.querySelector('#li-generate');
-            const inpt = document.querySelector('#inputValue');
-            const ul = document.querySelector('.ulList');
+        });
 
-            //const deleteLi = document.querySelector('.remove');
+        const btn = document.querySelector('#li-generate');
+        const inpt = document.querySelector('#inputValue');
+        const ul = document.querySelector('.ulList');
 
-            btn.addEventListener('click', liGenerate);
-            document.addEventListener('click', liDelete);
+        //const deleteLi = document.querySelector('.remove');
 
-            function liGenerate(e) {
-                const li = document.createElement('li');
+        btn.addEventListener('click', liGenerate);
+        document.addEventListener('click', liDelete);
 
-                if (inpt.value !== "") {
-                    li.className = "collection-item red-text lighten-2";
-                    //const liContent = document.createTextNode(`${inpt.value}`);
-                    li.innerHTML = `${inpt.value} <div class='remove'>X</div>`;
+        function liGenerate(e) {
+            const li = document.createElement('li');
 
-                    //li.appendChild(liContent);
-                    ul.appendChild(li);
+            if (inpt.value !== "") {
+                li.className = "collection-item red-text lighten-2";
+                //const liContent = document.createTextNode(`${inpt.value}`);
+                li.innerHTML = `${inpt.value} <div class='remove'>X</div>`;
 
-                    inpt.value = "";
-                }
-                e.preventDefault();
+                //li.appendChild(liContent);
+                ul.appendChild(li);
+
+                inpt.value = "";
             }
+            e.preventDefault();
+        }
 
-            function liDelete(e) {
-                if (e.target.className === 'remove') {
-                    e.target.parentElement.remove();
-                }
+        function liDelete(e) {
+            if (e.target.className === 'remove') {
+                e.target.parentElement.remove();
             }
+        }
 
-        </script>
+    </script>
 
 </body>
 

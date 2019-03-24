@@ -26,13 +26,13 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
+            <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
-                
+
                     <?php 
             if(isset($_SESSION['username'])) {
               $username = $_SESSION['username'];
@@ -92,97 +92,95 @@
             </ul>
         </div>
     </nav>
-
-    <div class="row">
-        <div class="col s12 right-align">
-            <form action="server.php" method="POST">
-                <button class="waves-effect waves-light btn report-btn modal-trigger" type="submit" name="generate_report">
-                    <i class="material-icons left">print</i>Generate Report
-                </button>
-            </form>
-        </div>
-    </div>
-    <div class="report-container">
+    
+    <div class="container">
         <div class="row">
-            <div class="col s12 light-blue lighten-5">
-                <table class=" striped centered">
-                    <thead class="report-head">
-                        <tr>
-                            <th>Particulars</th>
-                            <th>Previous Material Stock</th>
-                            <th>Delivered Material as of <?php echo date("F Y"); ?></th>
-                            <th>Material Pulled out as of <?php echo date("F Y"); ?></th>
-                            <th>Accumulate of Materials Delivered</th>
-                            <th>Material on Site as of <?php echo date("F Y"); ?></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                <?php 
-                    $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
-                    INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                    ORDER BY categories.categories_name;";
-                    $result = mysqli_query($conn, $sql_categ);
-                    $categories = array();
-                    while($row_categ = mysqli_fetch_assoc($result)){
-                        $categories[] = $row_categ;
-                    }
-
-                    foreach($categories as $data) {
-                    $categ = $data['categories_name'];
-                ?>
-                <tr>
-                    <td id="merge-ten-cell"> <b>
-                            <?php echo $categ; ?></b></td>
-                </tr>
-                <?php 
-                        $sql = "SELECT 
-                        materials.mat_name, 
-                        materials.mat_prevStock, 
-                        stockcard.stockcard_totalDelivered, 
-                        stockcard.stockcard_totalPulledOut, 
-                        (stockcard.stockcard_totalDelivered + materials.mat_prevStock), 
-                        stockcard.stockcard_quantity
-                        FROM materials 
-                        INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
-                        ORDER BY materials.mat_name;";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                    ?>
-                <tr>
-                    <td>
-                        <?php echo $row[0] ?></a>
-
-                    </td>
-                    <td>
-                        <?php echo $row[1] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[2] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[3] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[4] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[5] ?>
-                    </td>
+                <div class="row">
                     <?php 
-                        }
+                        $sql = "SELECT * FROM projects WHERE projects_status = 'open';";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_array($result)) {
                     ?>
-                </tr>
-                <?php 
-                    }
-                ?>
-            </tbody>
-                </table>
+                    <div class="col s12 m6">
+                        <div class="card blue-grey darken-1 center">
+                            <div class="card-content white-text">
+                                <span class="card-title">
+                                    <?php echo $row[1] ?> </span>
+                                <p>
+                                    <?php echo $row[2] ?>
+                                </p>
+                                <p>Start Date:
+                                    <?php echo $row[3] ?>
+                                </p>
+                                <p>End Date:
+                                    <?php echo $row[4] ?>
+                                </p>
+                                <div class="row">
+                                    <form action="server.php" method="POST">
+                                        <input type="hidden" name="projects_name" value="<?php echo $row[1]?>">
+                                        <div class="row">
+                                            <button class="waves-effect waves-light btn viewinventory-btn" type="submit" name="view_inventory">View Inventory</button>
+                                        </div>
+                                       
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+            
+            <div id="editModal" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    <h4>Edit Project:
+                        <?php echo $row[1]; ?>
+                    </h4>
+                    <form action="server.php" method="POST">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="New project name" id="new_project_name" type="text" class="validate" name="new_project_name">
+                                <label class="active" for="new_project_name">Project Name:</label>
+                            </div>
+                            
+                        </div>
+                        </form>
+                </div>
+                
+               
+            </div>
+
+            
+           
         </div>
     </div>
 
 
+    
+
+    <div id="deleteProjectModal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Delete Project?</h4>
+            <p>Are you sure you want to delete this project? </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+        </div>
+    </div>
+    <?php
+                        }
+    ?>
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
 
 
     <!--Import jQuery before materialize.js-->

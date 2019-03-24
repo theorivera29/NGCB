@@ -116,6 +116,7 @@ nav {
     margin-left: 2% !important;
     border-radius: 2%;
     border: 2px solid #3E3E3F;
+    height: 350px;
 }
 
 .Task-Todo-Container{
@@ -125,6 +126,7 @@ nav {
     border-radius: 2%;
     border: 2px solid #97A0A5;
     width: 60% !important;
+    height: 350px;
 }
 
 .Panel-Header {

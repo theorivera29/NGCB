@@ -118,7 +118,8 @@
             <div class="">
                 <span id="text-headers">Tasks</span>
                 <?php 
-            $sql = "SELECT * FROM todo WHERE todo.todoOf = 2;";
+            $task = $_SESSION['tasks'];
+            $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_array($result)) {
             ?>
@@ -156,10 +157,12 @@
             materials.mat_name, 
             categories.categories_name, 
             stockcard.stockcard_quantity, 
-            materials.mat_unit 
+            materials.mat_unit,
+            projects.projects_name
             FROM materials 
             INNER JOIN categories ON materials.mat_categ = categories.categories_id 
             INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id 
+            INNER JOIN projects ON materials.mat_project = projects_id
             WHERE materials.mat_notif >= stockcard.stockcard_quantity;";
             $result = mysqli_query($conn, $sql);
             while($row = mysqli_fetch_array($result)) {
@@ -177,6 +180,9 @@
                         </td>
                         <td>
                             <?php echo $row[3] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[4] ?>
                         </td>
                     </tr>
                 </tbody>

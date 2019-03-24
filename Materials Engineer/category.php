@@ -12,6 +12,7 @@
 <html>
 
 <head>
+    <link rel="icon" type="image/png" href="../Images/logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../style.css">
     <!--Import Google Icon Font-->

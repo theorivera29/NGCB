@@ -26,27 +26,36 @@
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+            
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
                     <?php 
-            if(isset($_SESSION['username'])) {
-              $username = $_SESSION['username'];
-              $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_row($result);
-          ?>
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
                     <span class="title">
-                        <?php echo $row[1]." ".$row[2]; ?></span>
+                        <?php echo $row[1]." ".$row[2]; ?>
+                    </span>
                     <span class="title">
-                        <?php echo $row[5]; }?></span>
+                        <?php echo $row[5]; }?>
+                    </span>
                 </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.php">Dashboard</a></li>
+
+                <li>
+                    <a href="dashboard.php">Dashboard</a>
+                </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
                 <ul class="collapsible">
                     <li>
                         <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
@@ -59,16 +68,22 @@
                         </div>
                     </li>
                 </ul>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
                 <ul class="collapsible">
                     <li>
                         <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -77,10 +92,15 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue" href="report.php">Report</a></li>
+
+                <li>
+                    <a class="waves-effect waves-blue" href="report.php">Report</a>
+                </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+                
                 <li>
                     <a href="logout.php">Logout</a>
                 </li>
@@ -90,6 +110,7 @@
 
     <!--Calendar and To do Row-->
     <div class="row">
+        
         <!--Start Calendar and To-do Container-->
         <div class="col s4 Calendar-Todo-Container">
             <div class="Panel-Header">
@@ -118,17 +139,17 @@
             <div class="">
                 <span id="text-headers">Tasks</span>
                 <?php 
-            $task = $_SESSION['tasks'];
-            $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
-            $result = mysqli_query($conn, $sql);
-            while($row = mysqli_fetch_array($result)) {
-            ?>
+                    $task = $_SESSION['tasks'];
+                    $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
                 <h5>
                     <?php echo $row[2] ;?>
                 </h5>
                 <?php
-            }
-            ?>
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -138,11 +159,9 @@
         <!--Table-->
         <div class="Material-Left-Container">
             <table class="striped responsive-table centered">
-
                 <div class="Panel-Header">
                     <span>MATERIALS</span>
                 </div>
-
                 <thead>
                     <tr>
                         <th>Material Name</th>
@@ -153,20 +172,20 @@
                     </tr>
                 </thead>
                 <?php 
-            $sql = "SELECT 
-            materials.mat_name, 
-            categories.categories_name, 
-            stockcard.stockcard_quantity, 
-            materials.mat_unit,
-            projects.projects_name
-            FROM materials 
-            INNER JOIN categories ON materials.mat_categ = categories.categories_id 
-            INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id 
-            INNER JOIN projects ON materials.mat_project = projects_id
-            WHERE materials.mat_notif >= stockcard.stockcard_quantity;";
-            $result = mysqli_query($conn, $sql);
-            while($row = mysqli_fetch_array($result)) {
-        ?>
+                    $sql = "SELECT 
+                    materials.mat_name, 
+                    categories.categories_name, 
+                    stockcard.stockcard_quantity, 
+                    materials.mat_unit,
+                    projects.projects_name
+                    FROM materials 
+                    INNER JOIN categories ON materials.mat_categ = categories.categories_id 
+                    INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id 
+                    INNER JOIN projects ON materials.mat_project = projects_id
+                    WHERE materials.mat_notif >= stockcard.stockcard_quantity;";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
                 <tbody>
                     <tr>
                         <td>

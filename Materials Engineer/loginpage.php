@@ -35,7 +35,7 @@
 
                                 <div class="row">
                                     <div class="col s12 offset-m3">
-                                        <a href="">Forgot Password</a>
+                                        <a href="forgotpassword.php">Forgot Password</a>
                                     </div>
                                 </div>
                                 <?php

@@ -100,6 +100,7 @@ nav {
     color: #E8CC13;
     font-family: Didact;
     margin-bottom: 0;
+    font-size: 1.5vw;
 }
 
 /* Style for Dashboard */
@@ -107,8 +108,17 @@ nav {
     background-color: #F0F1F2;
     margin-top: 1%;
     margin-left: 2% !important;
-    border-radius: 5%;
+    border-radius: 2%;
     border: 2px solid #3E3E3F;
+}
+
+.Task-Todo-Container{
+    background-color: #F0F1F2;
+    margin-top: 1%;
+    margin-left: 2% !important;
+    border-radius: 2%;
+    border: 2px solid #3E3E3F;
+    width: 60% !important;
 }
 
 .Panel-Header {
@@ -119,7 +129,7 @@ nav {
     border-spacing: 0;
     border-collapse: collapse !important;
     text-align: center;
-    border-radius: 7% !important;
+    border-radius: 3% !important;
 }
 
 .Calendar-Container {
@@ -168,9 +178,9 @@ nav {
     background-color: #F0F1F2;
     margin-top: 1%;
     margin-left: 1% !important;
-    border-radius: 5%;
+    border-radius: 2%;
     border: 2px solid #3E3E3F;
-    width: 45% !important;
+    width: 50% !important;
 }
 
 .task-btn {

@@ -24,7 +24,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
+            <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
                     <?php 

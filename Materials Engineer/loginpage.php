@@ -14,23 +14,23 @@
 
 <body>
 
-    <div class="container login-container">
+    <div class="c-login">
         <div class="row">
-            <div class="col s12 m6 offset-m3">
                 <div class="card white darken-1">
-                    <div class="card-content login-image">
-                        <h2 class="card-title center-align Login-Header">New Golden City Builders</h2>
-                        <h2 class="card-title center-align Login-Header">Login</h2>
+                    <div class="card-content img-login">
+                        <h2 class="h-login">New Golden City Builders</h2>
+                        <h2 class="h-login">Login</h2>
+
                         <form action="server.php" method="POST">
-                            <div class="row center-align login-content">
-                                <div class="input-field col s12 m10 offset-m1 ">
+                            <div class="co-login">
+                                <div class="f-login input-field col s12 m10 offset-m1 ">
                                     <i class="material-icons prefix icon">account_circle</i>
-                                    <input placeholder="username" id="login-username" name="username" type="text" class="validate">
+                                    <input placeholder="username" id="login-username" name="username" type="text">
                                 </div>
 
-                                <div class="input-field col s12 m10 offset-m1">
+                                <div class="f-login input-field col s12 m10 offset-m1">
                                     <i class="material-icons prefix icon">lock_outline</i>
-                                    <input placeholder="password" id="login-password" name="password" type="password" class="validate">
+                                    <input placeholder="password" id="login-password" name="password" type="password">
                                 </div>
 
                                 <div class="row">
@@ -39,19 +39,19 @@
                                     </div>
                                 </div>
                                 <?php
-                            session_start();
-                            if(isset($_SESSION['login_error'])) {
-                                echo "Incorrect username or password.";
-                                unset($_SESSION['login_error']);
-                            }
-                            ?>
+                                session_start();
+                                if(isset($_SESSION['login_error'])) {
+                                    echo "Incorrect username or password.";
+                                    unset($_SESSION['login_error']);
+                                }
+                                ?>
                                 <div class="row">
                                     <div class="col s12 m10 offset-m1">
                                         <button class="btn waves-effect waves-light login-btn" type="submit" name="login">Login</button>
                                     </div>
                                 </div>
                                     <div class="row">
-                                        <a href="createaccount.php" id="create-account-btn" name="action">Create An Account</a>
+                                        <a href="createaccount.php" id="create-btn" name="action">Create An Account</a>
                                     </div>
 
                             </div>

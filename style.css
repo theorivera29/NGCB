@@ -1,16 +1,15 @@
-@font-face {
-    font-family: 'chapaza';
-    src: url('../fonts/Chapaza.ttf');
-}
+/*
+c: Container
+h: header
+co: content
+img: image
+f: input field
+*/
 
+/*Fonts Used*/
 @font-face {
     font-family: 'Clone';
     src: url('../fonts/Clone.otf');
-}
-
-@font-face {
-    font-family: 'Rose';
-    src: url('../fonts/Rose.otf');
 }
 
 @font-face {
@@ -18,48 +17,45 @@
     src: url('../fonts/Didact.ttf');
 }
 
-@font-face {
-    font-family: 'Marvelous';
-    src: url('../fonts/Marvelous.ttf');
+/*Login Style*/ 
+.c-login{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
-
-/*Login Style*/
-.Login-Header{
+.h-login{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #0376A8;
     font-size: 35px !important;
+    padding-top: 5%;
 }
 
-.login-image{
+.img-login{
     background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('pictures/NGCB.png');
     background-repeat:no-repeat;
     background-position-x: 50%;
     background-position-y: 5%;
-    
+    padding-top: 5% !important;
 }
 
-.login-content{
-    padding-top: 5%;
+.co-login{
+    padding-top: 3%;
 }
 
-.login-container{
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 2%;
-}
-
-#login-username{
+.f-login{
     padding-left: 2%;
 }
 
-#login-password{
-    padding-left: 2%;
-}
-
-#create-account-btn{
+#create-btn{
     padding-top: 20% !important;
 }
+
+/*End of Login Page Style*/
+
+/*Start of Style for all pages of Materials Engineer*/
 
 body {}
 
@@ -162,7 +158,6 @@ nav {
     padding-left: 5% !important;
     color: black !important;
     border-radius: 5% !important;
-
 }
 
 .materialize-textarea {

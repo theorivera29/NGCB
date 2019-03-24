@@ -25,7 +25,7 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
-            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
+            <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
                     <?php 
@@ -109,12 +109,12 @@
             </div>
             <a class="waves-effect waves-light btn todo-btn"><i class="material-icons right">note_add</i>Add to-do</a>
         </div>
-        <div class="col s7 Calendar-Todo-Container">
+        <div class="col s7 Task-Todo-Container">
             <div class="Panel-Header">
                 <span>TO-DO TASK</span>
             </div>
             <div class="">
-                <span id="text-headers">Task Today:</span>
+                <span id="text-headers">Tasks</span>
             <?php 
             $sql = "SELECT * FROM todo WHERE todo.todoOf = 2;";
             $result = mysqli_query($conn, $sql);
@@ -127,17 +127,13 @@
             }
             ?>
             </div>
-            <div class="">
-                <span id="text-headers">Task Tomorrow:</span>
-            </div>
-
-        </div>
+       </div>
 
     </div>
 
     <div class="row ">
         <!--Table-->
-        <div class="col s10 Material-Left-Container">
+        <div class="Material-Left-Container">
             <table class="striped responsive-table centered">
 
                 <div class="Panel-Header">
@@ -150,6 +146,7 @@
                         <th>Category</th>
                         <th>Quantity Remaining</th>
                         <th>Unit</th>
+                        <th>Project</th>
                     </tr>
                 </thead>
                 <?php 

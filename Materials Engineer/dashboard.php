@@ -236,9 +236,6 @@
             $('.datepicker').pickadate({
                 selectMonths: true, // Creates a dropdown to control month
                 selectYears: 15, // Creates a dropdown of 15 years to control year,
-                today: 'Today',
-                clear: 'Clear',
-                close: 'Ok',
                 closeOnSelect: false // Close upon selecting a date,
             });
 
@@ -253,28 +250,7 @@
         btn.addEventListener('click', liGenerate);
         document.addEventListener('click', liDelete);
 
-        function liGenerate(e) {
-            const li = document.createElement('li');
-
-            if (inpt.value !== "") {
-                li.className = "collection-item red-text lighten-2";
-                //const liContent = document.createTextNode(`${inpt.value}`);
-                li.innerHTML = `${inpt.value} <div class='remove'>X</div>`;
-
-                //li.appendChild(liContent);
-                ul.appendChild(li);
-
-                inpt.value = "";
-            }
-            e.preventDefault();
-        }
-
-        function liDelete(e) {
-            if (e.target.className === 'remove') {
-                e.target.parentElement.remove();
-            }
-        }
-
+        
     </script>
 
 </body>

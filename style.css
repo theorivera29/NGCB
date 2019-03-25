@@ -57,7 +57,8 @@ f: input field
 
 /*Start of Style for all pages of Materials Engineer*/
 
-body {}
+body {
+}
 
 nav {
     background-color: #173753 !important;
@@ -150,7 +151,22 @@ nav {
     min-width: 18% !important;
     max-width: 20%;
     text-align: center;
+    font-size: 5px !important;
+    overflow-y: hidden !important;    
 }
+
+.picker__day-display{
+    font-size: 1vh !important;
+}
+
+.picker__weekday-display{
+    font-size: 1vh !important;
+}
+
+.picker{
+    line-height: 1 !important;
+}
+
 
 .input-field-todo {
     width: 95% !important;

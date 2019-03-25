@@ -95,7 +95,7 @@
     </nav>
 
     <div class="site-materials-container">
-            <div class="light-blue lighten-5">
+            <div class="lighten-5">
                 <table class="centered site-materials-content">
                     <thead class="site-materials-head">
                         <tr>
@@ -191,13 +191,13 @@
 
         <!--MODAL-->
         <div id="modal1" class="modal">
-            <div class="modal-content">
+            <div class="modal- ">
                 <div class="content">
                     <div class="row">
                         <form action="server.php" method="POST">
-                            <div class="col s12 light-blue lighten-3">
+                            <div class="col s12">
                                 <h4>DELIVER IN</h4>
-                                <table class="centered blue-grey lighten-5">
+                                <table class="centered">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -217,9 +217,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="col s12 light-blue lighten-3">
+                            <div class="col s12">
                                 <h4>USAGE IN</h4>
-                                <table class="centered blue-grey lighten-5">
+                                <table class="centered">
                                     <thead>
                                         <tr>
                                             <th>Date</th>

@@ -435,8 +435,6 @@
     </div>
 
 
-
-
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
@@ -463,29 +461,6 @@
                     "</tr>;"
                 $("table tbody").append(markup);
             });
-        });
-
-    </script>
-
-
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
-    <script>
-        // SIDEBAR
-        $(document).ready(function() {
-            $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
-                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
-            });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
-
-
-            $('.modal-trigger').leanModal();
-
         });
 
     </script>

@@ -6,15 +6,11 @@
         session_start();
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']); 
-        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+        $sql = "SELECT accounts_id, accounts_password FROM accounts WHERE accounts_username = '$username'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
-        $hash_password = $row[0];
-        echo $hash_password;
-        if(
-            true
-//            password_verify($password, $hash_password)
-        ) {
+        $hash_password = $row[1];
+        if(password_verify($password, $hash_password)) {
             $_SESSION['tasks']= $row[0];
             $_SESSION['username'] = $username; 
             $_SESSION['loggedin' ] = true;

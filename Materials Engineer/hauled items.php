@@ -13,7 +13,7 @@
 <html>
 
 <head>
-    <link rel="icon" type="image/png" href="../Images/logo.png">
+    <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css" media="screen,projection" />
     <link rel="stylesheet" text="type/css" href="../style.css">

@@ -58,6 +58,7 @@ f: input field
 /*Start of Style for all pages of Materials Engineer*/
 
 body {
+    overflow-x: hidden;
 }
 
 nav {

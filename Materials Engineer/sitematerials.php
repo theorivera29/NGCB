@@ -12,7 +12,7 @@
 <html>
 
 <head>
-    <link rel="icon" type="image/png" href="../Images/logo.png">
+    <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -190,7 +190,7 @@
         </div>
 
         <!--MODAL-->
-        <div id="modal1" class="modal">
+        <div id="modal1" class="modal modal-fixed-footer">
             <div class="modal- ">
                 <div class="content">
                     <div class="row">

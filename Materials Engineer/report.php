@@ -12,6 +12,7 @@
 <html>
 
 <head>
+<title>NGCB</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.min.css">

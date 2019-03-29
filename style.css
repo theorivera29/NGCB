@@ -27,13 +27,12 @@ f: input field
 }
 
 .left-login-container {
-    left: 0;
-    background-color: #00A6A6;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4)), url('Images/login.png');
+    background-color: #000035;
+    background-image: url('Images/login2.png');
     background-repeat: no-repeat;
+    background-size: contain;
     background-position-x: 50%;
     background-position-y: 30%;
-    padding-top: 5% !important;
 }
 
 .header-container-one {

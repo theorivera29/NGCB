@@ -1,5 +1,13 @@
-<!DOCTYPE html>
 
+<?php
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
+?>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -60,18 +68,46 @@
             <table class="striped centered">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>ID</th>
                         <th>User Name</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Name</th>
                         <th>E-mail</th>
                         <th>Account Type</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                   
-                </tbody>
+                        <?php 
+                            $sql = "SELECT accounts_id, concat(accounts_fname,', ', accounts_lname) as name, accounts_username, 
+                            accounts_email, accounts_type, accounts_status FROM accounts WHERE accounts_deletable = 'yes';";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_row($result)){
+                        ?>
+
+                        <tr>
+                            <td>
+                                <?php echo $row[0] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[3] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[4] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[5] ?>
+                            </td>
+                        </tr>
+                        <?php    
+                            }
+                        ?>
+                    </tbody>
             </table>
 
         </div>

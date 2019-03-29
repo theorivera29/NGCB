@@ -184,7 +184,7 @@
                     INNER JOIN categories ON materials.mat_categ = categories.categories_id 
                     INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id 
                     INNER JOIN projects ON materials.mat_project = projects_id
-                    WHERE materials.mat_notif >= stockcard.stockcard_quantity;";
+                    WHERE materials.mat_notif >= stockcard.stockcard_quantity AND projects.projects_status = 'open';";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
                 ?>

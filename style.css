@@ -220,28 +220,6 @@ nav {
     font-size: 20px;
 }
 
-.datepicker {
-    width: 20% !important;
-    min-width: 18% !important;
-    max-width: 20%;
-    text-align: center;
-    font-size: 5px !important;
-    overflow-y: hidden !important;
-}
-
-.picker__day-display {
-    font-size: 1vh !important;
-}
-
-.picker__weekday-display {
-    font-size: 1vh !important;
-}
-
-.picker {
-    line-height: 1 !important;
-}
-
-
 .input-field-todo {
     width: 95% !important;
     padding-top: 1%;
@@ -299,9 +277,15 @@ nav {
     color: white !important;
 }
 
+.view-task-btn{
+    float: right;
+    color: #0D1F2D !important;
+    background-color: #ffffff !important;
+    background-color: #1A5D89 !important;
+    color: white !important;
+}
+
 /* Style for Site > Project */
-
-
 .view-hauled-item-btn,
 .viewinventory-btn,
 .edit-btn,

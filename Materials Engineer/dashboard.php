@@ -61,7 +61,6 @@
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
                                 <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
-                                <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
                         </div>
                     </li>
@@ -99,6 +98,14 @@
                     <div class="divider"></div>
                 </li>
                 
+                <li>
+                    <a href="logout.php">Account</a>
+                </li>
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+
                 <li>
                     <a href="logout.php">Logout</a>
                 </li>
@@ -147,8 +154,10 @@
                 <?php
                     }
                 ?>
+                </div>
+                <button class="waves-effect waves-light view-task-btn" type="submit" class="validate" name="create_todo">View All Task</button>
             </div>
-        </div>
+        
     </div>
 
     <!--Materials Container-->

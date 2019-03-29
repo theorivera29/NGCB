@@ -44,7 +44,6 @@
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
                                 <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
-                                <li><a class="waves-effect waves-blue" href="category.php">Category</a></li>
                             </ul>
                         </div>
                     </li>

@@ -12,7 +12,7 @@
 <html>
 
 <head>
-<title>NGCB</title>
+    <title>NGCB</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
@@ -22,7 +22,8 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
+                    class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
@@ -47,7 +48,8 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -62,11 +64,13 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                        Materials</a></li>
                             </ul>
                         </div>
                     </li>
@@ -95,22 +99,22 @@
                 <i class="material-icons left">edit</i>Edit Material</a>
         </div>
     </div>
-    
+
     <div class="item-categories">
-       <?php
+        <?php
         $categories_id = $_GET['categories_id'];
         $sql = "SELECT * FROM  categories WHERE categories_id = '$categories_id';";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-       <h4><?php echo $row[1] ;?></h4>
-       <?php
+        <h4><?php echo $row[1] ;?></h4>
+        <?php
         }
     ?>
         <div class="row">
             <div class="col s12">
                 <table class="centered ">
-                    <thead class="item-categories-head"> 
+                    <thead class="item-categories-head">
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>
@@ -314,10 +318,11 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    </script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -330,7 +335,6 @@
             $('.modal-trigger').leanModal();
 
         });
-
     </script>
 
 </body>

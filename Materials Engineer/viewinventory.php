@@ -22,8 +22,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
-                    class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
@@ -49,8 +48,7 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -64,8 +62,7 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
@@ -167,8 +164,7 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
-                            <td> <a href="#editmaterialModal"
-                                    class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+                            <td> <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
                             </td>
                         </tr>
                         <?php    
@@ -206,8 +202,7 @@
                         <div class="row">
                             <form action="server.php" method="POST">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
-                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit"
-                                    name="view_category">View Inventory</button>
+                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
                             </form>
                         </div>
                     </div>
@@ -218,7 +213,7 @@
     ?>
         </div>
     </div>
-    <!-- ADD MATERIAL MODAL -->
+    <!-- ADD SITE MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer">
         <form action="server.php" method="POST">
             <div class="modal-content">
@@ -250,9 +245,20 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col s5">
+                            <label>Quantifier:</label>
+                        </div>
+                    </div>
                     <div class="input-field col s5">
-                        <input id="quantifier" name="quantifier" type="text" class="validate">
-                        <label for="quantifier">Quantifier:</label>
+                        <select class="browser-default" name="categories">
+                            <option value="" disabled selected>Choose your option</option>
+
+                            <option>
+
+                            </option>
+
+                        </select>
                     </div>
                     <div class="input-field col s7">
                         <input id="minquantity" name="minquantity" type="text" class="validate">
@@ -262,8 +268,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger"
-                    name="add_materials">Next</button>
+                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</button>
             </div>
         </form>
     </div>
@@ -299,55 +304,51 @@
     </div>
 
 
-    <!-- EDIT MATERIAL MODAL -->
+    <!-- EDIT SITE MATERIAL MODAL -->
     <div id="editmaterialModal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Edit Material</h4>
-            <h5>Select Material to Edit:</h5>
             <div class="row">
-                <div class="input-field col s6">
-                    <select class="browser-default">
-                        <option value="" disabled selected>Choose your option</option>
-                        <?php
-                            $sql = "SELECT categories_name FROM categories;";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_row($result)) {                        
-                        ?>
-                        <option value="1">
-                            <?php echo $row[0]; ?>
-                        </option>
-
-                        <?php 
-                            }
-                        ?>
-                    </select>
-                </div>
-            </div>
-            <h5>New Material Information:</h5>
-            <div class="row">
-                <div class="col s6">
-                    <label>Category:</label>
-                </div>
                 <div class="input-field col s12">
-                    <select class="browser-default">
-                        <option value="">Choose your option</option>
-                        <?php
-                            $sql = "SELECT categories_name FROM categories;";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_row($result)) {                        
-                        ?>
-                        <option value="1">
-                            <?php echo $row[0]; ?>
-                        </option>
+                    <input id="materialname" name="materialname" type="text" class="validate">
+                    <label for="materialname">Material Name:</label>
+                </div>
+                <div class="col s12">
+                    <label>Category:</label>
 
-                        <?php 
-                            }
-                        ?>
-                    </select>
+                    <div class="input-field col s12">
+                        <select class="browser-default" name="categories">
+                            <option value="" disabled selected>Choose your option</option>
+                            <?php
+                                    $sql = "SELECT * FROM categories;";
+                                    $result = mysqli_query($conn, $sql);
+                                    while($row = mysqli_fetch_row($result)) {                         
+
+                                ?>
+                            <option value="<?php echo $row[0]; ?>">
+                                <?php echo $row[1]; ?>
+                            </option>
+
+                            <?php 
+                                    }
+                                ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s5">
+                        <label>Quantifier:</label>
+                    </div>
                 </div>
                 <div class="input-field col s5">
-                    <input id="quantifier" name="quantifier" type="text" class="validate">
-                    <label for="quantifier">Quantifier:</label>
+                    <select class="browser-default" name="categories">
+                        <option value="" disabled selected>Choose your option</option>
+
+                        <option>
+
+                        </option>
+
+                    </select>
                 </div>
                 <div class="input-field col s7">
                     <input id="minquantity" name="minquantity" type="text" class="validate">
@@ -382,16 +383,14 @@
                     </div>
 
                     <div class="input-field col s12">
-                        <button type="button" class="add-row">Add Category<i
-                                class="material-icons left">add_circle_outline</i></button>
+                        <button type="button" class="add-row">Add Category<i class="material-icons left">add_circle_outline</i></button>
                         <!-- <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a> -->
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
-                    name="create_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="create_category">Save</button>
             </div>
         </form>
     </div>
@@ -431,8 +430,7 @@
 
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
-                    name="edit_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="edit_category">Save</button>
             </div>
         </form>
     </div>
@@ -444,7 +442,7 @@
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -456,7 +454,7 @@
 
             $('.modal-trigger').leanModal();
 
-            $(".add-row").click(function () {
+            $(".add-row").click(function() {
                 var quantity = $("#name").val();
                 var unit = $("#email").val();
                 var articles = $('#articles').val();
@@ -466,6 +464,7 @@
                 $("table tbody").append(markup);
             });
         });
+
     </script>
 
 </body>

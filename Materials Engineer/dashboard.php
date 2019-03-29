@@ -118,19 +118,18 @@
             <div class="Panel-Header">
                 <span>CALENDAR AND TO-DO</span>
             </div>
-            <div class="Calendar-Container">
-                <span id="text-headers">Calendar:</span>
-                <input type="text" class="datepicker">
-            </div>
+            <form action="server.php" method="POST">
+            <input type="hidden" name="todoOf" value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
             <div class="card card-content">
                 <div class="row">
                     <div class="input-field input-field-todo">
-                        <textarea id="todo_area" class="materialize-textarea todo"></textarea>
-                        <label for="todo_area" id="todo-label">Input to-do here</label>
+                        <textarea id="todo_task" name="todo_task" class="materialize-textarea todo"></textarea>
+                        <label for="todo_task" id="todo-label">Input to-do here</label>
                     </div>
                 </div>
             </div>
-            <a class="waves-effect waves-light btn todo-btn"><i class="material-icons right">note_add</i>Add to-do</a>
+            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="create_todo">Save</button>
+            </form>
         </div>
 
         <!--To-do Container-->

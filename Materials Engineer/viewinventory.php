@@ -12,25 +12,18 @@
 <html>
 
 <head>
-<title>NGCB</title>
+    <title>NGCB</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
-    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
-    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" text="type/css" href="../style.css">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
+                    class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
@@ -56,7 +49,8 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -71,11 +65,13 @@
                 </li>
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
+                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                        Materials</a></li>
                             </ul>
                         </div>
                     </li>
@@ -172,7 +168,9 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
-                            <td> <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a> </td>
+                            <td> <a href="#editmaterialModal"
+                                    class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+                            </td>
                         </tr>
                         <?php    
                             }
@@ -209,7 +207,8 @@
                         <div class="row">
                             <form action="server.php" method="POST">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
-                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
+                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit"
+                                    name="view_category">View Inventory</button>
                             </form>
                         </div>
                     </div>
@@ -264,7 +263,8 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</button>
+                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger"
+                    name="add_materials">Next</button>
             </div>
         </form>
     </div>
@@ -383,14 +383,16 @@
                     </div>
 
                     <div class="input-field col s12">
-                        <button type="button" class="add-row">Add Category<i class="material-icons left">add_circle_outline</i></button>
+                        <button type="button" class="add-row">Add Category<i
+                                class="material-icons left">add_circle_outline</i></button>
                         <!-- <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a> -->
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="create_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
+                    name="create_category">Save</button>
             </div>
         </form>
     </div>
@@ -430,7 +432,8 @@
 
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="edit_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
+                    name="edit_category">Save</button>
             </div>
         </form>
     </div>
@@ -438,10 +441,11 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    </script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -453,7 +457,7 @@
 
             $('.modal-trigger').leanModal();
 
-            $(".add-row").click(function() {
+            $(".add-row").click(function () {
                 var quantity = $("#name").val();
                 var unit = $("#email").val();
                 var articles = $('#articles').val();
@@ -463,7 +467,6 @@
                 $("table tbody").append(markup);
             });
         });
-
     </script>
 
 </body>

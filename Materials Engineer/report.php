@@ -133,38 +133,7 @@
                                     }
                                 ?>
                 </div>
-        <div class="row">
-            <?php 
-                        $result = mysqli_query($conn, "SELECT * FROM projects WHERE projects_status = 'closed';");
-                        $num_rows = mysqli_num_rows($result);
-                        while($row = mysqli_fetch_array($result)) {
-                            ?>
-            <div class="col s12 m6">
-                <div class="card blue-grey darken-1 center">
-                    <div class="card-content white-text">
-                        <span class="card-title">
-                            <?php echo $row[1] ?> </span>
-                        <p>
-                            <?php echo $row[2] ?>
-                        </p>
-                        <p>Start Date:
-                            <?php echo $row[3] ?>
-                        </p>
-                        <p>End Date:
-                            <?php echo $row[4] ?>
-                        </p>
-                        <div class="row">
-                            <a href="#reopenModal" class="waves-effect waves-light btn reopen-btn modal-trigger">Re-open Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <?php
-                                    }
-                                ?>
-
-            </div>
+      
     </div>
             
             

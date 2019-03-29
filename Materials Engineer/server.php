@@ -210,4 +210,16 @@
         $todoOf = mysqli_real_escape_string($conn, $_POST['todoOf']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php?todoOf=$todoOf");
     }
+    
+        if (isset($_POST['create_todo'])) {
+        $todo_task = mysqli_real_escape_string($conn, $_POST['todo_task']);
+        $todoOf = mysqli_real_escape_string($conn, $_POST['todoOf']);
+        $sql = "SELECT * from todo;";
+        $result = mysqli_query($conn,$sql);
+        $count = mysqli_num_rows($result);
+            $sql = "INSERT INTO todo (todo_date, todo_task, todo_status, todoOf) VALUES ('2019-05-19', '$todo_task', 'in progress', '$todoOf');";
+            mysqli_query($conn, $sql);
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+            exit();
+    }
 ?>

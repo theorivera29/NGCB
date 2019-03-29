@@ -60,7 +60,7 @@ f: input field
     padding-left: 10% !important;
     color: #00171F;
     font-size: 4vh;
-    padding-top: 5%;
+    padding-top: 15%;
 }
 
 .co-login {
@@ -71,10 +71,69 @@ f: input field
     padding-left: 2%;
 }
 
+input:required{
+    border: 1px solid #3E3E3F !important;
+}
+
+.username{
+    margin-top: 5% !important;
+    margin-bottom: 1% !important;
+}
+
+.password{
+    margin-top: 5% !important;
+}
+
 #create-btn {
     padding-top: 20% !important;
 }
 
+label {
+    cursor: pointer;
+    font-size: 2vh !important;
+}
+
+#form-switch {
+    display: none
+}
+
+#register-form {
+    display: none
+}
+
+#form-switch:checked~#register-form {
+    display: block
+}
+
+#form-switch:checked~#login-form {
+    display: none
+}
+
+#form-switch-label{
+    font-size: 2vh !important;
+
+}
+
+.login-btn {
+    width: 25% !important;
+    margin-left: 20%;
+    padding-bottom: 2% !important;
+    margin-right: 25% !important;
+    color: #ffffff !important;
+    background-color: #4C99AF !important;
+    font-size: 2vh !important;
+    float: right !important;
+}
+
+.create-account-btn{
+    color: #ffffff !important;
+    background-color: #4C99AF !important;
+}
+
+.btn{
+    color: #ffffff !important;
+    background-color: #4C99AF !important;
+}
 /*End of Login Page Style*/
 
 /*Start of Style for all pages of Materials Engineer*/
@@ -103,13 +162,6 @@ nav {
 
 .collapsible-header {
     color: black !important;
-}
-
-.login-btn {
-    width: 100% !important;
-    padding-bottom: 2% !important;
-    color: #ffffff !important;
-    background-color: #4C99AF !important;
 }
 
 #create-account-btn {

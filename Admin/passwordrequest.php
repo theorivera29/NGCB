@@ -37,17 +37,16 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <ul class="collapsible">
-                    <li>
-                        <a class="collapsible-header waves-effect waves-blue">Request<i class="material-icons right">keyboard_arrow_down</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a class="waves-effect waves-blue" href="passwordrequest.php">Password Request</a></li>
-                                <li><a class="waves-effect waves-blue" href="accountcreation.php">Account Creation</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                <li><a href="projects.php">Projects</a></li>
+                <li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a href="projects.php">Password Request</a></li>
+                <li>
+                <li>
+                    <div class="divider"></div>
+                </li>
                 <li>
                     <a href="logout.php">Logout</a>
                 </li>

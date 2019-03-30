@@ -31,23 +31,21 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                </li>
                 <li><a href="listofaccounts.php">List of Accounts</a></li>
                 <li>
                 <li>
                     <div class="divider"></div>
                 </li>
-                <ul class="collapsible">
-                    <li>
-                        <a class="collapsible-header waves-effect waves-blue">Request<i class="material-icons right">keyboard_arrow_down</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a class="waves-effect waves-blue" href="passwordrequest.php">Password Request</a></li>
-                                <li><a class="waves-effect waves-blue" href="accountcreation.php">Account Creation</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                <li><a href="projects.php">Projects</a></li>
+                <li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a href="projects.php">Password Request</a></li>
+                <li>
+                <li>
+                    <div class="divider"></div>
+                </li>
                 <li>
                     <a href="logout.php">Logout</a>
                 </li>
@@ -56,31 +54,109 @@
     </nav>
 
     <div class="container">
-        <div class="card">
-            <table class="striped centered">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>User Name</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>E-mail</th>
-                        <th>Account Type</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   
-                </tbody>
-            </table>
+        <form action="server.php" method="POST">
+            <h2 class="header header-two">Create an Account</h2>
+            <div class="row">
+                <div class="input-field col s12 m10 offset-m1">
+                    <input id="firstname" name="firstname" type="text" class="validate">
+                    <label for="firstname">First Name</label>
+                </div>
 
-        </div>
+                <div class="input-field col s12 m10 offset-m1">
+                    <input id="lastname" name="lastname" type="text" class="validate">
+                    <label for="lastname">Last Name</label>
+                </div>
+
+                <div class="input-field col s12 m10 offset-m1">
+                    <input id="username" name="username" type="text" class="validate">
+                    <label for="username">Username</label>
+                </div>
+
+                <div class="input-field col s12 m10 offset-m1">
+                    <input id="email" name="email" type="text" class="validate">
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="input-field col s12 m10 offset-m1">
+                    <input id="password" name="password" type="text" class="validate">
+                    <label for="password">Password</label>
+                </div>
+
+                <div class="col s12 m10 offset-m1">
+                    <span>Account Type</span>
+                    <div class="row">
+                        <label>
+                            <input class="with-gap" name="account_type" type="radio" checked
+                                value="Materials Engineer" />
+                            <span>Materials Engineer</span>
+                            <input class="with-gap" name="account_type" type="radio" checked value="View Only" />
+                            <span>View Only</span>
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="row center">
+                    <button class="btn waves-effect waves-light create-account-btn" type="submit"
+                        name="create_account">Create
+                        An Account</button>
+                    <a class="waves-effect waves-light btn" href="loginpage.php">Cancel</a>
+                </div>
+            </div>
+        </form>
     </div>
 
 
+    <div id="addmaterialModal" class="modal modal-fixed-footer">
+        <form action="server.php" method="POST">
+            <div class="modal-content">
+                <h4>Add Material</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="materialname" name="materialname" type="text" class="validate">
+                        <label for="materialname">Material Name:</label>
+                    </div>
+                    <div class="col s12">
+                        <label>Category:</label>
+
+                        <div class="input-field col s12">
+                            <select class="browser-default" name="categories">
+                                <option value="" disabled selected>Choose your option</option>
+                               
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s5">
+                            <label>Quantifier:</label>
+                        </div>
+                    </div>
+                    <div class="input-field col s5">
+                        <select class="browser-default" name="categories">
+                            <option value="" disabled selected>Choose your option</option>
+
+                            <option>
+
+                            </option>
+
+                        </select>
+                    </div>
+                    <div class="input-field col s7">
+                        <input id="minquantity" name="minquantity" type="text" class="validate">
+                        <label for="minquantity">Minimum quantity of materials when to be quantified:</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</button>
+            </div>
+        </form>
+    </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    </script>
     <script>
         // SIDEBAR
         $(document).ready(function () {

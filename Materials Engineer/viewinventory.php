@@ -22,33 +22,43 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
+                    class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
-
                     <?php 
-            if(isset($_SESSION['username'])) {
-              $username = $_SESSION['username'];
-              $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_row($result);
-          ?>
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
                     <span class="title">
-                        <?php echo $row[1]." ".$row[2]; ?></span>
+                        <?php echo $row[1]." ".$row[2]; ?>
+                    </span>
                     <span class="title">
-                        <?php echo $row[5]; }?></span>
+                        <?php echo $row[5]; }?>
+                    </span>
                 </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.php">Dashboard</a></li>
+
+                <li>
+                    <a href="dashboard.php">Dashboard</a>
+                </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -57,17 +67,24 @@
                         </div>
                     </li>
                 </ul>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
-                                        Materials</a></li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                        Materials</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -76,10 +93,23 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue" href="report.php">Report</a></li>
+
+                <li>
+                    <a class="waves-effect waves-blue" href="report.php">Report</a>
+                </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
+                <li>
+                    <a href="account.php">Account Setting</a>
+                </li>
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+
                 <li>
                     <a href="logout.php">Logout</a>
                 </li>
@@ -88,7 +118,16 @@
     </nav>
 
     <div class="">
+        <?php 
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT projects_name FROM projects;";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
         <div class="row">
+            <span> <?php echo row[0]; ?></span>
+
             <div class="col s12">
                 <ul class="tabs">
                     <li class="tab col s3"><a href="#sitematerials">Site Materials</a></li>
@@ -96,6 +135,9 @@
                 </ul>
             </div>
         </div>
+        <?php    
+                            }
+                        ?>
     </div>
 
     <!--SITE MATERIALS-->
@@ -164,7 +206,8 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
-                            <td> <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+                            <td> <a href="#editmaterialModal"
+                                    class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
                             </td>
                         </tr>
                         <?php    
@@ -202,7 +245,8 @@
                         <div class="row">
                             <form action="server.php" method="POST">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
-                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
+                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit"
+                                    name="view_category">View Inventory</button>
                             </form>
                         </div>
                     </div>
@@ -399,14 +443,16 @@
                     </div>
 
                     <div class="input-field col s12">
-                        <button type="button" class="add-row">Add Category<i class="material-icons left">add_circle_outline</i></button>
+                        <button type="button" class="add-row">Add Category<i
+                                class="material-icons left">add_circle_outline</i></button>
                         <!-- <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a> -->
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="create_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
+                    name="create_category">Save</button>
             </div>
         </form>
     </div>
@@ -446,7 +492,8 @@
 
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="edit_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
+                    name="edit_category">Save</button>
             </div>
         </form>
     </div>
@@ -458,7 +505,7 @@
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -470,7 +517,7 @@
 
             $('.modal-trigger').leanModal();
 
-            $(".add-row").click(function() {
+            $(".add-row").click(function () {
                 var quantity = $("#name").val();
                 var unit = $("#email").val();
                 var articles = $('#articles').val();
@@ -480,7 +527,6 @@
                 $("table tbody").append(markup);
             });
         });
-
     </script>
 
 </body>

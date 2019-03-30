@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../style.css">
+</head>
 
 <body>
     <nav>
@@ -115,41 +116,33 @@
             </ul>
         </div>
     </nav>
-    <?php
-                            $hauling_no = $_GET['hauling_no'];
-                            $sql = "SELECT * FROM hauling WHERE hauling_no = '$hauling_no';";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_row($result)){
-                        ?>
+
     <div class="row">
         <div class="col s12 m10 offset-m1">
-            <div class="card light-blue lighten-5">
-                <div class="card-content sample">
-
-                    <h4>Hauling Form</h4>
-                    <form class="sample">
+            <div class="card hauling-form">
+                <form action="server.php" method="POST">
+                    <div class="card-content">
+                        <h4>Hauling Form</h4>
                         <div class="row">
                             <div class="col s8">
-                                <label for="date">Date:</label>
-                                <input id="date" type="text" disabled value="<?php echo $row[1]?>">
+                                <label>Date:</label>
+                                <input id="test" type="date" class="datepicker" name="date">
                             </div>
-                            <div class="input-field col s2">
-                                <input disabled value="<?php echo $row[0]?>" id="formnumber" type="text">
-                                <label for="formnumber">Form No.:</label>
+                            <div class="input-field col s2 offset-s2 right-align">
+                                <input id="formnumber" type="text" class="validate" name="formnumber">
+                                <label for="formnumber">Form Number:</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s6">
                                 <div>
                                     <div class="input-field col s12 left-align ">
-                                        <input disabled value="<?php echo $row[2]?>" id="delivername" type="text"
-                                            class="validate">
+                                        <input id="delivername" type="text" class="validate" name="delivername">
                                         <label for="delivername">Deliver To:</label>
                                     </div>
                                     <div class="input-field col s12 left-align ">
-                                        <input disabled value="<?php echo $row[3]?>" id="hauledfrom" type="text"
-                                            class="validate">
-                                        <label for="hauledfrom">Hauled From:</label>
+                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom">
+                                        <label for="hauledfrom">Hauled From :</label>
                                     </div>
                                 </div>
                             </div>
@@ -166,9 +159,9 @@
 
                                 <tbody>
                                     <tr>
-                                        <td><?php echo $row[4]?></td>
-                                        <td><?php echo $row[5]?></td>
-                                        <td><?php echo $row[6]?></td>
+                                        <td><input type="text" name="quantity" id="quantity"></td>
+                                        <td><input type="text" name="unit" id="unit"></td>
+                                        <td><input type="text" name="articles" id="articles"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -177,18 +170,15 @@
                         <div class="row">
                             <div class="col s6">
                                 <div class="input-field col s10 left-align ">
-                                    <input disabled value="<?php echo $row[7]?>" id="hauledby" type="text"
-                                        class="validate">
-                                    <label for="hauledby">Hauled By:</label>
+                                    <input id="hauledby" type="text" class="validate" name="hauledby">
+                                    <label for="hauledby">Hauled by :</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
-                                    <input disabled value="<?php echo $row[8]?>" id="warehouseman" type="text"
-                                        class="validate">
+                                    <input id="warehouseman" type="text" class="validate" name="warehouseman">
                                     <label for="warehouseman">Warehouseman:</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
-                                    <input disabled value="<?php echo $row[9]?>" id="approvedby" type="text"
-                                        class="validate">
+                                    <input id="approvedby" type="text" class="validate" name="approvedby">
                                     <label for="approvedby">Approved By:</label>
                                 </div>
                             </div>
@@ -206,33 +196,34 @@
                                     <tbody>
                                         <tr>
                                             <td>Type:</td>
-                                            <td><?php echo $row[10]?></td>
+                                            <td><input type="text" name="truck_type" id="truck_type"></td>
                                         </tr>
                                         <tr>
                                             <td>Plate No.:</td>
-                                            <td><?php echo $row[11]?></td>
+                                            <td><input type="text" name="truck_plate" id="truck_plate"></td>
                                         </tr>
                                         <tr>
                                             <td>P.O/R.S No.:</td>
-                                            <td><?php echo $row[12]?></td>
+                                            <td><input type="text" name="truck_po" id="truck_po"></td>
                                         </tr>
                                         <tr>
                                             <td>Hauler DR No.:</td>
-                                            <td><?php echo $row[13]?></td>
+                                            <td><input type="text" name="truck_hauler" id="truck_hauler"></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <?php
-        }
-    ?>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="card-action right-align">
+                        <button class="waves-effect waves-light btn green" type="submit" class="validate"
+                            name="create_hauling">Save</button>
+                        <a class="waves-effect waves-light btn red">Cancel</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -250,6 +241,29 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
 
+            $('.modal-trigger').leanModal();
+
+        });
+
+        $(document).ready(function () {
+            $(".datepicker").pickadate({
+                closeOnSelect: true,
+                format: "yyyy-mm-dd"
+            });
+        });
+
+        $(document).ready(function () {
+            $(".add-row").click(function () {
+                var quantity = $("#name").val();
+                var unit = $("#email").val();
+                var articles = $('#articles').val();
+                var markup = "<tr>" +
+                    "<td><input type=\"text\" name=\"quantity[]\"></td>" +
+                    "<td><input type=\"text\" name=\"unit[]\"></td>" +
+                    "<td><input type=\"text\" name=\"articles[]\"></td>" +
+                    "</tr>;"
+                $("table tbody").append(markup);
+            });
         });
     </script>
 

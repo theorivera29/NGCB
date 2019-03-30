@@ -217,7 +217,7 @@
                         <div class="input-field col s12">
                         <span>Material Engineer Involved</span>
                             <select class="browser-default" name="categories">
-                                <option value="" disabled selected>Material Engineer</option>
+                                <option value="" selected>Material Engineer</option>
                             </select>
                         </div>
                     </div>

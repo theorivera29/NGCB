@@ -94,7 +94,7 @@
                 </li>
 
                 <li>
-                    <a href="logout.php">Account</a>
+                    <a href="account.php">Account</a>
                 </li>
 
                 <li>

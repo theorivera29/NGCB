@@ -112,7 +112,7 @@
                                     <form action="server.php" method="POST">
                                         <input type="hidden" name="projects_name" value="<?php echo $row[1]?>">
                                         <div class="row">
-                                            <button class="waves-effect waves-light btn viewinventory-btn" type="submit" name="view_inventory">View Inventory</button>
+                                            <button class="waves-effect waves-light btn viewinventory-btn" type="submit" name="open_report">Open Report</button>
                                         </div>
                                        
                                     </form>

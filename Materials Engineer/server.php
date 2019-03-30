@@ -126,6 +126,11 @@
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/fillouthauling.php?projects_name=$projects_name");
     }
 
+    if(isset($_POST['open_report'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/reportpage.php?projects_name=$projects_name");
+    }
+
     if(isset($_POST['view_category'])) {
         $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id");

@@ -1,4 +1,3 @@
-
 <?php
     include "db_connection.php";
     session_start();
@@ -7,6 +6,7 @@
       header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
     }
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -38,7 +38,6 @@
                 <li><a href="admindashboard.html">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
-                </li>
                 </li>
                 <li><a href="listofaccounts.html">List of Accounts</a></li>
                 <li>
@@ -79,7 +78,7 @@
                 <tbody>
                         <?php 
                             $sql = "SELECT accounts_id, concat(accounts_fname,', ', accounts_lname) as name, accounts_username, 
-                            accounts_email, accounts_type, accounts_status FROM accounts WHERE accounts_deletable = 'yes';";
+                            accounts_email, accounts_type, accounts_status FROM accounts WHERE accounts_deletable = 'yes' AND accounts_status='active';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>

@@ -31,7 +31,6 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                </li>
                 <li><a href="listofaccounts.php">List of Accounts</a></li>
                 <li>
                 <li>

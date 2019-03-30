@@ -35,33 +35,32 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="admindashboard.html">Dashboard</a></li>
+                <li><a href="admindashboard.php">Dashboard</a></li>
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="listofaccounts.html">List of Accounts</a></li>
+                </li>
+                <li><a href="listofaccounts.php">List of Accounts</a></li>
                 <li>
                 <li>
                     <div class="divider"></div>
                 </li>
-                <ul class="collapsible">
-                    <li>
-                        <a class="collapsible-header waves-effect waves-blue">Request<i class="material-icons right">keyboard_arrow_down</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a class="waves-effect waves-blue" href="passwordrequest.html">Password Request</a></li>
-                                <li><a class="waves-effect waves-blue" href="accountcreation.html">Account Creation</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                <li><a href="projects.php">Projects</a></li>
+                <li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a href="projects.php">Password Request</a></li>
+                <li>
+                <li>
+                    <div class="divider"></div>
+                </li>
                 <li>
                     <a href="logout.php">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
-
     <div class="container">
         <div class="card">
             <table class="striped centered">
@@ -73,6 +72,7 @@
                         <th>E-mail</th>
                         <th>Account Type</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,6 +102,9 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
+                            <td>
+                                <button id="disableBtn" onclick="disablePrompt()">Disable</button>
+                            </td>
                         </tr>
                         <?php    
                             }
@@ -128,6 +131,11 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
         });
+
+        function disablePrompt(){
+            var disprompt = prompt("Are you sure you want to disable the account");
+           
+        };
     </script>
 
 </body>

@@ -93,16 +93,17 @@
     <div class="row">
         <div class="col s12 m10 offset-m1">
             <div class="card light-blue lighten-5">
-                <div class="card-content black-text">
+                <div class="card-content sample">
 
                     <h4>Hauling Form</h4>
+                    <form class="sample">
                     <div class="row">
                         <div class="col s8">
-                            <label>Date:</label>
-                            <input id="test" type="date" class="datepicker" disabled value="<?php echo $row[1]?>">
+                            <label for="date">Date:</label>
+                            <input id="date" type="text" disabled value="<?php echo $row[1]?>">
                         </div>
-                        <div class="input-field col s2 offset-s2 right-align">
-                            <input disabled value="<?php echo $row[0]?>" id="formnumber" type="text" class="validate" >
+                        <div class="input-field col s2">
+                            <input disabled value="<?php echo $row[0]?>" id="formnumber" type="text">
                             <label for="formnumber">Form No.:</label>
                         </div>
                     </div>
@@ -190,6 +191,7 @@
         }
     ?>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -211,15 +213,6 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
 
-            $('.modal-trigger').leanModal();
-
-        });
-
-        $(document).ready(function() {
-            $(".datepicker").pickadate({
-                closeOnSelect: true,
-                format: "dd/mm/yyyy"
-            });
         });
 
     </script>

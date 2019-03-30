@@ -453,3 +453,7 @@ th {
     background-color: #0B415E;
     color: white;
 }
+
+input[type="text"][disabled] {
+   color: black !important;
+}

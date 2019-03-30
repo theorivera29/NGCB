@@ -270,23 +270,23 @@
             <form action="server.php" method="POST">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input placeholder="New project name" id="new_project_name" type="text" class="validate"
+                        <input placeholder="New project name" id="project_name" type="text" class="validate"
                             name="project_name">
-                        <label class="active" for="new_project_name">Project Name:</label>
+                        <label class="active" for="project_name">Project Name:</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="New address" id="new_address" type="text" class="validate"
+                        <input placeholder="New address" id="project_address" type="text" class="validate"
                             name="project_address">
-                        <label for="new_address">Address:</label>
+                        <label for="project_address">Address:</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="New start date" id="new_sdate" type="date" class="validate"
+                        <input placeholder="New start date" id="start_date" type="date" class="validate"
                             name="start_date">
-                        <label for="new_sdate">Start date:</label>
+                        <label for="start_date">Start date:</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="New end date" id="new_edate" type="date" class="validate" name="end_date">
-                        <label for="new_edate">End date:</label>
+                        <input placeholder="New end date" id="end_date" type="date" class="validate" name="end_date">
+                        <label for="end_date">End date:</label>
                     </div>
                 </div>
             </form>

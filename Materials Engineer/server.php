@@ -88,7 +88,7 @@
     }
 
     if(isset($_POST['edit_project'])) {
-        $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
+        $projects_name = mysqli_real_escape_string($conn, $_POST['new_project_name']);
         if(isset($_POST['new_project_name'])) {
             $new_project_name = $_POST['new_project_name'];
             echo $new_project_name;
@@ -221,5 +221,44 @@
             mysqli_query($conn, $sql);
             header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
             exit();
+    }
+    if (isset($_POST['create_materials'])) {
+        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
+        $mat_project = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
+		$mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
+        $mat_notif = mysqli_real_escape_string($conn, $_POST['matnotif']);
+        $delivered_date = mysqli_real_escape_string($conn, $_POST['delivered_date']);
+        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['delivered_quantity']);
+        $suppliedBy = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
+        $sql = "SELECT projects_id FROM projects WHERE projects_name = '$mat_project';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $mat_project_id = $row[0];
+        $sql  = "SELECT mat_id FROM materials WHERE mat_unit = '$mat_unit';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $delivered_mat_id = $row[0];
+        $sql = "SELECT mat_name FROM materials WHERE mat_name = '$mat_name';";
+        $result = mysqli_query($conn,$sql);
+        $count = mysqli_num_rows($result);
+        echo "FCK2";
+        echo $count;
+        echo $mat_name;
+        if($count != 1) {
+            echo "FCK";
+            $sql = "INSERT INTO materials (mat_name, mat_project, mat_unit, mat_categ, mat_notif) VALUES('$mat_name', '$mat_project_id', '$mat_unit', '$mat_categ', '$mat_notif')";
+            mysqli_query($conn,$sql);
+            
+            $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy)
+            VALUES ('$delivered_date', '$delivered_quantity', '$delivered_mat_id', '$suppliedBy')";
+            if(mysqli_query($conn,$sql)) {
+                echo "SUCKCESS";
+            } else {
+                echo $conn->erorr;
+            }
+            // header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$mat_project");
+            exit;
+        }
     }
 ?>

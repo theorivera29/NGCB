@@ -216,18 +216,19 @@
     <!-- ADD SITE MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer">
         <form action="server.php" method="POST">
+            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
             <div class="modal-content">
                 <h4>Add Material</h4>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="materialname" name="materialname" type="text" class="validate">
-                        <label for="materialname">Material Name:</label>
+                        <input id="mat_name" name="mat_name" type="text" class="validate">
+                        <label for="mat_name">Material Name:</label>
                     </div>
                     <div class="col s12">
                         <label>Category:</label>
 
                         <div class="input-field col s12">
-                            <select class="browser-default" name="categories">
+                            <select class="browser-default" name="mat_categ">
                                 <option value="" disabled selected>Choose your option</option>
                                 <?php
                                     $sql = "SELECT * FROM categories;";
@@ -251,26 +252,33 @@
                         </div>
                     </div>
                     <div class="input-field col s5">
-                        <select class="browser-default" name="categories">
+                        <select class="browser-default" name="mat_unit">
                             <option value="" disabled selected>Choose your option</option>
+                            <?php
+                                    $sql = "SELECT DISTINCT mat_unit FROM materials;";
+                                    $result = mysqli_query($conn, $sql);
+                                    while($row = mysqli_fetch_row($result)) {                         
 
-                            <option>
-
+                                ?>
+                            <option value="<?php echo $row[0]; ?>">
+                                <?php echo $row[0]; ?>
                             </option>
-
+                            <?php 
+                                    }
+                                ?>
                         </select>
                     </div>
                     <div class="input-field col s7">
-                        <input id="minquantity" name="minquantity" type="text" class="validate">
-                        <label for="minquantity">Minimum quantity of materials when to be quantified:</label>
+                        <input id="matnotif" name="matnotif" type="text" class="validate">
+                        <label for="matnotif">Minimum quantity of materials when to be quantified:</label>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</button>
+                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="create_materials">Next</button>
             </div>
-        </form>
+       
     </div>
 
     <!-- ADD STOCKCARD MODAL -->
@@ -281,28 +289,36 @@
                     <tr>
                         <th>Date</th>
                         <th>Quantity</th>
-                        <th>Unit</th>
+                        <!-- <th>Quantifier</th> -->
                         <th>Supplied By</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
+                        <td contenteditable="true">
+                        <input id="delivered_date" name="delivered_date" type="text" class="validate">
+                        </td>
+                        <td contenteditable="true">
+                        <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate">
+                        </td>
+                        <!-- <td contenteditable="true">
+                        <input id="delivered_unit" name="delivered_unit" type="text" class="validate">
+                        </td> -->
+                        <td contenteditable="true">
+                        <input id="suppliedBy" name="suppliedBy" type="text" class="validate">
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
+            <button type = 'submit' name = 'create_materials' class="modal-close waves-effect waves-green btn-flat">Save</button>
             <a href="#addmaterialModal" class="modal-close waves-effect waves-teal btn-flat">Back</a>
         </div>
     </div>
-
+    </form>
 
     <!-- EDIT SITE MATERIAL MODAL -->
     <div id="editmaterialModal" class="modal modal-fixed-footer">

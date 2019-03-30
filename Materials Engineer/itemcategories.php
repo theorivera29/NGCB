@@ -103,7 +103,7 @@
                 </li>
 
                 <li>
-                    <a href="account.php">Account</a>
+                    <a href="account.php">Account Setting</a>
                 </li>
 
                 <li>

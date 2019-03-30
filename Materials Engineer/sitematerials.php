@@ -234,7 +234,10 @@
                                         <tr>
                                             <td contenteditable="true"><input type="date" name="dev_date"></td>
                                             <td contenteditable="true"><input type="text" name="dev_quantity"></td>
-                                            <td contenteditable="true"><input type="text" name="dev_unit"></td>
+                                            <td contenteditable="true"><select class="browser-default"
+                                                    name="categories">
+                                                    <option value="" selected></option>
+                                                </select></td>
                                             <td contenteditable="true"><input type="text" name="dev_supp"></td>
                                         </tr>
 
@@ -245,7 +248,7 @@
                                 <h4>USAGE IN</h4>
                                 <table class="centered">
                                     <thead>
-                                        <tr>
+                                        <tr >
                                             <th>Date</th>
                                             <th>Quantity</th>
                                             <th>Unit</th>
@@ -259,8 +262,15 @@
                                         <tr>
                                             <td contenteditable="true"><input type="date" name="us_date"></td>
                                             <td contenteditable="true"><input type="text" name="us_quantity"></td>
-                                            <td contenteditable="true"><input type="text" name="us_unit"></td>
-                                            <td contenteditable="true"><input type="text" name="us_pull"></td>
+                                            <td contenteditable="true"><select class="browser-default" name="us_unit">
+                                                    <option value="UNITS" selected></option>
+                                                </select></td>
+                                            </td>
+                                            <td contenteditable="true"><select class="browser-default"
+                                                    name="categories">
+                                                    <option value="mat eng namesss" selected></option>
+                                                </select></td>
+                                            </td>
                                             <td contenteditable="true"><input type="text" name="us_area"></td>
                                         </tr>
                                     </tbody>
@@ -297,6 +307,49 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
         });
+
+        $(function() {
+
+$("table").tablesorter({
+  theme : "materialize",
+
+  widthFixed: true,
+  // widget code contained in the jquery.tablesorter.widgets.js file
+  // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+  widgets : [ "filter", "zebra" ],
+
+  widgetOptions : {
+    // using the default zebra striping class name, so it actually isn't included in the theme variable above
+    // this is ONLY needed for materialize theming if you are using the filter widget, because rows are hidden
+    zebra : ["even", "odd"],
+
+    // reset filters button
+    filter_reset : ".reset",
+
+    // extra css class name (string or array) added to the filter element (input or select)
+    // select needs a "browser-default" class or it gets hidden
+    filter_cssFilter: ["", "", "browser-default"]
+  }
+})
+.tablesorterPager({
+
+  // target the pager markup - see the HTML block below
+  container: $(".ts-pager"),
+
+  // target the pager page select dropdown - choose a page
+  cssGoto  : ".pagenum",
+
+  // remove rows from the table to speed up the sort of large tables.
+  // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+  removeRows: false,
+
+  // output string - default is '{page}/{totalPages}';
+  // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+  output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+
+});
+
+});
     </script>
 </body>
 

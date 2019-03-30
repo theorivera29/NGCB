@@ -20,35 +20,45 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
+                    class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
-                
                     <?php 
-            if(isset($_SESSION['username'])) {
-              $username = $_SESSION['username'];
-              $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_row($result);
-          ?>
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
                     <span class="title">
-                        <?php echo $row[1]." ".$row[2]; ?></span>
+                        <?php echo $row[1]." ".$row[2]; ?>
+                    </span>
                     <span class="title">
-                        <?php echo $row[5]; }?></span>
+                        <?php echo $row[5]; }?>
+                    </span>
                 </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.php">Dashboard</a></li>
+
+                <li>
+                    <a href="dashboard.php">Dashboard</a>
+                </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -57,16 +67,24 @@
                         </div>
                     </li>
                 </ul>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled Materials</a></li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                        Materials</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -75,10 +93,23 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue" href="report.php">Report</a></li>
+
+                <li>
+                    <a class="waves-effect waves-blue" href="report.php">Report</a>
+                </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
+                <li>
+                    <a href="logout.php">Account</a>
+                </li>
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+
                 <li>
                     <a href="logout.php">Logout</a>
                 </li>
@@ -89,7 +120,8 @@
     <div class="row">
         <div class="col s12 right-align">
             <form action="server.php" method="POST">
-                <button class="waves-effect waves-light btn report-btn modal-trigger" type="submit" name="generate_report">
+                <button class="waves-effect waves-light btn report-btn modal-trigger" type="submit"
+                    name="generate_report">
                     <i class="material-icons left">print</i>Generate Report
                 </button>
             </form>
@@ -111,7 +143,7 @@
                     </thead>
 
                     <tbody>
-                <?php 
+                        <?php 
                     $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
                     INNER JOIN categories ON materials.mat_categ = categories.categories_id
                     ORDER BY categories.categories_name;";
@@ -124,11 +156,11 @@
                     foreach($categories as $data) {
                     $categ = $data['categories_name'];
                 ?>
-                <tr>
-                    <td id="merge-ten-cell"> <b>
-                            <?php echo $categ; ?></b></td>
-                </tr>
-                <?php 
+                        <tr>
+                            <td id="merge-ten-cell"> <b>
+                                    <?php echo $categ; ?></b></td>
+                        </tr>
+                        <?php 
                         $sql = "SELECT 
                         materials.mat_name, 
                         materials.mat_prevStock, 
@@ -142,34 +174,34 @@
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
-                <tr>
-                    <td>
-                        <?php echo $row[0] ?></a>
+                        <tr>
+                            <td>
+                                <?php echo $row[0] ?></a>
 
-                    </td>
-                    <td>
-                        <?php echo $row[1] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[2] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[3] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[4] ?>
-                    </td>
-                    <td>
-                        <?php echo $row[5] ?>
-                    </td>
-                    <?php 
+                            </td>
+                            <td>
+                                <?php echo $row[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[3] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[4] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[5] ?>
+                            </td>
+                            <?php 
                         }
                     ?>
-                </tr>
-                <?php 
+                        </tr>
+                        <?php 
                     }
                 ?>
-            </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -180,14 +212,15 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.modal-trigger').leanModal();
         });
 
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -197,7 +230,6 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
         });
-
     </script>
 </body>
 

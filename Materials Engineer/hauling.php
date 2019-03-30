@@ -16,19 +16,36 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
                     class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
+                    <?php 
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
                     <span class="title">
+                        <?php echo $row[1]." ".$row[2]; ?>
+                    </span>
+                    <span class="title">
+                        <?php echo $row[5]; }?>
+                    </span>
+                </li>
 
-                        <span class="title">
-                </li>
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a href="dashboard.php">Dashboard</a></li>
+
+                <li>
+                    <a href="dashboard.php">Dashboard</a>
+                </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
                 <ul class="collapsible">
                     <li>
                         <a class="collapsible-header waves-effect waves-blue">Site<i
@@ -41,18 +58,24 @@
                         </div>
                     </li>
                 </ul>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
                 <ul class="collapsible">
                     <li>
                         <a class="collapsible-header waves-effect waves-blue">Hauling<i
                                 class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a></li>
-                                <li><a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
-                                        Materials</a></li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                        Materials</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -61,16 +84,30 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li><a class="waves-effect waves-blue" href="report.php">Report</a></li>
+
+                <li>
+                    <a class="waves-effect waves-blue" href="report.php">Report</a>
+                </li>
+
                 <li>
                     <div class="divider"></div>
                 </li>
+
+                <li>
+                    <a href="logout.php">Account</a>
+                </li>
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+
                 <li>
                     <a href="logout.php">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
+
     <div class="container">
 
         <div class="row">
@@ -91,8 +128,8 @@
                                     <form action="server.php" method="POST">
                                         <input type="hidden" name="projects_name" value="">
                                         <div class="row">
-                                        <button class="waves-effect waves-light btn viewinventory-btn" type="submit"
-                                            name="fillout_hauling">Open</button>
+                                            <button class="waves-effect waves-light btn viewinventory-btn" type="submit"
+                                                name="fillout_hauling">Open</button>
                                         </div>
                                     </form>
 

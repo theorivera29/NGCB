@@ -179,7 +179,6 @@ nav {
     font-family: Didact;
     margin-bottom: 0;
     font-size: 1.5vw;
-    position: ;
 }
 
 /* Style for Dashboard */
@@ -453,8 +452,4 @@ th {
 .Password-Reset-Container {
     background-color: #0B415E;
     color: white;
-}
-
-input[type="text"][disabled] {
-   color: black !important;
 }

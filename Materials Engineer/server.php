@@ -271,4 +271,39 @@
             exit;
         }
     }
+
+    if(isset($_POST['edit_account'])) {
+        $username = mysqli_real_escape_string($conn, $_POST['userid']);
+        
+        if(isset($_POST['newusername'])) {
+            $newusername = $_POST['newusername'];
+            $sql = "UPDATE accounts SET accounts_username = '$newusername' WHERE accounts_id = '$username';";
+            mysqli_query($conn,$sql);
+        }
+        if(isset($_POST['newfname'])) {
+            $newfname = mysqli_real_escape_string($conn, $_POST['newfname']);
+            $sql = "UPDATE accounts SET accounts_fname = '$newfname' WHERE accounts_id = '$username';";
+            mysqli_query($conn, $sql);
+        }
+
+        if(isset($_POST['newlname'])) {
+            $newlname = mysqli_real_escape_string($conn, $_POST['newlname']);
+            $sql = "UPDATE accounts SET accounts_lname = '$newlname' WHERE accounts_id = '$username';";
+            mysqli_query($conn, $sql);
+        }
+
+        if(isset($_POST['newemail'])) {
+            $newemail = mysqli_real_escape_string($conn, $_POST['newemail']);
+            $sql = "UPDATE accounts SET accounts_email = '$newemail' WHERE accounts_id = '$username';";
+            mysqli_query($conn, $sql);
+        }
+        
+        if(isset($_POST['newpassword'])) {
+            $newpassword = mysqli_real_escape_string($conn, $_POST['newpassword']);
+            $sql = "UPDATE accounts SET accounts_password = '$newpassword' WHERE accounts_id = '$username';";
+            mysqli_query($conn, $sql);
+        }
+        
+     header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+    }
 ?>

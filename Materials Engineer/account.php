@@ -120,33 +120,35 @@
             <div class="row">
                 <h4> <i class="small material-icons">settings</i>Account Setting</h4>
             </div>
-            <div class="f-login username input-field col s6 m8 offset-m1 ">
-                <input id="login-username" name="username" type="text">
-                <label class="active" for="username">Username</label>
-            </div>
-            <div class="f-login username input-field col s6 m8 offset-m1 ">
-                <input id="login-username" name="username" type="text">
-                <label class="active" for="username">First Name</label>
-            </div>
-            <div class="f-login username input-field col s6 m8 offset-m1 ">
-                <input id="login-username" name="username" type="text">
-                <label class="active" for="username">Last Name</label>
-            </div>
-            <div class="f-login username input-field col s6 m8 offset-m1 ">
-                <input id="login-username" name="username" type="text">
-                <label class="active" for="username">E-mail</label>
-            </div>
-            <div class="f-login password input-field col s6 m8 offset-m1">
-                <input id="login-password" name="password" type="password">
-                <label class="active" for="password">Password</label>
-            </div>
-            <div class="row">
-                <div class="col s12 offset-m3">
-                    <button class="btn waves-effect waves-light login-btn" type="submit" name="login">Save</button>
+            <form action="server.php" method="POST">
+               <input type="hidden" name="userid"
+                    value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                <div class="f-login username input-field col s6 m8 offset-m1 ">
+                    <input id="login-username" name="newusername" type="text">
+                    <label class="active" for="newusername">Username</label>
                 </div>
-
-            </div>
-
+                <div class="f-login username input-field col s6 m8 offset-m1 ">
+                    <input id="login-username" name="newfname" type="text">
+                    <label class="active" for="newfname">First Name</label>
+                </div>
+                <div class="f-login username input-field col s6 m8 offset-m1 ">
+                    <input id="login-username" name="newlname" type="text">
+                    <label class="active" for="newlname">Last Name</label>
+                </div>
+                <div class="f-login username input-field col s6 m8 offset-m1 ">
+                    <input id="login-username" name="newemail" type="text">
+                    <label class="active" for="newemail">E-mail</label>
+                </div>
+                <div class="f-login password input-field col s6 m8 offset-m1">
+                    <input id="login-password" name="newpassword" type="password">
+                    <label class="active" for="newpassword">Password</label>
+                </div>
+                <div class="row">
+                    <div class="col s12 offset-m3">
+                        <button class="btn waves-effect waves-light login-btn" type="submit" name="edit_account">Save</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 

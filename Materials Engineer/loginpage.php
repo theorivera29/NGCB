@@ -50,7 +50,7 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m9 offset-m3">
-                            <label for='form-switch' id="form-switch-label">Create an Account</label>
+                            <label for='form-switch' id="form-switch-label">Forgot Password</label>
                         </div>
                     </div>
                 </div>

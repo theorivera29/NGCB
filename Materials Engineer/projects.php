@@ -1,3 +1,11 @@
+<?php
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
+?>
 <!DOCTYPE html>
 
 <html>
@@ -21,6 +29,7 @@
                 <ul class="side-nav" id="mobile-demo">
                     <li class="collection-item avatar">
                         <?php 
+                        $username = "";
                         if(isset($_SESSION['username'])) {
                         $username = $_SESSION['username'];
                         $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
@@ -110,8 +119,6 @@
             </div>
         </nav>
 
-
-
         <div class="container">
             <div class="row">
                 <div class="col s12">
@@ -123,72 +130,76 @@
                 <!--ONGOING TAB-->
                 <div id="ongoing" class="col s12">
                     <div class="row">
+                        <?php
 
+                            $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
+                            WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
+                            && projects_status = 'open';";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_row($result)){
+                        ?>
                         <div class="col s12 m6">
                             <div class="card blue-grey darken-1 center">
                                 <div class="card-content white-text">
-                                    <span class="card-title"></span>
-                                    <p>NGCB SAMPLE PROJECT
-                                        <p>start date</p>
-                                        <p>end date</p>
-                                        <div class="row">
-                                            <form action="server.php" method="POST">
-                                                <input type="hidden" name="projects_name" value="">
-                                                <div class="row">
-                                                    <button class="waves-effect waves-light btn viewinventory-btn"
-                                                        type="submit" name="view_inventory">View Inventory</button>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                        <div class="row">
-                                            <a href="#closeModal"
-                                                class="waves-effect waves-light btn red modal-trigger">Close
-                                                Project</a>
-                                        </div>
-
+                                    <span class="card-title"><?php echo $row[0] ?></span>
+                                    <p><?php echo $row[1] ?></p>
+                                    <p><?php echo $row[2] ?></p>
+                                    <p><?php echo $row[3] ?></p>
+                                    <div class="row">
+                                        <form action="server.php" method="POST">
+                                            <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
+                                            <div class="row">
+                                                <button class="waves-effect waves-light btn viewinventory-btn"
+                                                    type="submit" name="view_inventory">View Inventory</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <a href="#closeModal"
+                                            class="waves-effect waves-light btn red modal-trigger">Close
+                                            Project</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div id="closeModal" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                                <h4>Close Project?</h4>
+                                <p>Are you sure you want to close this project?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                                <form action="server.php" method="POST">
+                                    <input type="hidden" name="project_name" value='<?php echo $row[0] ?>'>
+                                    <button type="submit" name="close_project"
+                                        class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                                </form>
+                            </div>
+                        </div>
+                        <?php 
+                            }
+                        ?>
                     </div>
                 </div>
 
-
-
-                <!--CLOSE MODAL-->
-                <div id="closeModal" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Close Project?</h4>
-                        <p>Are you sure you want to close this project?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-                        <form action="server.php" method="POST">
-                            <input type="hidden" name="project_name" value=''>
-                            <button type="submit" name="close_project"
-                                class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
-                        </form>
-                    </div>
-                </div>
-
-
-                <!--CLOSE TAB-->
                 <div id="closed" class="col s12">
                     <div class="row">
+                        <?php
+
+                            $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
+                            WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
+                            && projects_status = 'closed';";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_row($result)){
+                        ?>
                         <div class="col s12 m6">
                             <div class="card blue-grey darken-1 center">
                                 <div class="card-content white-text">
-                                    <span class="card-title">
-                                    </span>
-                                    <p>
-
-                                    </p>
-                                    <p>Start Date:
-
-                                    </p>
-                                    <p>End Date:
-                                    </p>
+                                <span class="card-title"><?php echo $row[0] ?></span>
+                                    <p><?php echo $row[1] ?></p>
+                                    <p><?php echo $row[2] ?></p>
+                                    <p><?php echo $row[3] ?></p>
                                     <div class="row">
                                         <a href="#reopenModal"
                                             class="waves-effect waves-light btn reopen-btn modal-trigger">Re-open
@@ -197,97 +208,91 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div id="reopenModal" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                                <h4>Re-open Project?</h4>
+                                <p>Are you sure you want to re-open this project?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                                <form action="server.php" method="POST">
+                                    <input type="hidden" name="project_name" value='<?php echo $row[0] ?>'>
+                                    <button type="submit" name="reopen_project"
+                                        class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                                </form>
+                            </div>
+                        </div>
+                        <?php 
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-    <div id="reopenModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Re-open Project?</h4>
-            <p>Are you sure you want to re-open this project?</p>
+    
+        <div id="addProjectModal" class="modal modal-fixed-footer">
+            <div class="modal-content ">
+                <h4>Add Project</h4>
+                <form action="server.php" method="POST">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="New project name" id="project_name" type="text" class="validate"
+                                name="project_name">
+                            <label class="active" for="project_name">Project Name:</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="New address" id="project_address" type="text" class="validate"
+                                name="project_address">
+                            <label for="project_address">Address:</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="New start date" id="start_date" type="date" class="validate"
+                                name="start_date">
+                            <label for="start_date">Start date:</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="New end date" id="end_date" type="date" class="validate" name="end_date">
+                            <label for="end_date">End date:</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit"
+                    name="create_project">Save Changes</button>
+            </div>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-            <form action="server.php" method="POST">
-                <input type="hidden" name="project_name" value='<?php echo $row[1]; ?>'>
-                <button type="submit" name="reopen_project"
-                    class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
-            </form>
+
+        <div id="deleteProjectModal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Delete Project?</h4>
+                <p>Are you sure you want to delete this project? </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+            </div>
         </div>
-    </div>
 
-    <div id="addProjectModal" class="modal modal-fixed-footer">
-        <div class="modal-content ">
-            <h4>Add Project</h4>
-            <form action="server.php" method="POST">
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input placeholder="New project name" id="project_name" type="text" class="validate"
-                            name="project_name">
-                        <label class="active" for="project_name">Project Name:</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input placeholder="New address" id="project_address" type="text" class="validate"
-                            name="project_address">
-                        <label for="project_address">Address:</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input placeholder="New start date" id="start_date" type="date" class="validate"
-                            name="start_date">
-                        <label for="start_date">Start date:</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input placeholder="New end date" id="end_date" type="date" class="validate" name="end_date">
-                        <label for="end_date">End date:</label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit"
-                            name="create_project">Save Changes</button>
-                    </div>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('.modal-trigger').leanModal();
+            });
 
-                </div>
-
-                <div id="deleteProjectModal" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Delete Project?</h4>
-                        <p>Are you sure you want to delete this project? </p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
-                    </div>
-                </div>
-
-
-                <!--Import jQuery before materialize.js-->
-                <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-                <script type="text/javascript"
-                    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
-                </script>
-                <script>
-                    $(document).ready(function () {
-                        $('.modal-trigger').leanModal();
-                    });
-
-                    // SIDEBAR
-                    $(document).ready(function () {
-                        $('.button-collapse').sideNav({
-                            menuWidth: 300, // Default is 300
-                            edge: 'left', // Choose the horizontal origin
-                            closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                            draggable: true // Choose whether you can drag to open on touch screens
-                        });
-                        // START OPEN
-                        $('.button-collapse').sideNav('show');
-                    });
-                </script>
-</body>
-
+            $(document).ready(function () {
+                $('.button-collapse').sideNav({
+                    menuWidth: 300, 
+                    edge: 'left', 
+                    closeOnClick: false, 
+                    draggable: true 
+                });
+                $('.button-collapse').sideNav('show');
+            });
+        </script>
+    </body>
 </html>

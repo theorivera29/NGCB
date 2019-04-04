@@ -70,7 +70,7 @@
 
 
 
-                <li><a href="projects.php">Password Request</a></li>
+                <li><a href="passwordrequest.php">Password Request</a></li>
                 <li>
                 <li>
                     <div class="divider"></div>

@@ -122,14 +122,10 @@
     </div>
     <div class="">
         <?php 
-                        if(isset($_SESSION['username'])) {
-                        $username = $_SESSION['username'];
-                        $sql = "SELECT projects_name FROM projects;";
-                        $result = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_row($result);
-                    ?>
+           $projects_name = $_GET['projects_name'];
+        ?>
         <div class="row">
-            <span> <?php echo row[0]; ?></span>
+            <span> <?php echo $projects_name; ?></span>
 
             <div class="col s12">
                 <ul class="tabs">
@@ -138,9 +134,6 @@
                 </ul>
             </div>
         </div>
-        <?php    
-                            }
-                        ?>
     </div>
 
     <!--SITE MATERIALS-->
@@ -169,7 +162,6 @@
 
                     <tbody>
                         <?php 
-                            $projects_name = $_GET['projects_name'];
                             $sql = "SELECT 
                             materials.mat_name, 
                             materials.mat_prevStock, 

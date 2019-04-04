@@ -62,7 +62,7 @@
 
 
 
-                <li><a href="projects.php">Password Request</a></li>
+                <li><a href="passwordrequest.php">Password Request</a></li>
                 <li>
                 <li>
                     <div class="divider"></div>
@@ -79,17 +79,26 @@
             <table class="striped centered">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>ID</th>
                         <th>User Name</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>E-mail</th>
                         <th>Account Type</th>
                         <th>Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                   <td>jams</td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
+                   <!--NEXT TIME KO N LAGYAN NG PROMPT NA ARE YOU SURE CHORV-->
+                   <td> <button>Accept</button> <button>Reject</button></td>
                 </tbody>
             </table>
 

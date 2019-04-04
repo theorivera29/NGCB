@@ -121,58 +121,14 @@
                     <button class="btn waves-effect waves-light create-account-btn" type="submit"
                         name="create_account">Create
                         An Account</button>
-                    <a class="waves-effect waves-light btn" href="loginpage.php">Cancel</a>
+                    
                 </div>
             </div>
         </form>
     </div>
 
 
-    <div id="addmaterialModal" class="modal modal-fixed-footer">
-        <form action="server.php" method="POST">
-            <div class="modal-content">
-                <h4>Add Material</h4>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="materialname" name="materialname" type="text" class="validate">
-                        <label for="materialname">Material Name:</label>
-                    </div>
-                    <div class="col s12">
-                        <label>Category:</label>
-
-                        <div class="input-field col s12">
-                            <select class="browser-default" name="categories">
-                                <option value="" disabled selected>Choose your option</option>
-                               
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s5">
-                            <label>Quantifier:</label>
-                        </div>
-                    </div>
-                    <div class="input-field col s5">
-                        <select class="browser-default" name="categories">
-                            <option value="" disabled selected>Choose your option</option>
-
-                            <option>
-
-                            </option>
-
-                        </select>
-                    </div>
-                    <div class="input-field col s7">
-                        <input id="minquantity" name="minquantity" type="text" class="validate">
-                        <label for="minquantity">Minimum quantity of materials when to be quantified:</label>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="add_materials">Next</button>
-            </div>
-        </form>
+</form>
     </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

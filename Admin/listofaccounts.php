@@ -21,9 +21,10 @@
 </head>
 
 <body>
-    <nav>
+<nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
+                    class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
@@ -39,17 +40,36 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                </li>
-                <li><a href="listofaccounts.php">List of Accounts</a></li>
-                <li>
+
+                <ul class="collapsible">
+                    <li>
+                        <a class="collapsible-header waves-effect waves-blue">Accounts<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="accountcreation.php">Create Account</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="listofaccounts.php">List of Accounts</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
                 <li>
                     <div class="divider"></div>
+                </li>
                 </li>
                 <li><a href="projects.php">Projects</a></li>
+
                 <li>
                 <li>
                     <div class="divider"></div>
                 </li>
+
+
+
                 <li><a href="projects.php">Password Request</a></li>
                 <li>
                 <li>
@@ -61,6 +81,7 @@
             </ul>
         </div>
     </nav>
+    
     <div class="container">
         <div class="card">
             <table class="striped centered">

@@ -15,7 +15,8 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
+                    class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
@@ -31,17 +32,36 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                </li>
-                <li><a href="listofaccounts.php">List of Accounts</a></li>
-                <li>
+
+                <ul class="collapsible">
+                    <li>
+                        <a class="collapsible-header waves-effect waves-blue">Accounts<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="accountcreation.php">Create Account</a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-blue" href="listofaccounts.php">List of Accounts</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
                 <li>
                     <div class="divider"></div>
+                </li>
                 </li>
                 <li><a href="projects.php">Projects</a></li>
+
                 <li>
                 <li>
                     <div class="divider"></div>
                 </li>
+
+
+
                 <li><a href="projects.php">Password Request</a></li>
                 <li>
                 <li>
@@ -61,12 +81,6 @@
             <span id="sub-headers">active accounts</span>
         </div>
 
-        <div class="col s3 Cards-Container Account-Creation-Container">
-            <span id="text-headers">Account Creation</span>
-            <span id="sub-headers"></span>
-            <span id="sub-headers">requesting for approval</span>
-        </div>
-
         <div class="col s3 Cards-Container Password-Reset-Container">
             <span id="text-headers">Password Reset</span>
             <span id="sub-headers"></span>
@@ -77,7 +91,8 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    </script>
     <script>
         // SIDEBAR
         $(document).ready(function () {
@@ -90,7 +105,6 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
         });
-
     </script>
 
 </body>

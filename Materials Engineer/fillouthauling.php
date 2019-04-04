@@ -160,7 +160,9 @@
                                 <tbody>
                                     <tr>
                                         <td><input type="text" name="quantity" id="quantity"></td>
-                                        <td><input type="text" name="unit" id="unit"></td>
+                                        <td><select class="browser-default" name="unit">
+                                                    <option value="UNITS" selected></option>
+                                                </select></td>
                                         <td><input type="text" name="articles" id="articles"></td>
                                     </tr>
                                 </tbody>

@@ -42,11 +42,11 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m24">
-                            
+
                             <button class="btn waves-effect waves-light login-btn" type="submit"
                                 name="login">Login</button>
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="col s12 m9 offset-m3">
@@ -58,24 +58,22 @@
             </form>
 
             <form id="password-form" action="server.php" method="POST">
-                
-                <div class="row">
                 <h2 class="header header-two">Password Reset</h2>
-                                <div class="input-field col s7 offset-m2">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input placeholder="username" id="login-username" name="username" type="text"
-                                        class="validate">
-                                </div>
+                <div class="row">
+                    <div class="input-field col s7 offset-m2">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input placeholder="username" id="login-username" name="username" type="text" class="validate">
+                    </div>
 
-                                <div class="row">
-                                    <div class="col s4 m6 offset-m3">
-                                        <a href="createaccount.php" class="btn waves-effect waves-light" type="submit"
-                                            name="action">Submit</a>
-                                        <a href="loginpage.php" class="btn waves-effect waves-light" type="submit"
-                                            name="action">Cancel</a>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col s4 m6 offset-m3">
+                            <a href="createaccount.php" class="btn waves-effect waves-light" type="submit"
+                                name="action">Submit</a>
+                            <a href="loginpage.php" class="btn waves-effect waves-light" type="submit"
+                                name="action">Cancel</a>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
 

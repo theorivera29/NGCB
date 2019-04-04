@@ -116,7 +116,10 @@
             </ul>
         </div>
     </nav>
-
+    <div class="col s11 right-align">
+        <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
+            <i class="material-icons left">add_circle_outline</i>Add Material</a>
+    </div>
     <div class="">
         <?php 
                         if(isset($_SESSION['username'])) {
@@ -142,12 +145,7 @@
 
     <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
-        <div class="row">
-            <div class="col s11 right-align">
-                <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
-                    <i class="material-icons left">add_circle_outline</i>Add Material</a>
-            </div>
-        </div>
+
         <div class="view-inventory-container">
             <div class="light-blue lighten-5 ">
                 <table class="striped centered view-inventory">
@@ -320,9 +318,10 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="create_materials">Next</button>
+                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger"
+                    name="create_materials">Next</button>
             </div>
-       
+
     </div>
 
     <!-- ADD STOCKCARD MODAL -->
@@ -341,16 +340,16 @@
                 <tbody>
                     <tr>
                         <td contenteditable="true">
-                        <input id="delivered_date" name="delivered_date" type="text" class="validate">
+                            <input id="delivered_date" name="delivered_date" type="text" class="validate">
                         </td>
                         <td contenteditable="true">
-                        <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate">
+                            <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate">
                         </td>
                         <!-- <td contenteditable="true">
                         <input id="delivered_unit" name="delivered_unit" type="text" class="validate">
                         </td> -->
                         <td contenteditable="true">
-                        <input id="suppliedBy" name="suppliedBy" type="text" class="validate">
+                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate">
                         </td>
                     </tr>
                 </tbody>
@@ -358,7 +357,8 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <button type = 'submit' name = 'create_materials' class="modal-close waves-effect waves-green btn-flat">Save</button>
+            <button type='submit' name='create_materials'
+                class="modal-close waves-effect waves-green btn-flat">Save</button>
             <a href="#addmaterialModal" class="modal-close waves-effect waves-teal btn-flat">Back</a>
         </div>
     </div>

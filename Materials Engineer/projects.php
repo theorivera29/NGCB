@@ -143,8 +143,15 @@
                                 <div class="card-content white-text">
                                     <span class="card-title"><?php echo $row[0] ?></span>
                                     <p><?php echo $row[1] ?></p>
-                                    <p><?php echo $row[2] ?></p>
-                                    <p><?php echo $row[3] ?></p>
+                                    <p>
+                                        <span>
+                                        start date
+                                    </span>
+                                    <?php echo $row[2] ?></p>
+                                    <p>
+                                        <span>
+                                        end date
+                                    </span><?php echo $row[3] ?></p>
                                     <div class="row">
                                         <form action="server.php" method="POST">
                                             <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">

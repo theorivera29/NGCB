@@ -70,16 +70,16 @@ f: input field
     padding-left: 2%;
 }
 
-input:required{
+input:required {
     border: 1px solid #3E3E3F !important;
 }
 
-.username{
+.username {
     margin-top: 5% !important;
     margin-bottom: 1% !important;
 }
 
-.password{
+.password {
     margin-top: 5% !important;
 }
 
@@ -100,15 +100,15 @@ label {
     display: none
 }
 
-#form-switch:checked~#password-form {
+#form-switch:checked ~ #password-form {
     display: block
 }
 
-#form-switch:checked~#login-form {
+#form-switch:checked ~ #login-form {
     display: none
 }
 
-#form-switch-label{
+#form-switch-label {
     font-size: 2vh !important;
 
 }
@@ -125,15 +125,16 @@ label {
     float: right !important;
 }
 
-.create-account-btn{
+.create-account-btn {
     color: #ffffff !important;
     background-color: #4C99AF !important;
 }
 
-.btn{
+.btn {
     color: #ffffff !important;
     background-color: #4C99AF !important;
 }
+
 /*End of Login Page Style*/
 
 /*Start of Style for all pages of Materials Engineer*/
@@ -182,13 +183,49 @@ nav {
 }
 
 /* Style for Dashboard */
+.contextmenu {
+    position: absolute;
+    z-index: 10;
+    line-height: 50px;
+    font-size: 15px;
+    padding-left: 1%;
+    width: 300px;
+    display: none;
+    background-color: #f6f6f6;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+a.previous,
+a.next,
+.days a {
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    width: 25px;
+}
+
+.selected {
+    font-weight: bold;
+    background-color: #1A5D89;
+    color: #ffffff;
+}
+
+input.datepicker:focus + div.contextmenu {
+    display: block;
+}
+
+input.datepicker:focus + div.contextmenu,
+div.contextmenu:hover {
+    display: block;
+}
+
 .Calendar-Todo-Container {
     background-color: #F0F1F2;
     margin-top: 1%;
     margin-left: 2% !important;
     border-radius: 2%;
     border: 2px solid #97A0A5;
-    height: 350px;
+    height: 300px;
 }
 
 .Task-Todo-Container {
@@ -198,7 +235,7 @@ nav {
     border-radius: 2%;
     border: 2px solid #97A0A5;
     width: 60% !important;
-    height: 350px;
+    height: 300px;
 }
 
 .Panel-Header {
@@ -278,7 +315,7 @@ nav {
     color: white !important;
 }
 
-.view-task-btn{
+.view-task-btn {
     float: right;
     color: #0D1F2D !important;
     background-color: #ffffff !important;
@@ -306,7 +343,7 @@ nav {
     margin-right: 2%;
 }
 
-.view-inventory-head>tr>th {
+.view-inventory-head > tr > th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -338,7 +375,7 @@ nav {
     padding: 5%;
 }
 
-.site-materials-head>tr>th {
+.site-materials-head > tr > th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -385,7 +422,7 @@ th {
     margin-right: 2%;
 }
 
-.item-categories-head>tr>th {
+.item-categories-head > tr > th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -395,7 +432,7 @@ th {
 }
 
 /*Style for Hauling*/
-.hauled-items-head>tr>th {
+.hauled-items-head > tr > th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -415,7 +452,7 @@ th {
     color: white !important;
 }
 
-.report-head>tr>th {
+.report-head > tr > th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;

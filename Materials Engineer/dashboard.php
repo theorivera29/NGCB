@@ -22,8 +22,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
-                    class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
 
             <ul class="side-nav" id="mobile-demo">
@@ -57,8 +56,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -74,8 +72,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -126,18 +123,26 @@
                 <span>CALENDAR AND TO-DO</span>
             </div>
             <form action="server.php" method="POST">
-                <input type="hidden" name="todoOf"
-                    value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
-                <div class="card card-content">
-                    <div class="row">
-                        <div class="input-field input-field-todo">
-                            <textarea id="todo_task" name="todo_task" class="materialize-textarea todo"></textarea>
-                            <label for="todo_task" id="todo-label">Input to-do here</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s3">
+                       <label>To-do Date:</label>
+                    </div>
+                       <div class="col s9">
+                        <input placeholder="▼" type="text" class="datepicker">
                     </div>
                 </div>
-                <button class="waves-effect waves-light btn green" type="submit" class="validate"
-                    name="create_todo">Save</button>
+                
+                <input type="hidden" name="todoOf" value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                
+                    <div class="row">
+                    <div class="input-field col s12">
+                       
+                        <input id="todo-task" name="todo-task" type="text" class="validate">
+                        <label for="todo_task">Input task here:</label>
+                    </div>
+                    </div>
+                
+                <button class="waves-effect waves-light btn todo-btn" type="submit" class="validate" name="create_todo">Save</button>
             </form>
         </div>
 
@@ -161,8 +166,7 @@
                     }
                 ?>
             </div>
-            <button class="waves-effect waves-light view-task-btn" type="submit" class="validate"
-                name="create_todo">View All Task</button>
+            <button class="waves-effect waves-light view-task-btn" type="submit" class="validate" name="create_todo">View All Task</button>
         </div>
 
     </div>
@@ -232,9 +236,10 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
+    <script src="../datepicker.js"></script>
     <script>
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -243,14 +248,6 @@
             });
             // START OPEN
             $('.button-collapse').sideNav('show');
-
-
-            //DATEPICKER
-            $('.datepicker').pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15, // Creates a dropdown of 15 years to control year,
-                closeOnSelect: false // Close upon selecting a date,
-            });
 
         });
 
@@ -262,6 +259,7 @@
 
         btn.addEventListener('click', liGenerate);
         document.addEventListener('click', liDelete);
+
     </script>
 
 </body>

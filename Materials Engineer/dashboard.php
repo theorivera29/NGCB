@@ -214,8 +214,37 @@
                                 <?php echo $row[3] ?>
                             </td>
                             <td>
-                                <a class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</a>
-                                <a class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</a>
+                                <form action="server.php" method="POST">
+                                    <?php
+                                        if(strcasecmp($row[3], 'in progress') == 0) {
+                                            ?>
+                                                <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                                                <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                                                <a class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</a>
+                                                <div id="doneBtn" class="modal modal-fixed-footer">
+                                                    <span>Are you sure want to click done?</span>
+                                                    <div class="modal-footer">
+                                                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
+                                                    <button type="submit" name="todo_update" class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                        } else {
+                                            ?>
+                                                <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                                                <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                                                <a class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</a>
+                                                <div id="clearBtn" class="modal modal-fixed-footer">
+                                                <span>Are you sure want to clear this task</span>
+                                                <div class="modal-footer">
+                                                <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
+                                                <button type="submit" name="todo_update"class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
+                                    ?>
+                                </form>
                             </td>
                         </tr>
                         <?php    
@@ -289,21 +318,9 @@
         </div>
     </div>
 
-    <div id="doneBtn" class="modal modal-fixed-footer">
-        <span>Are you sure want to click done?</span>
-        <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Yes</a>
-        </div>
-    </div>
+    
 
-    <div id="clearBtn" class="modal modal-fixed-footer">
-        <span>Are you sure want to clear this task</span>
-        <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Yes</a>
-        </div>
-    </div>
+    
 
 
     <div id="viewAllTask" class="modal modal-fixed-footer">
@@ -383,5 +400,4 @@
     </script>
 
 </body>
-
 </html>

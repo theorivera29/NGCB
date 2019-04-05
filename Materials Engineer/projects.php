@@ -164,10 +164,16 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="row">
-                                    <a href="#closeModal" class="waves-effect waves-light btn red modal-trigger">Close
-                                        Project</a>
-                                </div>
+                                <?php 
+                                    if (strtotime($row[3]) > strtotime ($row[4])) {
+                                        ?>
+                                            <div class="row">
+                                                <a href="#closeModal" class="waves-effect waves-light btn red modal-trigger">Close
+                                                    Project</a>
+                                            </div>
+                                        <?php
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>

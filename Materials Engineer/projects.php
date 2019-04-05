@@ -165,7 +165,7 @@
                                     </form>
                                 </div>
                                 <?php 
-                                    if (strtotime($row[3]) > strtotime ($row[4])) {
+                                    if (strtotime($row[2]) > strtotime ($row[3])) {
                                         ?>
                                             <div class="row">
                                                 <a href="#closeModal" class="waves-effect waves-light btn red modal-trigger">Close

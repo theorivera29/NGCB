@@ -118,12 +118,6 @@
 
     <div class="container">
         <div class="row">
-            <div class="col s12">
-                <ul class="tabs">
-                    <li class="tab col s3"><a href="#ongoing">Ongoing</a></li>
-                    <li class="tab col s3"><a href="#closed">Closed</a></li>
-                </ul>
-            </div>
             <!--ONGOING TAB-->
             <div id="ongoing" class="col s12">
                 <div class="row">

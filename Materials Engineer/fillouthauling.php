@@ -154,6 +154,7 @@
                                         <th>Quantity</th>
                                         <th>Unit</th>
                                         <th>Articles</th>
+                                        <th>Categories</th>
                                     </tr>
                                 </thead>
 
@@ -161,9 +162,44 @@
                                     <tr>
                                         <td><input type="text" name="quantity" id="quantity"></td>
                                         <td><select class="browser-default" name="unit">
-                                                    <option value="UNITS" selected></option>
-                                                </select></td>
-                                        <td><input type="text" name="articles" id="articles"></td>
+                                                <option value="UNITS" selected></option>
+                                            </select></td>
+                                        <td>
+                                            <select class="browser-default" name="articles">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <?php
+                                    $sql = "SELECT * FROM categories;";
+                                    $result = mysqli_query($conn, $sql);
+                                    while($row = mysqli_fetch_row($result)) {                         
+
+                                ?>
+                                                <option value="<?php echo $row[0]; ?>">
+                                                    <?php echo $row[1]; ?>
+                                                </option>
+
+                                                <?php 
+                                    }
+                                ?>
+                                            </select></td>
+                                        <td>
+
+                                            <select class="browser-default" name="mat_categ">
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <?php
+                                    $sql = "SELECT * FROM categories;";
+                                    $result = mysqli_query($conn, $sql);
+                                    while($row = mysqli_fetch_row($result)) {                         
+
+                                ?>
+                                                <option value="<?php echo $row[0]; ?>">
+                                                    <?php echo $row[1]; ?>
+                                                </option>
+
+                                                <?php 
+                                    }
+                                ?>
+                                            </select>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -294,6 +294,6 @@
             mysqli_query($conn, $sql);
         }
         
-     header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+     header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");
     }
 ?>

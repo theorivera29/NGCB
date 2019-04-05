@@ -120,29 +120,44 @@
             <div class="row">
                 <h4> <i class="small material-icons">settings</i>Account Setting</h4>
             </div>
+
+            <?php 
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT 
+                        accounts_username, accounts_fname, accounts_lname, accounts_email, accounts_password FROM accounts
+                        WHERE accounts_username='$username';";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
+
             <form action="server.php" method="POST">
                <input type="hidden" name="userid"
                     value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newusername" type="text">
+                    <input id="login-username" name="newusername" type="text" placeholder=" <?php echo $row[0]?>">
                     <label class="active" for="newusername">Username</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newfname" type="text">
+                    <input id="login-username" name="newfname" type="text"  placeholder=" <?php echo $row[1]?>">
                     <label class="active" for="newfname">First Name</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newlname" type="text">
+                    <input id="login-username" name="newlname" type="text"  placeholder=" <?php echo $row[2]?>">
                     <label class="active" for="newlname">Last Name</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newemail" type="text">
+                    <input id="login-username" name="newemail" type="text"  placeholder=" <?php echo $row[3]?>">
                     <label class="active" for="newemail">E-mail</label>
                 </div>
                 <div class="f-login password input-field col s6 m8 offset-m1">
-                    <input id="login-password" name="newpassword" type="password">
+                    <input id="login-password" name="newpassword" type="password"  placeholder=" <?php echo $row[4]?>">
                     <label class="active" for="newpassword">Password</label>
                 </div>
+
+                        <?php 
+                        }
+                    ?>
                 <div class="row">
                     <div class="col s12 offset-m3">
                         <button class="btn waves-effect waves-light login-btn" type="submit" name="edit_account">Save</button>

@@ -1,3 +1,11 @@
+<?php
+    include "db_connection.php";
+    session_start();
+
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+    }
+?>
 <!DOCTYPE html>
 
 <html>
@@ -109,42 +117,59 @@
     </nav>
 
     <div class="container">
-
         <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s3"><a href="#ongoing">Ongoing</a></li>
+                    <li class="tab col s3"><a href="#closed">Closed</a></li>
+                </ul>
+            </div>
             <!--ONGOING TAB-->
             <div id="ongoing" class="col s12">
                 <div class="row">
+                    <?php
 
+                            $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
+                            WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
+                            && projects_status = 'open';";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_row($result)){
+                        ?>
                     <div class="col s12 m6">
                         <div class="card blue-grey darken-1 center">
                             <div class="card-content white-text">
-                                <span class="card-title"></span>
-                                <p>NGCB SAMPLE PROJECT
-                                    <p>start date</p>
-                                    <p>end date</p>
-                                    <div class="row">
-
-                                    </div>
+                                <span class="card-title"><?php echo $row[0] ?></span>
+                                <p><?php echo $row[1] ?></p>
+                                <p>
+                                    <span>
+                                        start date
+                                    </span>
+                                    <?php echo $row[2] ?></p>
+                                <p>
+                                    <span>
+                                        end date
+                                    </span><?php echo $row[3] ?></p>
+                                <div class="row">
                                     <form action="server.php" method="POST">
-                                        <input type="hidden" name="projects_name" value="">
+                                        <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
                                         <div class="row">
-                                            <button class="waves-effect waves-light btn viewinventory-btn" type="submit"
+                                        <button class="waves-effect waves-light btn viewinventory-btn" type="submit"
                                                 name="fillout_hauling">Open</button>
                                         </div>
                                     </form>
-
+                                </div>
 
                             </div>
                         </div>
                     </div>
 
+                    <?php 
+                            }
+                        ?>
                 </div>
             </div>
 
         </div>
-
-
-
     </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

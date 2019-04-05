@@ -146,8 +146,7 @@ body {
 nav {
     background-color: #173753 !important;
     color: black !important;
-    font-size: 20px !important;
-    font-family: Clone;
+    font-size: 2vmin !important;
 }
 
 
@@ -157,8 +156,7 @@ nav {
 
 .side-nav a {
     color: black !important;
-    font-size: 20px !important;
-    font-family: Clone;
+    font-size: 2vmin !important;
 }
 
 .collapsible-header {

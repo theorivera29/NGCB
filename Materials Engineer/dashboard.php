@@ -116,12 +116,39 @@
 
     <!--Calendar and To do Row-->
     <div class="row">
-
-        <!--Start Calendar and To-do Container-->
         <div class="col s4 Calendar-Todo-Container">
             <div class="Panel-Header">
                 <span>CALENDAR AND TO-DO</span>
             </div>
+            <form action="server.php" method="POST">
+            <div class="row">
+                    <div class="input-field col s3">
+                       <label>To-do Date:</label>
+                    </div>
+                       <div class="col s9">
+                        <input placeholder="▼" type="text" class="datepicker">
+                    </div>
+                </div>
+                <input type="hidden" name="todoOf"
+                    value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                <div class="card card-content">
+                    <div class="row">
+                        <div class="input-field input-field-todo">
+                            <textarea id="todo_task" name="todo_task" class="materialize-textarea todo"></textarea>
+                            <label for="todo_task" id="todo-label">Input to-do here</label>
+                        </div>
+                    </div>
+                </div>
+                <button class="waves-effect waves-light btn green" type="submit" class="validate"
+                    name="create_todo">Save</button>
+            </form>
+        </div>
+
+        <!--Start Calendar and To-do Container-->
+        <!--<div class="col s4 Calendar-Todo-Container">
+            <div class="Panel-Header">
+                <span>CALENDAR AND TO-DO</span>
+         </div>
             <form action="server.php" method="POST">
                 <div class="row">
                     <div class="input-field col s3">
@@ -132,7 +159,7 @@
                     </div>
                 </div>
                 
-                <input type="hidden" name="todoOf" value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                <input type="hidden" name="todoOf" value="">
                 
                     <div class="row">
                     <div class="input-field col s12">
@@ -145,6 +172,8 @@
                 <button class="waves-effect waves-light btn todo-btn" type="submit" class="validate" name="create_todo">Save</button>
             </form>
         </div>
+        -->
+
 
         <!--To-do Container-->
         <div class="col s7 Task-Todo-Container">
@@ -152,21 +181,47 @@
                 <span>TO-DO TASK</span>
             </div>
             <div class="">
-                <span id="text-headers">Tasks</span>
-                <?php 
-                    $task = $_SESSION['tasks'];
-                    $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
-                    $result = mysqli_query($conn, $sql);
-                    while($row = mysqli_fetch_array($result)) {
-                ?>
-                <h5>
-                    <?php echo $row[2] ;?>
-                </h5>
-                <?php
-                    }
-                ?>
+            <table class="striped centered view-inventory">
+                    <thead class="view-inventory-head">
+                        <tr>
+                            <th>Date</th>
+                            <th>Task</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php 
+                           $task = $_SESSION['tasks'];
+                           $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
+                           $result = mysqli_query($conn, $sql);
+                           while($row = mysqli_fetch_array($result)) {
+                        ?>
+
+                        <tr>
+                            <td>
+                                <?php echo $row[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[3] ?>
+                            </td>
+                            <td>
+                                <button>SAMPLE</button>
+                            </td>
+                        </tr>
+                        <?php    
+                            }
+                        ?>
+                    </tbody>
+                </table>
+
+                
             </div>
-            <button class="waves-effect waves-light view-task-btn" type="submit" class="validate" name="create_todo">View All Task</button>
+            <a class="waves-effect waves-light btn modal-trigger" href="#viewAllTask">View ALl Task</a>
         </div>
 
     </div>
@@ -229,8 +284,49 @@
         </div>
     </div>
 
+    <div id="viewAllTask" class="modal modal-fixed-footer">
+    <table class="striped centered view-inventory">
+                    <thead class="view-inventory-head">
+                        <tr>
+                            <th>Date</th>
+                            <th>Task</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        <?php 
+                           $task = $_SESSION['tasks'];
+                           $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
+                           $result = mysqli_query($conn, $sql);
+                           while($row = mysqli_fetch_array($result)) {
+                        ?>
 
+                        <tr>
+                            <td>
+                                <?php echo $row[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row[3] ?>
+                            </td>
+                            <td>
+                                <button>SAMPLE</button>
+                            </td>
+                        </tr>
+                        <?php    
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+              
+            </div>
+    </div>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -239,7 +335,8 @@
     <script src="../datepicker.js"></script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+         // SIDEBAR
+         $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -249,17 +346,18 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
 
+            $('.modal-trigger').leanModal();
+
+            $(".add-row").click(function () {
+                var quantity = $("#name").val();
+                var unit = $("#email").val();
+                var articles = $('#articles').val();
+                var markup = "<tr>" +
+                    "<td><input type=\"text\" name=\"category_name[]\"></td>" +
+                    "</tr>;"
+                $("table tbody").append(markup);
+            });
         });
-
-        const btn = document.querySelector('#li-generate');
-        const inpt = document.querySelector('#inputValue');
-        const ul = document.querySelector('.ulList');
-
-        //const deleteLi = document.querySelector('.remove');
-
-        btn.addEventListener('click', liGenerate);
-        document.addEventListener('click', liDelete);
-
     </script>
 
 </body>

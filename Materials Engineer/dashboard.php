@@ -22,12 +22,10 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
-                    class="material-icons">menu</i></a>
-
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons menuIcon">menu</i></a>
+            <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <ul class="side-nav" id="mobile-demo">
-                <span id="NGCB">New Golden City Builders and Development Corporation</span>
-                <span id="NGCB">New Golden City Builders and Development Corporation</span>
+
                 <li class="collection-item avatar">
                     <?php 
                         if(isset($_SESSION['username'])) {
@@ -58,8 +56,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -75,8 +72,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -129,22 +125,29 @@
                     <div class="input-field col s3">
                         <label>To-do Date:</label>
                     </div>
-                    <div class="col s9">
-                        <input placeholder="▼" type="text" class="datepicker">
+                    <div class="col s3">
+                        <input placeholder="&emsp;&emsp;&emsp;&emsp;▼" type="text" class="datepicker">
                     </div>
                 </div>
-                <input type="hidden" name="todoOf"
-                    value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
-                <div class="card card-content">
-                    <div class="row">
-                        <div class="input-field input-field-todo">
-                            <textarea id="todo_task" name="todo_task" class="materialize-textarea todo"></textarea>
-                            <label for="todo_task" id="todo-label">Input to-do here</label>
-                        </div>
+                <input type="hidden" name="todoOf" value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                <div class="row">
+                    <div class="input-field input-field-todo">
+                        <textarea id="todo_task" name="todo_task" class="materialize-textarea todo" required></textarea>
+                        <label for="todo_task" id="todo-label">Input to-do here:</label>
                     </div>
                 </div>
-                <button class="waves-effect waves-light btn green" type="submit" class="validate"
-                    name="create_todo">Save</button>
+                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="create_todo">Save</button>
+                <!--HINDI KO MAPAGANA
+                   <div id="savetodo" class="modal">
+                    <div class="modal-content">
+                        <span>Are you sure want to save this task?</span>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
+                        <button type="submit" class="modal-close waves-effect waves-green btn-flat">Yes</button>
+                    </div>
+                </div>
+                -->
             </form>
         </div>
 
@@ -218,30 +221,34 @@
                                     <?php
                                         if(strcasecmp($row[3], 'in progress') == 0) {
                                             ?>
-                                                <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
-                                                <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                                <a class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</a>
-                                                <div id="doneBtn" class="modal modal-fixed-footer">
-                                                    <span>Are you sure want to click done?</span>
-                                                    <div class="modal-footer">
-                                                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
-                                                    <button type="submit" name="todo_update" class="modal-close waves-effect waves-red btn-flat">Yes</button>
-                                                    </div>
-                                                </div>
-                                            <?php
+                                    <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                                    <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                                    <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</button>
+                                    <div id="doneBtn" class="modal">
+                                        <div class="modal-content">
+                                            <span>Are you sure want to click done?</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                            <button type="submit" name="todo_update" class="modal-close waves-effect waves-green btn-flat">Yes</button>
+                                        </div>
+                                    </div>
+                                    <?php
                                         } else {
                                             ?>
-                                                <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
-                                                <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                                <a class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</a>
-                                                <div id="clearBtn" class="modal modal-fixed-footer">
-                                                <span>Are you sure want to clear this task</span>
-                                                <div class="modal-footer">
-                                                <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
-                                                <button type="submit" name="todo_update"class="modal-close waves-effect waves-red btn-flat">Yes</button>
-                                                </div>
-                                            </div>
-                                            <?php
+                                    <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                                    <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                                    <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</button>
+                                    <div id="clearBtn" class="modal">
+                                        <div class="modal-content">
+                                            <span>Are you sure want to clear this task</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                            <button type="submit" name="todo_update" class="modal-close waves-effect waves-green btn-flat">Yes</button>
+                                        </div>
+                                    </div>
+                                    <?php
                                         }
                                     ?>
                                 </form>
@@ -318,9 +325,9 @@
         </div>
     </div>
 
-    
 
-    
+
+
 
 
     <div id="viewAllTask" class="modal modal-fixed-footer">
@@ -353,7 +360,8 @@
                         <?php echo $row[3] ?>
                     </td>
                     <td>
-                        <button>SAMPLE</button>
+                        <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</button>
+                        <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Clear</button>
                     </td>
                 </tr>
                 <?php    
@@ -375,7 +383,7 @@
     <script>
         // SIDEBAR
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -387,7 +395,7 @@
 
             $('.modal-trigger').leanModal();
 
-            $(".add-row").click(function () {
+            $(".add-row").click(function() {
                 var quantity = $("#name").val();
                 var unit = $("#email").val();
                 var articles = $('#articles').val();
@@ -397,7 +405,9 @@
                 $("table tbody").append(markup);
             });
         });
+
     </script>
 
 </body>
+
 </html>

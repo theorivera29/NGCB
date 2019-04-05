@@ -124,11 +124,11 @@
                     <div class="card-content">
                         <h4>Hauling Form</h4>
                         <div class="row">
-                            <div class="col s8">
+                            <div class="col s2">
                                 <label>Date:</label>
                                 <input id="test" type="date" class="datepicker" name="date">
                             </div>
-                            <div class="input-field col s2 offset-s2 right-align">
+                            <div class="input-field col s2 offset-s8 right-align">
                                 <input id="formnumber" type="text" class="validate" name="formnumber">
                                 <label for="formnumber">Form Number:</label>
                             </div>
@@ -267,6 +267,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
+    <script src="../datepicker.js"></script>
     <script>
         // SIDEBAR
         $(document).ready(function () {
@@ -283,12 +284,7 @@
 
         });
 
-        $(document).ready(function () {
-            $(".datepicker").pickadate({
-                closeOnSelect: true,
-                format: "yyyy-mm-dd"
-            });
-        });
+       
 
         $(document).ready(function () {
             $(".add-row").click(function () {

@@ -3,7 +3,7 @@
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/View%20Only/loginpage.php');
     }
 ?>
 
@@ -26,7 +26,7 @@
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
                     class="material-icons">menu</i></a>
-            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
+            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
                     <span class="title">
@@ -68,29 +68,27 @@
             <div id="ongoing" class="col s12">
                 <div class="row">
                     <?php
-                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
-                        WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
-                        && projects_status = 'open';";
+                        $sql = "SELECT * FROM projects WHERE projects_status = 'open';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
                     <div class="col s12 m6">
                         <div class="card blue-grey darken-1 center">
                             <div class="card-content white-text">
-                                <span class="card-title"><?php echo $row[0] ?></span>
+                                <span class="card-title"><?php echo $row[1] ?></span>
                                 <p>
-                                    <?php echo $row[1] ?>
-                                </p>
-                                <p>
-                                    <span>
-                                        start date
-                                    </span>
                                     <?php echo $row[2] ?>
                                 </p>
                                 <p>
                                     <span>
-                                        end date
-                                    </span><?php echo $row[3] ?>
+                                        start date: 
+                                    </span>
+                                    <?php echo $row[3] ?>
+                                </p>
+                                <p>
+                                    <span>
+                                        end date: 
+                                    </span><?php echo $row[4] ?>
                                 </p>
                                 <div class="row">
                                     <form action="server.php" method="POST">
@@ -101,26 +99,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="row">
-                                    <a href="#closeModal" class="waves-effect waves-light btn red modal-trigger">Close
-                                        Project</a>
-                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div id="closeModal" class="modal modal-fixed-footer">
-                        <div class="modal-content">
-                            <h4>Close Project?</h4>
-                            <p>Are you sure you want to close this project?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-                            <form action="server.php" method="POST">
-                                <input type="hidden" name="project_name" value='<?php echo $row[0] ?>'>
-                                <button type="submit" name="close_project"
-                                    class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
-                            </form>
                         </div>
                     </div>
                     <?php 
@@ -133,9 +112,7 @@
                 <div class="row">
                     <?php
 
-                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
-                        WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
-                        && projects_status = 'closed';";
+                        $sql = "SELECT * FROM projects WHERE projects_status = 'closed';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
@@ -143,14 +120,22 @@
                         <div class="card blue-grey darken-1 center">
                             <div class="card-content white-text">
                                 <span class="card-title">
-                                    <?php echo $row[0] ?>
+                                    <?php echo $row[1] ?>
                                 </span>
                                 <p>
-                                    <?php echo $row[1]?>
+                                    <?php echo $row[2]?>
                                 </p>
-                                <p><?php echo $row[2]?>
+                                <p>
+                                <span>
+                                        start date: 
+                                    </span>
+                                <?php echo $row[3]?>
                                 </p>
-                                <p><?php echo $row[3]?>
+                                <p>
+                                <span>
+                                        end date: 
+                                    </span>
+                                <?php echo $row[4]?>
                                 </p>
                                 <div class="row">
                                     <a href="#reopenModal"

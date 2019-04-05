@@ -256,7 +256,7 @@ div.contextmenu:hover {
     margin-left: 2% !important;
     border-radius: 2%;
     border: 2px solid #97A0A5;
-    height: 300px;
+    height: 350px;
 }
 
 .Task-Todo-Container {
@@ -266,7 +266,7 @@ div.contextmenu:hover {
     border-radius: 2%;
     border: 2px solid #97A0A5;
     width: 60% !important;
-    height: 300px;
+    height: 350px;
     overflow-y: scroll;
 }
 

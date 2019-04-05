@@ -8,15 +8,14 @@ f: input field
 
 /*Fonts Used*/
 @font-face {
-    font-family: 'Clone';
-    src: url('../fonts/Clone.otf');
+    font-family: 'Galyon';
+    src: url('../fonts/Galyon.otf');
 }
 
 @font-face {
-    font-family: 'Didact';
-    src: url('../fonts/Didact.ttf');
+    font-family: 'Ageo';
+    src: url('../fonts/Ageo.otf');
 }
-
 
 /*Login Style*/
 
@@ -145,18 +144,49 @@ body {
 
 nav {
     background-color: #FFFFFF !important;
-    color: #FFFFFF !important;
+    color: rgb(131, 17, 17) !important;
     font-size: 2vmin !important;
 }
 
+#acName{
+    float: right;
+    margin-right: 3%;
+}
+
+.dropdown-content {
+    background-color: #FFFFFF;
+    margin: 0;
+    display: none;
+    min-width: 300px;
+    /* Changed this to accomodate content width */
+    
+    max-height: auto;
+    overflow: hidden;
+    /* Changed this from overflow-y:auto; to overflow:hidden; */
+    
+    opacity: 0;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+    will-change: width, height;
+}
 
 .side-nav {
     background-color: #173753 !important;
+    font-family: Ageo;
 }
 
 .side-nav a {
+    background-color: #173753 !important;
     color: #FFFFFF !important;
     font-size: 2vmin !important;
+    font-family: Ageo !important;
+}
+
+.side-nav li,
+.side-nav li:hover,
+.side-nav li.active {
+    background-color: #173753 !important;
 }
 
 .menuIcon{
@@ -324,6 +354,14 @@ div.contextmenu:hover {
     background-color: #ffffff !important;
     background-color: #1A5D89 !important;
     color: white !important;
+}
+
+.acName{
+    text-align: center;
+}
+
+.acType{
+    margin-top: 2%;
 }
 
 /* Style for Site > Project */

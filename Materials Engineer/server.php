@@ -162,7 +162,15 @@
         $count = mysqli_num_rows($result);
             $sql = "INSERT INTO hauling (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, hauling_hauledBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, hauling_truckDetailsPo, hauling_truckDetailsHaulerDr) VALUES ($hauling_no, '$hauling_date', '$hauling_deliverTo', '$hauling_hauledFrom', $hauling_quantity, '$hauling_unit', '$hauling_matname', '$hauling_hauledBy', '$hauling_warehouseman', '$hauling_approvedBy', '$hauling_truckDetailsType', '$hauling_truckDetailsPlateNo', $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr)";
             mysqli_query($conn, $sql);
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauled%20items.php");
+        
+        $sql = "SELECT mat_prevStock FROM materials WHERE mat_name='$hauling_matname';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $mat_prevStock = $row[0];
+        $newvalue = $mat_prevStock-$hauling_quantity;
+        $sql = "UPDATE materials SET mat_prevStock = ('$newvalue') WHERE mat_name = '$hauling_matname';";
+        mysqli_query($conn, $sql);
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauled%20items.php");
             exit();
     }
 
@@ -198,24 +206,6 @@
         }
     }
 
-    if(isset($_POST['create_hauling'])) {
-        $date = mysqli_real_escape_string($conn, $_POST['date']);
-        $formnumber = mysqli_real_escape_string($conn, $_POST['formnumber']);
-        $delivername = mysqli_real_escape_string($conn, $_POST['delivername']);
-        $hauledfrom = mysqli_real_escape_string($conn, $_POST['hauledfrom']);
-        $hauledby = mysqli_real_escape_string($conn, $_POST['hauledby']);
-        $warehouseman = mysqli_real_escape_string($conn, $_POST['warehouseman']);
-        $approvedby = mysqli_real_escape_string($conn, $_POST['approvedby']);
-        $truck_type = mysqli_real_escape_string($conn, $_POST['truck_type']);
-        $truck_plate = mysqli_real_escape_string($conn, $_POST['truck_plate']);
-        $truck_po = mysqli_real_escape_string($conn, $_POST['truck_po']);
-        $truck_hauler = mysqli_real_escape_string($conn, $_POST['truck_hauler']);
-
-        $arr_size = count($_POST['quantity']);
-        for($x = 0; $x!=$arr_size; $x++) {
-            
-        }
-    }
     if(isset($_POST['viewtodo'])) {
         $todoOf = mysqli_real_escape_string($conn, $_POST['todoOf']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php?todoOf=$todoOf");

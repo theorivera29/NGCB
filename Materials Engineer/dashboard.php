@@ -23,11 +23,10 @@
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
-                    class="material-icons">menu</i></a>
-
+                    class="material-icons menuIcon">menu</i></a>
+                    <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <ul class="side-nav" id="mobile-demo">
-                <span id="NGCB">New Golden City Builders and Development Corporation</span>
-                <span id="NGCB">New Golden City Builders and Development Corporation</span>
+                
                 <li class="collection-item avatar">
                     <?php 
                         if(isset($_SESSION['username'])) {
@@ -220,11 +219,11 @@
                                             ?>
                                                 <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
                                                 <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                                <a class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</a>
+                                                <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</button>
                                                 <div id="doneBtn" class="modal modal-fixed-footer">
                                                     <span>Are you sure want to click done?</span>
                                                     <div class="modal-footer">
-                                                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
+                                                    <button class="modal-close waves-effect waves-red btn-flat">No</button>
                                                     <button type="submit" name="todo_update" class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                                     </div>
                                                 </div>
@@ -233,11 +232,11 @@
                                             ?>
                                                 <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
                                                 <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                                <a class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</a>
+                                                <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</button>
                                                 <div id="clearBtn" class="modal modal-fixed-footer">
                                                 <span>Are you sure want to clear this task</span>
                                                 <div class="modal-footer">
-                                                <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
+                                                <button class="modal-close waves-effect waves-red btn-flat">No</button>
                                                 <button type="submit" name="todo_update"class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                                 </div>
                                             </div>
@@ -353,7 +352,8 @@
                         <?php echo $row[3] ?>
                     </td>
                     <td>
-                        <button>SAMPLE</button>
+                        <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</button>
+                        <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Clear</button>
                     </td>
                 </tr>
                 <?php    

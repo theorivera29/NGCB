@@ -144,23 +144,27 @@ body {
 }
 
 nav {
-    background-color: #173753 !important;
-    color: black !important;
+    background-color: #FFFFFF !important;
+    color: #FFFFFF !important;
     font-size: 2vmin !important;
 }
 
 
 .side-nav {
-    background-color: #ECF5F8 !important;
+    background-color: #173753 !important;
 }
 
 .side-nav a {
-    color: black !important;
+    color: #FFFFFF !important;
     font-size: 2vmin !important;
 }
 
+.menuIcon{
+    color: #173753 !important;
+}
+
 .collapsible-header {
-    color: black !important;
+    color: #FFFFFF !important;
 }
 
 #create-account-btn {
@@ -172,12 +176,11 @@ nav {
 }
 
 #NGCB {
-    float: right;
-    padding-right: 2%;
     color: #E8CC13;
     font-family: Didact;
     margin-bottom: 0;
-    font-size: 1.5vw;
+    font-size: 3vmin;
+    text-align: center !important;
 }
 
 /* Style for Dashboard */
@@ -234,6 +237,7 @@ div.contextmenu:hover {
     border: 2px solid #97A0A5;
     width: 60% !important;
     height: 300px;
+    overflow-y: scroll;
 }
 
 .Panel-Header {
@@ -306,6 +310,7 @@ div.contextmenu:hover {
     width: 96% !important;
     border: 2px solid #97A0A5;
     text-align: center;
+    overflow-y: scroll;
 }
 
 .button {

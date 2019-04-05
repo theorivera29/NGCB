@@ -116,10 +116,7 @@
             </ul>
         </div>
     </nav>
-    <div class="col s11 right-align">
-        <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
-            <i class="material-icons left">add_circle_outline</i>Add Material</a>
-    </div>
+    
     <div class="">
         <?php 
            $projects_name = $_GET['projects_name'];
@@ -138,7 +135,10 @@
 
     <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
-
+    <div class=" right-align">
+        <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
+            <i class="material-icons left">add_circle_outline</i>Add Material</a>
+    </div>
         <div class="view-inventory-container">
             <div class="light-blue lighten-5 ">
                 <table class="striped centered view-inventory">

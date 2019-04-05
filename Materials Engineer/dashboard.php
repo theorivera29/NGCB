@@ -34,12 +34,14 @@
                         ?>
             <span id="acName">
                 
-                <ul class="">
+                <ul >
                 <?php echo $row[1]." ".$row[2]; ?>
-                    <li>
+                    <li class="down-arrow">
+                    
                         <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
                                 class="material-icons right">keyboard_arrow_down</i></a>
                     </li>
+                    
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
                     <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
@@ -52,6 +54,7 @@
                 <li class="collection-item avatar">
                     <ul>
                         <li class="acType">
+                            <img src="../Images/NGCB_logo.png">
                             <?php echo $row[5]; }?>
                         </li>
                     </ul>

@@ -153,6 +153,14 @@ nav {
     margin-right: 3%;
 }
 
+.down-arrow{
+    float: right !important;
+    
+}
+.right{
+    color: black !important;
+}
+
 .dropdown-content {
     background-color: #FFFFFF;
     margin: 0;

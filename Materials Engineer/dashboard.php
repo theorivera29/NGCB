@@ -24,23 +24,37 @@
         <div class="nav-wrapper">
             <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
                     class="material-icons menuIcon">menu</i></a>
-                    <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
-            <ul class="side-nav" id="mobile-demo">
+            <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+            <?php 
+                            if(isset($_SESSION['username'])) {
+                            $username = $_SESSION['username'];
+                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_row($result);
+                        ?>
+            <span id="acName">
                 
+                <ul class="">
+                <?php echo $row[1]." ".$row[2]; ?>
+                    <li>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons right">keyboard_arrow_down</i></a>
+                    </li>
+                </ul>
+                <ul id="dropdown" class="dropdown-content collection">
+                    <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
+                    <li><a class="waves-effect waves-blue" href="logout.php">Logout</a></li>
+                    
+                </ul>
+            </span>
+            <ul class="side-nav" id="mobile-demo">
+
                 <li class="collection-item avatar">
-                    <?php 
-                        if(isset($_SESSION['username'])) {
-                        $username = $_SESSION['username'];
-                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-                        $result = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_row($result);
-                    ?>
-                    <span class="title">
-                        <?php echo $row[1]." ".$row[2]; ?>
-                    </span>
-                    <span class="title">
-                        <?php echo $row[5]; }?>
-                    </span>
+                    <ul>
+                        <li class="acType">
+                            <?php echo $row[5]; }?>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
@@ -217,30 +231,34 @@
                                     <?php
                                         if(strcasecmp($row[3], 'in progress') == 0) {
                                             ?>
-                                                <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
-                                                <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                                <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</button>
-                                                <div id="doneBtn" class="modal modal-fixed-footer">
-                                                    <span>Are you sure want to click done?</span>
-                                                    <div class="modal-footer">
-                                                    <button class="modal-close waves-effect waves-red btn-flat">No</button>
-                                                    <button type="submit" name="todo_update" class="modal-close waves-effect waves-red btn-flat">Yes</button>
-                                                    </div>
-                                                </div>
-                                            <?php
+                                    <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                                    <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                                    <button class="waves-effect waves-light btn modal-trigger"
+                                        href="#doneBtn">Done</button>
+                                    <div id="doneBtn" class="modal modal-fixed-footer">
+                                        <span>Are you sure want to click done?</span>
+                                        <div class="modal-footer">
+                                            <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                            <button type="submit" name="todo_update"
+                                                class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                        </div>
+                                    </div>
+                                    <?php
                                         } else {
                                             ?>
-                                                <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
-                                                <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                                <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</button>
-                                                <div id="clearBtn" class="modal modal-fixed-footer">
-                                                <span>Are you sure want to clear this task</span>
-                                                <div class="modal-footer">
-                                                <button class="modal-close waves-effect waves-red btn-flat">No</button>
-                                                <button type="submit" name="todo_update"class="modal-close waves-effect waves-red btn-flat">Yes</button>
-                                                </div>
-                                            </div>
-                                            <?php
+                                    <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                                    <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                                    <button class="waves-effect waves-light btn modal-trigger"
+                                        href="#clearBtn">Clear</button>
+                                    <div id="clearBtn" class="modal modal-fixed-footer">
+                                        <span>Are you sure want to clear this task</span>
+                                        <div class="modal-footer">
+                                            <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                            <button type="submit" name="todo_update"
+                                                class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                        </div>
+                                    </div>
+                                    <?php
                                         }
                                     ?>
                                 </form>
@@ -317,9 +335,9 @@
         </div>
     </div>
 
-    
 
-    
+
+
 
 
     <div id="viewAllTask" class="modal modal-fixed-footer">
@@ -397,7 +415,16 @@
                 $("table tbody").append(markup);
             });
         });
+
+        (function($) {
+		$(function() {
+
+				$(".dropdown-button").dropdown();
+
+		}); // End Document Ready
+})(jQuery);
     </script>
 
 </body>
+
 </html>

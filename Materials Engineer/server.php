@@ -296,4 +296,19 @@
         
      header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");
     }
+
+    if(isset($_POST['todo_update'])) {
+        $todo_id = $_POST['todo_id'];
+        $todo_status = $_POST['todo_status'];
+
+        if(strcasecmp($todo_status, 'in progress') == 0) {
+            $sql = "UPDATE todo SET todo_status = 'done' WHERE todo_id = '$todo_id';";
+            mysqli_query($conn, $sql);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+        } else {
+            $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
+            mysqli_query($conn, $sql);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+        }
+    }
 ?>

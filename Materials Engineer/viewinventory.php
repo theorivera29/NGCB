@@ -22,8 +22,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
-                    class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
 
             <ul class="side-nav" id="mobile-demo">
@@ -57,8 +56,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -74,8 +72,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -116,14 +113,15 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="">
         <?php 
            $projects_name = $_GET['projects_name'];
         ?>
         <div class="row">
-            <span> <?php echo $projects_name; ?></span>
-
+            <h5>Project Name:
+                <?php echo $projects_name; ?>
+            </h5>
             <div class="col s12">
                 <ul class="tabs">
                     <li class="tab col s3"><a href="#sitematerials">Site Materials</a></li>
@@ -135,10 +133,10 @@
 
     <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
-    <div class=" right-align">
-        <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
-            <i class="material-icons left">add_circle_outline</i>Add Material</a>
-    </div>
+        <div class=" right-align">
+            <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
+                <i class="material-icons left">add_circle_outline</i>Add Material</a>
+        </div>
         <div class="view-inventory-container">
             <div class="light-blue lighten-5 ">
                 <table class="striped centered view-inventory">
@@ -196,8 +194,7 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
-                            <td> <a href="#editmaterialModal"
-                                    class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+                            <td> <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
                             </td>
                         </tr>
                         <?php    
@@ -235,8 +232,7 @@
                         <div class="row">
                             <form action="server.php" method="POST">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
-                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit"
-                                    name="view_category">View Inventory</button>
+                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
                             </form>
                         </div>
                     </div>
@@ -310,8 +306,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger"
-                    name="create_materials">Next</button>
+                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="create_materials">Next</button>
             </div>
 
     </div>
@@ -349,8 +344,7 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <button type='submit' name='create_materials'
-                class="modal-close waves-effect waves-green btn-flat">Save</button>
+            <button type='submit' name='create_materials' class="modal-close waves-effect waves-green btn-flat">Save</button>
             <a href="#addmaterialModal" class="modal-close waves-effect waves-teal btn-flat">Back</a>
         </div>
     </div>
@@ -435,16 +429,14 @@
                     </div>
 
                     <div class="input-field col s12">
-                        <button type="button" class="add-row">Add Category<i
-                                class="material-icons left">add_circle_outline</i></button>
+                        <button type="button" class="add-row">Add Category<i class="material-icons left">add_circle_outline</i></button>
                         <!-- <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a> -->
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
-                    name="create_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="create_category">Save</button>
             </div>
         </form>
     </div>
@@ -484,8 +476,7 @@
 
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
-                    name="edit_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="edit_category">Save</button>
             </div>
         </form>
     </div>
@@ -497,7 +488,7 @@
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -509,7 +500,7 @@
 
             $('.modal-trigger').leanModal();
 
-            $(".add-row").click(function () {
+            $(".add-row").click(function() {
                 var quantity = $("#name").val();
                 var unit = $("#email").val();
                 var articles = $('#articles').val();
@@ -519,6 +510,7 @@
                 $("table tbody").append(markup);
             });
         });
+
     </script>
 
 </body>

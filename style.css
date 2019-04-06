@@ -543,3 +543,8 @@ th {
 input[type=text]:disabled{
     color: black;
 }
+
+.proj-row{
+    background-color: #1A5D89;
+    color: #ffffff;
+}

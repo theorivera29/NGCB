@@ -135,23 +135,23 @@
                <input type="hidden" name="userid"
                     value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newusername" type="text" placeholder=" <?php echo $row[0]?>">
+                    <input id="login-username" name="newusername" type="text" value=" <?php echo $row[0]?>">
                     <label class="active" for="newusername">Username</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newfname" type="text"  placeholder=" <?php echo $row[1]?>">
+                    <input id="login-username" name="newfname" type="text"  value=" <?php echo $row[1]?>">
                     <label class="active" for="newfname">First Name</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newlname" type="text"  placeholder=" <?php echo $row[2]?>">
+                    <input id="login-username" name="newlname" type="text"  value=" <?php echo $row[2]?>">
                     <label class="active" for="newlname">Last Name</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newemail" type="text"  placeholder=" <?php echo $row[3]?>">
+                    <input id="login-username" name="newemail" type="text"  value=" <?php echo $row[3]?>">
                     <label class="active" for="newemail">E-mail</label>
                 </div>
                 <div class="f-login password input-field col s6 m8 offset-m1">
-                    <input id="login-password" name="newpassword" type="password"  placeholder=" <?php echo $row[4]?>">
+                    <input id="login-password" name="newpassword" type="password"  value=" <?php echo $row[4]?>">
                     <label class="active" for="newpassword">Password</label>
                 </div>
 

@@ -140,8 +140,12 @@
                                         <input id="delivername" type="text" class="validate" name="delivername">
                                         <label for="delivername">Deliver To:</label>
                                     </div>
+                                     <?php 
+                                        $projects_name = $_GET['projects_name'];
+                                     ?>
+                                    
                                     <div class="input-field col s12 left-align ">
-                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom">
+                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom" disabled value="<?php echo $projects_name ?>">
                                         <label for="hauledfrom">Hauled From :</label>
                                     </div>
                                 </div>

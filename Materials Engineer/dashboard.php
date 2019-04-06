@@ -300,20 +300,21 @@
                         <th>Quantity Remaining</th>
                         <th>Unit</th>
                         <th>Project</th>
+                        <th>Threshold</th>
                     </tr>
                 </thead>
                 <?php 
                     $sql = "SELECT 
                     materials.mat_name, 
                     categories.categories_name, 
-                    stockcard.stockcard_quantity, 
+                    materials.currentQuantity, 
                     materials.mat_unit,
-                    projects.projects_name
+                    projects.projects_name,
+                    materials.mat_notif
                     FROM materials 
-                    INNER JOIN categories ON materials.mat_categ = categories.categories_id 
-                    INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id 
+                    INNER JOIN categories ON materials.mat_categ = categories.categories_id
                     INNER JOIN projects ON materials.mat_project = projects_id
-                    WHERE materials.mat_notif >= stockcard.stockcard_quantity AND projects.projects_status = 'open';";
+                    WHERE materials.mat_notif >= currentQuantity AND projects.projects_status = 'open';";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
                 ?>
@@ -333,6 +334,9 @@
                         </td>
                         <td>
                             <?php echo $row[4] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[5] ?>
                         </td>
                     </tr>
                 </tbody>

@@ -163,12 +163,12 @@
             $sql = "INSERT INTO hauling (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, hauling_hauledBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, hauling_truckDetailsPo, hauling_truckDetailsHaulerDr) VALUES ($hauling_no, '$hauling_date', '$hauling_deliverTo', '$hauling_hauledFrom', $hauling_quantity, '$hauling_unit', '$hauling_matname', '$hauling_hauledBy', '$hauling_warehouseman', '$hauling_approvedBy', '$hauling_truckDetailsType', '$hauling_truckDetailsPlateNo', $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr)";
             mysqli_query($conn, $sql);
         
-        $sql = "SELECT mat_prevStock FROM materials WHERE mat_name='$hauling_matname';";
+        $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$hauling_matname';";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
-        $mat_prevStock = $row[0];
-        $newvalue = $mat_prevStock-$hauling_quantity;
-        $sql = "UPDATE materials SET mat_prevStock = ('$newvalue') WHERE mat_name = '$hauling_matname';";
+        $currentQuantity = $row[0];
+        $newQuantity = $currentQuantity-$hauling_quantity;
+        $sql = "UPDATE materials SET mat_prevStock = ('$newQuantity') WHERE mat_name = '$hauling_matname';";
         mysqli_query($conn, $sql);
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauled%20items.php");
             exit();
@@ -310,5 +310,23 @@
             mysqli_query($conn, $sql);
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
         }
+    }
+
+    // API
+    header("Access-Control-Allow-Origin: *");
+    if (isset($_GET['category_id'])) {
+        $id = $_GET['category_id'];
+        $sql = "SELECT mat_id, mat_name FROM materials WHERE mat_categ = $id";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_all($result);
+        echo json_encode($row);
+    }
+
+    if (isset($_GET['mat_name'])) {
+        $name = $_GET['mat_name'];
+        $sql = "SELECT mat_unit FROM materials WHERE mat_id = '$name'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_all($result);
+        echo json_encode($row);
     }
 ?>

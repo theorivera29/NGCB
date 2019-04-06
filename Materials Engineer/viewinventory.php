@@ -168,7 +168,7 @@
                             stockcard.stockcard_totalDelivered, 
                             stockcard.stockcard_totalPulledOut, 
                             (stockcard.stockcard_totalDelivered + materials.mat_prevStock), 
-                            stockcard.stockcard_quantity 
+                            currentQuantity
                             FROM materials 
                             INNER JOIN projects ON materials.mat_project = projects.projects_id 
                             INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
@@ -304,7 +304,7 @@
                     </div>
                     <div class="input-field col s7">
                         <input id="matnotif" name="matnotif" type="text" class="validate">
-                        <label for="matnotif">Minimum quantity of materials when to be quantified:</label>
+                        <label for="matnotif">Item threshold:</label>
                     </div>
                 </div>
             </div>

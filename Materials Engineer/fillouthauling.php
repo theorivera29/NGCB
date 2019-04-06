@@ -161,29 +161,14 @@
                                 <tbody>
                                     <tr>
                                         <td><input type="text" name="quantity" id="quantity"></td>
-                                        <td><select class="browser-default" name="unit">
-                                                <option value="UNITS" selected></option>
-                                            </select></td>
+                                        <td><input id="unit" readonly type="text" class="validate" name="unit"></td>
                                         <td>
-                                            <select class="browser-default" name="articles">
+                                            <select id="materials" class="browser-default" name="articles">
                                                 <option value="" disabled selected>Choose your option</option>
-                                                <?php
-                                    $sql = "SELECT * FROM categories;";
-                                    $result = mysqli_query($conn, $sql);
-                                    while($row = mysqli_fetch_row($result)) {                         
-
-                                ?>
-                                                <option value="<?php echo $row[0]; ?>">
-                                                    <?php echo $row[1]; ?>
-                                                </option>
-
-                                                <?php 
-                                    }
-                                ?>
                                             </select></td>
                                         <td>
 
-                                            <select class="browser-default" name="mat_categ">
+                                            <select id="categories" class="browser-default" name="mat_categ">
                                                 <option value="" disabled selected>Choose your option</option>
                                                 <?php
                                     $sql = "SELECT * FROM categories;";
@@ -299,6 +284,27 @@
                 $("table tbody").append(markup);
             });
         });
+        
+        $('#categories').on('change', function () {
+            $.get('http://localhost/NGCB/Materials%20Engineer/server.php?category_id='+$(this).children('option:selected').val(), function (data) {
+                var d = JSON.parse(data)
+                var loobNgSelect = '';
+                d.forEach(function (da) {
+                    loobNgSelect = loobNgSelect + `<option value="${da[0]}">${da[1]}</option>`
+                })
+                $('#materials').html(loobNgSelect)
+            })
+            
+        })
+        
+        $('#materials').on('change', function () {
+            console.log($(this).children('option:selected').val())
+            $.get('http://localhost/NGCB/Materials%20Engineer/server.php?mat_name='+$(this).children('option:selected').val(), function (data) {
+                var d = JSON.parse(data)
+//                console.log(d)
+                $('#unit').val(d[0][0])
+            })
+        })
     </script>
 
 </body>

@@ -143,7 +143,7 @@ body {
 }
 
 nav {
-    background-color: #FFFFFF !important;
+    background-color: #F7F7F7 !important;
     color: rgb(131, 17, 17) !important;
     font-size: 2vmin !important;
 }
@@ -162,21 +162,10 @@ nav {
 }
 
 .dropdown-content {
-    background-color: #FFFFFF;
-    margin: 0;
-    display: none;
-    min-width: 300px;
-    /* Changed this to accomodate content width */
-    
-    max-height: auto;
-    overflow: hidden;
+    background-color: #FFFFFF; 
     /* Changed this from overflow-y:auto; to overflow:hidden; */
-    
     opacity: 0;
     position: absolute;
-    white-space: nowrap;
-    z-index: 1;
-    will-change: width, height;
 }
 
 .side-nav {
@@ -184,18 +173,25 @@ nav {
     font-family: Ageo;
 }
 
+
 .side-nav a {
     background-color: #173753 !important;
     color: #FFFFFF !important;
     font-size: 2vmin !important;
     font-family: Ageo !important;
 }
+.side-nav a:hover {
+    background-color: #FFFFFF !important;
+    color: #173753 !important;
+    font-size: 2.5vmin !important;
+    font-family: Ageo !important;
+}
 
-.side-nav li,
-.side-nav li:hover,
+
 .side-nav li.active {
     background-color: #173753 !important;
 }
+
 
 .menuIcon{
     color: #173753 !important;
@@ -214,14 +210,20 @@ nav {
 }
 
 #NGCB {
-    color: #E8CC13;
+    color: #087E8B;
     font-family: Didact;
     margin-bottom: 0;
-    font-size: 3vmin;
+    font-size: 20px;
     text-align: center !important;
 }
 
+
+.collapsible li.active i {
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+  }
 /* Style for Dashboard */
+/*Calendar  */
 .contextmenu {
     position: absolute;
     z-index: 10;

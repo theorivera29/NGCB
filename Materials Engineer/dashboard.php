@@ -112,22 +112,6 @@
                 <li>
                     <a class="waves-effect waves-blue" href="report.php">Report</a>
                 </li>
-
-                <li>
-                    <div class="divider"></div>
-                </li>
-
-                <li>
-                    <a href="account.php">Account Setting</a>
-                </li>
-
-                <li>
-                    <div class="divider"></div>
-                </li>
-
-                <li>
-                    <a href="logout.php">Logout</a>
-                </li>
             </ul>
         </div>
     </nav>
@@ -435,6 +419,9 @@
 
 		}); // End Document Ready
 })(jQuery);
+
+
+
     </script>
 
 </body>

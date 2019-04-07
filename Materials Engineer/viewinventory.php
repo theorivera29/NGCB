@@ -195,6 +195,40 @@
                                 <?php echo $row[5] ?>
                             </td>
                             <td> <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+
+                                <!-- EDIT SITE MATERIAL MODAL -->
+                                <form action="server.php" method="POST">
+                                    <div id="editmaterialModal" class="modal modal-fixed-footer">
+                                        <div class="modal-content">
+                                            <h4>Edit Material</h4>
+                                            <h6><?php echo $row[0];?></h6>
+                                            <div class="row">
+                                                <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
+                                                <div class="input-field col s12">
+                                                    <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
+                                                    <label for="newmaterialname">Material Name:</label>
+                                                </div>
+                                                <div class="input-field col s5">
+                                                    <select class="browser-default" name="mat_unit">
+                                                        <option value="" disabled selected>Quantifier</option>
+                                                        <option value="pcs">pcs</option>
+                                                        <option value="rolls">rolls</option>
+                                                        <option value="mtrs">mtrs</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-field col s7">
+                                                    <input id="minquantity" name="minquantity" type="text" class="validate">
+                                                    <label for="minquantity">Threshold:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="edit_materials">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </td>
                         </tr>
                         <?php    
@@ -299,16 +333,16 @@
                         </select>
                     </div>
                     <div class="input-field col s7">
-                        <input id="matnotif" name="matnotif" type="text" class="validate">
-                        <label for="matnotif">Item threshold:</label>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate">
+                        <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat modal-trigger" name="create_materials">Next</button>
+                <button hreg="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Next</button>
             </div>
-
+        </form>
     </div>
 
     <!-- ADD STOCKCARD MODAL -->
@@ -326,16 +360,16 @@
 
                 <tbody>
                     <tr>
-                        <td contenteditable="true">
+                        <td>
                             <input id="delivered_date" name="delivered_date" type="text" class="validate">
                         </td>
-                        <td contenteditable="true">
+                        <td>
                             <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate">
                         </td>
-                        <!-- <td contenteditable="true">
+                        <!-- <td>
                         <input id="delivered_unit" name="delivered_unit" type="text" class="validate">
                         </td> -->
-                        <td contenteditable="true">
+                        <td>
                             <input id="suppliedBy" name="suppliedBy" type="text" class="validate">
                         </td>
                     </tr>
@@ -344,68 +378,8 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <button type='submit' name='create_materials' class="modal-close waves-effect waves-green btn-flat">Save</button>
+            <button type='submit' name='new_material_stockcard' class="modal-close waves-effect waves-green btn-flat">Save</button>
             <a href="#addmaterialModal" class="modal-close waves-effect waves-teal btn-flat">Back</a>
-        </div>
-    </div>
-    </form>
-
-    <!-- EDIT SITE MATERIAL MODAL -->
-    <div id="editmaterialModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Edit Material</h4>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="materialname" name="materialname" type="text" class="validate">
-                    <label for="materialname">Material Name:</label>
-                </div>
-                <div class="col s12">
-                    <label>Category:</label>
-
-                    <div class="input-field col s12">
-                        <select class="browser-default" name="categories">
-                            <option value="" disabled selected>Choose your option</option>
-                            <?php
-                                    $sql = "SELECT * FROM categories;";
-                                    $result = mysqli_query($conn, $sql);
-                                    while($row = mysqli_fetch_row($result)) {                         
-
-                                ?>
-                            <option value="<?php echo $row[0]; ?>">
-                                <?php echo $row[1]; ?>
-                            </option>
-
-                            <?php 
-                                    }
-                                ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s5">
-                        <label>Quantifier:</label>
-                    </div>
-                </div>
-                <div class="input-field col s5">
-                    <select class="browser-default" name="categories">
-                        <option value="" disabled selected>Choose your option</option>
-
-                        <option>
-
-                        </option>
-
-                    </select>
-                </div>
-                <div class="input-field col s7">
-                    <input id="minquantity" name="minquantity" type="text" class="validate">
-                    <label for="minquantity">Minimum quantity of materials when to be quantified:</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
         </div>
     </div>
 

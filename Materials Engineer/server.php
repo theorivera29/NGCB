@@ -186,7 +186,7 @@
                 mysqli_query($conn, $sql);
             }
         }
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
         exit();
     }
 
@@ -206,6 +206,7 @@
         }
     }
 
+
     if(isset($_POST['viewtodo'])) {
         $todoOf = mysqli_real_escape_string($conn, $_POST['todoOf']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php?todoOf=$todoOf");
@@ -222,44 +223,19 @@
             header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
             exit();
     }
+
     if (isset($_POST['create_materials'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-        $mat_project = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
-		$mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
-        $mat_notif = mysqli_real_escape_string($conn, $_POST['matnotif']);
-        $delivered_date = mysqli_real_escape_string($conn, $_POST['delivered_date']);
-        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['delivered_quantity']);
-        $suppliedBy = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
-        $sql = "SELECT projects_id FROM projects WHERE projects_name = '$mat_project';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $mat_project_id = $row[0];
-        $sql  = "SELECT mat_id FROM materials WHERE mat_unit = '$mat_unit';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $delivered_mat_id = $row[0];
-        $sql = "SELECT mat_name FROM materials WHERE mat_name = '$mat_name';";
+        $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
+        $sql = "SELECT * from materials;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
-        echo "FCK2";
-        echo $count;
-        echo $mat_name;
-        if($count != 1) {
-            echo "FCK";
-            $sql = "INSERT INTO materials (mat_name, mat_project, mat_unit, mat_categ, mat_notif) VALUES('$mat_name', '$mat_project_id', '$mat_unit', '$mat_categ', '$mat_notif')";
-            mysqli_query($conn,$sql);
-            
-            $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy)
-            VALUES ('$delivered_date', '$delivered_quantity', '$delivered_mat_id', '$suppliedBy')";
-            if(mysqli_query($conn,$sql)) {
-                echo "SUCKCESS";
-            } else {
-                echo $conn->erorr;
-            }
-            // header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$mat_project");
-            exit;
-        }
+            $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity) VALUES ('$mat_name', 0, 1, '$mat_unit', 1, $mat_notif, 0);";
+            mysqli_query($conn, $sql);
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+            exit();
     }
 
     if(isset($_POST['edit_account'])) {
@@ -311,6 +287,47 @@
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
         }
     }
+
+        if (isset($_POST['add_deliveredin'])) {
+        $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
+        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
+        $delivered_unit = mysqli_real_escape_string($conn, $_POST['unit']);
+        $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
+        $sql = "SELECT * from deliveredin;";
+        $result = mysqli_query($conn,$sql);
+        $count = mysqli_num_rows($result);
+        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy) VALUES ('2019-05-19', $delivered_quantity, $delivered_unit, '$suppliedBy');";
+        mysqli_query($conn, $sql);
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
+        exit();
+    }
+
+
+    
+        if(isset($_POST['edit_materials'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
+        
+        if(isset($_POST['newmaterialname'])) {
+            $newmaterialname = $_POST['newmaterialname'];
+            $sql = "UPDATE materials SET mat_name = '$newmaterialname' WHERE mat_name = '$materialname';";
+            mysqli_query($conn,$sql);
+        }
+        if(isset($_POST['mat_unit'])) {
+            $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
+            $sql = "UPDATE materials SET mat_unit = '$mat_unit' WHERE mat_name = '$materialname';";
+            mysqli_query($conn, $sql);
+        }
+
+        if(isset($_POST['minquantity'])) {
+            $minquantity = mysqli_real_escape_string($conn, $_POST['minquantity']);
+            $sql = "UPDATE materials SET mat_notif = '$minquantity' WHERE mat_name = '$materialname';";
+            mysqli_query($conn, $sql);
+        }
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+    }
+
+
 
     // API
     header("Access-Control-Allow-Origin: *");

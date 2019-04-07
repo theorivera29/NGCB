@@ -22,8 +22,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
-                    class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
 
             <ul class="side-nav" id="mobile-demo">
@@ -57,8 +56,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -74,8 +72,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -116,8 +113,7 @@
             </ul>
         </div>
     </nav>
-
-    <div class="site-materials-container">
+     <div class="site-materials-container">
         <div class="lighten-5">
             <table class="centered site-materials-content">
                 <thead class="site-materials-head">
@@ -178,8 +174,7 @@
                         <td>
                             <form action="server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material"
-                                    href="#modal1">
+                                <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
                                     <?php echo $row[0] ?></a>
                             </form>
 
@@ -212,13 +207,15 @@
                 </tbody>
             </table>
         </div>
+        </div>
 
         <!--MODAL-->
         <div id="modal1" class="modal modal-fixed-footer">
-            <div class="modal- ">
-                <div class="content">
-                    <div class="row">
-                        <form action="server.php" method="POST">
+            <form action="server.php" method="POST">
+                <div class="modal- ">
+                    <div class="content">
+                        <div class="row">
+
                             <div class="col s12">
                                 <h4>DELIVER IN</h4>
                                 <table class="centered">
@@ -232,13 +229,10 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td contenteditable="true"><input type="date" name="dev_date"></td>
-                                            <td contenteditable="true"><input type="text" name="dev_quantity"></td>
-                                            <td contenteditable="true"><select class="browser-default"
-                                                    name="categories">
-                                                    <option value="" selected></option>
-                                                </select></td>
-                                            <td contenteditable="true"><input type="text" name="dev_supp"></td>
+                                            <td><input type="date" name="dev_date"></td>
+                                            <td><input type="text" name="dev_quantity"></td>
+                                            <td><input type="text" name="unit"></td>
+                                            <td><input type="text" name="dev_supp"></td>
                                         </tr>
 
                                     </tbody>
@@ -248,7 +242,7 @@
                                 <h4>USAGE IN</h4>
                                 <table class="centered">
                                     <thead>
-                                        <tr >
+                                        <tr>
                                             <th>Date</th>
                                             <th>Quantity</th>
                                             <th>Unit</th>
@@ -265,92 +259,92 @@
                                             <td contenteditable="true"><select class="browser-default" name="us_unit">
                                                     <option value="UNITS" selected></option>
                                                 </select></td>
-                                            </td>
-                                            <td contenteditable="true"><select class="browser-default"
-                                                    name="categories">
+                                            <td contenteditable="true"><select class="browser-default" name="categories">
                                                     <option value="mat eng namesss" selected></option>
                                                 </select></td>
-                                            </td>
                                             <td contenteditable="true"><input type="text" name="us_area"></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">SAVE</a>
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-            </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                </div>
+            </form>
         </div>
-    </div>
 
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('.modal-trigger').leanModal();
-        });
 
-        // SIDEBAR
-        $(document).ready(function () {
-            $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
-                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('.modal-trigger').leanModal();
+                format: yyyy-mmm-dd;
             });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
-        });
 
-        $(function() {
+            // SIDEBAR
+            $(document).ready(function() {
+                $('.button-collapse').sideNav({
+                    menuWidth: 300, // Default is 300
+                    edge: 'left', // Choose the horizontal origin
+                    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                    draggable: true // Choose whether you can drag to open on touch screens
+                });
+                // START OPEN
+                $('.button-collapse').sideNav('show');
+            });
 
-$("table").tablesorter({
-  theme : "materialize",
+            $(function() {
 
-  widthFixed: true,
-  // widget code contained in the jquery.tablesorter.widgets.js file
-  // use the zebra stripe widget if you plan on hiding any rows (filter widget)
-  widgets : [ "filter", "zebra" ],
+                $("table").tablesorter({
+                        theme: "materialize",
 
-  widgetOptions : {
-    // using the default zebra striping class name, so it actually isn't included in the theme variable above
-    // this is ONLY needed for materialize theming if you are using the filter widget, because rows are hidden
-    zebra : ["even", "odd"],
+                        widthFixed: true,
+                        // widget code contained in the jquery.tablesorter.widgets.js file
+                        // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+                        widgets: ["filter", "zebra"],
 
-    // reset filters button
-    filter_reset : ".reset",
+                        widgetOptions: {
+                            // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                            // this is ONLY needed for materialize theming if you are using the filter widget, because rows are hidden
+                            zebra: ["even", "odd"],
 
-    // extra css class name (string or array) added to the filter element (input or select)
-    // select needs a "browser-default" class or it gets hidden
-    filter_cssFilter: ["", "", "browser-default"]
-  }
-})
-.tablesorterPager({
+                            // reset filters button
+                            filter_reset: ".reset",
 
-  // target the pager markup - see the HTML block below
-  container: $(".ts-pager"),
+                            // extra css class name (string or array) added to the filter element (input or select)
+                            // select needs a "browser-default" class or it gets hidden
+                            filter_cssFilter: ["", "", "browser-default"]
+                        }
+                    })
+                    .tablesorterPager({
 
-  // target the pager page select dropdown - choose a page
-  cssGoto  : ".pagenum",
+                        // target the pager markup - see the HTML block below
+                        container: $(".ts-pager"),
 
-  // remove rows from the table to speed up the sort of large tables.
-  // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
-  removeRows: false,
+                        // target the pager page select dropdown - choose a page
+                        cssGoto: ".pagenum",
 
-  // output string - default is '{page}/{totalPages}';
-  // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
-  output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+                        // remove rows from the table to speed up the sort of large tables.
+                        // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+                        removeRows: false,
 
-});
+                        // output string - default is '{page}/{totalPages}';
+                        // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+                        output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
 
-});
-    </script>
+                    });
+
+            });
+
+        </script>
 </body>
 
 </html>

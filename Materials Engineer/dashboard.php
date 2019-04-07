@@ -128,8 +128,8 @@
                     <div class="input-field col s3">
                         <label>To-do Date:</label>
                     </div>
-                    <div class="col s3">
-                        <input placeholder="&emsp;&emsp;&emsp;&emsp;▼" type="text" class="datepicker">
+                    <div class="col s4">
+                    <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker">
                     </div>
                 </div>
                 <input type="hidden" name="todoOf" value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">

@@ -126,7 +126,7 @@
                         <div class="row">
                             <div class="col s2">
                                 <label>Date:</label>
-                                <input id="test" type="date" class="datepicker" name="date">
+                                <input placeholder="&emsp;yyyy-mm-dd&emsp;▼" type="text" class="datepicker">
                             </div>
                             <div class="input-field col s2 offset-s8 right-align">
                                 <input id="formnumber" type="text" class="validate" name="formnumber">

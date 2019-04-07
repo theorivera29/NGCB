@@ -35,4 +35,9 @@
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");
     }
+
+    if(isset($_POST['view_category'])) {
+        $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
+        header("location: http://127.0.0.1/NGCB/View%20Only/itemcategories.php?categories_id=$categories_id");
+    }
     ?>

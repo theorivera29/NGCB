@@ -165,21 +165,7 @@
                                 <tbody>
                                     <tr>
                                         <td><input type="text" name="quantity" id="quantity"></td>
-                                        <td><select id="unit" class="browser-default" name="unit">
-                                                <option value="" disabled selected>Choose your option</option>
-                                                <?php
-                                    $sql = "SELECT DISTINCT mat_unit FROM materials;";
-                                    $result = mysqli_query($conn, $sql);
-                                    while($row = mysqli_fetch_row($result)) {                         
-
-                                ?>
-                            <option value="<?php echo $row[0]; ?>">
-                                <?php echo $row[0]; ?>
-                            </option>
-                            <?php 
-                                    }
-                                ?>
-                                            </select></td>
+                                        <td><input id="unit" readonly type="text" class="validate" name="unit"></td>
                                         <td>
                                             <select id="materials" class="browser-default" name="articles">
                                                 <option value="" disabled selected>Choose your option</option>

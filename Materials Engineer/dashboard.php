@@ -5,6 +5,7 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php');
     }
+    $task = $_SESSION['tasks'];
   ?>
 
 <!DOCTYPE html>
@@ -202,7 +203,6 @@
 
                     <tbody>
                         <?php 
-                           $task = $_SESSION['tasks'];
                            $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
                            $result = mysqli_query($conn, $sql);
                            while($row = mysqli_fetch_array($result)) {
@@ -349,11 +349,10 @@
 
             <tbody>
                 <?php 
-                           $task = $_SESSION['tasks'];
-                           $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
-                           $result = mysqli_query($conn, $sql);
-                           while($row = mysqli_fetch_array($result)) {
-                        ?>
+                    $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
 
                 <tr>
                     <td>
@@ -366,13 +365,46 @@
                         <?php echo $row[3] ?>
                     </td>
                     <td>
-                        <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</button>
-                        <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Clear</button>
+                        <form action="server.php" method="POST">
+                            <?php
+                                if(strcasecmp($row[3], 'in progress') == 0) {
+                                    ?>
+                            <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                            <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                            <button class="waves-effect waves-light btn modal-trigger"
+                                href="#doneBtn">Done</button>
+                            <div id="doneBtn" class="modal modal-fixed-footer">
+                                <span>Are you sure want to click done?</span>
+                                <div class="modal-footer">
+                                    <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                    <button type="submit" name="todo_update"
+                                        class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                </div>
+                            </div>
+                            <?php
+                                } else {
+                                    ?>
+                            <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                            <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                            <button class="waves-effect waves-light btn modal-trigger"
+                                href="#clearBtn">Clear</button>
+                            <div id="clearBtn" class="modal modal-fixed-footer">
+                                <span>Are you sure want to clear this task</span>
+                                <div class="modal-footer">
+                                    <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                    <button type="submit" name="todo_update"
+                                        class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                </div>
+                            </div>
+                            <?php
+                                }
+                            ?>
+                        </form>
                     </td>
                 </tr>
                 <?php    
-                            }
-                        ?>
+                    }
+                ?>
             </tbody>
         </table>
         <div class="modal-footer">
@@ -425,5 +457,4 @@
     </script>
 
 </body>
-
 </html>

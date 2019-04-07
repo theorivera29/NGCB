@@ -124,6 +124,7 @@
                     <tr>
                         <th>Hauling forms</th>
                         <th>Date</th>
+                        <th>Hauled from</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -139,6 +140,7 @@
                     <td>
                         <?php echo $row[1] ;?>
                     </td>
+                    <td><?php echo $row[3] ;?></td>
                     <td>
                         <form action="server.php" method="POST">
                             <input type="hidden" name="hauling_no" value="<?php echo $row[0]?>">

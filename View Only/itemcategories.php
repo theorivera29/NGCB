@@ -42,7 +42,7 @@
                     <div class="divider"></div>
                 </li>
                 <li>
-                    <a href="hauledmaterials.php">Hauled Materials</a>
+                    <a href="hauleditems.php">Hauled Materials</a>
                 </li>
                 <li>
                     <div class="divider"></div>

@@ -40,4 +40,9 @@
         $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
         header("location: http://127.0.0.1/NGCB/View%20Only/itemcategories.php?categories_id=$categories_id");
     }
+
+    if(isset($_POST['view_hauled'])) {
+        $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
+        header("location: http://127.0.0.1/NGCB/View%20Only/openhauling.php?hauling_no=$hauling_no");
+    }
     ?>

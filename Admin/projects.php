@@ -1,11 +1,7 @@
-<?php
+<?php 
     include "../db_connection.php";
-    session_start();
-
-    if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/NGCB/index.php');
-    }
 ?>
+
 
 <!DOCTYPE html>
 
@@ -20,10 +16,9 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
-                    class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
@@ -42,8 +37,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Accounts<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Accounts<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -58,7 +52,6 @@
                 </ul>
                 <li>
                     <div class="divider"></div>
-                </li>
                 </li>
                 <li><a href="projects.php">Projects</a></li>
 
@@ -75,12 +68,12 @@
                     <div class="divider"></div>
                 </li>
                 <li>
-                    <a href="../logout.php">Logout</a>
+                    <a href="logout.php">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
-    
+
     <div class="container">
         <div class="col s11 right-align">
             <a href="#addProject" class="waves-effect waves-light btn button modal-trigger add-material-btn">
@@ -95,6 +88,7 @@
                 </ul>
             </div>
         </div>
+
         <!--ONGOING TAB-->
         <div id="ongoing" class="col s12">
             <div class="row">
@@ -109,10 +103,9 @@
                                 <div class="row">
                                     <form action="server.php" method="POST">
                                         <input type="hidden" name="projects_name" value="">
-                                        
+
                                         <div class="row">
-                                            <a href="#editModal"
-                                                class="waves-effect waves-light btn edit-btn modal-trigger">Edit</a>
+                                            <a href="#editModal" class="waves-effect waves-light btn edit-btn modal-trigger">Edit</a>
                                         </div>
                                     </form>
                                 </div>
@@ -141,18 +134,15 @@
             <form action="server.php" method="POST">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input placeholder="New project name" id="new_project_name" type="text" class="validate"
-                            name="new_project_name">
+                        <input placeholder="New project name" id="new_project_name" type="text" class="validate" name="new_project_name">
                         <label class="active" for="new_project_name">Project Name:</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="New address" id="new_address" type="text" class="validate"
-                            name="new_address">
+                        <input placeholder="New address" id="new_address" type="text" class="validate" name="new_address">
                         <label for="new_address">Address:</label>
                     </div>
                     <div class="input-field col s6">
-                        <input placeholder="New start date" id="new_sdate" type="text" class="validate"
-                            name="new_sdate">
+                        <input placeholder="New start date" id="new_sdate" type="text" class="validate" name="new_sdate">
                         <label for="new_sdate">Start date:</label>
                     </div>
                     <div class="input-field col s6">
@@ -181,8 +171,7 @@
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
             <form action="server.php" method="POST">
                 <input type="hidden" name="project_name" value=''>
-                <button type="submit" name="close_project"
-                    class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                <button type="submit" name="close_project" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
             </form>
         </div>
     </div>
@@ -225,8 +214,7 @@
             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
             <form action="server.php" method="POST">
                 <input type="hidden" name="project_name" value=''>
-                <button type="submit" name="reopen_project"
-                    class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                <button type="submit" name="reopen_project" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
             </form>
         </div>
     </div>
@@ -237,20 +225,43 @@
                 <h4>Add Project</h4>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="project" name="project" type="text" class="validate">
-                        <label for="project">Project Name:</label>
+                        <input id="projectname" name="projectname" type="text" class="validate">
+                        <label for="projectname">Project Name:</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="projectaddress" name="projectaddress" type="text" class="validate">
+                        <label for="projectaddress">Project Address</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="startdate" name="startdate" type="text" class="validate">
+                        <label for="startdate">Start date:</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="enddate" name="enddate" type="text" class="validate">
+                        <label for="enddate">End date:</label>
                     </div>
                     <div class="col s12">
-                        <label>Start Date:</label><br>
-                        <label>End Date:</label>
                         <div class="input-field col s12">
-                        <span>Material Engineer Involved</span>
-                            <select class="browser-default" name="categories">
-                                <option value="" selected>Material Engineer</option>
+                            <span>Material Engineers Involved</span>
+                            <select id="involved" class="browser-default" name="involved">
+                                <option disabled selected>Choose your option</option>
+                                <?php
+                                    $sql = "SELECT accounts_id, accounts_fname, accounts_lname FROM accounts WHERE accounts_type = 'MatEng';";
+                                    $result = mysqli_query($conn, $sql);
+                                    while($row = mysqli_fetch_row($result)) {                         
+                                ?>
+                                    <option value="<?php echo $row[0]; ?>">
+                                        <?php echo $row[2]." ".$row[1]; ?>
+                                    </option>
+                                <?php 
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="waves-effect waves-teal save-btn">SAVE</button>
+                    <button type="submit" class="waves-effect waves-teal save-btn" name="create_project">SAVE</button>
+                </div>
+            </div>
         </form>
     </div>
 
@@ -265,19 +276,17 @@
         </div>
     </div>
 
-
-    </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.modal-trigger').leanModal();
         });
 
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -287,7 +296,9 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
         });
+
     </script>
+
 </body>
 
 </html>

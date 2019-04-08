@@ -160,23 +160,49 @@
 
                     <tbody>
                         <?php 
+                            $projects_name = $_GET['projects_name'];
+                            $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
+                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                            INNER JOIN projects ON materials.mat_project = projects.projects_id
+                            WHERE projects.projects_name = '$projects_name'
+                            ORDER BY categories.categories_name;";
+                            $result = mysqli_query($conn, $sql_categ);
+                            $categories = array();
+                            while($row_categ = mysqli_fetch_assoc($result)){
+                                $categories[] = $row_categ;
+                            }
+
+                            foreach($categories as $data) {
+                            $categ = $data['categories_name'];
+                        ?>
+                        <tr>
+                            <td colspan="10" class="td-category"> <b>
+                                    <?php echo $categ; ?></b></td>
+                        </tr>
+                        <?php 
                             $sql = "SELECT 
                             materials.mat_name, 
                             materials.mat_prevStock, 
                             materials.delivered_material, 
                             materials.pulled_out, 
                             materials.accumulated_materials,
-                            currentQuantity
+                            materials.currentQuantity,
+                            projects.projects_name
                             FROM materials 
+                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             INNER JOIN projects ON materials.mat_project = projects.projects_id
-                            WHERE projects.projects_name = '$projects_name';";
+                            WHERE categories.categories_name = '$categ';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
-
                         <tr>
                             <td>
-                                <?php echo $row[0] ?>
+                                <form action="server.php" method="POST">
+                                    <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                    <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
+                                        <?php echo $row[0] ?></a>
+                                </form>
+
                             </td>
                             <td>
                                 <?php echo $row[1] ?>
@@ -193,7 +219,8 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
-                            <td> <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+                            <td> 
+                                <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
 
                                 <!-- EDIT SITE MATERIAL MODAL -->
                                 <form action="server.php" method="POST">
@@ -231,10 +258,13 @@
                                     </div>
                                 </form>
                             </td>
-                        </tr>
-                        <?php    
+                            <?php 
                             }
                         ?>
+                        </tr>
+                        <?php 
+                        }
+                    ?>
                     </tbody>
                 </table>
             </div>

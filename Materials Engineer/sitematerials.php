@@ -136,18 +136,18 @@
 
                 <tbody>
                     <?php 
-                    $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
-                    INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                    ORDER BY categories.categories_name;";
-                    $result = mysqli_query($conn, $sql_categ);
-                    $categories = array();
-                    while($row_categ = mysqli_fetch_assoc($result)){
-                        $categories[] = $row_categ;
-                    }
+                        $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
+                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                        ORDER BY categories.categories_name;";
+                        $result = mysqli_query($conn, $sql_categ);
+                        $categories = array();
+                        while($row_categ = mysqli_fetch_assoc($result)){
+                            $categories[] = $row_categ;
+                        }
 
-                    foreach($categories as $data) {
-                    $categ = $data['categories_name'];
-                ?>
+                        foreach($categories as $data) {
+                        $categ = $data['categories_name'];
+                    ?>
                     <tr>
                         <td colspan="10" class="td-category"> <b>
                                 <?php echo $categ; ?></b></td>
@@ -159,9 +159,12 @@
                         materials.delivered_material, 
                         materials.pulled_out, 
                         materials.accumulated_materials,
-                        currentQuantity,
-                        mat_project
-                        FROM materials";
+                        materials.currentQuantity,
+                        projects.projects_name
+                        FROM materials 
+                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                        INNER JOIN projects ON materials.mat_project = projects.projects_id
+                        WHERE categories.categories_name = '$categ';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>

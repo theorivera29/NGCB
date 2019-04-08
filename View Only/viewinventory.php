@@ -120,9 +120,15 @@
                         ?>
 
                         <tr>
-                            <td>
-                                <?php echo $row[0] ?>
-                            </td>
+                        <td>
+                            <form action="server.php" method="POST">
+                                <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
+                                    <?php echo $row[0] ?></a>
+                            </form>
+
+                        </td>
+
                             <td>
                                 <?php echo $row[1] ?>
                             </td>
@@ -147,6 +153,73 @@
             </div>
         </div>
     </div>
+
+    <!--MODAL-->
+    <div id="modal1" class="modal modal-fixed-footer">
+            <form action="server.php" method="POST">
+                <div class="modal- ">
+                    <div class="content">
+                        <div class="row">
+
+                            <div class="col s12">
+                                <h4>DELIVER IN</h4>
+                                <table class="centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                            <th>Supplied By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="date" name="dev_date"></td>
+                                            <td><input type="text" name="dev_quantity"></td>
+                                            <td><input type="text" name="unit"></td>
+                                            <td><input type="text" name="dev_supp"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col s12">
+                                <h4>USAGE IN</h4>
+                                <table class="centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                            <th>Pulled Out By</th>
+                                            <th>Area of Usage</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td contenteditable="true"><input type="date" name="us_date"></td>
+                                            <td contenteditable="true"><input type="text" name="us_quantity"></td>
+                                            <td contenteditable="true"><select class="browser-default" name="us_unit">
+                                                    <option value="UNITS" selected></option>
+                                                </select></td>
+                                            <td contenteditable="true"><select class="browser-default" name="categories">
+                                                    <option value="mat eng namesss" selected></option>
+                                                </select></td>
+                                            <td contenteditable="true"><input type="text" name="us_area"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                </div>
+            </form>
+        </div>
 
     <!--SITE CATEGORIES-->
     <div id="categories" class="col s12">

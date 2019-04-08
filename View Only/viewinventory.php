@@ -103,18 +103,38 @@
                     </thead>
 
                     <tbody>
+                    <?php 
+                            $projects_name = $_GET['projects_name'];
+                            $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
+                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                            INNER JOIN projects ON materials.mat_project = projects.projects_id
+                            WHERE projects.projects_name = '$projects_name'
+                            ORDER BY categories.categories_name;";
+                            $result = mysqli_query($conn, $sql_categ);
+                            $categories = array();
+                            while($row_categ = mysqli_fetch_assoc($result)){
+                                $categories[] = $row_categ;
+                            }
+
+                            foreach($categories as $data) {
+                            $categ = $data['categories_name'];
+                        ?>
+                        <tr>
+                            <td colspan="10" class="td-category"> <b>
+                                    <?php echo $categ; ?></b></td>
+                        </tr>
                         <?php 
                             $sql = "SELECT
                             materials.mat_name, 
                             materials.mat_prevStock, 
-                            stockcard.stockcard_totalDelivered, 
-                            stockcard.stockcard_totalPulledOut, 
-                            (stockcard.stockcard_totalDelivered + materials.mat_prevStock), 
-                            stockcard.stockcard_quantity 
+                            materials.delivered_material, 
+                            materials.pulled_out, 
+                            materials.accumulated_materials,
+                            materials.currentQuantity
                             FROM materials 
                             INNER JOIN projects ON materials.mat_project = projects.projects_id 
-                            INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
-                            WHERE projects.projects_name = '$projects_name';";
+                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                            WHERE categories.categories_name = '$categ';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
@@ -145,6 +165,9 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
+                            <?php 
+                            }
+                        ?>
                         </tr>
                         <?php    
                             }
@@ -197,20 +220,6 @@
 
                                         </tr>
                                     </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td contenteditable="true"><input type="date" name="us_date"></td>
-                                            <td contenteditable="true"><input type="text" name="us_quantity"></td>
-                                            <td contenteditable="true"><select class="browser-default" name="us_unit">
-                                                    <option value="UNITS" selected></option>
-                                                </select></td>
-                                            <td contenteditable="true"><select class="browser-default" name="categories">
-                                                    <option value="mat eng namesss" selected></option>
-                                                </select></td>
-                                            <td contenteditable="true"><input type="text" name="us_area"></td>
-                                        </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>

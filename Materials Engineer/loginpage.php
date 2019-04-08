@@ -35,7 +35,6 @@
             <form id="login-form" action="server.php" method="POST">
                 <h2 class="header header-two">Login</h2>
                 <?php
-                    session_start();
                     if(isset($_SESSION['login_error'])) {
                     echo "Incorrect username or password.";
                     unset($_SESSION['login_error']);

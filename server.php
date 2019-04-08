@@ -13,17 +13,18 @@
             $_SESSION['tasks']= $row[0];
             $_SESSION['username'] = $username; 
             $_SESSION['loggedin' ] = true;
+            $_SESSION['account_type'] = $row[2];
             if ($row[2] == "Admin") {
-                header("location: http://127.0.0.1/NGCB/Admin/dashboard.php");
+                header("location: http://127.0.0.1/NGCB/Admin/admindashboard.php");
                 exit;
             } else if ($row[2] == "MatEng") {
-                header("location: http://127.0.0.1/NGCB/Materials%20Engineer/admindashboard.php");
+                header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
                 exit;
             } else {
-                header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php");
+                header("location: http://127.0.0.1/NGCB/View%20Only/projects.php");
                 exit;
             }
-        }else {
+        } else {
             $_SESSION['login_error'] = true;
             header("location: http://127.0.0.1/NGCB/index.php");
             exit;
@@ -70,7 +71,7 @@
             $sql = "INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status)
                     VALUES ('$projects_name', '$projects_address', '$start_date', '$end_date', 'open')";
             mysqli_query($conn,$sql);
-            header("Location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+            header("Location: http://127.0.0.1/NGCB/Admin/projects.php");
             exit;
         }
     }
@@ -79,14 +80,14 @@
         $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
         $sql = "UPDATE projects SET projects_status = 'closed' WHERE projects_name = '$projects_name';";
         mysqli_query($conn,$sql);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+        header("location: http://127.0.0.1/NGCB/Admin/projects.php");
     }
 
     if (isset($_POST['reopen_project'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
         $sql = "UPDATE projects SET projects_status = 'open' WHERE projects_name = '$projects_name';";
         mysqli_query($conn,$sql);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+        header("location: http://127.0.0.1/NGCB/Admin/projects.php");
     }
 
     if(isset($_POST['edit_project'])) {
@@ -116,11 +117,23 @@
             mysqli_query($conn, $sql);
         }
         
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+        header("location: http://127.0.0.1/NGCB/Admin/projects.php");
     } 
     if(isset($_POST['view_inventory'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
+        $account_type = "";
+        if (isset($_SESSION['account_type'])) {
+            $account_type = $_SESSION['account_type'];
+            echo "sdasd";
+        }
+        echo $account_type;
+        // if($account_type = 'MatEng') {
+        //     header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
+        //     exit();
+        // } else {
+        //     header("location: http://127.0.0.1/NGCB/View%Only/viewinventory.php?projects_name=$projects_name");
+        //     exit();
+        // }
     }
 
     if(isset($_POST['fillout_hauling'])) {
@@ -135,7 +148,14 @@
 
     if(isset($_POST['view_category'])) {
         $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id");
+        $account_type = $_SESSION['account_type'];
+        if($account_type = 'MatEng') {
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id");
+            exit();
+        } else {
+            header("location: http://127.0.0.1/NGCB/View%Only/itemcategories.php?categories_id=$categories_id");
+            exit();
+        }
     }
 
     if(isset($_POST['view_hauled'])) {

@@ -1,12 +1,11 @@
 <?php
-    include "db_connection.php";
+    include "../db_connection.php";
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/index.php');
     }
 ?>
-
 
 <!DOCTYPE html>
 
@@ -89,7 +88,7 @@
                     </td>
                     <td><?php echo $row[3] ;?></td>
                     <td>
-                        <form action="server.php" method="POST">
+                        <form action="../server.php" method="POST">
                             <input type="hidden" name="hauling_no" value="<?php echo $row[0]?>">
                             <button class="waves-effect waves-light btn view-hauled-item-btn" type="submit"
                                 name="view_hauled">View</button>

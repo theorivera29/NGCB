@@ -1,9 +1,9 @@
 <?php
-    include "db_connection.php";
+    include "../db_connection.php";
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/index.php');
     }
 ?>
 
@@ -163,7 +163,7 @@
                             <?php echo $row[1] ;?>
                         </span>
                         <div class="row">
-                            <form action="server.php" method="POST">
+                            <form action="../server.php" method="POST">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
                                 <button class="waves-effect waves-light btn view-inventory-btn" type="submit"
                                     name="view_category">View Inventory</button>

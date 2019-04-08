@@ -3,9 +3,10 @@
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/index.php');
     }
 ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -156,7 +157,7 @@
                                     </span><?php echo $row[3] ?>
                                 </p>
                                 <div class="row">
-                                    <form action="server.php" method="POST">
+                                    <form action="../server.php" method="POST">
                                         <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
                                         <div class="row">
                                             <button class="waves-effect waves-light btn viewinventory-btn" type="submit"
@@ -185,7 +186,7 @@
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-                            <form action="server.php" method="POST">
+                            <form action="../server.php" method="POST">
                                 <input type="hidden" name="project_name" value='<?php echo $row[0] ?>'>
                                 <button type="submit" name="close_project"
                                     class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
@@ -237,7 +238,7 @@
                         </div>
                         <div class="modal-footer">
                             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-                            <form action="server.php" method="POST">
+                            <form action="../server.php" method="POST">
                                 <input type="hidden" name="project_name" value='<?php echo $row[0] ?>'>
                                 <button type="submit" name="reopen_project"
                                     class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</button>

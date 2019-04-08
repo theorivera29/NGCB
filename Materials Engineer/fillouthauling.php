@@ -3,7 +3,7 @@
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/index.php');
     }
 ?>
 
@@ -120,7 +120,7 @@
     <div class="row">
         <div class="col s12 m10 offset-m1">
             <div class="card hauling-form">
-                <form action="server.php" method="POST">
+                <form action="../server.php" method="POST">
                     <div class="card-content">
                         <h4>Hauling Form</h4>
                         <div class="row">
@@ -290,7 +290,7 @@
         });
         
         $('#categories').on('change', function () {
-            $.get('http://localhost/NGCB/Materials%20Engineer/server.php?category_id='+$(this).children('option:selected').val(), function (data) {
+            $.get('http://localhost/NGCB/Materials%20Engineer/../server.php?category_id='+$(this).children('option:selected').val(), function (data) {
                 var d = JSON.parse(data)
                 var loobNgSelect = '';
                 d.forEach(function (da) {
@@ -303,7 +303,7 @@
         
         $('#materials').on('change', function () {
             console.log($(this).children('option:selected').val())
-            $.get('http://localhost/NGCB/Materials%20Engineer/server.php?mat_name='+$(this).children('option:selected').val(), function (data) {
+            $.get('http://localhost/NGCB/Materials%20Engineer/../server.php?mat_name='+$(this).children('option:selected').val(), function (data) {
                 var d = JSON.parse(data)
 //                console.log(d)
                 $('#unit').val(d[0][0])

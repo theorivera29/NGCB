@@ -1,9 +1,9 @@
 <?php
-    include "db_connection.php";
+    include "../db_connection.php";
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/NGCB/View%20Only/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/index.php');
     }
 ?>
 
@@ -59,7 +59,7 @@
                     <div class="divider"></div>
                 </li>
                 <li>
-                    <a href="logout.php">Logout</a>
+                    <a href="../logout.php">Logout</a>
                 </li>
             </ul>
         </div>
@@ -100,7 +100,7 @@
                                     </span><?php echo $row[3] ?>
                                 </p>
                                 <div class="row">
-                                    <form action="server.php" method="POST">
+                                    <form action="../server.php" method="POST">
                                         <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
                                         <div class="row">
                                             <button class="waves-effect waves-light btn viewinventory-btn" type="submit"

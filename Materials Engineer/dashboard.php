@@ -3,7 +3,7 @@
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/index.php');
     }
     $task = $_SESSION['tasks'];
 ?>
@@ -46,7 +46,7 @@
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
                     <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
-                    <li><a class="waves-effect waves-blue" href="logout.php">Logout</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
                     
                 </ul>
             </span>
@@ -123,7 +123,7 @@
             <div class="Panel-Header">
                 <span>CALENDAR AND TO-DO</span>
             </div>
-            <form action="server.php" method="POST">
+            <form action="../server.php" method="POST">
                 <div class="row">
                     <div class="input-field col s3">
                         <label>To-do Date:</label>
@@ -159,7 +159,7 @@
             <div class="Panel-Header">
                 <span>CALENDAR AND TO-DO</span>
          </div>
-            <form action="server.php" method="POST">
+            <form action="../server.php" method="POST">
                 <div class="row">
                     <div class="input-field col s3">
                        <label>To-do Date:</label>
@@ -219,7 +219,7 @@
                                 <?php echo $row[3] ?>
                             </td>
                             <td>
-                                <form action="server.php" method="POST">
+                                <form action="../server.php" method="POST">
                                     <?php
                                         if(strcasecmp($row[3], 'in progress') == 0) {
                                             ?>
@@ -365,7 +365,7 @@
                         <?php echo $row[3] ?>
                     </td>
                     <td>
-                        <form action="server.php" method="POST">
+                        <form action="../server.php" method="POST">
                             <?php
                                 if(strcasecmp($row[3], 'in progress') == 0) {
                                     ?>

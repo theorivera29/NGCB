@@ -3,7 +3,7 @@
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/index.php');
     }
 ?>
 
@@ -197,7 +197,7 @@
                         ?>
                         <tr>
                             <td>
-                                <form action="server.php" method="POST">
+                                <form action="../server.php" method="POST">
                                     <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                     <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
                                         <?php echo $row[0] ?></a>
@@ -223,7 +223,7 @@
                                 <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
 
                                 <!-- EDIT SITE MATERIAL MODAL -->
-                                <form action="server.php" method="POST">
+                                <form action="../server.php" method="POST">
                                     <div id="editmaterialModal" class="modal modal-fixed-footer">
                                         <div class="modal-content">
                                             <h4>Edit Material</h4>
@@ -295,7 +295,7 @@
                             <?php echo $row[1] ;?>
                         </span>
                         <div class="row">
-                            <form action="server.php" method="POST">
+                            <form action="../server.php" method="POST">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
                                 <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
                             </form>
@@ -310,7 +310,7 @@
     </div>
     <!-- ADD SITE MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer">
-        <form action="server.php" method="POST">
+        <form action="../server.php" method="POST">
             <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
             <div class="modal-content">
                 <h4>Add Material</h4>
@@ -412,7 +412,7 @@
 
     <!-- ADD CATEGORY MODAL -->
     <div id="addcategoryModal" class="modal modal-fixed-footer">
-        <form action="server.php" method="POST">
+        <form action="../server.php" method="POST">
             <div class="modal-content">
                 <h4>Add Category</h4>
                 <div class="row">
@@ -444,7 +444,7 @@
 
     <!-- EDIT MATERIAL MODAL -->
     <div id="editcategoryModal" class="modal modal-fixed-footer">
-        <form action="server.php" method="POST">
+        <form action="../server.php" method="POST">
             <div class="modal-content">
                 <h4>Edit Category</h4>
                 <div class="row">

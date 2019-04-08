@@ -2,9 +2,9 @@
     include "../db_connection.php";
     session_start();
 
-//    if(!isset($_SESSION['loggedin'])) {
-//      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
-//    }
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/NGCB/index.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +76,7 @@
                     <div class="divider"></div>
                 </li>
                 <li>
-                    <a href="logout.php">Logout</a>
+                    <a href="../logout.php">Logout</a>
                 </li>
             </ul>
         </div>

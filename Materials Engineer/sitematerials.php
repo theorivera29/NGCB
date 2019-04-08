@@ -3,7 +3,7 @@
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
+      header('Location: http://127.0.0.1/NGCB/index.php');
     }
 ?>
 
@@ -170,7 +170,7 @@
                     ?>
                     <tr>
                         <td>
-                            <form action="server.php" method="POST">
+                            <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                 <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
                                     <?php echo $row[0] ?></a>
@@ -209,7 +209,7 @@
 
         <!--MODAL-->
         <div id="modal1" class="modal modal-fixed-footer">
-            <form action="server.php" method="POST">
+            <form action="../server.php" method="POST">
                 <div class="modal- ">
                     <div class="content">
                         <div class="row">

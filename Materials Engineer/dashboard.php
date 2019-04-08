@@ -232,7 +232,7 @@
                                         <span>Are you sure want to click done?</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                            <a class="modal-close waves-effect waves-red btn-flat">No</a>
                                             <button type="submit" name="todo_update"
                                                 class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                         </div>
@@ -249,7 +249,7 @@
                                         <span>Are you sure want to clear this task</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                            <a class="modal-close waves-effect waves-red btn-flat">No</a>
                                             <button type="submit" name="todo_update"
                                                 class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                         </div>
@@ -380,7 +380,7 @@
                             <div id="doneBtn" class="modal modal-fixed-footer">
                                 <span>Are you sure want to click done?</span>
                                 <div class="modal-footer">
-                                    <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
                                     <button type="submit" name="todo_update"
                                         class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                 </div>
@@ -395,7 +395,7 @@
                             <div id="clearBtn" class="modal modal-fixed-footer">
                                 <span>Are you sure want to clear this task</span>
                                 <div class="modal-footer">
-                                    <button class="modal-close waves-effect waves-red btn-flat">No</button>
+                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
                                     <button type="submit" name="todo_update"
                                         class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                 </div>

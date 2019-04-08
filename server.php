@@ -121,19 +121,14 @@
     } 
     if(isset($_POST['view_inventory'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        $account_type = "";
-        if (isset($_SESSION['account_type'])) {
-            $account_type = $_SESSION['account_type'];
-            echo "sdasd";
+        $account_type = mysqli_real_escape_string($conn, $_POST['acount_type']);
+        if($account_type = 'MatEng') {
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
+            exit();
+        } else {
+            header("location: http://127.0.0.1/NGCB/View%2Only/viewinventory.php?projects_name=$projects_name");
+            exit();
         }
-        echo $account_type;
-        // if($account_type = 'MatEng') {
-        //     header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
-        //     exit();
-        // } else {
-        //     header("location: http://127.0.0.1/NGCB/View%Only/viewinventory.php?projects_name=$projects_name");
-        //     exit();
-        // }
     }
 
     if(isset($_POST['fillout_hauling'])) {

@@ -32,11 +32,10 @@
     </div>
 
     <div class="split-login-container right-login-container">
-        <div class="row">
-
+        <div class="row login-container">
             <input type='checkbox' id='form-switch'>
             <form id="login-form" action="server.php" method="POST">
-                <h2 class="header header-two">Login</h2>
+                <h2 class="header header-two">Log In</h2>
                 <?php
                     if(isset($_SESSION['login_error'])) {
                     echo "Incorrect username or password.";
@@ -44,16 +43,17 @@
                     }
                 ?>
                 <div class="co-login">
-                    <div class="f-login username input-field col s6 m8 offset-m1 ">
-                        <input id="login-username" name="username" type="text" required>
+                    <div class="f-login username input-field col s6 m12">
+                        <input placeholder="Your username.." id="login-username" name="username" type="text" required>
                         <label class="active" for="username">Username</label>
                     </div>
-                    <div class="f-login password input-field col s6 m8 offset-m1">
-                        <input id="login-password" name="password" type="password" required>
+                    <div class="f-login password input-field col s6 m12">
+                        <input placeholder="Your password.." id="login-password" name="password" type="password"
+                            required>
                         <label class="active" for="password">Password</label>
                     </div>
                     <div class="row">
-                        <div class="col s12 m24">
+                        <div class="col m12">
 
                             <button class="btn waves-effect waves-light login-btn" type="submit"
                                 name="login">Login</button>
@@ -61,8 +61,9 @@
 
                     </div>
                     <div class="row">
-                        <div class="col s12 m9 offset-m3">
-                            <label for='form-switch' id="form-switch-label">Forgot Password</label>
+                        <div class="col">
+                            <label for='form-switch' id="form-switch-label" class="forgot-password">Forgot
+                                Password</label>
                         </div>
                     </div>
                 </div>
@@ -70,24 +71,22 @@
             </form>
 
             <form id="password-form" action="server.php" method="POST">
-                <h2 class="header header-two">Password Reset</h2>
-                <div class="row">
-                    <div class="input-field col s7 offset-m2">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input placeholder="username" id="login-username" name="username" type="text" class="validate">
+                <div class="row" id="login-form">
+                    <h2 class="header header-two">Password Reset</h2>
+                    <div class="input-field col col s6 m12">
+                        <input placeholder="Your username.." id="login-password" name="password" type="text" required>
+                        <label class="active" for="password">Password</label>
                     </div>
-
                     <div class="row">
-                        <div class="col s4 m6 offset-m3">
-                            <a href="createaccount.php" class="btn waves-effect waves-light" type="submit"
-                                name="action">Submit</a>
-                            <a href="loginpage.php" class="btn waves-effect waves-light" type="submit"
-                                name="action">Cancel</a>
-                        </div>
+                        <button href="index.php" class="btn waves-effect waves-light" type="submit"
+                            name="action">Submit</button>
+                        <a href="index.php" class="btn waves-effect waves-light" type="submit"
+                            name="action">Cancel</a>
                     </div>
                 </div>
-            </form>
         </div>
+        </form>
+    </div>
 
     </div>
     </div>

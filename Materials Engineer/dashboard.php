@@ -16,7 +16,8 @@
     <title>NGCB</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
+   
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -415,12 +416,14 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js">
     </script>
-    <script src="../datepicker.js"></script>
+    <script type="text/javascript" src="../datepicker.js"></script>
     <script>
         // SIDEBAR
         // SIDEBAR
+        const Calendar = document.querySelector('.datepicker');
+ M.Datepicker.init(Calendar, {format:'yyyy-dd-mm'});
         $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300

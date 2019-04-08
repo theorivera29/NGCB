@@ -91,34 +91,42 @@
     }
 
     if(isset($_POST['edit_project'])) {
-        $projects_name = mysqli_real_escape_string($conn, $_POST['new_project_name']);
+        $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
+        
         if(isset($_POST['new_project_name'])) {
-            $new_project_name = $_POST['new_project_name'];
-            echo $new_project_name;
-            $sql = "UPDATE projects SET projects_name = '$new_project_name' WHERE projects_name = '$projects_name';";
-            mysqli_query($conn,$sql);
+            $new_project_name = mysqli_real_escape_string($conn, $_POST['new_project_name']);
+            if(!strcmp($new_project_name, null) == 0) {
+                $sql = "UPDATE projects SET projects_name = '$new_project_name' WHERE projects_name = '$projects_name';";
+                mysqli_query($conn,$sql);
+            }
         }
 
         if(isset($_POST['new_address'])) {
             $new_address = mysqli_real_escape_string($conn, $_POST['new_address']);
-            $sql = "UPDATE projects SET projects_address = '$new_address' WHERE projects_name = '$projects_name';";
-            mysqli_query($conn, $sql);
+            if(!strcmp($new_address, null) == 0) {
+                $sql = "UPDATE projects SET projects_address = '$new_address' WHERE projects_name = '$projects_name';";
+                mysqli_query($conn, $sql);
+            }
         }
 
         if(isset($_POST['new_sdate'])) {
             $new_sdate = mysqli_real_escape_string($conn, $_POST['new_sdate']);
-            $sql = "UPDATE projects SET projects_sdate = '$new_sdate' WHERE projects_name = '$projects_name';";
-            mysqli_query($conn, $sql);
+            if(!strcmp($new_sdate, null) == 0) {
+                $sql = "UPDATE projects SET projects_sdate = '$new_sdate' WHERE projects_name = '$projects_name';";
+                mysqli_query($conn, $sql);
+            }
         }
 
         if(isset($_POST['new_edate'])) {
             $new_edate = mysqli_real_escape_string($conn, $_POST['new_edate']);
-            $sql = "UPDATE projects SET projects_edate = '$new_edate' WHERE projects_name = '$projects_name';";
-            mysqli_query($conn, $sql);
+            if(!strcmp($new_edate, null) == 0) {
+                $sql = "UPDATE projects SET projects_edate = '$new_edate' WHERE projects_name = '$projects_name';";
+                mysqli_query($conn, $sql);
+            }
         }
-        
         header("location: http://127.0.0.1/NGCB/Admin/projects.php");
     } 
+
     if(isset($_POST['view_inventory'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);

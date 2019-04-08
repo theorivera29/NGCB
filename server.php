@@ -155,7 +155,14 @@
 
     if(isset($_POST['view_hauled'])) {
         $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/open%20hauling.php?hauling_no=$hauling_no");
+        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        if(strcmp($account_type,'MatEng') == 0) {
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/openhauling.php?hauling_no=$hauling_no");
+            exit();
+        } else {
+        header("location: http://127.0.0.1/NGCB/View%20Only/openhauling.php?hauling_no=$hauling_no");
+            exit();
+        }
     }
 
     if (isset($_POST['create_hauling'])) {

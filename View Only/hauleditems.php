@@ -90,6 +90,7 @@
                     <td>
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="hauling_no" value="<?php echo $row[0]?>">
+                            <input type="hidden" name="account_type" value="<?php echo $_SESSION['account_type']; ?>">
                             <button class="waves-effect waves-light btn view-hauled-item-btn" type="submit"
                                 name="view_hauled">View</button>
                         </form>

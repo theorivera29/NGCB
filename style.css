@@ -1,11 +1,3 @@
-/*
-c: Container
-h: header
-co: content
-img: image
-f: input field
-*/
-
 /*Fonts Used*/
 @font-face {
     font-family: 'Galyon';
@@ -15,6 +7,11 @@ f: input field
 @font-face {
     font-family: 'Ageo';
     src: url('../fonts/Ageo.otf');
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../fonts/Mont.otf');
 }
 
 /*Login Style*/
@@ -53,12 +50,29 @@ f: input field
     text-align: center;
 }
 
+
+#login-form {
+    margin: auto;
+    width: 60%;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+}
+
+.col {
+    padding: 0 !important;
+}
+
 .header-two {
-    text-align: left !important;
-    padding-left: 10% !important;
+    text-align: left;
     color: #00171F;
-    font-size: 4vh;
-    padding-top: 15%;
+    font-size: 6vmin;
+    font-family: 'Pridi', serif;
+}
+
+.submit-btn{
+    width: 50% !important;
 }
 
 .co-login {
@@ -67,10 +81,6 @@ f: input field
 
 .f-login {
     padding-left: 2%;
-}
-
-input:required {
-    border: 1px solid #3E3E3F !important;
 }
 
 .username {
@@ -87,8 +97,8 @@ input:required {
 }
 
 label {
-    cursor: pointer;
-    font-size: 2vh !important;
+    font-size: 3vmin !important;
+
 }
 
 #form-switch {
@@ -99,29 +109,26 @@ label {
     display: none
 }
 
-#form-switch:checked ~ #password-form {
+#form-switch:checked~#password-form {
     display: block
 }
 
-#form-switch:checked ~ #login-form {
+#form-switch:checked~#login-form {
     display: none
 }
 
 #form-switch-label {
-    font-size: 2vh !important;
-
+    font-size: 2.5vmin !important;
 }
 
 
+
 .login-btn {
-    width: 25% !important;
-    margin-left: 20%;
+    width: 100% !important;
     padding-bottom: 2% !important;
-    margin-right: 25% !important;
     color: #ffffff !important;
     background-color: #4C99AF !important;
     font-size: 2vh !important;
-    float: right !important;
 }
 
 .create-account-btn {
@@ -148,21 +155,22 @@ nav {
     font-size: 2vmin !important;
 }
 
-#acName{
+#acName {
     float: right;
     margin-right: 3%;
 }
 
-.down-arrow{
+.down-arrow {
     float: right !important;
-    
+
 }
-.right{
+
+.right {
     color: black !important;
 }
 
 .dropdown-content {
-    background-color: #FFFFFF; 
+    background-color: #FFFFFF;
     /* Changed this from overflow-y:auto; to overflow:hidden; */
     opacity: 0;
     position: absolute;
@@ -180,6 +188,7 @@ nav {
     font-size: 2vmin !important;
     font-family: Ageo !important;
 }
+
 .side-nav a:hover {
     background-color: #FFFFFF !important;
     color: #173753 !important;
@@ -193,7 +202,7 @@ nav {
 }
 
 
-.menuIcon{
+.menuIcon {
     color: #173753 !important;
 }
 
@@ -219,9 +228,11 @@ nav {
 
 
 .collapsible li.active i {
-    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    -webkit-transform: rotate(180deg);
+    /* Chrome, Safari, Opera */
     transform: rotate(180deg);
-  }
+}
+
 /* Style for Dashboard */
 /*Calendar  */
 .contextmenu {
@@ -251,17 +262,17 @@ a.next,
     color: #ffffff;
 }
 
-input.datepicker:focus + div.contextmenu {
+input.datepicker:focus+div.contextmenu {
     display: block;
 }
 
-input.datepicker:focus + div.contextmenu,
+input.datepicker:focus+div.contextmenu,
 div.contextmenu:hover {
     display: block;
 }
 
-.sample-date{
-    background-color: red !important; 
+.sample-date {
+    background-color: red !important;
 }
 
 .Calendar-Todo-Container {
@@ -370,11 +381,11 @@ div.contextmenu:hover {
     color: white !important;
 }
 
-.acName{
+.acName {
     text-align: center;
 }
 
-.acType{
+.acType {
     margin-top: 2%;
 }
 
@@ -398,7 +409,7 @@ div.contextmenu:hover {
     margin-right: 2%;
 }
 
-.view-inventory-head > tr > th {
+.view-inventory-head>tr>th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -430,7 +441,7 @@ div.contextmenu:hover {
     padding: 5%;
 }
 
-.site-materials-head > tr > th {
+.site-materials-head>tr>th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -477,7 +488,7 @@ th {
     margin-right: 2%;
 }
 
-.item-categories-head > tr > th {
+.item-categories-head>tr>th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -487,7 +498,7 @@ th {
 }
 
 /*Style for Hauling*/
-.hauled-items-head > tr > th {
+.hauled-items-head>tr>th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -498,7 +509,7 @@ th {
 
 
 .hauling-form {
-    background-color:#EEEEEE !important;
+    background-color: #EEEEEE !important;
 }
 
 /* Style for Report*/
@@ -507,7 +518,7 @@ th {
     color: white !important;
 }
 
-.report-head > tr > th {
+.report-head>tr>th {
     background-color: #0B415E !important;
     font-size: 19px;
     border-radius: 2%;
@@ -546,11 +557,42 @@ th {
     color: white;
 }
 
-input[type=text]:disabled{
+input[type=text],
+input[type=password] {
+    background-color: #EDEBEA !important;
+    border-bottom: none !important;
+    padding-left: 5% !important;
+    margin-bottom: 10% !important; 
+    -webkit-box-sizing: inherit !important;
+    box-sizing: inherit !important;
+}
+
+input:focus {
+    outline: 2px solid #63C7B2;
+}
+
+input[type=text]:disabled {
     color: black;
 }
 
-.proj-row{
+.proj-row {
     background-color: #1A5D89;
     color: #ffffff;
+}
+
+.input-field input[type=text]:focus+label,
+.input-field input[type=password]:focus+label {
+    color: none !important;
+}
+
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid white;
+    box-shadow: 0 1px 0 0 white;
+}
+
+.input-field label.active {
+    position: absolute;
+    left: 0.0rem !important;
+    padding-bottom: 2% !important;
 }

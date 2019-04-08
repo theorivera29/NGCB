@@ -88,11 +88,23 @@
                     <tbody>
                         <?php 
                             $categories_id = $_GET['categories_id'];
-                            $sql = "SELECT * FROM materials WHERE mat_categ = '$categories_id';";
+                            $sql = "SELECT
+                            materials.mat_name, 
+                            materials.mat_prevStock, 
+                            materials.delivered_material, 
+                            materials.pulled_out, 
+                            materials.accumulated_materials,
+                            materials.currentQuantity
+                            FROM materials 
+                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                            WHERE categories.categories_id = '$categories_id';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
                         <tr>
+                            <td>
+                                <?php echo $row[0] ?>
+                            </td>
                             <td>
                                 <?php echo $row[1] ?>
                             </td>
@@ -108,10 +120,6 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
-                            <td>
-                                <?php echo $row[6] ?>
-                            </td>
-                            <td> </td>
                         </tr>
 
                         <?php    

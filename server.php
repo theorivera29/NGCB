@@ -121,12 +121,12 @@
     } 
     if(isset($_POST['view_inventory'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        $account_type = mysqli_real_escape_string($conn, $_POST['acount_type']);
-        if($account_type = 'MatEng') {
+        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        if(strcmp($account_type,'MatEng') == 0) {
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
             exit();
         } else {
-            header("location: http://127.0.0.1/NGCB/View%2Only/viewinventory.php?projects_name=$projects_name");
+            header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");
             exit();
         }
     }

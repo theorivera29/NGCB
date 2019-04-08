@@ -122,6 +122,7 @@
                         <tr>
                         <td>
                             <form action="server.php" method="POST">
+                                <input type="hidden" name="account_type" value="<?php echo $_SESSION['account_type']; ?>">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                 <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
                                     <?php echo $row[0] ?></a>
@@ -238,6 +239,7 @@
                         <div class="row">
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
+                                <input type="hidden" name="account_type" value="<?php echo $_SESSION['account_type']; ?>">
                                 <button class="waves-effect waves-light btn view-inventory-btn" type="submit"
                                     name="view_category">View Inventory</button>
                             </form>

@@ -121,19 +121,14 @@
     } 
     if(isset($_POST['view_inventory'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        $account_type = "";
-        if (isset($_SESSION['account_type'])) {
-            $account_type = $_SESSION['account_type'];
-            echo "sdasd";
+        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        if(strcmp($account_type,'MatEng') == 0) {
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
+            exit();
+        } else {
+            header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");
+            exit();
         }
-        echo $account_type;
-        // if($account_type = 'MatEng') {
-        //     header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
-        //     exit();
-        // } else {
-        //     header("location: http://127.0.0.1/NGCB/View%Only/viewinventory.php?projects_name=$projects_name");
-        //     exit();
-        // }
     }
 
     if(isset($_POST['fillout_hauling'])) {
@@ -148,19 +143,26 @@
 
     if(isset($_POST['view_category'])) {
         $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
-        $account_type = $_SESSION['account_type'];
-        if($account_type = 'MatEng') {
+        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        if(strcmp($account_type,'MatEng') == 0) {
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id");
             exit();
         } else {
-            header("location: http://127.0.0.1/NGCB/View%Only/itemcategories.php?categories_id=$categories_id");
+            header("location: http://127.0.0.1/NGCB/View%20Only/itemcategories.php?categories_id=$categories_id");
             exit();
         }
     }
 
     if(isset($_POST['view_hauled'])) {
         $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/open%20hauling.php?hauling_no=$hauling_no");
+        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        if(strcmp($account_type,'MatEng') == 0) {
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/openhauling.php?hauling_no=$hauling_no");
+            exit();
+        } else {
+        header("location: http://127.0.0.1/NGCB/View%20Only/openhauling.php?hauling_no=$hauling_no");
+            exit();
+        }
     }
 
     if (isset($_POST['create_hauling'])) {

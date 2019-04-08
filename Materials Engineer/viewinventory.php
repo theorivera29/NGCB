@@ -296,6 +296,7 @@
                         </span>
                         <div class="row">
                             <form action="../server.php" method="POST">
+                                <input type="hidden" name="account_type" value="<?php echo $_SESSION['account_type']; ?>">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
                                 <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
                             </form>

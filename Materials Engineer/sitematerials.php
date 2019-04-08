@@ -156,17 +156,12 @@
                         $sql = "SELECT 
                         materials.mat_name, 
                         materials.mat_prevStock, 
-                        stockcard.stockcard_totalDelivered, 
-                        stockcard.stockcard_totalPulledOut, 
-                        (stockcard.stockcard_totalDelivered + materials.mat_prevStock), 
-                        stockcard.stockcard_quantity,
-                        projects.projects_name
-                        FROM materials 
-                        INNER JOIN projects ON materials.mat_project = projects.projects_id 
-                        INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
-                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                        WHERE categories.categories_name = '$categ'
-                        ORDER BY materials.mat_name;";
+                        materials.delivered_material, 
+                        materials.pulled_out, 
+                        materials.accumulated_materials,
+                        currentQuantity,
+                        mat_project
+                        FROM materials";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>

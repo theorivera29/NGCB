@@ -3,11 +3,7 @@
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-<<<<<<< HEAD
       header('Location: http://127.0.0.1/NGCB/index.php');
-=======
-      header('Location: http://127.0.0.1/22619/Materials%20Engineer/loginpage.php');
->>>>>>> 616071f4ed79c28b3b75e3f5eafe955fd99b425f
     }
 ?>
 

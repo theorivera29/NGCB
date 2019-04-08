@@ -190,6 +190,7 @@
                             projects.projects_name
                             FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                            INNER JOIN projects ON materials.mat_project = projects.projects_id
                             WHERE categories.categories_name = '$categ';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){

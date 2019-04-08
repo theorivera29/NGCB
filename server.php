@@ -1,25 +1,31 @@
 <?php
     include "db_connection.php";
-  
     
     if (isset($_POST['login'])) {
         session_start();
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']); 
-        $sql = "SELECT accounts_id, accounts_password FROM accounts WHERE accounts_username = '$username'";
+        $sql = "SELECT accounts_id, accounts_password, accounts_type FROM accounts WHERE accounts_username = '$username'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
         $hash_password = $row[1];
-        if(
-            /*password_verify($password, $hash_password)*/true) {
+        if(/*password_verify($password, $hash_password)*/true) {
             $_SESSION['tasks']= $row[0];
             $_SESSION['username'] = $username; 
             $_SESSION['loggedin' ] = true;
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
-            exit;
+            if ($row[2] == "Admin") {
+                header("location: http://127.0.0.1/NGCB/Admin/dashboard.php");
+                exit;
+            } else if ($row[2] == "MatEng") {
+                header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+                exit;
+            } else {
+                header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php");
+                exit;
+            }
         }else {
             $_SESSION['login_error'] = true;
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php");
+            header("location: http://127.0.0.1/NGCB/index.php");
             exit;
         } 
     }
@@ -28,30 +34,26 @@
         session_start();
         session_unset();
         session_destroy();
-        header('Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php');
+        header('Location: http://127.0.0.1/NGCB/index.php');
         exit;
     }  
 
     if (isset($_POST['create_account'])) {
         $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
         $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
-		$username = mysqli_real_escape_string($conn, $_POST['username']);
-		$email = mysqli_real_escape_string($conn, $_POST['email']);
+	    $username = mysqli_real_escape_string($conn, $_POST['username']);
+	    $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
+	    $password = password_hash($password, PASSWORD_DEFAULT);
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
-        $sql = "SELECT accounts_username from accounts where accounts_username = '$username' ";
+        $sql = "SELECT account_id from accounts;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
         if($count != 1) {
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO accounts 
-            (accounts_fname, accounts_lname, accounts_username, accounts_password, 
-            accounts_type, accounts_email, accounts_image, accounts_deletable) 
-            VALUES 
-            ('$firstname', '$lastname', '$username', '$password', 
-            '$account_type', '$email', NULL, 'yes');";
+            $sql = "INSERT INTO accounts (accounts_fname, accounts_lname, accounts_username, accounts_password, accounts_type, accounts_email, accounts_deletable, accounts_status)
+                    VALUES ('$firstname', '$lastname', '$username', '$password', '$account_type', '$email', 'yes', 'active');";
             mysqli_query($conn,$sql);
-            header("Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php");
+            header("Location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");
             exit;
         }
     }

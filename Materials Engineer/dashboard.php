@@ -1,12 +1,12 @@
 <?php
-    include "db_connection.php";
+    include "../db_connection.php";
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php');
     }
     $task = $_SESSION['tasks'];
-  ?>
+?>
 
 <!DOCTYPE html>
 
@@ -227,12 +227,10 @@
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
                                     <button class="waves-effect waves-light btn modal-trigger"
                                         href="#doneBtn">Done</button>
-                                    <div id="doneBtn" class="modal">
-                                    <div class="modal-content">
+                                    <div id="doneBtn" class="modal modal-fixed-footer">
                                         <span>Are you sure want to click done?</span>
-                                        </div>
                                         <div class="modal-footer">
-                                            <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                            <button class="modal-close waves-effect waves-red btn-flat">No</button>
                                             <button type="submit" name="todo_update"
                                                 class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                         </div>
@@ -244,10 +242,8 @@
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
                                     <button class="waves-effect waves-light btn modal-trigger"
                                         href="#clearBtn">Clear</button>
-                                    <div id="clearBtn" class="modal">
-                                    <div class="modal-content">
+                                    <div id="clearBtn" class="modal modal-fixed-footer">
                                         <span>Are you sure want to clear this task</span>
-                                        </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat">No</a>
                                             <button type="submit" name="todo_update"
@@ -380,7 +376,7 @@
                             <div id="doneBtn" class="modal modal-fixed-footer">
                                 <span>Are you sure want to click done?</span>
                                 <div class="modal-footer">
-                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                    <button class="modal-close waves-effect waves-red btn-flat">No</button>
                                     <button type="submit" name="todo_update"
                                         class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                 </div>
@@ -395,7 +391,7 @@
                             <div id="clearBtn" class="modal modal-fixed-footer">
                                 <span>Are you sure want to clear this task</span>
                                 <div class="modal-footer">
-                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                    <button class="modal-close waves-effect waves-red btn-flat">No</button>
                                     <button type="submit" name="todo_update"
                                         class="modal-close waves-effect waves-red btn-flat">Yes</button>
                                 </div>

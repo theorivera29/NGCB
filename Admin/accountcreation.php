@@ -130,10 +130,6 @@
                         name="create_account">Create
                         An Account</button>
                 </div>
-
-                <div class="input-field col s12 m10 offset-m1">
-                    qweqwe
-                </div>
             </div>
         </form>
     </div>

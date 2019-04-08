@@ -71,7 +71,7 @@
     font-family: 'Pridi', serif;
 }
 
-.submit-btn{
+.submit-btn {
     width: 50% !important;
 }
 
@@ -152,7 +152,7 @@ body {
 nav {
     background-color: #F7F7F7 !important;
     color: rgb(131, 17, 17) !important;
-    font-size: 2vmin !important;
+    font-size: 2.5vmin !important;
 }
 
 #acName {
@@ -166,7 +166,16 @@ nav {
 }
 
 .right {
-    color: black !important;
+    color: white !important;
+}
+
+.left{
+    color: white;
+    margin-left: 5%;
+}
+
+.left:hover{
+    color: black;
 }
 
 .dropdown-content {
@@ -177,30 +186,33 @@ nav {
 }
 
 .side-nav {
-    background-color: #173753 !important;
-    font-family: Ageo;
+    background-color: #003A51 !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
 .side-nav a {
-    background-color: #173753 !important;
     color: #FFFFFF !important;
-    font-size: 2vmin !important;
-    font-family: Ageo !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .side-nav a:hover {
-    background-color: #FFFFFF !important;
     color: #173753 !important;
     font-size: 2.5vmin !important;
-    font-family: Ageo !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+.side-nav li{
+    background-color: #173753;
+    color: #FFFFFF !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 .side-nav li.active {
     background-color: #173753 !important;
 }
-
 
 .menuIcon {
     color: #173753 !important;
@@ -222,16 +234,19 @@ nav {
     color: #087E8B;
     font-family: Didact;
     margin-bottom: 0;
+    margin-left: 1.5%;
     font-size: 20px;
     text-align: center !important;
 }
 
 
-.collapsible li.active i {
+.collapsible li.active .right {
     -webkit-transform: rotate(180deg);
     /* Chrome, Safari, Opera */
     transform: rotate(180deg);
 }
+
+
 
 /* Style for Dashboard */
 /*Calendar  */
@@ -562,7 +577,7 @@ input[type=password] {
     background-color: #EDEBEA !important;
     border-bottom: none !important;
     padding-left: 5% !important;
-    margin-bottom: 10% !important; 
+    margin-bottom: 10% !important;
     -webkit-box-sizing: inherit !important;
     box-sizing: inherit !important;
 }
@@ -595,4 +610,38 @@ input[type=text]:disabled {
     position: absolute;
     left: 0.0rem !important;
     padding-bottom: 2% !important;
+}
+
+i.right {
+    margin-left: 0 !important;
+}
+
+.icon-container {
+    background-color: #003A51 !important;
+    pointer-events: none;
+}
+
+.sidenav-logo {
+    height: 70%;
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10%;
+}
+
+#account-type {
+    padding-top: 2%;
+    text-align: center;
+    color: white;
+    font-size: 3vmin;
+}
+
+.side-nav li{
+    padding: 0 !important;
+}
+
+
+.side-nav .collapsible-header{
+    margin: 0;
 }

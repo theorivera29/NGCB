@@ -14,10 +14,10 @@
             $_SESSION['username'] = $username; 
             $_SESSION['loggedin' ] = true;
             $_SESSION['account_type'] = $row[2];
-            if ($row[2] == "Admin") {
+            if (strcmp($row[2],"Admin") == 0) {
                 header("location: http://127.0.0.1/NGCB/Admin/admindashboard.php");
                 exit;
-            } else if ($row[2] == "MatEng") {
+            } else if (strcmp($row[2],"MatEng") == 0) {
                 header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
                 exit;
             } else {

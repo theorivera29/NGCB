@@ -143,7 +143,7 @@
 
     if (isset($_POST['create_hauling'])) {
         $hauling_no = mysqli_real_escape_string($conn, $_POST['formnumber']);
-        $hauling_date = mysqli_real_escape_string($conn, $_POST['date']);
+        $hauling_date = mysqli_real_escape_string($conn, $_POST['haulingdate']);
 		$hauling_deliverTo = mysqli_real_escape_string($conn, $_POST['delivername']);
         $hauling_hauledFrom = mysqli_real_escape_string($conn, $_POST['hauledfrom']);
         $hauling_quantity = mysqli_real_escape_string($conn, $_POST['quantity']);
@@ -213,12 +213,13 @@
     }
     
         if (isset($_POST['create_todo'])) {
+        $todo_date = mysqli_real_escape_string($conn, $_POST['tododate']);
         $todo_task = mysqli_real_escape_string($conn, $_POST['todo_task']);
         $todoOf = mysqli_real_escape_string($conn, $_POST['todoOf']);
         $sql = "SELECT * from todo;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
-            $sql = "INSERT INTO todo (todo_date, todo_task, todo_status, todoOf) VALUES ('2019-05-19', '$todo_task', 'in progress', '$todoOf');";
+            $sql = "INSERT INTO todo (todo_date, todo_task, todo_status, todoOf) VALUES ('$todo_date', '$todo_task', 'in progress', '$todoOf');";
             mysqli_query($conn, $sql);
             header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
             exit();
@@ -229,13 +230,21 @@
         $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
+        $delivered_date = mysqli_real_escape_string($conn, $_POST['delivered_date']);
+        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['delivered_quantity']);
+        $supplied_by = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
+        
         $sql = "SELECT * from materials;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
-            $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity) VALUES ('$mat_name', 0, 1, '$mat_unit', 1, $mat_notif, 0);";
+
+        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity) VALUES ('$mat_name', 0, 1, '$mat_unit', 1, $mat_notif, 0);";
             mysqli_query($conn, $sql);
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
-            exit();
+            
+        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy) VALUES ('$delivered_date', $delivered_quantity, 1, '$supplied_by');";
+        mysqli_query($conn, $sql);
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+        exit();
     }
 
     if(isset($_POST['edit_account'])) {
@@ -305,7 +314,6 @@
 
     
         if(isset($_POST['edit_materials'])) {
-        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
         
         if(isset($_POST['newmaterialname'])) {

@@ -126,7 +126,7 @@
                         <div class="row">
                             <div class="col s2">
                                 <label>Date:</label>
-                                <input placeholder="&emsp;yyyy-mm-dd&emsp;▼" type="text" class="datepicker">
+                                <input placeholder="&emsp;yyyy-mm-dd&emsp;▼" type="text" class="datepicker" name="haulingdate">
                             </div>
                             <div class="input-field col s2 offset-s8 right-align">
                                 <input id="formnumber" type="text" class="validate" name="formnumber">
@@ -145,7 +145,7 @@
                                      ?>
                                     
                                     <div class="input-field col s12 left-align ">
-                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom" disabled value="<?php echo $projects_name ?>">
+                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom" value="<?php echo $projects_name ?>">
                                         <label for="hauledfrom">Hauled From :</label>
                                     </div>
                                 </div>
@@ -168,12 +168,12 @@
                                         <td><input id="unit" readonly type="text" class="validate" name="unit"></td>
                                         <td>
                                             <select id="materials" class="browser-default" name="articles">
-                                                <option value="" disabled selected>Choose your option</option>
+                                                <option disabled selected>Choose your option</option>
                                             </select></td>
                                         <td>
 
                                             <select id="categories" class="browser-default" name="mat_categ">
-                                                <option value="" disabled selected>Choose your option</option>
+                                                <option disabled selected>Choose your option</option>
                                                 <?php
                                     $sql = "SELECT * FROM categories;";
                                     $result = mysqli_query($conn, $sql);

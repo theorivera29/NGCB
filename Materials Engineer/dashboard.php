@@ -129,7 +129,7 @@
                         <label>To-do Date:</label>
                     </div>
                     <div class="col s4">
-                    <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker">
+                    <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker" name="tododate">
                     </div>
                 </div>
                 <input type="hidden" name="todoOf" value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">

@@ -201,7 +201,9 @@
                                     <div id="editmaterialModal" class="modal modal-fixed-footer">
                                         <div class="modal-content">
                                             <h4>Edit Material</h4>
-                                            <h6><?php echo $row[0];?></h6>
+                                            <h6>
+                                                <?php echo $row[0];?>
+                                            </h6>
                                             <div class="row">
                                                 <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
                                                 <div class="input-field col s12">
@@ -337,50 +339,43 @@
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
+
+                <div class="row">
+                    <table class="centered">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Quantity</th>
+                                <!-- <th>Quantifier</th> -->
+                                <th>Supplied By</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input id="delivered_date" name="delivered_date" type="text" class="validate">
+                                </td>
+                                <td>
+                                    <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate">
+                                </td>
+                                <!-- <td>
+                        <input id="delivered_unit" name="delivered_unit" type="text" class="validate">
+                        </td> -->
+                                <td>
+                                    <input id="suppliedBy" name="suppliedBy" type="text" class="validate">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
                 <button hreg="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Next</button>
             </div>
         </form>
-    </div>
-
-    <!-- ADD STOCKCARD MODAL -->
-    <div id="addstockcardModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <table class="centered">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Quantity</th>
-                        <!-- <th>Quantifier</th> -->
-                        <th>Supplied By</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>
-                            <input id="delivered_date" name="delivered_date" type="text" class="validate">
-                        </td>
-                        <td>
-                            <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate">
-                        </td>
-                        <!-- <td>
-                        <input id="delivered_unit" name="delivered_unit" type="text" class="validate">
-                        </td> -->
-                        <td>
-                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <button type='submit' name='new_material_stockcard' class="modal-close waves-effect waves-green btn-flat">Save</button>
-            <a href="#addmaterialModal" class="modal-close waves-effect waves-teal btn-flat">Back</a>
-        </div>
     </div>
 
     <!-- ADD CATEGORY MODAL -->

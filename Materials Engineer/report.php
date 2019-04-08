@@ -82,7 +82,7 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>
@@ -140,7 +140,7 @@
                                 <?php echo $row[4] ?>
                             </p>
                             <div class="row">
-                                <form action="server.php" method="POST">
+                                <form action="../server.php" method="POST">
                                     <input type="hidden" name="projects_name" value="<?php echo $row[1]?>">
                                     <div class="row">
                                         <button class="waves-effect waves-light btn viewinventory-btn" type="submit"

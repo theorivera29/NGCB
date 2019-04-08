@@ -144,7 +144,7 @@
                                         end date
                                     </span><?php echo $row[3] ?></p>
                                 <div class="row">
-                                    <form action="server.php" method="POST">
+                                    <form action="../server.php" method="POST">
                                         <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
                                         <div class="row">
                                         <button class="waves-effect waves-light btn viewinventory-btn" type="submit"

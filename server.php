@@ -17,7 +17,7 @@
                 header("location: http://127.0.0.1/NGCB/Admin/dashboard.php");
                 exit;
             } else if ($row[2] == "MatEng") {
-                header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+                header("location: http://127.0.0.1/NGCB/Materials%20Engineer/admindashboard.php");
                 exit;
             } else {
                 header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php");

@@ -79,7 +79,7 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>
@@ -113,6 +113,7 @@
             </ul>
         </div>
     </nav>
+
      <div class="site-materials-container">
         <div class="lighten-5">
             <table class="centered site-materials-content">
@@ -209,14 +210,15 @@
 
         <!--MODAL-->
         <div id="modal1" class="modal modal-fixed-footer">
-            <form action="../server.php" method="POST">
-                <div class="modal- ">
-                    <div class="content">
-                        <div class="row">
+        <ul class="tabs">
+                    <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
+                    <li class="tab col s3"><a href="#usagein">Usage In </a></li>
+                </ul>
 
-                            <div class="col s12">
-                                <h4>DELIVER IN</h4>
-                                <table class="centered">
+                <div id="deliverin">
+                <div class="row">
+                <form>
+                <table class="centered">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -229,16 +231,22 @@
                                         <tr>
                                             <td><input type="date" name="dev_date"></td>
                                             <td><input type="text" name="dev_quantity"></td>
-                                            <td><input type="text" name="unit"></td>
+                                            <td><select class="browser-default" name="us_unit">
+                                                    <option value="UNITS" selected></option>
+                                                </select></td>
                                             <td><input type="text" name="dev_supp"></td>
                                         </tr>
 
                                     </tbody>
                                 </table>
-                            </div>
-                            <div class="col s12">
-                                <h4>USAGE IN</h4>
-                                <table class="centered">
+                </form>
+                </div>
+                </div>
+                
+                <div id="usagein">
+                <div class="row">
+                <form>
+                <table class="centered">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -264,10 +272,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
+                </form>
                 </div>
+                </div>
+                
+                        
+                   
                 <div class="modal-footer">
                     <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
@@ -282,11 +292,6 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
         </script>
         <script>
-            $(document).ready(function() {
-                $('.modal-trigger').leanModal();
-                format: yyyy-mmm-dd;
-            });
-
             // SIDEBAR
             $(document).ready(function() {
                 $('.button-collapse').sideNav({
@@ -295,6 +300,9 @@
                     closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
                     draggable: true // Choose whether you can drag to open on touch screens
                 });
+
+                $('.modal-trigger').leanModal();
+
                 // START OPEN
                 $('.button-collapse').sideNav('show');
             });

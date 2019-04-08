@@ -68,31 +68,31 @@
             <div id="ongoing" class="col s12">
                 <div class="row">
                     <?php
-                        $sql = "SELECT * FROM projects WHERE projects_status = 'open';";
+                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects WHERE projects_status = 'open';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
                     <div class="col s12 m6">
                         <div class="card blue-grey darken-1 center">
                             <div class="card-content white-text">
-                                <span class="card-title"><?php echo $row[1] ?></span>
+                                <span class="card-title"><?php echo $row[0] ?></span>
                                 <p>
-                                    <?php echo $row[2] ?>
+                                    <?php echo $row[1] ?>
                                 </p>
                                 <p>
                                     <span>
                                         start date: 
                                     </span>
-                                    <?php echo $row[3] ?>
+                                    <?php echo $row[2] ?>
                                 </p>
                                 <p>
                                     <span>
                                         end date: 
-                                    </span><?php echo $row[4] ?>
+                                    </span><?php echo $row[3] ?>
                                 </p>
                                 <div class="row">
                                     <form action="server.php" method="POST">
-                                        <input type="hidden" name="projects_name" value="<?php echo $row[1] ?>">
+                                        <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
                                         <div class="row">
                                             <button class="waves-effect waves-light btn viewinventory-btn" type="submit"
                                                 name="view_inventory">View Inventory</button>
@@ -112,7 +112,7 @@
                 <div class="row">
                     <?php
 
-                        $sql = "SELECT * FROM projects WHERE projects_status = 'closed';";
+                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects WHERE projects_status = 'closed';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
@@ -120,22 +120,22 @@
                         <div class="card blue-grey darken-1 center">
                             <div class="card-content white-text">
                                 <span class="card-title">
-                                    <?php echo $row[1] ?>
+                                    <?php echo $row[0] ?>
                                 </span>
                                 <p>
-                                    <?php echo $row[2]?>
+                                    <?php echo $row[1]?>
                                 </p>
                                 <p>
                                 <span>
                                         start date: 
                                     </span>
-                                <?php echo $row[3]?>
+                                <?php echo $row[2]?>
                                 </p>
                                 <p>
                                 <span>
                                         end date: 
                                     </span>
-                                <?php echo $row[4]?>
+                                <?php echo $row[3]?>
                                 </p>
                                 <div class="row">
                                     <a href="#reopenModal"

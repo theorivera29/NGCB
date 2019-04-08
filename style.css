@@ -260,6 +260,10 @@ div.contextmenu:hover {
     display: block;
 }
 
+.sample-date{
+    background-color: red !important; 
+}
+
 .Calendar-Todo-Container {
     background-color: #F0F1F2;
     margin-top: 1%;

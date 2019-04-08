@@ -370,12 +370,13 @@
                 </div>
 
                 <div class="row">
-                    <table class="centered">
-                        <thead>
+                <h5>Deliver In</h5>
+                    <table class="striped centered">
+                        <thead class="view-inventory-head">
                             <tr>
                                 <th>Date</th>
                                 <th>Quantity</th>
-                                <!-- <th>Quantifier</th> -->
+                                <th>Unit</th>
                                 <th>Supplied By</th>
                             </tr>
                         </thead>
@@ -383,14 +384,16 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input id="delivered_date" name="delivered_date" type="text" class="validate">
+                                <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker sample-date">
                                 </td>
                                 <td>
                                     <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate">
                                 </td>
-                                <!-- <td>
-                        <input id="delivered_unit" name="delivered_unit" type="text" class="validate">
-                        </td> -->
+                                <td>
+                                <select id="unit" class="browser-default" name="unit">
+                                                <option selected></option>
+                                </select>
+                        </td>
                                 <td>
                                     <input id="suppliedBy" name="suppliedBy" type="text" class="validate">
                                 </td>
@@ -402,7 +405,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button hreg="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Next</button>
+                <button hreg="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Save</button>
             </div>
         </form>
     </div>
@@ -484,6 +487,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
+    <script type="text/javascript" src="../datepicker.js" ></script>
     <script>
         // SIDEBAR
         $(document).ready(function() {

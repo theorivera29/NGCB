@@ -60,16 +60,16 @@
     }
     
     if (isset($_POST['create_project'])) {
-        $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
-        $projects_address = mysqli_real_escape_string($conn, $_POST['project_address']);
-		$start_date = mysqli_real_escape_string($conn, $_POST['start_date']);
-		$end_date = mysqli_real_escape_string($conn, $_POST['end_date']);
-        $sql = "SELECT projects_name from projects where projects_name = '$projects_name' ";
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projectname']);
+        $projects_address = mysqli_real_escape_string($conn, $_POST['projectaddress']);
+		$start_date = mysqli_real_escape_string($conn, $_POST['startdate']);
+		$end_date = mysqli_real_escape_string($conn, $_POST['enddate']);
+        $sql = "SELECT projects_name from projects WHERE = '$projects_name';";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
         if($count != 1) {
-            $sql = "INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status)
-                    VALUES ('$projects_name', '$projects_address', '$start_date', '$end_date', 'open')";
+            $sql = "INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status, projects_mateng)
+                    VALUES ('$projects_name', '$projects_address', '$start_date', '$end_date', 'open', 2);";
             mysqli_query($conn,$sql);
             header("Location: http://127.0.0.1/NGCB/Admin/projects.php");
             exit;

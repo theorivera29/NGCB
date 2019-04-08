@@ -113,6 +113,7 @@
             </ul>
         </div>
     </nav>
+
      <div class="site-materials-container">
         <div class="lighten-5">
             <table class="centered site-materials-content">
@@ -209,6 +210,10 @@
 
         <!--MODAL-->
         <div id="modal1" class="modal modal-fixed-footer">
+        <ul class="tabs">
+                    <li class="tab col s3"><a href="#ongoing">Ongoing</a></li>
+                    <li class="tab col s3"><a href="#closed">Closed</a></li>
+                </ul>
             <form action="../server.php" method="POST">
                 <div class="modal- ">
                     <div class="content">
@@ -282,11 +287,6 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
         </script>
         <script>
-            $(document).ready(function() {
-                $('.modal-trigger').leanModal();
-                format: yyyy-mmm-dd;
-            });
-
             // SIDEBAR
             $(document).ready(function() {
                 $('.button-collapse').sideNav({
@@ -295,6 +295,9 @@
                     closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
                     draggable: true // Choose whether you can drag to open on touch screens
                 });
+
+                $('.modal-trigger').leanModal();
+
                 // START OPEN
                 $('.button-collapse').sideNav('show');
             });

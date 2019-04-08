@@ -84,31 +84,31 @@
     </nav>
 
     <div class="container">
-        <form action="server.php" method="POST">
+        <form action="../server.php" method="POST">
             <h2 class="header header-two">Create an Account</h2>
             <div class="row">
                 <div class="input-field col s12 m10 offset-m1">
-                    <input id="firstname" name="firstname" type="text" class="validate">
+                    <input id="firstname" name="firstname" type="text" class="validate" pattern="[A-Za-z]*" title="Input only letters" required>
                     <label for="firstname">First Name</label>
                 </div>
 
                 <div class="input-field col s12 m10 offset-m1">
-                    <input id="lastname" name="lastname" type="text" class="validate">
+                    <input id="lastname" name="lastname" type="text" class="validate" pattern="[A-Za-z]*" title="Input only letters" required>
                     <label for="lastname">Last Name</label>
                 </div>
 
                 <div class="input-field col s12 m10 offset-m1">
-                    <input id="username" name="username" type="text" class="validate">
+                    <input id="username" name="username" type="text" class="validate" pattern="[A-Za-z0-9]*" title="Input only letters" required>
                     <label for="username">Username</label>
                 </div>
 
                 <div class="input-field col s12 m10 offset-m1">
-                    <input id="email" name="email" type="text" class="validate">
+                    <input id="email" name="email" type="text" class="validate" pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com" required> 
                     <label for="email">Email</label>
                 </div>
 
                 <div class="input-field col s12 m10 offset-m1">
-                    <input id="password" name="password" type="password" class="validate">
+                    <input id="password" name="password" type="password" class="validate" minlength="6" maxlength="12" title="Alphanumeric only" required>
                     <label for="password">Password</label>
                 </div>
 
@@ -130,7 +130,10 @@
                     <button class="btn waves-effect waves-light create-account-btn" type="submit"
                         name="create_account">Create
                         An Account</button>
-                    
+                </div>
+
+                <div class="input-field col s12 m10 offset-m1">
+                    qweqwe
                 </div>
             </div>
         </form>

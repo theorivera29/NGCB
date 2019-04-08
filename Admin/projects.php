@@ -220,7 +220,7 @@
     </div>
 
     <div id="addProject" class="modal modal-fixed-footer">
-        <form action="server.php" method="POST">
+        <form action="../server.php" method="POST">
             <div class="modal-content">
                 <h4>Add Project</h4>
                 <div class="row">

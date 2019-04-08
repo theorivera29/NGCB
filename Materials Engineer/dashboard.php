@@ -16,7 +16,8 @@
     <title>NGCB</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
+   
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -227,8 +228,10 @@
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
                                     <button class="waves-effect waves-light btn modal-trigger"
                                         href="#doneBtn">Done</button>
-                                    <div id="doneBtn" class="modal modal-fixed-footer">
+                                    <div id="doneBtn" class="modal">
+                                    <div class="modal-content">
                                         <span>Are you sure want to click done?</span>
+                                        </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat">No</a>
                                             <button type="submit" name="todo_update"
@@ -242,8 +245,10 @@
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
                                     <button class="waves-effect waves-light btn modal-trigger"
                                         href="#clearBtn">Clear</button>
-                                    <div id="clearBtn" class="modal modal-fixed-footer">
+                                    <div id="clearBtn" class="modal">
+                                    <div class="modal-content">
                                         <span>Are you sure want to clear this task</span>
+                                        </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat">No</a>
                                             <button type="submit" name="todo_update"
@@ -415,12 +420,13 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js">
     </script>
-    <script src="../datepicker.js"></script>
+    <script type="text/javascript" src="../datepicker.js"></script>
     <script>
         // SIDEBAR
         // SIDEBAR
+        
         $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300

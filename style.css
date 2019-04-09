@@ -427,6 +427,22 @@ div.contextmenu:hover {
 
 }
 
+.project-container{
+    padding: 1% !important;
+}
+
+.project-container-card{
+    border-radius: 5% !important;
+}
+
+.tabs{
+    background-color: #E0E0E0 !important;
+}
+
+.tabs a{
+    color: #D50000  !important;
+}
+
 /* Style for Site > Site Materials */
 .matname-btn {
     background-color: #1A5D89 !important;
@@ -493,7 +509,7 @@ th {
 
 .category-cards {
     background-color: #E8CC13 !important;
-    border-radius: 2% !important;
+    border-radius: 5% !important;
     color: black;
 }
 
@@ -512,8 +528,12 @@ th {
     padding-left: 2%;
 }
 .category-container{
-    padding-left: 2% !important;
+    padding: 1% !important;
+}
+
+.item-cat-col{
     padding-right: 2% !important;
+    padding-top: 1% !important;
 }
 
 /*Style for Hauling*/

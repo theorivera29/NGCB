@@ -312,7 +312,7 @@
             ?>
         </div>
 
-        <div class="row category-container">
+        <div class="row">
             <?php
         $sql = "SELECT categories.categories_id, categories.categories_name FROM  categories 
         INNER JOIN projects ON categories.categories_project = projects.projects_id 
@@ -321,9 +321,9 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-            <div class="col s3 m3 ">
-                <div class="card center">
-                    <div class="card-content category-cards">
+            <div class="col s3 m3 category-container">
+                <div class="card center category-cards">
+                    <div class="card-content ">
                         <span class="card-title category-title">
                             <?php echo $row[1] ;?>
                         </span>

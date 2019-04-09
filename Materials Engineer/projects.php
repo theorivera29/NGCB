@@ -111,7 +111,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="">
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -129,8 +129,8 @@
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
-                    <div class="col s12 m6">
-                        <div class="card blue-grey darken-1 center">
+                    <div class="col s12 m6 project-container">
+                        <div class="card blue-grey darken-1 center project-container-card">
                             <div class="card-content white-text">
                                 <span class="card-title"><?php echo $row[0] ?></span>
                                 <p>
@@ -175,8 +175,8 @@
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
-                    <div class="col s12 m6">
-                        <div class="card blue-grey darken-1 center">
+                    <div class="col s12 m6 project-container">
+                        <div class="card blue-grey darken-1 center project-container-card">
                             <div class="card-content white-text">
                             <span class="card-title"><?php echo $row[0] ?></span>
                                 <p>

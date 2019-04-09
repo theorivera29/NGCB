@@ -119,7 +119,7 @@
     <?php 
         if(strcmp($projects_status, "open") == 0) {
     ?>
-    <div class="row">
+    <div class="row item-cat-col">
         <div class="col s12 right-align">
             <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger">
                 <i class="material-icons left">add_circle_outline</i>Add Material</a>
@@ -144,7 +144,7 @@
     ?>
         <div class="row">
             <div class="col s12">
-                <table class="centered ">
+                <table class="striped centered ">
                     <thead class="item-categories-head">
                         <tr>
                             <th>Particulars</th>
@@ -200,7 +200,7 @@
                                         <div class="modal-content">
                                             <h4>Edit Material</h4>
                                             <h6>
-                                                <?php echo $row[0];?>
+                                                <?php echo $row[1];?>
                                             </h6>
                                             <div class="row">
                                                 <input type="hidden" name="materialname" value="<?php echo $row[0];?>">

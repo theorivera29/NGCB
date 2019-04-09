@@ -203,7 +203,11 @@
         $newQuantity = $currentQuantity-$hauling_quantity;
         $sql = "UPDATE materials SET mat_prevStock = ('$newQuantity') WHERE mat_name = '$hauling_matname';";
         mysqli_query($conn, $sql);
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauled%20items.php");
+        
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'create hauling', 1);";
+        mysqli_query($conn,$sql);
+        
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauleditems.php");
             exit();
     }
 
@@ -219,6 +223,9 @@
                 mysqli_query($conn, $sql);
             }
         }
+        
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'create category', 1);";
+        mysqli_query($conn,$sql);
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
         exit();
     }
@@ -234,6 +241,9 @@
         if($count == 1) {
             $sql = "UPDATE categories SET categories_name = '$new_category_name' WHERE categories_name = '$category_name';";
             mysqli_query($conn, $sql);
+            
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'edit category', 1);";
+        mysqli_query($conn,$sql);
             header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");
             exit();
         }
@@ -276,6 +286,8 @@
             
         $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy) VALUES ('$delivered_date', $delivered_quantity, 1, '$supplied_by');";
         mysqli_query($conn, $sql);
+        
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'create materials', 1);";
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
         exit();
     }
@@ -340,6 +352,8 @@
         $count = mysqli_num_rows($result);
         $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy');";
         mysqli_query($conn, $sql);
+            
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'add delivered in', 1);";
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
     }
@@ -355,6 +369,8 @@
         $count = mysqli_num_rows($result);
         $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area');";
         mysqli_query($conn, $sql);
+            
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'add usagein', 1);";
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
     }
@@ -379,6 +395,7 @@
             $sql = "UPDATE materials SET mat_notif = '$minquantity' WHERE mat_name = '$materialname';";
             mysqli_query($conn, $sql);
         }
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'edit material', 1);";
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
     }
 

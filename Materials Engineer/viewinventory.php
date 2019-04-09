@@ -245,7 +245,7 @@
 
                                 <!-- EDIT SITE MATERIAL MODAL -->
                                 <form action="../server.php" method="POST">
-                                    <div id="editmaterialModal" class="modal modal-fixed-footer">
+                                    <div id="editmaterialModal" class="modal modal-fixed-footer edit-mat-modal">
                                         <div class="modal-content">
                                             <h4>Edit Material</h4>
                                             <h6>
@@ -254,7 +254,7 @@
                                             <div class="row">
                                                 <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
                                                 <div class="input-field col s12">
-                                                    <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
+                                                    <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
                                                     <label for="newmaterialname">Material Name:</label>
                                                 </div>
                                                 <div class="input-field col s5">
@@ -266,7 +266,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="input-field col s7">
-                                                    <input id="minquantity" name="minquantity" type="text" class="validate">
+                                                    <input id="minquantity" name="minquantity" type="text" class="validate" required>
                                                     <label for="minquantity">Threshold:</label>
                                                 </div>
                                             </div>
@@ -344,14 +344,14 @@
         </div>
     </div>
     <!-- ADD SITE MATERIAL MODAL -->
-    <div id="addmaterialModal" class="modal modal-fixed-footer">
+    <div id="addmaterialModal" class="modal modal-fixed-footer add-mat-modal">
         <form action="../server.php" method="POST">
             <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
             <div class="modal-content">
                 <h4>Add Material</h4>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="mat_name" name="mat_name" type="text" class="validate">
+                        <input id="mat_name" name="mat_name" type="text" class="validate" required>
                         <label for="mat_name">Material Name:</label>
                     </div>
                     <div class="col s12">
@@ -399,7 +399,7 @@
                         </select>
                     </div>
                     <div class="input-field col s7">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate">
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
@@ -419,10 +419,10 @@
                         <tbody>
                             <tr>
                                 <td>
-                                <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker sample-date">
+                                <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker">
                                 </td>
                                 <td>
-                                    <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate">
+                                    <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate" required>
                                 </td>
                                 <td>
                                 <select id="unit" class="browser-default" name="unit">
@@ -430,7 +430,7 @@
                                 </select>
                         </td>
                                 <td>
-                                    <input id="suppliedBy" name="suppliedBy" type="text" class="validate">
+                                    <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
                                 </td>
                             </tr>
                         </tbody>
@@ -457,7 +457,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input id="categoryname" type="text" class="validate" name="category_name[]">
+                                        <input id="categoryname" type="text" class="validate" name="category_name[]"  >
                                     </td>
                                 </tr>
                             </tbody>

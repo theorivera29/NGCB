@@ -291,10 +291,6 @@ div.contextmenu:hover {
     display: block;
 }
 
-.sample-date {
-    background-color: red !important;
-}
-
 
 
 .Task-Todo-Container {
@@ -441,6 +437,14 @@ div.contextmenu:hover {
 
 .tabs a{
     color: #D50000  !important;
+}
+
+.add-mat-modal label{
+    font-size: 14px !important;    
+}
+
+.edit-mat-modal label{
+    font-size: 14px !important;    
 }
 
 /* Style for Site > Site Materials */

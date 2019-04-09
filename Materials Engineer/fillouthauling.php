@@ -130,7 +130,7 @@
                             <div class="col s6">
                                 <div>
                                     <div class="input-field col s12 left-align ">
-                                        <input id="delivername" type="text" class="validate" name="delivername">
+                                        <input id="delivername" type="text" class="validate" name="delivername"  required>
                                         <label for="delivername">Deliver To:</label>
                                     </div>
                                      <?php 
@@ -138,7 +138,7 @@
                                      ?>
                                     
                                     <div class="input-field col s12 left-align ">
-                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom" value="<?php echo $projects_name ?>">
+                                        <input disabled id="hauledfrom" type="text" class="validate" name="hauledfrom" value="<?php echo $projects_name ?>">
                                         <label for="hauledfrom">Hauled From :</label>
                                     </div>
                                 </div>
@@ -148,24 +148,18 @@
                             <table class="striped centered">
                                 <thead>
                                     <tr>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Articles</th>
                                         <th>Categories</th>
+                                        <th>Articles</th>
+                                        <th>Unit</th>
+                                        <th>Quantity</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td><input type="text" name="quantity" id="quantity"></td>
-                                        <td><input id="unit" readonly type="text" class="validate" name="unit"></td>
-                                        <td>
-                                            <select id="materials" class="browser-default" name="articles">
-                                                <option disabled selected>Choose your option</option>
-                                            </select></td>
-                                        <td>
+                                    <td>
 
-                                            <select id="categories" class="browser-default" name="mat_categ">
+                                            <select id="categories" class="browser-default" name="mat_categ"  required>
                                                 <option disabled selected>Choose your option</option>
                                                 <?php
                                     $sql = "SELECT * FROM categories;";
@@ -182,6 +176,14 @@
                                 ?>
                                             </select>
                                         </td>
+                                    <td>
+                                            <select id="materials" class="browser-default" name="articles"  required>
+                                                <option disabled selected>Choose your option</option>
+                                            </select></td>
+                                        
+                                        <td><input id="unit" readonly type="text" class="validate" name="unit"  required></td>
+                                        <td><input type="text" name="quantity" id="quantity"  required></td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
@@ -190,15 +192,15 @@
                         <div class="row">
                             <div class="col s6">
                                 <div class="input-field col s10 left-align ">
-                                    <input id="hauledby" type="text" class="validate" name="hauledby">
+                                    <input id="hauledby" type="text" class="validate" name="hauledby"  required>
                                     <label for="hauledby">Hauled by :</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
-                                    <input id="warehouseman" type="text" class="validate" name="warehouseman">
+                                    <input id="warehouseman" type="text" class="validate" name="warehouseman"  required>
                                     <label for="warehouseman">Warehouseman:</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
-                                    <input id="approvedby" type="text" class="validate" name="approvedby">
+                                    <input id="approvedby" type="text" class="validate" name="approvedby"  required>
                                     <label for="approvedby">Approved By:</label>
                                 </div>
                             </div>
@@ -216,19 +218,19 @@
                                     <tbody>
                                         <tr>
                                             <td>Type:</td>
-                                            <td><input type="text" name="truck_type" id="truck_type"></td>
+                                            <td><input type="text" name="truck_type" id="truck_type"  required></td>
                                         </tr>
                                         <tr>
                                             <td>Plate No.:</td>
-                                            <td><input type="text" name="truck_plate" id="truck_plate"></td>
+                                            <td><input type="text" name="truck_plate" id="truck_plate"  required></td>
                                         </tr>
                                         <tr>
                                             <td>P.O/R.S No.:</td>
-                                            <td><input type="text" name="truck_po" id="truck_po"></td>
+                                            <td><input type="text" name="truck_po" id="truck_po"  required></td>
                                         </tr>
                                         <tr>
                                             <td>Hauler DR No.:</td>
-                                            <td><input type="text" name="truck_hauler" id="truck_hauler"></td>
+                                            <td><input type="text" name="truck_hauler" id="truck_hauler"  required></td>
                                         </tr>
                                     </tbody>
                                 </table>

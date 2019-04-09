@@ -138,7 +138,7 @@
                                      ?>
                                     
                                     <div class="input-field col s12 left-align ">
-                                        <input disabled id="hauledfrom" type="text" class="validate" name="hauledfrom" value="<?php echo $projects_name ?>">
+                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom" value="<?php echo $projects_name ; ?>">
                                         <label for="hauledfrom">Hauled From :</label>
                                     </div>
                                 </div>

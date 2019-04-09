@@ -149,6 +149,13 @@
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/reportpage.php?projects_name=$projects_name");
     }
 
+    if(isset($_POST['disable_account'])) {
+        $accounts_id = mysqli_real_escape_string($conn, $_POST['accounts_id']);
+        $sql = "UPDATE accounts SET accounts_status = 'disabled' WHERE accounts_id = '$accounts_id';";
+        mysqli_query($conn, $sql);
+        header("location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");
+    }
+
     if(isset($_POST['view_category'])) {
         $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
         $account_type =  mysqli_real_escape_string($conn, $_POST['account_type']);

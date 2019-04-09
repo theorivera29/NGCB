@@ -21,63 +21,71 @@
 
 <body>
 
-    <nav>
+<nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
-                    class="material-icons">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+            <?php 
+                            if(isset($_SESSION['username'])) {
+                            $username = $_SESSION['username'];
+                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_row($result);
+                        ?>
+            <span id="acName">
 
-            <ul class="side-nav" id="mobile-demo">
-                <li class="collection-item avatar">
-                    <?php 
-                        $username = "";
-                        if(isset($_SESSION['username'])) {
-                        $username = $_SESSION['username'];
-                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-                        $result = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_row($result);
-                    ?>
-                    <span class="title">
-                        <?php echo $row[1]." ".$row[2]; ?>
-                    </span>
-                    <span class="title">
-                        <?php echo $row[5]; }?>
-                    </span>
+                <ul>
+                    <?php echo $row[1]." ".$row[2]; ?>
+                    <li class="down-arrow">
+
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons right">keyboard_arrow_down</i></a>
+                    </li>
+
+                </ul>
+                <ul id="dropdown" class="dropdown-content collection">
+                    <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
+
+                </ul>
+            </span>
+            <ul class="side-nav" id="navigation">
+                <li class="icon-container">
+                    <ul>
+                        <li class="acType">
+                            <img src="../Images/NGCB_logo.png" class="sidenav-logo">
+                        </li>
+                    </ul>
                 </li>
+                <h3 id="account-type"><?php echo $row[5]; }?></h3>
 
                 <li>
-                    <div class="divider"></div>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                        href="dashboard.php">Dashboard</a>
                 </li>
 
-                <li>
-                    <a href="dashboard.php">Dashboard</a>
-                </li>
-
-                <li>
-                    <div class="divider"></div>
-                </li>
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Site<i
+                        <i class="material-icons left">place</i><a
+                            class="collapsible-header waves-effect waves-blue">Site<i
                                 class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a>
-                                </li>
+                                <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
+                
 
-                <li>
-                    <div class="divider"></div>
-                </li>
-
+                
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Hauling<i
+                        <i class="material-icons left">local_shipping</i><a
+                            class="collapsible-header waves-effect waves-blue">Hauling<i
                                 class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
@@ -85,7 +93,7 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>
@@ -93,28 +101,11 @@
                     </li>
                 </ul>
 
-                <li>
-                    <div class="divider"></div>
-                </li>
+
 
                 <li>
-                    <a class="waves-effect waves-blue" href="report.php">Report</a>
-                </li>
-
-                <li>
-                    <div class="divider"></div>
-                </li>
-
-                <li>
-                    <a href="account.php">Account Setting</a>
-                </li>
-
-                <li>
-                    <div class="divider"></div>
-                </li>
-
-                <li>
-                    <a href="logout.php">Logout</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="report.php">Report</a>
                 </li>
             </ul>
         </div>

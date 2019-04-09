@@ -19,15 +19,14 @@
     <link rel="stylesheet" text="type/css" href="../style.css">
 
 <body>
-    <nav>
+<nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large"><i
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
                     class="material-icons">menu</i></a>
-            <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
-
+            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</h4>
             <ul class="side-nav" id="mobile-demo">
-                <li class="collection-item avatar">
-                    <?php 
+            <li class="collection-item avatar">
+                <?php 
                         if(isset($_SESSION['username'])) {
                         $username = $_SESSION['username'];
                         $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
@@ -40,7 +39,7 @@
                     <span class="title">
                         <?php echo $row[5]; }?>
                     </span>
-                    </li>
+                </li>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -52,6 +51,12 @@
                 </li>
                 <li>
                     <a href="hauleditems.php">Hauled Materials</a>
+                </li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
+                    <a href="sitematerials.php">Site Materials</a>
                 </li>
                 <li>
                     <div class="divider"></div>

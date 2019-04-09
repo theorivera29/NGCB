@@ -116,7 +116,8 @@
             </ul>
         </div>
     </nav>
-    <div class="">
+
+   
         <div class="row">
             <h5>Project Name:
                 <?php echo $projects_name; ?>
@@ -128,17 +129,23 @@
                 </ul>
             </div>
         </div>
-    </div>
+    
 
     <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
         <?php 
             if(strcmp($projects_status, "open") == 0) {
         ?>
-        <div class=" right-align">
-            <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
-                <i class="material-icons left">add_circle_outline</i>Add Material</a>
-        </div>
+                <div class="row">
+                    <div class="col s3 search-bar">
+                        <input type="text" placeholder="Search.."> 
+                    </div>
+                    <div class="col s9 add-material right-align">
+                        <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger ">
+                        <i class="material-icons left">add_circle_outline</i>Add Material</a>
+                    </div>
+                </div>
+        
         <?php 
             }
         ?>
@@ -292,18 +299,20 @@
             <?php 
                 if(strcmp($projects_status, "open") == 0) {
             ?>
-            <div class="col s12 right-align">
-                <a href="#addcategoryModal" class="waves-effect waves-light btn button modal-trigger">
-                    <i class="material-icons left">add_circle_outline</i>Add Category</a>
-                <a href="#editcategoryModal" class="waves-effect waves-light btn button modal-trigger">
-                    <i class="material-icons left">edit</i>Edit Category</a>
-            </div>
+            <div class="row add-category">
+                <div class="col s12 right-align">
+                    <a href="#addcategoryModal" class="waves-effect waves-light btn button modal-trigger">
+                        <i class="material-icons left">add_circle_outline</i>Add Category</a>
+                    <a href="#editcategoryModal" class="waves-effect waves-light btn button modal-trigger">
+                        <i class="material-icons left">edit</i>Edit Category</a>
+                </div>
+                </div>
             <?php
                 }
             ?>
         </div>
 
-        <div class="row">
+        <div class="row category-container">
             <?php
         $sql = "SELECT categories.categories_id, categories.categories_name FROM  categories 
         INNER JOIN projects ON categories.categories_project = projects.projects_id 
@@ -312,7 +321,7 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-            <div class="col s3 m3 category-container">
+            <div class="col s3 m3 ">
                 <div class="card center">
                     <div class="card-content category-cards">
                         <span class="card-title category-title">

@@ -26,10 +26,19 @@
                     class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</h4>
             <ul class="side-nav" id="mobile-demo">
-                <li class="collection-item avatar">
+            <li class="collection-item avatar">
+                <?php 
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
                     <span class="title">
+                        <?php echo $row[1]." ".$row[2]; ?>
                     </span>
                     <span class="title">
+                        <?php echo $row[5]; }?>
                     </span>
                 </li>
                 <li>
@@ -43,6 +52,12 @@
                 </li>
                 <li>
                     <a href="hauleditems.php">Hauled Materials</a>
+                </li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
+                    <a href="sitematerials.php">Site Materials</a>
                 </li>
                 <li>
                     <div class="divider"></div>

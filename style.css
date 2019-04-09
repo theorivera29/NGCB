@@ -723,7 +723,7 @@ input[type=text]:disabled {
 /*Add To-do Container*/
 
 body {
-    background-color: #E2E2E2;
+    background-color: #E0E0E0;
 }
 
 .container-addtask {
@@ -740,6 +740,7 @@ body {
     margin-top: 4% !important;
     padding-left: 5%;
     border-radius: 2%;
+    overflow: hidden;
 }
 
 .container-date {
@@ -750,7 +751,6 @@ body {
 #panel-text {
     font-size: 2.7vmin !important;
 }
-
 
 .todo-picker {
     float: left !important;
@@ -765,33 +765,33 @@ body {
     padding-left: 5% !important;
     color: black !important;
     font-size: 4vmin;
-    max-lines: 5;
 }
 
 textarea.materialize-textarea{
     padding-top: 0 !important;
     margin-top: 0 !important;
     padding: 0 !important;
+    text-align: left;
+    padding-left: 5% !important;
+    font-size: 2vmin;
 }
 
 #characters,
 #char{
     font-size: 1.9vmin;
+}
+
+.container-counter{
+    position:absolute;
+    right: 0;
+    margin-top: -8% !important;
+}
+
+.save-todo-btn{
+    color: #ffffff !important;
+    background-color: #003A51 !important;
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
     float: right;
+    margin-right: 5%;
 }
-
-#char-paragraph{
-    display: flex;
-}
-
-#characters{
-    order: 1;
-}
-
-#char{
-    order: 2;
-}
-
-.character::after {
-    content: "\00a0";
-  }

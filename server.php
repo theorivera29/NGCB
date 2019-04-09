@@ -337,14 +337,28 @@
         $sql = "SELECT * from deliveredin;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
-        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy) VALUES ('2019-05-19', $delivered_quantity, $delivered_unit, '$suppliedBy');";
+        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy');";
+        mysqli_query($conn, $sql);
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
+        exit();
+    }
+
+        if (isset($_POST['add_usagein'])) {
+        $usage_date = mysqli_real_escape_string($conn, $_POST['us_date']);
+        $usage_quantity = mysqli_real_escape_string($conn, $_POST['us_quantity']);
+        $usage_unit = mysqli_real_escape_string($conn, $_POST['us_unit']);
+        $pulloutby = mysqli_real_escape_string($conn, $_POST['pulloutby']);
+        $us_area = mysqli_real_escape_string($conn, $_POST['us_area']);
+        $sql = "SELECT * from usagein;";
+        $result = mysqli_query($conn,$sql);
+        $count = mysqli_num_rows($result);
+        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area');";
         mysqli_query($conn, $sql);
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
     }
 
 
-    
         if(isset($_POST['edit_materials'])) {
         $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
         

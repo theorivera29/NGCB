@@ -114,7 +114,7 @@
         </div>
     </nav>
 
-     <div class="site-materials-container">
+    <div class="site-materials-container">
         <div class="lighten-5">
             <table class="centered site-materials-content">
                 <thead class="site-materials-head">
@@ -176,7 +176,86 @@
                                 <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
                                     <?php echo $row[0] ?></a>
                             </form>
+                            <div id="modal1" class="modal modal-fixed-footer">
+                                <ul class="tabs">
+                                    <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
+                                    <li class="tab col s3"><a href="#usagein">Usage In </a></li>
+                                </ul>
 
+                                <div id="deliverin">
+                                    <div class="row">
+                                        <form action="../server.php" method="POST">
+                                            <table class="centered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Quantity</th>
+                                                        <th>Unit</th>
+                                                        <th>Supplied By</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                                        <td><input type="date" name="dev_date"></td>
+                                                        <td><input type="text" name="dev_quantity"></td>
+                                                        <td><select class="browser-default" name="us_unit">
+                                                                <option value="UNITS" disabled selected>Units</option>
+                                                                <option value="pcs" selected>pcs</option>
+                                                                <option value="mtrs" selected>mtrs</option>
+                                                                <option value="rolls" selected>rolls</option>
+                                                            </select></td>
+                                                        <td><input type="text" name="dev_supp"></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                            <div class="modal-footer">
+                                                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
+                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div id="usagein">
+                                    <div class="row">
+                                        <form action="../server.php" method="POST">
+                                            <table class="centered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Quantity</th>
+                                                        <th>Unit</th>
+                                                        <th>Pulled Out By</th>
+                                                        <th>Area of Usage</th>
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input type="text" placeholder="yyyy-mm-dd" name="us_date" ></td>
+                                                        <td><input type="text" name="us_quantity"></td>
+                                                        <td><select class="browser-default" name="us_unit">
+                                                                <option value="UNITS" disabled selected>Unit</option>
+                                                                <option value="pcs" selected>pcs</option>
+                                                                <option value="mtrs" selected>mtrs</option>
+                                                                <option value="rolls" selected>rolls</option>
+                                                            </select></td>
+                                                        <td><input type="text" name="pulloutby"></td>
+                                                        <td><input type="text" name="us_area"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="modal-footer">
+                                                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
+                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                         <td>
                             <?php echo $row[1] ?>
@@ -197,160 +276,161 @@
                             <?php echo $row[6] ?>
                         </td>
                         <?php 
-                        }
-                    ?>
+                            }
+                        ?>
                     </tr>
-                    <?php 
+                </tbody>
+                <?php 
                     }
                 ?>
-                </tbody>
             </table>
+            
         </div>
-        </div>
-
         <!--MODAL-->
+<!--
         <div id="modal1" class="modal modal-fixed-footer">
-        <ul class="tabs">
-                    <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
-                    <li class="tab col s3"><a href="#usagein">Usage In </a></li>
-                </ul>
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
+                <li class="tab col s3"><a href="#usagein">Usage In </a></li>
+            </ul>
 
-                <div id="deliverin">
+            <div id="deliverin">
                 <div class="row">
-                <form>
-                <table class="centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Quantity</th>
-                                            <th>Unit</th>
-                                            <th>Supplied By</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="date" name="dev_date"></td>
-                                            <td><input type="text" name="dev_quantity"></td>
-                                            <td><select class="browser-default" name="us_unit">
-                                                    <option value="UNITS" selected></option>
-                                                </select></td>
-                                            <td><input type="text" name="dev_supp"></td>
-                                        </tr>
+                    <form>
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Supplied By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="date" name="dev_date"></td>
+                                    <td><input type="text" name="dev_quantity"></td>
+                                    <td><select class="browser-default" name="us_unit">
+                                            <option value="UNITS" selected></option>
+                                        </select></td>
+                                    <td><input type="text" name="dev_supp"></td>
+                                </tr>
 
-                                    </tbody>
-                                </table>
-                </form>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer">
+                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                        </div>
+                    </form>
                 </div>
-                </div>
-                
-                <div id="usagein">
+            </div>
+
+            <div id="usagein">
                 <div class="row">
-                <form>
-                <table class="centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Quantity</th>
-                                            <th>Unit</th>
-                                            <th>Pulled Out By</th>
-                                            <th>Area of Usage</th>
+                    <form>
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Pulled Out By</th>
+                                    <th>Area of Usage</th>
 
-                                        </tr>
-                                    </thead>
+                                </tr>
+                            </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td contenteditable="true"><input type="date" name="us_date"></td>
-                                            <td contenteditable="true"><input type="text" name="us_quantity"></td>
-                                            <td contenteditable="true"><select class="browser-default" name="us_unit">
-                                                    <option value="UNITS" selected></option>
-                                                </select></td>
-                                            <td contenteditable="true"><select class="browser-default" name="categories">
-                                                    <option value="mat eng namesss" selected></option>
-                                                </select></td>
-                                            <td contenteditable="true"><input type="text" name="us_area"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                </form>
+                            <tbody>
+                                <tr>
+                                    <td contenteditable="true"><input type="date" name="us_date"></td>
+                                    <td contenteditable="true"><input type="text" name="us_quantity"></td>
+                                    <td contenteditable="true"><select class="browser-default" name="us_unit">
+                                            <option value="UNITS" selected></option>
+                                        </select></td>
+                                    <td contenteditable="true"><select class="browser-default" name="categories">
+                                            <option value="mat eng namesss" selected></option>
+                                        </select></td>
+                                    <td contenteditable="true"><input type="text" name="us_area"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer">
+                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                        </div>
+                    </form>
                 </div>
-                </div>
-                
-                        
-                   
-                <div class="modal-footer">
-                    <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                </div>
-            </form>
+            </div>
         </div>
+-->
+    </div>
 
 
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    </script>
+    <script>
+        // SIDEBAR
+        $(document).ready(function() {
+            $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 300
+                edge: 'left', // Choose the horizontal origin
+                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true // Choose whether you can drag to open on touch screens
+            });
 
-        <!--Import jQuery before materialize.js-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
-        </script>
-        <script>
-            // SIDEBAR
-            $(document).ready(function() {
-                $('.button-collapse').sideNav({
-                    menuWidth: 300, // Default is 300
-                    edge: 'left', // Choose the horizontal origin
-                    closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                    draggable: true // Choose whether you can drag to open on touch screens
+            $('.modal-trigger').leanModal();
+
+            // START OPEN
+            $('.button-collapse').sideNav('show');
+        });
+
+        $(function() {
+
+            $("table").tablesorter({
+                    theme: "materialize",
+
+                    widthFixed: true,
+                    // widget code contained in the jquery.tablesorter.widgets.js file
+                    // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+                    widgets: ["filter", "zebra"],
+
+                    widgetOptions: {
+                        // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                        // this is ONLY needed for materialize theming if you are using the filter widget, because rows are hidden
+                        zebra: ["even", "odd"],
+
+                        // reset filters button
+                        filter_reset: ".reset",
+
+                        // extra css class name (string or array) added to the filter element (input or select)
+                        // select needs a "browser-default" class or it gets hidden
+                        filter_cssFilter: ["", "", "browser-default"]
+                    }
+                })
+                .tablesorterPager({
+
+                    // target the pager markup - see the HTML block below
+                    container: $(".ts-pager"),
+
+                    // target the pager page select dropdown - choose a page
+                    cssGoto: ".pagenum",
+
+                    // remove rows from the table to speed up the sort of large tables.
+                    // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+                    removeRows: false,
+
+                    // output string - default is '{page}/{totalPages}';
+                    // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+                    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+
                 });
 
-                $('.modal-trigger').leanModal();
+        });
 
-                // START OPEN
-                $('.button-collapse').sideNav('show');
-            });
-
-            $(function() {
-
-                $("table").tablesorter({
-                        theme: "materialize",
-
-                        widthFixed: true,
-                        // widget code contained in the jquery.tablesorter.widgets.js file
-                        // use the zebra stripe widget if you plan on hiding any rows (filter widget)
-                        widgets: ["filter", "zebra"],
-
-                        widgetOptions: {
-                            // using the default zebra striping class name, so it actually isn't included in the theme variable above
-                            // this is ONLY needed for materialize theming if you are using the filter widget, because rows are hidden
-                            zebra: ["even", "odd"],
-
-                            // reset filters button
-                            filter_reset: ".reset",
-
-                            // extra css class name (string or array) added to the filter element (input or select)
-                            // select needs a "browser-default" class or it gets hidden
-                            filter_cssFilter: ["", "", "browser-default"]
-                        }
-                    })
-                    .tablesorterPager({
-
-                        // target the pager markup - see the HTML block below
-                        container: $(".ts-pager"),
-
-                        // target the pager page select dropdown - choose a page
-                        cssGoto: ".pagenum",
-
-                        // remove rows from the table to speed up the sort of large tables.
-                        // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
-                        removeRows: false,
-
-                        // output string - default is '{page}/{totalPages}';
-                        // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
-                        output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
-
-                    });
-
-            });
-
-        </script>
+    </script>
 </body>
 
 </html>

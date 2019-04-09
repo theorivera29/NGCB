@@ -125,10 +125,12 @@
                     <div class="input-field input-field-todo">
                         <textarea id="todo_task" name="todo_task" class="materialize-textarea" maxlength="50"
                             required></textarea>
-                        <p id="char-paragraph"><span id="characters">50 </span><span id="char">remaining </span></p>
+                        <div class="container-counter">
+                            <span id="characters">50</span><span id="char"> remaining </span>
+                        </div>
                     </div>
 
-                    <button class="waves-effect waves-light btn green" type="submit" class="validate"
+                    <button class="btn waves-effect waves-light save-todo-btn" type="submit" class="validate"
                         name="create_todo">Save</button>
             </div>
             <!--HINDI KO MAPAGANA

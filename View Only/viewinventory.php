@@ -26,7 +26,7 @@
                     class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</h4>
             <ul class="side-nav" id="mobile-demo">
-                <li class="collection-item avatar">
+            <li class="collection-item avatar">
                 <?php 
                         if(isset($_SESSION['username'])) {
                         $username = $_SESSION['username'];
@@ -52,6 +52,12 @@
                 </li>
                 <li>
                     <a href="hauleditems.php">Hauled Materials</a>
+                </li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
+                    <a href="sitematerials.php">Site Materials</a>
                 </li>
                 <li>
                     <div class="divider"></div>

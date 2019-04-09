@@ -56,6 +56,12 @@
                     <div class="divider"></div>
                 </li>
                 <li>
+                    <a href="sitematerials.php">Site Materials</a>
+                </li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li>
                     <a href="../logout.php">Logout</a>
                 </li>
             </ul>

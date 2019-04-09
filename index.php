@@ -57,11 +57,11 @@
                 ?>
                 <div class="co-login">
                     <div class="f-login username input-field col s6 m12">
-                        <input placeholder="Your username.." id="login-username" name="username" type="text" required>
+                        <input placeholder="Your username.." id="field-login-username" name="username" type="text" required>
                         <label class="active" for="username">Username</label>
                     </div>
                     <div class="f-login password input-field col s6 m12">
-                        <input placeholder="Your password.." id="login-password" name="password" type="password"
+                        <input placeholder="Your password.." id="field-login-password" name="password" type="password"
                             required>
                         <label class="active" for="password">Password</label>
                     </div>

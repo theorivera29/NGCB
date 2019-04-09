@@ -35,13 +35,12 @@
                             $row = mysqli_fetch_row($result);
                         ?>
             <span id="acName">
-
                 <ul>
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
                         <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -53,11 +52,7 @@
             </span>
             <ul class="side-nav" id="navigation">
                 <li class="icon-container">
-                    <ul>
-                        <li class="acType">
-                            <img src="../Images/NGCB_logo.png" class="sidenav-logo">
-                        </li>
-                    </ul>
+                    <img src="../Images/NGCB_logo.png" class="sidenav-logo">
                 </li>
                 <h3 id="account-type"><?php echo $row[5]; }?></h3>
 
@@ -70,7 +65,8 @@
                 <ul class="collapsible">
                     <li>
                         <i class="material-icons left">place</i><a
-                            class="collapsible-header waves-effect waves-blue">Site<i                                class="material-icons right">keyboard_arrow_down</i></a>
+                            class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -79,9 +75,9 @@
                         </div>
                     </li>
                 </ul>
-                
 
-                
+
+
                 <ul class="collapsible">
                     <li>
                         <i class="material-icons left">local_shipping</i><a
@@ -100,9 +96,6 @@
                         </div>
                     </li>
                 </ul>
-
-
-
                 <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
@@ -113,32 +106,30 @@
 
     <!--Calendar and To do Row-->
     <div class="row">
-        <div class="col s4 Calendar-Todo-Container">
-            <div class="Panel-Header">
-                <span>CALENDAR AND TO-DO</span>
+        <div class="col s4 container container-addtask">
+            <h5 id="panel-header">To-do Task</h5>
+            <div class="container-to-do">
+                <form action="../server.php" method="POST">
+                    <div class="row container-date">
+                        <div class="col s2">
+                            <h5 id="panel-text">Date:</h5>
+                        </div>
+                        <div class="col s4">
+                            <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker todo-picker" name="tododate">
+                        </div>
+                    </div>
+                    <input type="hidden" name="todoOf"
+                        value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                    <div class="row">
+                        <div class="input-field input-field-todo">
+                            <textarea id="todo_task" name="todo_task" class="materialize-textarea"
+                                required></textarea>
+                        </div>
+                    </div>
+                    <button class="waves-effect waves-light btn green" type="submit" class="validate"
+                        name="create_todo">Save</button>
             </div>
-            <form action="../server.php" method="POST">
-                <div class="row">
-                    <div class="input-field col s3">
-                        <label>To-do Date:</label>
-                    </div>
-                    <div class="col s4">
-                        <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker" name="tododate">
-                    </div>
-                </div>
-                <input type="hidden" name="todoOf"
-                    value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
-                <div class="row">
-                    <div class="input-field input-field-todo">
-                        <textarea id="todo_task" name="todo_task" class="materialize-textarea todo" required></textarea>
-                        <label for="todo_task" id="todo-label">Input to-do here:</label>
-                    </div>
-                </div>
-                <div class="row save-todo right-align">
-                <button class="waves-effect waves-light btn green" type="submit" class="validate"
-                    name="create_todo">Save</button>
-                            </div>
-                <!--HINDI KO MAPAGANA
+            <!--HINDI KO MAPAGANA
                    <div id="savetodo" class="modal">
                     <div class="modal-content">
                         <span>Are you sure want to save this task?</span>

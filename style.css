@@ -404,6 +404,10 @@ div.contextmenu:hover {
     margin-top: 2%;
 }
 
+.save-todo{
+    padding-right:2% !important;
+}
+
 /* Style for Site > Project */
 .save-btn,
 .view-hauled-item-btn,

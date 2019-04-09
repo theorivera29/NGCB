@@ -134,8 +134,10 @@
                         <label for="todo_task" id="todo-label">Input to-do here:</label>
                     </div>
                 </div>
+                <div class="row save-todo right-align">
                 <button class="waves-effect waves-light btn green" type="submit" class="validate"
                     name="create_todo">Save</button>
+                            </div>
                 <!--HINDI KO MAPAGANA
                    <div id="savetodo" class="modal">
                     <div class="modal-content">

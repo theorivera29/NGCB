@@ -600,11 +600,7 @@ th {
     box-shadow: 0 1px 0 0 white;
 }
 
-.input-field label.active {
-    position: absolute;
-    left: 0.0rem !important;
-    padding-bottom: 2% !important;
-}
+
 
 i.right {
     margin-left: 0 !important;
@@ -656,14 +652,50 @@ i.right {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Login*/
+
+#field-login-username{
+    background-color: #EDEBEA !important;
+    color: #19466D;
+    border-bottom: none !important;
+}
+
+#field-login-password{
+    background-color: #EDEBEA !important;
+    color: #19466D;
+    border-bottom: none !important;
+}
+
+.input-field label{
+    color: #19466D;
+}
+
+.input-field label.active {
+    position: absolute;
+    left: 0.0rem !important;
+    padding-bottom: 2% !important;
+}
+
 input[type=text],
 input[type=password] {
-    background-color: #EDEBEA !important;
-    border-bottom: none !important;
+    
     padding-left: 5% !important;
     margin-bottom: 10% !important;
-    -webkit-box-sizing: inherit !important;
     box-sizing: inherit !important;
 }
 
@@ -703,13 +735,18 @@ body {
 }
 
 #panel-text {
-    font-size: 2.5vmin !important;
+    font-size: 2.7vmin !important;
 }
 
 
 .todo-picker {
     float: left !important;
     text-align: center !important;
-    border-bottom: 2px solid blue !important;
-    color: blue !important;
+    border: 2px solid #19466D !important;
+    color: #19466D !important;
+    background-color: #E2E2E2;
+}
+
+.todo-picker.active{
+    border: 2px solid #19466D !important;
 }

@@ -96,9 +96,6 @@
                         </div>
                     </li>
                 </ul>
-
-
-
                 <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>

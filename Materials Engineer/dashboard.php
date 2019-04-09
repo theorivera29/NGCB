@@ -115,17 +115,19 @@
                             <h5 id="panel-text">Date:</h5>
                         </div>
                         <div class="col s4">
-                            <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker todo-picker" name="tododate">
+                            <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker todo-picker"
+                                name="tododate">
                         </div>
                     </div>
                     <input type="hidden" name="todoOf"
                         value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
-                    <div class="row">
-                        <div class="input-field input-field-todo">
-                            <textarea id="todo_task" name="todo_task" class="materialize-textarea"
-                                required></textarea>
-                        </div>
+
+                    <div class="input-field input-field-todo">
+                        <textarea id="todo_task" name="todo_task" class="materialize-textarea" maxlength="50"
+                            required></textarea>
+                        <p id="char-paragraph"><span id="characters">50 </span><span id="char">remaining </span></p>
                     </div>
+
                     <button class="waves-effect waves-light btn green" type="submit" class="validate"
                         name="create_todo">Save</button>
             </div>
@@ -444,6 +446,14 @@
 
             }); // End Document Ready
         })(jQuery);
+
+        //For the length of textarea todo
+        var maxLength = 50;
+        $('textarea').keyup(function () {
+            var length = $(this).val().length;
+            var length = maxLength - length;
+            $('#characters').text(length);
+        });
     </script>
 
 </body>

@@ -328,13 +328,7 @@ div.contextmenu:hover {
     font-size: 20px;
 }
 
-.input-field-todo {
-    width: 95% !important;
-    padding-top: 1%;
-    padding-left: 5% !important;
-    color: black !important;
-    border-radius: 5% !important;
-}
+
 
 .materialize-textarea {
     border-radius: 4% !important;
@@ -741,11 +735,43 @@ body {
 .todo-picker {
     float: left !important;
     text-align: center !important;
-    border: 2px solid #19466D !important;
+    border: 1px solid #19466D !important;
     color: #19466D !important;
     background-color: #E2E2E2;
 }
 
-.todo-picker.active{
-    border: 2px solid #19466D !important;
+.input-field-todo {
+    width: 90% !important;
+    padding-left: 5% !important;
+    color: black !important;
+    font-size: 4vmin;
+    max-lines: 5;
 }
+
+textarea.materialize-textarea{
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+}
+
+#characters,
+#char{
+    font-size: 1.9vmin;
+    float: right;
+}
+
+#char-paragraph{
+    display: flex;
+}
+
+#characters{
+    order: 1;
+}
+
+#char{
+    order: 2;
+}
+
+.character::after {
+    content: "\00a0";
+  }

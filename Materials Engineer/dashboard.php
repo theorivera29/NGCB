@@ -114,20 +114,19 @@
             <div class="container-to-do">
                 <form action="../server.php" method="POST">
                     <div class="row container-date">
-                        <div class="col s3">
-                            <h5>Date:</h5>
+                        <div class="col s2">
+                            <h5 id="panel-text">Date:</h5>
                         </div>
                         <div class="col s4">
-                            <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker" name="tododate">
+                            <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker todo-picker" name="tododate">
                         </div>
                     </div>
                     <input type="hidden" name="todoOf"
                         value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
                     <div class="row">
                         <div class="input-field input-field-todo">
-                            <textarea id="todo_task" name="todo_task" class="materialize-textarea todo"
+                            <textarea id="todo_task" name="todo_task" class="materialize-textarea"
                                 required></textarea>
-                            <label for="todo_task" id="todo-label">Input to-do task here:</label>
                         </div>
                     </div>
                     <button class="waves-effect waves-light btn green" type="submit" class="validate"

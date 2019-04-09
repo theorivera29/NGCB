@@ -340,11 +340,6 @@ div.contextmenu:hover {
     border-radius: 4% !important;
 }
 
-#todo-label {
-    padding-left: 5% !important;
-    margin-top: 2%;
-    font-size: 21px;
-}
 
 .todo-btn {
     float: right !important;
@@ -477,6 +472,7 @@ div.contextmenu:hover {
     padding-left: 2% !important;
 }
 
+
 /* Style for Site > Category */
 
 .viewcategory-btn {
@@ -517,7 +513,6 @@ th {
     padding-right: 2%;
     padding-left: 2%;
 }
-
 .category-container{
     padding-left: 2% !important;
     padding-right: 2% !important;
@@ -583,23 +578,7 @@ th {
     color: white;
 }
 
-input[type=text],
-input[type=password] {
-    background-color: #EDEBEA !important;
-    border-bottom: none !important;
-    padding-left: 5% !important;
-    margin-bottom: 10% !important;
-    -webkit-box-sizing: inherit !important;
-    box-sizing: inherit !important;
-}
 
-input:focus {
-    outline: 2px solid #63C7B2;
-}
-
-input[type=text]:disabled {
-    color: black;
-}
 
 .proj-row {
     background-color: #1A5D89;
@@ -673,17 +652,32 @@ i.right {
 
 
 
+/*Login*/
+input[type=text],
+input[type=password] {
+    background-color: #EDEBEA !important;
+    border-bottom: none !important;
+    padding-left: 5% !important;
+    margin-bottom: 10% !important;
+    -webkit-box-sizing: inherit !important;
+    box-sizing: inherit !important;
+}
 
+input:focus {
+    outline: 2px solid #63C7B2;
+}
 
-
-
-
-
-
-
+input[type=text]:disabled {
+    color: black;
+}
 
 /*Add To-do Container*/
-.container-addtask{
+
+body {
+    background-color: #E2E2E2;
+}
+
+.container-addtask {
     margin-left: 2% !important;
     margin-top: 2% !important;
 }
@@ -697,4 +691,21 @@ i.right {
     margin-top: 4% !important;
     padding-left: 5%;
     border-radius: 2%;
+}
+
+.container-date {
+    padding-top: 5%;
+    padding-left: 5%;
+}
+
+#panel-text {
+    font-size: 2.5vmin !important;
+}
+
+
+.todo-picker {
+    float: left !important;
+    text-align: center !important;
+    border-bottom: 2px solid blue !important;
+    color: blue !important;
 }

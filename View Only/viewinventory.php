@@ -235,7 +235,10 @@
     <div id="categories" class="col s12">
         <div class="row">
             <?php
-        $sql = "SELECT * FROM  categories ORDER BY categories_name;";
+        $sql = "SELECT categories.categories_id, categories.categories_name FROM  categories 
+        INNER JOIN projects ON categories.categories_project = projects.projects_id 
+        WHERE projects.projects_name = '$projects_name'
+        ORDER BY categories.categories_name;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>

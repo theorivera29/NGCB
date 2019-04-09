@@ -261,9 +261,7 @@
                                             <td contenteditable="true"><select class="browser-default" name="us_unit">
                                                     <option value="UNITS" selected></option>
                                                 </select></td>
-                                            <td contenteditable="true"><select class="browser-default" name="categories">
-                                                    <option value="mat eng namesss" selected></option>
-                                                </select></td>
+                                            <td contenteditable="true"><input type="text" name="us_matname"></td>
                                             <td contenteditable="true"><input type="text" name="us_area"></td>
                                         </tr>
                                     </tbody>

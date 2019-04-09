@@ -70,8 +70,7 @@
                 <ul class="collapsible">
                     <li>
                         <i class="material-icons left">place</i><a
-                            class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                            class="collapsible-header waves-effect waves-blue">Site<i                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>

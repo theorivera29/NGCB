@@ -193,15 +193,15 @@
                                                 <tbody>
                                                     <tr>
                                                         <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                                        <td><input type="date" name="dev_date"></td>
-                                                        <td><input type="text" name="dev_quantity"></td>
-                                                        <td><select class="browser-default" name="us_unit">
+                                                        <td><input type="date" name="dev_date" ></td>
+                                                        <td><input type="text" name="dev_quantity" required></td>
+                                                        <td><select class="browser-default" name="us_unit" required>
                                                                 <option value="UNITS" disabled selected>Units</option>
                                                                 <option value="pcs" selected>pcs</option>
                                                                 <option value="mtrs" selected>mtrs</option>
                                                                 <option value="rolls" selected>rolls</option>
                                                             </select></td>
-                                                        <td><input type="text" name="dev_supp"></td>
+                                                        <td><input type="text" name="dev_supp" required></td>
                                                     </tr>
 
                                                 </tbody>
@@ -232,15 +232,15 @@
                                                 <tbody>
                                                     <tr>
                                                         <td><input type="text" placeholder="yyyy-mm-dd" name="us_date" ></td>
-                                                        <td><input type="text" name="us_quantity"></td>
-                                                        <td><select class="browser-default" name="us_unit">
+                                                        <td><input type="text" name="us_quantity" required></td>
+                                                        <td><select class="browser-default" name="us_unit" required>
                                                                 <option value="UNITS" disabled selected>Unit</option>
                                                                 <option value="pcs" selected>pcs</option>
                                                                 <option value="mtrs" selected>mtrs</option>
                                                                 <option value="rolls" selected>rolls</option>
                                                             </select></td>
-                                                        <td><input type="text" name="pulloutby"></td>
-                                                        <td><input type="text" name="us_area"></td>
+                                                        <td><input type="text" name="pulloutby" required></td>
+                                                        <td><input type="text" name="us_area" required></td>
                                                     </tr>
                                                 </tbody>
                                             </table>

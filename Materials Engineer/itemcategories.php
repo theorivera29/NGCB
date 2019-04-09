@@ -5,6 +5,12 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+    $projects_name = $_GET['projects_name'];
+
+    $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_row($result);
+    $projects_status = $row[0];
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +116,9 @@
         </div>
     </nav>
 
-
+    <?php 
+        if(strcmp($projects_status, "open") == 0) {
+    ?>
     <div class="row">
         <div class="col s12 right-align">
             <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger">
@@ -119,6 +127,9 @@
                 <i class="material-icons left">edit</i>Edit Material</a>
         </div>
     </div>
+    <?php 
+        }
+    ?>
 
     <div class="item-categories">
         <?php
@@ -142,7 +153,13 @@
                             <th>Material Pulled out as of CURRENT DATE</th>
                             <th>Accumulate of Materials Delivered</th>
                             <th>Material on Site as of CURRENT DATE</th>
+                            <?php 
+                                if(strcmp($projects_status, "open") == 0) {
+                            ?>
                             <th> Action</th>
+                            <?php
+                                }
+                            ?>
                         </tr>
                     </thead>
                     <tbody>
@@ -171,7 +188,51 @@
                             <td>
                                 <?php echo $row[6] ?>
                             </td>
-                            <td> </td>
+                            <?php 
+                                if(strcmp($projects_status, "open") == 0) {
+                            ?>
+                            <td> 
+                                <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+
+                                <!-- EDIT SITE MATERIAL MODAL -->
+                                <form action="../server.php" method="POST">
+                                    <div id="editmaterialModal" class="modal modal-fixed-footer">
+                                        <div class="modal-content">
+                                            <h4>Edit Material</h4>
+                                            <h6>
+                                                <?php echo $row[0];?>
+                                            </h6>
+                                            <div class="row">
+                                                <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
+                                                <div class="input-field col s12">
+                                                    <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
+                                                    <label for="newmaterialname">Material Name:</label>
+                                                </div>
+                                                <div class="input-field col s5">
+                                                    <select class="browser-default" name="mat_unit">
+                                                        <option value="" disabled selected>Quantifier</option>
+                                                        <option value="pcs">pcs</option>
+                                                        <option value="rolls">rolls</option>
+                                                        <option value="mtrs">mtrs</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-field col s7">
+                                                    <input id="minquantity" name="minquantity" type="text" class="validate">
+                                                    <label for="minquantity">Threshold:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="edit_materials">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                            <?php 
+                                }
+                            ?>
                         </tr>
 
                         <?php    
@@ -209,7 +270,6 @@
                                 $sql = "SELECT categories_name FROM categories;";
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_row($result)) {                         
-
                             ?>
                             <option value="1">
                                 <?php echo $row[0]; ?>

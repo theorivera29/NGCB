@@ -151,12 +151,13 @@
 
     if(isset($_POST['view_category'])) {
         $categories_id = mysqli_real_escape_string($conn, $_POST['categories_id']);
-        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        $account_type =  mysqli_real_escape_string($conn, $_POST['account_type']);
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         if(strcmp($account_type,'MatEng') == 0) {
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id");
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id&projects_name=$projects_name");
             exit();
         } else {
-            header("location: http://127.0.0.1/NGCB/View%20Only/itemcategories.php?categories_id=$categories_id");
+            header("location: http://127.0.0.1/NGCB/View%20Only/itemcategories.php?categories_id=$categories_id&projects_name=$projects_name");
             exit();
         }
     }

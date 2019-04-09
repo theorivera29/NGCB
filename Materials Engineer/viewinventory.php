@@ -5,6 +5,13 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+
+    $projects_name = $_GET['projects_name'];
+
+    $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_row($result);
+    $projects_status = $row[0];
 ?>
 
 <!DOCTYPE html>
@@ -110,9 +117,6 @@
         </div>
     </nav>
     <div class="">
-        <?php 
-           $projects_name = $_GET['projects_name'];
-        ?>
         <div class="row">
             <h5>Project Name:
                 <?php echo $projects_name; ?>
@@ -128,10 +132,16 @@
 
     <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
+        <?php 
+            if(strcmp($projects_status, "open") == 0) {
+        ?>
         <div class=" right-align">
             <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger add-material-btn">
                 <i class="material-icons left">add_circle_outline</i>Add Material</a>
         </div>
+        <?php 
+            }
+        ?>
         <div class="view-inventory-container">
             <div class="light-blue lighten-5 ">
                 <table class="striped centered view-inventory">
@@ -149,7 +159,13 @@
                             <th>Material on Site as of
                                 <?php echo date("F Y"); ?>
                             </th>
-                            <th> Action</th>
+                            <?php 
+                                if(strcmp($projects_status, "open") == 0) {
+                            ?>
+                                <th> Action</th>
+                            <?php 
+                                }
+                            ?>
                         </tr>
                     </thead>
 
@@ -214,6 +230,9 @@
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
+                            <?php 
+                                if(strcmp($projects_status, "open") == 0) {
+                            ?>
                             <td> 
                                 <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
 
@@ -254,6 +273,7 @@
                                 </form>
                             </td>
                             <?php 
+                                }
                             }
                         ?>
                         </tr>
@@ -269,17 +289,26 @@
     <!--SITE CATEGORIES-->
     <div id="categories" class="col s12">
         <div class="row">
+            <?php 
+                if(strcmp($projects_status, "open") == 0) {
+            ?>
             <div class="col s12 right-align">
                 <a href="#addcategoryModal" class="waves-effect waves-light btn button modal-trigger">
                     <i class="material-icons left">add_circle_outline</i>Add Category</a>
                 <a href="#editcategoryModal" class="waves-effect waves-light btn button modal-trigger">
                     <i class="material-icons left">edit</i>Edit Category</a>
             </div>
+            <?php
+                }
+            ?>
         </div>
 
         <div class="row">
             <?php
-        $sql = "SELECT * FROM  categories ORDER BY categories_name;";
+        $sql = "SELECT categories.categories_id, categories.categories_name FROM  categories 
+        INNER JOIN projects ON categories.categories_project = projects.projects_id 
+        WHERE projects.projects_name = '$projects_name'
+        ORDER BY categories.categories_name;";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
@@ -293,6 +322,7 @@
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="account_type" value="<?php echo $_SESSION['account_type']; ?>">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
+                                <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                                 <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
                             </form>
                         </div>

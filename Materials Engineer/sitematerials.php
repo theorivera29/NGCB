@@ -157,7 +157,8 @@
                         materials.pulled_out, 
                         materials.accumulated_materials,
                         materials.currentQuantity,
-                        projects.projects_name
+                        projects.projects_name,
+                        materials.mat_unit
                         FROM materials 
                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
                         INNER JOIN projects ON materials.mat_project = projects.projects_id
@@ -193,14 +194,9 @@
                                                 <tbody>
                                                     <tr>
                                                         <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                                        <td><input type="date" name="dev_date" ></td>
+                                                        <td><input type="text" name="dev_date" ></td>
                                                         <td><input type="text" name="dev_quantity" required></td>
-                                                        <td><select class="browser-default" name="us_unit" required>
-                                                                <option value="UNITS" disabled selected>Units</option>
-                                                                <option value="pcs" selected>pcs</option>
-                                                                <option value="mtrs" selected>mtrs</option>
-                                                                <option value="rolls" selected>rolls</option>
-                                                            </select></td>
+                                                        <td><input type="text" name="dev_unit" value="<?php echo $row[7]?>" required></td>
                                                         <td><input type="text" name="dev_supp" required></td>
                                                     </tr>
 
@@ -231,14 +227,10 @@
 
                                                 <tbody>
                                                     <tr>
-                                                        <td><input type="text" placeholder="yyyy-mm-dd" name="us_date" ></td>
+                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                                        <td><input type="text" name="us_date" ></td>
                                                         <td><input type="text" name="us_quantity" required></td>
-                                                        <td><select class="browser-default" name="us_unit" required>
-                                                                <option value="UNITS" disabled selected>Unit</option>
-                                                                <option value="pcs" selected>pcs</option>
-                                                                <option value="mtrs" selected>mtrs</option>
-                                                                <option value="rolls" selected>rolls</option>
-                                                            </select></td>
+                                                        <td><input type="text" name="us_unit" value="<?php echo $row[7]?>" required>
                                                         <td><input type="text" name="pulloutby" required></td>
                                                         <td><input type="text" name="us_area" required></td>
                                                     </tr>

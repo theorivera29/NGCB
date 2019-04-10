@@ -137,10 +137,13 @@
             if(strcmp($projects_status, "open") == 0) {
         ?>
                 <div class="row">
-                    <div class="col s3 search-bar">
-                        <input type="text" placeholder="Search.."> 
+                    <div class="col s4 search-bar">
+                        <input type="text" class="search" placeholder="Search.."> 
                     </div>
-                    <div class="col s9 add-material right-align">
+                    <div class="col s1">
+                        <button><i class="material-icons">search</i></button> 
+                    </div>
+                    <div class="col s7 add-material right-align">
                         <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger ">
                         <i class="material-icons left">add_circle_outline</i>Add Material</a>
                     </div>
@@ -259,7 +262,7 @@
                                                 </div>
                                                 <div class="input-field col s5">
                                                     <select class="browser-default" name="mat_unit">
-                                                        <option value="" disabled selected>Unit</option>
+                                                    <option value="" disabled selected>Unit</option>
                                                         <option value="pcs">pcs</option>
                                                     </select>
                                                 </div>
@@ -272,7 +275,7 @@
 
                                         <div class="modal-footer">
                                             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="edit_materials">Save</button>
+                                            <button class="waves-effect waves-teal btn-flat" type="submit" class="validate" name="edit_materials">Save</button>
                                         </div>
                                     </div>
                                 </form>
@@ -438,7 +441,7 @@
     <!-- ADD CATEGORY MODAL -->
     <div id="addcategoryModal" class="modal modal-fixed-footer">
         <form action="../server.php" method="POST">
-            <div class="modal-content">
+            <div class="modal-content add-categ-modal">
                 <h4>Add Category</h4>
                 <div class="row">
                     <div class="input-field col s12">
@@ -462,11 +465,11 @@
     <!-- EDIT MATERIAL MODAL -->
     <div id="editcategoryModal" class="modal modal-fixed-footer">
         <form action="../server.php" method="POST">
-            <div class="modal-content">
+            <div class="modal-content edit-categ-modal">
                 <h4>Edit Category</h4>
                 <div class="row">
-                    <h5>Select category</h5>
                     <div class="input-field col s6">
+                        <span>Category</span>
                         <select class="browser-default" name="category_name">
                             <option>Choose your option</option>
                             <?php

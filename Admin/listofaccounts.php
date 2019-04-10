@@ -21,10 +21,9 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
-                    class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
@@ -43,8 +42,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Accounts<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Accounts<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -59,7 +57,6 @@
                 </ul>
                 <li>
                     <div class="divider"></div>
-                </li>
                 </li>
                 <li><a href="projects.php">Projects</a></li>
 
@@ -81,7 +78,7 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="container">
         <div class="card">
             <table class="striped centered">
@@ -97,40 +94,55 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <?php 
+                    <?php 
                             $sql = "SELECT accounts_id, concat(accounts_fname,', ', accounts_lname) as name, accounts_username, 
                             accounts_email, accounts_type, accounts_status FROM accounts WHERE accounts_deletable = 'yes' AND accounts_status='active';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
-
-                        <tr>
-                            <td>
-                                <?php echo $row[0] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[1] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[2] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[3] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[4] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[5] ?>
-                            </td>
-                            <td>
-                                <button id="disableBtn" onclick="disablePrompt()">Disable</button>
-                            </td>
-                        </tr>
-                        <?php    
+                    <div id="disable_account" class="modal">
+                        <div class="modal-content">
+                            <h4>Disable Account?</h4>
+                            <p>Are you sure you want to disable this account?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                            <form action="../server.php" method="POST">
+                                <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
+                                <button type="submit" name="disable_account" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                            </form>
+                        </div>
+                    </div>
+                    <tr>
+                        <td>
+                            <?php echo $row[0] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[1] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[2] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[3] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[4] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[5] ?>
+                        </td>
+                        <td>
+                            <div class="row">
+                                <a href="#disable_account" class="waves-effect waves-light btn  modal-trigger">
+                                    Disable</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php    
                             }
                         ?>
-                    </tbody>
+                </tbody>
             </table>
 
         </div>
@@ -141,8 +153,11 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
     <script>
+        $(document).ready(function() {
+            $('.modal-trigger').leanModal();
+        });
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -153,10 +168,11 @@
             $('.button-collapse').sideNav('show');
         });
 
-        function disablePrompt(){
+        function disablePrompt() {
             var disprompt = prompt("Are you sure you want to disable the account");
-           
+
         };
+
     </script>
 
 </body>

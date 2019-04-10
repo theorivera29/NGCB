@@ -75,10 +75,6 @@
     </nav>
 
     <div class="container">
-        <div class="col s11 right-align">
-            <a href="#addProject" class="waves-effect waves-light btn button modal-trigger add-material-btn">
-                <i class="material-icons left">add_circle_outline</i>Add Project</a>
-        </div>
         <div class="row">
 
             <div class="col s12">
@@ -91,6 +87,10 @@
 
         <!--ONGOING TAB-->
         <div id="ongoing" class="col s12">
+                   <div class="col s11 right-align">
+            <a href="#addProject" class="waves-effect waves-light btn button modal-trigger add-material-btn">
+                <i class="material-icons left">add_circle_outline</i>Add Project</a>
+        </div>
             <div class="row">
                 <?php
                     $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects

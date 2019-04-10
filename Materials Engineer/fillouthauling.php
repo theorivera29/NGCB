@@ -130,7 +130,7 @@
                             <div class="col s6">
                                 <div>
                                     <div class="input-field col s12 left-align ">
-                                        <input id="delivername" type="text" class="validate" name="delivername"  required>
+                                        <input id="delivername" type="text" class="validate" name="delivername" pattern="[A-Za-z]*" title="Input only letters"  required>
                                         <label for="delivername">Deliver To:</label>
                                     </div>
                                      <?php 
@@ -138,7 +138,7 @@
                                      ?>
                                     
                                     <div class="input-field col s12 left-align ">
-                                        <input disabled id="hauledfrom" type="text" class="validate" name="hauledfrom" value="<?php echo $projects_name ?>">
+                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom" value="<?php echo $projects_name ; ?>">
                                         <label for="hauledfrom">Hauled From :</label>
                                     </div>
                                 </div>
@@ -159,7 +159,7 @@
                                     <tr>
                                     <td>
 
-                                            <select id="categories" class="browser-default" name="mat_categ"  required>
+                                            <select id="categories" class="browser-default" name="mat_categ" required>
                                                 <option disabled selected>Choose your option</option>
                                                 <?php
                                     $sql = "SELECT * FROM categories;";
@@ -181,7 +181,7 @@
                                                 <option disabled selected>Choose your option</option>
                                             </select></td>
                                         
-                                        <td><input id="unit" readonly type="text" class="validate" name="unit"  required></td>
+                                        <td><input id="unit" readonly type="text" class="validate" name="unit" required></td>
                                         <td><input type="text" name="quantity" id="quantity"  required></td>
                                         
                                     </tr>
@@ -192,15 +192,15 @@
                         <div class="row">
                             <div class="col s6">
                                 <div class="input-field col s10 left-align ">
-                                    <input id="hauledby" type="text" class="validate" name="hauledby"  required>
+                                    <input id="hauledby" type="text" class="validate" name="hauledby"  pattern="[A-Za-z]*" title="Input only letters" required>
                                     <label for="hauledby">Hauled by :</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
-                                    <input id="warehouseman" type="text" class="validate" name="warehouseman"  required>
+                                    <input id="warehouseman" type="text" class="validate" name="warehouseman" pattern="[A-Za-z]*" title="Input only letters" required>
                                     <label for="warehouseman">Warehouseman:</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
-                                    <input id="approvedby" type="text" class="validate" name="approvedby"  required>
+                                    <input id="approvedby" type="text" class="validate" name="approvedby" pattern="[A-Za-z]*" title="Input only letters" required>
                                     <label for="approvedby">Approved By:</label>
                                 </div>
                             </div>
@@ -218,7 +218,7 @@
                                     <tbody>
                                         <tr>
                                             <td>Type:</td>
-                                            <td><input type="text" name="truck_type" id="truck_type"  required></td>
+                                            <td><input type="text" name="truck_type" id="truck_type"  pattern="[A-Za-z]*" title="Input only letters" required></td>
                                         </tr>
                                         <tr>
                                             <td>Plate No.:</td>
@@ -226,7 +226,7 @@
                                         </tr>
                                         <tr>
                                             <td>P.O/R.S No.:</td>
-                                            <td><input type="text" name="truck_po" id="truck_po"  required></td>
+                                            <td><input type="text" name="truck_po" id="truck_po" minlength="6" maxlength="6" title="Alphanumeric only" required></td>
                                         </tr>
                                         <tr>
                                             <td>Hauler DR No.:</td>

@@ -22,10 +22,9 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
-                    class="material-icons">menu</i></a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i class="material-icons">menu</i></a>
             <h4 id="NGCB">NEW GOLDEN CITY BUILDERS</h4>
             <ul class="side-nav" id="mobile-demo">
                 <li class="collection-item avatar">
@@ -44,8 +43,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <a class="collapsible-header waves-effect waves-blue">Accounts<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <a class="collapsible-header waves-effect waves-blue">Accounts<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -102,7 +100,7 @@
                 </div>
 
                 <div class="input-field col s12 m10 offset-m1">
-                    <input id="email" name="email" type="text" class="validate" pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com" required> 
+                    <input id="email" name="email" type="text" class="validate" pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com" required>
                     <label for="email">Email</label>
                 </div>
 
@@ -114,20 +112,26 @@
                 <div class="col s12 m10 offset-m1">
                     <span>Account Type</span>
                     <div class="row">
-                        <label>
-                            <input class="with-gap" name="account_type" type="radio" checked
-                                value="Materials Engineer" />
-                            <span>Materials Engineer</span>
-                            <input class="with-gap" name="account_type" type="radio" checked value="View Only" />
-                            <span>View Only</span>
-                        </label>
+                       <form>   
+                        <p>
+                            <label>
+                                <input class="with-gap" value="MatEng" type="radio"/>
+                                <span>Materials Engineer</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" value="ViewOnly" type="radio"/>
+                                <span>View-Only</span>
+                            </label>
+                        </p>
+                       </form>
                     </div>
 
                 </div>
 
                 <div class="row center">
-                    <button class="btn waves-effect waves-light create-account-btn" type="submit"
-                        name="create_account">Create
+                    <button class="btn waves-effect waves-light create-account-btn" type="submit" name="create_account">Create
                         An Account</button>
                 </div>
             </div>
@@ -140,7 +144,7 @@
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -150,6 +154,7 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
         });
+
     </script>
 
 </body>

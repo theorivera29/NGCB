@@ -49,7 +49,7 @@
                     WHERE projects.projects_name = '$projects_name'
                     ORDER BY categories.categories_name;";
     $result = mysqli_query($conn, $sql_categ);
-    
+
     $categories = array();
 
     while($row_categ = mysqli_fetch_assoc($result)){
@@ -92,5 +92,5 @@
     }
 
     //OUTPUT TO PDF
-    $pdf->Output();
+    $pdf->Output('D', "INVENTORY REPORT ".date("F Y").".pdf");
 ?>

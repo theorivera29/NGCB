@@ -353,17 +353,16 @@
     }
 
         if (isset($_POST['add_deliveredin'])) {
+        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
         $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
-        $delivered_unit = mysqli_real_escape_string($conn, $_POST['unit']);
+        $delivered_unit = mysqli_real_escape_string($conn, $_POST['dev_unit']);
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
         $sql = "SELECT * from deliveredin;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
-        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy');";
+        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy', 1);";
         mysqli_query($conn, $sql);
-            
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'add delivered in', 1);";
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
     }
@@ -377,10 +376,8 @@
         $sql = "SELECT * from usagein;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
-        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area');";
+        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area', 1);";
         mysqli_query($conn, $sql);
-            
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('2019-04-09 14:53:30', 'add usagein', 1);";
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
     }

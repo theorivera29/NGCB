@@ -234,7 +234,7 @@ nav {
 }
 
 #NGCB {
-    color: #19466D;
+    color: #BFAB25;
     margin-bottom: 0;
     margin-left: 1%;
     font-size: 20px;
@@ -248,7 +248,7 @@ nav {
     transform: rotate(180deg);
 }
 
-.modal-footer{
+.modal-footer {
     font-size: 2.5vmin !important;
 }
 
@@ -371,15 +371,10 @@ div.contextmenu:hover {
 /* Style for Site > Project */
 .save-btn,
 .view-hauled-item-btn,
-.viewinventory-btn,
 .edit-btn,
 .reopen-btn {
     color: #0D1F2D !important;
     background-color: #ffffff !important;
-}
-
-.viewinventory-btn {
-    margin-top: 2% !important;
 }
 
 .view-inventory-container {
@@ -404,50 +399,9 @@ div.contextmenu:hover {
 
 }
 
-.project-container {
-    padding: 1% !important;
-    margin-left: 5% !important;
-    margin-top: 2% !important;
-}
 
 
-.project-container-card{
-    border-radius: 10% !important;
-}
 
-.tabs {
-    background-color: #E0E0E0 !important;
-}
-
-
-.tabs a{
-    color: #1A5D89  !important;
-}
-
-.add-mat-modal label{
-    font-size: 2.5vmin !important;    
-}
-
-.edit-mat-modal label{
-    font-size: 2.5vmin !important;    
-}
-
-.add-categ-modal label{
-    font-size: 2.5vmin !important;
-}
-
-.edit-categ-modal label{
-    font-size: 2.5vmin !important;
-}
-
-.add-mat-picker{
-    text-align: center !important;
-    color: #19466d !important;
-}
-
-select[name=mat_unit]{
-    font-size: 2.5vmin !important;
-}
 
 /* Style for Site > Site Materials */
 .matname-btn {
@@ -492,7 +446,7 @@ select[name=mat_unit]{
     padding-left: 2% !important;
 }
 
-.search{
+.search {
     border: 1px solid #c1c2c2 !important;
     color: #000000 !important;
     background-color: #f3f2f2 !important;
@@ -752,7 +706,7 @@ body {
     font-size: 3vmin !important;
 }
 
-#panel-header{
+#panel-header {
     margin-left: 3%;
 }
 
@@ -781,7 +735,7 @@ body {
     font-size: 4vmin;
 }
 
-.todo-picker{
+.todo-picker {
     float: left !important;
     text-align: center !important;
     border: 1px solid #19466d !important;
@@ -789,7 +743,7 @@ body {
     background-color: #e2e2e2 !important;
 }
 
-textarea.materialize-textarea{
+textarea.materialize-textarea {
     text-align: left;
     padding-left: 2% !important;
     font-size: 2vmin;
@@ -815,7 +769,7 @@ textarea.materialize-textarea{
     margin-right: 10%;
 }
 
-#panel-header-task{
+#panel-header-task {
     margin-left: 37%;
     padding-top: 3%;
     margin-bottom: 1%;
@@ -827,11 +781,11 @@ textarea.materialize-textarea{
     overflow-y: scroll;
     height: 350px;
     width: 60.5% !important;
-    background-color: #F0F1F2;      
+    background-color: #F0F1F2;
     border-radius: 2%;
 }
 
-.container-all-task{
+.container-all-task {
     background-color: #F0F1F2;
 }
 
@@ -849,57 +803,57 @@ textarea.materialize-textarea{
     border: 1px solid rgb(155, 155, 155);
 }
 
-.task-table-container{
+.task-table-container {
     height: 5px !important;
     max-height: 5% !important;
     overflow-y: scroll;
 }
 
 .task-data-table {
-    white-space:nowrap; 
-    min-height:25px;
-    position:relative;
-    width:5%; 
+    white-space: nowrap;
+    min-height: 25px;
+    position: relative;
+    width: 5%;
 }
 
 .task-data-table1 {
-    overflow-x:hidden;
-    width:90px;
+    overflow-x: hidden;
+    width: 90px;
 }
 
 .task-data-table2 {
-    overflow-x:hidden;
-    width:90px;
+    overflow-x: hidden;
+    width: 90px;
 }
 
-.doneBtn{
+.doneBtn {
     background-color: #087E8B;
 }
 
-.doneBtn:hover{
+.doneBtn:hover {
     background-color: #087E8B;
 }
 
-.clearBtn{
+.clearBtn {
     background-color: #D1B513;
 }
 
-.clearBtn:hover{
+.clearBtn:hover {
     background-color: #D1B513;
 }
 
-.task-btn{
+.task-btn {
     margin-top: 2%;
     color: #ffffff !important;
     background-color: #003A51 !important;
-}   
+}
 
-#panel-header-materials{
+#panel-header-materials {
     margin-top: 4% !important;
     margin-left: 3%;
 }
 
-.container-materials{
+.container-materials {
     background-color: #F0F1F2;
     margin-top: 2%;
     margin-left: 3%;
@@ -919,14 +873,94 @@ textarea.materialize-textarea{
 }
 
 .view-materials-head>tr>th,
-.materials-left-container>tr>td{
+.materials-left-container>tr>td {
     padding-left: 5% !important;
-    
+
 }
 
-.materials-left-container>tr>td{
+.materials-left-container>tr>td {
     width: 90px;
 }
 
-/*DONE-RED
-CLEAR*/
+/*Projects*/
+.project-status{
+    width: 70%;
+    margin-left: 15%;
+}
+.tabs-project {
+    background-color: #E0E0E0 !important;
+    margin-top: 2% !important;
+}
+
+.tabs-project a{
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
+}
+
+.tabs-project a:hover  {
+    color: #BFAB25 !important;
+    background-color: #FFFFFF !important;
+}
+
+.tabs-project .indicator{
+    background-color: #FFFFFF !important;
+}
+
+.project-container {
+    margin-right: -18% !important;
+    margin-left: 15% !important;
+    margin-top: 2% !important;
+}
+
+.project-container-card {
+    border-radius: 5% !important;
+    width: 75% !important;
+}
+
+.card .card-content{
+    width: 100% !important;
+    font-size: 2.5vmin;
+    background-color: #BFAF4A !important;
+    padding-left: 5% !important;
+}
+
+.card-title{
+    font-size: 4vmin !important;
+    font-weight: bold !important;
+}
+
+.card-text{
+    font-weight: bold !important;
+}
+
+/*View Inventory*/
+.viewinventory-btn{
+    color: #FFFFFF !important;
+    background-color: #0D1F2D !important;
+    margin-top: 5% !important;
+}
+
+.add-mat-modal label {
+    font-size: 2.5vmin !important;
+}
+
+.edit-mat-modal label {
+    font-size: 2.5vmin !important;
+}
+
+.add-categ-modal label {
+    font-size: 2.5vmin !important;
+}
+
+.edit-categ-modal label {
+    font-size: 2.5vmin !important;
+}
+
+.add-mat-picker {
+    text-align: center !important;
+    color: #19466d !important;
+}
+
+select[name=mat_unit] {
+    font-size: 2.5vmin !important;
+}

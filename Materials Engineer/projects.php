@@ -119,12 +119,13 @@
     </nav>
 
     <div class="row">
-        <div class="col s12">
-            <ul class="tabs">
-                <li class="tab col s3"><a href="#ongoing">Ongoing</a></li>
-                <li class="tab col s3"><a href="#closed">Closed</a></li>
+        <div class="col project-status">
+            <ul class="tabs tabs-project">
+                <li class="col s3 tab"><a href="#ongoing">Ongoing</a></li>
+                <li class="col s3 tab"><a href="#closed">Closed</a></li>
             </ul>
         </div>
+
         <!--ONGOING TAB-->
         <div id="ongoing" class="col s12">
             <div class="row">
@@ -136,20 +137,22 @@
                         while($row = mysqli_fetch_row($result)){
                     ?>
                 <div class="col s12 m5 project-container">
-                    <div class="card blue-grey darken-1 center project-container-card">
-                        <div class="card-content white-text">
-                            <span class="card-title"><?php echo $row[0] ?></span>
+                    <div class="card center project-container-card">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <?php echo $row[0] ?>
+                            </span>
                             <p>
                                 <?php echo $row[1] ?>
                             </p>
                             <p>
-                                <span>
+                                <span class="card-text">
                                     Start Date:
                                 </span>
                                 <?php echo $row[2] ?>
                             </p>
                             <p>
-                                <span>
+                                <span class="card-text">
                                     End Date:
                                 </span><?php echo $row[3] ?>
                             </p>
@@ -183,7 +186,7 @@
                         while($row = mysqli_fetch_row($result)){
                     ?>
                 <div class="col s12 m5 project-container">
-                    <div class="card blue-grey darken-1 center project-container-card">
+                    <div class="card center project-container-card">
                         <div class="card-content white-text">
                             <span class="card-title"><?php echo $row[0] ?></span>
                             <p>

@@ -248,7 +248,9 @@ nav {
     transform: rotate(180deg);
 }
 
-
+.modal-footer{
+    font-size: 2.5vmin !important;
+}
 
 /* Style for Dashboard */
 /*Calendar  */
@@ -423,17 +425,30 @@ div.contextmenu:hover {
 }
 
 .add-mat-modal label{
-    font-size: 14vmin !important;    
+    font-size: 2.5vmin !important;    
 }
 
 .edit-mat-modal label{
-    font-size: 14vmin !important;    
+    font-size: 2.5vmin !important;    
+}
+
+.add-categ-modal label{
+    font-size: 2.5vmin !important;
+}
+
+.edit-categ-modal label{
+    font-size: 2.5vmin !important;
 }
 
 .add-mat-picker{
     text-align: center !important;
     color: #19466d !important;
 }
+
+select[name=mat_unit]{
+    font-size: 2.5vmin !important;
+}
+
 /* Style for Site > Site Materials */
 .matname-btn {
     background-color: #1A5D89 !important;
@@ -475,6 +490,12 @@ div.contextmenu:hover {
 
 .search-bar {
     padding-left: 2% !important;
+}
+
+.search{
+    border: 1px solid #c1c2c2 !important;
+    color: #000000 !important;
+    background-color: #f3f2f2 !important;
 }
 
 

@@ -93,11 +93,12 @@
         </div>
             <div class="row">
                 <?php
-                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
-                        WHERE projects_status = 'open';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                    ?>
+                    $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
+                    WHERE projects_status = 'open';";
+                    $result = mysqli_query($conn, $sql);
+                    $ctr = 0;
+                    while($row = mysqli_fetch_row($result)) {
+                ?>
                 <div class="col s12 m6">
                     <div class="card blue-grey darken-1 center">
                         <div class="card-content white-text">
@@ -119,17 +120,9 @@
                                 <?php echo $row[3] ?>
                             </p>
                             <div class="row">
-                                <form action="server.php" method="POST">
-                                    <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
-
-                                    <div class="row">
-                                        <button href="#editModal" class="waves-effect waves-light btn edit-btn modal-trigger">Edit</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="row">
-                                <a href="#closeModal" class="waves-effect waves-light btn red modal-trigger">Close
-                                    Project</a>
+                                <div class="row">
+                                    <button href="#editModal<?php echo $ctr; ?>" class="waves-effect waves-light btn edit-btn modal-trigger">Edit</button>
+                                </div>
                             </div>
                             <!--
                                 <div class="row">
@@ -143,20 +136,20 @@
                                 </div>
 -->
                             <?php 
-                                    if (strtotime($row[2]) > strtotime ($row[3])) {
-                                        ?>
+                                if (strtotime($row[2]) > strtotime ($row[3])) {
+                            ?>
                             <div class="row">
                                 <a href="#closeModal" class="waves-effect waves-light btn red modal-trigger">Close
                                     Project</a>
                             </div>
                             <?php
-                                    }
-                                ?>
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
 
-                <div id="closeModal" class="modal modal-fixed-footer">
+                <div id="closeModal<?php echo $ctr; ?>" class="modal modal-fixed-footer">
                     <div class="modal-content">
                         <h4>Close Project?</h4>
                         <p>Are you sure you want to close this project?</p>
@@ -171,7 +164,7 @@
                 </div>
 
                 <!--EDIT MODAL-->
-                <div id="editModal" class="modal modal-fixed-footer">
+                <div id="editModal<?php echo $ctr; ?>" class="modal modal-fixed-footer">
                     <div class="modal-content">
                         <h4>Edit Project:</h4>
                         <form action="../server.php" method="POST">
@@ -201,12 +194,11 @@
                             </div>
                         </form>
                     </div>
-
                 </div>
-
                 <?php 
-                        }
-                    ?>
+                    $ctr++;
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -271,15 +263,15 @@
                                 </div>
 -->
                         <?php 
-                                    if (strtotime($row[2]) > strtotime ($row[3])) {
-                                        ?>
+                            if (strtotime($row[2]) > strtotime ($row[3])) {
+                        ?>
                         <div class="row">
                             <a href="#reopenModal" class="waves-effect waves-light btn red modal-trigger">Reopen
                                 Project</a>
                         </div>
                         <?php
-                                    }
-                                ?>
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -299,8 +291,8 @@
             </div>
 
             <?php 
-                        }
-                    ?>
+                }
+            ?>
         </div>
     </div>
 

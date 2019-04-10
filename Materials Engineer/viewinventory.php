@@ -354,7 +354,6 @@
                     </div>
                     <div class="col s12">
                         <label>Category:</label>
-
                         <div class="input-field col s12">
                             <select class="browser-default" name="mat_categ">
                                 <option value="" disabled selected>Choose your option</option>
@@ -367,7 +366,6 @@
                                 <option value="<?php echo $row[0]; ?>">
                                     <?php echo $row[1]; ?>
                                 </option>
-
                                 <?php 
                                     }
                                 ?>
@@ -381,7 +379,7 @@
                     </div>
                     <div class="input-field col s5">
                         <select class="browser-default" name="mat_unit">
-                            <option value="" disabled selected>Choose your option</option>
+                            <option disabled selected>Choose your option</option>
                             <?php
                                     $sql = "SELECT DISTINCT mat_unit FROM materials;";
                                     $result = mysqli_query($conn, $sql);
@@ -421,7 +419,6 @@
                                 <td>
                                     <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate" required>
                                 </td>
-                                
                                 <td>
                                     <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
                                 </td>
@@ -433,7 +430,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button hreg="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Save</button>
+                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Save</button>
             </div>
         </form>
     </div>

@@ -112,8 +112,9 @@
 
     <div class="row">
         <div class="col s12 right-align">
-            <form action="server.php" method="POST">
-                <button class="waves-effect waves-light btn report-btn modal-trigger" type="submit"
+            <form action="../server.php" method="POST">
+                <input type="hidden" name="projects_name" value="<?php echo $_GET['projects_name'];?>">                            
+                <button class="waves-effect waves-light btn report-btn" type="submit"
                     name="generate_report">
                     <i class="material-icons left">print</i>Generate Report
                 </button>
@@ -137,18 +138,21 @@
 
                     <tbody>
                         <?php 
-                    $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
-                    INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                    ORDER BY categories.categories_name;";
-                    $result = mysqli_query($conn, $sql_categ);
-                    $categories = array();
-                    while($row_categ = mysqli_fetch_assoc($result)){
-                        $categories[] = $row_categ;
-                    }
+                            $projects_name = $_GET['projects_name'];
+                            $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
+                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                            INNER JOIN projects ON materials.mat_project = projects.projects_id
+                            WHERE projects.projects_name = '$projects_name'
+                            ORDER BY categories.categories_name;";
+                            $result = mysqli_query($conn, $sql_categ);
+                            $categories = array();
+                            while($row_categ = mysqli_fetch_assoc($result)){
+                                $categories[] = $row_categ;
+                            }
 
-                    foreach($categories as $data) {
-                    $categ = $data['categories_name'];
-                ?>
+                            foreach($categories as $data) {
+                            $categ = $data['categories_name'];
+                        ?>
                         <tr>
                             <td id="merge-ten-cell"> <b>
                                     <?php echo $categ; ?></b></td>
@@ -163,6 +167,9 @@
                         stockcard.stockcard_quantity
                         FROM materials 
                         INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
+                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                        INNER JOIN projects ON materials.mat_project = projects.projects_id
+                        WHERE categories.categories_name = '$categ' && projects.projects_name = '$projects_name'
                         ORDER BY materials.mat_name;";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
@@ -193,6 +200,7 @@
                         </tr>
                         <?php 
                     }
+                    
                 ?>
                     </tbody>
                 </table>

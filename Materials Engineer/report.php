@@ -114,10 +114,10 @@
         <div class="row">
             <div class="row">
                 <?php 
-                        $sql = "SELECT * FROM projects WHERE projects_status = 'open';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_array($result)) {
-                    ?>
+                    $sql = "SELECT * FROM projects WHERE projects_status = 'open';";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
                 <div class="col s12 m6">
                     <div class="card blue-grey darken-1 center">
                         <div class="card-content white-text">
@@ -139,15 +139,14 @@
                                         <button class="waves-effect waves-light btn viewinventory-btn" type="submit"
                                             name="open_report">Open Report</button>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <?php
-                                    }
-                                ?>
+                    }
+                ?>
             </div>
 
         </div>

@@ -165,7 +165,7 @@ nav {
     color: white !important;
 }
 
-.left{
+.left {
     color: white;
     margin-left: 5%;
 }
@@ -196,7 +196,7 @@ nav {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.side-nav li{
+.side-nav li {
     background-color: #003A51;
     color: #FFFFFF !important;
     font-size: 2.5vmin !important;
@@ -217,9 +217,10 @@ nav {
     color: #FFFFFF !important;
 }
 
-.collapsible-header.active:hover{
+.collapsible-header.active:hover {
     color: #FFFFFF !important;
 }
+
 #create-account-btn {
     margin-top: 6% !important;
 }
@@ -228,7 +229,7 @@ nav {
     color: #0D1F2D;
 }
 
-.menu-icon{
+.menu-icon {
     margin-left: 2%;
 }
 
@@ -289,27 +290,8 @@ div.contextmenu:hover {
 
 
 
-.Task-Todo-Container {
-    background-color: #F0F1F2;
-    margin-top: 1%;
-    margin-left: 2% !important;
-    border-radius: 2%;
-    border: 2px solid #97A0A5;
-    width: 60% !important;
-    height: 350px;
-    overflow-y: scroll;
-}
 
-.Panel-Header {
-    font-size: 20px;
-    color: #F0FCF6;
-    background-color: #1A5D89;
-    padding: 1%;
-    border-spacing: 0;
-    border-collapse: collapse !important;
-    text-align: center;
-    border-radius: 3% !important;
-}
+
 
 .Calendar-Container {
     padding-top: 2%;
@@ -380,8 +362,8 @@ div.contextmenu:hover {
 }
 
 
-.save-todo{
-    padding-right:2% !important;
+.save-todo {
+    padding-right: 2% !important;
 }
 
 /* Style for Site > Project */
@@ -413,25 +395,28 @@ div.contextmenu:hover {
     padding-left: 2%;
 }
 
+.view-tasks,
 .view-inventory {
     background-color: #DEE0E1;
     font-size: 19px;
 
 }
 
-.project-container{
+.project-container {
     padding: 1% !important;
     margin-left: 5% !important;
     margin-top: 2% !important;
 }
 
+
 .project-container-card{
     border-radius: 10% !important;
 }
 
-.tabs{
+.tabs {
     background-color: #E0E0E0 !important;
 }
+
 
 .tabs a{
     color: #1A5D89  !important;
@@ -480,15 +465,15 @@ div.contextmenu:hover {
     font-size: 20px;
 }
 
-.add-material{
+.add-material {
     padding-right: 2% !important;
 }
 
-.add-category{
+.add-category {
     padding-right: 2% !important;
 }
 
-.search-bar{
+.search-bar {
     padding-left: 2% !important;
 }
 
@@ -533,11 +518,12 @@ th {
     padding-right: 2%;
     padding-left: 2%;
 }
-.category-container{
+
+.category-container {
     padding: 1% !important;
 }
 
-.item-cat-col{
+.item-cat-col {
     padding-right: 2% !important;
     padding-top: 1% !important;
 }
@@ -648,21 +634,21 @@ i.right {
 
 
 
-.side-nav .collapsible-header{
+.side-nav .collapsible-header {
     margin: 0;
 }
 
-.side-nav .collapsible-body li a{
+.side-nav .collapsible-body li a {
     margin: 0 1rem 0 3rem !important;
     font-size: 2vmin !important;
 }
 
-.dropdown-button{
+.dropdown-button {
     color: black !important;
     padding: 0;
 }
 
-.dropdown-content li>a{
+.dropdown-content li>a {
     background-color: #003A51;
     font-size: 1.9vmin;
     color: #FFFFFF;
@@ -688,19 +674,19 @@ i.right {
 
 /*Login*/
 
-#field-login-username{
+#field-login-username {
     background-color: #EDEBEA !important;
     color: #19466D;
     border-bottom: none !important;
 }
 
-#field-login-password{
+#field-login-password {
     background-color: #EDEBEA !important;
     color: #19466D;
     border-bottom: none !important;
 }
 
-.input-field label{
+.input-field label {
     color: #19466D;
 }
 
@@ -712,7 +698,7 @@ i.right {
 
 input[type=text],
 input[type=password] {
-    
+
     padding-left: 5% !important;
     margin-bottom: 10% !important;
     box-sizing: inherit !important;
@@ -737,7 +723,8 @@ body {
     margin-top: 2% !important;
 }
 
-#panel-header{
+#panel-header-task,
+#panel-header {
     font-size: 3vmin !important;
 }
 
@@ -781,23 +768,98 @@ textarea.materialize-textarea{
     padding-left: 5% !important;
     font-size: 2vmin;
 }
-
+*/
 #characters,
-#char{
+#char {
     font-size: 1.9vmin;
 }
 
-.container-counter{
-    position:absolute;
+.container-counter {
+    position: absolute;
     right: 0;
     margin-top: -8% !important;
 }
 
-.save-todo-btn{
+.save-todo-btn {
     color: #ffffff !important;
     background-color: #003A51 !important;
     margin-top: 5% !important;
     margin-bottom: 5% !important;
     float: right;
-    margin-right: 5%;
+    margin-right: 10%;
 }
+
+#panel-header-task{
+    margin-left: 37%;
+    padding-top: 3%;
+    margin-bottom: 1.2%;
+}
+
+.container-task-todo {
+    margin-left: 2% !important;
+    margin-top: % !important;
+    overflow-y: scroll;
+    height: 300px;
+    width: 60.5% !important;
+    background-color: #F0F1F2;      
+    border-radius: 2%;
+}
+
+.container-all-task{
+    background-color: #F0F1F2;
+}
+
+.view-tasks-head>tr>th {
+    background-color: #0B415E !important;
+    font-size: 19px;
+    border-radius: 2%;
+    color: white;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.view-tasks {
+    table-layout: auto;
+    border: 1px solid rgb(155, 155, 155);
+}
+
+.task-table-container{
+    height: 5px !important;
+    max-height: 5% !important;
+    overflow-y: scroll;
+}
+
+.task-data-table {
+    white-space:nowrap; 
+    min-height:25px;
+    position:relative;
+    width:5%; 
+}
+
+.task-data-table1 {
+    overflow-x:hidden;
+    width:90px;
+}
+
+.task-data-table2 {
+    overflow-x:hidden;
+    width:90px;
+}
+
+.task-btn{
+    margin-top: 2%;
+    color: #ffffff !important;
+    background-color: #003A51 !important;
+}   
+
+.container-materialsLeft{
+    background-color: #F0F1F2;
+    margin-top: 4% !important;
+    padding-left: 5%;
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+
+/*DONE-RED
+CLEAR*/

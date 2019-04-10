@@ -108,6 +108,10 @@
                     </li>
                 </ul>
                 <li>
+                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
+                        href="report.php">Logs</a>
+                </li>
+                <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
@@ -126,14 +130,15 @@
                             <h5 id="panel-text">Date:</h5>
                         </div>
                         <div class="col s4">
-                            <input type="date" class="todo-picker" name="tododate" min="2019-01-01"  required>
+                            <input type="date" class="todo-picker" name="tododate" min="2019-01-01" required>
                         </div>
                     </div>
                     <input type="hidden" name="todoOf"
                         value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
 
                     <div class="input-field input-field-todo">
-                        <textarea id="todo_task" name="todo_task" class="materialize-textarea" minlength="2" maxlength="50" pattern="[A-Za-z0-9]{50}" required></textarea>
+                        <textarea id="todo_task" name="todo_task" class="materialize-textarea" minlength="2"
+                            maxlength="50" pattern="[A-Za-z0-9]{50}" required></textarea>
                         <div class="container-counter">
                             <span id="characters">50</span><span id="char"> characters</span>
                         </div>
@@ -142,53 +147,9 @@
                     <button class="btn waves-effect waves-light save-todo-btn" type="submit" class="validate"
                         name="create_todo">Save</button>
             </div>
-            <!--HINDI KO MAPAGANA
-                   <div id="savetodo" class="modal">
-                    <div class="modal-content">
-                        <span>Are you sure want to save this task?</span>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">No</a>
-                        <button type="submit" class="modal-close waves-effect waves-green btn-flat">Yes</button>
-                    </div>
-                </div>
-                -->
             </form>
         </div>
 
-        <!--Start Calendar and To-do Container-->
-        <!--<div class="col s4 Calendar-Todo-Container">
-            <div class="Panel-Header">
-                <span>CALENDAR AND TO-DO</span>
-         </div>
-            <form action="../server.php" method="POST">
-                <div class="row">
-                    <div class="input-field col s3">
-                       <label>To-do Date:</label>
-                    </div>
-                       <div class="col s9">
-                        <input placeholder="▼" type="text" class="datepicker">
-                    </div>
-                </div>
-                
-                <input type="hidden" name="todoOf" value="">
-                
-                    <div class="row">
-                    <div class="input-field col s12">
-                       
-                        <input id="todo-task" name="todo-task" type="text" class="validate">
-                        <label for="todo_task">Input task here:</label>
-                    </div>
-                    </div>
-                
-                <button class="waves-effect waves-light btn todo-btn" type="submit" class="validate" name="create_todo">Save</button>
-            </form>
-        </div>
-        -->
-
-
-
-        
         <!--To-do Container-->
         <h5 id="panel-header-task">To-do Task</h5>
         <div class="col s7 container-task-todo">
@@ -209,8 +170,7 @@
                            $result = mysqli_query($conn, $sql);
                            while($row = mysqli_fetch_array($result)) {
                         ?>
-
-                        <tr >
+                        <tr>
                             <td class="task-data-table1">
                                 <?php echo $row[1] ?>
                             </td>
@@ -227,7 +187,7 @@
                                             ?>
                                     <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                    <button class="waves-effect waves-light btn modal-trigger"
+                                    <button class="waves-effect waves-light btn modal-trigger doneBtn"
                                         href="#doneBtn">Done</button>
                                     <div id="doneBtn" class="modal">
                                         <div class="modal-content">
@@ -244,7 +204,7 @@
                                             ?>
                                     <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                    <button class="waves-effect waves-light btn modal-trigger"
+                                    <button class="waves-effect waves-light btn modal-trigger clearBtn"
                                         href="#clearBtn">Clear</button>
                                     <div id="clearBtn" class="modal">
                                         <div class="modal-content">
@@ -274,18 +234,19 @@
     </div>
 
     <!--Materials Container-->
-    <div class="row ">
-        <div class="container container-materialsLeft">
-        <h5 id="panel-header">Material</h5>
-            <table class="striped responsive-table centered">
-                <thead>
-                    <tr>
+    <div class="row">
+        <h5 id="panel-header-materials">Malapit na maubos Materials</h5>
+        <div class="col container-materials">
+            <table class="striped responsive-table materials-left centered">
+                <thead class="view-materials-head">
+                    <tr class="material-headers">
                         <th>Material Name</th>
                         <th>Category</th>
                         <th>Quantity Remaining</th>
                         <th>Unit</th>
-                        <th>Project</th>
                         <th>Threshold</th>
+                        <th>Project</th>
+                        
                     </tr>
                 </thead>
                 <?php 
@@ -303,7 +264,7 @@
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
                 ?>
-                <tbody>
+                <tbody class="materials-left-container">
                     <tr>
                         <td>
                             <?php echo $row[0] ?>
@@ -318,10 +279,10 @@
                             <?php echo $row[3] ?>
                         </td>
                         <td>
-                            <?php echo $row[4] ?>
+                            <?php echo $row[5] ?>
                         </td>
                         <td>
-                            <?php echo $row[5] ?>
+                            <?php echo $row[4] ?>
                         </td>
                     </tr>
                 </tbody>
@@ -330,83 +291,81 @@
         ?>
             </table>
         </div>
-    </div>  
+    </div>
 
     <div id="viewAllTask" class="modal modal-fixed-footer">
-    <table class="striped centered view-tasks">
-                    <thead class="view-tasks-head">
-                        <tr class="task-headers">
-                            <th>Date</th>
-                            <th>Task</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+        <table class="striped centered view-tasks">
+            <thead class="view-tasks-head">
+                <tr class="task-headers">
+                    <th>Date</th>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
 
-                    <tbody class="task-table-container">
-                        <?php 
+            <tbody class="task-table-container">
+                <?php 
                            $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
                            $result = mysqli_query($conn, $sql);
                            while($row = mysqli_fetch_array($result)) {
                         ?>
 
-                        <tr >
-                            <td class="task-data-table1">
-                                <?php echo $row[1] ?>
-                            </td>
-                            <td class="task-data-table2">
-                                <?php echo $row[2] ?>
-                            </td>
-                            <td class="task-data-table">
-                                <?php echo $row[3] ?>
-                            </td>
-                            <td class="task-data-table">
-                                <form action="../server.php" method="POST">
-                                    <?php
+                <tr>
+                    <td class="task-data-table1">
+                        <?php echo $row[1] ?>
+                    </td>
+                    <td class="task-data-table2">
+                        <?php echo $row[2] ?>
+                    </td>
+                    <td class="task-data-table">
+                        <?php echo $row[3] ?>
+                    </td>
+                    <td class="task-data-table">
+                        <form action="../server.php" method="POST">
+                            <?php
                                         if(strcasecmp($row[3], 'in progress') == 0) {
                                             ?>
-                                    <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
-                                    <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                    <button class="waves-effect waves-light btn modal-trigger"
-                                        href="#doneBtn">Done</button>
-                                    <div id="doneBtn" class="modal">
-                                        <div class="modal-content">
-                                            <span>Are you sure want to click done?</span>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a class="modal-close waves-effect waves-red btn-flat">No</a>
-                                            <button type="submit" name="todo_update"
-                                                class="modal-close waves-effect waves-red btn-flat">Yes</button>
-                                        </div>
-                                    </div>
-                                    <?php
+                            <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                            <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                            <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</button>
+                            <div id="doneBtn" class="modal">
+                                <div class="modal-content">
+                                    <span>Are you sure want to click done?</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                    <button type="submit" name="todo_update"
+                                        class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                </div>
+                            </div>
+                            <?php
                                         } else {
                                             ?>
-                                    <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
-                                    <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                                    <button class="waves-effect waves-light btn modal-trigger"
-                                        href="#clearBtn">Clear</button>
-                                    <div id="clearBtn" class="modal">
-                                        <div class="modal-content">
-                                            <span>Are you sure want to clear this task</span>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <a class="modal-close waves-effect waves-red btn-flat">No</a>
-                                            <button type="submit" name="todo_update"
-                                                class="modal-close waves-effect waves-red btn-flat">Yes</button>
-                                        </div>
-                                    </div>
-                                    <?php
+                            <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                            <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                            <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</button>
+                            <div id="clearBtn" class="modal">
+                                <div class="modal-content">
+                                    <span>Are you sure want to clear this task</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                    <button type="submit" name="todo_update"
+                                        class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                </div>
+                            </div>
+                            <?php
                                         }
                                     ?>
-                                </form>
-                            </td>
-                        </tr>
-                        <?php    
+                        </form>
+                    </td>
+                </tr>
+                <?php    
                             }
                         ?>
-                    </tbody>
-                </table>
+            </tbody>
+        </table>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
 

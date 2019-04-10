@@ -726,18 +726,19 @@ body {
 }
 
 #panel-header-task,
-#panel-header {
+#panel-header,
+#panel-header-materials {
     font-size: 3vmin !important;
 }
 
 #panel-header{
-    margin-left: 8%;
+    margin-left: 3%;
 }
 
 .container-to-do {
     background-color: #F0F1F2;
     margin-top: 4% !important;
-    margin-left: 8%;
+    margin-left: 3%;
     border-radius: 2%;
     overflow: hidden;
     height: 350px;
@@ -801,6 +802,7 @@ textarea.materialize-textarea{
 
 .container-task-todo {
     margin-left: 2% !important;
+    margin-right: 2% !important;
     overflow-y: scroll;
     height: 350px;
     width: 60.5% !important;
@@ -814,7 +816,7 @@ textarea.materialize-textarea{
 
 .view-tasks-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 19px;
+    font-size: 2vmin;
     border-radius: 2%;
     color: white;
     padding-right: 2%;
@@ -849,20 +851,61 @@ textarea.materialize-textarea{
     width:90px;
 }
 
+.doneBtn{
+    background-color: #087E8B;
+}
+
+.doneBtn:hover{
+    background-color: #087E8B;
+}
+
+.clearBtn{
+    background-color: #D1B513;
+}
+
+.clearBtn:hover{
+    background-color: #D1B513;
+}
+
 .task-btn{
     margin-top: 2%;
     color: #ffffff !important;
     background-color: #003A51 !important;
 }   
 
-.container-materialsLeft{
-    background-color: #F0F1F2;
+#panel-header-materials{
     margin-top: 4% !important;
-    padding-left: 5%;
-    border-radius: 2%;
-    overflow: hidden;
+    margin-left: 3%;
 }
 
+.container-materials{
+    background-color: #F0F1F2;
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 2%;
+    font-size: 2vmin;
+    width: 95%;
+}
+
+.view-materials-head>tr>th {
+    background-color: #0B415E !important;
+    font-size: 2vmin;
+    border-radius: 2%;
+    color: white;
+}
+
+.view-materials-head>tr>th,
+.materials-left-container>tr>td{
+    padding-left: 5% !important;
+    
+}
+
+.materials-left-container>tr>td{
+    width: 90px;
+}
 
 /*DONE-RED
 CLEAR*/

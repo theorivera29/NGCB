@@ -11,7 +11,7 @@
     $pdf->Cell(0,10,'NEW GOLDEN CITY BUILDERS AND DEVELOPMENT',0,1,'C');
     $pdf->Cell(0,3,'CORPORATION',0,1,'C');
     $pdf->SetFont('Times','',12);
-    $pdf->Cell(0,10,'CONTRACTORS * ENGINEERS * CONSULTANT',0,2,'C');
+    $pdf->Cell(0,10,utf8_decode('CONTRACTORS '.chr(127).' ENGINEERS '.chr(127).' CONSULTANT'),0,2,'C');
 
     //PROJECT Details
     $projects_name = $_GET['projects_name'];

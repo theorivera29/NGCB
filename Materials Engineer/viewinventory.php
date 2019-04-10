@@ -259,15 +259,13 @@
                                                 </div>
                                                 <div class="input-field col s5">
                                                     <select class="browser-default" name="mat_unit">
-                                                        <option value="" disabled selected>Quantifier</option>
+                                                        <option value="" disabled selected>Unit</option>
                                                         <option value="pcs">pcs</option>
-                                                        <option value="rolls">rolls</option>
-                                                        <option value="mtrs">mtrs</option>
                                                     </select>
                                                 </div>
                                                 <div class="input-field col s7">
                                                     <input id="minquantity" name="minquantity" type="text" class="validate" required>
-                                                    <label for="minquantity">Threshold:</label>
+                                                    <label for="minquantity">Item threshold:</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -378,7 +376,7 @@
                     </div>
                     <div class="row">
                         <div class="col s5">
-                            <label>Quantifier:</label>
+                            <label>Unit:</label>
                         </div>
                     </div>
                     <div class="input-field col s5">
@@ -411,7 +409,6 @@
                             <tr>
                                 <th>Date</th>
                                 <th>Quantity</th>
-                                <th>Unit</th>
                                 <th>Supplied By</th>
                             </tr>
                         </thead>
@@ -419,16 +416,12 @@
                         <tbody>
                             <tr>
                                 <td>
-                                <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker">
+                                <input type="date" class="add-mat-picker" name="tododate" min="2019-01-01"  required>
                                 </td>
                                 <td>
                                     <input id="delivered_quantity" name="delivered_quantity" type="text" class="validate" required>
                                 </td>
-                                <td>
-                                <select id="unit" class="browser-default" name="unit">
-                                                <option selected></option>
-                                </select>
-                        </td>
+                                
                                 <td>
                                     <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
                                 </td>
@@ -452,16 +445,8 @@
                 <h4>Add Category</h4>
                 <div class="row">
                     <div class="input-field col s12">
-                        Category Name:
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <input id="categoryname" type="text" class="validate" name="category_name[]"  >
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <input name="category_name" type="text" class="validate" pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com" required>
+                    <label for="category_name">Category Name:</label>
                     </div>
 
                     <div class="input-field col s12">

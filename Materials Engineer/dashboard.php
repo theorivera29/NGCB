@@ -54,7 +54,18 @@
                 <li class="icon-container">
                     <img src="../Images/NGCB_logo.png" class="sidenav-logo">
                 </li>
-                <h3 id="account-type"><?php echo $row[5]; }?></h3>
+                <h3 id="account-type">
+                    <?php 
+                        if(strcmp($row[5], "MatEng") == 0 ) {
+                            echo "Materials Engineer";
+                        } else if(strcmp($row[5], "ViewOnly") == 0 ) {
+                            echo "View Only";
+                        } else {
+                            echo "Admin";
+                        }
+                        }
+                    ?>
+                </h3>
 
                 <li>
                     <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"

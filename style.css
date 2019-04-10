@@ -650,10 +650,8 @@ i.right {
     padding-top: 2%;
     text-align: center;
     color: white;
-    font-size: 3vmin;
+    font-size: 2.5vmin;
 }
-
-
 
 .side-nav .collapsible-header {
     margin: 0;
@@ -733,6 +731,10 @@ input[type=text]:disabled {
     color: black;
 }
 
+/*Side navigation*/
+
+
+
 /*Add To-do Container*/
 
 body {
@@ -749,12 +751,17 @@ body {
     font-size: 3vmin !important;
 }
 
+#panel-header{
+    margin-left: 8%;
+}
+
 .container-to-do {
     background-color: #F0F1F2;
     margin-top: 4% !important;
-    padding-left: 5%;
+    margin-left: 8%;
     border-radius: 2%;
     overflow: hidden;
+    height: 350px;
 }
 
 .container-date {
@@ -782,14 +789,11 @@ body {
 }
 
 textarea.materialize-textarea{
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-    padding: 0 !important;
     text-align: left;
-    padding-left: 5% !important;
+    padding-left: 2% !important;
     font-size: 2vmin;
 }
-*/
+
 #characters,
 #char {
     font-size: 1.9vmin;
@@ -813,14 +817,13 @@ textarea.materialize-textarea{
 #panel-header-task{
     margin-left: 37%;
     padding-top: 3%;
-    margin-bottom: 1.2%;
+    margin-bottom: 1%;
 }
 
 .container-task-todo {
     margin-left: 2% !important;
-    margin-top: % !important;
     overflow-y: scroll;
-    height: 300px;
+    height: 350px;
     width: 60.5% !important;
     background-color: #F0F1F2;      
     border-radius: 2%;

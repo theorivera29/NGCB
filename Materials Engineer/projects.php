@@ -111,7 +111,6 @@
         </div>
     </nav>
 
-    <div class="">
         <div class="row">
             <div class="col s12">
                 <ul class="tabs">
@@ -129,7 +128,7 @@
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
-                    <div class="col s12 m6 project-container">
+                    <div class="col s12 m5 project-container">
                         <div class="card blue-grey darken-1 center project-container-card">
                             <div class="card-content white-text">
                                 <span class="card-title"><?php echo $row[0] ?></span>
@@ -175,7 +174,7 @@
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
-                    <div class="col s12 m6 project-container">
+                    <div class="col s12 m5 project-container">
                         <div class="card blue-grey darken-1 center project-container-card">
                             <div class="card-content white-text">
                             <span class="card-title"><?php echo $row[0] ?></span>
@@ -212,7 +211,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">

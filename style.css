@@ -136,10 +136,6 @@ label {
     background-color: #4C99AF !important;
 }
 
-.btn {
-    color: #ffffff !important;
-    background-color: #4C99AF !important;
-}
 
 /*End of Login Page Style*/
 
@@ -408,28 +404,36 @@ div.contextmenu:hover {
 
 .project-container {
     padding: 1% !important;
+    margin-left: 5% !important;
+    margin-top: 2% !important;
 }
 
-.project-container-card {
-    border-radius: 5% !important;
+
+.project-container-card{
+    border-radius: 10% !important;
 }
 
 .tabs {
     background-color: #E0E0E0 !important;
 }
 
-.tabs a {
-    color: #D50000 !important;
+
+.tabs a{
+    color: #1A5D89  !important;
 }
 
-.add-mat-modal label {
-    font-size: 14px !important;
+.add-mat-modal label{
+    font-size: 14vmin !important;    
 }
 
-.edit-mat-modal label {
-    font-size: 14px !important;
+.edit-mat-modal label{
+    font-size: 14vmin !important;    
 }
 
+.add-mat-picker{
+    text-align: center !important;
+    color: #19466d !important;
+}
 /* Style for Site > Site Materials */
 .matname-btn {
     background-color: #1A5D89 !important;
@@ -748,14 +752,6 @@ body {
     font-size: 2.7vmin !important;
 }
 
-.todo-picker {
-    float: left !important;
-    text-align: center !important;
-    border: 1px solid #19466D !important;
-    color: #19466D !important;
-    background-color: #E2E2E2;
-}
-
 .input-field-todo {
     width: 90% !important;
     padding-left: 5% !important;
@@ -763,6 +759,13 @@ body {
     font-size: 4vmin;
 }
 
+.todo-picker{
+    float: left !important;
+    text-align: center !important;
+    border: 1px solid #19466d !important;
+    color: #19466d !important;
+    background-color: #e2e2e2 !important;
+}
 
 textarea.materialize-textarea{
     text-align: left;

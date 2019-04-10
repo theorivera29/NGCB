@@ -126,8 +126,7 @@
                             <h5 id="panel-text">Date:</h5>
                         </div>
                         <div class="col s4">
-                            <input placeholder="yyyy-mm-dd&emsp;▼" type="text" class="datepicker todo-picker"
-                                name="tododate">
+                            <input type="date" class="todo-picker" name="tododate" min="2019-01-01"  required>
                         </div>
                     </div>
                     <input type="hidden" name="todoOf"
@@ -419,7 +418,6 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js">
     </script>
-    <script type="text/javascript" src="../datepicker.js"></script>
     <script>
         // SIDEBAR
         // SIDEBAR

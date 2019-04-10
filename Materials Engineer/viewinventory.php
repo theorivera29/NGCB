@@ -125,17 +125,18 @@
     </nav>
 
     <div class="row">
-        <h5>Project Name:
+        <h5 class="project-name-inventory">
             <?php echo $projects_name; ?>
         </h5>
-        <div class="col s12">
-            <ul class="tabs">
+        <div class="col view-inventory-slider">
+            <ul class="tabs tabs-inventory">
                 <li class="tab col s3"><a href="#sitematerials">Site Materials</a></li>
                 <li class="tab col s3"><a href="#categories">Categories</a></li>
             </ul>
         </div>
     </div>
 
+    
 
     <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
@@ -150,8 +151,8 @@
                         <button><i class="material-icons">search</i></button> 
                     </div>
                     <div class="col s7 add-material right-align">
-                        <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger ">
-                        <i class="material-icons left">add_circle_outline</i>Add Material</a>
+                        <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn">
+                        Add Material</a>
                     </div>
                 </div>
         
@@ -159,8 +160,7 @@
             }
         ?>
         <div class="view-inventory-container">
-            <div class="light-blue lighten-5 ">
-                <table class="striped centered view-inventory">
+                <table class="centered view-inventory">
                     <thead class="view-inventory-head">
                         <tr>
                             <th>Particulars</th>
@@ -252,7 +252,7 @@
                             ?>
                             <td>
                                 <a href="#editmaterialModal"
-                                    class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+                                    class="waves-effect waves-light btn modal-trigger edit-material-btn">Edit</a>
 
                                 <!-- EDIT SITE MATERIAL MODAL -->
                                 <form action="../server.php" method="POST">
@@ -313,9 +313,9 @@
             <div class="row add-category">
                 <div class="col s12 right-align">
                     <a href="#addcategoryModal" class="waves-effect waves-light btn button modal-trigger">
-                        <i class="material-icons left">add_circle_outline</i>Add Category</a>
+                        Add Category</a>
                     <a href="#editcategoryModal" class="waves-effect waves-light btn button modal-trigger">
-                        <i class="material-icons left">edit</i>Edit Category</a>
+                        Edit Category</a>
                 </div>
             </div>
             <?php

@@ -346,10 +346,7 @@ div.contextmenu:hover {
     overflow-y: scroll;
 }
 
-.button {
-    background-color: #1A5D89 !important;
-    color: white !important;
-}
+
 
 .view-task-btn {
     float: right;
@@ -377,31 +374,11 @@ div.contextmenu:hover {
     background-color: #ffffff !important;
 }
 
-.view-inventory-container {
-    width: 96% !important;
-    margin-left: 2%;
-    margin-right: 2%;
-}
-
-.view-inventory-head>tr>th {
-    background-color: #0B415E !important;
-    font-size: 19px;
-    border-radius: 2%;
-    color: white;
-    padding-right: 2%;
-    padding-left: 2%;
-}
-
 .view-tasks,
 .view-inventory {
     background-color: #DEE0E1;
     font-size: 19px;
-
 }
-
-
-
-
 
 /* Style for Site > Site Materials */
 .matname-btn {
@@ -427,12 +404,7 @@ div.contextmenu:hover {
     color: white;
 }
 
-.td-category {
-    text-align: left !important;
-    background-color: #EBF0F7;
-    padding-left: 2%;
-    font-size: 20px;
-}
+
 
 .add-material {
     padding-right: 2% !important;
@@ -442,15 +414,7 @@ div.contextmenu:hover {
     padding-right: 2% !important;
 }
 
-.search-bar {
-    padding-left: 2% !important;
-}
 
-.search {
-    border: 1px solid #c1c2c2 !important;
-    color: #000000 !important;
-    background-color: #f3f2f2 !important;
-}
 
 
 /* Style for Site > Category */
@@ -934,11 +898,91 @@ textarea.materialize-textarea {
 }
 
 /*View Inventory*/
+.project-name-inventory{
+    font-weight: bold !important;
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-size: 4vmin;
+    color: #19466D;
+}
+
+.view-inventory-slider{
+    width: 70%;
+    margin-left: 15%;
+}
+
+.tabs-inventory {
+    background-color: #E0E0E0 !important;
+    margin-top: 2% !important;
+}
+
+.tabs-inventory a{
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
+}
+
+.tabs-inventory a:hover  {
+    color: #BFAB25 !important;
+    background-color: #FFFFFF !important;
+}
+
+.tabs-inventory .indicator{
+    background-color: #FFFFFF !important;
+}
+
 .viewinventory-btn{
     color: #FFFFFF !important;
     background-color: #0D1F2D !important;
     margin-top: 5% !important;
 }
+
+.search-bar {
+    padding-left: 2% !important;
+    width: 20% !important;
+}
+
+.search {
+    border: 1px solid #c1c2c2 !important;
+    background-color: #f3f2f2 !important;
+}
+
+.view-inventory-container {
+    width: 95% !important;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.view-inventory{
+    border: 1px solid black;
+}
+
+.view-inventory-head>tr>th {
+    background-color: #0B415E !important;
+    font-size: 2.5vmin;
+    color: white;
+    padding-right: 2% !important;
+}
+
+.add-mat-btn,
+.edit-material-btn{
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
+}
+
+.add-mat-btn{
+ 
+}
+
+.td-category {
+    text-align: left !important;
+    background-color: #EBF0F7;
+    padding-left: 2%;
+    font-size: 3vmin;
+}
+
+
+
 
 .add-mat-modal label {
     font-size: 2.5vmin !important;

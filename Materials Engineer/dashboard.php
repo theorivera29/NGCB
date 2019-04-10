@@ -100,7 +100,7 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>

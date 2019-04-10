@@ -92,12 +92,15 @@
 
     if(isset($_POST['edit_project'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
-        
+
         if(isset($_POST['new_project_name'])) {
             $new_project_name = mysqli_real_escape_string($conn, $_POST['new_project_name']);
             if(!strcmp($new_project_name, null) == 0) {
                 $sql = "UPDATE projects SET projects_name = '$new_project_name' WHERE projects_name = '$projects_name';";
                 mysqli_query($conn,$sql);
+                
+        echo "Old: ".$projects_name;
+        echo "<br /> New: ".$new_project_name;
             }
         }
 
@@ -401,6 +404,10 @@
         }
     }
 
+    if(isset($_POST['generate_report'])) {
+        $projects_name = $_POST['projects_name'];
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/generate_report.php?projects_name=$projects_name");
+    }
 
 
     // API

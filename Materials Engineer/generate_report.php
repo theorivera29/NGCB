@@ -73,7 +73,11 @@
         WHERE categories.categories_name = '$categ' && projects.projects_name = '$projects_name'
         ORDER BY materials.mat_name;";
         $pdf->SetFont('Times','B',9);
+        $pdf->Cell(189,0.75," ",1,0,'L',true);
+        $pdf->Ln();
         $pdf->Cell(189,10,strtoupper($categ).":",1,0,'L',true);
+        $pdf->Ln();
+        $pdf->Cell(189,0.75," ",1,0,'L',true);
         $pdf->Ln();
         $result = mysqli_query($conn, $sql);
         $pdf->SetFont('Times','',9);

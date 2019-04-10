@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -33,13 +33,12 @@
                             $row = mysqli_fetch_row($result);
                         ?>
             <span id="acName">
-
                 <ul>
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
                         <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -51,13 +50,20 @@
             </span>
             <ul class="side-nav" id="navigation">
                 <li class="icon-container">
-                    <ul>
-                        <li class="acType">
-                            <img src="../Images/NGCB_logo.png" class="sidenav-logo">
-                        </li>
-                    </ul>
+                    <img src="../Images/NGCB_logo.png" class="sidenav-logo">
                 </li>
-                <h3 id="account-type"><?php echo $row[5]; }?></h3>
+                <h3 id="account-type">
+                    <?php 
+                        if(strcmp($row[5], "MatEng") == 0 ) {
+                            echo "Materials Engineer";
+                        } else if(strcmp($row[5], "ViewOnly") == 0 ) {
+                            echo "View Only";
+                        } else {
+                            echo "Admin";
+                        }
+                        }
+                    ?>
+                </h3>
 
                 <li>
                     <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
@@ -78,9 +84,9 @@
                         </div>
                     </li>
                 </ul>
-                
 
-                
+
+
                 <ul class="collapsible">
                     <li>
                         <i class="material-icons left">local_shipping</i><a
@@ -92,22 +98,114 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                 </ul>
-
-
-
+                <li>
+                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
+                        href="report.php">Logs</a>
+                </li>
                 <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
             </ul>
         </div>
+    </nav>
+
+    <div class="nav-wrapper">
+        <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                class="material-icons menuIcon">menu</i></a>
+        <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+        <?php 
+                            if(isset($_SESSION['username'])) {
+                            $username = $_SESSION['username'];
+                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_row($result);
+                        ?>
+        <span id="acName">
+            <ul>
+                <?php echo $row[1]." ".$row[2]; ?>
+                <li class="down-arrow">
+
+                    <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                            class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                </li>
+
+            </ul>
+            <ul id="dropdown" class="dropdown-content collection">
+                <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
+                <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
+
+            </ul>
+        </span>
+        <ul class="side-nav" id="navigation">
+            <li class="icon-container">
+                <img src="../Images/NGCB_logo.png" class="sidenav-logo">
+            </li>
+            <h3 id="account-type">
+                <?php 
+                        if(strcmp($row[5], "MatEng") == 0 ) {
+                            echo "Materials Engineer";
+                        } else if(strcmp($row[5], "ViewOnly") == 0 ) {
+                            echo "View Only";
+                        } else {
+                            echo "Admin";
+                        }
+                        }
+                    ?>
+            </h3>
+
+            <li>
+                <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                    href="dashboard.php">Dashboard</a>
+            </li>
+
+
+            <ul class="collapsible">
+                <li>
+                    <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i
+                            class="material-icons right">keyboard_arrow_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                            <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+
+
+            <ul class="collapsible">
+                <li>
+                    <i class="material-icons left">local_shipping</i><a
+                        class="collapsible-header waves-effect waves-blue">Hauling<i
+                            class="material-icons right">keyboard_arrow_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
+                            </li>
+                            <li>
+                                <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
+                                    Materials</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <li>
+                <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                    href="report.php">Report</a>
+            </li>
+        </ul>
+    </div>
     </nav>
 
     <div class="container">
@@ -128,35 +226,36 @@
                     ?>
 
             <form action="server.php" method="POST">
-               <input type="hidden" name="userid"
+                <input type="hidden" name="userid"
                     value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
                     <input id="login-username" name="newusername" type="text" value=" <?php echo $row[0]?>">
                     <label class="active" for="newusername">Username</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newfname" type="text"  value=" <?php echo $row[1]?>">
+                    <input id="login-username" name="newfname" type="text" value=" <?php echo $row[1]?>">
                     <label class="active" for="newfname">First Name</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newlname" type="text"  value=" <?php echo $row[2]?>">
+                    <input id="login-username" name="newlname" type="text" value=" <?php echo $row[2]?>">
                     <label class="active" for="newlname">Last Name</label>
                 </div>
                 <div class="f-login username input-field col s6 m8 offset-m1 ">
-                    <input id="login-username" name="newemail" type="text"  value=" <?php echo $row[3]?>">
+                    <input id="login-username" name="newemail" type="text" value=" <?php echo $row[3]?>">
                     <label class="active" for="newemail">E-mail</label>
                 </div>
                 <div class="f-login password input-field col s6 m8 offset-m1">
-                    <input id="login-password" name="newpassword" type="password"  value=" <?php echo $row[4]?>">
+                    <input id="login-password" name="newpassword" type="password" value=" <?php echo $row[4]?>">
                     <label class="active" for="newpassword">Password</label>
                 </div>
 
-                        <?php 
+                <?php 
                         }
                     ?>
                 <div class="row">
                     <div class="col s12 offset-m3">
-                        <button class="btn waves-effect waves-light login-btn" type="submit" name="edit_account">Save</button>
+                        <button class="btn waves-effect waves-light login-btn" type="submit"
+                            name="edit_account">Save</button>
                     </div>
                 </div>
             </form>
@@ -172,7 +271,7 @@
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -200,7 +299,6 @@
 
         btn.addEventListener('click', liGenerate);
         document.addEventListener('click', liDelete);
-
     </script>
 
 </body>

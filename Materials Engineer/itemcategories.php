@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -39,13 +39,12 @@
                             $row = mysqli_fetch_row($result);
                         ?>
             <span id="acName">
-
                 <ul>
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
                         <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -57,13 +56,20 @@
             </span>
             <ul class="side-nav" id="navigation">
                 <li class="icon-container">
-                    <ul>
-                        <li class="acType">
-                            <img src="../Images/NGCB_logo.png" class="sidenav-logo">
-                        </li>
-                    </ul>
+                    <img src="../Images/NGCB_logo.png" class="sidenav-logo">
                 </li>
-                <h3 id="account-type"><?php echo $row[5]; }?></h3>
+                <h3 id="account-type">
+                    <?php 
+                        if(strcmp($row[5], "MatEng") == 0 ) {
+                            echo "Materials Engineer";
+                        } else if(strcmp($row[5], "ViewOnly") == 0 ) {
+                            echo "View Only";
+                        } else {
+                            echo "Admin";
+                        }
+                        }
+                    ?>
+                </h3>
 
                 <li>
                     <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
@@ -84,9 +90,9 @@
                         </div>
                     </li>
                 </ul>
-                
 
-                
+
+
                 <ul class="collapsible">
                     <li>
                         <i class="material-icons left">local_shipping</i><a
@@ -98,22 +104,111 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                 </ul>
-
-
-
+                <li>
+                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
+                        href="report.php">Logs</a>
+                </li>
                 <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
             </ul>
         </div>
+    </nav>
+
+    <div class="nav-wrapper">
+        <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                class="material-icons menuIcon">menu</i></a>
+        <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+        <?php 
+                            if(isset($_SESSION['username'])) {
+                            $username = $_SESSION['username'];
+                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_row($result);
+                        ?>
+        <span id="acName">
+
+            <ul>
+                <?php echo $row[1]." ".$row[2]; ?>
+                <li class="down-arrow">
+
+                    <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                            class="material-icons right">keyboard_arrow_down</i></a>
+                </li>
+
+            </ul>
+            <ul id="dropdown" class="dropdown-content collection">
+                <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
+                <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
+
+            </ul>
+        </span>
+        <ul class="side-nav" id="navigation">
+            <li class="icon-container">
+                <ul>
+                    <li class="acType">
+                        <img src="../Images/NGCB_logo.png" class="sidenav-logo">
+                    </li>
+                </ul>
+            </li>
+            <h3 id="account-type"><?php echo $row[5]; }?></h3>
+
+            <li>
+                <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                    href="dashboard.php">Dashboard</a>
+            </li>
+
+
+            <ul class="collapsible">
+                <li>
+                    <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i
+                            class="material-icons right">keyboard_arrow_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
+                            <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+
+
+            <ul class="collapsible">
+                <li>
+                    <i class="material-icons left">local_shipping</i><a
+                        class="collapsible-header waves-effect waves-blue">Hauling<i
+                            class="material-icons right">keyboard_arrow_down</i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
+                            </li>
+                            <li>
+                                <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
+                                    Materials</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+
+
+
+            <li>
+                <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                    href="report.php">Report</a>
+            </li>
+        </ul>
+    </div>
     </nav>
 
     <?php 
@@ -191,8 +286,9 @@
                             <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
-                            <td> 
-                                <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+                            <td>
+                                <a href="#editmaterialModal"
+                                    class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
 
                                 <!-- EDIT SITE MATERIAL MODAL -->
                                 <form action="../server.php" method="POST">
@@ -205,7 +301,8 @@
                                             <div class="row">
                                                 <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
                                                 <div class="input-field col s12">
-                                                    <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
+                                                    <input id="newmaterialname" name="newmaterialname" type="text"
+                                                        class="validate">
                                                     <label for="newmaterialname">Material Name:</label>
                                                 </div>
                                                 <div class="input-field col s5">
@@ -217,7 +314,8 @@
                                                     </select>
                                                 </div>
                                                 <div class="input-field col s7">
-                                                    <input id="minquantity" name="minquantity" type="text" class="validate">
+                                                    <input id="minquantity" name="minquantity" type="text"
+                                                        class="validate">
                                                     <label for="minquantity">Threshold:</label>
                                                 </div>
                                             </div>
@@ -225,7 +323,8 @@
 
                                         <div class="modal-footer">
                                             <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="edit_materials">Save</button>
+                                            <button class="waves-effect waves-light btn green" type="submit"
+                                                class="validate" name="edit_materials">Save</button>
                                         </div>
                                     </div>
                                 </form>

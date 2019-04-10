@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -33,13 +33,12 @@
                             $row = mysqli_fetch_row($result);
                         ?>
             <span id="acName">
-
                 <ul>
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
                         <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -51,13 +50,20 @@
             </span>
             <ul class="side-nav" id="navigation">
                 <li class="icon-container">
-                    <ul>
-                        <li class="acType">
-                            <img src="../Images/NGCB_logo.png" class="sidenav-logo">
-                        </li>
-                    </ul>
+                    <img src="../Images/NGCB_logo.png" class="sidenav-logo">
                 </li>
-                <h3 id="account-type"><?php echo $row[5]; }?></h3>
+                <h3 id="account-type">
+                    <?php 
+                        if(strcmp($row[5], "MatEng") == 0 ) {
+                            echo "Materials Engineer";
+                        } else if(strcmp($row[5], "ViewOnly") == 0 ) {
+                            echo "View Only";
+                        } else {
+                            echo "Admin";
+                        }
+                        }
+                    ?>
+                </h3>
 
                 <li>
                     <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
@@ -78,9 +84,9 @@
                         </div>
                     </li>
                 </ul>
-                
 
-                
+
+
                 <ul class="collapsible">
                     <li>
                         <i class="material-icons left">local_shipping</i><a
@@ -92,16 +98,17 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauled%20items.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                 </ul>
-
-
-
+                <li>
+                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
+                        href="report.php">Logs</a>
+                </li>
                 <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
@@ -119,7 +126,8 @@
                         <div class="row">
                             <div class="col s2">
                                 <label>Date:</label>
-                                <input placeholder="&emsp;yyyy-mm-dd&emsp;▼" type="text" class="datepicker" name="haulingdate">
+                                <input placeholder="&emsp;yyyy-mm-dd&emsp;▼" type="text" class="datepicker"
+                                    name="haulingdate">
                             </div>
                             <div class="input-field col s2 offset-s8 right-align">
                                 <input id="formnumber" type="text" class="validate" name="formnumber">
@@ -130,15 +138,17 @@
                             <div class="col s6">
                                 <div>
                                     <div class="input-field col s12 left-align ">
-                                        <input id="delivername" type="text" class="validate" name="delivername" pattern="[A-Za-z]*" title="Input only letters"  required>
+                                        <input id="delivername" type="text" class="validate" name="delivername"
+                                            pattern="[A-Za-z]*" title="Input only letters" required>
                                         <label for="delivername">Deliver To:</label>
                                     </div>
-                                     <?php 
+                                    <?php 
                                         $projects_name = $_GET['projects_name'];
                                      ?>
-                                    
+
                                     <div class="input-field col s12 left-align ">
-                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom" value="<?php echo $projects_name ; ?>">
+                                        <input id="hauledfrom" type="text" class="validate" name="hauledfrom"
+                                            value="<?php echo $projects_name ; ?>">
                                         <label for="hauledfrom">Hauled From :</label>
                                     </div>
                                 </div>
@@ -157,7 +167,7 @@
 
                                 <tbody>
                                     <tr>
-                                    <td>
+                                        <td>
 
                                             <select id="categories" class="browser-default" name="mat_categ" required>
                                                 <option disabled selected>Choose your option</option>
@@ -176,14 +186,15 @@
                                 ?>
                                             </select>
                                         </td>
-                                    <td>
-                                            <select id="materials" class="browser-default" name="articles"  required>
+                                        <td>
+                                            <select id="materials" class="browser-default" name="articles" required>
                                                 <option disabled selected>Choose your option</option>
                                             </select></td>
-                                        
-                                        <td><input id="unit" readonly type="text" class="validate" name="unit" required></td>
-                                        <td><input type="text" name="quantity" id="quantity"  required></td>
-                                        
+
+                                        <td><input id="unit" readonly type="text" class="validate" name="unit" required>
+                                        </td>
+                                        <td><input type="text" name="quantity" id="quantity" required></td>
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -192,15 +203,18 @@
                         <div class="row">
                             <div class="col s6">
                                 <div class="input-field col s10 left-align ">
-                                    <input id="hauledby" type="text" class="validate" name="hauledby"  pattern="[A-Za-z]*" title="Input only letters" required>
+                                    <input id="hauledby" type="text" class="validate" name="hauledby"
+                                        pattern="[A-Za-z]*" title="Input only letters" required>
                                     <label for="hauledby">Hauled by :</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
-                                    <input id="warehouseman" type="text" class="validate" name="warehouseman" pattern="[A-Za-z]*" title="Input only letters" required>
+                                    <input id="warehouseman" type="text" class="validate" name="warehouseman"
+                                        pattern="[A-Za-z]*" title="Input only letters" required>
                                     <label for="warehouseman">Warehouseman:</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
-                                    <input id="approvedby" type="text" class="validate" name="approvedby" pattern="[A-Za-z]*" title="Input only letters" required>
+                                    <input id="approvedby" type="text" class="validate" name="approvedby"
+                                        pattern="[A-Za-z]*" title="Input only letters" required>
                                     <label for="approvedby">Approved By:</label>
                                 </div>
                             </div>
@@ -218,19 +232,21 @@
                                     <tbody>
                                         <tr>
                                             <td>Type:</td>
-                                            <td><input type="text" name="truck_type" id="truck_type"  pattern="[A-Za-z]*" title="Input only letters" required></td>
+                                            <td><input type="text" name="truck_type" id="truck_type" pattern="[A-Za-z]*"
+                                                    title="Input only letters" required></td>
                                         </tr>
                                         <tr>
                                             <td>Plate No.:</td>
-                                            <td><input type="text" name="truck_plate" id="truck_plate"  required></td>
+                                            <td><input type="text" name="truck_plate" id="truck_plate" required></td>
                                         </tr>
                                         <tr>
                                             <td>P.O/R.S No.:</td>
-                                            <td><input type="text" name="truck_po" id="truck_po" minlength="6" maxlength="6" title="Alphanumeric only" required></td>
+                                            <td><input type="text" name="truck_po" id="truck_po" minlength="6"
+                                                    maxlength="6" title="Alphanumeric only" required></td>
                                         </tr>
                                         <tr>
                                             <td>Hauler DR No.:</td>
-                                            <td><input type="text" name="truck_hauler" id="truck_hauler"  required></td>
+                                            <td><input type="text" name="truck_hauler" id="truck_hauler" required></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -268,7 +284,7 @@
 
         });
 
-       
+
 
         $(document).ready(function () {
             $(".add-row").click(function () {
@@ -283,9 +299,10 @@
                 $("table tbody").append(markup);
             });
         });
-        
+
         $('#categories').on('change', function () {
-            $.get('http://localhost/NGCB/Materials%20Engineer/../server.php?category_id='+$(this).children('option:selected').val(), function (data) {
+            $.get('http://localhost/NGCB/Materials%20Engineer/../server.php?category_id=' + $(this).children(
+                'option:selected').val(), function (data) {
                 var d = JSON.parse(data)
                 var loobNgSelect = '';
                 d.forEach(function (da) {
@@ -293,14 +310,15 @@
                 })
                 $('#materials').html(loobNgSelect)
             })
-            
+
         })
-        
+
         $('#materials').on('change', function () {
             console.log($(this).children('option:selected').val())
-            $.get('http://localhost/NGCB/Materials%20Engineer/../server.php?mat_name='+$(this).children('option:selected').val(), function (data) {
+            $.get('http://localhost/NGCB/Materials%20Engineer/../server.php?mat_name=' + $(this).children(
+                'option:selected').val(), function (data) {
                 var d = JSON.parse(data)
-//                console.log(d)
+                //                console.log(d)
                 $('#unit').val(d[0][0])
             })
         })

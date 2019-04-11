@@ -1,17 +1,26 @@
 /*Fonts Used*/
 @font-face {
-    font-family: 'Galyon';
-    src: url('../fonts/Galyon.otf');
+    font-family:Galyon;
+    src:url("fonts/Galyon-Regular.eot"),
+        url("fonts/Galyon-Regular.ttf"),
+        url("fonts/Galyon-Regular.woff"),
+        url("fonts/Galyon-Regular.woff2");
 }
 
 @font-face {
-    font-family: 'Ageo';
-    src: url('../fonts/Ageo.otf');
+    font-family:Ageo;
+    src:url("fonts/AgeoPersonalUse-Regular.eot"),
+        url("fonts/AgeoPersonalUse-Regular.ttf"),
+        url("fonts/AgeoPersonalUse-Regular.woff"),
+        url("fonts/AgeoPersonalUse-Regular.woff2");
 }
 
 @font-face {
-    font-family: 'Mont';
-    src: url('../fonts/Mont.otf');
+    font-family:Pridi;
+    src:url("fonts/pridi-v4-latin-regular.eot"),
+        url("fonts/pridi-v4-latin-regular.ttf"),
+        url("fonts/pridi-v4-latin-regular.woff"),
+        url("fonts/pridi-v4-latin-regular.woff2");
 }
 
 /*Login Style*/
@@ -40,6 +49,7 @@
 }
 
 .header-one {
+    font-family: Galyon;
     text-align: center;
     font-size: 6vh;
     color: #FFFFFF;
@@ -52,6 +62,7 @@
 
 
 #login-form {
+    font-family: Ageo;
     margin: auto;
     width: 60%;
     flex-direction: column;
@@ -68,7 +79,7 @@
     text-align: left;
     color: #00171F;
     font-size: 6vmin;
-    font-family: 'Pridi', serif;
+    font-family: Pridi;
 }
 
 .submit-btn {
@@ -106,7 +117,7 @@ label {
 }
 
 #password-form {
-    display: none
+    display: none;
 }
 
 #form-switch:checked~#password-form {

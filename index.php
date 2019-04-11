@@ -86,7 +86,7 @@
             <form id="password-form" action="server.php" method="POST">
                 <div class="row" id="login-form">
                     <h2 class="header header-two">Password Reset</h2>
-                    <div class="input-field col col s6 m12">
+                    <div class="input-field col s6 m12">
                         <input placeholder="Your username.." id="login-password" name="password" type="text" required>
                         <label class="active" for="password">Password</label>
                     </div>

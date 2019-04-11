@@ -86,14 +86,14 @@
             <form id="password-form" action="server.php" method="POST">
                 <div class="row" id="login-form">
                     <h2 class="header header-two">Password Reset</h2>
-                    <div class="input-field col s6 m12">
+                    <div class="input-field col s6 m12 reset-password">
                         <input placeholder="Your username.." id="login-password" name="password" type="text" required>
                         <label class="active" for="password">Password</label>
                     </div>
                     <div class="row">
-                        <button href="index.php" class="btn waves-effect waves-light" type="submit"
+                        <button href="index.php" class="btn waves-effect waves-light reset-password-btn" type="submit"
                             name="action">Submit</button>
-                        <a href="index.php" class="btn waves-effect waves-light" type="submit"
+                        <a href="index.php" class="btn waves-effect waves-light reset-password-btn" type="submit"
                             name="action">Cancel</a>
                     </div>
                 </div>

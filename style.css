@@ -8,14 +8,6 @@
 }
 
 @font-face {
-    font-family:Ageo;
-    src:url("fonts/AgeoPersonalUse-Regular.eot"),
-        url("fonts/AgeoPersonalUse-Regular.ttf"),
-        url("fonts/AgeoPersonalUse-Regular.woff"),
-        url("fonts/AgeoPersonalUse-Regular.woff2");
-}
-
-@font-face {
     font-family:Pridi;
     src:url("fonts/pridi-v4-latin-regular.eot"),
         url("fonts/pridi-v4-latin-regular.ttf"),
@@ -62,7 +54,7 @@
 
 
 #login-form {
-    font-family: Ageo;
+    font-family: Galyon;
     margin: auto;
     width: 60%;
     flex-direction: column;
@@ -112,6 +104,10 @@ label {
 
 }
 
+.reset-password label{
+    margin-top: 3% !important;
+}
+
 #form-switch {
     display: none
 }
@@ -132,8 +128,6 @@ label {
     font-size: 2.5vmin !important;
 }
 
-
-
 .login-btn {
     width: 100% !important;
     padding-bottom: 2% !important;
@@ -145,6 +139,12 @@ label {
 .create-account-btn {
     color: #ffffff !important;
     background-color: #4C99AF !important;
+}
+
+.reset-password-btn{
+    color: #ffffff !important;
+    background-color: #4C99AF !important;
+    font-size: 2vh !important;
 }
 
 
@@ -245,6 +245,7 @@ nav {
 }
 
 #NGCB {
+    font-family: Galyon;
     color: #BFAB25;
     margin-bottom: 0;
     margin-left: 1%;

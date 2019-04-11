@@ -1192,3 +1192,19 @@ select[name=mat_unit] {
     width: 90%;
     margin-left: 5%;
 }
+
+/*View Hauled*/
+
+/*Logs*/
+
+/*Report*/
+.report-project-card{
+    margin-right: 5%;
+    margin-top: 5%;
+}
+
+.report-project-card-content{
+    text-align: center;
+}
+
+/*Report Page*/

@@ -117,7 +117,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container ">
         <div class="row">
             <div class="row">
                 <?php 
@@ -126,17 +126,22 @@
                     while($row = mysqli_fetch_array($result)) {
                 ?>
                 <div class="col s12 m6">
-                    <div class="card blue-grey darken-1 center">
-                        <div class="card-content white-text">
+                    <div class="card report-project-card">
+                        <div class="card-content report-project-card-content">
                             <span class="card-title">
                                 <?php echo $row[1] ?> </span>
                             <p>
                                 <?php echo $row[2] ?>
                             </p>
-                            <p>Start Date:
+                            <p>
+                                <span class="card-text">
+                                        Start Date:
+                                    </span>
                                 <?php echo $row[3] ?>
                             </p>
-                            <p>End Date:
+                            <p><span class="card-text">
+                                       End Date:
+                                    </span>
                                 <?php echo $row[4] ?>
                             </p>
                             <div class="row">

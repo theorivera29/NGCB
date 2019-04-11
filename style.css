@@ -1159,19 +1159,9 @@ textarea.materialize-textarea {
     font-size: 2vmin !important;
 }
 
-
-
-
-
-
-
 .edit-mat-modal label {
     font-size: 2.5vmin !important;
 }
-
-
-
-
 
 .add-mat-picker {
     text-align: center !important;
@@ -1180,4 +1170,15 @@ textarea.materialize-textarea {
 
 select[name=mat_unit] {
     font-size: 2.5vmin !important;
+}
+
+/*Hauling*/
+.hauling-project-card{
+    margin-right: 5%;
+    margin-top: 5%;
+}
+
+.hauling-project-card-content{
+    text-align: center;
+    
 }

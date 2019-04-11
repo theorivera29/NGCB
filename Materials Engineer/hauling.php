@@ -116,9 +116,8 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container hauling-projects">
         <div class="row">
-            <!--ONGOING TAB-->
             <div id="ongoing" class="col s12">
                 <div class="row">
                     <?php
@@ -130,18 +129,22 @@
                             while($row = mysqli_fetch_row($result)){
                         ?>
                     <div class="col s12 m6">
-                        <div class="card blue-grey darken-1 center">
-                            <div class="card-content white-text">
-                                <span class="card-title"><?php echo $row[0] ?></span>
-                                <p><?php echo $row[1] ?></p>
+                        <div class="card hauling-project-card">
+                            <div class="card-content hauling-project-card-content">
+                                <span class="card-title">
+                                    <?php echo $row[0] ?>
+                                </span>
                                 <p>
-                                    <span>
-                                        start date
+                                    <?php echo $row[1] ?>
+                                </p>
+                                <p>
+                                    <span class="card-text">
+                                        Start Date:
                                     </span>
                                     <?php echo $row[2] ?></p>
                                 <p>
-                                    <span>
-                                        end date
+                                    <span class="card-text">
+                                       End Date:
                                     </span><?php echo $row[3] ?></p>
                                 <div class="row">
                                     <form action="../server.php" method="POST">

@@ -436,17 +436,17 @@
         <form action="../server.php" method="POST">
             <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
             <div class="modal-content">
-                <h4>Add Material</h4>
+                <span id="modal-title">Add Material</span>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col add-material-name">
                         <input id="mat_name" name="mat_name" type="text" class="validate" required>
                         <label for="mat_name">Material Name:</label>
                     </div>
-                    <div class="col s12">
+                    <div class="col s5">
                         <label>Category:</label>
                         <div class="input-field col s12">
-                            <select class="browser-default" name="mat_categ">
-                                <option value="" disabled selected>Choose your option</option>
+                            <select class="browser-default" id="category-option" name="mat_categ">
+                                <option selected>Choose category</option>
                                 <?php
                                     $sql = "SELECT * FROM categories;";
                                     $result = mysqli_query($conn, $sql);
@@ -462,14 +462,12 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s5">
-                            <label>Unit:</label>
-                        </div>
-                    </div>
-                    <div class="input-field col s5">
+                </div>
+                <div class="row">
+                    <div class="col s5 material-add-unit">
+                        <label>Unit:</label>
                         <select class="browser-default" name="mat_unit">
-                            <option disabled selected>Choose your option</option>
+                            <option selected>Choose unit</option>
                             <?php
                                     $sql = "SELECT DISTINCT mat_unit FROM materials;";
                                     $result = mysqli_query($conn, $sql);
@@ -484,14 +482,13 @@
                                 ?>
                         </select>
                     </div>
-                    <div class="input-field col s7">
+                    <div class="input-field col add-threshold">
                         <input id="mat_notif" name="mat_notif" type="text" class="validate" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
-
                 <div class="row">
-                    <h5>Deliver In</h5>
+                    <h4>Deliver In</h4>
                     <table class="striped centered">
                         <thead class="view-inventory-head">
                             <tr>
@@ -507,8 +504,8 @@
                                     <input type="text" class="add-mat-picker" name="dev_date" min="2019-01-01" required>
                                 </td>
                                 <td>
-                                    <input id="delivered_quantity" name="dev_quantity" type="text"
-                                        class="validate" required>
+                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
+                                        required>
                                 </td>
                                 <td>
                                     <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
@@ -521,8 +518,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button type="submit" class="waves-effect waves-teal btn-flat"
-                    name="create_materials">Save</button>
+                <button type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Save</button>
             </div>
         </form>
     </div>
@@ -535,8 +531,8 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <input name="category_name" type="text" class="validate field-category"
-                            pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*"
-                            title="Follow the format. Example: Formworks" required>
+                            pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: Formworks"
+                            required>
                         <label for="category_name">Category Name:</label>
                     </div>
 
@@ -557,12 +553,12 @@
     <div id="editcategoryModal" class="modal add-category-modal">
         <form action="../server.php" method="POST">
             <div class="modal-content edit-categ-modal">
-            <span id="modal-title">Edit Category</span>
+                <span id="modal-title">Edit Category</span>
                 <div class="row">
                     <div class="input-field col s6">
-                        <span>Category</span>
-                        <select class="browser-default" name="category_name">
-                            <option>Choose your option</option>
+                        <span id="category-title">Categories</span>
+                        <select class="browser-default" id="category-option" name="category_name">
+                            <option>Choose category</option>
                             <?php
                                 $sql = "SELECT categories_name FROM categories;";
                                 $result = mysqli_query($conn, $sql);
@@ -579,7 +575,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col field-new-category">
                         <input id="materialname" type="text" class="validate" name="new_category_name">
                         <label for="materialname">New Category Name:</label>
                     </div>

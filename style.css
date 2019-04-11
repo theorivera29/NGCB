@@ -1072,6 +1072,33 @@ textarea.materialize-textarea {
     margin-top: 5%;
 }
 
+.add-material-name{
+    margin-top: 5% !important;
+    margin-left: 3% !important;
+    width: 50%;
+}
+
+.add-mat-modal{
+    height: 90% !important;
+    overflow-y: hidden !important;
+}
+
+.add-mat-modal label {
+    font-size: 1.5vmin !important;
+    margin-left: 3% !important;
+}
+
+.material-add-unit{
+    margin-left: 3% !important;
+}
+
+.add-threshold{
+    margin-left: 3% !important;
+    width: 50% !important;
+    margin-top: 3% !important;
+    
+}
+
 /*View Inventory - Category*/
 .all-btn{
     color: #ffffff !important;
@@ -1111,18 +1138,32 @@ textarea.materialize-textarea {
     margin-top: 5%;
 }
 
-
-
-
-
-
-
-
-
-
-.add-mat-modal label {
-    font-size: 2.5vmin !important;
+#category-title{
+    margin-left: 5% !important;
+    font-size: 2vmin !important;
 }
+
+#category-option{
+    margin-left: 5% !important;
+    width: 100% !important;
+    font-size: 2vmin !important;
+}
+
+.field-new-category{
+    margin-top: 5% !important;
+    margin-left: 3% !important;
+    width: 50% !important;
+}
+
+.edit-categ-modal label {
+    font-size: 2vmin !important;
+}
+
+
+
+
+
+
 
 .edit-mat-modal label {
     font-size: 2.5vmin !important;
@@ -1130,9 +1171,7 @@ textarea.materialize-textarea {
 
 
 
-.edit-categ-modal label {
-    font-size: 2.5vmin !important;
-}
+
 
 .add-mat-picker {
     text-align: center !important;

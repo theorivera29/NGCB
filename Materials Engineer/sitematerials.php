@@ -178,10 +178,10 @@
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                 <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material"
-                                    href="#modal1">
+                                    href="#stockcard">
                                     <?php echo $row[0] ?></a>
                             </form>
-                            <div id="modal1" class="modal modal-fixed-footer">
+                            <div id="stockcard" class="modal modal-fixed-footer">
                                 <ul class="tabs">
                                     <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
                                     <li class="tab col s3"><a href="#usagein">Usage In </a></li>
@@ -332,40 +332,6 @@
 
             <div id="usagein">
                 <div class="row">
-<<<<<<< HEAD
-                    <form>
-                        <table class="centered">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                    <th>Pulled Out By</th>
-                                    <th>Area of Usage</th>
-
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td contenteditable="true"><input type="date" name="us_date"></td>
-                                    <td contenteditable="true"><input type="text" name="us_quantity"></td>
-                                    <td contenteditable="true"><select class="browser-default" name="us_unit">
-                                            <option value="UNITS" selected></option>
-                                        </select></td>
-                                    <td contenteditable="true"><select class="browser-default" name="categories">
-                                            <option value="mat eng namesss" selected></option>
-                                        </select></td>
-                                    <td contenteditable="true"><input type="text" name="us_area"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="modal-footer">
-                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                        </div>
-                    </form>
-=======
                 <form>
                 <table class="centered">
                                     <thead>
@@ -400,7 +366,6 @@
                 <div class="modal-footer">
                     <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
->>>>>>> cd826885bc7ce4d90ac1195d8b183931a9797ab4
                 </div>
             </div>
         </div>

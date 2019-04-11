@@ -186,20 +186,21 @@
                         while($row = mysqli_fetch_row($result)){
                     ?>
                 <div class="col s12 m5 project-container">
-                    <div class="card center project-container-card">
-                        <div class="card-content white-text">
-                            <span class="card-title"><?php echo $row[0] ?></span>
+                <div class="card center project-container-card">
+                        <div class="card-content">
+                            <span class="card-title">
+                                <?php echo $row[0] ?></span>
                             <p>
                                 <?php echo $row[1] ?>
                             </p>
                             <p>
-                                <span>
+                            <span class="card-text">
                                     Start Date:
                                 </span>
                                 <?php echo $row[2] ?>
                             </p>
                             <p>
-                                <span>
+                            <span class="card-text">
                                     End Date:
                                 </span><?php echo $row[3] ?>
                             </p>

@@ -429,10 +429,10 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="date" class="add-mat-picker" name="tododate" min="2019-01-01" required>
+                                    <input type="text" class="add-mat-picker" name="dev_date" min="2019-01-01" required>
                                 </td>
                                 <td>
-                                    <input id="delivered_quantity" name="delivered_quantity" type="text"
+                                    <input id="delivered_quantity" name="dev_quantity" type="text"
                                         class="validate" required>
                                 </td>
                                 <td>
@@ -446,7 +446,7 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button href="#addstockcardModal" type="submit" class="waves-effect waves-teal btn-flat"
+                <button type="submit" class="waves-effect waves-teal btn-flat"
                     name="create_materials">Save</button>
             </div>
         </form>

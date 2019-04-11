@@ -211,7 +211,7 @@
         $row = mysqli_fetch_row($result);
         $currentQuantity = $row[0];
         $newQuantity = $currentQuantity-$hauling_quantity;
-        $sql = "UPDATE materials SET mat_prevStock = ('$newQuantity') WHERE mat_name = '$hauling_matname';";
+        $sql = "UPDATE materials SET currentQuantity = ('$newQuantity') WHERE mat_name = '$hauling_matname';";
         mysqli_query($conn, $sql);
         
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added hauling', 1, 1);";
@@ -278,20 +278,19 @@
         $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
-        $delivered_date = mysqli_real_escape_string($conn, $_POST['delivered_date']);
-        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['delivered_quantity']);
+        $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
+        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
         $supplied_by = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
-        
-        $sql = "SELECT * from materials;";
-        $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
+
+        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, '$mat_unit', 1, $mat_notif, $delivered_quantity, 0, 0, $delivered_quantity);";
+        mysqli_query($conn, $sql);
             
         $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$supplied_by', 1);";
         mysqli_query($conn, $sql);
         
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added material', 1, 1);";
         mysqli_query($conn, $sql);
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
         exit();
     }
 
@@ -359,7 +358,7 @@
             
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added delivered in', 1, 1);";
         mysqli_query($conn, $sql);    
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
+        //header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
     }
 

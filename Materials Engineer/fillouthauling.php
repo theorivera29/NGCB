@@ -117,8 +117,8 @@
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col s12 m10 offset-m1">
+    <div class="row fill-hauling-form-container">
+        <div class="col haulingform-container">
             <div class="card hauling-form">
                 <form action="../server.php" method="POST">
                     <div class="card-content">

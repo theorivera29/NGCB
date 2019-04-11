@@ -1182,3 +1182,13 @@ select[name=mat_unit] {
     text-align: center;
     
 }
+
+/*Fill out hauling form*/
+.fill-hauling-form-container{
+    margin-top: 3%;
+}
+
+.haulingform-container{
+    width: 90%;
+    margin-left: 5%;
+}

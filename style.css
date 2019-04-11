@@ -78,9 +78,7 @@
     width: 50% !important;
 }
 
-.co-login {
-    padding-top: 3%;
-}
+
 
 .f-login {
     padding-left: 2%;
@@ -1230,3 +1228,20 @@ select[name=mat_unit] {
     padding-right: 2% !important;
 }
 
+/*Account Settings*/
+.account-container{
+    width: 80%;
+    margin: 10%;
+    margin-top: 5%;
+}
+
+.account-edit-container {
+    padding: 5%;
+    padding-top: 2%;
+}
+
+.account-edit-field{
+    width: 30%;
+    margin-top: 8%;
+    margin-left: 
+}

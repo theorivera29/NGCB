@@ -118,9 +118,8 @@
     </nav>
 
 
-    <div class="container">
-
-        <div class="co-login">
+    <div class="card account-container">
+        <div class="account-edit-container">
             <div class="row">
                 <h4> <i class="small material-icons">settings</i>Account Setting</h4>
             </div>
@@ -138,23 +137,23 @@
             <form action="server.php" method="POST">
                 <input type="hidden" name="userid"
                     value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
-                <div class="f-login username input-field col s6 m8 offset-m1 ">
+                <div class="input-field col account-edit-field">
                     <input id="login-username" name="newusername" type="text" value=" <?php echo $row[0]?>">
                     <label class="active" for="newusername">Username</label>
                 </div>
-                <div class="f-login username input-field col s6 m8 offset-m1 ">
+                <div class="input-field col account-edit-field">
                     <input id="login-username" name="newfname" type="text" value=" <?php echo $row[1]?>">
                     <label class="active" for="newfname">First Name</label>
                 </div>
-                <div class="f-login username input-field col s6 m8 offset-m1 ">
+                <div class="input-field col account-edit-field">
                     <input id="login-username" name="newlname" type="text" value=" <?php echo $row[2]?>">
                     <label class="active" for="newlname">Last Name</label>
                 </div>
-                <div class="f-login username input-field col s6 m8 offset-m1 ">
+                <div class="input-field col account-edit-field">
                     <input id="login-username" name="newemail" type="text" value=" <?php echo $row[3]?>">
                     <label class="active" for="newemail">E-mail</label>
                 </div>
-                <div class="f-login password input-field col s6 m8 offset-m1">
+                <div class="input-field col account-edit-field">
                     <input id="login-password" name="newpassword" type="password" value=" <?php echo $row[4]?>">
                     <label class="active" for="newpassword">Password</label>
                 </div>
@@ -163,8 +162,8 @@
                         }
                     ?>
                 <div class="row">
-                    <div class="col s12 offset-m3">
-                        <button class="btn waves-effect waves-light login-btn" type="submit"
+                    <div class="col">
+                        <button class="btn waves-effect waves-light" type="submit"
                             name="edit_account">Save</button>
                     </div>
                 </div>

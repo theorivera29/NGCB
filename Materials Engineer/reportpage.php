@@ -130,7 +130,7 @@
     <div class="report-container">
         <div class="row">
             <div class="col s12 light-blue lighten-5">
-                <table class=" striped centered">
+                <table class="centered report-table">
                     <thead class="report-head">
                         <tr>
                             <th>Particulars</th>
@@ -160,8 +160,8 @@
                             $categ = $data['categories_name'];
                         ?>
                         <tr>
-                            <td id="merge-ten-cell"> <b>
-                                    <?php echo $categ; ?></b></td>
+                        <td colspan="10" class="td-category"> <b>
+                                <?php echo $categ; ?></b></td>
                         </tr>
                         <?php 
                         $sql = "SELECT 

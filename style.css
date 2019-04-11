@@ -493,24 +493,6 @@ th {
     background-color: #FFFFFF !important;
 }
 
-/* Style for Report*/
-.report-btn {
-    background-color: #1A5D89 !important;
-    color: white !important;
-}
-
-.report-head>tr>th {
-    background-color: #0B415E !important;
-    font-size: 19px;
-    border-radius: 2%;
-    color: white;
-}
-
-.report-container {
-    width: 96% !important;
-    margin-left: 2%;
-    margin-right: 2%;
-}
 
 /* Style for admin*/
 
@@ -1010,7 +992,7 @@ textarea.materialize-textarea {
 }
 
 .view-inventory>tr>td{
-    background-color: #FFFFFF;
+    background-color: #FFFFFF !important;
 }
 
 .td-category {
@@ -1208,3 +1190,43 @@ select[name=mat_unit] {
 }
 
 /*Report Page*/
+/* Style for Report*/
+.report-btn {
+    background-color: #1A5D89 !important;
+    color: white !important;
+    margin-top: 1%;
+    margin-right: 2%;
+}
+
+.report-container {
+    width: 96% !important;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.report-head>tr>th {
+    background-color: #0B415E !important;
+    font-size: 2.5vmin;
+    border-radius: 2%;
+    color: white;
+}
+
+.report-table{
+    border: 1px solid black;
+    border-collapse: separate;
+    background-color: #FFFFFF;
+}
+
+.report-table>tr>td {
+    background-color: #0B415E !important;
+    font-size: 3vmin !important;
+    color: white !important;
+}
+
+.report-head>tr{
+    background-color: #0B415E !important;
+    font-size: 2.5vmin;
+    color: #FFFFFF;
+    padding-right: 2% !important;
+}
+

@@ -933,6 +933,7 @@ textarea.materialize-textarea {
 .tabs-inventory a{
     background-color: #19466D !important;
     color: #FFFFFF !important;
+    font-size: 2vmin;
 }
 
 .tabs-inventory a:hover  {
@@ -950,6 +951,8 @@ textarea.materialize-textarea {
     margin-top: 5% !important;
 }
 
+
+/*View Inventory - Site Materials*/
 .search-bar,
 .search-btn{
     display: inline-block !important;
@@ -995,9 +998,10 @@ textarea.materialize-textarea {
 
 .view-inventory{
     border: 1px solid black;
+    border-collapse: separate;
 }
 
-.view-inventory-head>tr>th {
+.view-inventory-head>tr{
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     color: #FFFFFF;
@@ -1015,6 +1019,103 @@ textarea.materialize-textarea {
     font-size: 3vmin;
 }
 
+.stockard-status{
+    margin-top: 10% !important;
+}
+
+.tabs-stockard{
+    overflow-x: hidden !important;
+}
+
+.tabs-stockard a{
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
+    font-size: 2vmin !important
+}
+
+.tabs-stockard a:hover  {
+    color: #BFAB25 !important;
+    background-color: #FFFFFF !important;
+    font-size: 2vmin !important
+}
+
+.tabs-stockard .indicator{
+    background-color: #FFFFFF !important;
+}
+
+.deliverIn-container{
+    height: 50% !important;
+}
+
+.deliverIn-container-table>tr>th{
+    font-size: 4vmin !important;
+    margin-top: 5% !important;
+    background-color: yellow !important;
+}
+
+.save-stockcard-btn{
+    color: #ffffff !important;
+    background-color: #003A51 !important;
+    float: right;
+    font-size: 2vmin !important;
+}
+
+.save-stockcard-btn:hover{
+    color: #ffffff !important;
+    background-color: #003A51 !important;
+    float: right;
+}
+
+.modal-footer{
+    border-top: 1px solid black;
+    margin-top: 5%;
+}
+
+/*View Inventory - Category*/
+.all-btn{
+    color: #ffffff !important;
+    background-color: #003A51 !important;
+}
+
+.all-btn:hover{
+
+}
+
+.add-category-modal{
+    width: 40%;
+    margin-top: 5%;
+}
+
+#modal-title{
+    margin-top: 2%;
+    font-size: 4vmin;
+    margin-left: 3%;
+}
+
+.field-category{
+    width: 50% !important;
+    margin-bottom: 5% !important;
+    margin-top: 8% !important;
+    margin-left: 3% !important;
+}
+
+.add-categ-modal label {
+    font-size: 2vmin !important;
+    margin-top: 6%;
+    margin-left: 3% !important;
+}
+
+.add-category-modal{
+    width: 40%;
+    margin-top: 5%;
+}
+
+
+
+
+
+
+
 
 
 
@@ -1026,9 +1127,7 @@ textarea.materialize-textarea {
     font-size: 2.5vmin !important;
 }
 
-.add-categ-modal label {
-    font-size: 2.5vmin !important;
-}
+
 
 .edit-categ-modal label {
     font-size: 2.5vmin !important;

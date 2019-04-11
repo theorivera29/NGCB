@@ -130,7 +130,7 @@
         </h5>
         <div class="col view-inventory-slider">
             <ul class="tabs tabs-inventory">
-                <li class="tab col s3"><a href="#sitematerials">Site Materials</a></li>
+                <li class="tab col s3"><a href="#sitematerials">Project Materials</a></li>
                 <li class="tab col s3"><a href="#categories">Categories</a></li>
             </ul>
         </div>
@@ -302,16 +302,16 @@
                 </tbody>
             </table>
         </div>
-        <div id="stockcard" class="modal modal-fixed-footer">
+        <div id="stockcard" class="modal stockard-status">
             <ul class="tabs">
-                <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
-                <li class="tab col s3"><a href="#usagein">Usage In </a></li>
+                <li class="tab col s3 tabs-stockard"><a href="#deliverIn">Deliver In</a></li>
+                <li class="tab col s3 tabs-stockard"><a href="#usageIn">Usage In </a></li>
             </ul>
 
-            <div id="deliverin">
-                <div class="row">
+            <div id="deliverIn">
+                <div class="row deliverIn-container">
                     <form action="../server.php" method="POST">
-                        <table class="centered">
+                        <table class="deliverIn-container-table centered">
                             <thead>
                                 <tr>
                                     <th>Date</th>
@@ -332,15 +332,15 @@
                             </tbody>
                         </table>
                         <div class="modal-footer">
-                            <button class="waves-effect waves-light btn green" type="submit" class="validate"
-                                name="add_deliveredin">Save</button>
                             <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                            <button class="btn waves-effect waves-light save-stockcard-btn" type="submit"
+                                class="validate" name="add_deliveredin">Save</button>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div id="usagein">
+            <div id="usageIn">
                 <div class="row">
                     <form action="../server.php" method="POST">
                         <table class="centered">
@@ -386,9 +386,9 @@
             ?>
             <div class="row add-category">
                 <div class="col s12 right-align">
-                    <a href="#addcategoryModal" class="waves-effect waves-light btn button modal-trigger">
+                    <a href="#addcategoryModal" class="waves-effect waves-light btn modal-trigger all-btn">
                         Add Category</a>
-                    <a href="#editcategoryModal" class="waves-effect waves-light btn button modal-trigger">
+                    <a href="#editcategoryModal" class="waves-effect waves-light btn modal-trigger all-btn">
                         Edit Category</a>
                 </div>
             </div>
@@ -430,6 +430,7 @@
     ?>
         </div>
     </div>
+
     <!-- ADD SITE MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer add-mat-modal">
         <form action="../server.php" method="POST">
@@ -527,22 +528,20 @@
     </div>
 
     <!-- ADD CATEGORY MODAL -->
-    <div id="addcategoryModal" class="modal modal-fixed-footer">
+    <div id="addcategoryModal" class="modal add-category-modal">
         <form action="../server.php" method="POST">
             <div class="modal-content add-categ-modal">
-                <h4>Add Category</h4>
+                <span id="modal-title">Add Category</span>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="category_name" type="text" class="validate"
+                        <input name="category_name" type="text" class="validate field-category"
                             pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*"
-                            title="Follow the format. Example: email@email.com" required>
+                            title="Follow the format. Example: Formworks" required>
                         <label for="category_name">Category Name:</label>
                     </div>
 
                     <div class="input-field col s12">
-                        <button type="button" class="add-row">Add Category<i
-                                class="material-icons left">add_circle_outline</i></button>
-                        <!-- <a href="#!">Add Category<i class="material-icons left">add_circle_outline</i></a> -->
+                        <button type="button" class="add-row waves-effect waves-light btn all-btn">Add</button>
                     </div>
                 </div>
             </div>
@@ -555,10 +554,10 @@
     </div>
 
     <!-- EDIT MATERIAL MODAL -->
-    <div id="editcategoryModal" class="modal modal-fixed-footer">
+    <div id="editcategoryModal" class="modal add-category-modal">
         <form action="../server.php" method="POST">
             <div class="modal-content edit-categ-modal">
-                <h4>Edit Category</h4>
+            <span id="modal-title">Edit Category</span>
                 <div class="row">
                     <div class="input-field col s6">
                         <span>Category</span>

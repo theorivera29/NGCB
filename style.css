@@ -859,11 +859,13 @@ textarea.materialize-textarea {
 .tabs-project a{
     background-color: #19466D !important;
     color: #FFFFFF !important;
+    font-size: 2vmin !important;
 }
 
 .tabs-project a:hover  {
     color: #BFAB25 !important;
     background-color: #FFFFFF !important;
+    font-size: 2vmin !important
 }
 
 .tabs-project .indicator{
@@ -937,16 +939,43 @@ textarea.materialize-textarea {
     margin-top: 5% !important;
 }
 
-.search-bar {
-    padding-left: 2% !important;
-    width: 20% !important;
+.search-bar,
+.search-btn{
+    display: inline-block !important;
+    padding: 10px 15px !important;
+    font-size: 20px !important;
+    border-radius: 0 !important;
 }
 
-.search {
-    border: 1px solid #c1c2c2 !important;
-    background-color: #f3f2f2 !important;
+.search-bar{
+    width: 50% !important;
+    height: 2% !important;
+    margin-left: 10% !important;
 }
 
+.search-btn{
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
+    margin-top: 5%;
+}
+
+.input[type=search]{
+    border: 1px solid black !important;
+    background-color: #FFFFFF !important;
+}
+
+.add-mat-btn,
+.edit-material-btn{
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
+}
+
+.add-mat-btn{
+    margin-top: 2%;
+    font-size: 2.2vmin !important;
+    float: right !important;
+    margin-right: 3%;
+}
 .view-inventory-container {
     width: 95% !important;
     margin-left: 2%;
@@ -960,18 +989,12 @@ textarea.materialize-textarea {
 .view-inventory-head>tr>th {
     background-color: #0B415E !important;
     font-size: 2.5vmin;
-    color: white;
+    color: #FFFFFF;
     padding-right: 2% !important;
 }
 
-.add-mat-btn,
-.edit-material-btn{
-    background-color: #19466D !important;
-    color: #FFFFFF !important;
-}
-
-.add-mat-btn{
- 
+.view-inventory>tr>td{
+    background-color: #FFFFFF;
 }
 
 .td-category {

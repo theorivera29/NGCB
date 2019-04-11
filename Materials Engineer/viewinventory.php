@@ -136,57 +136,58 @@
         </div>
     </div>
 
-    
+
 
     <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
         <?php 
             if(strcmp($projects_status, "open") == 0) {
         ?>
-                <div class="row">
-                    <div class="col s4 search-bar">
-                        <input type="text" class="search" placeholder="Search.."> 
-                    </div>
-                    <div class="col s1">
-                        <button><i class="material-icons">search</i></button> 
-                    </div>
-                    <div class="col s7 add-material right-align">
-                        <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn">
-                        Add Material</a>
-                    </div>
-                </div>
-        
+        <div class="row">
+            <div class="col ">
+                <form>
+                    <input class="input search-bar" type="search" placeholder="Search">
+                    <input class="submit search-btn" type="submit" value="SEARCH">
+                </form>
+            </div>
+            <div class="col">
+
+            </div>
+            <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn">
+                Add Material</a>
+        </div>
+
         <?php 
             }
         ?>
         <div class="view-inventory-container">
-                <table class="centered view-inventory">
-                    <thead class="view-inventory-head">
-                        <tr>
-                            <th>Particulars</th>
-                            <th>Previous Material Stock</th>
-                            <th>Delivered Material as of
-                                <?php echo date("F Y"); ?>
-                            </th>
-                            <th>Material Pulled out as of
-                                <?php echo date("F Y"); ?>
-                            </th>
-                            <th>Accumulate of Materials Delivered</th>
-                            <th>Material on Site as of
-                                <?php echo date("F Y"); ?>
-                            </th>
-                            <?php 
+            <table class="centered view-inventory">
+                <thead class="view-inventory-head">
+                    <tr>
+                        <th>Particulars</th>
+                        <th>Previous Material Stock</th>
+                        <th>Delivered Material as of
+                            <?php echo date("F Y"); ?>
+                        </th>
+                        <th>Material Pulled out as of
+                            <?php echo date("F Y"); ?>
+                        </th>
+                        <th>Accumulate of Materials Delivered</th>
+                        <th>Material on Site as of
+                            <?php echo date("F Y"); ?>
+                        </th>
+                        <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
-                            <th> Action</th>
-                            <?php 
+                        <th> Action</th>
+                        <?php 
                                 }
                             ?>
-                        </tr>
-                    </thead>
+                    </tr>
+                </thead>
 
-                    <tbody>
-                        <?php 
+                <tbody>
+                    <?php 
                             $projects_name = $_GET['projects_name'];
                             $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
@@ -202,11 +203,11 @@
                             foreach($categories as $data) {
                             $categ = $data['categories_name'];
                         ?>
-                        <tr>
-                            <td colspan="10" class="td-category"> <b>
-                                    <?php echo $categ; ?></b></td>
-                        </tr>
-                        <?php 
+                    <tr>
+                        <td colspan="10" class="td-category"> <b>
+                                <?php echo $categ; ?></b></td>
+                    </tr>
+                    <?php 
                             $sql = "SELECT 
                             materials.mat_name, 
                             materials.mat_prevStock, 
@@ -222,86 +223,159 @@
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
-                        <tr>
-                            <td>
-                                <form action="../server.php" method="POST">
-                                    <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                    <a class="waves-effect waves-light btn matname-btn modal-trigger"
-                                        name="view_material" href="#modal1">
-                                        <?php echo $row[0] ?></a>
-                                </form>
-
-                            </td>
-                            <td>
-                                <?php echo $row[1] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[2] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[3] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[4] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[5] ?>
-                            </td>
-                            <?php 
+                    <tr>
+                        <td>
+                            <form action="../server.php" method="POST">
+                                <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material"
+                                    href="#stockcard">
+                                    <?php echo $row[0] ?></a>
+                            </form>
+                        </td>
+                        <td>
+                            <?php echo $row[1] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[2] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[3] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[4] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[5] ?>
+                        </td>
+                        <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
-                            <td>
-                                <a href="#editmaterialModal"
-                                    class="waves-effect waves-light btn modal-trigger edit-material-btn">Edit</a>
+                        <td>
+                            <a href="#editmaterialModal"
+                                class="waves-effect waves-light btn modal-trigger edit-material-btn">Edit</a>
 
-                                <!-- EDIT SITE MATERIAL MODAL -->
-                                <form action="../server.php" method="POST">
-                                    <div id="editmaterialModal" class="modal modal-fixed-footer edit-mat-modal">
-                                        <div class="modal-content">
-                                            <h4>Edit Material</h4>
-                                            <h6>
-                                                <?php echo $row[0];?>
-                                            </h6>
-                                            <div class="row">
-                                                <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
-                                                <div class="input-field col s12">
-                                                    <input id="newmaterialname" name="newmaterialname" type="text"
-                                                        class="validate" required>
-                                                    <label for="newmaterialname">Material Name:</label>
-                                                </div>
-                                                <div class="input-field col s5">
-                                                    <select class="browser-default" name="mat_unit">
+                            <!-- EDIT SITE MATERIAL MODAL -->
+                            <form action="../server.php" method="POST">
+                                <div id="editmaterialModal" class="modal modal-fixed-footer edit-mat-modal">
+                                    <div class="modal-content">
+                                        <h4>Edit Material</h4>
+                                        <h6>
+                                            <?php echo $row[0];?>
+                                        </h6>
+                                        <div class="row">
+                                            <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
+                                            <div class="input-field col s12">
+                                                <input id="newmaterialname" name="newmaterialname" type="text"
+                                                    class="validate" required>
+                                                <label for="newmaterialname">Material Name:</label>
+                                            </div>
+                                            <div class="input-field col s5">
+                                                <select class="browser-default" name="mat_unit">
                                                     <option value="" disabled selected>Unit</option>
-                                                        <option value="pcs">pcs</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-field col s7">
-                                                    <input id="minquantity" name="minquantity" type="text"
-                                                        class="validate" required>
-                                                    <label for="minquantity">Item threshold:</label>
-                                                </div>
+                                                    <option value="pcs">pcs</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-field col s7">
+                                                <input id="minquantity" name="minquantity" type="text" class="validate"
+                                                    required>
+                                                <label for="minquantity">Item threshold:</label>
                                             </div>
                                         </div>
-
-                                        <div class="modal-footer">
-                                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                                            <button class="waves-effect waves-teal btn-flat" type="submit" class="validate" name="edit_materials">Save</button>
-                                        </div>
                                     </div>
-                                </form>
-                            </td>
-                            <?php 
+
+                                    <div class="modal-footer">
+                                        <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                                        <button class="waves-effect waves-teal btn-flat" type="submit" class="validate"
+                                            name="edit_materials">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                        <?php 
                                 }
                             }
                         ?>
-                        </tr>
-                        <?php 
+                    </tr>
+                    <?php 
                         }
                     ?>
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
+        </div>
+        <div id="stockcard" class="modal modal-fixed-footer">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
+                <li class="tab col s3"><a href="#usagein">Usage In </a></li>
+            </ul>
+
+            <div id="deliverin">
+                <div class="row">
+                    <form action="../server.php" method="POST">
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Supplied By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                    <td><input type="text" name="dev_date"></td>
+                                    <td><input type="text" name="dev_quantity" required></td>
+                                    <td><input type="text" name="dev_unit" value="<?php echo $row[7]?>" required></td>
+                                    <td><input type="text" name="dev_supp" required></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <div class="modal-footer">
+                            <button class="waves-effect waves-light btn green" type="submit" class="validate"
+                                name="add_deliveredin">Save</button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="usagein">
+                <div class="row">
+                    <form action="../server.php" method="POST">
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Pulled Out By</th>
+                                    <th>Area of Usage</th>
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                    <td><input type="text" name="us_date"></td>
+                                    <td><input type="text" name="us_quantity" required></td>
+                                    <td><input type="text" name="us_unit" value="<?php echo $row[7]?>" required>
+                                    <td><input type="text" name="pulloutby" required></td>
+                                    <td><input type="text" name="us_area" required></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="modal-footer">
+                            <button class="waves-effect waves-light btn green" type="submit" class="validate"
+                                name="add_usagein">Save</button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!--SITE CATEGORIES-->

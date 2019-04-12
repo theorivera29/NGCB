@@ -5,6 +5,17 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+
+    if(isset($_GET['delivered_matName'])){
+        $delivered_matName = $_GET['delivered_matName'];
+    }
+    $sql = "SELECT delivered_matName FROM deliveredin
+    INNER JOIN materials ON deliveredin.delivered_matName = mat_id
+    WHERE delivered_matName = '$delivered_matName'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_row($result);
+    $delivered_matName = $row[0];
+    while($row = mysqli_fetch_row($result)){
 ?>
 
 <!DOCTYPE html>
@@ -183,59 +194,120 @@
             </div>
         </div>
     </div>
-
     <!--MODAL-->
-    <div id="modal1" class="modal modal-fixed-footer">
-            <form action="server.php" method="POST">
-                <div class="modal- ">
-                    <div class="content">
-                        <div class="row">
+    <tr>
+                        <td>
+                            <form action="../server.php" method="POST">
+                                <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                            </form>
+                            <div id="modal1" class="modal modal-fixed-footer">
+                                <ul class="tabs">
+                                    <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
+                                    <li class="tab col s3"><a href="#usagein">Usage In </a></li>
+                                </ul>
 
-                            <div class="col s12">
-                                <h4>DELIVER IN</h4>
-                                <table class="centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Quantity</th>
-                                            <th>Unit</th>
-                                            <th>Supplied By</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="date" name="dev_date"></td>
-                                            <td><input type="text" name="dev_quantity"></td>
-                                            <td><input type="text" name="unit"></td>
-                                            <td><input type="text" name="dev_supp"></td>
-                                        </tr>
+                                <?php
+                                $sql = "SELECT delivered_date, delivered_quantity, materials.mat_unit, suppliedBy FROM deliveredin 
+                                INNER JOIN materials ON deliveredin.delivered_unit = mat_id
+                                WHERE delivered_matName = '$delivered_matName';";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)){
+                                ?>
 
-                                    </tbody>
-                                </table>
+                                <div id="deliverin">
+                                    <div class="row">
+                                        <form action="../server.php" method="POST">
+                                            <table class="centered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Quantity</th>
+                                                        <th>Unit</th>
+                                                        <th>Supplied By</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                                        <td><input type="date" name="dev_date" value="<?php echo $row[0]?>"></td>
+                                                        <td><input type="text" name="dev_quantity" value="<?php echo $row[1]?>"></td>
+                                                        <td><input type="text" name="unit" value="<?php echo $row[2]?>"></td>
+                                                        <td><input type="text" name="dev_supp" value="<?php echo $row[3]?>"></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                            <div class="modal-footer">
+                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <?php
+                                        }
+                                    ?>
+                                </div>
+
+                                <div id="usagein">
+                                    <div class="row">
+                                        <form action="../server.php" method="POST">
+                                            <table class="centered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Quantity</th>
+                                                        <th>Unit</th>
+                                                        <th>Pulled Out By</th>
+                                                        <th>Area of Usage</th>
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input type="text" placeholder="yyyy-mm-dd" name="us_date" ></td>
+                                                        <td><input type="text" name="us_quantity" required></td>
+                                                        <td><select class="browser-default" name="us_unit" required>
+                                                                <option value="UNITS" disabled selected>Unit</option>
+                                                                <option value="pcs" selected>pcs</option>
+                                                                <option value="mtrs" selected>mtrs</option>
+                                                                <option value="rolls" selected>rolls</option>
+                                                            </select></td>
+                                                        <td><input type="text" name="pulloutby" required></td>
+                                                        <td><input type="text" name="us_area" required></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="modal-footer">
+                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col s12">
-                                <h4>USAGE IN</h4>
-                                <table class="centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Quantity</th>
-                                            <th>Unit</th>
-                                            <th>Pulled Out By</th>
-                                            <th>Area of Usage</th>
-
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                </div>
-            </form>
+                        </td>
+                        <td>
+                            <?php echo $row[1] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[2] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[3] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[4] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[5] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[6] ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
 
     <!--SITE CATEGORIES-->
     <div id="categories" class="col s12">
@@ -269,6 +341,9 @@
         }
     ?>
         </div>
+        <?php
+        }
+    ?>
     </div>
 
 

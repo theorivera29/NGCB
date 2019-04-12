@@ -15,7 +15,7 @@
     <title>NGCB</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/etoyungoffine.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -98,7 +98,7 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauleditems">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>
@@ -106,17 +106,19 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="report.php">Logs</a>
-                </li>
-                <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
             </ul>
         </div>
     </nav>
-
+    <div class="row">
+            <form>
+                <input class="input search-bar-site-materials" type="search" placeholder="Search">
+                <input class="submit search-btn" type="submit" value="SEARCH">
+            </form>
+        </div>
+    </div>
     <div class="site-materials-container">
         <div class="lighten-5">
             <table class="centered site-materials-content">

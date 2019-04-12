@@ -106,10 +106,6 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="report.php">Logs</a>
-                </li>
-                <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
@@ -160,8 +156,8 @@
                             $categ = $data['categories_name'];
                         ?>
                         <tr>
-                        <td colspan="10" class="td-category"> <b>
-                                <?php echo $categ; ?></b></td>
+                            <td colspan="10" class="td-category"> <b>
+                                    <?php echo $categ; ?></b></td>
                         </tr>
                         <?php 
                         $sql = "SELECT 

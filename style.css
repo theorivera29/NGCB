@@ -15,289 +15,9 @@
         url("fonts/pridi-v4-latin-regular.woff2");
 }
 
-/*Login Style*/
-
-.split-login-container {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-}
-
-.left-login-container {
-    background-color: #000035;
-    background-image: url('Images/login2.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position-x: 50%;
-    background-position-y: 30%;
-}
-
-.header-container-one {
-    margin-top: 50%;
-}
-
-.header {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.header-one {
-    font-family: Galyon;
-    text-align: center;
-    font-size: 6vh;
-    color: #FFFFFF;
-}
-
-.right-login-container {
-    right: 0;
-    text-align: center;
-}
-
-
-#login-form {
-    font-family: Galyon;
-    margin: auto;
-    width: 60%;
-    flex-direction: column;
-    justify-content: center;
-    display: flex;
-    height: 100vh;
-}
-
-.col {
-    padding: 0 !important;
-}
-
-.header-two {
-    text-align: left;
-    color: #00171F;
-    font-size: 6vmin;
-    font-family: Pridi;
-}
-
-.submit-btn {
-    width: 50% !important;
-}
-
-
-
-.f-login {
-    padding-left: 2%;
-}
-
-.username {
-    margin-top: 5% !important;
-    margin-bottom: 1% !important;
-}
-
-.password {
-    margin-top: 5% !important;
-}
-
-#create-btn {
-    padding-top: 20% !important;
-}
-
-label {
-    font-size: 3vmin !important;
-
-}
-
-.reset-password label{
-    margin-top: 3% !important;
-}
-
-#form-switch {
-    display: none
-}
-
-#password-form {
-    display: none;
-}
-
-#form-switch:checked~#password-form {
-    display: block
-}
-
-#form-switch:checked~#login-form {
-    display: none
-}
-
-#form-switch-label {
-    font-size: 2.5vmin !important;
-}
-
-.login-btn {
-    width: 100% !important;
-    padding-bottom: 2% !important;
-    color: #ffffff !important;
-    background-color: #4C99AF !important;
-    font-size: 2vh !important;
-}
-
-.create-account-btn {
-    color: #ffffff !important;
-    background-color: #4C99AF !important;
-}
-
-.reset-password-btn{
-    color: #ffffff !important;
-    background-color: #4C99AF !important;
-    font-size: 2vh !important;
-}
-
-
-/*End of Login Page Style*/
-
-/*Start of Style for all pages of Materials Engineer*/
-
 body {
     overflow-x: hidden;
-}
-
-nav {
-    color: #19466D;
-    background-color: #F7F7F7 !important;
-    font-size: 2vmin !important;
-}
-
-#acName {
-    float: right;
-    margin-right: 3%;
-}
-
-.down-arrow {
-    float: right !important;
-
-}
-
-.right {
-    color: white !important;
-}
-
-.left {
-    color: white;
-    margin-left: 5%;
-}
-
-
-.dropdown-content {
-    background-color: #FFFFFF;
-    /* Changed this from overflow-y:auto; to overflow:hidden; */
-    opacity: 0;
-    position: absolute;
-}
-
-.side-nav {
-    background-color: #003A51 !important;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
-.side-nav a {
-    color: #FFFFFF !important;
-    font-size: 2.5vmin !important;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.side-nav a:hover {
-    color: #003A51 !important;
-    font-size: 2.5vmin !important;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.side-nav li {
-    background-color: #003A51;
-    color: #FFFFFF !important;
-    font-size: 2.5vmin !important;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0 !important;
-}
-
-
-.side-nav li.active {
-    background-color: #003A51 !important;
-}
-
-.menuIcon {
-    color: #173753 !important;
-}
-
-.collapsible-header {
-    color: #FFFFFF !important;
-}
-
-.collapsible-header.active:hover {
-    color: #FFFFFF !important;
-}
-
-#create-account-btn {
-    margin-top: 6% !important;
-}
-
-.icon {
-    color: #0D1F2D;
-}
-
-.menu-icon {
-    margin-left: 2%;
-}
-
-#NGCB {
-    font-family: Galyon;
-    color: #BFAB25;
-    margin-bottom: 0;
-    margin-left: 1%;
-    font-size: 20px;
-    text-align: center !important;
-}
-
-
-.collapsible li.active .right {
-    -webkit-transform: rotate(180deg);
-    /* Chrome, Safari, Opera */
-    transform: rotate(180deg);
-}
-
-.modal-footer {
-    font-size: 2.5vmin !important;
-}
-
-/* Style for Dashboard */
-/*Calendar  */
-.contextmenu {
-    position: absolute;
-    z-index: 10;
-    line-height: 50px;
-    font-size: 15px;
-    padding-left: 1%;
-    width: 300px;
-    display: none;
-    background-color: #f6f6f6;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-a.previous,
-a.next,
-.days a {
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-    width: 25px;
-}
-
-.selected {
-    font-weight: bold;
-    background-color: #1A5D89;
-    color: #ffffff;
-}
-
-input.datepicker:focus+div.contextmenu {
-    display: block;
-}
-
-input.datepicker:focus+div.contextmenu,
-div.contextmenu:hover {
-    display: block;
+    background-color: #E0E0E0;
 }
 
 
@@ -391,52 +111,9 @@ div.contextmenu:hover {
 }
 
 /* Style for Site > Site Materials */
-.matname-btn {
-    background-color: #1A5D89 !important;
-    color: white !important;
-}
-
-.search-bar-site-materials{
-    width: 20% !important;
-    margin-left: 2% !important;
-    padding-left: 2% !important;
-}
-
-.site-materials-container {
-    width: 96%;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 2%;
-}
-
-.site-materials-content {
-    padding: 5%;
-}
-
-.site-materials-head>tr>th {
-    background-color: #0B415E !important;
-    font-size: 19px;
-    border-radius: 2%;
-    color: white;
-}
-
-.stock-card-container{
-    overflow-y: auto !important;
-}
-
-.add-material {
-    padding-right: 2% !important;
-}
-
-.add-category {
-    padding-right: 2% !important;
-}
-
-
 
 
 /* Style for Site > Category */
-
 .viewcategory-btn {
     color: #0D1F2D !important;
     background-color: #ffffff !important;
@@ -533,6 +210,296 @@ th {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*UPDATED CONTAINER STYLES OF THE MATERIALS ENGINEER MODULE*/
+
+/*Login*/
+.split-login-container {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+}
+
+.left-login-container {
+    background-color: #000035;
+    background-image: url('Images/login2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 50%;
+    background-position-y: 30%;
+}
+
+.header-container-one {
+    margin-top: 50%;
+}
+
+.header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.header-one {
+    font-family: Galyon;
+    text-align: center;
+    font-size: 6vh;
+    color: #FFFFFF;
+}
+
+.right-login-container {
+    right: 0;
+    text-align: center;
+}
+
+
+#login-form {
+    font-family: Galyon;
+    margin: auto;
+    width: 60%;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+}
+
+.col {
+    padding: 0 !important;
+}
+
+.header-two {
+    text-align: left;
+    color: #00171F;
+    font-size: 6vmin;
+    font-family: Pridi;
+}
+
+.submit-btn {
+    width: 50% !important;
+}
+
+.f-login {
+    padding-left: 2%;
+}
+
+.username {
+    margin-top: 5% !important;
+    margin-bottom: 1% !important;
+}
+
+.password {
+    margin-top: 5% !important;
+}
+
+#create-btn {
+    padding-top: 20% !important;
+}
+
+label {
+    font-size: 3vmin !important;
+
+}
+
+.reset-password label{
+    margin-top: 3% !important;
+}
+
+#form-switch {
+    display: none
+}
+
+#password-form {
+    display: none;
+}
+
+#form-switch:checked~#password-form {
+    display: block
+}
+
+#form-switch:checked~#login-form {
+    display: none
+}
+
+#form-switch-label {
+    font-size: 2.5vmin !important;
+}
+
+.login-btn {
+    width: 100% !important;
+    padding-bottom: 2% !important;
+    color: #ffffff !important;
+    background-color: #4C99AF !important;
+    font-size: 2vh !important;
+}
+
+.create-account-btn {
+    color: #ffffff !important;
+    background-color: #4C99AF !important;
+}
+
+.reset-password-btn{
+    color: #ffffff !important;
+    background-color: #4C99AF !important;
+    font-size: 2vh !important;
+}
+
+#field-login-username {
+    background-color: #EDEBEA !important;
+    color: #19466D;
+    border-bottom: none !important;
+}
+
+#field-login-password {
+    background-color: #EDEBEA !important;
+    color: #19466D;
+    border-bottom: none !important;
+}
+
+.input-field label {
+    color: #19466D;
+}
+
+.input-field label.active {
+    position: absolute;
+    left: 0.0rem !important;
+    padding-bottom: 2% !important;
+}
+
+input[type=text],
+input[type=password] {
+
+    padding-left: 5% !important;
+    margin-bottom: 10% !important;
+    box-sizing: inherit !important;
+}
+
+input:focus {
+    outline: 2px solid #63C7B2;
+}
+
+input[type=text]:disabled {
+    color: black;
+}
+
+/*Side navigation*/
+nav {
+    color: #19466D;
+    background-color: #F7F7F7 !important;
+    font-size: 2vmin !important;
+}
+
+#acName {
+    float: right;
+    margin-right: 3%;
+}
+
+.down-arrow {
+    float: right !important;
+
+}
+
+.right {
+    color: white !important;
+}
+
+.left {
+    color: white;
+    margin-left: 5%;
+}
+
+
+.dropdown-content {
+    background-color: #FFFFFF;
+    opacity: 0;
+    position: absolute;
+}
+
+.side-nav {
+    background-color: #003A51 !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.side-nav a {
+    color: #FFFFFF !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.side-nav a:hover {
+    color: #003A51 !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.side-nav li {
+    background-color: #003A51;
+    color: #FFFFFF !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 !important;
+}
+
+.side-nav li.active {
+    background-color: #003A51 !important;
+}
+
+.menuIcon {
+    color: #173753 !important;
+}
+
+.collapsible-header {
+    color: #FFFFFF !important;
+}
+
+.collapsible-header.active:hover {
+    color: #FFFFFF !important;
+}
+
+#create-account-btn {
+    margin-top: 6% !important;
+}
+
+.icon {
+    color: #0D1F2D;
+}
+
+.menu-icon {
+    margin-left: 2%;
+}
+
+#NGCB {
+    font-family: Galyon;
+    color: #BFAB25;
+    margin-bottom: 0;
+    margin-left: 1%;
+    font-size: 20px;
+    text-align: center !important;
+}
+
+
+.collapsible li.active .right {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.modal-footer {
+    font-size: 2.5vmin !important;
+}
+
+
 i.right {
     margin-left: 0 !important;
 }
@@ -578,74 +545,7 @@ i.right {
     color: #FFFFFF;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Login*/
-
-#field-login-username {
-    background-color: #EDEBEA !important;
-    color: #19466D;
-    border-bottom: none !important;
-}
-
-#field-login-password {
-    background-color: #EDEBEA !important;
-    color: #19466D;
-    border-bottom: none !important;
-}
-
-.input-field label {
-    color: #19466D;
-}
-
-.input-field label.active {
-    position: absolute;
-    left: 0.0rem !important;
-    padding-bottom: 2% !important;
-}
-
-input[type=text],
-input[type=password] {
-
-    padding-left: 5% !important;
-    margin-bottom: 10% !important;
-    box-sizing: inherit !important;
-}
-
-input:focus {
-    outline: 2px solid #63C7B2;
-}
-
-input[type=text]:disabled {
-    color: black;
-}
-
-/*Side navigation*/
-
-
-
 /*Add To-do Container*/
-
-body {
-    background-color: #E0E0E0;
-}
-
 .container-addtask {
     margin-left: 2% !important;
     margin-top: 2% !important;
@@ -831,6 +731,43 @@ textarea.materialize-textarea {
 
 .materials-left-container>tr>td {
     width: 90px;
+}
+
+/*Calendar  */
+.contextmenu {
+    position: absolute;
+    z-index: 10;
+    line-height: 50px;
+    font-size: 15px;
+    padding-left: 1%;
+    width: 300px;
+    display: none;
+    background-color: #f6f6f6;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+a.previous,
+a.next,
+.days a {
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    width: 25px;
+}
+
+.selected {
+    font-weight: bold;
+    background-color: #1A5D89;
+    color: #ffffff;
+}
+
+input.datepicker:focus+div.contextmenu {
+    display: block;
+}
+
+input.datepicker:focus+div.contextmenu,
+div.contextmenu:hover {
+    display: block;
 }
 
 /*Projects*/
@@ -1070,10 +1007,49 @@ textarea.materialize-textarea {
 .add-threshold{
     margin-left: 3% !important;
     width: 50% !important;
-    margin-top: 3% !important;
-    
+    margin-top: 3% !important;   
 }
 
+.matname-btn {
+    background-color: #1A5D89 !important;
+    color: white !important;
+}
+
+.search-bar-site-materials{
+    width: 20% !important;
+    margin-left: 2% !important;
+    padding-left: 2% !important;
+}
+
+.site-materials-container {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+.site-materials-content {
+    padding: 5%;
+}
+
+.site-materials-head>tr>th {
+    background-color: #0B415E !important;
+    font-size: 19px;
+    border-radius: 2%;
+    color: white;
+}
+
+.stock-card-container{
+    overflow-y: auto !important;
+}
+
+.add-material {
+    padding-right: 2% !important;
+}
+
+.add-category {
+    padding-right: 2% !important;
+}
 /*View Inventory - Category*/
 .all-btn{
     color: #ffffff !important;

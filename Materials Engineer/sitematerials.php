@@ -190,12 +190,13 @@
                                                         <th>Quantity</th>
                                                         <th>Unit</th>
                                                         <th>Supplied By</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
                                                         <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                                        <td><input type="text" name="dev_date"></td>
+                                                        <td><input type="date" min="2019-01-01" required></td>
                                                         <td><input type="text" name="dev_quantity" required></td>
                                                         <td><input type="text" name="dev_unit" value="<?php echo $row[7]?>" required></td>
                                                         <td><input type="text" name="dev_supp" required></td>

@@ -5,8 +5,38 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+    $output = '';
+    if(isset ($_POST['search'])) {
+        $searchq = $_POST['search'];
+        $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
+        $sql = "SELECT
+                            materials.mat_name, 
+                            materials.mat_prevStock, 
+                            materials.delivered_material, 
+                            materials.pulled_out, 
+                            materials.accumulated_materials,
+                            materials.currentQuantity
+                            FROM materials 
+                            INNER JOIN projects ON materials.mat_project = projects.projects_id 
+                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                            WHERE mat_name LIKE '%$searchq%'";
+                            $query = mysqli_query($conn, $sql);
+                            $count = mysqli_num_rows($query);
+                            if($count == 0) {
+                                $output = 'There is no results.';
+                            } else {
+                                while ($row = mysqli_fetch_array($query)) {
+                                    $matname = $row['mat_name'];
+                                    $output .= '<td>'.$matname.'</td>';
+                                }
+                            }
+    }
 
-    $projects_name = $_GET['projects_name'];
+    $projects_name = false;
+    if(isset($_GET['projects_name'])) {
+        $projects_name = $_GET['projects_name'];
+    }
+    
 
     $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
     $result = mysqli_query($conn, $sql);
@@ -19,7 +49,7 @@
 <html>
 
 <head>
-    <title>NGCB</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
@@ -115,10 +145,13 @@
         ?>
         <div class="row">
             <div class="col ">
-                <form>
-                    <input class="input search-bar" type="search" placeholder="Search">
+            <form action = "viewinventory.php" method = "POST">
+                    <input class="input search-bar" type="text" name = "search" placeholder="Search">
                     <input class="submit search-btn" type="submit" value="SEARCH">
                 </form>
+                <?php
+                print("$output");
+                ?>
             </div>
             <div class="col">
 
@@ -149,8 +182,8 @@
 
                     <tbody>
                     <?php 
-                            $projects_name = $_GET['projects_name'];
-                            $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
+                                // $projects_name = $_GET['projects_name'];
+                                $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             INNER JOIN projects ON materials.mat_project = projects.projects_id
                             WHERE projects.projects_name = '$projects_name'

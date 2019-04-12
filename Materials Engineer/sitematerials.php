@@ -98,17 +98,13 @@
                                     <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
                                 </li>
                                 <li>
-                                    <a class="waves-effect waves-blue" href="hauleditems">View Hauled
+                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
                                         Materials</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                 </ul>
-                <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="report.php">Logs</a>
-                </li>
                 <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>

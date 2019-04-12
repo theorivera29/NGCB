@@ -106,10 +106,6 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="report.php">Logs</a>
-                </li>
-                <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
@@ -135,13 +131,13 @@
                             </p>
                             <p>
                                 <span class="card-text">
-                                        Start Date:
-                                    </span>
+                                    Start Date:
+                                </span>
                                 <?php echo $row[3] ?>
                             </p>
                             <p><span class="card-text">
-                                       End Date:
-                                    </span>
+                                    End Date:
+                                </span>
                                 <?php echo $row[4] ?>
                             </p>
                             <div class="row">

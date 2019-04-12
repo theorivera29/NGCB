@@ -106,17 +106,12 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="report.php">Logs</a>
-                </li>
-                <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
             </ul>
         </div>
     </nav>
-
 
     <div class="card account-container">
         <div class="account-edit-container">
@@ -155,7 +150,11 @@
                 </div>
                 <div class="input-field col account-edit-field">
                     <input id="login-password" name="newpassword" type="password" value=" <?php echo $row[4]?>">
-                    <label class="active" for="newpassword">Password</label>
+                    <label class="active" for="newpassword">New Password</label>
+                </div>
+                <div class="input-field col account-edit-field">
+                    <input id="login-password" name="confirmpassword" type="password" value="">
+                    <label class="active" for="confirmpassword">Confirm Password</label>
                 </div>
 
                 <?php 
@@ -163,8 +162,7 @@
                     ?>
                 <div class="row">
                     <div class="col">
-                        <button class="btn waves-effect waves-light" type="submit"
-                            name="edit_account">Save</button>
+                        <button class="btn waves-effect waves-light" type="submit" name="edit_account">Save</button>
                     </div>
                 </div>
             </form>

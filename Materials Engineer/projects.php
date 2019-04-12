@@ -107,10 +107,6 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="report.php">Logs</a>
-                </li>
-                <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
@@ -186,7 +182,7 @@
                         while($row = mysqli_fetch_row($result)){
                     ?>
                 <div class="col s12 m5 project-container">
-                <div class="card center project-container-card">
+                    <div class="card center project-container-card">
                         <div class="card-content">
                             <span class="card-title">
                                 <?php echo $row[0] ?></span>
@@ -194,13 +190,13 @@
                                 <?php echo $row[1] ?>
                             </p>
                             <p>
-                            <span class="card-text">
+                                <span class="card-text">
                                     Start Date:
                                 </span>
                                 <?php echo $row[2] ?>
                             </p>
                             <p>
-                            <span class="card-text">
+                                <span class="card-text">
                                     End Date:
                                 </span><?php echo $row[3] ?>
                             </p>

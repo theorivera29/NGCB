@@ -420,7 +420,9 @@ div.contextmenu:hover {
     color: white;
 }
 
-
+.stock-card-container{
+    overflow-y: auto !important;
+}
 
 .add-material {
     padding-right: 2% !important;
@@ -484,19 +486,6 @@ th {
 }
 
 /*Style for Hauling*/
-.hauled-items-head>tr>th {
-    background-color: #0B415E !important;
-    font-size: 19px;
-    border-radius: 2%;
-    color: white;
-    padding-right: 2%;
-    padding-left: 2%;
-}
-
-.hauling-form {
-    background-color: #FFFFFF !important;
-}
-
 
 /* Style for admin*/
 
@@ -1179,12 +1168,79 @@ select[name=mat_unit] {
     margin-left: 10%;
 }
 
+.hauling-form {
+    background-color: #FFFFFF !important;
+}
 
+.date-span{
+    padding-right: 1% !important;
+    font-size: 2vmin !important;
+}
 
+.hauling-date{
+    margin-right: 4% !important;
+    margin-left: 6% !important; 
+}
 
+.container-date-hauling{
+    float: right;
+    margin-right: 5% !important;
+    margin-top: 1.5%;
+}
+
+.deliver-to-field{
+    width: 50% !important;
+}
+
+.form-number-field{
+    width: 20% !important;
+    float: right !important;
+    margin-right: 4%;
+}
+
+.hauled-from-field{
+    width: 50% !important;
+}
+
+.hauling-table-container{
+    width: 100% !important;
+    margin-left: 2%;
+}
+
+.hauling-form-table{
+    width: 90% !important;
+}
+
+.hauling-form-table-head>tr>th{
+    font-size: 2.5vh !important;
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
+}
+
+.hauled-side-container{
+    margin-top: 5% !important;
+}
+
+.fillout-content{
+    background-color: #FFFFFF !important;
+    width: 100% !important;
+    font-size: 2.5vmin;
+    padding-left: 5% !important;
+    padding-top: 5% !important;
+}
 
 
 /*View Hauled*/
+
+.hauled-items-head>tr>th {
+    background-color: #0B415E !important;
+    font-size: 19px;
+    border-radius: 2%;
+    color: white;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
 
 
 /*Report*/

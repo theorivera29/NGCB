@@ -105,10 +105,6 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="report.php">Logs</a>
-                </li>
-                <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="report.php">Report</a>
                 </li>
@@ -144,7 +140,7 @@
                                     <?php echo $row[2] ?></p>
                                 <p>
                                     <span class="card-text">
-                                       End Date:
+                                        End Date:
                                     </span><?php echo $row[3] ?></p>
                                 <div class="row">
                                     <form action="../server.php" method="POST">

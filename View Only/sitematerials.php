@@ -166,8 +166,7 @@
                                                 </tbody>
                                             </table>
                                             <div class="modal-footer">
-                                                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
                                             </div>
                                         </form>
                                     </div>
@@ -204,8 +203,7 @@
                                                 </tbody>
                                             </table>
                                             <div class="modal-footer">
-                                                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
                                             </div>
                                         </form>
                                     </div>
@@ -241,121 +239,6 @@
             </table>
             
         </div>
-        <!--MODAL-->
-<!--
-        <div id="modal1" class="modal modal-fixed-footer">
-            <ul class="tabs">
-                <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
-                <li class="tab col s3"><a href="#usagein">Usage In </a></li>
-            </ul>
-
-            <div id="deliverin">
-                <div class="row">
-                    <form>
-                        <table class="centered">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                    <th>Supplied By</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="date" name="dev_date"></td>
-                                    <td><input type="text" name="dev_quantity"></td>
-                                    <td><select class="browser-default" name="us_unit">
-                                            <option value="UNITS" selected></option>
-                                        </select></td>
-                                    <td><input type="text" name="dev_supp"></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                        <div class="modal-footer">
-                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div id="usagein">
-                <div class="row">
-<<<<<<< HEAD
-                    <form>
-                        <table class="centered">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                    <th>Pulled Out By</th>
-                                    <th>Area of Usage</th>
-
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td contenteditable="true"><input type="date" name="us_date"></td>
-                                    <td contenteditable="true"><input type="text" name="us_quantity"></td>
-                                    <td contenteditable="true"><select class="browser-default" name="us_unit">
-                                            <option value="UNITS" selected></option>
-                                        </select></td>
-                                    <td contenteditable="true"><select class="browser-default" name="categories">
-                                            <option value="mat eng namesss" selected></option>
-                                        </select></td>
-                                    <td contenteditable="true"><input type="text" name="us_area"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="modal-footer">
-                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                        </div>
-                    </form>
-=======
-                <form>
-                <table class="centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Quantity</th>
-                                            <th>Unit</th>
-                                            <th>Pulled Out By</th>
-                                            <th>Area of Usage</th>
-
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td contenteditable="true"><input type="date" name="us_date"></td>
-                                            <td contenteditable="true"><input type="text" name="us_quantity"></td>
-                                            <td contenteditable="true"><select class="browser-default" name="us_unit">
-                                                    <option value="UNITS" selected></option>
-                                                </select></td>
-                                            <td contenteditable="true"><input type="text" name="us_matname"></td>
-                                            <td contenteditable="true"><input type="text" name="us_area"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                </form>
-                </div>
-                </div>
-                
-                        
-                   
-                <div class="modal-footer">
-                    <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
->>>>>>> cd826885bc7ce4d90ac1195d8b183931a9797ab4
-                </div>
-            </div>
-        </div>
--->
     </div>
 
 

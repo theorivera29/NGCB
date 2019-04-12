@@ -211,12 +211,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="waves-effect waves-teal save-btn"
-                                        name="create_project">SAVE</button>
-                                </div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                                    <button type="submit" class="waves-effect waves-teal"
+                                        name="create_project">SAVE</button>
+                                </div>
                     </form>
                 </div>
 

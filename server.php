@@ -358,7 +358,7 @@
             
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added delivered in', 1, 1);";
         mysqli_query($conn, $sql);    
-        //header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
     }
 

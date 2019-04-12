@@ -1245,3 +1245,42 @@ select[name=mat_unit] {
     margin-top: 8%;
     margin-left: 
 }
+
+.account-username-field{
+    margin-left: 5% !important;
+    margin-top: 3% !important;
+}
+
+.account-email-field{
+    margin-left: 5% !important;
+    margin-top: 3% !important;
+}
+
+.account-firstname-field{
+    margin-left: 5% !important;
+    margin-top: 3% !important;
+}
+
+.account-lastname-field{
+    margin-left: 5% !important;
+    margin-top: 3% !important;
+}
+
+.account-newpassword-field{
+    margin-left: 5% !important;
+    margin-top: 3% !important;
+}
+
+.account-confirmpassword-field{
+    margin-left: 5% !important;
+    margin-top: 3% !important;
+}
+
+.account-btn{
+    float: right !important;
+}
+
+.account-setting-label{
+    font-size: 3vmin !important;
+    color: yellow !important
+}

@@ -112,7 +112,13 @@
             </ul>
         </div>
     </nav>
-
+    <div class="row">
+            <form>
+                <input class="input search-bar-site-materials" type="search" placeholder="Search">
+                <input class="submit search-btn" type="submit" value="SEARCH">
+            </form>
+        </div>
+    </div>
     <div class="site-materials-container">
         <div class="lighten-5">
             <table class="centered site-materials-content">

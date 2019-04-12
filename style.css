@@ -396,6 +396,12 @@ div.contextmenu:hover {
     color: white !important;
 }
 
+.search-bar-site-materials{
+    width: 20% !important;
+    margin-left: 2% !important;
+    padding-left: 2% !important;
+}
+
 .site-materials-container {
     width: 96%;
     margin-left: 2%;
@@ -1169,13 +1175,17 @@ select[name=mat_unit] {
 }
 
 .haulingform-container{
-    width: 90%;
-    margin-left: 5%;
+    width: 80%;
+    margin-left: 10%;
 }
+
+
+
+
+
 
 /*View Hauled*/
 
-/*Logs*/
 
 /*Report*/
 .report-project-card{
@@ -1188,6 +1198,8 @@ select[name=mat_unit] {
 }
 
 /*Report Page*/
+
+
 /* Style for Report*/
 .report-btn {
     background-color: #1A5D89 !important;

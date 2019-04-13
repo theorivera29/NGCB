@@ -107,8 +107,8 @@
     </nav>
 
     <div class="account-list-container">
-        <div class="card centered">
-            <table class="account-list-table">
+        <div class="card">
+            <table class="account-list-table centered">
                 <thead class="account-list-head">
                     <tr>
                         <th>ID</th>
@@ -162,7 +162,8 @@
                         </td>
                         <td>
                             <div class="row">
-                                <a href="#disable_account" class="waves-effect waves-light btn  modal-trigger">
+                                <a href="#disable_account" class="waves-effect waves-light btn modal-trigger all-btn"
+                                    href="#disableBtn">
                                     Disable</a>
                             </div>
                         </td>
@@ -172,7 +173,16 @@
                         ?>
                 </tbody>
             </table>
+        </div>
+    </div>
 
+    <div id="disableBtn" class="modal">
+        <div class="modal-content">
+            <span>Are you sure want to disable this task?</span>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-red all-btn">No</a>
+            <button type="submit" name="todo_update" class="modal-close waves-effect waves-red all-btn">Yes</button>
         </div>
     </div>
 

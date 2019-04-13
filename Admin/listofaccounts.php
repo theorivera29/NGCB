@@ -11,7 +11,7 @@
 <html>
 
 <head>
-<title>NGCBDC</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -106,10 +106,10 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="card">
-            <table class="striped centered">
-                <thead>
+    <div class="account-list-container">
+        <div class="card centered">
+            <table class="account-list-table">
+                <thead class="account-list-head">
                     <tr>
                         <th>ID</th>
                         <th>User Name</th>
@@ -136,7 +136,8 @@
                             <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
-                                <button type="submit" name="disable_account" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                                <button type="submit" name="disable_account"
+                                    class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
                             </form>
                         </div>
                     </div>
@@ -178,13 +179,14 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.modal-trigger').leanModal();
         });
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -199,7 +201,6 @@
             var disprompt = prompt("Are you sure you want to disable the account");
 
         };
-
     </script>
 
 </body>

@@ -328,8 +328,8 @@
                             </tbody>
                         </table>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                            <button class="btn waves-effect waves-light save-stockcard-btn" type="submit"
+                            <a href="#!" class="modal-close waves-effect btn all-btn">Cancel</a>
+                            <button class="btn waves-effect waves-light save-stockcard-btn all-btn" type="submit"
                                 class="validate" name="add_deliveredin">Save</button>
                         </div>
                     </form>
@@ -363,15 +363,14 @@
                             </tbody>
                         </table>
                         <div class="modal-footer">
-                            <button class="waves-effect waves-light btn green" type="submit" class="validate"
+                            <a href="#!" class="modal-close waves-effect btn all-btn">Cancel</a>
+                            <button class="waves-effect waves-light btn all-btn" type="submit" class="validate"
                                 name="add_usagein">Save</button>
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!--SITE CATEGORIES-->

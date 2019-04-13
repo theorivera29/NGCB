@@ -319,7 +319,7 @@
                                 <tr>
                                     <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                     <td><input type="date"  min="2019-01-01" required></td>
-                                    <td><input type="text" name="dev_quantity" required></td>
+                                    <td><input type="text" name="dev_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required></td>
                                     <td><input type="text" name="dev_unit" value="<?php echo $row[7]?>" required></td>
                                     <td><input type="text" name="dev_supp" required></td>
                                 </tr>
@@ -354,7 +354,7 @@
                                 <tr>
                                     <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                     <td><input type="date"  min="2019-01-01" required></td>
-                                    <td><input type="text" name="us_quantity" required></td>
+                                    <td><input type="text" name="us_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required></td>
                                     <td><input type="text" name="us_unit" value="<?php echo $row[7]?>" required>
                                     <td><input type="text" name="pulloutby" required></td>
                                     <td><input type="text" name="us_area" required></td>
@@ -498,8 +498,7 @@
                                 <input type="date"  min="2019-01-01" required>
                                 </td>
                                 <td>
-                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
-                                        required>
+                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
                                 </td>
                                 <td>
                                     <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>

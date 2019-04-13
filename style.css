@@ -1419,3 +1419,7 @@ select[name=mat_unit] {
     float: right !important;
     margin-right: 8%;
 }
+
+.radio-container{
+    margin-left: 8%;
+}

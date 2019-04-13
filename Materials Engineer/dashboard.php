@@ -162,9 +162,10 @@
 
                     <tbody class="task-table-container">
                         <?php 
-                           $sql = "SELECT * FROM todo WHERE todo.todoOf = $task;";
-                           $result = mysqli_query($conn, $sql);
-                           while($row = mysqli_fetch_array($result)) {
+                            $date_today = date("Y-m-d");
+                            $sql = "SELECT * FROM todo WHERE todo.todoOf = $task && todo_date = '$date_today';";
+                            $result = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_array($result)) {
                         ?>
                         <tr>
                             <td class="task-data-table1">
@@ -179,13 +180,15 @@
                             <td class="task-data-table">
                                 <form action="../server.php" method="POST">
                                     <?php
+                                        $ctr_done = 0;
+                                        $ctr_clear = 0;
                                         if(strcasecmp($row[3], 'in progress') == 0) {
-                                            ?>
+                                    ?>
                                     <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
                                     <button class="waves-effect waves-light btn modal-trigger doneBtn"
-                                        href="#doneBtn">Done</button>
-                                    <div id="doneBtn" class="modal">
+                                        href="#doneBtn<?php echo $ctr_done; ?>">Done</button>
+                                    <div id="doneBtn<?php echo $ctr_done; ?>" class="modal">
                                         <div class="modal-content">
                                             <span>Are you sure want to click done?</span>
                                         </div>
@@ -196,13 +199,14 @@
                                         </div>
                                     </div>
                                     <?php
+                                        $ctr_done++;
                                         } else {
-                                            ?>
+                                    ?>
                                     <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
                                     <button class="waves-effect waves-light btn modal-trigger clearBtn"
-                                        href="#clearBtn">Clear</button>
-                                    <div id="clearBtn" class="modal">
+                                        href="#clearBtn<?php echo $ctr_clear; ?>">Clear</button>
+                                    <div id="clearBtn<?php echo $ctr_clear; ?>" class="modal">
                                         <div class="modal-content">
                                             <span>Are you sure want to clear this task</span>
                                         </div>
@@ -213,6 +217,7 @@
                                         </div>
                                     </div>
                                     <?php
+                                        $ctr_clear++;
                                         }
                                     ?>
                                 </form>

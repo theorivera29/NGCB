@@ -137,9 +137,9 @@
                         $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
                         ORDER BY categories.categories_name;";
-                        $result = mysqli_query($conn, $sql_categ);
+                        $result_categ = mysqli_query($conn, $sql_categ);
                         $categories = array();
-                        while($row_categ = mysqli_fetch_assoc($result)){
+                        while($row_categ = mysqli_fetch_assoc($result_categ)){
                             $categories[] = $row_categ;
                         }
 
@@ -195,17 +195,24 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
+<<<<<<< HEAD
+                                                        
+                                                    <?php echo $row[0];?>
+                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0];?>">
+                                                        <td><input type="text" name="dev_date"></td>
+=======
                                                         <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                                         <td><input type="date" min="2019-01-01" required></td>
+>>>>>>> 675fa20f24d3b797f565766ee0fceb90a6165b75
                                                         <td><input type="text" name="dev_quantity" required></td>
-                                                        <td><input type="text" name="dev_unit" value="<?php echo $row[7]?>" required></td>
+                                                        <td><input type="text" name="dev_unit" value="<?php echo $row[7];?>" required></td>
                                                         <td><input type="text" name="dev_supp" required></td>
                                                     </tr>
                                                     <?php 
-                        $dsql = "SELECT * FROM deliveredin;";
-                        $dresult = mysqli_query($conn, $dsql);
-                        while($drow = mysqli_fetch_row($dresult)){
-                    ?>
+                                                        $dsql = "SELECT * FROM deliveredin;";
+                                                        $dresult = mysqli_query($conn, $dsql);
+                                                        while($drow = mysqli_fetch_row($dresult)){
+                                                    ?>
                                                     <tr>
                                                         <td><?php echo $drow[1]?></td>
                                                         <td><?php echo $drow[2]?></td>
@@ -213,8 +220,8 @@
                                                         <td><?php echo $drow[4]?></td>
                                                     </tr>
                                                     <?php 
-                            }
-                        ?>
+                                                        }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                             <div class="modal-footer">

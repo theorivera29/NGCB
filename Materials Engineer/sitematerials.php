@@ -12,7 +12,7 @@
 <html>
 
 <head>
-    <title>NGCB</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../materialize/css/etoyungoffine.css">

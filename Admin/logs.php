@@ -8,12 +8,12 @@
 <html>
 
 <head>
-    <title>NGCB</title>
+<title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../style.css">
-</head>
+
 
 <body>
     <nav>

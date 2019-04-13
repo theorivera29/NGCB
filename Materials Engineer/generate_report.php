@@ -61,10 +61,10 @@
         $sql = "SELECT 
         materials.mat_name, 
         materials.mat_prevStock, 
-        stockcard.stockcard_totalDelivered, 
-        stockcard.stockcard_totalPulledOut, 
-        (stockcard.stockcard_totalDelivered + materials.mat_prevStock), 
-        stockcard.stockcard_quantity,
+        materials.delivered_material, 
+        materials.pulled_out, 
+        (materials.delivered_material + materials.mat_prevStock), 
+        materials.currentQuantity
         materials.mat_unit
         FROM materials 
         INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id

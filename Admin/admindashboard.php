@@ -12,14 +12,15 @@
 <html>
 
 <head>
-<link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
+    <title>NGCBDC</title>
+    <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -86,6 +87,10 @@
                     </li>
                 </ul>
                 <li>
+                    <i class="material-icons left">vpn_key</i><a class="waves-effect waves-blue"
+                        href="passwordrequest.php">Password Request</a>
+                </li>
+                <li>
                     <i class="material-icons left">insert_drive_file</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>
                 </li>
@@ -101,19 +106,26 @@
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col s3 Cards-Container Account-Container">
-            <span id="text-headers">Accounts</span>
-            <span id="sub-headers"></span>
-            <span id="sub-headers">active accounts</span>
-        </div>
 
-        <div class="col s3 Cards-Container Password-Reset-Container">
-            <span id="text-headers">Password Reset</span>
-            <span id="sub-headers"></span>
-            <span id="sub-headers">requesting for a new paassword</span>
-        </div>
+    <div class="cards-container-admin account-container-admin">
+        <p class="text-headers">Accounts</p>
+        <p class="sub-header-number"></p>
+        <p class="sub-header-text">active accounts</p>
     </div>
+
+    <div class="cards-container-admin password-reset-container">
+        <p class="text-headers">Password Reset</p>
+        <p class="sub-header-number"></p>
+        <p class="sub-header-text">requesting for a new password</p>
+    </div>
+
+    <div class="cards-container-admin project-status-container">
+        <p class="text-headers">Projects</p>
+        <p class="sub-header-number"></p>
+        <p class="sub-header-number"></p>
+        <p class="sub-header-text">open projects</p>
+    </div>
+
 
 
     <!--Import jQuery before materialize.js-->

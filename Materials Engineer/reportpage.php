@@ -163,12 +163,11 @@
                         $sql = "SELECT 
                         materials.mat_name, 
                         materials.mat_prevStock, 
-                        stockcard.stockcard_totalDelivered, 
-                        stockcard.stockcard_totalPulledOut, 
-                        (stockcard.stockcard_totalDelivered + materials.mat_prevStock), 
-                        stockcard.stockcard_quantity
+                        materials.delivered_material, 
+                        materials.pulled_out, 
+                        (materials.delivered_material + materials.mat_prevStock), 
+                        materials.currentQuantity
                         FROM materials 
-                        INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
                         INNER JOIN projects ON materials.mat_project = projects.projects_id
                         WHERE categories.categories_name = '$categ' && projects.projects_name = '$projects_name'

@@ -483,7 +483,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h4>Deliver In</h4>
+                    <h5>Deliver In</h5>
                     <table class="striped centered">
                         <thead class="view-inventory-head">
                             <tr>

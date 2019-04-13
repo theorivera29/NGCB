@@ -825,6 +825,7 @@ div.contextmenu:hover {
     margin-bottom: 3%;
     font-size: 4vmin;
     color: #19466D;
+    font-family: Arial, Helvetica, sans-serif; 
 }
 
 .view-inventory-slider {
@@ -840,7 +841,8 @@ div.contextmenu:hover {
 .tabs-inventory a {
     background-color: #19466D !important;
     color: #FFFFFF !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .tabs-inventory a:hover {
@@ -864,7 +866,7 @@ div.contextmenu:hover {
 .search-btn {
     display: inline-block !important;
     padding: 10px 15px !important;
-    font-size: 20px !important;
+    font-size: 2.5vmin !important;
     border-radius: 0 !important;
 }
 
@@ -872,6 +874,7 @@ div.contextmenu:hover {
     width: 50% !important;
     height: 2% !important;
     margin-left: 10% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .search-btn {
@@ -902,6 +905,7 @@ div.contextmenu:hover {
     width: 95% !important;
     margin-left: 2%;
     margin-right: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .view-inventory {
@@ -914,6 +918,7 @@ div.contextmenu:hover {
     font-size: 2.5vmin;
     color: #FFFFFF;
     padding-right: 2% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .view-inventory>tr>td {
@@ -988,12 +993,14 @@ div.contextmenu:hover {
 .add-mat-modal {
     height: 90% !important;
     overflow-y: hidden !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .add-mat-modal label {
-    font-size: 1.5vmin !important;
+    font-size: 2.5vmin !important;
     margin-left: 3% !important;
 }
+
 
 .material-add-unit {
     margin-left: 3% !important;
@@ -1114,7 +1121,7 @@ div.contextmenu:hover {
 }
 
 select[name=mat_unit] {
-    font-size: 2.5vmin !important;
+    font-size: 2vmin !important;
 }
 
 /*Hauling*/

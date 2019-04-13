@@ -22,8 +22,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
-                    class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -37,8 +36,7 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -66,16 +64,13 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
-                        href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a
-                            class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -89,9 +84,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a
-                            class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -106,8 +99,7 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
-                        href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
                 </li>
             </ul>
         </div>
@@ -117,29 +109,32 @@
         <div class="row">
             <div class="col s12 light-blue lighten-3">
                 <h4>DELIVER IN</h4>
-                <table class="centered blue-grey lighten-5">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Supplied By</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
-                        </tr>
-
-                    </tbody>
-                </table>
+                <form action="../server.php" method="POST">
+                    <table class="centered blue-grey lighten-5">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Supplied By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <input type="hidden" name="mat_name" value="<?php echo $row[0];?>">
+                                <td><input type="text" name="dev_date"></td>
+                                <td><input type="text" name="dev_quantity"></td>
+                                <td><input type="text" name="dev_unit"></td>
+                                <td><input type="text" name="dev_supp"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
+                </form>
             </div>
             <div class="col s12 light-blue lighten-3">
                 <h4>USAGE IN</h4>
+                 <form action="../server.php" method="POST">
                 <table class="centered blue-grey lighten-5">
                     <thead>
                         <tr>
@@ -154,15 +149,17 @@
 
                     <tbody>
                         <tr>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
-                            <td contenteditable="true"></td>
+                            <td><input type="text" name="us_date"></td>
+                            <td><input type="text" name="us_quantity"></td>
+                            <td><input type="text" name="us_unit"></td>
+                            <td><input type="text" name="pulloutby"></td>
+                            <td><input type="text" name="us_area"></td>
                         </tr>
 
                     </tbody>
                 </table>
+                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
+                </form>
             </div>
         </div>
     </div>
@@ -313,7 +310,7 @@
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -326,6 +323,7 @@
             $('.modal-trigger').leanModal();
 
         });
+
     </script>
 
 </body>

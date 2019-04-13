@@ -3,7 +3,7 @@
 <html>
 
 <head>
-<title>NGCBDC</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
@@ -16,29 +16,44 @@
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+            <?php 
+                            if(isset($_SESSION['username'])) {
+                            $username = $_SESSION['username'];
+                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_row($result);
+                        ?>
+            <span id="acName">
+                <ul>
+                    <?php echo $row[1]." ".$row[2]; ?>
+                    <li class="down-arrow">
 
-            <ul>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                    </li>
 
-                <li class="down-arrow">
+                </ul>
+                <ul id="dropdown" class="dropdown-content collection">
+                    <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
 
-                    <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                            class="material-icons dropdown-button">keyboard_arrow_down</i></a>
-                </li>
-
-            </ul>
-            <ul id="dropdown" class="dropdown-content collection">
-                <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
-                <li><a class="waves-effect waves-blue" href="logout.php">Logout</a></li>
-
-            </ul>
+                </ul>
             </span>
             <ul class="side-nav" id="navigation">
                 <li class="icon-container">
                     <img src="../Images/NGCB_logo.png" class="sidenav-logo">
                 </li>
                 <h3 id="account-type">
-
-
+                    <?php 
+                        if(strcmp($row[5], "MatEng") == 0 ) {
+                            echo "Materials Engineer";
+                        } else if(strcmp($row[5], "ViewOnly") == 0 ) {
+                            echo "View Only";
+                        } else {
+                            echo "Admin";
+                        }
+                        }
+                    ?>
                 </h3>
 
                 <li>
@@ -62,6 +77,10 @@
                         </div>
                     </li>
                 </ul>
+                <li>
+                    <i class="material-icons left">vpn_key</i><a class="waves-effect waves-blue"
+                        href="passwordrequest.php">Password Request</a>
+                </li>
                 <li>
                     <i class="material-icons left">insert_drive_file</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>
@@ -174,7 +193,7 @@
                                     <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
                                     <button name="edit_project"
                                         class="modal-action modal-close waves-effect waves-green btn-flat">Save
-                                        </button>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -214,9 +233,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                                    <button type="submit" class="waves-effect waves-teal"
-                                        name="create_project">SAVE</button>
-                                </div>
+                            <button type="submit" class="waves-effect waves-teal" name="create_project">SAVE</button>
+                        </div>
                     </form>
                 </div>
 

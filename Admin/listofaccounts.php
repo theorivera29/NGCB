@@ -44,7 +44,7 @@
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
                     <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
-                    <li><a class="waves-effect waves-blue" href="logout.php">Logout</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
 
                 </ul>
             </span>
@@ -86,6 +86,10 @@
                         </div>
                     </li>
                 </ul>
+                <li>
+                    <i class="material-icons left">vpn_key</i><a class="waves-effect waves-blue"
+                        href="passwordrequest.php">Password Request</a>
+                </li>
                 <li>
                     <i class="material-icons left">insert_drive_file</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>

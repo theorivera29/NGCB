@@ -45,7 +45,7 @@
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
                     <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
-                    <li><a class="waves-effect waves-blue" href="logout.php">Logout</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
 
                 </ul>
             </span>
@@ -88,6 +88,10 @@
                     </li>
                 </ul>
                 <li>
+                    <i class="material-icons left">vpn_key</i><a class="waves-effect waves-blue"
+                        href="passwordrequest.php">Password Request</a>
+                </li>
+                <li>
                     <i class="material-icons left">insert_drive_file</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>
                 </li>
@@ -119,15 +123,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <!--NEXT TIME KO N LAGYAN NG PROMPT NA ARE YOU SURE CHORV-->
-                    <td> <button>Accept</button> <button>Reject</button></td>
+                    <?php 
+                $sql = "SELECT * FROM accounts;";
+                $result = mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_row($result)){
+                ?>
+                    <tr>
+                        <td><?php echo $row[0]; ?></td>
+                        <td><?php echo $row[1]; ?></td>
+                        <td><?php echo $row[2]; ?></td>
+                        <td><?php echo $row[3]; ?></td>
+                        <td><?php echo $row[4]; ?></td>
+                        <td><?php echo $row[5]; ?></td>
+                        <td><?php echo $row[6]; ?></td>
+                        <!--NEXT TIME KO N LAGYAN NG PROMPT NA ARE YOU SURE CHORV-->
+                        <td> <button>Accept</button> <button>Reject</button></td>
+                    </tr>
+                    <?php 
+                    }
+                ?>
                 </tbody>
             </table>
 

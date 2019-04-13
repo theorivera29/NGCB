@@ -272,8 +272,7 @@
                                                 </select>
                                             </div>
                                             <div class="input-field col s7">
-                                                <input id="minquantity" name="minquantity" type="text" class="validate"
-                                                    required>
+                                                <input id="minquantity" name="minquantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
                                                 <label for="minquantity">Item threshold:</label>
                                             </div>
                                         </div>
@@ -443,7 +442,7 @@
                             <select class="browser-default" id="category-option" name="mat_categ">
                                 <option selected>Choose category</option>
                                 <?php
-                                    $sql = "SELECT * FROM categories;";
+                                    $sql = "SELECT categories_id, categories_name FROM categories;";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 
@@ -478,7 +477,7 @@
                         </select>
                     </div>
                     <div class="input-field col add-threshold">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate" required>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input only numbers" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
@@ -496,7 +495,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                <input type="date" min="2019-01-01" required>
+                                <input type="text" name="dev_date" required>
                                 </td>
                                 <td>
                                     <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"

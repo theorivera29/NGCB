@@ -1406,7 +1406,7 @@ select[name=mat_unit] {
     width: 80%;
     padding-top: 2%; 
     padding-left: 5%;
-    height: 90% !important;
+    float: left;
 }
 
 .create-account-field{
@@ -1423,6 +1423,11 @@ select[name=mat_unit] {
 }
 
 .create-account-btn {
-    float: right !important;
     margin-right: 8%;
+    float: right;
+    margin-bottom: 2%;
+}
+
+.radio-container{
+    margin-left: 8%;
 }

@@ -171,9 +171,10 @@
                         <td>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#stockcard">
-                                    <?php echo $row[0] ?></a>
+                                <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_stockcard">
+                                    <?php echo $row[0] ?></button>
                             </form>
+<!--
                             <div id="stockcard" class="modal stock-card-container">
                                 <ul class="tabs">
                                     <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
@@ -194,16 +195,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-<<<<<<< HEAD
-                                                        
+                                                    <tr>                                                        
                                                     <?php echo $row[0];?>
                                                         <input type="hidden" name="mat_name" value="<?php echo $row[0];?>">
                                                         <td><input type="text" name="dev_date"></td>
-=======
+
                                                         <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                                         <td><input type="date" min="2019-01-01" required></td>
->>>>>>> 675fa20f24d3b797f565766ee0fceb90a6165b75
+
                                                         <td><input type="text" name="dev_quantity" required></td>
                                                         <td><input type="text" name="dev_unit" value="<?php echo $row[7];?>" required></td>
                                                         <td><input type="text" name="dev_supp" required></td>
@@ -289,6 +288,7 @@
                                     </div>
                                 </div>
                             </div>
+-->
                         </td>
                         <td>
                             <?php echo $row[1] ?>

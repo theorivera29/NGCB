@@ -13,7 +13,7 @@
 <html>
 
 <head>
-    <title>NGCB</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
@@ -236,7 +236,7 @@
 
     <!--Materials Container-->
     <div class="row">
-        <h5 id="panel-header-materials">Malapit na maubos Materials</h5>
+        <h5 id="panel-header-materials">Malterials Low in Quantity</h5>
         <div class="col container-materials">
             <table class="striped responsive-table materials-left centered">
                 <thead class="view-materials-head">

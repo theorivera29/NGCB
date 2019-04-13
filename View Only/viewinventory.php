@@ -5,17 +5,43 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-
-    if(isset($_GET['delivered_matName'])){
-        $delivered_matName = $_GET['delivered_matName'];
+    $output = '';
+    if(isset ($_POST['search'])) {
+        $searchq = $_POST['search'];
+        $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
+        $sql = "SELECT
+                            materials.mat_name, 
+                            materials.mat_prevStock, 
+                            materials.delivered_material, 
+                            materials.pulled_out, 
+                            materials.accumulated_materials,
+                            materials.currentQuantity
+                            FROM materials 
+                            INNER JOIN projects ON materials.mat_project = projects.projects_id 
+                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                            WHERE mat_name LIKE '%$searchq%'";
+                            $query = mysqli_query($conn, $sql);
+                            $count = mysqli_num_rows($query);
+                            if($count == 0) {
+                                $output = 'There is no results.';
+                            } else {
+                                while ($row = mysqli_fetch_array($query)) {
+                                    $matname = $row['mat_name'];
+                                    $output .= '<td>'.$matname.'</td>';
+                                }
+                            }
     }
-    $sql = "SELECT delivered_matName FROM deliveredin
-    INNER JOIN materials ON deliveredin.delivered_matName = mat_id
-    WHERE delivered_matName = '$delivered_matName'";
+
+    $projects_name = false;
+    if(isset($_GET['projects_name'])) {
+        $projects_name = $_GET['projects_name'];
+    }
+    
+
+    $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_row($result);
-    $delivered_matName = $row[0];
-    while($row = mysqli_fetch_row($result)){
+    $projects_status = $row[0];
 ?>
 
 <!DOCTYPE html>
@@ -23,35 +49,59 @@
 <html>
 
 <head>
-    <title>NGCB</title>
+<title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../style.css">
+
 </head>
 
 <body>
 <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
-                    class="material-icons">menu</i></a>
-            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</h4>
-            <ul class="side-nav" id="mobile-demo">
-            <li class="collection-item avatar">
-                <?php 
-                        if(isset($_SESSION['username'])) {
-                        $username = $_SESSION['username'];
-                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-                        $result = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_row($result);
-                    ?>
-                    <span class="title">
-                        <?php echo $row[1]." ".$row[2]; ?>
-                    </span>
-                    <span class="title">
-                        <?php echo $row[5]; }?>
-                    </span>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
+            <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+            <?php 
+                            if(isset($_SESSION['username'])) {
+                            $username = $_SESSION['username'];
+                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_row($result);
+                        ?>
+            <span id="acName">
+                <ul>
+                    <?php echo $row[1]." ".$row[2]; ?>
+                    <li class="down-arrow">
+
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                    </li>
+
+                </ul>
+                <ul id="dropdown" class="dropdown-content collection">
+                    <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
+
+                </ul>
+            </span>
+            <ul class="side-nav" id="navigation">
+                <li class="icon-container">
+                    <img src="../Images/NGCB_logo.png" class="sidenav-logo">
                 </li>
+                <h3 id="account-type">
+                    <?php 
+                        if(strcmp($row[5], "MatEng") == 0 ) {
+                            echo "Materials Engineer";
+                        } else if(strcmp($row[5], "ViewOnly") == 0 ) {
+                            echo "View Only";
+                        } else {
+                            echo "Admin";
+                        }
+                        }
+                    ?>
+                </h3>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -73,36 +123,48 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>
-                    <a href="../logout.php">Logout</a>
-                </li>
             </ul>
         </div>
     </nav>
     
-    <div class="">
-        <?php 
-           $projects_name = $_GET['projects_name'];
-        ?>
-        <div class="row">
-            <h5>Project Name:
-                <?php echo $projects_name; ?>
-            </h5>
-            <div class="col s12">
-                <ul class="tabs">
-                    <li class="tab col s3"><a href="#sitematerials">Site Materials</a></li>
-                    <li class="tab col s3"><a href="#categories">Categories</a></li>
-                </ul>
-            </div>
+    <div class="row">
+        <h5 class="project-name-inventory">
+            <?php echo $projects_name; ?>
+        </h5>
+        <div class="col view-inventory-slider">
+            <ul class="tabs tabs-inventory">
+                <li class="tab col s3"><a href="#sitematerials">Project Materials</a></li>
+                <li class="tab col s3"><a href="#categories">Categories</a></li>
+            </ul>
         </div>
     </div>
 
     <!--SITE MATERIALS-->
     <div id="sitematerials" class="col s12">
-        <div class="view-inventory-container">
-            <div class="light-blue lighten-5 ">
-                <table class="striped centered view-inventory">
-                    <thead class="view-inventory-head">
+    <?php 
+            if(strcmp($projects_status, "open") == 0) {
+        ?>
+        <div class="row">
+            <div class="col ">
+            <form action = "viewinventory.php" method = "POST">
+                    <input class="input search-bar" type="text" name = "search" placeholder="Search">
+                    <input class="submit search-btn" type="submit" value="SEARCH">
+                </form>
+                <?php
+                print("$output");
+                ?>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+
+        <?php 
+            }
+        ?>
+         <div class="view-inventory-container">
+            <table class="centered view-inventory">
+                <thead class="view-inventory-head">
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>
@@ -121,8 +183,8 @@
 
                     <tbody>
                     <?php 
-                            $projects_name = $_GET['projects_name'];
-                            $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
+                                // $projects_name = $_GET['projects_name'];
+                                $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             INNER JOIN projects ON materials.mat_project = projects.projects_id
                             WHERE projects.projects_name = '$projects_name'
@@ -194,120 +256,59 @@
             </div>
         </div>
     </div>
+
     <!--MODAL-->
-    <tr>
-                        <td>
-                            <form action="../server.php" method="POST">
-                                <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                            </form>
-                            <div id="modal1" class="modal modal-fixed-footer">
-                                <ul class="tabs">
-                                    <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
-                                    <li class="tab col s3"><a href="#usagein">Usage In </a></li>
-                                </ul>
+    <div id="modal1" class="modal modal-fixed-footer">
+            <form action="server.php" method="POST">
+                <div class="modal- ">
+                    <div class="content">
+                        <div class="row">
 
-                                <?php
-                                $sql = "SELECT delivered_date, delivered_quantity, materials.mat_unit, suppliedBy FROM deliveredin 
-                                INNER JOIN materials ON deliveredin.delivered_unit = mat_id
-                                WHERE delivered_matName = '$delivered_matName';";
-                                $result = mysqli_query($conn, $sql);
-                                while($row = mysqli_fetch_row($result)){
-                                ?>
+                            <div class="col s12">
+                                <h4>DELIVER IN</h4>
+                                <table class="centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                            <th>Supplied By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="date" name="dev_date"></td>
+                                            <td><input type="text" name="dev_quantity"></td>
+                                            <td><input type="text" name="unit"></td>
+                                            <td><input type="text" name="dev_supp"></td>
+                                        </tr>
 
-                                <div id="deliverin">
-                                    <div class="row">
-                                        <form action="../server.php" method="POST">
-                                            <table class="centered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit</th>
-                                                        <th>Supplied By</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                                        <td><input type="date" name="dev_date" value="<?php echo $row[0]?>"></td>
-                                                        <td><input type="text" name="dev_quantity" value="<?php echo $row[1]?>"></td>
-                                                        <td><input type="text" name="unit" value="<?php echo $row[2]?>"></td>
-                                                        <td><input type="text" name="dev_supp" value="<?php echo $row[3]?>"></td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                            <div class="modal-footer">
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <?php
-                                        }
-                                    ?>
-                                </div>
-
-                                <div id="usagein">
-                                    <div class="row">
-                                        <form action="../server.php" method="POST">
-                                            <table class="centered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit</th>
-                                                        <th>Pulled Out By</th>
-                                                        <th>Area of Usage</th>
-
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td><input type="text" placeholder="yyyy-mm-dd" name="us_date" ></td>
-                                                        <td><input type="text" name="us_quantity" required></td>
-                                                        <td><select class="browser-default" name="us_unit" required>
-                                                                <option value="UNITS" disabled selected>Unit</option>
-                                                                <option value="pcs" selected>pcs</option>
-                                                                <option value="mtrs" selected>mtrs</option>
-                                                                <option value="rolls" selected>rolls</option>
-                                                            </select></td>
-                                                        <td><input type="text" name="pulloutby" required></td>
-                                                        <td><input type="text" name="us_area" required></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="modal-footer">
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                    </tbody>
+                                </table>
                             </div>
-                        </td>
-                        <td>
-                            <?php echo $row[1] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[2] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[3] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[4] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[5] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[6] ?>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            <div class="col s12">
+                                <h4>USAGE IN</h4>
+                                <table class="centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Quantity</th>
+                                            <th>Unit</th>
+                                            <th>Pulled Out By</th>
+                                            <th>Area of Usage</th>
+
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
+                </div>
+            </form>
         </div>
-    </div>
 
     <!--SITE CATEGORIES-->
     <div id="categories" class="col s12">
@@ -341,9 +342,6 @@
         }
     ?>
         </div>
-        <?php
-        }
-    ?>
     </div>
 
 

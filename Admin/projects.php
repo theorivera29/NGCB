@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>NGCB</title>
+<title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
@@ -150,22 +150,22 @@
                         <form action="../server.php" method="POST">
                             <div class="row">
                                 <input type="hidden" name="project_name" value="">
-                                <div class="input-field col s6">
+                                <div class="input-field col s12 m6">
                                     <input placeholder="New project name" id="new_project_name" type="text"
                                         class="validate" name="new_project_name">
                                     <label class="active" for="new_project_name">Project Name:</label>
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col s12 m6">
                                     <input placeholder="New address" id="new_address" type="text" class="validate"
                                         name="new_address">
                                     <label for="new_address">Address:</label>
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col s12 m6">
                                     <input placeholder="New start date" id="new_sdate" type="text" class="validate"
                                         name="new_sdate">
                                     <label for="new_sdate">Start date:</label>
                                 </div>
-                                <div class="input-field col s6">
+                                <div class="input-field col s12 m6">
                                     <input placeholder="New end date" id="new_edate" type="text" class="validate"
                                         name="new_edate">
                                     <label for="new_edate">End date:</label>
@@ -174,7 +174,7 @@
                                     <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
                                     <button name="edit_project"
                                         class="modal-action modal-close waves-effect waves-green btn-flat">Save
-                                        Changes</button>
+                                        </button>
                                 </div>
                             </div>
                         </form>
@@ -264,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="reopenModal" class="modal modal-fixed-footer">
+                <div id="reopenModal" class="modal">
                     <div class="modal-content">
                         <h4>Reopen Project?</h4>
                         <p>Are you sure you want to reopen this project?</p>
@@ -272,14 +272,14 @@
                     <div class="modal-footer">
                         <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
                         <form action="../server.php" method="POST">
-                            <input type="hidden" name="project_name" value='<?php echo $row[0] ?>'>
+                            <input type="hidden" name="project_name" value=''>
                             <button type="submit" name="reopen_project"
                                 class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
                         </form>
                     </div>
                 </div>
 
-                <div id="deleteProjectModal" class="modal modal-fixed-footer">
+                <div id="deleteProjectModal" class="modal">
                     <div class="modal-content">
                         <h4>Delete Project?</h4>
                         <p>Are you sure you want to delete this project? </p>

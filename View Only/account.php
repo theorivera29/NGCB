@@ -3,9 +3,9 @@
     session_start();
 
     if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/NGCB/index.php');
+      header('Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php');
     }
-?>
+  ?>
 
 <!DOCTYPE html>
 
@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../style.css">
+</head>
 
 <body>
 <nav>
@@ -88,58 +89,63 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="card">
-            <table class="striped centered">
-                <thead class="hauled-items-head">
-                    <tr>
-                        <th>Hauling forms</th>
-                        <th>Date</th>
-                        <th>Hauled from</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <?php
-        $sql = "SELECT * FROM  hauling;";
-        $result = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_array($result)) {
-    ?>
-                <tbody>
-                    <td>
-                        <?php echo $row[0] ;?>
-                    </td>
-                    <td>
-                        <?php echo $row[1] ;?>
-                    </td>
-                    <td><?php echo $row[3] ;?></td>
-                    <td>
-                        <form action="../server.php" method="POST">
-                            <input type="hidden" name="hauling_no" value="<?php echo $row[0]?>">
-                            <input type="hidden" name="account_type" value="<?php echo $_SESSION['account_type']; ?>">
-                            <button class="waves-effect waves-light btn view-hauled-item-btn" type="submit"
-                                name="view_hauled">View</button>
-                        </form>
-                    </td>
-                </tbody>
-                <?php
-        }
-    ?>
-            </table>
 
+
+    <div class="card account-container">
+        <div class="account-edit-container">
+            <div class="row">
+                <h4> <i class="small material-icons">settings</i>Account Setting</h4>
+            </div>
+
+            <?php 
+                        if(isset($_SESSION['username'])) {
+                        $username = $_SESSION['username'];
+                        $sql = "SELECT 
+                        accounts_username, accounts_fname, accounts_lname, accounts_email, accounts_password FROM accounts
+                        WHERE accounts_username='$username';";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_row($result);
+                    ?>
+
+            <form action="server.php" method="POST">
+                <input type="hidden" name="userid"
+                    value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                <div class="input-field col account-edit-field">
+                    <input id="login-username" name="newusername" type="text" value=" <?php echo $row[0]?>">
+                    <label class="active" for="newusername">Username</label>
+                </div>
+                <div class="input-field col account-edit-field">
+                    <input id="login-username" name="newfname" type="text" value=" <?php echo $row[1]?>">
+                    <label class="active" for="newfname">First Name</label>
+                </div>
+                <div class="input-field col account-edit-field">
+                    <input id="login-username" name="newlname" type="text" value=" <?php echo $row[2]?>">
+                    <label class="active" for="newlname">Last Name</label>
+                </div>
+                <div class="input-field col account-edit-field">
+                    <input id="login-username" name="newemail" type="text" value=" <?php echo $row[3]?>">
+                    <label class="active" for="newemail">E-mail</label>
+                </div>
+                <div class="input-field col account-edit-field">
+                    <input id="login-password" name="newpassword" type="password" value=" <?php echo $row[4]?>">
+                    <label class="active" for="newpassword">Password</label>
+                </div>
+
+                <?php 
+                        }
+                    ?>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn waves-effect waves-light" type="submit"
+                            name="edit_account">Save</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
 
-    <div id="deleteModal" class="modal">
-        <div class="modal-content">
-            <h4>Delete hauling form?</h4>
-            <p>Are you sure you want to delete this form?</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
-        </div>
-    </div>
+
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -157,8 +163,26 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
 
+
+            //DATEPICKER
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15, // Creates a dropdown of 15 years to control year,
+                closeOnSelect: false // Close upon selecting a date,
+            });
+
         });
+
+        const btn = document.querySelector('#li-generate');
+        const inpt = document.querySelector('#inputValue');
+        const ul = document.querySelector('.ulList');
+
+        //const deleteLi = document.querySelector('.remove');
+
+        btn.addEventListener('click', liGenerate);
+        document.addEventListener('click', liDelete);
     </script>
+
 </body>
 
 </html>

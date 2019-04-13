@@ -12,35 +12,59 @@
 <html>
 
 <head>
-    <title>NGCB</title>
+<title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../style.css">
+
 </head>
 
 <body>
 <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large pulse"><i
-                    class="material-icons">menu</i></a>
-            <h4 id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</h4>
-            <ul class="side-nav" id="mobile-demo">
-            <li class="collection-item avatar">
-                <?php 
-                        if(isset($_SESSION['username'])) {
-                        $username = $_SESSION['username'];
-                        $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-                        $result = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_row($result);
-                    ?>
-                    <span class="title">
-                        <?php echo $row[1]." ".$row[2]; ?>
-                    </span>
-                    <span class="title">
-                        <?php echo $row[5]; }?>
-                    </span>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
+            <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+            <?php 
+                            if(isset($_SESSION['username'])) {
+                            $username = $_SESSION['username'];
+                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                            $result = mysqli_query($conn, $sql);
+                            $row = mysqli_fetch_row($result);
+                        ?>
+            <span id="acName">
+                <ul>
+                    <?php echo $row[1]." ".$row[2]; ?>
+                    <li class="down-arrow">
+
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                    </li>
+
+                </ul>
+                <ul id="dropdown" class="dropdown-content collection">
+                    <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
+
+                </ul>
+            </span>
+            <ul class="side-nav" id="navigation">
+                <li class="icon-container">
+                    <img src="../Images/NGCB_logo.png" class="sidenav-logo">
                 </li>
+                <h3 id="account-type">
+                    <?php 
+                        if(strcmp($row[5], "MatEng") == 0 ) {
+                            echo "Materials Engineer";
+                        } else if(strcmp($row[5], "ViewOnly") == 0 ) {
+                            echo "View Only";
+                        } else {
+                            echo "Admin";
+                        }
+                        }
+                    ?>
+                </h3>
                 <li>
                     <div class="divider"></div>
                 </li>
@@ -62,14 +86,12 @@
                 <li>
                     <div class="divider"></div>
                 </li>
-                <li>
-                    <a href="../logout.php">Logout</a>
-                </li>
             </ul>
         </div>
     </nav>
 
     <div class="site-materials-container">
+    
         <div class="lighten-5">
             <table class="centered site-materials-content">
                 <thead class="site-materials-head">

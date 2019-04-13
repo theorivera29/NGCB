@@ -150,88 +150,9 @@
                         <td>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
-                                    <?php echo $row[0] ?></a>
+                                <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_stockcard">
+                                    <?php echo $row[0] ?></button>
                             </form>
-                            <div id="modal1" class="modal modal-fixed-footer">
-                                <ul class="tabs">
-                                    <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
-                                    <li class="tab col s3"><a href="#usagein">Usage In </a></li>
-                                </ul>
-
-                                <div id="deliverin">
-                                    <div class="row">
-                                        <form action="../server.php" method="POST">
-                                            <table class="centered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit</th>
-                                                        <th>Supplied By</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                                        <td><input type="date" name="dev_date" ></td>
-                                                        <td><input type="text" name="dev_quantity" required></td>
-                                                        <td><select class="browser-default" name="us_unit" required>
-                                                                <option value="UNITS" disabled selected>Units</option>
-                                                                <option value="pcs" selected>pcs</option>
-                                                                <option value="mtrs" selected>mtrs</option>
-                                                                <option value="rolls" selected>rolls</option>
-                                                            </select></td>
-                                                        <td><input type="text" name="dev_supp" required></td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                            <div class="modal-footer">
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div id="usagein">
-                                    <div class="row">
-                                        <form action="../server.php" method="POST">
-                                            <table class="centered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit</th>
-                                                        <th>Pulled Out By</th>
-                                                        <th>Area of Usage</th>
-
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td><input type="text" placeholder="yyyy-mm-dd" name="us_date" ></td>
-                                                        <td><input type="text" name="us_quantity" required></td>
-                                                        <td><select class="browser-default" name="us_unit" required>
-                                                                <option value="UNITS" disabled selected>Unit</option>
-                                                                <option value="pcs" selected>pcs</option>
-                                                                <option value="mtrs" selected>mtrs</option>
-                                                                <option value="rolls" selected>rolls</option>
-                                                            </select></td>
-                                                        <td><input type="text" name="pulloutby" required></td>
-                                                        <td><input type="text" name="us_area" required></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="modal-footer">
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
                         <td>
                             <?php echo $row[1] ?>
                         </td>

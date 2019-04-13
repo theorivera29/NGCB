@@ -1457,11 +1457,19 @@ select[name=mat_unit] {
     margin-top: 2%;
 }
 
-.account-list-table{
-    text-align: center !important;
+.account-list-head>tr>th{
+    background-color: #0B415E !important;
+    color: #FFFFFF;
 }
 
-.account-list-head>tr>th{
+/*Password Reset*/
+.pass-reset-container{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.pass-reset-table-head>tr>th{
     background-color: #0B415E !important;
     color: #FFFFFF;
 }

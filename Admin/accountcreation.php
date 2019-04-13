@@ -129,11 +129,25 @@
                         required>
                     <label for="email" class="create-account-field">Email</label>
                 </div>
-                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit"
-                    name="create_account">Create
-                    An Account</button>
+
+                <div class="col radio-container">
+                    <h5>Account Type:</h5>
+                    <div class="">
+                        <input id="radio-1" type="radio" name="radio-account" checked>
+                        <label for="radio-1">Materials Engineer</label>
+                    </div>
+                    <div class="">
+                        <input id="radio-2" type="radio" name="radio-account">
+                        <label for="radio-2">View Only</label>
+                    </div>
+                </div>
             </div>
+
     </div>
+    <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit" name="create_account">Create
+        An Account</button>
+    </div>
+
     </form>
     </div>
 

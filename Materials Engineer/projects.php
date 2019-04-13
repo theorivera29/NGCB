@@ -29,9 +29,15 @@
             <?php 
                             if(isset($_SESSION['username'])) {
                             $username = $_SESSION['username'];
-                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_row($result);
+                            $stmt = $mysqli->prepare("SELECT * FROM accounts WHERE accounts_username = '$username'");
+                            if (!$stmt->execute()) {
+                                 echo "Error while executing query: (" . $stmt->errno . ") " . $stmt->error;
+                            }
+                            else {
+                                if (!($rows = $stmt->get_result())) {
+                                    echo "Error while retrieving results: (" . $stmt->errno . ") " . $stmt->error;
+                                }
+                            }
                         ?>
             <span id="acName">
                 <ul>
@@ -126,11 +132,19 @@
         <div id="ongoing" class="col s12">
             <div class="row">
                 <?php
-                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
+                        $stmt = $mysqli->prepare(ELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
                         WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
-                        && projects_status = 'open';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
+                        && projects_status = 'open';");
+                            if (!$stmt->execute()) {
+                                 echo "Error while executing query: (" . $stmt->errno . ") " . $stmt->error;
+                            }
+                            else {
+                                if (!($rows = $stmt->get_result())) {
+                                    echo "Error while retrieving results: (" . $stmt->errno . ") " . $stmt->error;
+                                }
+                            }
+                
+                        foreach($row as $rows){
                     ?>
                 <div class="col s12 m5 project-container">
                     <div class="card center project-container-card">

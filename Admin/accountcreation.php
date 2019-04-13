@@ -129,7 +129,7 @@
                         required>
                     <label for="email" class="create-account-field">Email</label>
                 </div>
-                <button class="btn waves-effect waves-light create-account-btn" type="submit"
+                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit"
                     name="create_account">Create
                     An Account</button>
             </div>

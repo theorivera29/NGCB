@@ -315,10 +315,7 @@ label {
     font-size: 2vh !important;
 }
 
-.create-account-btn {
-    color: #ffffff !important;
-    background-color: #4C99AF !important;
-}
+
 
 .reset-password-btn {
     color: #ffffff !important;
@@ -1395,4 +1392,9 @@ select[name=mat_unit] {
     color: #00171F;
     font-size: 6vmin;
     font-family: Pridi;
+}
+
+.create-account-btn {
+    float: right !important;
+    margin-right: 8%;
 }

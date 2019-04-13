@@ -478,7 +478,7 @@
                         </select>
                     </div>
                     <div class="input-field col add-threshold">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate" required>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input only numbers" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>

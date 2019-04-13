@@ -107,19 +107,19 @@
             <div class="row">
                 <div class="input-field col s5">
                     <input id="firstname" name="firstname" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z]*" title="Input only letters" required>
+                        pattern="[A-Za-z]*" title="Input letters only" required>
                     <label for="firstname" class="create-account-field">First Name</label>
                 </div>
 
                 <div class="input-field col s5">
                     <input id="lastname" name="lastname" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z]*" title="Input only letters" required>
+                        pattern="[A-Za-z]*" title="Input letters only" required>
                     <label for="lastname" class="create-account-field">Last Name</label>
                 </div>
 
                 <div class="input-field col s5">
                     <input id="username" name="username" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z0-9]*" title="Input only letters" required>
+                        pattern="[A-Za-z0-9]*" title="Input letters only" required>
                     <label for="username" class="create-account-field">Username</label>
                 </div>
 
@@ -129,11 +129,25 @@
                         required>
                     <label for="email" class="create-account-field">Email</label>
                 </div>
-                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit"
-                    name="create_account">Create
-                    An Account</button>
+
+                <div class="col radio-container">
+                    <h5>Account Type:</h5>
+                    <div class="">
+                        <input id="radio-1" type="radio" name="radio-account" checked>
+                        <label for="radio-1">Materials Engineer</label>
+                    </div>
+                    <div class="">
+                        <input id="radio-2" type="radio" name="radio-account">
+                        <label for="radio-2">View Only</label>
+                    </div>
+                </div>
             </div>
+
     </div>
+    <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit" name="create_account">Create
+        An Account</button>
+    </div>
+
     </form>
     </div>
 

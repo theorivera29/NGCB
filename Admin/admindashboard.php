@@ -44,7 +44,7 @@
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
                     <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
-                    <li><a class="waves-effect waves-blue" href="logout.php">Logout</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
 
                 </ul>
             </span>

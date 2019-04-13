@@ -228,10 +228,6 @@ th {
     margin-top: 50%;
 }
 
-.header {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
 .header-one {
     font-family: Galyon;
     text-align: center;
@@ -259,12 +255,7 @@ th {
     padding: 0 !important;
 }
 
-.header-two {
-    text-align: left;
-    color: #00171F;
-    font-size: 6vmin;
-    font-family: Pridi;
-}
+
 
 .submit-btn {
     width: 50% !important;
@@ -622,7 +613,7 @@ textarea.materialize-textarea {
 
 .view-tasks-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
     border-radius: 2%;
     color: white;
     padding-right: 2%;
@@ -698,7 +689,7 @@ textarea.materialize-textarea {
 
 .view-materials-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
     border-radius: 2%;
     color: white;
 }
@@ -1380,4 +1371,28 @@ select[name=mat_unit] {
 
 .sub-header-text {
     margin-top: 10% !important;
+}
+
+/*Account Creation*/
+.account-creation-container{
+    margin-top: 3% !important;
+    margin-left: 10% !important;
+    background-color: #FFFFFF !important;
+    width: 80%;
+    padding-top: 2%; 
+    padding-left: 5%;
+    height: 90% !important;
+}
+
+.create-account-field{
+    width: 80% !important;
+    margin-left: 20% !important;
+    margin-top: 5% !important;
+}
+
+.header-two {
+    text-align: left;
+    color: #00171F;
+    font-size: 6vmin;
+    font-family: Pridi;
 }

@@ -142,10 +142,11 @@
                     </div>
                 </div>
             </div>
-
-    </div>
-    <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit" name="create_account">Create
+            <div class="col">
+                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit" name="create_account">Create
         An Account</button>
+                    </div>
+    </div>
     </div>
 
     </form>

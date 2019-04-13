@@ -429,6 +429,26 @@
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
         $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy', 1);";
         mysqli_query($conn, $sql);
+<<<<<<< HEAD
+            
+        $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $currentQuantity = $row[0];
+        $newQuantity = $currentQuantity + $delivered_quantity;
+        $sql = "UPDATE materials SET currentQuantity = ('$newQuantity') WHERE mat_name = '$mat_name';";
+        mysqli_query($conn, $sql);
+            
+        $sql = "SELECT delivered_material FROM materials WHERE mat_name='$mat_name';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $current_delivered_material = $row[0];
+        $newQuantity = $current_delivered_material + $delivered_quantity;
+        $sql = "UPDATE materials SET delivered_material = ('$newQuantity') WHERE mat_name = '$mat_name';";
+        mysqli_query($conn, $sql);
+            
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added delivered in', 1, 1);";
+=======
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
@@ -436,6 +456,7 @@
         }
         $add_deliver_date = date("Y-m-d G:i:s");
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_deliver_date', 'Added delivered in of $delivered_matName', $account_id);";
+>>>>>>> 3cfa7dcefb0a3c4623f7789d24a94d5bdec78711
         mysqli_query($conn, $sql);    
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
     }
@@ -452,6 +473,37 @@
         $count = mysqli_num_rows($result);
         $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area', 1);";
         mysqli_query($conn, $sql);
+<<<<<<< HEAD
+            
+        $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $currentQuantity = $row[0];
+        $newQuantity = $currentQuantity - $usage_quantity;
+        $sql = "UPDATE materials SET currentQuantity = ('$newQuantity') WHERE mat_name = '$mat_name';";
+        mysqli_query($conn, $sql);
+            
+        $sql = "SELECT pulled_out FROM materials WHERE mat_name='$mat_name';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $current_pulledout = $row[0];
+        $newQuantity = $current_pulledout + $usage_quantity;
+        $sql = "UPDATE materials SET pulled_out = ('$newQuantity') WHERE mat_name = '$mat_name';";
+        mysqli_query($conn, $sql);
+            
+        $sql = "SELECT accumulated_materials FROM materials WHERE mat_name='$mat_name';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $total_accumulated = $row[0];
+        $newQuantity = $total_accumulated + $usage_quantity;
+        $sql = "UPDATE materials SET accumulated_materials = ('$newQuantity') WHERE mat_name = '$mat_name';";
+        mysqli_query($conn, $sql);
+            
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added usage in', 1, 1);";
+        mysqli_query($conn, $sql);
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
+        exit();
+=======
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
@@ -461,6 +513,7 @@
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_usage_date', 'Added usage in of $delivered_matName', $account_id);";
         mysqli_query($conn, $sql); 
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
+>>>>>>> 3cfa7dcefb0a3c4623f7789d24a94d5bdec78711
     }
 
 

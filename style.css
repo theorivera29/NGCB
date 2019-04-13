@@ -1,15 +1,15 @@
 /*Fonts Used*/
 @font-face {
-    font-family:Galyon;
-    src:url("fonts/Galyon-Regular.eot"),
+    font-family: Galyon;
+    src: url("fonts/Galyon-Regular.eot"),
         url("fonts/Galyon-Regular.ttf"),
         url("fonts/Galyon-Regular.woff"),
         url("fonts/Galyon-Regular.woff2");
 }
 
 @font-face {
-    font-family:Pridi;
-    src:url("fonts/pridi-v4-latin-regular.eot"),
+    font-family: Pridi;
+    src: url("fonts/pridi-v4-latin-regular.eot"),
         url("fonts/pridi-v4-latin-regular.ttf"),
         url("fonts/pridi-v4-latin-regular.woff"),
         url("fonts/pridi-v4-latin-regular.woff2");
@@ -19,11 +19,6 @@ body {
     overflow-x: hidden;
     background-color: #E0E0E0;
 }
-
-
-
-
-
 
 .Calendar-Container {
     padding-top: 2%;
@@ -153,9 +148,7 @@ th {
     padding-left: 2%;
 }
 
-.category-container {
-    padding: 1% !important;
-}
+
 
 .item-cat-col {
     padding-right: 2% !important;
@@ -166,14 +159,7 @@ th {
 
 /* Style for admin*/
 
-.Cards-Container {
-    background-color: #F0F1F2;
-    margin-top: 2%;
-    margin-left: 2% !important;
-    border-radius: 3%;
-    border: 1px solid #3E3E3F;
-    width: 30% !important;
-}
+
 
 .Account-Container {
     background-color: #E78C1E;
@@ -185,10 +171,7 @@ th {
     color: white;
 }
 
-.Password-Reset-Container {
-    background-color: #0B415E;
-    color: white;
-}
+
 
 
 
@@ -312,7 +295,7 @@ label {
 
 }
 
-.reset-password label{
+.reset-password label {
     margin-top: 3% !important;
 }
 
@@ -349,7 +332,7 @@ label {
     background-color: #4C99AF !important;
 }
 
-.reset-password-btn{
+.reset-password-btn {
     color: #ffffff !important;
     background-color: #4C99AF !important;
     font-size: 2vh !important;
@@ -771,28 +754,29 @@ div.contextmenu:hover {
 }
 
 /*Projects*/
-.project-status{
+.project-status {
     width: 70%;
     margin-left: 15%;
 }
+
 .tabs-project {
     background-color: #E0E0E0 !important;
     margin-top: 2% !important;
 }
 
-.tabs-project a{
+.tabs-project a {
     background-color: #19466D !important;
     color: #FFFFFF !important;
     font-size: 2vmin !important;
 }
 
-.tabs-project a:hover  {
+.tabs-project a:hover {
     color: #BFAB25 !important;
     background-color: #FFFFFF !important;
     font-size: 2vmin !important
 }
 
-.tabs-project .indicator{
+.tabs-project .indicator {
     background-color: #FFFFFF !important;
 }
 
@@ -807,24 +791,28 @@ div.contextmenu:hover {
     width: 75% !important;
 }
 
-.card .card-content{
+.card{
+    width: 90% !important;
+    margin-left: 5% !important;
+}
+
+.card .card-content {
     width: 100% !important;
     font-size: 2.5vmin;
     background-color: #BFAF4A !important;
-    padding-left: 5% !important;
 }
 
-.card-title{
+.card-title {
     font-size: 4vmin !important;
     font-weight: bold !important;
 }
 
-.card-text{
+.card-text {
     font-weight: bold !important;
 }
 
 /*View Inventory*/
-.project-name-inventory{
+.project-name-inventory {
     font-weight: bold !important;
     text-align: center;
     margin-top: 3%;
@@ -833,7 +821,7 @@ div.contextmenu:hover {
     color: #19466D;
 }
 
-.view-inventory-slider{
+.view-inventory-slider {
     width: 70%;
     margin-left: 15%;
 }
@@ -843,22 +831,22 @@ div.contextmenu:hover {
     margin-top: 2% !important;
 }
 
-.tabs-inventory a{
+.tabs-inventory a {
     background-color: #19466D !important;
     color: #FFFFFF !important;
     font-size: 2vmin;
 }
 
-.tabs-inventory a:hover  {
+.tabs-inventory a:hover {
     color: #BFAB25 !important;
     background-color: #FFFFFF !important;
 }
 
-.tabs-inventory .indicator{
+.tabs-inventory .indicator {
     background-color: #FFFFFF !important;
 }
 
-.viewinventory-btn{
+.viewinventory-btn {
     color: #FFFFFF !important;
     background-color: #0D1F2D !important;
     margin-top: 5% !important;
@@ -867,61 +855,62 @@ div.contextmenu:hover {
 
 /*View Inventory - Site Materials*/
 .search-bar,
-.search-btn{
+.search-btn {
     display: inline-block !important;
     padding: 10px 15px !important;
     font-size: 20px !important;
     border-radius: 0 !important;
 }
 
-.search-bar{
+.search-bar {
     width: 50% !important;
     height: 2% !important;
     margin-left: 10% !important;
 }
 
-.search-btn{
+.search-btn {
     background-color: #19466D !important;
     color: #FFFFFF !important;
     margin-top: 5%;
 }
 
-.input[type=search]{
+.input[type=search] {
     border: 1px solid black !important;
     background-color: #FFFFFF !important;
 }
 
 .add-mat-btn,
-.edit-material-btn{
+.edit-material-btn {
     background-color: #19466D !important;
     color: #FFFFFF !important;
 }
 
-.add-mat-btn{
+.add-mat-btn {
     margin-top: 2%;
     font-size: 2.2vmin !important;
     float: right !important;
     margin-right: 3%;
 }
+
 .view-inventory-container {
     width: 95% !important;
     margin-left: 2%;
     margin-right: 2%;
 }
 
-.view-inventory{
+.view-inventory {
     border: 1px solid black;
     border-collapse: separate;
 }
 
-.view-inventory-head>tr{
+.view-inventory-head>tr {
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     color: #FFFFFF;
     padding-right: 2% !important;
 }
 
-.view-inventory>tr>td{
+.view-inventory>tr>td {
     background-color: #FFFFFF !important;
 }
 
@@ -932,65 +921,65 @@ div.contextmenu:hover {
     font-size: 3vmin;
 }
 
-.stockard-status{
+.stockard-status {
     margin-top: 10% !important;
 }
 
-.tabs-stockard{
+.tabs-stockard {
     overflow-x: hidden !important;
 }
 
-.tabs-stockard a{
+.tabs-stockard a {
     background-color: #19466D !important;
     color: #FFFFFF !important;
     font-size: 2vmin !important
 }
 
-.tabs-stockard a:hover  {
+.tabs-stockard a:hover {
     color: #BFAB25 !important;
     background-color: #FFFFFF !important;
     font-size: 2vmin !important
 }
 
-.tabs-stockard .indicator{
+.tabs-stockard .indicator {
     background-color: #FFFFFF !important;
 }
 
-.deliverIn-container{
+.deliverIn-container {
     height: 50% !important;
 }
 
-.deliverIn-container-table>tr>th{
+.deliverIn-container-table>tr>th {
     font-size: 4vmin !important;
     margin-top: 5% !important;
     background-color: yellow !important;
 }
 
-.save-stockcard-btn{
+.save-stockcard-btn {
     color: #ffffff !important;
     background-color: #003A51 !important;
     float: right;
     font-size: 2vmin !important;
 }
 
-.save-stockcard-btn:hover{
+.save-stockcard-btn:hover {
     color: #ffffff !important;
     background-color: #003A51 !important;
     float: right;
 }
 
-.modal-footer{
+.modal-footer {
     border-top: 1px solid black;
     margin-top: 5%;
 }
 
-.add-material-name{
+.add-material-name {
     margin-top: 5% !important;
     margin-left: 3% !important;
     width: 50%;
 }
 
-.add-mat-modal{
+.add-mat-modal {
     height: 90% !important;
     overflow-y: hidden !important;
 }
@@ -1000,14 +989,14 @@ div.contextmenu:hover {
     margin-left: 3% !important;
 }
 
-.material-add-unit{
+.material-add-unit {
     margin-left: 3% !important;
 }
 
-.add-threshold{
+.add-threshold {
     margin-left: 3% !important;
     width: 50% !important;
-    margin-top: 3% !important;   
+    margin-top: 3% !important;
 }
 
 .matname-btn {
@@ -1015,7 +1004,7 @@ div.contextmenu:hover {
     color: white !important;
 }
 
-.search-bar-site-materials{
+.search-bar-site-materials {
     width: 20% !important;
     margin-left: 2% !important;
     padding-left: 2% !important;
@@ -1039,7 +1028,7 @@ div.contextmenu:hover {
     color: white;
 }
 
-.stock-card-container{
+.stock-card-container {
     overflow-y: auto !important;
 }
 
@@ -1050,28 +1039,27 @@ div.contextmenu:hover {
 .add-category {
     padding-right: 2% !important;
 }
+
 /*View Inventory - Category*/
-.all-btn{
+.all-btn {
     color: #ffffff !important;
     background-color: #003A51 !important;
 }
 
-.all-btn:hover{
+.all-btn:hover {}
 
-}
-
-.add-category-modal{
+.add-category-modal {
     width: 40%;
     margin-top: 5%;
 }
 
-#modal-title{
+#modal-title {
     margin-top: 2%;
     font-size: 4vmin;
     margin-left: 3%;
 }
 
-.field-category{
+.field-category {
     width: 50% !important;
     margin-bottom: 5% !important;
     margin-top: 8% !important;
@@ -1084,23 +1072,23 @@ div.contextmenu:hover {
     margin-left: 3% !important;
 }
 
-.add-category-modal{
+.add-category-modal {
     width: 40%;
     margin-top: 5%;
 }
 
-#category-title{
+#category-title {
     margin-left: 5% !important;
     font-size: 2vmin !important;
 }
 
-#category-option{
+#category-option {
     margin-left: 5% !important;
     width: 100% !important;
     font-size: 2vmin !important;
 }
 
-.field-new-category{
+.field-new-category {
     margin-top: 5% !important;
     margin-left: 3% !important;
     width: 50% !important;
@@ -1124,22 +1112,22 @@ select[name=mat_unit] {
 }
 
 /*Hauling*/
-.hauling-project-card{
+.hauling-project-card {
     margin-right: 5%;
     margin-top: 5%;
 }
 
-.hauling-project-card-content{
+.hauling-project-card-content {
     text-align: center;
-    
+
 }
 
 /*Fill out hauling form*/
-.fill-hauling-form-container{
+.fill-hauling-form-container {
     margin-top: 3%;
 }
 
-.haulingform-container{
+.haulingform-container {
     width: 80%;
     margin-left: 10%;
 }
@@ -1148,56 +1136,56 @@ select[name=mat_unit] {
     background-color: #FFFFFF !important;
 }
 
-.date-span{
+.date-span {
     padding-right: 1% !important;
     font-size: 2vmin !important;
 }
 
-.hauling-date{
+.hauling-date {
     margin-right: 4% !important;
-    margin-left: 6% !important; 
+    margin-left: 6% !important;
 }
 
-.container-date-hauling{
+.container-date-hauling {
     float: right;
     margin-right: 5% !important;
     margin-top: 1.5%;
 }
 
-.deliver-to-field{
+.deliver-to-field {
     width: 50% !important;
 }
 
-.form-number-field{
+.form-number-field {
     width: 20% !important;
     float: right !important;
     margin-right: 4%;
 }
 
-.hauled-from-field{
+.hauled-from-field {
     width: 50% !important;
 }
 
-.hauling-table-container{
+.hauling-table-container {
     width: 100% !important;
     margin-left: 2%;
 }
 
-.hauling-form-table{
+.hauling-form-table {
     width: 90% !important;
 }
 
-.hauling-form-table-head>tr>th{
+.hauling-form-table-head>tr>th {
     font-size: 2.5vh !important;
     background-color: #19466D !important;
     color: #FFFFFF !important;
 }
 
-.hauled-side-container{
+.hauled-side-container {
     margin-top: 5% !important;
 }
 
-.fillout-content{
+.fillout-content {
     background-color: #FFFFFF !important;
     width: 100% !important;
     font-size: 2.5vmin;
@@ -1217,20 +1205,17 @@ select[name=mat_unit] {
     padding-left: 2%;
 }
 
-
-
 /*Report*/
-.report-project-card{
+.report-project-card {
     margin-right: 5%;
     margin-top: 5%;
 }
 
-.report-project-card-content{
+.report-project-card-content {
     text-align: center;
 }
 
 /*Report Page*/
-
 
 /* Style for Report*/
 .report-btn {
@@ -1253,7 +1238,7 @@ select[name=mat_unit] {
     color: white;
 }
 
-.report-table{
+.report-table {
     border: 1px solid black;
     border-collapse: separate;
     background-color: #FFFFFF;
@@ -1265,7 +1250,7 @@ select[name=mat_unit] {
     color: white !important;
 }
 
-.report-head>tr{
+.report-head>tr {
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     color: #FFFFFF;
@@ -1273,7 +1258,7 @@ select[name=mat_unit] {
 }
 
 /*Account Settings*/
-.account-container{
+.account-container {
     width: 80%;
     margin: 10%;
     margin-top: 5%;
@@ -1284,47 +1269,82 @@ select[name=mat_unit] {
     padding-top: 2%;
 }
 
-.account-edit-field{
+.account-edit-field {
     width: 30%;
     margin-top: 8%;
-    margin-left: 
+    margin-left:
 }
 
-.account-username-field{
+.account-username-field {
     margin-left: 5% !important;
     margin-top: 3% !important;
 }
 
-.account-email-field{
+.account-email-field {
     margin-left: 5% !important;
     margin-top: 3% !important;
 }
 
-.account-firstname-field{
+.account-firstname-field {
     margin-left: 5% !important;
     margin-top: 3% !important;
 }
 
-.account-lastname-field{
+.account-lastname-field {
     margin-left: 5% !important;
     margin-top: 3% !important;
 }
 
-.account-newpassword-field{
+.account-newpassword-field {
     margin-left: 5% !important;
     margin-top: 3% !important;
 }
 
-.account-confirmpassword-field{
+.account-confirmpassword-field {
     margin-left: 5% !important;
     margin-top: 3% !important;
 }
 
-.account-btn{
+.account-btn {
     float: right !important;
 }
 
-.account-setting-label{
+.account-setting-label {
     font-size: 3vmin !important;
     color: yellow !important
+}
+
+
+
+
+/*Design for Admin Module*/
+.cards-container-admin {
+    margin-left: 5%;
+    margin-top: 5%;
+    color: white;
+    width: 25%;
+}
+
+.account-container-admin {
+    width:300px; 
+    float:left; 
+    background: green; 
+    height: 150px;
+    margin: 50px;
+}
+
+.password-reset-container {
+    width:300px; 
+    height: 150px; 
+    float:right; 
+    background: blue;
+    margin: 50px
+}
+
+.sub-header-number {
+    margin-top: 10% !important;
+}
+
+.sub-header-text {
+    margin-top: 10% !important;
 }

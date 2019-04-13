@@ -237,7 +237,7 @@
                         ?>
                     </tbody>
                 </table>
-                <a class="waves-effect waves-light btn modal-trigger task-btn" href="#viewAllTask">View ALl Task</a>
+                <a class="waves-effect waves-light btn modal-trigger task-btn" href="#viewAllTask">View All Task</a>
             </div>
         </div>
 
@@ -245,7 +245,7 @@
 
     <!--Materials Container-->
     <div class="row">
-        <h5 id="panel-header-materials">Malterials Low in Quantity</h5>
+        <h5 id="panel-header-materials">Materials Low in Quantity</h5>
         <div class="col container-materials">
             <table class="striped responsive-table materials-left centered">
                 <thead class="view-materials-head">

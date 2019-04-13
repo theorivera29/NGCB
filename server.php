@@ -162,7 +162,11 @@
 
     if(isset($_POST['open_stockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name");
+        if(strcmp($account_type,'MatEng') == 0) {
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name");
+        } else {
+            header("location: http://127.0.0.1/NGCB/View%20Only/stockcard.php?mat_name=$mat_name");
+        }
     }
 
     if(isset($_POST['open_report'])) {
@@ -502,6 +506,10 @@
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$generate_report_date', 'Generated report of $projects_name', $account_id);";
         mysqli_query($conn, $sql); 
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/generate_report.php?projects_name=$projects_name");        
+    }
+    if(isset($_POST['search'])) {
+        $projects_name = $_POST['projects_name'];
+        header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");
     }
 
     if(isset($_POST['password_request'])) {

@@ -86,6 +86,10 @@
                     </li>
                 </ul>
                 <li>
+                    <i class="material-icons left">vpn_key</i><a class="waves-effect waves-blue"
+                        href="passwordrequest.php">Password Request</a>
+                </li>
+                <li>
                     <i class="material-icons left">insert_drive_file</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>
                 </li>
@@ -143,13 +147,11 @@
                 </div>
             </div>
             <div class="col">
-                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit" name="create_account">Create
-        An Account</button>
-                    </div>
-    </div>
-    </div>
-
-    </form>
+                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit"
+                    name="create_account">Create
+                    An Account</button>
+            </div>
+        </form>
     </div>
 
     <!--Import jQuery before materialize.js-->

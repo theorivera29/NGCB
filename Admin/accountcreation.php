@@ -1,7 +1,6 @@
 <?php
     include "../db_connection.php";
     session_start();
-
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
@@ -12,12 +11,11 @@
 <html>
 
 <head>
-<title>NGCBDC</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../style.css">
-
 </head>
 
 <body>
@@ -45,7 +43,7 @@
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
                     <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
-                    <li><a class="waves-effect waves-blue" href="logout.php">Logout</a></li>
+                    <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
 
                 </ul>
             </span>
@@ -88,6 +86,10 @@
                     </li>
                 </ul>
                 <li>
+                    <i class="material-icons left">vpn_key</i><a class="waves-effect waves-blue"
+                        href="passwordrequest.php">Password Request</a>
+                </li>
+                <li>
                     <i class="material-icons left">insert_drive_file</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>
                 </li>
@@ -103,67 +105,51 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="account-creation-container">
         <form action="../server.php" method="POST">
             <h2 class="header header-two">Create an Account</h2>
             <div class="row">
-                <div class="input-field col s12 m10 offset-m1">
-                    <input id="firstname" name="firstname" type="text" class="validate" pattern="[A-Za-z]*"
-                        title="Input only letters" required>
-                    <label for="firstname">First Name</label>
+                <div class="input-field col s5">
+                    <input id="firstname" name="firstname" type="text" class="validate create-account-field"
+                        pattern="[A-Za-z]*" title="Input letters only" required>
+                    <label for="firstname" class="create-account-field">First Name</label>
                 </div>
 
-                <div class="input-field col s12 m10 offset-m1">
-                    <input id="lastname" name="lastname" type="text" class="validate" pattern="[A-Za-z]*"
-                        title="Input only letters" required>
-                    <label for="lastname">Last Name</label>
+                <div class="input-field col s5">
+                    <input id="lastname" name="lastname" type="text" class="validate create-account-field"
+                        pattern="[A-Za-z]*" title="Input letters only" required>
+                    <label for="lastname" class="create-account-field">Last Name</label>
                 </div>
 
-                <div class="input-field col s12 m10 offset-m1">
-                    <input id="username" name="username" type="text" class="validate" pattern="[A-Za-z0-9]*"
-                        title="Input only letters" required>
-                    <label for="username">Username</label>
+                <div class="input-field col s5">
+                    <input id="username" name="username" type="text" class="validate create-account-field"
+                        pattern="[A-Za-z0-9]*" title="Input letters only" required>
+                    <label for="username" class="create-account-field">Username</label>
                 </div>
 
-                <div class="input-field col s12 m10 offset-m1">
-                    <input id="email" name="email" type="text" class="validate"
-                        pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com"
+                <div class="input-field col s5">
+                    <input id="email" name="email" type="text" class="validate create-account-field"
+                        pattern="[A-Za-z0-9._]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com"
                         required>
-                    <label for="email">Email</label>
+                    <label for="email" class="create-account-field">Email</label>
                 </div>
 
-                <div class="input-field col s12 m10 offset-m1">
-                    <input id="password" name="password" type="password" class="validate" minlength="6" maxlength="12"
-                        title="Alphanumeric only" required>
-                    <label for="password">Password</label>
-                </div>
-
-                <div class="col s12 m10 offset-m1">
-                    <span>Account Type</span>
-                    <div class="row">
-                        <form>
-                            <p>
-                                <label>
-                                    <input class="with-gap" value="MatEng" type="radio" />
-                                    <span>Materials Engineer</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input class="with-gap" value="ViewOnly" type="radio" />
-                                    <span>View-Only</span>
-                                </label>
-                            </p>
-                        </form>
+                <div class="col radio-container">
+                    <h5>Account Type:</h5>
+                    <div class="">
+                        <input id="radio-1" type="radio" name="radio-account" checked>
+                        <label for="radio-1">Materials Engineer</label>
                     </div>
-
+                    <div class="">
+                        <input id="radio-2" type="radio" name="radio-account">
+                        <label for="radio-2">View Only</label>
+                    </div>
                 </div>
-
-                <div class="row center">
-                    <button class="btn waves-effect waves-light create-account-btn" type="submit"
-                        name="create_account">Create
-                        An Account</button>
-                </div>
+            </div>
+            <div class="col">
+                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit"
+                    name="create_account">Create
+                    An Account</button>
             </div>
         </form>
     </div>

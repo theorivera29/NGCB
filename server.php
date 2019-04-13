@@ -1,5 +1,6 @@
 <?php
     include "db_connection.php";
+    include "smtp_connection.php";
     
     if (isset($_POST['login'])) {
         session_start();
@@ -15,19 +16,15 @@
             $_SESSION['loggedin' ] = true;
             $_SESSION['account_type'] = $row[2];
             if (strcmp($row[2],"Admin") == 0) {
-                header("location: http://127.0.0.1/NGCB/Admin/admindashboard.php");
-                exit;
+                header("location: http://127.0.0.1/NGCB/Admin/admindashboard.php");                
             } else if (strcmp($row[2],"MatEng") == 0) {
-                header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
-                exit;
+                header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");                
             } else {
-                header("location: http://127.0.0.1/NGCB/View%20Only/projects.php");
-                exit;
+                header("location: http://127.0.0.1/NGCB/View%20Only/projects.php");                
             }
         } else {
             $_SESSION['login_error'] = true;
             header("location: http://127.0.0.1/NGCB/index.php");
-            exit;
         } 
     }
 
@@ -36,16 +33,16 @@
         session_unset();
         session_destroy();
         header('Location: http://127.0.0.1/NGCB/index.php');
-        exit;
     }  
 
     if (isset($_POST['create_account'])) {
         $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
         $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
 	    $username = mysqli_real_escape_string($conn, $_POST['username']);
-	    $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = mysqli_real_escape_string($conn, $_POST['password']);
-	    $password = password_hash($password, PASSWORD_DEFAULT);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $generated_password = substr(str_shuffle($characters), 0, 8);
+	    $password = password_hash($generated_password, PASSWORD_DEFAULT);
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
         $sql = "SELECT account_id from accounts;";
         $result = mysqli_query($conn,$sql);
@@ -54,8 +51,14 @@
             $sql = "INSERT INTO accounts (accounts_fname, accounts_lname, accounts_username, accounts_password, accounts_type, accounts_email, accounts_deletable, accounts_status)
                     VALUES ('$firstname', '$lastname', '$username', '$password', '$account_type', '$email', 'yes', 'active');";
             mysqli_query($conn,$sql);
+            try {
+                $mail->addAddress($email, $firstname.' '.$lastname);                
+                $mail->isHTML(true);                                  
+                $mail->Subject = 'Welcome to your NGCBDC Inventory System Account!';
+                $mail->Body    = 'Your account has been created. <br /> Please change your password after logging in. <br /> <br /> Username: <b>'.$username.'</b> <br /> Password: <b>'.$generated_password.'</b>';
+                $mail->send();
+            } catch (Exception $e) {}
             header("Location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");
-            exit;
         }
     }
     
@@ -71,8 +74,7 @@
             $sql = "INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status, projects_mateng)
                     VALUES ('$projects_name', '$projects_address', '$start_date', '$end_date', 'open', 2);";
             mysqli_query($conn,$sql);
-            header("Location: http://127.0.0.1/NGCB/Admin/projects.php");
-            exit;
+            header("Location: http://127.0.0.1/NGCB/Admin/projects.php");            
         }
     }
     
@@ -80,14 +82,14 @@
         $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
         $sql = "UPDATE projects SET projects_status = 'closed' WHERE projects_name = '$projects_name';";
         mysqli_query($conn,$sql);
-        header("location: http://127.0.0.1/NGCB/Admin/projects.php");
+        header("location: http://127.0.0.1/NGCB/Admin/projects.php");        
     }
 
     if (isset($_POST['reopen_project'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
         $sql = "UPDATE projects SET projects_status = 'open' WHERE projects_name = '$projects_name';";
         mysqli_query($conn,$sql);
-        header("location: http://127.0.0.1/NGCB/Admin/projects.php");
+        header("location: http://127.0.0.1/NGCB/Admin/projects.php");        
     }
 
     if(isset($_POST['edit_project'])) {
@@ -127,36 +129,39 @@
                 mysqli_query($conn, $sql);
             }
         }
-        header("location: http://127.0.0.1/NGCB/Admin/projects.php");
+        header("location: http://127.0.0.1/NGCB/Admin/projects.php");        
     } 
 
     if(isset($_POST['view_inventory'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
         if(strcmp($account_type,'MatEng') == 0) {
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
-            exit();
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
         } else {
-            header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");
-            exit();
+            header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");            
         }
     }
 
     if(isset($_POST['fillout_hauling'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/fillouthauling.php?projects_name=$projects_name");
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/fillouthauling.php?projects_name=$projects_name");        
+    }
+
+    if(isset($_POST['open_stockcard'])) {
+        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name");
     }
 
     if(isset($_POST['open_report'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/reportpage.php?projects_name=$projects_name");
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/reportpage.php?projects_name=$projects_name");        
     }
 
     if(isset($_POST['disable_account'])) {
         $accounts_id = mysqli_real_escape_string($conn, $_POST['accounts_id']);
         $sql = "UPDATE accounts SET accounts_status = 'disabled' WHERE accounts_id = '$accounts_id';";
         mysqli_query($conn, $sql);
-        header("location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");
+        header("location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");        
     }
 
     if(isset($_POST['view_category'])) {
@@ -164,11 +169,9 @@
         $account_type =  mysqli_real_escape_string($conn, $_POST['account_type']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         if(strcmp($account_type,'MatEng') == 0) {
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id&projects_name=$projects_name");
-            exit();
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/itemcategories.php?categories_id=$categories_id&projects_name=$projects_name");            
         } else {
-            header("location: http://127.0.0.1/NGCB/View%20Only/itemcategories.php?categories_id=$categories_id&projects_name=$projects_name");
-            exit();
+            header("location: http://127.0.0.1/NGCB/View%20Only/itemcategories.php?categories_id=$categories_id&projects_name=$projects_name");            
         }
     }
 
@@ -176,11 +179,9 @@
         $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
         if(strcmp($account_type,'MatEng') == 0) {
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/openhauling.php?hauling_no=$hauling_no");
-            exit();
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/openhauling.php?hauling_no=$hauling_no");            
         } else {
-        header("location: http://127.0.0.1/NGCB/View%20Only/openhauling.php?hauling_no=$hauling_no");
-            exit();
+        header("location: http://127.0.0.1/NGCB/View%20Only/openhauling.php?hauling_no=$hauling_no");            
         }
     }
 
@@ -203,8 +204,8 @@
         $sql = "SELECT * from hauling;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
-            $sql = "INSERT INTO hauling (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, hauling_hauledBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, hauling_truckDetailsPo, hauling_truckDetailsHaulerDr) VALUES ($hauling_no, '$hauling_date', '$hauling_deliverTo', '$hauling_hauledFrom', $hauling_quantity, '$hauling_unit', '$hauling_matname', '$hauling_hauledBy', '$hauling_warehouseman', '$hauling_approvedBy', '$hauling_truckDetailsType', '$hauling_truckDetailsPlateNo', $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr);";
-            mysqli_query($conn, $sql);
+        $sql = "INSERT INTO hauling (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, hauling_hauledBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, hauling_truckDetailsPo, hauling_truckDetailsHaulerDr) VALUES ($hauling_no, '$hauling_date', '$hauling_deliverTo', '$hauling_hauledFrom', $hauling_quantity, '$hauling_unit', '$hauling_matname', '$hauling_hauledBy', '$hauling_warehouseman', '$hauling_approvedBy', '$hauling_truckDetailsType', '$hauling_truckDetailsPlateNo', $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr);";
+        mysqli_query($conn, $sql);
         
         $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$hauling_matname';";
         $result = mysqli_query($conn,$sql);
@@ -217,8 +218,7 @@
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added hauling', 1, 1);";
         mysqli_query($conn,$sql);
         
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauleditems.php");
-            exit();
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauleditems.php");        
     }
 
     if(isset($_POST['create_category'])) {
@@ -233,8 +233,7 @@
                 mysqli_query($conn, $sql);
             }
         }
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");
-        exit();
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/projects.php");        
     }
 
     if (isset($_POST['edit_category'])) {
@@ -248,28 +247,23 @@
         if($count == 1) {
             $sql = "UPDATE categories SET categories_name = '$new_category_name' WHERE categories_name = '$category_name';";
             mysqli_query($conn, $sql);
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");
-            exit();
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");            
         }
     }
 
 
     if(isset($_POST['viewtodo'])) {
         $todoOf = mysqli_real_escape_string($conn, $_POST['todoOf']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php?todoOf=$todoOf");
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php?todoOf=$todoOf");        
     }
     
-        if (isset($_POST['create_todo'])) {
+    if (isset($_POST['create_todo'])) {
         $todo_date = mysqli_real_escape_string($conn, $_POST['tododate']);
         $todo_task = mysqli_real_escape_string($conn, $_POST['todo_task']);
         $todoOf = mysqli_real_escape_string($conn, $_POST['todoOf']);
-        $sql = "SELECT * from todo;";
-        $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
-            $sql = "INSERT INTO todo (todo_date, todo_task, todo_status, todoOf) VALUES ('$todo_date', '$todo_task', 'in progress', '$todoOf');";
-            mysqli_query($conn, $sql);
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
-            exit();
+        $sql = "INSERT INTO todo (todo_date, todo_task, todo_status, todoOf) VALUES ('$todo_date', '$todo_task', 'in progress', '$todoOf');";
+        mysqli_query($conn, $sql);
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");        
     }
 
     if (isset($_POST['create_materials'])) {
@@ -281,8 +275,8 @@
         $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
         $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
         $supplied_by = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
-
-        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, '$mat_unit', 1, $mat_notif, $delivered_quantity, 0, 0, $delivered_quantity);";
+        
+        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, '$mat_unit', $mat_categ, $mat_notif, $delivered_quantity, 0, 0, $delivered_quantity);";
         mysqli_query($conn, $sql);
             
         $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$supplied_by', 1);";
@@ -290,8 +284,7 @@
         
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added material', 1, 1);";
         mysqli_query($conn, $sql);
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
-        exit();
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");        
     }
 
     if(isset($_POST['edit_account'])) {
@@ -326,7 +319,7 @@
             mysqli_query($conn, $sql);
         }
         
-     header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");        
     }
 
     if(isset($_POST['todo_update'])) {
@@ -341,10 +334,10 @@
             $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
             mysqli_query($conn, $sql);
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
-        }
+        }        
     }
 
-        if (isset($_POST['add_deliveredin'])) {
+    if (isset($_POST['add_deliveredin'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
         $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
@@ -358,8 +351,119 @@
             
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added delivered in', 1, 1);";
         mysqli_query($conn, $sql);    
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
-        exit();
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
+    }
+
+    if (isset($_POST['add_usagein'])) {
+        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
+        $usage_date = mysqli_real_escape_string($conn, $_POST['us_date']);
+        $usage_quantity = mysqli_real_escape_string($conn, $_POST['us_quantity']);
+        $usage_unit = mysqli_real_escape_string($conn, $_POST['us_unit']);
+        $pulloutby = mysqli_real_escape_string($conn, $_POST['pulloutby']);
+        $us_area = mysqli_real_escape_string($conn, $_POST['us_area']);
+        $sql = "SELECT * from usagein;";
+        $result = mysqli_query($conn,$sql);
+        $count = mysqli_num_rows($result);
+        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area', 1);";
+        mysqli_query($conn, $sql);
+            
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added usage in', 1, 1);";
+        mysqli_query($conn, $sql);
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
+    }
+
+
+    if(isset($_POST['edit_materials'])) {
+        $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
+        
+        if(isset($_POST['newmaterialname'])) {
+            $newmaterialname = $_POST['newmaterialname'];
+            $sql = "UPDATE materials SET mat_name = '$newmaterialname' WHERE mat_name = '$materialname';";
+            mysqli_query($conn,$sql);
+        }
+        if(isset($_POST['mat_unit'])) {
+            $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
+            $sql = "UPDATE materials SET mat_unit = '$mat_unit' WHERE mat_name = '$materialname';";
+            mysqli_query($conn, $sql);
+        }
+
+        if(isset($_POST['minquantity'])) {
+            $minquantity = mysqli_real_escape_string($conn, $_POST['minquantity']);
+            $sql = "UPDATE materials SET mat_notif = '$minquantity' WHERE mat_name = '$materialname';";
+            mysqli_query($conn, $sql);
+        }        
+    }
+
+    if(isset($_POST['generate_report'])) {
+        $projects_name = $_POST['projects_name'];
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/generate_report.php?projects_name=$projects_name");        
+    }
+    if(isset($_POST['search'])) {
+        $projects_name = $_POST['projects_name'];
+        header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");
+    }
+
+    if(isset($_POST['password_request'])) {
+        $request_username = mysqli_real_escape_string($conn, $_POST['username_request']);
+        $sql = "SELECT accounts_id FROM accounts WHERE accounts_username = '$request_username'";
+        mysqli_query($conn,$sql);
+        header("location: http://127.0.0.1/NGCB/index.php");        
+    }
+
+    if(isset($_POST['request_accept'])) {
+        $request_accountID = mysqli_real_escape_string($conn, $_POST['request_accountID']);
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $generated_password = substr(str_shuffle($characters), 0, 8);
+        $password = password_hash($generated_password, PASSWORD_DEFAULT);
+        $sql = "SELECT accounts_email, CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts;";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_row($result);
+        $request_email = $row[0];
+        $request_name = $row[1];
+        mysqli_query($conn, "UPDATE accounts SET accounts_password = '$password' WHERE accounts_id = '$request_accountID';");
+        mysqli_query($conn, "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$reject_date', 'Accepted request to reset password of '.$request_name, 1);");
+        mysqli_query($conn, "DELETE FROM request WHERE request_account = '$request_accountID';");
+        try {
+            $mail->addAddress($request_email, $request_name);
+            $mail->isHTML(true);                                  
+            $mail->Subject = 'Password Reset';
+            $mail->Body    = 'Hello '.$request_name.'Your request to reset your password has been approved. Please use the temporary password below to login.
+                            Please change your password after logging in. <br /> <br /> Password: <b>'.$generated_password.'</b>';
+            $mail->send();
+        } catch (Exception $e) {}
+        header("location: http://127.0.0.1/NGCB/Admin/passwordrequest.php");        
+    }
+
+    if(isset($_POST['request_reject'])) {
+        $request_accountID = mysqli_real_escape_string($conn, $_POST['request_accountID']);
+        $sql = "SELECT CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts WHERE accounts_id = '$request_accountID';";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_row($result);
+        $request_name = $row[0];
+        $reject_date = date("Y-m-d G:i:s");
+        mysqli_query($conn, "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$reject_date', 'Rejected request to reset password of '.$request_name, 1);");
+        mysqli_query($conn, "DELETE FROM request WHERE request_account = '$request_accountID';");
+        header("location: http://127.0.0.1/NGCB/Admin/passwordrequest.php");
+    }
+
+
+
+    // API
+    header("Access-Control-Allow-Origin: *");
+    if (isset($_GET['category_id'])) {
+        $id = $_GET['category_id'];
+        $sql = "SELECT mat_id, mat_name FROM materials WHERE mat_categ = $id";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_all($result);
+        echo json_encode($row);
+    }
+
+    if (isset($_GET['mat_name'])) {
+        $name = $_GET['mat_name'];
+        $sql = "SELECT mat_unit FROM materials WHERE mat_id = '$name'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_all($result);
+        echo json_encode($row);
     }
 
         if (isset($_POST['add_usagein'])) {
@@ -379,55 +483,5 @@
         mysqli_query($conn, $sql);
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
-    }
-
-
-        if(isset($_POST['edit_materials'])) {
-        $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
-        
-        if(isset($_POST['newmaterialname'])) {
-            $newmaterialname = $_POST['newmaterialname'];
-            $sql = "UPDATE materials SET mat_name = '$newmaterialname' WHERE mat_name = '$materialname';";
-            mysqli_query($conn,$sql);
-        }
-        if(isset($_POST['mat_unit'])) {
-            $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
-            $sql = "UPDATE materials SET mat_unit = '$mat_unit' WHERE mat_name = '$materialname';";
-            mysqli_query($conn, $sql);
-        }
-
-        if(isset($_POST['minquantity'])) {
-            $minquantity = mysqli_real_escape_string($conn, $_POST['minquantity']);
-            $sql = "UPDATE materials SET mat_notif = '$minquantity' WHERE mat_name = '$materialname';";
-            mysqli_query($conn, $sql);
-        }
-    }
-
-    if(isset($_POST['generate_report'])) {
-        $projects_name = $_POST['projects_name'];
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/generate_report.php?projects_name=$projects_name");
-    }
-    if(isset($_POST['search'])) {
-        $projects_name = $_POST['projects_name'];
-        header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");
-    }
-
-
-    // API
-    header("Access-Control-Allow-Origin: *");
-    if (isset($_GET['category_id'])) {
-        $id = $_GET['category_id'];
-        $sql = "SELECT mat_id, mat_name FROM materials WHERE mat_categ = $id";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_all($result);
-        echo json_encode($row);
-    }
-
-    if (isset($_GET['mat_name'])) {
-        $name = $_GET['mat_name'];
-        $sql = "SELECT mat_unit FROM materials WHERE mat_id = '$name'";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_all($result);
-        echo json_encode($row);
     }
 ?>

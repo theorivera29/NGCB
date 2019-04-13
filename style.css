@@ -99,7 +99,8 @@ body {
 .view-tasks,
 .view-inventory {
     background-color: #DEE0E1;
-    font-size: 19px;
+    font-size: 2.5vmin;
+
 }
 
 /* Style for Site > Site Materials */
@@ -228,10 +229,6 @@ th {
     margin-top: 50%;
 }
 
-.header {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
 .header-one {
     font-family: Galyon;
     text-align: center;
@@ -259,12 +256,7 @@ th {
     padding: 0 !important;
 }
 
-.header-two {
-    text-align: left;
-    color: #00171F;
-    font-size: 6vmin;
-    font-family: Pridi;
-}
+
 
 .submit-btn {
     width: 50% !important;
@@ -324,10 +316,7 @@ label {
     font-size: 2vh !important;
 }
 
-.create-account-btn {
-    color: #ffffff !important;
-    background-color: #4C99AF !important;
-}
+
 
 .reset-password-btn {
     color: #ffffff !important;
@@ -383,6 +372,8 @@ nav {
 #acName {
     float: right;
     margin-right: 3%;
+    font-family: Pridi;
+    font-size: 3vmin;
 }
 
 .down-arrow {
@@ -408,7 +399,7 @@ nav {
 
 .side-nav {
     background-color: #003A51 !important;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Galyon;
 }
 
 
@@ -521,8 +512,16 @@ i.right {
 
 .dropdown-content li>a {
     background-color: #003A51;
-    font-size: 1.9vmin;
+    font-size: 2.5vmin;
     color: #FFFFFF;
+    font-family:  Arial, Helvetica, sans-serif;
+}
+
+.dropdown-content a:hover{
+    color: #003A51 !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFFFFF;
 }
 
 /*Add To-do Container*/
@@ -535,6 +534,7 @@ i.right {
 #panel-header,
 #panel-header-materials {
     font-size: 3vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #panel-header {
@@ -557,6 +557,7 @@ i.right {
 
 #panel-text {
     font-size: 2.7vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .input-field-todo {
@@ -572,6 +573,7 @@ i.right {
     border: 1px solid #19466d !important;
     color: #19466d !important;
     background-color: #e2e2e2 !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 textarea.materialize-textarea {
@@ -589,6 +591,7 @@ textarea.materialize-textarea {
     position: absolute;
     right: 0;
     margin-top: -8% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .save-todo-btn {
@@ -622,16 +625,18 @@ textarea.materialize-textarea {
 
 .view-tasks-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
     border-radius: 2%;
     color: white;
     padding-right: 2%;
     padding-left: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .view-tasks {
     table-layout: auto;
     border: 1px solid rgb(155, 155, 155);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .task-table-container {
@@ -698,7 +703,8 @@ textarea.materialize-textarea {
 
 .view-materials-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
+    font-family: Arial, Helvetica, sans-serif;
     border-radius: 2%;
     color: white;
 }
@@ -706,6 +712,7 @@ textarea.materialize-textarea {
 .view-materials-head>tr>th,
 .materials-left-container>tr>td {
     padding-left: 5% !important;
+    font-size: 2.5vmin;
 
 }
 
@@ -764,7 +771,8 @@ div.contextmenu:hover {
 .tabs-project a {
     background-color: #19466D !important;
     color: #FFFFFF !important;
-    font-size: 2vmin !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .tabs-project a:hover {
@@ -786,6 +794,7 @@ div.contextmenu:hover {
 .project-container-card {
     border-radius: 5% !important;
     width: 75% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .card{
@@ -816,6 +825,7 @@ div.contextmenu:hover {
     margin-bottom: 3%;
     font-size: 4vmin;
     color: #19466D;
+    font-family: Arial, Helvetica, sans-serif; 
 }
 
 .view-inventory-slider {
@@ -831,7 +841,8 @@ div.contextmenu:hover {
 .tabs-inventory a {
     background-color: #19466D !important;
     color: #FFFFFF !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .tabs-inventory a:hover {
@@ -855,7 +866,7 @@ div.contextmenu:hover {
 .search-btn {
     display: inline-block !important;
     padding: 10px 15px !important;
-    font-size: 20px !important;
+    font-size: 2.5vmin !important;
     border-radius: 0 !important;
 }
 
@@ -863,6 +874,7 @@ div.contextmenu:hover {
     width: 50% !important;
     height: 2% !important;
     margin-left: 10% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .search-btn {
@@ -893,6 +905,7 @@ div.contextmenu:hover {
     width: 95% !important;
     margin-left: 2%;
     margin-right: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .view-inventory {
@@ -905,6 +918,7 @@ div.contextmenu:hover {
     font-size: 2.5vmin;
     color: #FFFFFF;
     padding-right: 2% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .view-inventory>tr>td {
@@ -979,12 +993,14 @@ div.contextmenu:hover {
 .add-mat-modal {
     height: 90% !important;
     overflow-y: hidden !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .add-mat-modal label {
-    font-size: 1.5vmin !important;
+    font-size: 2.5vmin !important;
     margin-left: 3% !important;
 }
+
 
 .material-add-unit {
     margin-left: 3% !important;
@@ -1105,7 +1121,7 @@ div.contextmenu:hover {
 }
 
 select[name=mat_unit] {
-    font-size: 2.5vmin !important;
+    font-size: 2vmin !important;
 }
 
 /*Hauling*/
@@ -1380,4 +1396,38 @@ select[name=mat_unit] {
 
 .sub-header-text {
     margin-top: 10% !important;
+}
+
+/*Account Creation*/
+.account-creation-container{
+    margin-top: 3% !important;
+    margin-left: 10% !important;
+    background-color: #FFFFFF !important;
+    width: 80%;
+    padding-top: 2%; 
+    padding-left: 5%;
+    float: left;
+}
+
+.create-account-field{
+    width: 80% !important;
+    margin-left: 20% !important;
+    margin-top: 5% !important;
+}
+
+.header-two {
+    text-align: left;
+    color: #00171F;
+    font-size: 6vmin;
+    font-family: Pridi;
+}
+
+.create-account-btn {
+    margin-right: 8%;
+    float: right;
+    margin-bottom: 2%;
+}
+
+.radio-container{
+    margin-left: 8%;
 }

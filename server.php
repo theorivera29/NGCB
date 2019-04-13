@@ -407,6 +407,10 @@
         $projects_name = $_POST['projects_name'];
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/generate_report.php?projects_name=$projects_name");
     }
+    if(isset($_POST['search'])) {
+        $projects_name = $_POST['projects_name'];
+        header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");
+    }
 
 
     // API

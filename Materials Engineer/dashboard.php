@@ -5,7 +5,7 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-    $task = $_SESSION['tasks'];
+    $task = $_SESSION['account_id'];
 ?>
 
 <!DOCTYPE html>
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="todoOf"
-                        value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                        value="<?php if(isset($_SESSION['account_id'])) {echo $_SESSION['account_id'];}?>">
 
                     <div class="input-field input-field-todo">
                         <textarea id="todo_task" name="todo_task" class="materialize-textarea" minlength="2"

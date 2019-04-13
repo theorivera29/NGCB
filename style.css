@@ -1438,3 +1438,19 @@ select[name=mat_unit] {
 .radio-container{
     margin-left: 8%;
 }
+
+/*List of Accounts*/
+.account-list-container{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+.account-list-table{
+    text-align: center !important;
+}
+
+.account-list-head>tr>th{
+    background-color: #0B415E !important;
+    color: #FFFFFF;
+}

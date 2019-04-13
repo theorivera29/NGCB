@@ -129,7 +129,7 @@
 
                 <div class="input-field col s5">
                     <input id="email" name="email" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com"
+                        pattern="[A-Za-z0-9._]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com"
                         required>
                     <label for="email" class="create-account-field">Email</label>
                 </div>

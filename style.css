@@ -21,10 +21,6 @@ body {
 }
 
 
-
-
-
-
 .Calendar-Container {
     padding-top: 2%;
 }
@@ -107,7 +103,8 @@ body {
 .view-tasks,
 .view-inventory {
     background-color: #DEE0E1;
-    font-size: 19px;
+    font-size: 2.5vmin;
+
 }
 
 /* Style for Site > Site Materials */
@@ -403,6 +400,8 @@ nav {
 #acName {
     float: right;
     margin-right: 3%;
+    font-family: Pridi;
+    font-size: 3vmin;
 }
 
 .down-arrow {
@@ -428,7 +427,7 @@ nav {
 
 .side-nav {
     background-color: #003A51 !important;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Galyon;
 }
 
 
@@ -541,8 +540,16 @@ i.right {
 
 .dropdown-content li>a {
     background-color: #003A51;
-    font-size: 1.9vmin;
+    font-size: 2.5vmin;
     color: #FFFFFF;
+    font-family:  Arial, Helvetica, sans-serif;
+}
+
+.dropdown-content a:hover{
+    color: #003A51 !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFFFFF;
 }
 
 /*Add To-do Container*/
@@ -555,6 +562,7 @@ i.right {
 #panel-header,
 #panel-header-materials {
     font-size: 3vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #panel-header {
@@ -577,6 +585,7 @@ i.right {
 
 #panel-text {
     font-size: 2.7vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .input-field-todo {
@@ -592,6 +601,7 @@ i.right {
     border: 1px solid #19466d !important;
     color: #19466d !important;
     background-color: #e2e2e2 !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 textarea.materialize-textarea {
@@ -609,6 +619,7 @@ textarea.materialize-textarea {
     position: absolute;
     right: 0;
     margin-top: -8% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .save-todo-btn {
@@ -642,16 +653,18 @@ textarea.materialize-textarea {
 
 .view-tasks-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
     border-radius: 2%;
     color: white;
     padding-right: 2%;
     padding-left: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .view-tasks {
     table-layout: auto;
     border: 1px solid rgb(155, 155, 155);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .task-table-container {
@@ -718,7 +731,8 @@ textarea.materialize-textarea {
 
 .view-materials-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin;
+    font-family: Arial, Helvetica, sans-serif;
     border-radius: 2%;
     color: white;
 }
@@ -726,6 +740,7 @@ textarea.materialize-textarea {
 .view-materials-head>tr>th,
 .materials-left-container>tr>td {
     padding-left: 5% !important;
+    font-size: 2.5vmin;
 
 }
 
@@ -783,7 +798,8 @@ div.contextmenu:hover {
 .tabs-project a{
     background-color: #19466D !important;
     color: #FFFFFF !important;
-    font-size: 2vmin !important;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .tabs-project a:hover  {
@@ -805,6 +821,7 @@ div.contextmenu:hover {
 .project-container-card {
     border-radius: 5% !important;
     width: 75% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .card .card-content{

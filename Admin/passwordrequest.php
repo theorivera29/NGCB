@@ -107,10 +107,10 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="pass-reset-container">
         <div class="card">
-            <table class="striped centered">
-                <thead>
+            <table class="centered pass-reset-table">
+                <thead class="centered pass-reset-table-head">
                     <tr>
                         <th>Username</th>
                         <th>Name</th>
@@ -127,22 +127,21 @@
                         while($row = mysqli_fetch_row($result)) {
                     ?>
                     <tr>
-                    <td><?php echo $row[0];?></td>
-                    <td><?php echo $row[1];?></td>
-                    <td><?php echo $row[2];?></td>
-                    <td><?php echo $row[3];?></td>
-                    <!--NEXT TIME KO N LAGYAN NG PROMPT NA ARE YOU SURE CHORV-->
-                    <td> 
-                        <form action="../server.php" method="POST">
-                            <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
-                            <button type="submit" name="request_accept">Accept</button> 
-                        </form>
+                        <td><?php echo $row[0];?></td>
+                        <td><?php echo $row[1];?></td>
+                        <td><?php echo $row[2];?></td>
+                        <td><?php echo $row[3];?></td>
+                        <td>
+                            <form action="../server.php" method="POST">
+                                <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
+                                <button type="submit" name="request_accept"
+                                    class="waves-effect waves-light btn modal-trigger all-btn">Accept</button>
 
-                        <form action="../server.php" method="POST">
-                            <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
-                            <button type="submit" name="request_reject">Reject</button>
-                        </form>
-                    </td>
+                                <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
+                                <button type="submit" name="request_reject"
+                                    class="waves-effect waves-light btn modal-trigger all-btn">Reject</button>
+                            </form>
+                        </td>
                     </tr>
                     <?php 
                         }

@@ -92,8 +92,8 @@ body {
 .view-hauled-item-btn,
 .edit-btn,
 .reopen-btn {
-    color: #0D1F2D !important;
-    background-color: #ffffff !important;
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
 }
 
 .view-tasks,
@@ -844,8 +844,8 @@ div.contextmenu:hover {
 }
 
 .viewinventory-btn {
-    color: #FFFFFF !important;
-    background-color: #0D1F2D !important;
+    color: black !important;
+    background-color: #FFFFFF !important;
     margin-top: 5% !important;
 }
 
@@ -1017,6 +1017,7 @@ div.contextmenu:hover {
     margin-left: 2%;
     margin-right: 2%;
     margin-top: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .site-materials-content {
@@ -1025,7 +1026,7 @@ div.contextmenu:hover {
 
 .site-materials-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 19px;
+    font-size: 2.5vmin;
     border-radius: 2%;
     color: white;
 }
@@ -1053,6 +1054,11 @@ div.contextmenu:hover {
 .add-category-modal {
     width: 40%;
     margin-top: 5%;
+}
+
+.add-btn{
+    background-color: #19466D !important;
+    color: #FFFFFF !important;
 }
 
 #modal-title {
@@ -1135,6 +1141,7 @@ select[name=mat_unit] {
 .hauling-project-card {
     margin-right: 5%;
     margin-top: 5%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .hauling-project-card-content {
@@ -1145,6 +1152,7 @@ select[name=mat_unit] {
 /*Fill out hauling form*/
 .fill-hauling-form-container {
     margin-top: 3%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .haulingform-container {
@@ -1156,7 +1164,7 @@ select[name=mat_unit] {
     background-color: #FFFFFF !important;
 }
 
-.date-span {
+#date-span {
     padding-right: 1% !important;
     font-size: 2vmin !important;
 }
@@ -1218,17 +1226,19 @@ select[name=mat_unit] {
 
 .hauled-items-head>tr>th {
     background-color: #0B415E !important;
-    font-size: 19px;
+    font-size: 2.5vmin;
     border-radius: 2%;
     color: white;
     padding-right: 2%;
     padding-left: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /*Report*/
 .report-project-card {
     margin-right: 5%;
     margin-top: 5%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .report-project-card-content {
@@ -1249,6 +1259,7 @@ select[name=mat_unit] {
     width: 96% !important;
     margin-left: 2%;
     margin-right: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .report-head>tr>th {

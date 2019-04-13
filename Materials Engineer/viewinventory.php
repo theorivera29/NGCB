@@ -543,7 +543,7 @@
         </form>
     </div>
 
-    <!-- EDIT MATERIAL MODAL -->
+    <!-- EDIT CATEGORY MODAL -->
     <div id="editcategoryModal" class="modal add-category-modal">
         <form action="../server.php" method="POST">
             <div class="modal-content edit-categ-modal">

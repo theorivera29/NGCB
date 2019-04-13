@@ -124,10 +124,8 @@
     ?>
     <div class="row item-cat-col">
         <div class="col s12 right-align">
-            <a href="#addmaterialModal" class="waves-effect waves-light btn button modal-trigger">
+            <a href="#addmaterialModal" class="waves-effect waves-light btn button  add-btn modal-trigger">
                 <i class="material-icons left">add_circle_outline</i>Add Material</a>
-            <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger">
-                <i class="material-icons left">edit</i>Edit Material</a>
         </div>
     </div>
     <?php 
@@ -141,7 +139,7 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-        <h4><?php echo $row[1] ;?></h4>
+        <h5><?php echo $row[1] ;?></h5>
         <?php
         }
     ?>
@@ -254,29 +252,96 @@
 
 
 
-    <!-- ADD MATERIAL MODAL -->
-    <div id="addmaterialModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Add Material</h4>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="materialname" name="materialname" type="text" class="validate">
-                    <label for="materialname">Material Name:</label>
+    <!-- ADD SITE MATERIAL MODAL -->
+    <div id="addmaterialModal" class="modal modal-fixed-footer add-mat-modal">
+        <form action="../server.php" method="POST">
+            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+            <div class="modal-content">
+                <span id="modal-title">Add Material</span>
+                <div class="row">
+                    <div class="input-field col add-material-name">
+                        <input id="mat_name" name="mat_name" type="text" class="validate" required>
+                        <label for="mat_name">Material Name:</label>
+                    </div>
+                    <div class="col s5">
+                        <label>Category:</label>
+                        <div class="input-field col s12">
+                            <select class="browser-default" id="category-option" name="mat_categ">
+                                <option selected>Choose category</option>
+                                <?php
+                                    $sql = "SELECT categories_id, categories_name FROM categories;";
+                                    $result = mysqli_query($conn, $sql);
+                                    while($row = mysqli_fetch_row($result)) {                         
+
+                                ?>
+                                <option value="<?php echo $row[0]; ?>">
+                                    <?php echo $row[1]; ?>
+                                </option>
+                                <?php 
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-field col s5">
-                    <input id="quantifier" name="quantifier" type="text" class="validate">
-                    <label for="quantifier">Quantifier:</label>
+                <div class="row">
+                    <div class="col s5 material-add-unit">
+                        <label>Unit:</label>
+                        <select class="browser-default" name="mat_unit">
+                            <option selected>Choose unit</option>
+                            <?php
+                                    $sql = "SELECT DISTINCT mat_unit FROM materials;";
+                                    $result = mysqli_query($conn, $sql);
+                                    while($row = mysqli_fetch_row($result)) {                         
+
+                                ?>
+                            <option value="<?php echo $row[0]; ?>">
+                                <?php echo $row[0]; ?>
+                            </option>
+                            <?php 
+                                    }
+                                ?>
+                        </select>
+                    </div>
+                    <div class="input-field col add-threshold">
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input only numbers" required>
+                        <label for="mat_notif">Item threshold:</label>
+                    </div>
                 </div>
-                <div class="input-field col s7">
-                    <input id="minquantity" name="minquantity" type="text" class="validate">
-                    <label for="minquantity">Threshold:</label>
+                <div class="row">
+                    <h5>Deliver In</h5>
+                    <table class="striped centered">
+                        <thead class="view-inventory-head">
+                            <tr>
+                                <th>Date</th>
+                                <th>Quantity</th>
+                                <th>Supplied By</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                <input type="date"  min="2019-01-01" required>
+                                </td>
+                                <td>
+                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
+                                        required>
+                                </td>
+                                <td>
+                                    <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#addstockcardModal" class="waves-effect waves-teal btn-flat modal-trigger">Next</a>
-        </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                <button type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Save</button>
+            </div>
+        </form>
     </div>
 
 

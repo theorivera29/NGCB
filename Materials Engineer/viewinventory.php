@@ -443,7 +443,7 @@
                             <select class="browser-default" id="category-option" name="mat_categ">
                                 <option selected>Choose category</option>
                                 <?php
-                                    $sql = "SELECT * FROM categories;";
+                                    $sql = "SELECT categories_id, categories_name FROM categories;";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 
@@ -496,7 +496,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                <input type="date" min="2019-01-01" required>
+                                <input type="text" name="dev_date" required>
                                 </td>
                                 <td>
                                     <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"

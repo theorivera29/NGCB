@@ -29,7 +29,7 @@
 <html>
 
 <head>
-    <title>NGCB</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
@@ -88,7 +88,7 @@
                     <h2 class="header header-two">Password Reset</h2>
                     <div class="input-field col s6 m12 reset-password">
                         <input placeholder="Your username.." id="login-password" name="password" type="text" required>
-                        <label class="active" for="password">Password</label>
+                        <label class="active" for="password">Username</label>
                     </div>
                     <div class="row">
                         <button href="index.php" class="btn waves-effect waves-light reset-password-btn" type="submit"

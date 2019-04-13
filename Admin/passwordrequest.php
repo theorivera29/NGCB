@@ -107,41 +107,45 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="pass-reset-container">
         <div class="card">
-            <table class="striped centered">
-                <thead>
+            <table class="centered pass-reset-table">
+                <thead class="centered pass-reset-table-head">
                     <tr>
-                        <th>ID</th>
-                        <th>User Name</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Name</th>
                         <th>E-mail</th>
                         <th>Account Type</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-                $sql = "SELECT * FROM accounts;";
-                $result = mysqli_query($conn, $sql);
-                while($row = mysqli_fetch_row($result)){
-                ?>
+                    <?php
+                        $sql = "SELECT accounts.accounts_username, CONCAT(accounts.accounts_fname, ' ', accounts.accounts_lname), accounts.accounts_email,
+                                accounts.accounts_type, accounts.accounts_id FROM accounts INNER JOIN requests ON accounts.accounts_id = requests.requests_account;";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)) {
+                    ?>
                     <tr>
-                        <td><?php echo $row[0]; ?></td>
-                        <td><?php echo $row[1]; ?></td>
-                        <td><?php echo $row[2]; ?></td>
-                        <td><?php echo $row[3]; ?></td>
-                        <td><?php echo $row[4]; ?></td>
-                        <td><?php echo $row[5]; ?></td>
-                        <td><?php echo $row[6]; ?></td>
-                        <!--NEXT TIME KO N LAGYAN NG PROMPT NA ARE YOU SURE CHORV-->
-                        <td> <button>Accept</button> <button>Reject</button></td>
+                        <td><?php echo $row[0];?></td>
+                        <td><?php echo $row[1];?></td>
+                        <td><?php echo $row[2];?></td>
+                        <td><?php echo $row[3];?></td>
+                        <td>
+                            <form action="../server.php" method="POST">
+                                <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
+                                <button type="submit" name="request_accept"
+                                    class="waves-effect waves-light btn modal-trigger all-btn">Accept</button>
+
+                                <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
+                                <button type="submit" name="request_reject"
+                                    class="waves-effect waves-light btn modal-trigger all-btn">Reject</button>
+                            </form>
+                        </td>
                     </tr>
                     <?php 
-                    }
-                ?>
+                        }
+                    ?>
                 </tbody>
             </table>
 

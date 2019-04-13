@@ -131,20 +131,9 @@ th {
     color: black;
 }
 
-.item-categories {
-    width: 96% !important;
-    margin-left: 2%;
-    margin-right: 2%;
-}
 
-.item-categories-head>tr>th {
-    background-color: #0B415E !important;
-    font-size: 19px;
-    border-radius: 2%;
-    color: white;
-    padding-right: 2%;
-    padding-left: 2%;
-}
+
+
 
 
 
@@ -825,6 +814,7 @@ div.contextmenu:hover {
     margin-bottom: 3%;
     font-size: 4vmin;
     color: #19466D;
+    font-family: Arial, Helvetica, sans-serif; 
 }
 
 .view-inventory-slider {
@@ -840,7 +830,8 @@ div.contextmenu:hover {
 .tabs-inventory a {
     background-color: #19466D !important;
     color: #FFFFFF !important;
-    font-size: 2vmin;
+    font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .tabs-inventory a:hover {
@@ -864,7 +855,7 @@ div.contextmenu:hover {
 .search-btn {
     display: inline-block !important;
     padding: 10px 15px !important;
-    font-size: 20px !important;
+    font-size: 2.5vmin !important;
     border-radius: 0 !important;
 }
 
@@ -872,6 +863,7 @@ div.contextmenu:hover {
     width: 50% !important;
     height: 2% !important;
     margin-left: 10% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .search-btn {
@@ -902,6 +894,7 @@ div.contextmenu:hover {
     width: 95% !important;
     margin-left: 2%;
     margin-right: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .view-inventory {
@@ -914,6 +907,7 @@ div.contextmenu:hover {
     font-size: 2.5vmin;
     color: #FFFFFF;
     padding-right: 2% !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .view-inventory>tr>td {
@@ -988,12 +982,14 @@ div.contextmenu:hover {
 .add-mat-modal {
     height: 90% !important;
     overflow-y: hidden !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .add-mat-modal label {
-    font-size: 1.5vmin !important;
+    font-size: 2.5vmin !important;
     margin-left: 3% !important;
 }
+
 
 .material-add-unit {
     margin-left: 3% !important;
@@ -1086,6 +1082,7 @@ div.contextmenu:hover {
 #category-title {
     margin-left: 5% !important;
     font-size: 2vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #category-option {
@@ -1102,10 +1099,12 @@ div.contextmenu:hover {
 
 .edit-categ-modal label {
     font-size: 2vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .edit-mat-modal label {
     font-size: 2.5vmin !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .add-mat-picker {
@@ -1114,8 +1113,23 @@ div.contextmenu:hover {
 }
 
 select[name=mat_unit] {
-    font-size: 2.5vmin !important;
+    font-size: 2vmin !important;
 }
+
+.item-categories {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.item-categories-head>tr>th {
+    background-color: #0B415E !important;
+    font-size: 2.5vmin;
+    color: #FFFFFF;
+    padding-right: 2% !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 /*Hauling*/
 .hauling-project-card {
@@ -1423,4 +1437,28 @@ select[name=mat_unit] {
 
 .radio-container{
     margin-left: 8%;
+}
+
+/*List of Accounts*/
+.account-list-container{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+
+.account-list-head>tr>th{
+    background-color: #0B415E !important;
+    color: #FFFFFF;
+}
+
+/*Password Reset*/
+.pass-reset-container{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+}
+
+.pass-reset-table-head>tr>th{
+    background-color: #0B415E !important;
+    color: #FFFFFF;
 }

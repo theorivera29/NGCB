@@ -111,13 +111,13 @@
             <div class="row">
                 <div class="input-field col s5">
                     <input id="firstname" name="firstname" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z]*" title="Input letters only" required>
+                        pattern="[A-Za-z\s]*" title="Input letters only" required>
                     <label for="firstname" class="create-account-field">First Name</label>
                 </div>
 
                 <div class="input-field col s5">
                     <input id="lastname" name="lastname" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z]*" title="Input letters only" required>
+                        pattern="[A-Za-z\s]*" title="Input letters only" required>
                     <label for="lastname" class="create-account-field">Last Name</label>
                 </div>
 
@@ -129,7 +129,7 @@
 
                 <div class="input-field col s5">
                     <input id="email" name="email" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com"
+                        pattern="[A-Za-z0-9._]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com"
                         required>
                     <label for="email" class="create-account-field">Email</label>
                 </div>

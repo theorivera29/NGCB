@@ -104,22 +104,22 @@
 
     
         <div class="cards-container-admin account-container-admin">
-            <p id="text-headers">Accounts</p>
-            <p id="sub-header-number"></p>
-            <p id="sub-header-text">active accounts</p>
+            <p class="text-headers">Accounts</p>
+            <p class="sub-header-number"></p>
+            <p class="sub-header-text">active accounts</p>
         </div>
 
         <div class="cards-container-admin password-reset-container">
-            <p id="text-headers">Password Reset</p>
-            <p id="sub-header-number"></p>
-            <p id="sub-header-text">active accounts</p>
+            <p class="text-headers">Password Reset</p>
+            <p class="sub-header-number"></p>
+            <p class="sub-header-text">requesting for a new password</p>
         </div>
 
         <div class="cards-container-admin project-status-container">
-            <p id="text-headers">Projects</p>
-            <p id="sub-header-number"></p>
-            <p id="sub-header-number"></p>
-            <p id="sub-header-text">active accounts</p>
+            <p class="text-headers">Projects</p>
+            <p class="sub-header-number"></p>
+            <p class="sub-header-number"></p>
+            <p class="sub-header-text">open projects</p>
         </div>
     
 

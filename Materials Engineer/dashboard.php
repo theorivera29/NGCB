@@ -231,7 +231,7 @@
 
     <!--Materials Container-->
     <div class="row">
-        <h5 id="panel-header-materials">Malapit na maubos Materials</h5>
+        <h5 id="panel-header-materials">Malterials Low in Quantity</h5>
         <div class="col container-materials">
             <table class="striped responsive-table materials-left centered">
                 <thead class="view-materials-head">

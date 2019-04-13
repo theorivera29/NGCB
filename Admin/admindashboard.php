@@ -12,6 +12,7 @@
 <html>
 
 <head>
+<title>NGCBDC</title>
 <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
@@ -101,19 +102,26 @@
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col s3 Cards-Container Account-Container">
-            <span id="text-headers">Accounts</span>
-            <span id="sub-headers"></span>
-            <span id="sub-headers">active accounts</span>
+    
+        <div class="cards-container-admin account-container-admin">
+            <p id="text-headers">Accounts</p>
+            <p id="sub-header-number"></p>
+            <p id="sub-header-text">active accounts</p>
         </div>
 
-        <div class="col s3 Cards-Container Password-Reset-Container">
-            <span id="text-headers">Password Reset</span>
-            <span id="sub-headers"></span>
-            <span id="sub-headers">requesting for a new paassword</span>
+        <div class="cards-container-admin password-reset-container">
+            <p id="text-headers">Password Reset</p>
+            <p id="sub-header-number"></p>
+            <p id="sub-header-text">active accounts</p>
         </div>
-    </div>
+
+        <div class="cards-container-admin project-status-container">
+            <p id="text-headers">Projects</p>
+            <p id="sub-header-number"></p>
+            <p id="sub-header-number"></p>
+            <p id="sub-header-text">active accounts</p>
+        </div>
+    
 
 
     <!--Import jQuery before materialize.js-->

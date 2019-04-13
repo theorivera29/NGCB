@@ -1315,30 +1315,37 @@ select[name=mat_unit] {
 }
 
 
-
-
 /*Design for Admin Module*/
 .cards-container-admin {
-    margin-left: 5%;
-    margin-top: 5%;
-    color: white;
-    width: 25%;
+    margin-left: 6.5% !important;
+    margin-top: 5% !important;
 }
 
 .account-container-admin {
-    width:300px; 
-    float:left; 
-    background: green; 
-    height: 150px;
-    margin: 50px;
+    float: left;
+    width: 25%;
+    padding: 5% !important;
+    padding-left: 2% !important;
+    padding-top: 2% !important;
+    background-color: #DB3A34;
 }
 
 .password-reset-container {
-    width:300px; 
-    height: 150px; 
-    float:right; 
-    background: blue;
-    margin: 50px
+    float: left;
+    width: 25%;
+    padding: 5% !important;
+    padding-left: 2% !important;
+    padding-top: 2% !important;
+    background-color: #FFC857;
+}
+
+.project-status-container{
+    float: left;
+    width: 25%;
+    padding: 5% !important;
+    padding-left: 2% !important;
+    padding-top: 2% !important;
+    background-color: #084C61;
 }
 
 .sub-header-number {

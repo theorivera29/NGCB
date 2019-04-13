@@ -495,7 +495,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                <input type="text" name="dev_date" required>
+                                <input type="date"  min="2019-01-01" required>
                                 </td>
                                 <td>
                                     <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"

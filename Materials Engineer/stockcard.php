@@ -5,6 +5,8 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+$mat_name = $_GET['mat_name'];
+
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +123,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <input type="hidden" name="mat_name" value="<?php echo $row[0];?>">
+                                <input type="hidden" name="mat_name" value="<?php echo $mat_name;?>">
                                 <td><input type="text" name="dev_date"></td>
                                 <td><input type="text" name="dev_quantity"></td>
                                 <td><input type="text" name="dev_unit"></td>
@@ -134,31 +136,32 @@
             </div>
             <div class="col s12 light-blue lighten-3">
                 <h4>USAGE IN</h4>
-                 <form action="../server.php" method="POST">
-                <table class="centered blue-grey lighten-5">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Pulled Out By</th>
-                            <th>Area of Usage</th>
+                <form action="../server.php" method="POST">
+                    <table class="centered blue-grey lighten-5">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Pulled Out By</th>
+                                <th>Area of Usage</th>
 
-                        </tr>
-                    </thead>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="us_date"></td>
-                            <td><input type="text" name="us_quantity"></td>
-                            <td><input type="text" name="us_unit"></td>
-                            <td><input type="text" name="pulloutby"></td>
-                            <td><input type="text" name="us_area"></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <input type="hidden" name="mat_name" value="<?php echo $mat_name;?>">
+                                <td><input type="text" name="us_date"></td>
+                                <td><input type="text" name="us_quantity"></td>
+                                <td><input type="text" name="us_unit"></td>
+                                <td><input type="text" name="pulloutby"></td>
+                                <td><input type="text" name="us_area"></td>
+                            </tr>
 
-                    </tbody>
-                </table>
-                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
+                        </tbody>
+                    </table>
+                    <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
                 </form>
             </div>
         </div>

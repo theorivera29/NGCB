@@ -272,8 +272,7 @@
                                                 </select>
                                             </div>
                                             <div class="input-field col s7">
-                                                <input id="minquantity" name="minquantity" type="text" class="validate"
-                                                    required>
+                                                <input id="minquantity" name="minquantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
                                                 <label for="minquantity">Item threshold:</label>
                                             </div>
                                         </div>
@@ -483,7 +482,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h4>Deliver In</h4>
+                    <h5>Deliver In</h5>
                     <table class="striped centered">
                         <thead class="view-inventory-head">
                             <tr>

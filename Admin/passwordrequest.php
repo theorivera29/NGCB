@@ -108,26 +108,41 @@
             <table class="striped centered">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>User Name</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Username</th>
+                        <th>Name</th>
                         <th>E-mail</th>
                         <th>Account Type</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <?php
+                        $sql = "SELECT accounts.accounts_username, CONCAT(accounts.accounts_fname, ' ', accounts.accounts_lname), accounts.accounts_email,
+                                accounts.accounts_type, accounts.accounts_id FROM accounts INNER JOIN requests ON accounts.accounts_id = requests.requests_account;";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)) {
+                    ?>
+                    <tr>
+                    <td><?php echo $row[0];?></td>
+                    <td><?php echo $row[1];?></td>
+                    <td><?php echo $row[2];?></td>
+                    <td><?php echo $row[3];?></td>
                     <!--NEXT TIME KO N LAGYAN NG PROMPT NA ARE YOU SURE CHORV-->
-                    <td> <button>Accept</button> <button>Reject</button></td>
+                    <td> 
+                        <form action="../server.php" method="POST">
+                            <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
+                            <button type="submit" name="request_accept">Accept</button> 
+                        </form>
+
+                        <form action="../server.php" method="POST">
+                            <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
+                            <button type="submit" name="request_reject">Reject</button>
+                        </form>
+                    </td>
+                    </tr>
+                    <?php 
+                        }
+                    ?>
                 </tbody>
             </table>
 

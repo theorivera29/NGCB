@@ -163,42 +163,32 @@
                     <tbody class="task-table-container">
                         <?php 
                             $date_today = date("Y-m-d");
-                            $sql = "SELECT * FROM todo WHERE todo.todoOf = $task && todo_date = '$date_today';";
+                            $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id && todo_date = '$date_today' ORDER BY todo_task;";
                             $result = mysqli_query($conn, $sql);
-                            $todo_id = "";
-                            $todo_date = "";
-                            $todo_task = "";
-                            $todo_status = "";
-                            while($row = $result->fetch_assoc()) {
-                                $todo_id = $row['todo_id'];
-                                $todo_date = $row['todo_date'];
-                                $todo_task = $row['todo_task'];
-                                $todo_status = $row['todo_status'];
+                            while($row = mysqli_fetch_row($result)) {
                         ?>
                         <tr>
                             <td class="task-data-table1">
-                                <?php echo $todo_date ;?>
+                                <?php echo $row[1] ;?>
                             </td>
                             <td class="task-data-table2">
-                                <?php echo $todo_task ;?>
+                                <?php echo $row[2] ;?>
                             </td>
                             <td class="task-data-table">
-                                <?php echo $todo_status ;?>
+                                <?php echo $row[3] ;?>
                             </td>
                             <td class="task-data-table">
                                 <form action="../server.php" method="POST">
                                     <?php
-                                        $ctr_done = 0;
-                                        $ctr_clear = 0;
-                                        if(strcasecmp($todo_status, 'in progress') == 0) {
+                                        if(strcasecmp($row[3], 'in progress') == 0) {
                                     ?>
-                                    <input type="hidden" name="todo_id" value="<?php echo $todo_id;?>">
-                                    <input type="hidden" name="todo_status" value="<?php echo $todo_status;?>">
+                                    <input type="hidden" name="todo_id" value="<?php echo $row[0];?>">
+                                    <input type="hidden" name="todo_status" value="<?php echo $row[3];?>">
                                     <button class="waves-effect waves-light btn modal-trigger doneBtn"
-                                        href="#doneBtn<?php echo $ctr_done; ?>">Done</button>
-                                    <div id="doneBtn<?php echo $ctr_done; ?>" class="modal">
+                                        href="#doneBtn<?php echo $row[0];?>">Done</button>
+                                    <div id="doneBtn<?php echo $row[0];?>" class="modal">
                                         <div class="modal-content">
-                                            <?php echo $todo_task;?>
+                                            <?php echo $row[2];?>
                                             <span>Are you sure you want to click done?</span>
                                         </div>
                                         <div class="modal-footer">
@@ -208,14 +198,13 @@
                                         </div>
                                     </div>
                                     <?php
-                                        $ctr_done++;
                                         } else {
                                     ?>
-                                    <input type="hidden" name="todo_id" value="<?php echo $todo_id;?>">
-                                    <input type="hidden" name="todo_status" value="<?php echo $todo_status;?>">
+                                    <input type="hidden" name="todo_id" value="<?php echo $row[0];?>">
+                                    <input type="hidden" name="todo_status" value="<?php echo $row[3];?>">
                                     <button class="waves-effect waves-light btn modal-trigger clearBtn"
-                                        href="#clearBtn<?php echo $ctr_clear; ?>">Clear</button>
-                                    <div id="clearBtn<?php echo $ctr_clear; ?>" class="modal">
+                                        href="#clearBtn<?php echo $row[0];?>">Clear</button>
+                                    <div id="clearBtn<?php echo $row[0];?>" class="modal">
                                         <div class="modal-content">
                                             <span>Are you sure you want to clear this task?</span>
                                         </div>
@@ -226,7 +215,6 @@
                                         </div>
                                     </div>
                                     <?php
-                                        $ctr_clear++;
                                         }
                                     ?>
                                 </form>
@@ -240,7 +228,6 @@
                 <a class="waves-effect waves-light btn modal-trigger task-btn" href="#viewAllTask">View All Task</a>
             </div>
         </div>
-
     </div>
 
     <!--Materials Container-->
@@ -297,8 +284,8 @@
                     </tr>
                 </tbody>
                 <?php
-            }
-        ?>
+                    }
+                ?>
             </table>
         </div>
     </div>
@@ -316,34 +303,32 @@
                     <th>Action</th>
                 </tr>
             </thead>
-
             <tbody class="task-table-container">
                 <?php 
-                           $sql = "SELECT * FROM todo WHERE todo.todoOf = $task ORDER BY todo_date;";
-                           $result = mysqli_query($conn, $sql);
-                           while($row = mysqli_fetch_array($result)) {
-                        ?>
-
+                    $sql = "SELECT * FROM todo WHERE todo.todoOf = $task ORDER BY todo_date;";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result)) {
+                ?>
                 <tr>
                     <td class="task-data-table1">
-                        <?php echo $row[1] ?>
+                        <?php echo $row[1] ;?>
                     </td>
                     <td class="task-data-table2">
-                        <?php echo $row[2] ?>
+                        <?php echo $row[2] ;?>
                     </td>
                     <td class="task-data-table">
-                        <?php echo $row[3] ?>
+                        <?php echo $row[3] ;?>
                     </td>
                     <td class="task-data-table">
                         <form action="../server.php" method="POST">
                             <?php
-                                        if(strcasecmp($row[3], 'in progress') == 0) {
-                                            ?>
-                            <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
-                            <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                                if(strcasecmp($row[3], 'in progress') == 0) {
+                            ?>
+                            <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
+                            <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
                             <button class="waves-effect waves-light btn modal-trigger doneBtn"
-                                href="#doneBtn">Done</button>
-                            <div id="doneBtn" class="modal modal-fixed-footer">
+                                href="#doneBtn<?php echo $row[0] ;?>"">Done</button>
+                            <div id="doneBtn<?php echo $row[0] ;?>"" class="modal modal-fixed-footer">
                                 <div class="modal-content">
                                     <span>Are you sure want to click done?</span>
                                 </div>
@@ -354,12 +339,12 @@
                                 </div>
                             </div>
                             <?php
-                                        } else {
-                                            ?>
-                            <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
-                            <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                            <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</button>
-                            <div id="clearBtn" class="modal">
+                                } else {
+                            ?>
+                            <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
+                            <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
+                            <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn<?php echo $row[0] ;?>"">Clear</button>
+                            <div id="clearBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to clear this task</span>
                                 </div>
@@ -370,14 +355,14 @@
                                 </div>
                             </div>
                             <?php
-                                        }
-                                    ?>
+                                }
+                            ?>
                         </form>
                     </td>
                 </tr>
                 <?php    
-                            }
-                        ?>
+                    }
+                ?>
             </tbody>
         </table>
     </div>

@@ -89,62 +89,86 @@
         </div>
     </nav>
 
-    <div class="content">
-        <div class="row">
-            <div class="col s12 light-blue lighten-3">
-                <h4>DELIVER IN</h4>
-                <form action="../server.php" method="POST">
-                    <table class="centered blue-grey lighten-5">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Quantity</th>
-                                <th>Unit</th>
-                                <th>Supplied By</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <input type="hidden" name="mat_name" value="<?php echo $row[0];?>">
-                                <td><input type="text" name="dev_date"></td>
-                                <td><input type="text" name="dev_quantity"></td>
-                                <td><input type="text" name="dev_unit"></td>
-                                <td><input type="text" name="dev_supp"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-            <div class="col s12 light-blue lighten-3">
-                <h4>USAGE IN</h4>
-                 <form action="../server.php" method="POST">
-                <table class="centered blue-grey lighten-5">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Pulled Out By</th>
-                            <th>Area of Usage</th>
+    <div class="col view-inventory-slider">
+        <ul class="tabs tabs-inventory">
+            <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
+            <li class="tab col s3"><a href="#usagein">Usage In</a></li>
+        </ul>
+    </div>
 
-                        </tr>
-                    </thead>
+    <div id="deliverin" class="col s12">
+        <div class="deliverin-container">
+            <table class="centered deliverin">
+                <thead class="deliverin-head">
+                    <tr>
+                        <th>Date</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Supplied By</th>
+                    </tr>
+                </thead>
 
-                    <tbody>
-                        <tr>
-                            <td><input type="text" name="us_date"></td>
-                            <td><input type="text" name="us_quantity"></td>
-                            <td><input type="text" name="us_unit"></td>
-                            <td><input type="text" name="pulloutby"></td>
-                            <td><input type="text" name="us_area"></td>
-                        </tr>
+                <tbody>
+                    <tr>
+                        <td>    
+                            <input type="date" min="2019-01-01" required>
+                        </td>
+                        <td>
+                        <input id="delivered_quantity" name="dev_quantity" type="text"
+                                class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                        </td>
+                        <td>
+                            <input id="delivered_quantity" name="dev_unit" type="text"
+                                class="validate view-inventory"  required>
+                        </td>
+                        <td>
+                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
+                        </td>
+                    </tr>
 
-                    </tbody>
-                </table>
-                </form>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
+    <div id="usagein" class="col s12">
+        <div class="usagein-container">
+            <table class="centered usagein">
+                <thead class="usagein-head">
+                    <tr>
+                        <th>Date</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Pulled Out By</th>
+                        <th>Area of Usage</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>    
+                            <input type="date" min="2019-01-01" required>
+                        </td>
+                        <td>
+                        <input id="delivered_quantity" name="dev_quantity" type="text"
+                                class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                        </td>
+                        <td>
+                            <input id="delivered_quantity" name="dev_unit" type="text"
+                                class="validate view-inventory"  required>
+                        </td>
+                        <td>
+                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
+                        </td>
+                        <td>
+                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">

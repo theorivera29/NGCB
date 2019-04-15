@@ -1,3 +1,11 @@
+<?php
+    include "../db_connection.php";
+    session_start();
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/NGCB/index.php');
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -34,7 +42,6 @@
 
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
-                    <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
                     <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
 
                 </ul>

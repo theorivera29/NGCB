@@ -5,10 +5,21 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+
+    $projects_name = false;
+    if(isset($_GET['projects_name'])) {
+        $projects_name = $_GET['projects_name'];
+    }
+    $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_row($result);
+    $projects_status = $row[0];
+
     $output = '';
     if(isset ($_POST['search'])) {
         $searchq = $_POST['search'];
         $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
+        $projects_name = $_GET['projects_name'];
         $sql = "SELECT
                             materials.mat_name, 
                             materials.mat_prevStock, 
@@ -19,7 +30,7 @@
                             FROM materials 
                             INNER JOIN projects ON materials.mat_project = projects.projects_id 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                            WHERE mat_name LIKE '%$searchq%'";
+                            WHERE mat_name LIKE '%$searchq%' AND projects.projects_name = $projects_name";
                             $query = mysqli_query($conn, $sql);
                             $count = mysqli_num_rows($query);
                             if($count == 0) {
@@ -27,21 +38,23 @@
                             } else {
                                 while ($row = mysqli_fetch_array($query)) {
                                     $matname = $row['mat_name'];
-                                    $output .= '<td>'.$matname.'</td>';
+                                    $matprevstock = $row['mat_prevStock'];
+                                    $matdelivered = $row['delivered_material'];
+                                    $matpulledout = $row['pulled_out'];
+                                    $mataccumulated = $row['accumulated_materials'];
+                                    $matcurrentqty = $row['currentQuantity'];
+
+                                    $output .= "<div>
+                                    <td>".$matname."</td>
+                                    <td>".$matprevstock."</td>
+                                    <td>".$matdelivered."</td>
+                                    <td>".$matpulledout."</td>
+                                    <td>".$mataccumulated."</td>
+                                    <td>".$matcurrentqty."</td>
+                                    </div>";
                                 }
                             }
     }
-
-    $projects_name = false;
-    if(isset($_GET['projects_name'])) {
-        $projects_name = $_GET['projects_name'];
-    }
-    
-
-    $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_row($result);
-    $projects_status = $row[0];
 ?>
 
 <!DOCTYPE html>
@@ -132,6 +145,7 @@
             <?php echo $projects_name; ?>
         </h5>
         <div class="col view-inventory-slider">
+        
             <ul class="tabs tabs-inventory">
                 <li class="tab col s3"><a href="#sitematerials">Project Materials</a></li>
                 <li class="tab col s3"><a href="#categories">Categories</a></li>
@@ -146,13 +160,13 @@
         ?>
         <div class="row">
             <div class="col ">
-            <form action = "viewinventory.php" method = "POST">
-                    <input class="input search-bar" type="text" name = "search" placeholder="Search">
-                    <input class="submit search-btn" type="submit" value="SEARCH">
-                </form>
-                <?php
-                print("$output");
+            <form action = "../server.php" method = "POST">
+                    <input class="input search-bar" type="search" placeholder="Search...">
+                    <input class="submit search-btn" type="submit" name = "search" value="SEARCH">
+                    <?php
+                     print("$output");
                 ?>
+                </form>
             </div>
             <div class="col">
 
@@ -220,13 +234,11 @@
 
                         <tr>
                         <td>
-                            <form action="server.php" method="POST">
-                                <input type="hidden" name="account_type" value="<?php echo $_SESSION['account_type']; ?>">
+                        <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material" href="#modal1">
-                                    <?php echo $row[0] ?></a>
+                                <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_stockcard">
+                                    <?php echo $row[0] ?></button>
                             </form>
-
                         </td>
 
                             <td>
@@ -259,7 +271,7 @@
 
     <!--MODAL-->
     <div id="modal1" class="modal modal-fixed-footer">
-            <form action="server.php" method="POST">
+            <form action="../server.php" method="POST">
                 <div class="modal- ">
                     <div class="content">
                         <div class="row">

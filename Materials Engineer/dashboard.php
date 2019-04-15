@@ -305,7 +305,7 @@
             </thead>
             <tbody class="task-table-container">
                 <?php 
-                    $sql = "SELECT * FROM todo WHERE todo.todoOf = $task ORDER BY todo_date;";
+                    $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id ORDER BY todo_date;";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
                 ?>

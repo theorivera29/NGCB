@@ -206,11 +206,11 @@
                         <p>Are you sure you want to close this project?</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value="<?php echo $row[1] ;?>">
                             <button type="submit" name="close_project"
-                                class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                                class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                         </form>
                     </div>
                 </div>
@@ -302,11 +302,11 @@
                         <p>Are you sure you want to reopen this project?</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value='<?php echo $row[1] ;?>'>
                             <button type="submit" name="reopen_project"
-                                class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                                class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                         </form>
                     </div>
                 </div>
@@ -319,8 +319,8 @@
                     <div class="modal-footer">
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value='<?php echo $row[1] ;?>'>
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-                            <button class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="delete_project">Yes</button>
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
+                            <button class=" modal-action modal-close waves-effect waves-light btn-flat yes-btn" type="submit" name="delete_project">Yes</button>
                         </form>
                     </div>
                 </div>    

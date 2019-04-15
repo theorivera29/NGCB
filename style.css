@@ -445,7 +445,7 @@ nav {
     color: #BFAB25;
     margin-bottom: 0;
     margin-left: 1%;
-    font-size: 20px;
+    font-size: 3.5vmin;
     text-align: center !important;
 }
 
@@ -775,8 +775,8 @@ div.contextmenu:hover {
 }
 
 .project-container {
-    margin-right: -18% !important;
-    margin-left: 15% !important;
+    margin-right: -13% !important;
+    margin-left: 10% !important;
     margin-top: 2% !important;
 }
 

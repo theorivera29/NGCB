@@ -199,7 +199,7 @@
                                     <div id="doneBtn<?php echo $ctr_done; ?>" class="modal">
                                         <div class="modal-content">
                                             <?php echo $todo_task;?>
-                                            <span>Are you sure want to click done?</span>
+                                            <span>Are you sure you want to click done?</span>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat">No</a>
@@ -217,7 +217,7 @@
                                         href="#clearBtn<?php echo $ctr_clear; ?>">Clear</button>
                                     <div id="clearBtn<?php echo $ctr_clear; ?>" class="modal">
                                         <div class="modal-content">
-                                            <span>Are you sure want to clear this task</span>
+                                            <span>Are you sure you want to clear this task?</span>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat">No</a>

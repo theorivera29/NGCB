@@ -6,7 +6,7 @@
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
     $projects_name = $_GET['projects_name'];
-
+    
     $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_row($result);
@@ -166,11 +166,29 @@
                     <tbody>
                         <?php 
                             $categories_id = $_GET['categories_id'];
-                            $sql = "SELECT * FROM materials WHERE mat_categ = '$categories_id';";
+                            $sql = "SELECT 
+                        materials.mat_name, 
+                        materials.mat_prevStock, 
+                        materials.delivered_material, 
+                        materials.pulled_out, 
+                        materials.accumulated_materials,
+                        materials.currentQuantity,
+                        projects.projects_name,
+                        materials.mat_unit
+                        FROM materials 
+                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                        INNER JOIN projects ON materials.mat_project = projects.projects_id WHERE mat_categ = '$categories_id';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
                         <tr>
+                            <td>
+                                <form action="../server.php" method="POST">
+                                <input type="hidden" name="mat_name" value="<?php echo rawurlencode $row[0]; ?>">
+                                <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_stockcard">
+                                    <?php echo $row[0] ?></button>
+                            </form>
+                            </td>
                             <td>
                                 <?php echo $row[1] ?>
                             </td>
@@ -185,9 +203,6 @@
                             </td>
                             <td>
                                 <?php echo $row[5] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[6] ?>
                             </td>
                             <?php 
                                 if(strcmp($projects_status, "open") == 0) {

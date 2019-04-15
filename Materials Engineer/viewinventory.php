@@ -223,9 +223,8 @@
                         <td>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                <a class="waves-effect waves-light btn matname-btn modal-trigger" name="view_material"
-                                    href="#stockcard">
-                                    <?php echo $row[0] ?></a>
+                                <button class="waves-effect waves-light btn matname-btn" name="open_stockcard">
+                                    <?php echo $row[0] ?></button>
                             </form>
                         </td>
                         <td>

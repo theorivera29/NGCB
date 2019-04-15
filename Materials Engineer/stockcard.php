@@ -107,6 +107,12 @@ $mat_name = $_GET['mat_name'];
         </div>
     </nav>
 
+                        <?php 
+                        $sql = "SELECT 
+                        mat_unit FROM materials WHERE mat_name = '$mat_name';";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)){
+                        ?>
     <div class="content">
         <div class="row">
             <div class="col s12 light-blue lighten-3">
@@ -123,10 +129,9 @@ $mat_name = $_GET['mat_name'];
                         </thead>
                         <tbody>
                             <tr>
-                                <input type="hidden" name="mat_name" value="<?php echo $mat_name;?>">
                                 <td><input type="text" name="dev_date"></td>
                                 <td><input type="text" name="dev_quantity"></td>
-                                <td><input type="text" name="dev_unit"></td>
+                                <td><input type="text" name="dev_unit" value="<?php echo $row[0]; ?>"></td>
                                 <td><input type="text" name="dev_supp"></td>
                             </tr>
                         </tbody>
@@ -148,17 +153,14 @@ $mat_name = $_GET['mat_name'];
 
                             </tr>
                         </thead>
-
                         <tbody>
                             <tr>
-                                <input type="hidden" name="mat_name" value="<?php echo $mat_name;?>">
                                 <td><input type="text" name="us_date"></td>
                                 <td><input type="text" name="us_quantity"></td>
-                                <td><input type="text" name="us_unit"></td>
+                                <td><input type="text" name="us_unit" value="<?php echo $row[0]; ?>"></td>
                                 <td><input type="text" name="pulloutby"></td>
                                 <td><input type="text" name="us_area"></td>
                             </tr>
-
                         </tbody>
                     </table>
                     <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
@@ -166,6 +168,9 @@ $mat_name = $_GET['mat_name'];
             </div>
         </div>
     </div>
+    <?php 
+                        }
+                        ?>
 
 
     <!-- ADD MATERIAL MODAL -->

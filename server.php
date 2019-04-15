@@ -162,11 +162,7 @@
 
     if(isset($_POST['open_stockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-        if(strcmp($account_type,'MatEng') == 0) {
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name");
-        } else {
-            header("location: http://127.0.0.1/NGCB/View%20Only/stockcard.php?mat_name=$mat_name");
-        }
     }
 
     if(isset($_POST['open_report'])) {
@@ -429,7 +425,7 @@
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
         $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy', 1);";
         mysqli_query($conn, $sql);
-<<<<<<< HEAD
+
             
         $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
         $result = mysqli_query($conn,$sql);
@@ -448,7 +444,7 @@
         mysqli_query($conn, $sql);
             
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added delivered in', 1, 1);";
-=======
+
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
@@ -456,7 +452,7 @@
         }
         $add_deliver_date = date("Y-m-d G:i:s");
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_deliver_date', 'Added delivered in of $delivered_matName', $account_id);";
->>>>>>> 3cfa7dcefb0a3c4623f7789d24a94d5bdec78711
+
         mysqli_query($conn, $sql);    
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
     }
@@ -473,7 +469,6 @@
         $count = mysqli_num_rows($result);
         $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area', 1);";
         mysqli_query($conn, $sql);
-<<<<<<< HEAD
             
         $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
         $result = mysqli_query($conn,$sql);
@@ -503,7 +498,7 @@
         mysqli_query($conn, $sql);
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
         exit();
-=======
+
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
@@ -513,7 +508,7 @@
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_usage_date', 'Added usage in of $delivered_matName', $account_id);";
         mysqli_query($conn, $sql); 
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
->>>>>>> 3cfa7dcefb0a3c4623f7789d24a94d5bdec78711
+
     }
 
 

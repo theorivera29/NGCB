@@ -5,6 +5,7 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+    $account_id_loggedin = "";
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +27,12 @@
                     class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
-                            if(isset($_SESSION['username'])) {
-                            $username = $_SESSION['username'];
-                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_row($result);
-                        ?>
+                if(isset($_SESSION['username'])) {
+                $username = $_SESSION['username'];
+                $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_row($result);
+            ?>
             <span id="acName">
                 <ul>
                     <?php echo $row[1]." ".$row[2]; ?>
@@ -137,15 +138,15 @@
                             <div class="col s12">
                                 <div class="input-field col deliver-to-field">
                                     <input id="delivername" type="text" class="validate" name="delivername"
-                                        pattern="[A-Za-z]*" title="Input only letters" required>
+                                        pattern="[A-Za-z0-9\s]*" title="Input only letters" required>
+
                                     <label for="delivername">Deliver To:</label>
                                 </div>
                                 <?php 
                                         $projects_name = $_GET['projects_name'];
                                      ?>
                                 <div class="input-field col form-number-field">
-                                    <input id="formnumber" type="text" class="validate" name="formnumber"
-                                        pattern="[0-9]*">
+                                    <input id="formnumber" type="text" class="validate" name="formnumber" pattern="[0-9]" title="Input numbers only">
                                     <label for="formnumber">Form Number:</label>
                                 </div>
                             </div>
@@ -179,18 +180,17 @@
                                         <select id="categories" class="browser-default" name="mat_categ" required>
                                             <option disabled selected>Choose your option</option>
                                             <?php
-                                    $sql = "SELECT * FROM categories;";
-                                    $result = mysqli_query($conn, $sql);
-                                    while($row = mysqli_fetch_row($result)) {                         
-
-                                ?>
+                                                $sql = "SELECT * FROM categories;";
+                                                $result = mysqli_query($conn, $sql);
+                                                while($row = mysqli_fetch_row($result)) {             
+                                            ?>
                                             <option value="<?php echo $row[0]; ?>">
                                                 <?php echo $row[1]; ?>
                                             </option>
 
                                             <?php 
-                                    }
-                                ?>
+                                                }
+                                            ?>
                                         </select>
                                     </td>
                                     <td>
@@ -200,8 +200,7 @@
 
                                     <td><input id="unit" readonly type="text" class="validate" name="unit" required>
                                     </td>
-                                    <td><input type="text" name="quantity" id="quantity" required></td>
-
+                                    <td><input type="text" name="quantity" id="quantity" class="validate " pattern="[0-9]*" title="Input numbers only" required></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -210,18 +209,18 @@
                     <div class="row">
                         <div class="col s6 hauled-side-container">
                             <div class="input-field col s10 left-align ">
-                                <input id="hauledby" type="text" class="validate" name="hauledby" pattern="[A-Za-z\s]"
+                                <input id="hauledby" type="text" class="validate" name="hauledby" pattern="[A-Za-z\s]*"
                                     title="Input letters only" required>
                                 <label for="hauledby">Hauled by :</label>
                             </div>
                             <div class="input-field col s10 left-align ">
                                 <input id="warehouseman" type="text" class="validate" name="warehouseman"
-                                    pattern="[A-Za-z\s]" title="Input letters only" required>
+                                    pattern="[A-Za-z\s]*" title="Input letters only" required>
                                 <label for="warehouseman">Warehouseman:</label>
                             </div>
                             <div class="input-field col s10 left-align ">
                                 <input id="approvedby" type="text" class="validate" name="approvedby"
-                                    pattern="[A-Za-z\s]" title="Input letters only" required>
+                                    pattern="[A-Za-z\s]*" title="Input letters only" required>
                                 <label for="approvedby">Approved By:</label>
                             </div>
                         </div>
@@ -239,12 +238,12 @@
                                 <tbody>
                                     <tr>
                                         <td>Type:</td>
-                                        <td><input type="text" name="truck_type" id="truck_type" pattern="[A-Za-z]*"
+                                        <td><input type="text" name="truck_type" id="truck_type" pattern="[A-Za-z\s]*"
                                                 title="Input only letters" required></td>
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td><input type="text" name="truck_plate" id="truck_plate" required></td>
+                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]" required></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>
@@ -306,6 +305,7 @@
                 'option:selected').val(), function (data) {
                 var d = JSON.parse(data)
                 var loobNgSelect = '';
+                loobNgSelect = loobNgSelect + `<option disabled selected>Choose your option</option>`
                 d.forEach(function (da) {
                     loobNgSelect = loobNgSelect + `<option value="${da[0]}">${da[1]}</option>`
                 })

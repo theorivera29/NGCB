@@ -132,11 +132,11 @@
                             <p>Are you sure you want to disable this account?</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
                                 <button type="submit" name="disable_account"
-                                    class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                                    class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                             </form>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                         </td>
                         <td>
                             <div class="row">
-                                <a href="#disable_account" class="waves-effect waves-light btn modal-trigger all-btn"
+                                <a href="#disable_account" class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
                                     href="#disableBtn">
                                     Disable</a>
                             </div>
@@ -172,16 +172,6 @@
                         ?>
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    <div id="disableBtn" class="modal">
-        <div class="modal-content">
-            <span>Are you sure want to disable this task?</span>
-        </div>
-        <div class="modal-footer">
-            <a class="modal-close waves-effect waves-red all-btn">No</a>
-            <button type="submit" name="todo_update" class="modal-close waves-effect waves-red all-btn">Yes</button>
         </div>
     </div>
 

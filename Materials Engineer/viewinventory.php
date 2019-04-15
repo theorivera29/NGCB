@@ -140,15 +140,13 @@
             if(strcmp($projects_status, "open") == 0) {
         ?>
         <div class="row">
-            <div class="col ">
+            <div class="col 6 m3">
                 <form>
                     <input class="input search-bar" type="search" placeholder="Search">
                     <input class="submit search-btn" type="submit" value="SEARCH">
                 </form>
             </div>
-            <div class="col">
-
-            </div>
+           
             <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn">
                 Add Material</a>
         </div>

@@ -870,12 +870,12 @@ div.contextmenu:hover {
 }
 
 .add-mat-btn{
-    background-color: #ECC30B !important;
+    background-color: #FFFFFF !important;
     color: #000000 !important;
 }
 
 .edit-material-btn {
-    background-color: #ECC30B !important;
+    background-color: #FFFFFF !important;
     color: #000000 !important;
 }
 
@@ -998,7 +998,7 @@ div.contextmenu:hover {
 }
 
 .matname-btn {
-    background-color: #FFFFFF !important;
+    background-color: #ECC30B!important;
     color: #000000 !important;
 }
 

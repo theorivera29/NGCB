@@ -24,7 +24,8 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -38,7 +39,8 @@ $mat_name = $_GET['mat_name'];
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -66,13 +68,16 @@ $mat_name = $_GET['mat_name'];
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                        href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a
+                            class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -86,7 +91,9 @@ $mat_name = $_GET['mat_name'];
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a
+                            class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -101,120 +108,25 @@ $mat_name = $_GET['mat_name'];
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="report.php">Report</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-                        <?php 
-                        $sql = "SELECT 
-                        mat_unit FROM materials WHERE mat_name = '$mat_name';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                        ?>
-    <div class="content">
-        <div class="row">
-            <div class="col s12 light-blue lighten-3">
-                <h4>DELIVER IN</h4>
-                <form action="../server.php" method="POST">
-                    <table class="centered blue-grey lighten-5">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Quantity</th>
-                                <th>Unit</th>
-                                <th>Supplied By</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="date" name="dev_date"></td>
-                                <td><input type="text" name="dev_quantity"></td>
-                                <td><input type="text" name="dev_unit" value="<?php echo $row[0]; ?>"></td>
-                                <td><input type="text" name="dev_supp"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
-                </form>
-            </div>
-            <div class="col s12 light-blue lighten-3">
-                <h4>USAGE IN</h4>
-                <form action="../server.php" method="POST">
-                    <table class="centered blue-grey lighten-5">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Quantity</th>
-                                <th>Unit</th>
-                                <th>Pulled Out By</th>
-                                <th>Area of Usage</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="date" name="us_date"></td>
-                                <td><input type="text" name="us_quantity"></td>
-                                <td><input type="text" name="us_unit" value="<?php echo $row[0]; ?>"></td>
-                                <td><input type="text" name="pulloutby"></td>
-                                <td><input type="text" name="us_area"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <?php 
-                        }
-                        ?>
-
-
-    <!-- ADD MATERIAL MODAL -->
-    <div id="addmaterialModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Add Material</h4>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="materialname" type="text" class="validate">
-                    <label for="materialname">Material Name:</label>
-                </div>
-                <div class="col s12">
-                    <label>Category:</label>
-
-                    <div class="input-field col s12">
-                        <select class="browser-default">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input-field col s5">
-                    <input id="quantifier" type="text" class="validate">
-                    <label for="quantifier">Quantifier:</label>
-                </div>
-                <div class="input-field col s7">
-                    <input id="minquantity" type="text" class="validate">
-                    <label for="minquantity">Minimum quantity of materials when to be quantified:</label>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#addstockcardModal" class="waves-effect waves-teal btn-flat modal-trigger">Next</a>
-        </div>
+    <div class="col view-inventory-slider">
+        <ul class="tabs tabs-inventory">
+            <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
+            <li class="tab col s3"><a href="#usagein">Usage In</a></li>
+        </ul>
     </div>
 
-    <!-- ADD STOCKCARD MODAL -->
-    <div id="addstockcardModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <table class="centered">
-                <thead>
+    <div id="deliverin" class="col s12">
+        <div class="deliverin-container">
+            <table class="centered deliverin">
+                <thead class="deliverin-head">
                     <tr>
                         <th>Date</th>
                         <th>Quantity</th>
@@ -225,92 +137,68 @@ $mat_name = $_GET['mat_name'];
 
                 <tbody>
                     <tr>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
+                        <td>    
+                            <input type="date" min="2019-01-01" required>
+                        </td>
+                        <td>
+                        <input id="delivered_quantity" name="dev_quantity" type="text"
+                                class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                        </td>
+                        <td>
+                            <input id="delivered_quantity" name="dev_unit" type="text"
+                                class="validate view-inventory"  required>
+                        </td>
+                        <td>
+                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
+                        </td>
                     </tr>
-                    <tr>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                    </tr>
-                    <tr>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                        <td contenteditable="true"></td>
-                    </tr>
-
 
                 </tbody>
             </table>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
-            <a href="#addmaterialModal" class="modal-close waves-effect waves-teal btn-flat">Back</a>
+    </div>
+    <div id="usagein" class="col s12">
+        <div class="usagein-container">
+            <table class="centered usagein">
+                <thead class="usagein-head">
+                    <tr>
+                        <th>Date</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Pulled Out By</th>
+                        <th>Area of Usage</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>    
+                            <input type="date" min="2019-01-01" required>
+                        </td>
+                        <td>
+                        <input id="delivered_quantity" name="dev_quantity" type="text"
+                                class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                        </td>
+                        <td>
+                            <input id="delivered_quantity" name="dev_unit" type="text"
+                                class="validate view-inventory"  required>
+                        </td>
+                        <td>
+                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
+                        </td>
+                        <td>
+                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
     </div>
 
 
-    <!-- EDIT MATERIAL MODAL -->
-    <div id="editmaterialModal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Edit Material</h4>
-            <h5>Old Material Information:</h5>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input disabled value=" Sample Material Name" id="disabled" type="text" class="validate">
-                    <label for="disabled">Material Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input disabled value="Sample Category" id="disabled" type="text" class="validate">
-                    <label for="disabled">Category</label>
-                </div>
-                <div class="input-field col s6">
-                    <input disabled value=" Sample Quantifier" id="disabled" type="text" class="validate">
-                    <label for="disabled">Quantifier</label>
-                </div>
-                <div class="input-field col s6">
-                    <input disabled value=" Sample Minimum Quantity" id="disabled" type="text" class="validate">
-                    <label for="disabled">Minimum quantity of materials when to be quantified:</label>
-                </div>
-            </div>
-            <h5>New Material Information:</h5>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="materialname" type="text" class="validate">
-                    <label for="materialname">Material Name:</label>
-                </div>
-                <div class="col s6">
-                    <label>Category:</label>
-                </div>
-                <div class="input-field col s6">
-                    <select class="browser-default">
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                    </select>
-                </div>
-                <div class="input-field col s5">
-                    <input id="quantifier" type="text" class="validate">
-                    <label for="quantifier">Quantifier:</label>
-                </div>
-                <div class="input-field col s7">
-                    <input id="minquantity" type="text" class="validate">
-                    <label for="minquantity">Minimum quantity of materials when to be quantified:</label>
-                </div>
-            </div>
-        </div>
 
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Save</a>
-        </div>
-    </div>
+
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -318,7 +206,7 @@ $mat_name = $_GET['mat_name'];
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -331,7 +219,6 @@ $mat_name = $_GET['mat_name'];
             $('.modal-trigger').leanModal();
 
         });
-
     </script>
 
 </body>

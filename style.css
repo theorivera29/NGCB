@@ -470,8 +470,8 @@ i.right {
 }
 
 .sidenav-logo {
-    height: 70%;
-    width: 70%;
+    height: 40%;
+    width: 40%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -860,10 +860,9 @@ div.contextmenu:hover {
 }
 
 .search-bar {
-    width: 50% !important;
+    width: 49% !important;
     height: 2% !important;
     margin-left: 10% !important;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .search-btn {
@@ -1136,6 +1135,57 @@ select[name=mat_unit] {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/*Deliver In*/
+.deliverin-container {
+    width: 95% !important;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.deliverin {
+    border: 1px solid black;
+    border-collapse: separate;
+}
+
+.deliverin-head>tr {
+    background-color: #0B415E !important;
+    font-size: 2.5vmin;
+    color: #FFFFFF;
+    padding-right: 2% !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.deliverin>tr>td {
+    background-color: #FFFFFF !important;
+}
+
+/*Usage In*/
+.usagein-container {
+    width: 95% !important;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.usagein{
+    border: 1px solid black;
+    border-collapse: separate;
+}
+
+.usagein-head>tr {
+    background-color: #0B415E !important;
+    font-size: 2.5vmin;
+    color: #FFFFFF;
+    padding-right: 2% !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.usagein>tr>td {
+    background-color: #FFFFFF !important;
+}
 
 /*Hauling*/
 .hauling-project-card {
@@ -1470,6 +1520,23 @@ select[name=mat_unit] {
 }
 
 .pass-reset-table-head>tr>th{
+    background-color: #0B415E !important;
+    color: #FFFFFF;
+}
+
+/*Logs*/
+.logs-container{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 3%;
+    border: 1px solid black;
+} 
+
+.logs-contaienr-table{
+    align: center;
+}
+
+.logs-container-head>tr>th{
     background-color: #0B415E !important;
     color: #FFFFFF;
 }

@@ -139,7 +139,9 @@
                                 <?php echo $row[0] ?>
                             </span>
                             <p>
-                                <?php echo $row[1] ?>
+                                <span class="card-text">
+                                    <?php echo $row[1] ?>
+                                </span>
                             </p>
                             <p>
                                 <span class="card-text">

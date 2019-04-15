@@ -5,6 +5,7 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+    $account_id_loggedin = "";
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +27,12 @@
                     class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
-                            if(isset($_SESSION['username'])) {
-                            $username = $_SESSION['username'];
-                            $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_fetch_row($result);
-                        ?>
+                if(isset($_SESSION['username'])) {
+                $username = $_SESSION['username'];
+                $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_row($result);
+            ?>
             <span id="acName">
                 <ul>
                     <?php echo $row[1]." ".$row[2]; ?>

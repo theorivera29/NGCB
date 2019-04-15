@@ -526,11 +526,7 @@
                             pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: Formworks"
                             required>
                         <label for="category_name">Category Name:</label>
-                    </div>
-
-                    <div class="input-field col s12">
-                        <button type="button" class="add-row waves-effect waves-light btn all-btn">Add</button>
-                    </div>
+                    </div>                   
                 </div>
             </div>
             <div class="modal-footer">

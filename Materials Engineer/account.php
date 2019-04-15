@@ -162,8 +162,8 @@
                         }
                     ?>
                         <div class="col 12 account-btn">
-                            <button class="btn waves-effect waves-light all-btn" type="submit" name="edit_account">Save</button>
-                            <button class="btn waves-effect waves-light all-btn" type="submit"
+                            <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
+                            <button class="btn waves-effect waves-light all-btn cancel-acc-btn" type="submit"
                                 name="edit_account">Cancel</button>
                         </div>
                 </div>

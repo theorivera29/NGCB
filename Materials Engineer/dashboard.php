@@ -338,8 +338,8 @@
                                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                            <button class="waves-effect waves-light btn modal-trigger" href="#doneBtn">Done</button>
-                            <div id="doneBtn" class="modal">
+                            <button class="waves-effect waves-light btn modal-trigger doneBtn" href="#doneBtn">Done</button>
+                            <div id="doneBtn" class="modal modal-fixed-footer">
                                 <div class="modal-content">
                                     <span>Are you sure want to click done?</span>
                                 </div>

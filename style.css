@@ -860,10 +860,9 @@ div.contextmenu:hover {
 }
 
 .search-bar {
-    width: 50% !important;
+    width: 49% !important;
     height: 2% !important;
     margin-left: 10% !important;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .search-btn {
@@ -1521,6 +1520,23 @@ select[name=mat_unit] {
 }
 
 .pass-reset-table-head>tr>th{
+    background-color: #0B415E !important;
+    color: #FFFFFF;
+}
+
+/*Logs*/
+.logs-container{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 3%;
+    border: 1px solid black;
+} 
+
+.logs-contaienr-table{
+    align: center;
+}
+
+.logs-container-head>tr>th{
     background-color: #0B415E !important;
     color: #FFFFFF;
 }

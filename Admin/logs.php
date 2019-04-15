@@ -1,5 +1,9 @@
-<?php 
+<?php
     include "../db_connection.php";
+    session_start();
+    if(!isset($_SESSION['loggedin'])) {
+      header('Location: http://127.0.0.1/NGCB/index.php');
+    }
 ?>
 
 
@@ -8,7 +12,7 @@
 <html>
 
 <head>
-<title>NGCBDC</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
@@ -16,7 +20,7 @@
 
 
 <body>
-<nav>
+  <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -39,7 +43,6 @@
 
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
-                    <li><a class="waves-effect waves-blue" href="account.php">Account</a></li>
                     <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
 
                 </ul>
@@ -101,18 +104,19 @@
             </ul>
         </div>
     </nav>
-    <div class="logs-container">
-    <table class="centered">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Activity</th>
-                <th>Account</th>
-            </tr>
-        </thead>
 
-        <tbody>
-        <?php 
+    <div class="logs-container">
+        <table class="logs-contaienr-table centered striped">
+            <thead class="logs-container-head">
+                <tr>
+                    <th>Date</th>
+                    <th>Activity</th>
+                    <th>Account</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php 
         $sql = "SELECT 
         logs.logs_datetime,
         logs.logs_activity,
@@ -123,17 +127,17 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_row($result)){
         ?>
-            <tr>
-                <td><?php echo $row[0]; ?></td>
-                <td><?php echo $row[1]; ?></td>
-                <td><?php echo $row[2]; ?></td>
-            </tr>
-        <?php 
+                <tr>
+                    <td><?php echo $row[0]; ?></td>
+                    <td><?php echo $row[1]; ?></td>
+                    <td><?php echo $row[2]; ?></td>
+                </tr>
+                <?php 
             }
         ?>
-        </tbody>
-    </table>
-        </div>
+            </tbody>
+        </table>
+    </div>
 
 
     <!--Import jQuery before materialize.js-->
@@ -141,12 +145,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.modal-trigger').leanModal();
         });
 
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -156,7 +160,6 @@
             // START OPEN
             $('.button-collapse').sideNav('show');
         });
-
     </script>
 
 </body>

@@ -64,31 +64,24 @@
                         }
                     ?>
                 </h3>
+
                 <li>
-                    <div class="divider"></div>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                        href="projects.php">Projects</a>
                 </li>
+
                 <li>
-                    <a href="projects.php">Projects</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="hauleditems.php">Hauled Materials</a>
                 </li>
+
                 <li>
-                    <div class="divider"></div>
-                </li>
-                <li>
-                    <a href="hauleditems.php">Hauled Materials</a>
-                </li>
-                <li>
-                    <div class="divider"></div>
-                </li>
-                <li>
-                    <a href="sitematerials.php">Site Materials</a>
-                </li>
-                <li>
-                    <div class="divider"></div>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
         </div>
     </nav>
-    </div>
 
     <div class="item-categories">
         <?php

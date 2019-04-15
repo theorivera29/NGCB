@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -64,31 +64,24 @@
                         }
                     ?>
                 </h3>
+
                 <li>
-                    <div class="divider"></div>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                        href="projects.php">Projects</a>
                 </li>
+
                 <li>
-                    <a href="projects.php">Projects</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="hauleditems.php">Hauled Materials</a>
                 </li>
+
                 <li>
-                    <div class="divider"></div>
-                </li>
-                <li>
-                    <a href="hauleditems.php">Hauled Materials</a>
-                </li>
-                <li>
-                    <div class="divider"></div>
-                </li>
-                <li>
-                    <a href="sitematerials.php">Site Materials</a>
-                </li>
-                <li>
-                    <div class="divider"></div>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
         </div>
     </nav>
-
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
@@ -110,16 +103,16 @@
 
                 <tbody>
                     <tr>
-                        <td>    
+                        <td>
                             <input type="date" min="2019-01-01" required>
                         </td>
                         <td>
-                        <input id="delivered_quantity" name="dev_quantity" type="text"
+                            <input id="delivered_quantity" name="dev_quantity" type="text"
                                 class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
                         </td>
                         <td>
-                            <input id="delivered_quantity" name="dev_unit" type="text"
-                                class="validate view-inventory"  required>
+                            <input id="delivered_quantity" name="dev_unit" type="text" class="validate view-inventory"
+                                required>
                         </td>
                         <td>
                             <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
@@ -145,16 +138,16 @@
 
                 <tbody>
                     <tr>
-                        <td>    
+                        <td>
                             <input type="date" min="2019-01-01" required>
                         </td>
                         <td>
-                        <input id="delivered_quantity" name="dev_quantity" type="text"
+                            <input id="delivered_quantity" name="dev_quantity" type="text"
                                 class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
                         </td>
                         <td>
-                            <input id="delivered_quantity" name="dev_unit" type="text"
-                                class="validate view-inventory"  required>
+                            <input id="delivered_quantity" name="dev_unit" type="text" class="validate view-inventory"
+                                required>
                         </td>
                         <td>
                             <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
@@ -168,14 +161,14 @@
             </table>
         </div>
     </div>
-    
+
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
                 edge: 'left', // Choose the horizontal origin
@@ -188,7 +181,6 @@
             $('.modal-trigger').leanModal();
 
         });
-
     </script>
 
 </body>

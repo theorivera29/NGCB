@@ -222,7 +222,7 @@
                     <tr>
                         <td>
                             <form action="../server.php" method="POST">
-                                <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
                                 <button class="waves-effect waves-light btn matname-btn" name="open_stockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
@@ -271,7 +271,9 @@
                                                 </select>
                                             </div>
                                             <div class="input-field col s7">
-                                                <input id="minquantity" name="minquantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                                                <input id="minquantity" name="minquantity" type="text"
+                                                    class="validate view-inventory" pattern="[0-9]*"
+                                                    title="Input numbers only" required>
                                                 <label for="minquantity">Item threshold:</label>
                                             </div>
                                         </div>
@@ -317,8 +319,10 @@
                             <tbody>
                                 <tr>
                                     <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                    <td><input type="date"  min="2019-01-01" required></td>
-                                    <td><input type="text" name="dev_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required></td>
+                                    <td><input type="date" min="2019-01-01" required></td>
+                                    <td><input type="text" name="dev_quantity" type="text"
+                                            class="validate view-inventory" pattern="[0-9]*" title="Input numbers only"
+                                            required></td>
                                     <td><input type="text" name="dev_unit" value="<?php echo $row[7]?>" required></td>
                                     <td><input type="text" name="dev_supp" required></td>
                                 </tr>
@@ -352,8 +356,10 @@
                             <tbody>
                                 <tr>
                                     <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                    <td><input type="date"  min="2019-01-01" required></td>
-                                    <td><input type="text" name="us_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required></td>
+                                    <td><input type="date" min="2019-01-01" required></td>
+                                    <td><input type="text" name="us_quantity" type="text"
+                                            class="validate view-inventory" pattern="[0-9]*" title="Input numbers only"
+                                            required></td>
                                     <td><input type="text" name="us_unit" value="<?php echo $row[7]?>" required>
                                     <td><input type="text" name="pulloutby" required></td>
                                     <td><input type="text" name="us_area" required></td>
@@ -476,7 +482,8 @@
                         </select>
                     </div>
                     <div class="input-field col add-threshold">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input only numbers" required>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory"
+                            pattern="[0-9]*" title="Input only numbers" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
@@ -494,10 +501,12 @@
                         <tbody>
                             <tr>
                                 <td>
-                                <input type="date"  min="2019-01-01" required>
+                                    <input type="date" min="2019-01-01" name="date" required>
                                 </td>
                                 <td>
-                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                                    <input id="delivered_quantity" name="dev_quantity" type="text"
+                                        class="validate view-inventory" pattern="[0-9]*" title="Input numbers only"
+                                        required>
                                 </td>
                                 <td>
                                     <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
@@ -543,6 +552,7 @@
             <div class="modal-content edit-categ-modal">
                 <span id="modal-title">Edit Category</span>
                 <div class="row">
+                    <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                     <div class="input-field col s6">
                         <span id="category-title">Categories</span>
                         <select class="browser-default" id="category-option" name="category_name">
@@ -588,25 +598,10 @@
         // SIDEBAR
         $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
             });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
-
+            $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
-
-            $(".add-row").click(function () {
-                var quantity = $("#name").val();
-                var unit = $("#email").val();
-                var articles = $('#articles').val();
-                var markup = "<tr>" +
-                    "<td><input type=\"text\" name=\"category_name[]\"></td>" +
-                    "</tr>;"
-                $("table tbody").append(markup);
-            });
         });
     </script>
 

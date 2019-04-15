@@ -198,7 +198,7 @@
                                         href="#doneBtn<?php echo $ctr_done; ?>">Done</button>
                                     <div id="doneBtn<?php echo $ctr_done; ?>" class="modal">
                                         <div class="modal-content">
-                                        <?php echo $todo_task;?>
+                                            <?php echo $todo_task;?>
                                             <span>Are you sure want to click done?</span>
                                         </div>
                                         <div class="modal-footer">
@@ -256,7 +256,7 @@
                         <th>Unit</th>
                         <th>Threshold</th>
                         <th>Project</th>
-                        
+
                     </tr>
                 </thead>
                 <?php 
@@ -389,38 +389,13 @@
     </script>
     <script>
         // SIDEBAR
-        // SIDEBAR
-
         $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
             });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
-
+            $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
-
-            $(".add-row").click(function () {
-                var quantity = $("#name").val();
-                var unit = $("#email").val();
-                var articles = $('#articles').val();
-                var markup = "<tr>" +
-                    "<td><input type=\"text\" name=\"category_name[]\"></td>" +
-                    "</tr>;"
-                $("table tbody").append(markup);
-            });
         });
-
-        (function ($) {
-            $(function () {
-
-                $(".dropdown-button").dropdown();
-
-            }); // End Document Ready
-        })(jQuery);
 
         //For the length of textarea todo
         var maxLength = 50;

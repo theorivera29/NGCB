@@ -162,11 +162,8 @@
 
     if(isset($_POST['open_stockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-        if(strcmp($account_type,'MatEng') == 0) {
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name");
-        } else {
-            header("location: http://127.0.0.1/NGCB/View%20Only/stockcard.php?mat_name=$mat_name");
-        }
+
     }
 
     if(isset($_POST['open_report'])) {
@@ -273,6 +270,7 @@
     }
 
     if (isset($_POST['edit_category'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $category_name = mysqli_real_escape_string($conn, $_POST['category_name']);
         $new_category_name = mysqli_real_escape_string($conn, $_POST['new_category_name']);
         $sql = "SELECT categories_name FROM categories WHERE categories_name = '$category_name'";
@@ -291,7 +289,7 @@
             $edit_categ_date = date("Y-m-d G:i:s");
             $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_categ_date', 'Edited category $category_name', $account_id);";
             mysqli_query($conn, $sql);
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/category.php");            
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
         }
     }
 
@@ -324,7 +322,7 @@
         $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
-        $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
+        $delivered_date = mysqli_real_escape_string($conn, $_POST['date']);
         $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
         $supplied_by = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
         $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, '$mat_unit', $mat_categ, $mat_notif, $delivered_quantity, 0, 0, $delivered_quantity);";

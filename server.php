@@ -413,7 +413,7 @@
         } else {
             $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
             mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_task', $account_id);";
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
             mysqli_query($conn, $sql);
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
         }        

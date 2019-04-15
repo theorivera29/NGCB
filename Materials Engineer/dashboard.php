@@ -295,6 +295,9 @@
     </div>
 
     <div id="viewAllTask" class="modal modal-fixed-footer">
+        <div class="close-container">
+            <a href=""><i class="material-icons close-btn">close</i></a>
+        </div>
         <table class="striped centered view-tasks">
             <thead class="view-tasks-head">
                 <tr class="task-headers">
@@ -325,6 +328,13 @@
                     <td class="task-data-table">
                         <form action="../server.php" method="POST">
                             <?php
+                                        if(strcasecmp($row[3], 'in progress') == 0) {
+                                            ?>
+                            <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
+                            <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
+                            <button class="waves-effect waves-light btn modal-trigger doneBtn"
+                                href="#doneBtn">Done</button>
+                            <div id="doneBtn" class="modal modal-fixed-footer">
                                 if(strcasecmp($row[3], 'in progress') == 0) {
                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
@@ -367,10 +377,6 @@
                 ?>
             </tbody>
         </table>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-
-        </div>
     </div>
 
     <!--Import jQuery before materialize.js-->
@@ -386,6 +392,7 @@
             });
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
+            $('table').scrollTableBody();
         });
 
         //For the length of textarea todo

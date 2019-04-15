@@ -129,7 +129,7 @@ $mat_name = $_GET['mat_name'];
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="text" name="dev_date"></td>
+                                <td><input type="date" name="dev_date"></td>
                                 <td><input type="text" name="dev_quantity"></td>
                                 <td><input type="text" name="dev_unit" value="<?php echo $row[0]; ?>"></td>
                                 <td><input type="text" name="dev_supp"></td>
@@ -155,7 +155,7 @@ $mat_name = $_GET['mat_name'];
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input type="text" name="us_date"></td>
+                                <td><input type="date" name="us_date"></td>
                                 <td><input type="text" name="us_quantity"></td>
                                 <td><input type="text" name="us_unit" value="<?php echo $row[0]; ?>"></td>
                                 <td><input type="text" name="pulloutby"></td>

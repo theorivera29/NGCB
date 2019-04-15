@@ -5,7 +5,7 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-    $task = $_SESSION['account_id'];
+    $account_id = $_SESSION['account_id'];
 ?>
 
 <!DOCTYPE html>

@@ -713,8 +713,9 @@ textarea.materialize-textarea {
 }
 
 #viewAllTask{
-    overflow-y: hidden;
+    overflow-y: auto;
 }
+
 
 /*Calendar  */
 .contextmenu {

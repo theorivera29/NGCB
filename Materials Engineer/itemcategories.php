@@ -116,8 +116,7 @@
     ?>
     <div class="row item-cat-col">
         <div class="col s12 right-align">
-            <a href="#addmaterialModal" class="waves-effect waves-light btn button  add-btn modal-trigger">
-                <i class="material-icons left">add_circle_outline</i>Add Material</a>
+            <a href="#addmaterialModal" class="waves-effect waves-light btn button add-mat-btn modal-trigger">Add Material</a>
         </div>
     </div>
     <?php 
@@ -234,8 +233,8 @@
                                         </div>
 
                                         <div class="modal-footer">
-                                            <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                                            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="edit_materials">Save</button>
+                                            <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
+                                            <button class="waves-effect waves-light btn save-mat-btn" type="submit" class="validate" name="edit_materials">Save</button>
                                         </div>
                                     </div>
                                 </form>
@@ -342,8 +341,8 @@
 
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button type="submit" class="waves-effect waves-teal btn-flat" name="create_materials">Save</button>
+                <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
+                <button type="submit" class="waves-effect waves-light btn-flat save-mat-btn" name="create_materials">Save</button>
             </div>
         </form>
     </div>

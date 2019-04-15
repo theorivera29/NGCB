@@ -261,9 +261,9 @@
                     </div>
             </div>
             <div class="card-action right-align">
-                <button class="waves-effect waves-light btn all-btn" type="submit" class="validate"
+                <button class="waves-effect waves-light btn all-btn save-hauled-btn" type="submit" class="validate"
                     name="create_hauling">Save</button>
-                <a class="waves-effect waves-light btn all-btn">Cancel</a>
+                <a class="waves-effect waves-light btn all-btn cancel-hauled-btn">Cancel</a>
             </div>
             </form>
         </div>

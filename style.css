@@ -582,6 +582,11 @@ textarea.materialize-textarea {
     margin-right: 10%;
 }
 
+.save-todo-btn:hover{
+    color: #FFFFFF !important;
+    background-color: #5D9335 !important;
+}
+
 #panel-header-task {
     margin-left: 37%;
     padding-top: 3%;
@@ -646,15 +651,35 @@ textarea.materialize-textarea {
 }
 
 .doneBtn:hover {
-    background-color: #71B340;
+    background-color: #5D9335;
 }
 
 .clearBtn {
-    background-color: #D1B513;
+    background-color: #EDC821;
 }
 
 .clearBtn:hover {
-    background-color: #D1B513;
+    background-color: #ECC30B;
+}
+
+.no-btn{
+    background-color: #EF5B5B;
+    color: #FFFFFF;
+}
+
+.no-btn:hover{
+    background-color: #C44B4B;
+    color: #FFFFFF;
+}
+
+.yes-btn{
+    background-color: #71B340;
+    color: #FFFFFF;
+}
+
+.yes-btn:hover{
+    background-color: #5D9335;
+    color: #FFFFFF;
 }
 
 .task-btn {
@@ -663,6 +688,11 @@ textarea.materialize-textarea {
     background-color: #2F89C5 !important;
     float: right !important;
     margin-bottom: 2%;
+}
+
+.task-btn:hover{
+    color: #FFFFFF !important;
+    background-color: #2771A2 !important;
 }
 
 #panel-header-materials {
@@ -699,43 +729,6 @@ textarea.materialize-textarea {
 
 .materials-left-container>tr>td {
     width: 90px;
-}
-
-/*Calendar  */
-.contextmenu {
-    position: absolute;
-    z-index: 10;
-    line-height: 50px;
-    font-size: 15px;
-    padding-left: 1%;
-    width: 300px;
-    display: none;
-    background-color: #f6f6f6;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-a.previous,
-a.next,
-.days a {
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
-    width: 25px;
-}
-
-.selected {
-    font-weight: bold;
-    background-color: #1A5D89;
-    color: #ffffff;
-}
-
-input.datepicker:focus+div.contextmenu {
-    display: block;
-}
-
-input.datepicker:focus+div.contextmenu,
-div.contextmenu:hover {
-    display: block;
 }
 
 /*Projects*/
@@ -786,7 +779,7 @@ div.contextmenu:hover {
 .card .card-content {
     width: 100% !important;
     font-size: 2.5vmin;
-    background-color: #ECC30B !important;
+    background-color: #D7B20A !important;
     color: black;
 }
 
@@ -951,17 +944,27 @@ div.contextmenu:hover {
     background-color: yellow !important;
 }
 
-.save-stockcard-btn {
+.save-mat-btn {
     color: #ffffff !important;
-    background-color: #003A51 !important;
+    background-color: #71B340 !important;
     float: right;
     font-size: 2vmin !important;
 }
 
-.save-stockcard-btn:hover {
+.save-mat-btn:hover {
     color: #ffffff !important;
     background-color: #003A51 !important;
     float: right;
+}
+
+.cancel-mat-btn{
+    background-color: #EF5B5B;
+    color: #FFFFFF;
+}
+
+.cancel-mat-btn:hover{
+    background-color: #C44B4B;
+    color: #FFFFFF;
 }
 
 .modal-footer {
@@ -1045,16 +1048,14 @@ div.contextmenu:hover {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.all-btn:hover {}
-
 .add-category-modal {
     width: 40%;
     margin-top: 5%;
 }
 
-.add-btn{
-    background-color: #19466D !important;
-    color: #FFFFFF !important;
+.category-btn{
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
 }
 
 #modal-title {
@@ -1268,6 +1269,21 @@ select[name=mat_unit] {
     padding-top: 5% !important;
 }
 
+.save-hauled-btn{
+    background-color: #71B340;
+}
+
+.save-hauled-btn:hover{
+    background-color: #71B340;
+}
+
+.cancel-hauled-btn{
+    background-color: #EF5B5B;
+}
+
+.cancel-hauled-btn:hover{
+    background-color: #EF5B5B;
+}
 
 /*View Hauled*/
 
@@ -1279,6 +1295,10 @@ select[name=mat_unit] {
     padding-right: 2%;
     padding-left: 2%;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.view-hauled-item-btn{
+    background-color: #71B340 !important;
 }
 
 /*Report*/
@@ -1296,7 +1316,7 @@ select[name=mat_unit] {
 
 /* Style for Report*/
 .report-btn {
-    background-color: #1A5D89 !important;
+    background-color: #ECC30B !important;
     color: white !important;
     margin-top: 1%;
     margin-right: 2%;
@@ -1396,7 +1416,15 @@ select[name=mat_unit] {
     background-color: #71B340;
 }
 
+.save-acc-btn:hover{
+    background-color: #71B340;
+}
+
 .cancel-acc-btn{
+    background-color: #EF5B5B;
+}
+
+.cancel-acc-btn:hover{
     background-color: #EF5B5B;
 }
 

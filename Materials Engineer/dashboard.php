@@ -202,9 +202,9 @@
                                             <span>Are you sure want to click done?</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                            <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
                                             <button type="submit" name="todo_update"
-                                                class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                                class="modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
                                     <?php
@@ -220,9 +220,9 @@
                                             <span>Are you sure want to clear this task</span>
                                         </div>
                                         <div class="modal-footer">
-                                            <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                            <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
                                             <button type="submit" name="todo_update"
-                                                class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                                class="modal-close waves-effect waves-red btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
                                     <?php
@@ -344,9 +344,9 @@
                                     <span>Are you sure want to click done?</span>
                                 </div>
                                 <div class="modal-footer">
-                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                    <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
                                     <button type="submit" name="todo_update"
-                                        class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                        class="modal-close waves-effect waves-red btn-flat yes-btn">Yes</button>
                                 </div>
                             </div>
                             <?php
@@ -354,7 +354,7 @@
                                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0]?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3]?>">
-                            <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn">Clear</button>
+                            <button class="waves-effect waves-light btn modal-trigger clearBtn" href="#clearBtn">Clear</button>
                             <div id="clearBtn" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to clear this task</span>

@@ -389,6 +389,7 @@ nav {
 .side-nav {
     background-color: #003A51 !important;
     font-family: Galyon;
+    overflow-y: hidden;
 }
 
 

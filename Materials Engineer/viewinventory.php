@@ -29,7 +29,8 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -43,7 +44,8 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -71,13 +73,16 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                        href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a
+                            class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -91,7 +96,9 @@
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a
+                            class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -106,7 +113,8 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="report.php">Report</a>
                 </li>
             </ul>
         </div>
@@ -238,7 +246,8 @@
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
                         <td>
-                            <a href="#editmaterialModal" class="waves-effect waves-light btn modal-trigger edit-material-btn">Edit</a>
+                            <a href="#editmaterialModal"
+                                class="waves-effect waves-light btn modal-trigger edit-material-btn">Edit</a>
 
                             <!-- EDIT SITE MATERIAL MODAL -->
                             <form action="../server.php" method="POST">
@@ -251,7 +260,8 @@
                                         <div class="row">
                                             <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
                                             <div class="input-field col s12">
-                                                <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
+                                                <input id="newmaterialname" name="newmaterialname" type="text"
+                                                    class="validate" required>
                                                 <label for="newmaterialname">Material Name:</label>
                                             </div>
                                             <div class="input-field col s5">
@@ -261,7 +271,9 @@
                                                 </select>
                                             </div>
                                             <div class="input-field col s7">
-                                                <input id="minquantity" name="minquantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                                                <input id="minquantity" name="minquantity" type="text"
+                                                    class="validate view-inventory" pattern="[0-9]*"
+                                                    title="Input numbers only" required>
                                                 <label for="minquantity">Item threshold:</label>
                                             </div>
                                         </div>
@@ -269,7 +281,8 @@
 
                                     <div class="modal-footer">
                                         <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                                        <button class="waves-effect waves-teal btn-flat" type="submit" class="validate" name="edit_materials">Save</button>
+                                        <button class="waves-effect waves-teal btn-flat" type="submit" class="validate"
+                                            name="edit_materials">Save</button>
                                     </div>
                                 </div>
                             </form>
@@ -307,7 +320,9 @@
                                 <tr>
                                     <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                     <td><input type="date" min="2019-01-01" required></td>
-                                    <td><input type="text" name="dev_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required></td>
+                                    <td><input type="text" name="dev_quantity" type="text"
+                                            class="validate view-inventory" pattern="[0-9]*" title="Input numbers only"
+                                            required></td>
                                     <td><input type="text" name="dev_unit" value="<?php echo $row[7]?>" required></td>
                                     <td><input type="text" name="dev_supp" required></td>
                                 </tr>
@@ -316,7 +331,8 @@
                         </table>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect btn all-btn">Cancel</a>
-                            <button class="btn waves-effect waves-light save-stockcard-btn all-btn" type="submit" class="validate" name="add_deliveredin">Save</button>
+                            <button class="btn waves-effect waves-light save-stockcard-btn all-btn" type="submit"
+                                class="validate" name="add_deliveredin">Save</button>
                         </div>
                     </form>
                 </div>
@@ -341,7 +357,9 @@
                                 <tr>
                                     <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
                                     <td><input type="date" min="2019-01-01" required></td>
-                                    <td><input type="text" name="us_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required></td>
+                                    <td><input type="text" name="us_quantity" type="text"
+                                            class="validate view-inventory" pattern="[0-9]*" title="Input numbers only"
+                                            required></td>
                                     <td><input type="text" name="us_unit" value="<?php echo $row[7]?>" required>
                                     <td><input type="text" name="pulloutby" required></td>
                                     <td><input type="text" name="us_area" required></td>
@@ -350,7 +368,8 @@
                         </table>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect btn all-btn">Cancel</a>
-                            <button class="waves-effect waves-light btn all-btn" type="submit" class="validate" name="add_usagein">Save</button>
+                            <button class="waves-effect waves-light btn all-btn" type="submit" class="validate"
+                                name="add_usagein">Save</button>
                         </div>
                     </form>
                 </div>
@@ -394,10 +413,12 @@
                         </span>
                         <div class="row">
                             <form action="../server.php" method="POST">
-                                <input type="hidden" name="account_type" value="<?php echo $_SESSION['account_type']; ?>">
+                                <input type="hidden" name="account_type"
+                                    value="<?php echo $_SESSION['account_type']; ?>">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
                                 <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit" name="view_category">View Inventory</button>
+                                <button class="waves-effect waves-light btn view-inventory-btn" type="submit"
+                                    name="view_category">View Inventory</button>
                             </form>
                         </div>
                     </div>
@@ -461,7 +482,8 @@
                         </select>
                     </div>
                     <div class="input-field col add-threshold">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input only numbers" required>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory"
+                            pattern="[0-9]*" title="Input only numbers" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
@@ -479,10 +501,12 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <input type="date" min="2019-01-01" name ="date" required>
+                                    <input type="date" min="2019-01-01" name="date" required>
                                 </td>
                                 <td>
-                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                                    <input id="delivered_quantity" name="dev_quantity" type="text"
+                                        class="validate view-inventory" pattern="[0-9]*" title="Input numbers only"
+                                        required>
                                 </td>
                                 <td>
                                     <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
@@ -507,7 +531,9 @@
                 <span id="modal-title">Add Category</span>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="category_name" type="text" class="validate field-category" pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: Formworks" required>
+                        <input name="category_name" type="text" class="validate field-category"
+                            pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: Formworks"
+                            required>
                         <label for="category_name">Category Name:</label>
                     </div>
 
@@ -518,7 +544,8 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="create_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
+                    name="create_category">Save</button>
             </div>
         </form>
     </div>
@@ -559,7 +586,8 @@
 
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                <button class="modal-close waves-effect waves-green btn-flat" type="submit" name="edit_category">Save</button>
+                <button class="modal-close waves-effect waves-green btn-flat" type="submit"
+                    name="edit_category">Save</button>
             </div>
         </form>
     </div>
@@ -572,29 +600,13 @@
     <script type="text/javascript" src="../datepicker.js"></script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
             });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
-
+            $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
-
-            $(".add-row").click(function() {
-                var quantity = $("#name").val();
-                var unit = $("#email").val();
-                var articles = $('#articles').val();
-                var markup = "<tr>" +
-                    "<td><input type=\"text\" name=\"category_name[]\"></td>" +
-                    "</tr>;"
-                $("table tbody").append(markup);
-            });
         });
-
     </script>
 
 </body>

@@ -228,17 +228,11 @@
     </script>
     <script>
         $(document).ready(function () {
-            $('.modal-trigger').leanModal();
-        });
-
-        $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300,
-                edge: 'left',
-                closeOnClick: false,
-                draggable: true
+                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
-            $('.button-collapse').sideNav('show');
+            $('.collapsible').collapsible();
+            $('.modal-trigger').leanModal();
         });
     </script>
 </body>

@@ -170,7 +170,7 @@
                     <tr>
                         <td>
                             <form action="../server.php" method="POST">
-                                <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
                                 <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_stockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
@@ -217,7 +217,7 @@
                                                         <td><?php echo $drow[2]?></td>
                                                         <td><?php echo $drow[3]?></td>
                                                         <td><?php echo $drow[4]?></td>
-                                                    </tr>
+                                                    </tr> 
                                                     <?php 
                                                         }
                                                     ?>
@@ -329,18 +329,12 @@
     </script>
     <script>
         // SIDEBAR
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
             });
-
+            $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
-
-            // START OPEN
-            $('.button-collapse').sideNav('show');
         });
 
         $(function() {

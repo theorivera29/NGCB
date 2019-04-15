@@ -162,8 +162,8 @@
                         }
                     ?>
                         <div class="col 12 account-btn">
-                            <button class="btn waves-effect waves-light all-btn" type="submit" name="edit_account">Save</button>
-                            <button class="btn waves-effect waves-light all-btn" type="submit"
+                            <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
+                            <button class="btn waves-effect waves-light all-btn cancel-acc-btn" type="submit"
                                 name="edit_account">Cancel</button>
                         </div>
                 </div>
@@ -179,25 +179,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        // SIDEBAR
         $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
             });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
-
-
-            //DATEPICKER
-            $('.datepicker').pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15, // Creates a dropdown of 15 years to control year,
-                closeOnSelect: false // Close upon selecting a date,
-            });
-
+            $('.collapsible').collapsible();
+            $('.modal-trigger').leanModal();
         });
 
         const btn = document.querySelector('#li-generate');

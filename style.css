@@ -49,12 +49,7 @@ body {
     width: 50% !important;
 }
 
-.task-btn {
-    float: right !important;
-    margin-bottom: 2%;
-    color: #0D1F2D !important;
-    background-color: #ffffff !important;
-}
+
 
 .Material-Left-Container {
     background-color: #F0F1F2;
@@ -123,12 +118,6 @@ body {
 
 th {
     text-align: center !important;
-}
-
-.category-cards {
-    background-color: #E8CC13 !important;
-    border-radius: 5% !important;
-    color: black;
 }
 
 
@@ -389,12 +378,13 @@ nav {
 .side-nav {
     background-color: #003A51 !important;
     font-family: Galyon;
+    overflow-y: hidden;
 }
 
 
 .side-nav a {
     color: #FFFFFF !important;
-    font-size: 2.5vmin !important;
+    font-size: 2vmin !important;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -470,8 +460,8 @@ i.right {
 }
 
 .sidenav-logo {
-    height: 40%;
-    width: 40%;
+    height: 35%;
+    width: 35%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -584,8 +574,8 @@ textarea.materialize-textarea {
 }
 
 .save-todo-btn {
-    color: #ffffff !important;
-    background-color: #003A51 !important;
+    color: #FFFFFF !important;
+    background-color: #71B340 !important;
     margin-top: 5% !important;
     margin-bottom: 5% !important;
     float: right;
@@ -652,11 +642,11 @@ textarea.materialize-textarea {
 }
 
 .doneBtn {
-    background-color: #087E8B;
+    background-color: #71B340;
 }
 
 .doneBtn:hover {
-    background-color: #087E8B;
+    background-color: #71B340;
 }
 
 .clearBtn {
@@ -669,8 +659,10 @@ textarea.materialize-textarea {
 
 .task-btn {
     margin-top: 2%;
-    color: #ffffff !important;
-    background-color: #003A51 !important;
+    color: #FFFFFF !important;
+    background-color: #2F89C5 !important;
+    float: right !important;
+    margin-bottom: 2%;
 }
 
 #panel-header-materials {
@@ -794,7 +786,8 @@ div.contextmenu:hover {
 .card .card-content {
     width: 100% !important;
     font-size: 2.5vmin;
-    background-color: #BFAF4A !important;
+    background-color: #ECC30B !important;
+    color: black;
 }
 
 .card-title {
@@ -876,10 +869,14 @@ div.contextmenu:hover {
     background-color: #FFFFFF !important;
 }
 
-.add-mat-btn,
+.add-mat-btn{
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+}
+
 .edit-material-btn {
-    background-color: #19466D !important;
-    color: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
 }
 
 .add-mat-btn {
@@ -1001,8 +998,8 @@ div.contextmenu:hover {
 }
 
 .matname-btn {
-    background-color: #1A5D89 !important;
-    color: white !important;
+    background-color: #ECC30B!important;
+    color: #000000 !important;
 }
 
 .search-bar-site-materials {
@@ -1045,7 +1042,7 @@ div.contextmenu:hover {
 /*View Inventory - Category*/
 .all-btn {
     color: #ffffff !important;
-    background-color: #003A51 !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .all-btn:hover {}
@@ -1392,9 +1389,16 @@ select[name=mat_unit] {
 
 .account-setting-label {
     font-size: 3vmin !important;
-    color: yellow !important
+    color: black !important
 }
 
+.save-acc-btn{
+    background-color: #71B340;
+}
+
+.cancel-acc-btn{
+    background-color: #EF5B5B;
+}
 
 /*Design for Admin Module*/
 .cards-container-admin {

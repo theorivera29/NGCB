@@ -138,11 +138,8 @@
                             <div class="col s12">
                                 <div class="input-field col deliver-to-field">
                                     <input id="delivername" type="text" class="validate" name="delivername"
-<<<<<<< HEAD
                                         pattern="[A-Za-z0-9\s]*" title="Input only letters" required>
-=======
-                                        pattern="[A-Za-z\s]*" title="Input only letters" required>
->>>>>>> 0fd605f27fc30643771462597604d920d758e9a7
+
                                     <label for="delivername">Deliver To:</label>
                                 </div>
                                 <?php 

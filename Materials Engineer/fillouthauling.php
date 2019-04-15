@@ -138,15 +138,14 @@
                             <div class="col s12">
                                 <div class="input-field col deliver-to-field">
                                     <input id="delivername" type="text" class="validate" name="delivername"
-                                        pattern="[A-Za-z]*" title="Input only letters" required>
+                                        pattern="[A-Za-z0-9\s]*" title="Input only letters" required>
                                     <label for="delivername">Deliver To:</label>
                                 </div>
                                 <?php 
                                         $projects_name = $_GET['projects_name'];
                                      ?>
                                 <div class="input-field col form-number-field">
-                                    <input id="formnumber" type="text" class="validate" name="formnumber"
-                                        pattern="[0-9]*">
+                                    <input id="formnumber" type="text" class="validate" name="formnumber" pattern="[0-9]" title="Input numbers only">
                                     <label for="formnumber">Form Number:</label>
                                 </div>
                             </div>
@@ -201,8 +200,7 @@
 
                                     <td><input id="unit" readonly type="text" class="validate" name="unit" required>
                                     </td>
-                                    <td><input type="text" name="quantity" id="quantity" required></td>
-
+                                    <td><input type="text" name="quantity" id="quantity" class="validate " pattern="[0-9]*" title="Input numbers only" required></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -211,18 +209,18 @@
                     <div class="row">
                         <div class="col s6 hauled-side-container">
                             <div class="input-field col s10 left-align ">
-                                <input id="hauledby" type="text" class="validate" name="hauledby" pattern="[A-Za-z\s]"
+                                <input id="hauledby" type="text" class="validate" name="hauledby" pattern="[A-Za-z\s]*"
                                     title="Input letters only" required>
                                 <label for="hauledby">Hauled by :</label>
                             </div>
                             <div class="input-field col s10 left-align ">
                                 <input id="warehouseman" type="text" class="validate" name="warehouseman"
-                                    pattern="[A-Za-z\s]" title="Input letters only" required>
+                                    pattern="[A-Za-z\s]*" title="Input letters only" required>
                                 <label for="warehouseman">Warehouseman:</label>
                             </div>
                             <div class="input-field col s10 left-align ">
                                 <input id="approvedby" type="text" class="validate" name="approvedby"
-                                    pattern="[A-Za-z\s]" title="Input letters only" required>
+                                    pattern="[A-Za-z\s]*" title="Input letters only" required>
                                 <label for="approvedby">Approved By:</label>
                             </div>
                         </div>
@@ -245,7 +243,7 @@
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td><input type="text" name="truck_plate" id="truck_plate" required></td>
+                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]" required></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>

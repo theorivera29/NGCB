@@ -138,7 +138,11 @@
                             <div class="col s12">
                                 <div class="input-field col deliver-to-field">
                                     <input id="delivername" type="text" class="validate" name="delivername"
+<<<<<<< HEAD
                                         pattern="[A-Za-z0-9\s]*" title="Input only letters" required>
+=======
+                                        pattern="[A-Za-z\s]*" title="Input only letters" required>
+>>>>>>> 0fd605f27fc30643771462597604d920d758e9a7
                                     <label for="delivername">Deliver To:</label>
                                 </div>
                                 <?php 
@@ -179,18 +183,17 @@
                                         <select id="categories" class="browser-default" name="mat_categ" required>
                                             <option disabled selected>Choose your option</option>
                                             <?php
-                                    $sql = "SELECT * FROM categories;";
-                                    $result = mysqli_query($conn, $sql);
-                                    while($row = mysqli_fetch_row($result)) {                         
-
-                                ?>
+                                                $sql = "SELECT * FROM categories;";
+                                                $result = mysqli_query($conn, $sql);
+                                                while($row = mysqli_fetch_row($result)) {             
+                                            ?>
                                             <option value="<?php echo $row[0]; ?>">
                                                 <?php echo $row[1]; ?>
                                             </option>
 
                                             <?php 
-                                    }
-                                ?>
+                                                }
+                                            ?>
                                         </select>
                                     </td>
                                     <td>
@@ -238,7 +241,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Type:</td>
-                                        <td><input type="text" name="truck_type" id="truck_type" pattern="[A-Za-z]*"
+                                        <td><input type="text" name="truck_type" id="truck_type" pattern="[A-Za-z\s]*"
                                                 title="Input only letters" required></td>
                                     </tr>
                                     <tr>
@@ -305,6 +308,7 @@
                 'option:selected').val(), function (data) {
                 var d = JSON.parse(data)
                 var loobNgSelect = '';
+                loobNgSelect = loobNgSelect + `<option disabled selected>Choose your option</option>`
                 d.forEach(function (da) {
                     loobNgSelect = loobNgSelect + `<option value="${da[0]}">${da[1]}</option>`
                 })

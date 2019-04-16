@@ -130,7 +130,7 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-        <h5>
+        <h5 id="categ-title">
             <?php echo $row[1] ;?>
         </h5>
         <?php

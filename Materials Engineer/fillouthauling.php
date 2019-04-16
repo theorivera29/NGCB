@@ -146,7 +146,7 @@
                                         $projects_name = $_GET['projects_name'];
                                      ?>
                                 <div class="input-field col form-number-field">
-                                    <input id="formnumber" type="text" class="validate" name="formnumber" pattern="[0-9]" title="Input numbers only">
+                                    <input id="formnumber" type="text" class="validate" name="formnumber" pattern="[0-9]*" title="Input numbers only" required>
                                     <label for="formnumber">Form Number:</label>
                                 </div>
                             </div>
@@ -248,7 +248,7 @@
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]" required></td>
+                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]*" required></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>

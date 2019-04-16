@@ -100,13 +100,15 @@ $projects_name = $_GET['projects_name'];
                         <tr class="stockcard-entry">
                             <?php 
                         $sql = "SELECT 
-                        unit.unit_name, materials.mat_id FROM materials 
+                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
                         WHERE mat_name = '$mat_name';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
+                           
+                            <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
@@ -117,8 +119,8 @@ $projects_name = $_GET['projects_name'];
                                     pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
-                                <input id="delivered_unit" name="dev_unit" type="text" class="validate"
-                                    value="<?php echo $row[0]; ?>" required>
+                               <input type="hidden" name="dev_unit"  value="<?php echo $row[2]; ?>">
+                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"required>
                             </td>
                             <td>
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
@@ -195,7 +197,7 @@ $projects_name = $_GET['projects_name'];
                         <tr class="stockcard-entry">
                             <?php 
                         $sql = "SELECT 
-                        unit.unit_name, materials.mat_id FROM materials 
+                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
                         WHERE mat_name = '$mat_name';";
                         $result = mysqli_query($conn, $sql);
@@ -212,8 +214,8 @@ $projects_name = $_GET['projects_name'];
                                     pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
-                                <input id="us_unit" name="us_unit" type="text" class="validate"
-                                    value="<?php echo $row[0]; ?>" required>
+                               <input type="hidden" name="us_unit"  value="<?php echo $row[2]; ?>">
+                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"required>
                             </td>
                             <td>
                                 <input id="pulloutby" name="pulloutby" type="text" class="validate" required>
@@ -272,21 +274,30 @@ $projects_name = $_GET['projects_name'];
         </div>
     </div>
 
-    <!-- EDIT SITE MATERIAL MODAL -->
     <div id="editmaterial" class="col s12 card editmaterial-container">
         <div class="edit-mat-container">
             <form action="../server.php" method="POST">
                 <div class="row">
-                    <input type="hidden" name="materialname" value="">
+                   <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+                    <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
                         <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
                         <label for="newmaterialname">Material Name:</label>
                     </div>
-
                     <div class="input-field col s2 unit-field">
-                        <select class="browser-default" name="mat_unit">
-                            <option value="" disabled selected>Unit</option>
-                            <option value="pcs">pcs</option>
+                        <select class="browser-default" id="category-option" name="mat_unit">
+                            <option>Choose units</option>
+                            <?php
+                                $sql = "SELECT unit_id, unit_name FROM unit;";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                        
+                            ?>
+                            <option value="<?php echo $row[0]; ?>">
+                                <?php echo $row[1]; ?>
+                            </option>
+                            <?php 
+                                }
+                            ?>
                         </select>
                     </div>
                     <div class="input-field col s4 threshold-field">
@@ -297,7 +308,7 @@ $projects_name = $_GET['projects_name'];
                 </div>
 
                 <div class="col s12 edit-matname-btn">
-                        <button class="btn waves-effect waves-light save-mat-btn" type="submit">Save</button>
+                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials" type="submit">Save</button>
                         <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
 
                     </div>

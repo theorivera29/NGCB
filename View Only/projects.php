@@ -11,7 +11,7 @@
 <html>
 
 <head>
-<title>NGCBDC</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -71,12 +71,12 @@
                 </li>
 
                 <li>
-                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
@@ -192,17 +192,11 @@
     </script>
     <script>
         $(document).ready(function () {
-            $('.modal-trigger').leanModal();
-        });
-
-        $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300,
-                edge: 'left',
-                closeOnClick: false,
-                draggable: true
+                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
-            $('.button-collapse').sideNav('show');
+            $('.collapsible').collapsible();
+            $('.modal-trigger').leanModal();
         });
     </script>
 </body>

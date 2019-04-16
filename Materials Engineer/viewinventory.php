@@ -448,34 +448,6 @@
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
-                <div class="row">
-                    <h5>Deliver In</h5>
-                    <table class="striped centered">
-                        <thead class="view-inventory-head">
-                            <tr>
-                                <th>Date</th>
-                                <th>Quantity</th>
-                                <th>Supplied By</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input type="date" min="2019-01-01" name="date" required>
-                                </td>
-                                <td>
-                                    <input id="delivered_quantity" name="dev_quantity" type="text"
-                                        class="validate view-inventory" pattern="[0-9]*" title="Input numbers only"
-                                        required>
-                                </td>
-                                <td>
-                                    <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
 
             </div>
             <div class="modal-footer">
@@ -485,6 +457,8 @@
             </div>
         </form>
     </div>
+    
+    <div id="deliveredinNew" class="modal modal-fixed-footer add-mat-modal">
 
     <!-- ADD CATEGORY MODAL -->
     <div id="addcategoryModal" class="modal add-category-modal">

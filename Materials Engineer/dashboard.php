@@ -188,7 +188,7 @@
                                         href="#doneBtn<?php echo $row[0];?>">Done</button>
                                     <div id="doneBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
-                                            <span>Are you sure you are done with this task?</span>
+                                            <span class="modal-question-content">Are you sure you are done with this task?</span>
                                             <br>
                                             <?php echo $row[2];?>
                                         </div>
@@ -207,7 +207,7 @@
                                         href="#clearBtn<?php echo $row[0];?>">Clear</button>
                                     <div id="clearBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
-                                            <span>Are you sure you want to clear this task?</span>
+                                            <span class="modal-question-content">Are you sure you want to clear this task?</span>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
@@ -331,7 +331,7 @@
                                 href="#doneBtn<?php echo $row[0] ;?>">Done</button>
                             <div id="doneBtn<?php echo $row[0] ;?>" class="modal modal-fixed-footer">
                                 <div class="modal-content">
-                                    <span>Are you sure want to click done?</span>
+                                    <span class="modal-question-content">Are you sure want to click done?</span>
                                 </div>
                                 <div class="modal-footer">
                                     <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
@@ -347,7 +347,7 @@
                             <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn<?php echo $row[0] ;?>"">Clear</button>
                             <div id="clearBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
-                                    <span>Are you sure want to clear this task</span>
+                                    <span class="modal-question-content">Are you sure want to clear this task</span>
                                 </div>
                                 <div class="modal-footer">
                                     <a class="modal-close waves-effect waves-red btn-flat">No</a>

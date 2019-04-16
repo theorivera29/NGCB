@@ -644,6 +644,11 @@ textarea.materialize-textarea {
 .modal-question{
     margin-top: 5%;
     border-radius: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-question-content{
+    font-size: 3vmin !important;
 }
 
 .no-btn{
@@ -955,7 +960,7 @@ textarea.materialize-textarea {
 
 .save-mat-btn:hover {
     color: #ffffff !important;
-    background-color: #003A51 !important;
+    background-color: #5D9335 !important;
     float: right;
 }
 
@@ -1157,16 +1162,24 @@ select[name=mat_unit] {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.deliverin>tr>td {
-    background-color: #FFFFFF !important;
-}
-
 .save-stockcard-btn{
     background-color: #71B340;
 }
 
 .save-stockcard-btn:hover{
-    background-color: #71B340;
+    background-color: #5D9335 !important;
+}
+
+.stockcard-entry>td{
+    background-color: #ffffff !important;
+    text-align: center !important;
+    padding-left: 2% !important;
+    padding-right: 2% !important;
+}
+
+.deliverin-data>td{
+    margin-top: 2% !important;
+    margin-right: 2% !important;
 }
 /*Usage In*/
 .usagein-container {
@@ -1192,6 +1205,16 @@ select[name=mat_unit] {
 
 .usagein>tr>td {
     background-color: #FFFFFF !important;
+}
+
+.stockcard-btn{
+    margin-top: 1%;
+    float: right;
+}
+
+.usagein-data>td{
+    margin-top: 2% !important;
+    margin-right: 2% !important;
 }
 
 /*Hauling*/
@@ -1283,7 +1306,7 @@ select[name=mat_unit] {
 }
 
 .save-hauled-btn:hover{
-    background-color: #71B340;
+    background-color: #5D9335 !important;
 }
 
 .cancel-hauled-btn{
@@ -1426,7 +1449,7 @@ select[name=mat_unit] {
 }
 
 .save-acc-btn:hover{
-    background-color: #71B340;
+    background-color: #5D9335;
 }
 
 .cancel-acc-btn{

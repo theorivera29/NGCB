@@ -24,7 +24,8 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -38,7 +39,8 @@ $mat_name = $_GET['mat_name'];
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -66,13 +68,16 @@ $mat_name = $_GET['mat_name'];
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                        href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a
+                            class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -86,7 +91,9 @@ $mat_name = $_GET['mat_name'];
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a
+                            class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -101,7 +108,8 @@ $mat_name = $_GET['mat_name'];
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="report.php">Report</a>
                 </li>
             </ul>
         </div>
@@ -118,7 +126,7 @@ $mat_name = $_GET['mat_name'];
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
-                <table class="centered deliverin">
+                <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
                             <th>Date</th>
@@ -129,7 +137,7 @@ $mat_name = $_GET['mat_name'];
                     </thead>
 
                     <tbody>
-                        <tr>
+                        <tr class="stockcard-entry">
                             <?php 
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id FROM materials 
@@ -145,18 +153,21 @@ $mat_name = $_GET['mat_name'];
                                 <input type="date" min="2019-01-01" name="dev_date" required>
                             </td>
                             <td>
-                                <input id="delivered_quantity" name="dev_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                                <input id="delivered_quantity" name="dev_quantity" type="text"
+                                    class="validate" pattern="[0-9]*" title="Input numbers only"
+                                    required>
                             </td>
                             <td>
-                                <input id="delivered_quantity" name="dev_unit" type="text" class="validate view-inventory" value="<?php echo $row[0]; ?>" required>
+                                <input id="delivered_unit" name="dev_unit" type="text"
+                                    class="validate" value="<?php echo $row[0]; ?>" required>
                             </td>
                             <td>
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
                             </td>
-                         
+
                         </tr>
-                        
-                            <?php 
+
+                        <?php 
                         $sql_devIn = "SELECT deliveredin.delivered_date, 
                         deliveredin.delivered_quantity, 
                         unit.unit_name, 
@@ -167,7 +178,7 @@ $mat_name = $_GET['mat_name'];
                         WHERE delivered_matName = '$mat_id'";
                         $result_devIn = mysqli_query($conn, $sql_devIn);
                         while($row_devIn = mysqli_fetch_row($result_devIn)){
-                        ?><tr>
+                        ?><tr class="deliverin-data">
                             <td>
                                 <?php echo $row_devIn[0] ?>
                             </td>
@@ -180,16 +191,18 @@ $mat_name = $_GET['mat_name'];
                             <td>
                                 <?php echo $row_devIn[3] ?>
                             </td>
-                         
+
                         </tr>
-                           <?php 
+                        <?php 
                         }
                         }
                         ?>
                     </tbody>
                 </table>
-
-                <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredin">Save</button>
+                <div class="stockcard-btn">
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
+                        name="add_deliveredin">Save</button>
+                </div>
             </form>
         </div>
     </div>
@@ -197,7 +210,7 @@ $mat_name = $_GET['mat_name'];
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
-                <table class="centered usagein">
+                <table class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
                             <th>Date</th>
@@ -209,8 +222,8 @@ $mat_name = $_GET['mat_name'];
                     </thead>
 
                     <tbody>
-                        <tr>
-                    <?php 
+                        <tr class="stockcard-entry">
+                            <?php 
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
@@ -225,10 +238,13 @@ $mat_name = $_GET['mat_name'];
                                 <input type="date" min="2019-01-01" name="us_date" required>
                             </td>
                             <td>
-                                <input id="delivered_quantity" name="us_quantity" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
+                                <input id="delivered_quantity" name="us_quantity" type="text"
+                                    class="validate" pattern="[0-9]*" title="Input numbers only"
+                                    required>
                             </td>
                             <td>
-                                <input id="us_unit" name="us_unit" type="text" class="validate view-inventory" value="<?php echo $row[0]; ?>" required>
+                                <input id="us_unit" name="us_unit" type="text" class="validate"
+                                    value="<?php echo $row[0]; ?>" required>
                             </td>
                             <td>
                                 <input id="pulloutby" name="pulloutby" type="text" class="validate" required>
@@ -241,7 +257,7 @@ $mat_name = $_GET['mat_name'];
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
                         while($row_useIn = mysqli_fetch_row($result_useIn)){
-                        ?><tr>
+                        ?><tr class="usagein_data">
                             <td>
                                 <?php echo $row_useIn[0] ?>
                             </td>
@@ -258,17 +274,16 @@ $mat_name = $_GET['mat_name'];
                                 <?php echo $row_useIn[4] ?>
                             </td>
                         </tr>
-                    <?php 
+                        <?php 
                         }
                         }
                         ?>
                     </tbody>
                 </table>
-
-                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
-
-                <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_usagein">Save</button>
-
+                <div class="stockcard-btn">
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
+                        name="add_usagein">Save</button>
+                </div>
             </form>
         </div>
     </div>
@@ -282,14 +297,13 @@ $mat_name = $_GET['mat_name'];
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.button-collapse').sideNav({
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
         });
-
     </script>
 
 </body>

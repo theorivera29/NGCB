@@ -73,7 +73,7 @@
                 </li>
 
 
-                <ul class="collapsible">
+                <ul class="collapsible" data-collapsible="accordion">
                     <li>
                         <i class="material-icons left">place</i><a
                             class="collapsible-header waves-effect waves-blue">Site<i
@@ -89,7 +89,7 @@
 
 
 
-                <ul class="collapsible">
+                <ul class="collapsible" data-collapsible= "accordion">
                     <li>
                         <i class="material-icons left">local_shipping</i><a
                             class="collapsible-header waves-effect waves-blue">Hauling<i
@@ -186,10 +186,11 @@
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3];?>">
                                     <button class="waves-effect waves-light btn modal-trigger doneBtn"
                                         href="#doneBtn<?php echo $row[0];?>">Done</button>
-                                    <div id="doneBtn<?php echo $row[0];?>" class="modal">
+                                    <div id="doneBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
+                                            <span>Are you sure you are done with this task?</span>
+                                            <br>
                                             <?php echo $row[2];?>
-                                            <span>Are you sure you want to click done?</span>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
@@ -204,7 +205,7 @@
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3];?>">
                                     <button class="waves-effect waves-light btn modal-trigger clearBtn"
                                         href="#clearBtn<?php echo $row[0];?>">Clear</button>
-                                    <div id="clearBtn<?php echo $row[0];?>" class="modal">
+                                    <div id="clearBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
                                             <span>Are you sure you want to clear this task?</span>
                                         </div>
@@ -327,8 +328,8 @@
                             <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
                             <button class="waves-effect waves-light btn modal-trigger doneBtn"
-                                href="#doneBtn<?php echo $row[0] ;?>"">Done</button>
-                            <div id="doneBtn<?php echo $row[0] ;?>"" class="modal modal-fixed-footer">
+                                href="#doneBtn<?php echo $row[0] ;?>">Done</button>
+                            <div id="doneBtn<?php echo $row[0] ;?>" class="modal modal-fixed-footer">
                                 <div class="modal-content">
                                     <span>Are you sure want to click done?</span>
                                 </div>

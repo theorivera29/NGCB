@@ -587,7 +587,8 @@ textarea.materialize-textarea {
     background-color: #F0F1F2;
 }
 
-.view-tasks-head>tr>th {
+.view-tasks-head>tr>th:hover {
+    cursor: pointer !important;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     border-radius: 2%;

@@ -170,7 +170,7 @@
                         <div class="row">
                             <div class="col s12">
                                 <div class="input-field col deliver-to-field">
-                                    <input id="delivername" type="text" disabled value="<?php echo $row[1]?>" >
+                                    <input id="delivername" type="text" disabled value="<?php echo $row[1]?>">
 
                                     <label for="delivername">Deliver To:</label>
                                 </div>
@@ -188,104 +188,107 @@
                                 </div>
                             </div>
                         </div>
-                    
 
-                    <div class="col hauling-table-container">
-                        <table class="hauling-form-table">
-                            <thead class="hauling-form-table-head">
-                                <tr>
-                                    <th>Quantity</th>
-                                    <th>Unit</th>
-                                    <th>Articles</th>
-                                </tr>
-                            </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td><input type="text" id="quantity" disabled value="<?php echo $row[3]?>" ></td>
-                                    <td><input id="unit" type="text"  disabled value="<?php echo $row[4]?>"></td>
-                                    <td><input id="materials" type="text" disabled value="<?php echo $row[5]?>"></td>   
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s6 hauled-side-container">
-                            <div class="input-field col s10 left-align ">
-                                <input id="requested" type="text" disabled value="<?php echo $row[7]?>">
-                                <label for="requested">Requested :</label>
-                            </div>
-                            <div class="input-field col s10 left-align ">
-                                <input id="hauledby" type="text" disabled value="<?php echo $row[6]?>">
-                                <label for="hauledby">Hauled by :</label>
-                            </div>
-                            <div class="input-field col s10 left-align ">
-                                <input id="warehouseman" type="text" disabled value="<?php echo $row[8]?>" >
-                                <label for="warehouseman">Warehouseman:</label>
-                            </div>
-                            <div class="input-field col s10 left-align ">
-                                <input id="approvedby" type="text" disabled value="<?php echo $row[9]?>">
-                                <label for="approvedby">Approved By:</label>
-                            </div>
-                        </div>
-                        <div class="col s6">
-                            <table class="striped centered">
-                                <thead>
-
+                        <div class="col hauling-table-container">
+                            <table class="hauling-form-table">
+                                <thead class="hauling-form-table-head">
                                     <tr>
-                                        <th> </th>
-                                        <th>Truck details</th>
-                                        <th> </th>
+                                        <th>Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Articles</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td>Type:</td>
-                                        <td><input type="text" id="truck_type" disabled value="<?php echo $row[10]?>"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Plate No.:</td>
-                                        <td><input type="text" id="truck_plate" disabled value="<?php echo $row[11]?>"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>P.O/R.S No.:</td>
-                                        <td><input type="text" id="truck_po" disabled value="<?php echo $row[12]?>"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hauler DR No.:</td>
-                                        <td><input type="text"  id="truck_hauler" disabled value="<?php echo $row[13]?>"></td>
+                                        <td><input type="text" id="quantity" disabled value="<?php echo $row[3]?>"></td>
+                                        <td><input id="unit" type="text" disabled value="<?php echo $row[4]?>"></td>
+                                        <td><input id="materials" type="text" disabled value="<?php echo $row[5]?>">
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        
-                    </div>
-            </div>
-            </form>
-        </div>
-    </div>
 
-    <?php
+                        <div class="row">
+                            <div class="col s6 hauled-side-container">
+                                <div class="input-field col s10 left-align ">
+                                    <input id="requested" type="text" disabled value="<?php echo $row[7]?>">
+                                    <label for="requested">Requested :</label>
+                                </div>
+                                <div class="input-field col s10 left-align ">
+                                    <input id="hauledby" type="text" disabled value="<?php echo $row[6]?>">
+                                    <label for="hauledby">Hauled by :</label>
+                                </div>
+                                <div class="input-field col s10 left-align ">
+                                    <input id="warehouseman" type="text" disabled value="<?php echo $row[8]?>">
+                                    <label for="warehouseman">Warehouseman:</label>
+                                </div>
+                                <div class="input-field col s10 left-align ">
+                                    <input id="approvedby" type="text" disabled value="<?php echo $row[9]?>">
+                                    <label for="approvedby">Approved By:</label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <table class="striped centered">
+                                    <thead>
+
+                                        <tr>
+                                            <th> </th>
+                                            <th>Truck details</th>
+                                            <th> </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Type:</td>
+                                            <td><input type="text" id="truck_type" disabled
+                                                    value="<?php echo $row[10]?>"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Plate No.:</td>
+                                            <td><input type="text" id="truck_plate" disabled
+                                                    value="<?php echo $row[11]?>"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>P.O/R.S No.:</td>
+                                            <td><input type="text" id="truck_po" disabled value="<?php echo $row[12]?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hauler DR No.:</td>
+                                            <td><input type="text" id="truck_hauler" disabled
+                                                    value="<?php echo $row[13]?>"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <?php
         }
     ?>
     </div>
 
-            <!--Import jQuery before materialize.js-->
-            <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-            <script type="text/javascript"
-                src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
-            </script>
-            <script>
-                $(document).ready(function () {
-                    $('.button-collapse').sideNav({
-                        closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                    });
-                    $('.collapsible').collapsible();
-                    $('.modal-trigger').leanModal();
-                });
-            </script>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.button-collapse').sideNav({
+                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            });
+            $('.collapsible').collapsible();
+            $('.modal-trigger').leanModal();
+        });
+    </script>
 
 </body>
 

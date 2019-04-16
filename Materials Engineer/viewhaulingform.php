@@ -112,7 +112,6 @@
         </div>
     </nav>
 
-
     <?php
                             $hauling_no = $_GET['hauling_no'];
                             $sql = "SELECT 
@@ -136,6 +135,17 @@
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
+
+    <div class="row">
+        <div class="col s12 right-align">
+            <form action="../server.php" method="POST">
+                <input type="hidden" name="projects_name" value="">
+                <button class="waves-effect waves-light btn report-btn" type="submit" name="generate_report">
+                    <i class="material-icons left">print</i>Generate Hauling
+                </button>
+            </form>
+        </div>
+    </div>
     <div class="row fill-hauling-form-container">
         <div class="col haulingform-container">
             <div class="card hauling-form">

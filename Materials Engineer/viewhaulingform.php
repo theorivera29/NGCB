@@ -113,35 +113,36 @@
     </nav>
 
     <?php
-                            $hauling_no = $_GET['hauling_no'];
-                            $sql = "SELECT 
-                            hauling.hauling_date, 
-                            hauling.hauling_deliverTo, 
-                            hauling.hauling_hauledFrom, 
-                            hauling.hauling_quantity, 
-                            unit.unit_name, 
-                            materials.mat_name, 
-                            hauling.hauling_hauledBy, 
-                            hauling.hauling_requestedBy,
-                            hauling.hauling_warehouseman, 
-                            hauling.hauling_approvedBy, 
-                            hauling.hauling_truckDetailsType, 
-                            hauling.hauling_truckDetailsPlateNo, 
-                            hauling.hauling_truckDetailsPo, 
-                            hauling.hauling_truckDetailsHaulerDr 
-                            FROM hauling 
-                            INNER JOIN unit ON hauling.hauling_unit = unit.unit_id 
-                            INNER JOIN materials ON hauling.hauling_matname = materials.mat_id 
-                            WHERE hauling_no = '$hauling_no';";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_row($result)){
-                        ?>
+        $hauling_no = $_GET['hauling_no'];
+        $sql = "SELECT 
+        hauling.hauling_date, 
+        hauling.hauling_deliverTo, 
+        hauling.hauling_hauledFrom, 
+        hauling.hauling_quantity, 
+        unit.unit_name, 
+        materials.mat_name, 
+        hauling.hauling_hauledBy, 
+        CONCAT(accounts.accounts_fname, ' ', accounts.accounts_lname),
+        hauling.hauling_warehouseman, 
+        hauling.hauling_approvedBy, 
+        hauling.hauling_truckDetailsType, 
+        hauling.hauling_truckDetailsPlateNo, 
+        hauling.hauling_truckDetailsPo, 
+        hauling.hauling_truckDetailsHaulerDr 
+        FROM hauling 
+        INNER JOIN unit ON hauling.hauling_unit = unit.unit_id 
+        INNER JOIN materials ON hauling.hauling_matname = materials.mat_id 
+        INNER JOIN accounts ON hauling.hauling_requestedBy = accounts.accounts_id
+        WHERE hauling_no = '$hauling_no';";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_row($result)){
+    ?>
 
     <div class="row">
         <div class="col s12 right-align">
             <form action="../server.php" method="POST">
-                <input type="hidden" name="projects_name" value="">
-                <button class="waves-effect waves-light btn report-btn" type="submit" name="generate_report">
+                <input type="hidden" name="hauling_no" value="<?php echo $hauling_no ;?>">
+                <button class="waves-effect waves-light btn report-btn" type="submit" name="generate_hauling">
                     <i class="material-icons left">print</i>Generate Hauling
                 </button>
             </form>

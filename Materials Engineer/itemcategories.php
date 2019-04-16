@@ -177,7 +177,8 @@
                         <tr>
                             <td>
                                 <form action="../server.php" method="POST">
-                                    <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                                   <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
+                                    <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
                                     <button class="waves-effect waves-light btn matname-btn" name="open_stockcard">
                                         <?php echo $row[0] ?></button>
                                 </form>

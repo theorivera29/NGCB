@@ -941,15 +941,12 @@ textarea.materialize-textarea {
 .save-mat-btn {
     color: #ffffff !important;
     background-color: #71B340 !important;
-    float: right;
     font-size: 2vmin !important;
-    margin-right: 1% !important;
 }
 
 .save-mat-btn:hover {
     color: #ffffff !important;
     background-color: #5D9335 !important;
-    float: right;
 }
 
 .cancel-mat-btn{
@@ -960,7 +957,6 @@ textarea.materialize-textarea {
 
 .cancel-mat-btn:hover{
     background-color: #C44B4B;
-    color: #FFFFFF;
 }
 
 .modal-footer {
@@ -1024,6 +1020,22 @@ textarea.materialize-textarea {
     font-size: 2.5vmin;
     border-radius: 2%;
     color: white;
+}
+
+.material-name-field{
+    width: 30% !important;
+    margin-left: 5% !important;
+    margin-top: 3% !important;
+}
+
+.unit-field{
+    margin-left: 3% !important;
+    margin-top: 3% !important;
+}
+
+.threshold-field{
+    margin-left: 3% !important;
+    margin-top: 3% !important;
 }
 
 .stock-card-container {
@@ -1203,9 +1215,10 @@ select[name=mat_unit] {
 
 /*Edit Material*/
 .editmaterial-container {
-    width: 80%;
-    margin: 10%;
-    margin-top: 5%;
+    width: 70% !important;
+    margin: 5%;
+    margin-top: 2%;
+    margin-left: 15% !important;
 }
 
 .edit-mat-container{
@@ -1213,10 +1226,10 @@ select[name=mat_unit] {
     padding-top: 2%;
 }
 
-.edit-matname-btn {
+.edit-matname-btn{
     float: right !important;
-    margin
 }
+
 
 /*Hauling*/
 .hauling-project-card {

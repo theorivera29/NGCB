@@ -1,11 +1,9 @@
 <?php
     include "../db_connection.php";
     session_start();
-
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-
     $projects_name = false;
     if(isset($_GET['projects_name'])) {
         $projects_name = $_GET['projects_name'];
@@ -14,7 +12,6 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_row($result);
     $projects_status = $row[0];
-
     $output = '';
     if(isset ($_POST['search'])) {
         $searchq = $_POST['search'];
@@ -43,7 +40,6 @@
                                     $matpulledout = $row['pulled_out'];
                                     $mataccumulated = $row['accumulated_materials'];
                                     $matcurrentqty = $row['currentQuantity'];
-
                                     $output .= "<div>
                                     <td>".$matname."</td>
                                     <td>".$matprevstock."</td>
@@ -202,7 +198,6 @@
                             while($row_categ = mysqli_fetch_assoc($result)){
                                 $categories[] = $row_categ;
                             }
-
                             foreach($categories as $data) {
                             $categ = $data['categories_name'];
                         ?>
@@ -359,12 +354,14 @@
         // SIDEBAR
         $(document).ready(function () {
             $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 300
+                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true // Choose whether you can drag to open on touch screens
             });
-            $('.collapsible').collapsible();
+            // START OPEN
+            $('.button-collapse').sideNav('show');
             $('.modal-trigger').leanModal();
-        });
-        
             $(".add-row").click(function () {
                 var quantity = $("#name").val();
                 var unit = $("#email").val();

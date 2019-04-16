@@ -24,7 +24,7 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="dashboard.php" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">arrow_back</i></a>
+            <button href="dashboard.php" name="" class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i></button>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {

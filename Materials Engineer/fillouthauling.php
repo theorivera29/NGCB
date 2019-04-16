@@ -209,6 +209,11 @@
                     <div class="row">
                         <div class="col s6 hauled-side-container">
                             <div class="input-field col s10 left-align ">
+                                <input id="requested" type="text" class="validate" name="requested" pattern="[A-Za-z\s]*"
+                                    title="Input letters only" required>
+                                <label for="requested">Requested :</label>
+                            </div>
+                            <div class="input-field col s10 left-align ">
                                 <input id="hauledby" type="text" class="validate" name="hauledby" pattern="[A-Za-z\s]*"
                                     title="Input letters only" required>
                                 <label for="hauledby">Hauled by :</label>

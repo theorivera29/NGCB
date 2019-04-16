@@ -68,7 +68,6 @@ body {
 .view-task-btn {
     float: right;
     color: #0D1F2D !important;
-    background-color: #ffffff !important;
     background-color: #1A5D89 !important;
     color: white !important;
 }
@@ -587,7 +586,8 @@ textarea.materialize-textarea {
     background-color: #F0F1F2;
 }
 
-.view-tasks-head>tr>th {
+.view-tasks-head>tr>th:hover {
+    cursor: pointer !important;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     border-radius: 2%;
@@ -793,9 +793,9 @@ textarea.materialize-textarea {
     text-align: center;
     margin-top: 3%;
     margin-bottom: 3%;
-    font-size: 4vmin;
+    font-size: 5vmin;
     color: #19466D;
-    font-family: Arial, Helvetica, sans-serif; 
+    font-family: Galyon; 
 }
 
 .view-inventory-slider {
@@ -838,6 +838,7 @@ textarea.materialize-textarea {
     padding: 10px 15px !important;
     font-size: 2.5vmin !important;
     border-radius: 0 !important;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .search-bar {
@@ -868,11 +869,13 @@ textarea.materialize-textarea {
     margin-top: 1%;
     font-size: 2.2vmin !important;
     float: right !important;
+    margin-right: 3% !important;
 }
 
 #categ-title{
     font-size: 5vmin;
     padding-bottom: 1%;
+    font-family: Galyon;
 }
 
 .view-inventory-container {
@@ -901,6 +904,14 @@ textarea.materialize-textarea {
     background-color: #FFFFFF !important;
     padding-left: 2%;
     font-size: 3vmin;
+}
+
+
+/*Stockard*/
+.back-btn{
+    background-color: transparent !important;
+    border: none;
+    overflow: hidden;
 }
 
 .stockcard-status {
@@ -940,15 +951,12 @@ textarea.materialize-textarea {
 .save-mat-btn {
     color: #ffffff !important;
     background-color: #71B340 !important;
-    float: right;
     font-size: 2vmin !important;
-    margin-right: 1% !important;
 }
 
 .save-mat-btn:hover {
     color: #ffffff !important;
     background-color: #5D9335 !important;
-    float: right;
 }
 
 .cancel-mat-btn{
@@ -959,7 +967,6 @@ textarea.materialize-textarea {
 
 .cancel-mat-btn:hover{
     background-color: #C44B4B;
-    color: #FFFFFF;
 }
 
 .modal-footer {
@@ -1000,6 +1007,11 @@ textarea.materialize-textarea {
     color: #000000 !important;
 }
 
+.matname-btn:hover {
+    background-color: #2F89C5;
+    color: #000000 !important;
+}
+
 .search-bar-site-materials {
     width: 20% !important;
     margin-left: 2% !important;
@@ -1023,6 +1035,22 @@ textarea.materialize-textarea {
     font-size: 2.5vmin;
     border-radius: 2%;
     color: white;
+}
+
+.material-name-field{
+    width: 30% !important;
+    margin-left: 5% !important;
+    margin-top: 3% !important;
+}
+
+.unit-field{
+    margin-left: 3% !important;
+    margin-top: 3% !important;
+}
+
+.threshold-field{
+    margin-left: 3% !important;
+    margin-top: 3% !important;
 }
 
 .stock-card-container {
@@ -1097,11 +1125,6 @@ textarea.materialize-textarea {
 
 .edit-categ-modal label {
     font-size: 2vmin !important;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.edit-mat-modal label {
-    font-size: 2.5vmin !important;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -1204,6 +1227,24 @@ select[name=mat_unit] {
     margin-top: 2% !important;
     margin-right: 2% !important;
 }
+
+/*Edit Material*/
+.editmaterial-container {
+    width: 70% !important;
+    margin: 5%;
+    margin-top: 2%;
+    margin-left: 15% !important;
+}
+
+.edit-mat-container{
+    padding: 5%;
+    padding-top: 2%;
+}
+
+.edit-matname-btn{
+    float: right !important;
+}
+
 
 /*Hauling*/
 .hauling-project-card {

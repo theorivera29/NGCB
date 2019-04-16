@@ -24,10 +24,11 @@ $projects_name = $_GET['projects_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-           <form action="../server.php" method="POST">
-            <button href="viewinventory.php" data-activates="navigation" name="balik" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">arrow_back</i>
-            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-            </button>
+            <form action="../server.php" method="POST">
+                <button href="viewinventory.php" name="back"
+                    class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
+                    <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+                </button>
             </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
@@ -78,6 +79,7 @@ $projects_name = $_GET['projects_name'];
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
             <li class="tab col s3"><a href="#usagein">Usage In</a></li>
+            <li class="tab col s3"><a href="#editmaterial">Edit Material</a></li>
         </ul>
     </div>
 
@@ -113,13 +115,12 @@ $projects_name = $_GET['projects_name'];
                                 <input type="date" min="2019-01-01" name="dev_date" required>
                             </td>
                             <td>
-                                <input id="delivered_quantity" name="dev_quantity" type="text"
-                                    class="validate" pattern="[0-9]*" title="Input numbers only"
-                                    required>
+                                <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
+                                    pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
-                                <input id="delivered_unit" name="dev_unit" type="text"
-                                    class="validate" value="<?php echo $row[0]; ?>" required>
+                                <input id="delivered_unit" name="dev_unit" type="text" class="validate"
+                                    value="<?php echo $row[0]; ?>" required>
                             </td>
                             <td>
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
@@ -151,8 +152,8 @@ $projects_name = $_GET['projects_name'];
                             <td>
                                 <?php echo $row_devIn[3] ?>
                             </td>
-                            </tr>
-                             <?php 
+                        </tr>
+                        <?php 
                         }
                         ?>
                         <?php 
@@ -161,8 +162,8 @@ $projects_name = $_GET['projects_name'];
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
                         <tr>
-                        <td>TOTAL:</td>
-                        <td><?php echo $row_total[0]?></td>
+                            <td>TOTAL:</td>
+                            <td><?php echo $row_total[0]?></td>
                         </tr>
                         <?php 
                         }
@@ -209,9 +210,8 @@ $projects_name = $_GET['projects_name'];
                                 <input type="date" min="2019-01-01" name="us_date" required>
                             </td>
                             <td>
-                                <input id="delivered_quantity" name="us_quantity" type="text"
-                                    class="validate" pattern="[0-9]*" title="Input numbers only"
-                                    required>
+                                <input id="delivered_quantity" name="us_quantity" type="text" class="validate"
+                                    pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
                                 <input id="us_unit" name="us_unit" type="text" class="validate"
@@ -245,7 +245,7 @@ $projects_name = $_GET['projects_name'];
                                 <?php echo $row_useIn[4] ?>
                             </td>
                         </tr>
-                          <?php 
+                        <?php 
                         }
                         ?>
                         <?php 
@@ -261,7 +261,7 @@ $projects_name = $_GET['projects_name'];
                                 <?php echo $row_total[0] ?>
                             </td>
                         </tr>
-                    <?php
+                        <?php
                         }
                         }
                             ?>
@@ -274,8 +274,42 @@ $projects_name = $_GET['projects_name'];
         </div>
     </div>
 
+    <!-- EDIT SITE MATERIAL MODAL -->
+    <div id="editmaterial" class="col s12 card editmaterial-container">
+        <div class="edit-mat-container">
+            <form action="../server.php" method="POST">
+                <div class="row">
+                    <input type="hidden" name="materialname" value="">
+                    <div class="input-field col s4 material-name-field">
+                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
+                        <label for="newmaterialname">Material Name:</label>
+                    </div>
+
+                    <div class="input-field col s2 unit-field">
+                        <select class="browser-default" name="mat_unit">
+                            <option value="" disabled selected>Unit</option>
+                            <option value="pcs">pcs</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s4 threshold-field">
+                        <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
+                            title="Input numbers only" required>
+                        <label for="minquantity">Item threshold:</label>
+                    </div>
+                </div>
+
+                <div class="col s12 edit-matname-btn">
+                        <button class="btn waves-effect waves-light save-mat-btn" type="submit">Save</button>
+                        <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
+
+                    </div>
 
 
+
+
+            </form>
+        </div>
+    </div>
 
 
     <!--Import jQuery before materialize.js-->

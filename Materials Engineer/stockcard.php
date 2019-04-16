@@ -198,7 +198,8 @@ $mat_name = $_GET['mat_name'];
 
                     <tbody>
                         <tr>
-                            <input type="hidden" name="mat_name" value="<?php echo $mat_name; ?>">
+                            <button><?php echo $mat_name?></button>
+                            <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
                                 <input type="date" min="2019-01-01" name="us_date" required>

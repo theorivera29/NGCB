@@ -428,7 +428,7 @@
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
         $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy', $mat_id);";
         mysqli_query($conn, $sql);
-        echo $mat_id;
+        echo $mat_name;
             
         $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
         $result = mysqli_query($conn,$sql);
@@ -445,8 +445,6 @@
         $newQuantity = $current_delivered_material + $delivered_quantity;
         $sql = "UPDATE materials SET delivered_material = ('$newQuantity') WHERE mat_name = '$mat_name';";
         mysqli_query($conn, $sql);
-            
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added delivered in', 1, 1);";
 
         session_start();
         $account_id = "";

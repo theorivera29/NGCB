@@ -114,11 +114,16 @@
     <?php 
         if(strcmp($projects_status, "open") == 0) {
     ?>
-    <div class="row item-cat-col">
-        <div class="col s12 right-align">
+    <div class="row">
+            <div class="col 6 m4">
+                <form>
+                    <input class="input search-bar" type="search" placeholder="Search">
+                    <input class="submit search-btn" type="submit" value="SEARCH">
+                </form>
+            </div>
+
             <a href="#addmaterialModal" class="waves-effect waves-light btn button add-mat-btn modal-trigger">Add Material</a>
         </div>
-    </div>
     <?php 
         }
     ?>
@@ -143,14 +148,13 @@
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>
-                            <th>Delivered Material as of CURRENT DATE</th>
-                            <th>Material Pulled out as of CURRENT DATE</th>
+                            <th>Delivered Material as of <?php echo date("F Y"); ?></th>
+                            <th>Material Pulled out as of <?php echo date("F Y"); ?></th>
                             <th>Accumulate of Materials Delivered</th>
-                            <th>Material on Site as of CURRENT DATE</th>
+                            <th>Material on Site as of <?php echo date("F Y"); ?></th>
                             <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
-                            <th> Action</th>
                             <?php
                                 }
                             ?>
@@ -200,45 +204,6 @@
                             <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
-                            <td>
-                                <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn"><i class="material-icons">edit</i></a>
-
-                                <!-- EDIT SITE MATERIAL MODAL -->
-                                <form action="../server.php" method="POST">
-                                    <div id="editmaterialModal" class="modal modal-fixed-footer">
-                                        <div class="modal-content">
-                                            <h4>Edit Material</h4>
-                                            <h6>
-                                                <?php echo $row[1];?>
-                                            </h6>
-                                            <div class="row">
-                                                <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
-                                                <div class="input-field col s12">
-                                                    <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
-                                                    <label for="newmaterialname">Material Name:</label>
-                                                </div>
-                                                <div class="input-field col s5">
-                                                    <select class="browser-default" name="mat_unit">
-                                                        <option value="" disabled selected>Quantifier</option>
-                                                        <option value="pcs">pcs</option>
-                                                        <option value="rolls">rolls</option>
-                                                        <option value="mtrs">mtrs</option>
-                                                    </select>
-                                                </div>
-                                                <div class="input-field col s7">
-                                                    <input id="minquantity" name="minquantity" type="text" class="validate">
-                                                    <label for="minquantity">Threshold:</label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
-                                            <button class="waves-effect waves-light btn save-mat-btn" type="submit" class="validate" name="edit_materials">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </td>
                             <?php 
                                 }
                             ?>

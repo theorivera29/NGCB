@@ -66,17 +66,17 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">assignment</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>
                 </li>
 
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
@@ -317,19 +317,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        // SIDEBAR
         $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
             });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
-
+            $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
-
         });
     </script>
 

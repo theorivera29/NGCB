@@ -13,7 +13,6 @@
     $row = mysqli_fetch_row($result);
     $projects_status = $row[0];
 ?>
-
 <!DOCTYPE html>
 
 <html>
@@ -146,7 +145,7 @@
                     <input class="submit search-btn" type="submit" value="SEARCH">
                 </form>
             </div>
-           
+
             <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn">
                 Add Material</a>
         </div>
@@ -221,6 +220,7 @@
                         <td>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
+                                <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                                 <button class="waves-effect waves-light btn matname-btn" name="open_stockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
@@ -243,48 +243,6 @@
                         <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
-                        <td>
-                            <a href="#editmaterialModal"
-                                class="waves-effect waves-light btn modal-trigger edit-material-btn"><i class="material-icons">edit</i></a>
-
-                            <!-- EDIT SITE MATERIAL MODAL -->
-                            <form action="../server.php" method="POST">
-                                <div id="editmaterialModal" class="modal modal-fixed-footer edit-mat-modal">
-                                    <div class="modal-content">
-                                        <h4>Edit Material</h4>
-                                        <h6>
-                                            <?php echo $row[0];?>
-                                        </h6>
-                                        <div class="row">
-                                            <input type="hidden" name="materialname" value="<?php echo $row[0];?>">
-                                            <div class="input-field col s12">
-                                                <input id="newmaterialname" name="newmaterialname" type="text"
-                                                    class="validate" required>
-                                                <label for="newmaterialname">Material Name:</label>
-                                            </div>
-                                            <div class="input-field col s5">
-                                                <select class="browser-default" name="mat_unit">
-                                                    <option value="" disabled selected>Unit</option>
-                                                    <option value="pcs">pcs</option>
-                                                </select>
-                                            </div>
-                                            <div class="input-field col s7">
-                                                <input id="minquantity" name="minquantity" type="text"
-                                                    class="validate view-inventory" pattern="[0-9]*"
-                                                    title="Input numbers only" required>
-                                                <label for="minquantity">Item threshold:</label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
-                                        <button class="waves-effect waves-light btn-flat save-mat-btn" type="submit" class="validate"
-                                            name="edit_materials">Save</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </td>
                         <?php 
                                 }
                             }
@@ -328,7 +286,8 @@
                             </tbody>
                         </table>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-light btn all-btn cancel-mat-btn">Cancel</a>
+                            <a href="#!"
+                                class="modal-close waves-effect waves-light btn all-btn cancel-mat-btn">Cancel</a>
                             <button class="btn waves-effect waves-light save-mat-btn all-btn" type="submit"
                                 class="validate" name="add_deliveredin">Save</button>
                         </div>
@@ -366,8 +325,8 @@
                         </table>
                         <div class="modal-footer">
                             <a href="#!" class="modal-close waves-effect btn all-btn cancel-mat-btn">Cancel</a>
-                            <button class="waves-effect waves-light btn all-btn save-mat-btn" type="submit" class="validate"
-                                name="add_usagein">Save</button>
+                            <button class="waves-effect waves-light btn all-btn save-mat-btn" type="submit"
+                                class="validate" name="add_usagein">Save</button>
                         </div>
                     </form>
                 </div>
@@ -385,7 +344,8 @@
                 <div class="col s12 right-align">
                     <a href="#addcategoryModal" class="waves-effect waves-light btn modal-trigger all-btn category-btn">
                         Add Category</a>
-                    <a href="#editcategoryModal" class="waves-effect waves-light btn modal-trigger all-btn category-btn">
+                    <a href="#editcategoryModal"
+                        class="waves-effect waves-light btn modal-trigger all-btn category-btn">
                         Edit Category</a>
                 </div>
             </div>
@@ -517,7 +477,8 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
-                <button type="submit" class="waves-effect waves-light btn-flat save-mat-btn" name="create_materials">Save</button>
+                <button type="submit" class="waves-effect waves-light btn-flat save-mat-btn"
+                    name="create_materials">Save</button>
             </div>
         </form>
     </div>
@@ -533,7 +494,7 @@
                             pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: Formworks"
                             required>
                         <label for="category_name">Category Name:</label>
-                    </div>                   
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

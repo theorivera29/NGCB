@@ -110,10 +110,7 @@
     </nav>
 
     <div class="row">
-        <div class="col s11 right-align">
-            <a href="#addProject" class="waves-effect waves-light btn button modal-trigger add-material-btn">
-                <i class="material-icons left">add_circle_outline</i>Add Project</a>
-        </div>
+        
         <div id="addProject" class="modal modal-fixed-footer">
             <form action="../server.php" method="POST">
                 <div class="modal-content">
@@ -161,6 +158,9 @@
         
         <!--ONGOING TAB-->
         <div id="ongoing" class="col s12">
+        <div class="col s11 right-align">
+            <a href="#addProject" class="waves-effect waves-light btn button modal-trigger add-project-btn">Add Project</a>
+        </div>
             <div class="row">
                 <?php
                     $sql = "SELECT * FROM projects WHERE projects_status = 'open';";
@@ -187,11 +187,11 @@
                             <div class="row">
                                 <div class="row">
                                     <button href="#editModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn edit-btn modal-trigger">Edit</button>
+                                        class="waves-effect waves-light btn modal-trigger edit-proj-btn">Edit</button>
                                 </div>
                                 <div class="row">
                                     <a href="#closeModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn red modal-trigger">Close
+                                        class="waves-effect waves-light btn modal-trigger close-proj-btn">Close
                                         Project</a>
                                 </div>
                             </div>
@@ -206,11 +206,11 @@
                         <p>Are you sure you want to close this project?</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value="<?php echo $row[1] ;?>">
                             <button type="submit" name="close_project"
-                                class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                                class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                         </form>
                     </div>
                 </div>
@@ -284,12 +284,12 @@
                             <div class="row">
                                 <div class="row">
                                     <a href="#reopenModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn red modal-trigger">Re-open
+                                        class="waves-effect waves-light btn modal-trigger reopen-btn">Re-open
                                         project</a>
                                 </div>
                                 <div class="row">
                                     <a href="#deleteProjectModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn red modal-trigger">Delete
+                                        class="waves-effect waves-light btn modal-trigger delete-btn">Delete
                                     </a>
                                 </div>
                             </div>
@@ -302,11 +302,11 @@
                         <p>Are you sure you want to reopen this project?</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value='<?php echo $row[1] ;?>'>
                             <button type="submit" name="reopen_project"
-                                class="modal-action modal-close waves-effect waves-green btn-flat">Yes</button>
+                                class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                         </form>
                     </div>
                 </div>
@@ -319,8 +319,8 @@
                     <div class="modal-footer">
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value='<?php echo $row[1] ;?>'>
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">No</a>
-                            <button class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit" name="delete_project">Yes</button>
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
+                            <button class=" modal-action modal-close waves-effect waves-light btn-flat yes-btn" type="submit" name="delete_project">Yes</button>
                         </form>
                     </div>
                 </div>    

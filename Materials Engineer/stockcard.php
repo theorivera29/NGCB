@@ -170,7 +170,8 @@ $mat_name = $_GET['mat_name'];
                         }
                         ?>
                 </table>
-                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
+
+            <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredin">Save</button>
             </form>
         </div>
     </div>
@@ -220,7 +221,11 @@ $mat_name = $_GET['mat_name'];
                         }
                         ?>
                 </table>
+
                 <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
+
+            <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_usagein">Save</button>
+
             </form>
         </div>
     </div>

@@ -138,11 +138,8 @@
                             <div class="col s12">
                                 <div class="input-field col deliver-to-field">
                                     <input id="delivername" type="text" class="validate" name="delivername"
-<<<<<<< HEAD
                                         pattern="[A-Za-z0-9\s]*" title="Input only letters" required>
-=======
-                                        pattern="[A-Za-z\s]*" title="Input only letters" required>
->>>>>>> 0fd605f27fc30643771462597604d920d758e9a7
+
                                     <label for="delivername">Deliver To:</label>
                                 </div>
                                 <?php 
@@ -263,9 +260,9 @@
                     </div>
             </div>
             <div class="card-action right-align">
-                <button class="waves-effect waves-light btn all-btn" type="submit" class="validate"
+                <button class="waves-effect waves-light btn all-btn save-hauled-btn" type="submit" class="validate"
                     name="create_hauling">Save</button>
-                <a class="waves-effect waves-light btn all-btn">Cancel</a>
+                <a class="waves-effect waves-light btn all-btn cancel-hauled-btn">Cancel</a>
             </div>
             </form>
         </div>

@@ -5,6 +5,11 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+
+    $account_id = "";
+    if(isset($_SESSION['account_id'])) {
+        $account_id = $_SESSION['account_id'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +83,7 @@
             </thead>
             <tbody class="task-table-container">
                 <?php 
-                    $sql = "SELECT * FROM todo WHERE todoOf = 2 ORDER BY todo_date;";
+                    $sql = "SELECT * FROM todo WHERE todoOf = '$account_id' ORDER BY todo_date;";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
                 ?>
@@ -99,8 +104,8 @@
                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
-                            <button class="waves-effect waves-light btn modal-trigger doneBtn"
-                                href="#doneBtn<?php echo $row[0] ;?>">Done</button>
+                            <a class="waves-effect waves-light btn modal-trigger doneBtn"
+                                href="#doneBtn<?php echo $row[0] ;?>">Done</a>
                             <div id="doneBtn<?php echo $row[0] ;?>" class="modal modal-fixed-footer">
                                 <div class="modal-content">
                                     <span>Are you sure want to click done?</span>
@@ -116,7 +121,7 @@
                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
-                            <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn<?php echo $row[0] ;?>"">Clear</button>
+                            <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn<?php echo $row[0] ;?>">Clear</button>
                             <div id="clearBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to clear this task</span>

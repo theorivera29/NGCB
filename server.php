@@ -420,14 +420,15 @@
     }
 
     if (isset($_POST['add_deliveredin'])) {
+        $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
         $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
         $delivered_unit = mysqli_real_escape_string($conn, $_POST['dev_unit']);
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
-        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy', 1);";
+        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy', $mat_id);";
         mysqli_query($conn, $sql);
-
+        echo $mat_id;
             
         $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
         $result = mysqli_query($conn,$sql);
@@ -453,13 +454,14 @@
             $account_id = $_SESSION['account_id'];
         }
         $add_deliver_date = date("Y-m-d G:i:s");
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_deliver_date', 'Added delivered in of $delivered_matName', $account_id);";
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_deliver_date', 'Added delivered in of $mat_name', $account_id);";
 
         mysqli_query($conn, $sql);    
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
     }
 
     if (isset($_POST['add_usagein'])) {
+        $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $usage_date = mysqli_real_escape_string($conn, $_POST['us_date']);
         $usage_quantity = mysqli_real_escape_string($conn, $_POST['us_quantity']);
@@ -469,7 +471,7 @@
         $sql = "SELECT * from usagein;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
-        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area', 1);";
+        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area', $mat_id);";
         mysqli_query($conn, $sql);
             
         $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";

@@ -121,7 +121,7 @@ $mat_name = $_GET['mat_name'];
                 <table class="centered deliverin">
                     <?php 
                         $sql = "SELECT 
-                        mat_unit FROM materials WHERE mat_name = '$mat_name';";
+                        mat_unit, mat_id FROM materials WHERE mat_name = '$mat_name';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                         ?>
@@ -136,6 +136,8 @@ $mat_name = $_GET['mat_name'];
 
                     <tbody>
                         <tr>
+                            <input type="hidden" name="mat_name" value="<?php echo $mat_name; ?>">
+                            <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
                                 <input type="date" min="2019-01-01" name="dev_date" required>
                             </td>
@@ -149,12 +151,26 @@ $mat_name = $_GET['mat_name'];
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <?echo ?>
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
                     </tbody>
                     <?php 
                         }
                         ?>
                 </table>
-            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
+                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
             </form>
         </div>
     </div>
@@ -165,7 +181,7 @@ $mat_name = $_GET['mat_name'];
                 <table class="centered usagein">
                     <?php 
                         $sql = "SELECT 
-                        mat_unit FROM materials WHERE mat_name = '$mat_name';";
+                        mat_unit, mat_id FROM materials WHERE mat_name = '$mat_name';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                         ?>
@@ -181,7 +197,8 @@ $mat_name = $_GET['mat_name'];
 
                     <tbody>
                         <tr>
-                           <input type="hidden" name="mat_name" value="<?php echo $mat_name; ?>">
+                            <input type="hidden" name="mat_name" value="<?php echo $mat_name; ?>">
+                            <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
                                 <input type="date" min="2019-01-01" name="us_date" required>
                             </td>
@@ -203,7 +220,7 @@ $mat_name = $_GET['mat_name'];
                         }
                         ?>
                 </table>
-            <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
+                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
             </form>
         </div>
     </div>

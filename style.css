@@ -1637,3 +1637,6 @@ select[name=mat_unit] {
     background-color: #0B415E !important;
     color: #FFFFFF;
 }
+.view-inventory-head>tr>th:hover{
+    cursor: pointer !important;
+}

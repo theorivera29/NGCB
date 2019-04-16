@@ -331,7 +331,7 @@ nav {
     float: right;
     margin-right: 3%;
     font-family: Pridi;
-    font-size: 3vmin;
+    font-size: 2.5vmin;
 }
 
 .down-arrow {
@@ -641,6 +641,11 @@ textarea.materialize-textarea {
     background-color: #ECC30B;
 }
 
+.modal-question{
+    margin-top: 5%;
+    border-radius: 2%;
+}
+
 .no-btn{
     background-color: #EF5B5B;
     color: #FFFFFF;
@@ -654,6 +659,7 @@ textarea.materialize-textarea {
 .yes-btn{
     background-color: #71B340;
     color: #FFFFFF;
+    margin-right: 1% !important;
 }
 
 .yes-btn:hover{
@@ -726,6 +732,9 @@ textarea.materialize-textarea {
     overflow-y: auto;
 }
 
+#materialize-lean-overlay{
+    background-color: transparent !important;
+}
 
 /*Projects*/
 .project-status {
@@ -864,8 +873,8 @@ textarea.materialize-textarea {
 }
 
 .edit-material-btn {
-    background-color: #FFFFFF !important;
-    color: #000000 !important;
+    background-color: #156FE7 !important;
+    color: #FFFFFF !important;
 }
 
 .add-mat-btn {
@@ -885,6 +894,7 @@ textarea.materialize-textarea {
 .view-inventory {
     border: 1px solid black;
     border-collapse: separate;
+    background-color: #E8E8E8 !important;
 }
 
 .view-inventory-head>tr {
@@ -895,13 +905,9 @@ textarea.materialize-textarea {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.view-inventory>tr>td {
-    background-color: #FFFFFF !important;
-}
-
 .td-category {
     text-align: left !important;
-    background-color: #EBF0F7;
+    background-color: #FFFFFF !important;
     padding-left: 2%;
     font-size: 3vmin;
 }
@@ -997,7 +1003,7 @@ textarea.materialize-textarea {
 }
 
 .matname-btn {
-    background-color: #ECC30B!important;
+    background-color: #FFFFFF;
     color: #000000 !important;
 }
 

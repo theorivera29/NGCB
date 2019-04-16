@@ -245,7 +245,7 @@
                             ?>
                         <td>
                             <a href="#editmaterialModal"
-                                class="waves-effect waves-light btn modal-trigger edit-material-btn">Edit</a>
+                                class="waves-effect waves-light btn modal-trigger edit-material-btn"><i class="material-icons">edit</i></a>
 
                             <!-- EDIT SITE MATERIAL MODAL -->
                             <form action="../server.php" method="POST">

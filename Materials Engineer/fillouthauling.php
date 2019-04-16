@@ -243,7 +243,7 @@
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]" required></td>
+                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]*" required></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>

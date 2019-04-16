@@ -6,7 +6,7 @@
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
 $mat_name = $_GET['mat_name'];
-
+$projects_name = $_GET['projects_name'];
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +24,11 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="viewinventory.php" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
-                    class="material-icons menuIcon">arrow_back</i></a>
+           <form action="../server.php" method="POST">
+            <button href="viewinventory.php" data-activates="navigation" name="balik" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">arrow_back</i>
+            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+            </button>
+            </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -146,7 +149,18 @@ $mat_name = $_GET['mat_name'];
                             <td>
                                 <?php echo $row_devIn[3] ?>
                             </td>
-
+                            </tr>
+                             <?php 
+                        }
+                        ?>
+                        <?php 
+                        $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
+                        $result_total = mysqli_query($conn, $sql_total);
+                        while($row_total = mysqli_fetch_row($result_total)){
+                        ?>
+                        <tr>
+                        <td>TOTAL:</td>
+                        <td><?php echo $row_total[0]?></td>
                         </tr>
                         <?php 
                         }
@@ -228,11 +242,26 @@ $mat_name = $_GET['mat_name'];
                                 <?php echo $row_useIn[4] ?>
                             </td>
                         </tr>
-                        <?php 
-                        }
+                          <?php 
                         }
                         ?>
-                    </tbody>
+                        <?php 
+                        $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
+                        $result_total = mysqli_query($conn, $sql_total);
+                        while($row_total = mysqli_fetch_row($result_total)){
+                        ?>
+                        <tr>
+                            <td>
+                                TOTAL:
+                            </td>
+                            <td>
+                                <?php echo $row_total[0] ?>
+                            </td>
+                        </tr>
+                    <?php
+                        }
+                        }
+                            ?>
                 </table>
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"

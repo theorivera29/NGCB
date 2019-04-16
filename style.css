@@ -1007,11 +1007,12 @@ textarea.materialize-textarea {
 .matname-btn {
     background-color: #FFFFFF;
     color: #000000 !important;
+    width: 100% !important;
 }
 
 .matname-btn:hover {
-    background-color: #2F89C5;
-    color: #000000 !important;
+    background-color: #0B415E;
+    color: #FFFFFF !important;
 }
 
 .search-bar-site-materials {

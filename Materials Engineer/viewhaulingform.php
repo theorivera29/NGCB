@@ -117,11 +117,12 @@
                             $sql = "SELECT 
                             hauling.hauling_date, 
                             hauling.hauling_deliverTo, 
-                            hauling.hauling_hauledBy, 
+                            hauling.hauling_hauledFrom, 
                             hauling.hauling_quantity, 
                             unit.unit_name, 
                             materials.mat_name, 
                             hauling.hauling_hauledBy, 
+                            hauling.hauling_requestedBy,
                             hauling.hauling_warehouseman, 
                             hauling.hauling_approvedBy, 
                             hauling.hauling_truckDetailsType, 
@@ -150,7 +151,7 @@
     <div class="row fill-hauling-form-container">
         <div class="col haulingform-container">
             <div class="card hauling-form">
-                <form>
+                <form class="view-hauled-form">
                     <div class="fillout-content">
                         <div class="row">
                             <div class="col">
@@ -161,7 +162,7 @@
                                     <h5 id="panel-text date-span">Date:</h5>
                                 </div>
                                 <div class="col">
-                                    <input type="date" disabled value="<?php echo $row[0]?>">
+                                    <input type="text" disabled value="<?php echo $row[0]?>">
                                 </div>
 
                             </div>
@@ -193,24 +194,17 @@
                         <table class="hauling-form-table">
                             <thead class="hauling-form-table-head">
                                 <tr>
-                                    <th>Categories</th>
-                                    <th>Articles</th>
-                                    <th>Unit</th>
                                     <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Articles</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td>
-                                    <input id="categories" type="text" disabled value="">
-                                    </td>
-                                    <td>
-                                    <input id="materials" type="text" disabled value="<?php echo $row[5]?>">
-                                    </td>   
-                                    <td><input id="unit" type="text"  disabled value="<?php echo $row[4]?>">
-                                    </td>
                                     <td><input type="text" id="quantity" disabled value="<?php echo $row[3]?>" ></td>
+                                    <td><input id="unit" type="text"  disabled value="<?php echo $row[4]?>"></td>
+                                    <td><input id="materials" type="text" disabled value="<?php echo $row[5]?>"></td>   
                                 </tr>
                             </tbody>
                         </table>
@@ -219,7 +213,7 @@
                     <div class="row">
                         <div class="col s6 hauled-side-container">
                             <div class="input-field col s10 left-align ">
-                                <input id="requested" type="text" disabled value="<?php echo $row[6]?>">
+                                <input id="requested" type="text" disabled value="<?php echo $row[7]?>">
                                 <label for="requested">Requested :</label>
                             </div>
                             <div class="input-field col s10 left-align ">
@@ -227,11 +221,11 @@
                                 <label for="hauledby">Hauled by :</label>
                             </div>
                             <div class="input-field col s10 left-align ">
-                                <input id="warehouseman" type="text" disabled value="<?php echo $row[7]?>" >
+                                <input id="warehouseman" type="text" disabled value="<?php echo $row[8]?>" >
                                 <label for="warehouseman">Warehouseman:</label>
                             </div>
                             <div class="input-field col s10 left-align ">
-                                <input id="approvedby" type="text" disabled value="<?php echo $row[8]?>">
+                                <input id="approvedby" type="text" disabled value="<?php echo $row[9]?>">
                                 <label for="approvedby">Approved By:</label>
                             </div>
                         </div>
@@ -249,19 +243,19 @@
                                 <tbody>
                                     <tr>
                                         <td>Type:</td>
-                                        <td><input type="text" id="truck_type" disabled value="<?php echo $row[9]?>"></td>
+                                        <td><input type="text" id="truck_type" disabled value="<?php echo $row[10]?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td><input type="text" id="truck_plate" disabled value="<?php echo $row[10]?>"></td>
+                                        <td><input type="text" id="truck_plate" disabled value="<?php echo $row[11]?>"></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>
-                                        <td><input type="text" id="truck_po" disabled value="<?php echo $row[11]?>"></td>
+                                        <td><input type="text" id="truck_po" disabled value="<?php echo $row[12]?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Hauler DR No.:</td>
-                                        <td><input type="text"  id="truck_hauler" disabled value="<?php echo $row[12]?>"></td>
+                                        <td><input type="text"  id="truck_hauler" disabled value="<?php echo $row[13]?>"></td>
                                     </tr>
                                 </tbody>
                             </table>

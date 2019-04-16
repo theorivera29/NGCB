@@ -24,7 +24,7 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
+            <a href="viewinventory.php" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">arrow_back</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -64,45 +64,6 @@ $mat_name = $_GET['mat_name'];
                         }
                     ?>
                 </h3>
-
-                <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
-                </li>
-
-
-                <ul class="collapsible">
-                    <li>
-                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
-                                <li><a class="waves-effect waves-blue" href="sitematerials.php">Site Materials</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-
-
-
-                <ul class="collapsible">
-                    <li>
-                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li>
-                                    <a class="waves-effect waves-blue" href="hauling.php">Fill out Hauling Form</a>
-                                </li>
-                                <li>
-                                    <a class="waves-effect waves-blue" href="hauleditems.php">View Hauled
-                                        Materials</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-                <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
-                </li>
             </ul>
         </div>
     </nav>
@@ -282,14 +243,7 @@ $mat_name = $_GET['mat_name'];
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        $(document).ready(function() {
-            $('.button-collapse').sideNav({
-                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            });
-            $('.collapsible').collapsible();
-            $('.modal-trigger').leanModal();
-        });
-
+    
     </script>
 
 </body>

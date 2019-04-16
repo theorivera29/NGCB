@@ -1655,6 +1655,17 @@ select[name=mat_unit] {
     color: #000000 !important;
 }
 
+.save-proj-btn{
+    color: #FFFFFF !important;
+    background-color: #71B340 !important;
+            
+}
+    
+.save-proj-btn:hover{
+    color: #FFFFFF !important;
+    background-color: #5D9335 !important;
+}
+
 .edit-proj-btn{
     background-color: #2F89C5!important;
     color: #FFFFFF;
@@ -1684,9 +1695,29 @@ select[name=mat_unit] {
 }
 
 .delete-btn{
-    background-color: #A31621;
+    background-color: #A31621 !important;
     color: #FFFFFF;
 }
+
+.delete-btn:hover{
+    background-color: #A31621 !important;
+    color: #FFFFFF;
+}
+
+.add-proj,
+.edit-proj{
+    margin-top: 4%;
+}
+
+.cancel-proj-btn{
+    background-color: #EF5B5B !important;
+    margin-left: 1% !important;
+}
+
+.cancel-proj-btn:hover{
+    background-color: #EF5B5B !important;
+}
+
 
 
 /*Logs*/

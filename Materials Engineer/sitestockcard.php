@@ -6,7 +6,6 @@
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
 $mat_name = $_GET['mat_name'];
-$projects_name = $_GET['projects_name'];
 ?>
 
 <!DOCTYPE html>
@@ -107,8 +106,6 @@ $projects_name = $_GET['projects_name'];
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
-                           
-                            <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
@@ -173,7 +170,7 @@ $projects_name = $_GET['projects_name'];
                 </table>
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredin">Save</button>
+                        name="add_deliveredinsite">Save</button>
                 </div>
             </form>
         </div>
@@ -206,7 +203,6 @@ $projects_name = $_GET['projects_name'];
                         ?>
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-                            <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <td>
                                 <input type="date" min="2019-01-01" name="us_date" required>
                             </td>
@@ -269,7 +265,7 @@ $projects_name = $_GET['projects_name'];
                 </table>
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_usagein">Save</button>
+                        name="add_usageinsite">Save</button>
                 </div>
             </form>
         </div>

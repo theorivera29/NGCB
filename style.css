@@ -880,8 +880,8 @@ textarea.materialize-textarea {
 }
 
 .view-inventory-container {
-    width: 95% !important;
-    margin-left: 2%;
+    width: 98% !important;
+    margin-left: 1%;
     margin-right: 2%;
     font-family: Arial, Helvetica, sans-serif;
 }

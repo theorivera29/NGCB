@@ -292,7 +292,7 @@
                                 </div>
                                 <div class="row">
                                     <a href="#deleteProjectModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn modal-trigger delete-btn">Delete
+                                        class="waves-effect waves-light btn modal-trigger delete-btn ">Delete
                                     </a>
                                 </div>
                             </div>

@@ -149,7 +149,7 @@
             if(strcmp($projects_status, "open") == 0) {
         ?>
         <div class="row">
-            <div class="col ">
+            <div class="col s6 m4">
                 <form action="../server.php" method="POST">
                     <input class="input search-bar" type="search" placeholder="Search...">
                     <input class="submit search-btn" type="submit" name="search" value="SEARCH">

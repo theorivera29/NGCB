@@ -147,7 +147,7 @@
         </div>
 
         <!--To-do Container-->
-        <h5 id="panel-header-task">To-do Task</h5>
+        <h5 id="panel-header-task">Today's To-do Task</h5>
         <div class="col s7 container-task-todo">
             <div class="container-all-task">
                 <table class="striped centered view-tasks">

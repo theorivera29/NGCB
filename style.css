@@ -641,6 +641,11 @@ textarea.materialize-textarea {
     background-color: #ECC30B;
 }
 
+.modal-question{
+    margin-top: 5%;
+    border-radius: 2%;
+}
+
 .no-btn{
     background-color: #EF5B5B;
     color: #FFFFFF;
@@ -654,6 +659,7 @@ textarea.materialize-textarea {
 .yes-btn{
     background-color: #71B340;
     color: #FFFFFF;
+    margin-right: 1% !important;
 }
 
 .yes-btn:hover{
@@ -726,6 +732,9 @@ textarea.materialize-textarea {
     overflow-y: auto;
 }
 
+#materialize-lean-overlay{
+    background-color: transparent !important;
+}
 
 /*Projects*/
 .project-status {
@@ -1633,4 +1642,7 @@ select[name=mat_unit] {
 .logs-container-head>tr>th{
     background-color: #0B415E !important;
     color: #FFFFFF;
+}
+.view-inventory-head>tr>th:hover{
+    cursor: pointer !important;
 }

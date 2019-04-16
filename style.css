@@ -728,6 +728,22 @@ textarea.materialize-textarea {
     background-color: transparent !important;
 }
 
+/*View All Task*/
+#viewAllTask{
+    width: 90%;
+    margin-left: 5% !important;
+    margin-top: 2%;
+}
+
+.task-text{
+    font-size: 3vmin;
+}
+
+.view-all-tasks{
+    margin-top: 2% !important;
+    border: 1px solid black;
+}
+
 /*Projects*/
 .project-status {
     width: 70%;
@@ -846,7 +862,6 @@ textarea.materialize-textarea {
 .search-bar {
     width: 49% !important;
     height: 2% !important;
-    margin-left: 10% !important;
 }
 
 .search-btn {
@@ -868,10 +883,14 @@ textarea.materialize-textarea {
 .add-mat-btn {
     background-color: #FFFFFF !important;
     color: #000000 !important;
-    margin-top: 1%;
+    margin-top: 2%;
     font-size: 2.2vmin !important;
     float: right !important;
-    margin-right: 3% !important;
+}
+
+.category-name-container{
+    margin-top: 5%;
+    text-align: center;
 }
 
 #categ-title{
@@ -1007,11 +1026,12 @@ textarea.materialize-textarea {
 .matname-btn {
     background-color: #FFFFFF;
     color: #000000 !important;
+    width: 100% !important;
 }
 
 .matname-btn:hover {
-    background-color: #2F89C5;
-    color: #000000 !important;
+    background-color: #0B415E;
+    color: #FFFFFF !important;
 }
 
 .search-bar-site-materials {
@@ -1152,6 +1172,18 @@ select[name=mat_unit] {
     color: #FFFFFF;
     padding-right: 2% !important;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.category-items-table{
+    border: 1px solid black;
+}
+
+.add-mat-btn-viewinventory{
+    margin-right: 1% !important;
+}
+
+.search-viewinventory {
+    margin-left: 3% !important;
 }
 
 /*Deliver In*/
@@ -1383,7 +1415,6 @@ select[name=mat_unit] {
 }
 
 /*Report Page*/
-
 /* Style for Report*/
 .report-btn {
     background-color: #ECC30B !important;
@@ -1655,6 +1686,17 @@ select[name=mat_unit] {
     color: #000000 !important;
 }
 
+.save-proj-btn{
+    color: #FFFFFF !important;
+    background-color: #71B340 !important;
+            
+}
+    
+.save-proj-btn:hover{
+    color: #FFFFFF !important;
+    background-color: #5D9335 !important;
+}
+
 .edit-proj-btn{
     background-color: #2F89C5!important;
     color: #FFFFFF;
@@ -1684,9 +1726,29 @@ select[name=mat_unit] {
 }
 
 .delete-btn{
-    background-color: #A31621;
+    background-color: #A31621 !important;
     color: #FFFFFF;
 }
+
+.delete-btn:hover{
+    background-color: #A31621 !important;
+    color: #FFFFFF;
+}
+
+.add-proj,
+.edit-proj{
+    margin-top: 4%;
+}
+
+.cancel-proj-btn{
+    background-color: #EF5B5B !important;
+    margin-left: 1% !important;
+}
+
+.cancel-proj-btn:hover{
+    background-color: #EF5B5B !important;
+}
+
 
 
 /*Logs*/

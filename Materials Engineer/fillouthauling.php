@@ -248,7 +248,7 @@
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]*" required></td>
+                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9\s]*" required></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>
@@ -275,10 +275,8 @@
     </div>
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
-    </script>
-    <script src="../datepicker.js"></script>
+    <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
         // SIDEBAR
         // SIDEBAR

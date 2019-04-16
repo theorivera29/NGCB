@@ -84,12 +84,21 @@
     </nav>
 
     <div class="item-categories">
+        <div class="row">
+        <div class="col 6 m4">
+                <form>
+                    <input class="input search-bar" type="search" placeholder="Search">
+                    <input class="submit search-btn" type="submit" value="SEARCH">
+                </form>
+            </div>
+                    </div>
         <?php
         $categories_id = $_GET['categories_id'];
         $sql = "SELECT * FROM  categories WHERE categories_id = '$categories_id';";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
+    
         <h4><?php echo $row[1] ;?></h4>
         <?php
         }

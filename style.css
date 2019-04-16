@@ -721,21 +721,6 @@ textarea.materialize-textarea {
     width: 90px;
 }
 
-.close-container{
-    width: 100%;
-}
-
-.close-btn{
-    float: right;
-    color: red;
-    margin-right: 2%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-#viewAllTask{
-    overflow-y: auto;
-}
 
 #materialize-lean-overlay{
     background-color: transparent !important;
@@ -872,21 +857,22 @@ textarea.materialize-textarea {
     background-color: #FFFFFF !important;
 }
 
-.add-mat-btn{
-    background-color: #FFFFFF !important;
-    color: #000000 !important;
-}
-
 .edit-material-btn {
     background-color: #156FE7 !important;
     color: #FFFFFF !important;
 }
 
 .add-mat-btn {
-    margin-top: 2%;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    margin-top: 1%;
     font-size: 2.2vmin !important;
     float: right !important;
-    margin-right: 3%;
+}
+
+#categ-title{
+    font-size: 5vmin;
+    padding-bottom: 1%;
 }
 
 .view-inventory-container {
@@ -956,6 +942,7 @@ textarea.materialize-textarea {
     background-color: #71B340 !important;
     float: right;
     font-size: 2vmin !important;
+    margin-right: 1% !important;
 }
 
 .save-mat-btn:hover {
@@ -967,6 +954,7 @@ textarea.materialize-textarea {
 .cancel-mat-btn{
     background-color: #EF5B5B;
     color: #FFFFFF;
+    font-size: 2vmin !important;
 }
 
 .cancel-mat-btn:hover{

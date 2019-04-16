@@ -112,13 +112,40 @@
         </div>
     </nav>
 
-
     <?php
                             $hauling_no = $_GET['hauling_no'];
-                            $sql = "SELECT * FROM hauling WHERE hauling_no = '$hauling_no';";
+                            $sql = "SELECT 
+                            hauling.hauling_date, 
+                            hauling.hauling_deliverTo, 
+                            hauling.hauling_hauledBy, 
+                            hauling.hauling_quantity, 
+                            unit.unit_name, 
+                            materials.mat_name, 
+                            hauling.hauling_hauledBy, 
+                            hauling.hauling_warehouseman, 
+                            hauling.hauling_approvedBy, 
+                            hauling.hauling_truckDetailsType, 
+                            hauling.hauling_truckDetailsPlateNo, 
+                            hauling.hauling_truckDetailsPo, 
+                            hauling.hauling_truckDetailsHaulerDr 
+                            FROM hauling 
+                            INNER JOIN unit ON hauling.hauling_unit = unit.unit_id 
+                            INNER JOIN materials ON hauling.hauling_matname = materials.mat_id 
+                            WHERE hauling_no = '$hauling_no';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
+
+    <div class="row">
+        <div class="col s12 right-align">
+            <form action="../server.php" method="POST">
+                <input type="hidden" name="projects_name" value="">
+                <button class="waves-effect waves-light btn report-btn" type="submit" name="generate_report">
+                    <i class="material-icons left">print</i>Generate Hauling
+                </button>
+            </form>
+        </div>
+    </div>
     <div class="row fill-hauling-form-container">
         <div class="col haulingform-container">
             <div class="card hauling-form">
@@ -130,10 +157,10 @@
                                 <div class="row">
                                     <div class="col s8">
                                         <label for="date">Date:</label>
-                                        <input id="date" type="text" disabled value="<?php echo $row[1]?>">
+                                        <input id="date" type="text" disabled value="<?php echo $row[0]?>">
                                     </div>
                                     <div class="input-field col s2">
-                                        <input disabled value="<?php echo $row[0]?>" id="formnumber" type="text">
+                                        <input disabled value="<?php echo $hauling_no?>" id="formnumber" type="text">
                                         <label for="formnumber">Form No.:</label>
                                     </div>
                                 </div>
@@ -141,12 +168,12 @@
                                     <div class="col s6">
                                         <div>
                                             <div class="input-field col s12 left-align ">
-                                                <input disabled value="<?php echo $row[2]?>" id="delivername"
+                                                <input disabled value="<?php echo $row[1]?>" id="delivername"
                                                     type="text" class="validate">
                                                 <label for="delivername">Deliver To:</label>
                                             </div>
                                             <div class="input-field col s12 left-align ">
-                                                <input disabled value="<?php echo $row[3]?>" id="hauledfrom" type="text"
+                                                <input disabled value="<?php echo $row[2]?>" id="hauledfrom" type="text"
                                                     class="validate">
                                                 <label for="hauledfrom">Hauled From:</label>
                                             </div>
@@ -165,9 +192,9 @@
 
                                         <tbody>
                                             <tr>
+                                                <td><?php echo $row[3]?></td>
                                                 <td><?php echo $row[4]?></td>
                                                 <td><?php echo $row[5]?></td>
-                                                <td><?php echo $row[6]?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -176,17 +203,17 @@
                                 <div class="row">
                                     <div class="col s6">
                                         <div class="input-field col s10 left-align ">
-                                            <input disabled value="<?php echo $row[7]?>" id="hauledby" type="text"
+                                            <input disabled value="<?php echo $row[6]?>" id="hauledby" type="text"
                                                 class="validate">
                                             <label for="hauledby">Hauled By:</label>
                                         </div>
                                         <div class="input-field col s10 left-align ">
-                                            <input disabled value="<?php echo $row[8]?>" id="warehouseman" type="text"
+                                            <input disabled value="<?php echo $row[7]?>" id="warehouseman" type="text"
                                                 class="validate">
                                             <label for="warehouseman">Warehouseman:</label>
                                         </div>
                                         <div class="input-field col s10 left-align ">
-                                            <input disabled value="<?php echo $row[9]?>" id="approvedby" type="text"
+                                            <input disabled value="<?php echo $row[8]?>" id="approvedby" type="text"
                                                 class="validate">
                                             <label for="approvedby">Approved By:</label>
                                         </div>
@@ -205,19 +232,19 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Type:</td>
-                                                    <td><?php echo $row[10]?></td>
+                                                    <td><?php echo $row[9]?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Plate No.:</td>
-                                                    <td><?php echo $row[11]?></td>
+                                                    <td><?php echo $row[10]?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>P.O/R.S No.:</td>
-                                                    <td><?php echo $row[12]?></td>
+                                                    <td><?php echo $row[11]?></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Hauler DR No.:</td>
-                                                    <td><?php echo $row[13]?></td>
+                                                    <td><?php echo $row[12]?></td>
                                                 </tr>
                                             </tbody>
                                         </table>

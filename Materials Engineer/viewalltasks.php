@@ -27,7 +27,8 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <button href="dashboard.php" name="" class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i></button>
+            <button href="dashboard.php" name="" class="button-collapse show-on-large menu-icon back-btn"><i
+                    class="material-icons menuIcon">arrow_back</i></button>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -41,7 +42,8 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -72,7 +74,8 @@
     </nav>
 
     <div id="viewAllTask">
-        <table class="striped centered view-tasks">
+        <span class="task-text">ALL TASK</span>
+        <table class="striped centered view-all-tasks">
             <thead class="view-tasks-head">
                 <tr class="task-headers">
                     <th>Date</th>
@@ -121,7 +124,8 @@
                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
-                            <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn<?php echo $row[0] ;?>">Clear</button>
+                            <button class="waves-effect waves-light btn modal-trigger"
+                                href="#clearBtn<?php echo $row[0] ;?>">Clear</button>
                             <div id="clearBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to clear this task</span>
@@ -144,14 +148,18 @@
             </tbody>
         </table>
     </div>
-    
+
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-    function sortTable(n) {
+        $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+        });
+
+        function sortTable(n) {
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
             table = document.getElementById("sort");
             switching = true;

@@ -728,6 +728,22 @@ textarea.materialize-textarea {
     background-color: transparent !important;
 }
 
+/*View All Task*/
+#viewAllTask{
+    width: 90%;
+    margin-left: 5% !important;
+    margin-top: 2%;
+}
+
+.task-text{
+    font-size: 3vmin;
+}
+
+.view-all-tasks{
+    margin-top: 2% !important;
+    border: 1px solid black;
+}
+
 /*Projects*/
 .project-status {
     width: 70%;
@@ -1399,7 +1415,6 @@ select[name=mat_unit] {
 }
 
 /*Report Page*/
-
 /* Style for Report*/
 .report-btn {
     background-color: #ECC30B !important;

@@ -154,6 +154,5 @@
     $pdf->Cell(0,15,'NOTE: All Personnel Please Print Name & Sign',0,0,'C');
 
     //OUTPUT TO PDF
-    // $pdf->Output('D', "INVENTORY REPORT ".date("F Y").".pdf");
-    $pdf->Output();
+    $pdf->Output('D', "HAULING FORM NO ".$array['hauling_no'].".pdf");
 ?>

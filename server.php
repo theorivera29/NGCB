@@ -555,6 +555,20 @@
         mysqli_query($conn, $sql); 
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/generate_report.php?projects_name=$projects_name");        
     }
+
+    if(isset($_POST['generate_hauling'])) {
+        $hauling_no = $_POST['hauling_no'];        
+        session_start();
+        $account_id = "";
+        if(isset($_SESSION['account_id'])) {
+            $account_id = $_SESSION['account_id'];
+        }
+        $generate_hauling_date = date("Y-m-d G:i:s");
+        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$generate_hauling_date', 'Generated Hauling Form of Form No $hauling_no', $account_id);";
+        mysqli_query($conn, $sql); 
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/generate_hauling.php?hauling_no=$hauling_no");        
+    }
+
     if(isset($_POST['search'])) {
         $projects_name = $_POST['projects_name'];
         header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");

@@ -846,7 +846,7 @@ textarea.materialize-textarea {
 .search-bar {
     width: 49% !important;
     height: 2% !important;
-    margin-left: 10% !important;
+    
 }
 
 .search-btn {
@@ -868,10 +868,14 @@ textarea.materialize-textarea {
 .add-mat-btn {
     background-color: #FFFFFF !important;
     color: #000000 !important;
-    margin-top: 1%;
+    margin-top: 2%;
     font-size: 2.2vmin !important;
     float: right !important;
-    margin-right: 3% !important;
+}
+
+.category-name-container{
+    margin-top: 5%;
+    text-align: center;
 }
 
 #categ-title{
@@ -954,6 +958,7 @@ textarea.materialize-textarea {
     color: #ffffff !important;
     background-color: #71B340 !important;
     font-size: 2vmin !important;
+    margin-right: 1% !important;
 }
 
 .save-mat-btn:hover {
@@ -1153,6 +1158,10 @@ select[name=mat_unit] {
     color: #FFFFFF;
     padding-right: 2% !important;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.category-items-table{
+    border: 1px solid black;
 }
 
 /*Deliver In*/

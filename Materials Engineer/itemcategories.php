@@ -28,7 +28,8 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -42,7 +43,8 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -70,13 +72,16 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                        href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a
+                            class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -90,7 +95,9 @@
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a
+                            class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -105,7 +112,8 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="report.php">Report</a>
                 </li>
             </ul>
         </div>
@@ -114,7 +122,27 @@
     <?php 
         if(strcmp($projects_status, "open") == 0) {
     ?>
-    <div class="row">
+
+    <?php 
+        }
+    ?>
+
+    <div class="item-categories">
+        <div class="category-name-container">
+            <?php
+        $categories_id = $_GET['categories_id'];
+        $sql = "SELECT * FROM  categories WHERE categories_id = '$categories_id';";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_array($result)) {
+    ?>
+            <h5 id="categ-title">
+                <?php echo $row[1] ;?>
+            </h5>
+            <?php
+        }
+    ?>
+        </div>
+        <div class="row">
             <div class="col 6 m4">
                 <form>
                     <input class="input search-bar" type="search" placeholder="Search">
@@ -122,28 +150,12 @@
                 </form>
             </div>
 
-            <a href="#addmaterialModal" class="waves-effect waves-light btn button add-mat-btn modal-trigger">Add Material</a>
+            <a href="#addmaterialModal" class="waves-effect waves-light btn button add-mat-btn modal-trigger">Add
+                Material</a>
         </div>
-    <?php 
-        }
-    ?>
-
-    <div class="item-categories">
-        <?php
-        $categories_id = $_GET['categories_id'];
-        $sql = "SELECT * FROM  categories WHERE categories_id = '$categories_id';";
-        $result = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_array($result)) {
-    ?>
-        <h5 id="categ-title">
-            <?php echo $row[1] ;?>
-        </h5>
-        <?php
-        }
-    ?>
         <div class="row">
             <div class="col s12">
-                <table class="striped centered ">
+                <table class="centered striped category-items-table">
                     <thead class="item-categories-head">
                         <tr>
                             <th>Particulars</th>
@@ -181,7 +193,7 @@
                         <tr>
                             <td>
                                 <form action="../server.php" method="POST">
-                                   <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
+                                    <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                                     <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
                                     <button class="waves-effect waves-light btn matname-btn" name="open_stockcard">
                                         <?php echo $row[0] ?></button>
@@ -274,7 +286,8 @@
                         </select>
                     </div>
                     <div class="input-field col add-threshold">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate" pattern="[0-9]*" title="Input only numbers" required>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate" pattern="[0-9]*"
+                            title="Input only numbers" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
@@ -295,7 +308,8 @@
                                     <input type="date" min="2019-01-01" required>
                                 </td>
                                 <td>
-                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate" required>
+                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
+                                        required>
                                 </td>
                                 <td>
                                     <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
@@ -308,7 +322,8 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
-                <button type="submit" class="waves-effect waves-light btn-flat save-mat-btn" name="create_materials">Save</button>
+                <button type="submit" class="waves-effect waves-light btn-flat save-mat-btn"
+                    name="create_materials">Save</button>
             </div>
         </form>
     </div>

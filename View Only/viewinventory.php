@@ -1,11 +1,9 @@
 <?php
     include "../db_connection.php";
     session_start();
-
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-
     $projects_name = false;
     if(isset($_GET['projects_name'])) {
         $projects_name = $_GET['projects_name'];
@@ -14,7 +12,6 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_row($result);
     $projects_status = $row[0];
-
     $output = '';
     if(isset ($_POST['search'])) {
         $searchq = $_POST['search'];
@@ -43,7 +40,6 @@
                                     $matpulledout = $row['pulled_out'];
                                     $mataccumulated = $row['accumulated_materials'];
                                     $matcurrentqty = $row['currentQuantity'];
-
                                     $output .= "<div>
                                     <td>".$matname."</td>
                                     <td>".$matprevstock."</td>
@@ -117,22 +113,23 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">assignment</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>
                 </li>
 
                 <li>
-                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
         </div>
-    </nav>        
+    </nav>
+        
     <div class="row">
         <h5 class="project-name-inventory">
             <?php echo $projects_name; ?>
@@ -201,7 +198,6 @@
                             while($row_categ = mysqli_fetch_assoc($result)){
                                 $categories[] = $row_categ;
                             }
-
                             foreach($categories as $data) {
                             $categ = $data['categories_name'];
                         ?>
@@ -358,12 +354,14 @@
         // SIDEBAR
         $(document).ready(function () {
             $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 300
+                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true // Choose whether you can drag to open on touch screens
             });
-            $('.collapsible').collapsible();
+            // START OPEN
+            $('.button-collapse').sideNav('show');
             $('.modal-trigger').leanModal();
-        });
-        
             $(".add-row").click(function () {
                 var quantity = $("#name").val();
                 var unit = $("#email").val();

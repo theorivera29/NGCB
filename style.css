@@ -905,6 +905,14 @@ textarea.materialize-textarea {
     font-size: 3vmin;
 }
 
+
+/*Stockard*/
+.back-btn{
+    background-color: transparent !important;
+    border: none;
+    overflow: hidden;
+}
+
 .stockcard-status {
     margin-top: 10% !important;
 }

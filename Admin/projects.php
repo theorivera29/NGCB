@@ -98,8 +98,7 @@
                         href="projects.php">Projects</a>
                 </li>
                 <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="logs.php">Logs</a>
+                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue" href="logs.php">Logs</a>
                 </li>
                 <li>
                     <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
@@ -110,12 +109,12 @@
     </nav>
 
     <div class="row">
-        
+
         <div id="addProject" class="modal modal-fixed-footer">
             <form action="../server.php" method="POST">
                 <div class="modal-content">
                     <h4>Add Project</h4>
-                    <div class="row">
+                    <div class="row add-proj">
                         <div class="input-field col s12">
                             <input id="projectname" name="projectname" type="text" class="validate">
                             <label for="projectname">Project Name:</label>
@@ -124,13 +123,13 @@
                             <input id="projectaddress" name="projectaddress" type="text" class="validate">
                             <label for="projectaddress">Project Address</label>
                         </div>
-                        <div class="input-field col s12">
-                            <input id="startdate" name="startdate" type="text" class="validate">
-                            <label for="startdate">Start date:</label>
+                        <div class="input-field col s12 m5">
+                            <span>Start date:</span>
+                            <input id="startdate" name="startdate" type="date">
                         </div>
-                        <div class="input-field col s12">
-                            <input id="enddate" name="enddate" type="text" class="validate">
-                            <label for="enddate">End date:</label>
+                        <div class="input-field col s12 m6 offset-m1">
+                            <span>End date:</span>
+                            <input id="enddate" name="enddate" type="date">
                         </div>
                         <div class="col s12">
                             <div class="input-field col s12">
@@ -144,7 +143,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="waves-effect waves-teal" name="create_project">SAVE</button>
+                <button type="submit" class="waves-effect waves-light btn cancel-proj-btn"
+                                name="cancel-create-project">Cancel</button>
+                    <button type="submit" class="waves-effect waves-light btn save-proj-btn"
+                        name="create_project">Save</button>
                 </div>
             </form>
         </div>
@@ -154,13 +156,14 @@
                 <li class="col s3 tab"><a href="#closed">Closed</a></li>
             </ul>
         </div>
-        
-        
+
+
         <!--ONGOING TAB-->
         <div id="ongoing" class="col s12">
-        <div class="col s11 right-align">
-            <a href="#addProject" class="waves-effect waves-light btn button modal-trigger add-project-btn">Add Project</a>
-        </div>
+            <div class="col s11 right-align">
+                <a href="#addProject" class="waves-effect waves-light btn button modal-trigger add-project-btn">Add
+                    Project</a>
+            </div>
             <div class="row">
                 <?php
                     $sql = "SELECT * FROM projects WHERE projects_status = 'open';";
@@ -217,40 +220,40 @@
 
                 <!--EDIT MODAL-->
                 <div id="editModal<?php echo $row[0] ;?>" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Edit Project:</h4>
-                        <form action="../server.php" method="POST">
-                            <div class="row">
-                                <input type="hidden" name="project_name" value="<?php echo $row[1] ;?>">
-                                <div class="input-field col s12 m6">
-                                    <input placeholder="New project name" id="new_project_name" type="text"
-                                        class="validate" name="new_project_name">
-                                    <label class="active" for="new_project_name">Project Name:</label>
+                    <form action="../server.php" method="POST">
+                        <div class="modal-content">
+                            <h4>Add Project</h4>
+                            <div class="row add-proj">
+                                <div class="input-field col s12">
+                                    <span>Project Name:</span>
+                                    <input id="newprojectname" type="text" placeholder="New Project Name">
                                 </div>
-                                <div class="input-field col s12 m6">
-                                    <input placeholder="New address" id="new_address" type="text" class="validate"
-                                        name="new_address">
-                                    <label for="new_address">Address:</label>
+                                <div class="input-field col s12">
+                                    <span>Project Address:</span>
+                                    <input id="newprojectaddress" type="text" placeholder="New Project Address">
                                 </div>
-                                <div class="input-field col s12 m6">
-                                    <input placeholder="New start date" id="new_sdate" type="text" class="validate"
-                                        name="new_sdate">
-                                    <label for="new_sdate">Start date:</label>
+                                <div class="input-field col s12 m5">
+                                    <span>Start date:</span>
+                                    <input id="newstartdate" type="date" placeholder="New start date">
                                 </div>
-                                <div class="input-field col s12 m6">
-                                    <input placeholder="New end date" id="new_edate" type="text" class="validate"
-                                        name="new_edate">
-                                    <label for="new_edate">End date:</label>
+                                <div class="input-field col s12 m6 offset-m1">
+                                    <span>End date:</span>
+                                    <input id="newenddate" type="date" placeholder="New start date">
                                 </div>
-                                <div class="modal-footer">
-                                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
-                                    <button name="edit_project"
-                                        class="modal-action modal-close waves-effect waves-green btn-flat">Save
-                                    </button>
+                                <div class="col s12">
+                                    <div class="input-field col s12">
+                                        <span>Material Engineers Involved</span>
+                                    </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="waves-effect waves-light btn cancel-proj-btn"
+                                name="cancel-create-project">Cancel</button>
+                            <button type="submit" class="waves-effect waves-light btn save-proj-btn"
+                                name="create_project">Save</button>
+                        </div>
+                    </form>
                 </div>
                 <?php 
                     }
@@ -269,7 +272,7 @@
                 <div class="col s12 m5 project-container">
                     <div class="card center project-container-card">
                         <div class="card-content">
-                        <span class="card-title">
+                            <span class="card-title">
                                 <?php echo $row[1] ;?>
                             </span>
                             <p>
@@ -289,7 +292,7 @@
                                 </div>
                                 <div class="row">
                                     <a href="#deleteProjectModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn modal-trigger delete-btn">Delete
+                                        class="waves-effect waves-light btn modal-trigger delete-btn ">Delete
                                     </a>
                                 </div>
                             </div>
@@ -319,11 +322,13 @@
                     <div class="modal-footer">
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value='<?php echo $row[1] ;?>'>
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
-                            <button class=" modal-action modal-close waves-effect waves-light btn-flat yes-btn" type="submit" name="delete_project">Yes</button>
+                            <a href="#!"
+                                class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
+                            <button class=" modal-action modal-close waves-effect waves-light btn-flat yes-btn"
+                                type="submit" name="delete_project">Yes</button>
                         </form>
                     </div>
-                </div>    
+                </div>
                 <?php 
                     }
                 ?>

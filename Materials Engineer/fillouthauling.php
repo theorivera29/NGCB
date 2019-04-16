@@ -146,7 +146,7 @@
                                         $projects_name = $_GET['projects_name'];
                                      ?>
                                 <div class="input-field col form-number-field">
-                                    <input id="formnumber" type="text" class="validate" name="formnumber" pattern="[0-9]" title="Input numbers only">
+                                    <input id="formnumber" type="text" class="validate" name="formnumber" pattern="[0-9]*" title="Input numbers only" required>
                                     <label for="formnumber">Form Number:</label>
                                 </div>
                             </div>
@@ -209,6 +209,11 @@
                     <div class="row">
                         <div class="col s6 hauled-side-container">
                             <div class="input-field col s10 left-align ">
+                                <input id="requested" type="text" class="validate" name="requested" pattern="[A-Za-z\s]*"
+                                    title="Input letters only" required>
+                                <label for="requested">Requested :</label>
+                            </div>
+                            <div class="input-field col s10 left-align ">
                                 <input id="hauledby" type="text" class="validate" name="hauledby" pattern="[A-Za-z\s]*"
                                     title="Input letters only" required>
                                 <label for="hauledby">Hauled by :</label>
@@ -243,7 +248,7 @@
                                     </tr>
                                     <tr>
                                         <td>Plate No.:</td>
-                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]" required></td>
+                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9]*" required></td>
                                     </tr>
                                     <tr>
                                         <td>P.O/R.S No.:</td>

@@ -5,8 +5,6 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-$mat_name = $_GET['mat_name'];
-
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +22,7 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="dashboard.php" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">arrow_back</i></a>
+            <button href="dashboard.php" name="" class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i></button>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -80,7 +78,7 @@ $mat_name = $_GET['mat_name'];
             </thead>
             <tbody class="task-table-container">
                 <?php 
-                    $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id ORDER BY todo_date;";
+                    $sql = "SELECT * FROM todo WHERE todoOf = 2 ORDER BY todo_date;";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
                 ?>
@@ -141,6 +139,7 @@ $mat_name = $_GET['mat_name'];
             </tbody>
         </table>
     </div>
+    
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

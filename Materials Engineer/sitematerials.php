@@ -104,31 +104,34 @@
             </ul>
         </div>
     </nav>
+    
     <div class="row">
-            <form>
-                <input class="input search-bar-site-materials" type="search" placeholder="Search">
-                <input class="submit search-btn" type="submit" value="SEARCH">
-            </form>
+            <div class="col 6 m4">
+                <form>
+                    <input class="input search-bar" type="search" placeholder="Search">
+                    <input class="submit search-btn" type="submit" value="SEARCH">
+                </form>
+            </div>
         </div>
-    </div>
     <div class="site-materials-container">
         <div class="lighten-5">
-            <table class="centered site-materials-content">
+            <table  id="sort" class="centered site-materials-content">
                 <thead class="site-materials-head">
                     <tr>
-                        <th>Particulars</th>
-                        <th>Previous Material Stock</th>
-                        <th>Delivered Material as of
+                        <th onclick="sortTable(0)">Particulars</th>
+                        <th onclick="sortTable(1)">Category</th>
+                        <th onclick="sortTable(2)">Previous Material Stock</th>
+                        <th onclick="sortTable(3)">Delivered Material as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th>Material pulled out as of
+                        <th onclick="sortTable(4)">Material pulled out as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th>Accumulated Materials Delivered</th>
-                        <th>Material on site as of
+                        <th onclick="sortTable(5)">Accumulated Materials Delivered</th>
+                        <th onclick="sortTable(6)">Material on site as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th>Project</th>
+                        <th onclick="sortTable(7)">Project</th>
                     </tr>
                 </thead>
 
@@ -146,13 +149,10 @@
                         foreach($categories as $data) {
                         $categ = $data['categories_name'];
                     ?>
-                    <tr>
-                        <td colspan="10" class="td-category"> <b>
-                                <?php echo $categ; ?></b></td>
-                    </tr>
                     <?php 
                         $sql = "SELECT 
                         materials.mat_name, 
+                        categories.categories_name,
                         materials.mat_prevStock, 
                         materials.delivered_material, 
                         materials.pulled_out, 
@@ -308,6 +308,9 @@
                         <td>
                             <?php echo $row[6] ?>
                         </td>
+                        <td>
+                            <?php echo $row[7] ?>
+                        </td>
                         <?php 
                             }
                         ?>
@@ -379,6 +382,61 @@
                 });
 
         });
+
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("sort");
+            switching = true;
+            //Set the sorting direction to ascending:
+            dir = "asc";
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    /*check if the two rows should switch place,
+                    based on the direction, asc or desc:*/
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    //Each time a switch is done, increase this count by 1:
+                    switchcount++;
+                } else {
+                    /*If no switching has been done AND the direction is "asc",
+                    set the direction to "desc" and run the while loop again.*/
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
 
     </script>
 </body>

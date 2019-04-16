@@ -119,12 +119,6 @@ $mat_name = $_GET['mat_name'];
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
                 <table class="centered deliverin">
-                    <?php 
-                        $sql = "SELECT 
-                        mat_unit, mat_id FROM materials WHERE mat_name = '$mat_name';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                        ?>
                     <thead class="deliverin-head">
                         <tr>
                             <th>Date</th>
@@ -136,6 +130,15 @@ $mat_name = $_GET['mat_name'];
 
                     <tbody>
                         <tr>
+                            <?php 
+                        $sql = "SELECT 
+                        unit.unit_name, materials.mat_id FROM materials 
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                        WHERE mat_name = '$mat_name';";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)){
+                        $mat_id = $row[1];
+                        ?>
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
@@ -150,28 +153,43 @@ $mat_name = $_GET['mat_name'];
                             <td>
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
                             </td>
+                         
                         </tr>
-                        <tr>
+                        
+                            <?php 
+                        $sql_devIn = "SELECT deliveredin.delivered_date, 
+                        deliveredin.delivered_quantity, 
+                        unit.unit_name, 
+                        deliveredin.suppliedBy, 
+                        deliveredin.delivered_matName 
+                        FROM deliveredin 
+                        INNER JOIN unit ON deliveredin.delivered_unit = unit.unit_id 
+                        WHERE delivered_matName = '$mat_id'";
+                        $result_devIn = mysqli_query($conn, $sql_devIn);
+                        while($row_devIn = mysqli_fetch_row($result_devIn)){
+                        ?><tr>
                             <td>
-                                <?echo ?>
+                                <?php echo $row_devIn[0] ?>
                             </td>
                             <td>
-
+                                <?php echo $row_devIn[1] ?>
                             </td>
                             <td>
-
+                                <?php echo $row_devIn[2] ?>
                             </td>
                             <td>
-
+                                <?php echo $row_devIn[3] ?>
                             </td>
+                         
                         </tr>
-                    </tbody>
-                    <?php 
+                           <?php 
+                        }
                         }
                         ?>
+                    </tbody>
                 </table>
 
-            <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredin">Save</button>
+                <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredin">Save</button>
             </form>
         </div>
     </div>
@@ -180,12 +198,6 @@ $mat_name = $_GET['mat_name'];
         <div class="usagein-container">
             <form action="../server.php" method="POST">
                 <table class="centered usagein">
-                    <?php 
-                        $sql = "SELECT 
-                        mat_unit, mat_id FROM materials WHERE mat_name = '$mat_name';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                        ?>
                     <thead class="usagein-head">
                         <tr>
                             <th>Date</th>
@@ -198,7 +210,15 @@ $mat_name = $_GET['mat_name'];
 
                     <tbody>
                         <tr>
-                            <button><?php echo $mat_name?></button>
+                    <?php 
+                        $sql = "SELECT 
+                        unit.unit_name, materials.mat_id FROM materials 
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                        WHERE mat_name = '$mat_name';";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)){
+                        $mat_id = $row[1];
+                        ?>
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
@@ -217,15 +237,37 @@ $mat_name = $_GET['mat_name'];
                                 <input id="us_area" name="us_area" type="text" class="validate" required>
                             </td>
                         </tr>
-                    </tbody>
+                        <?php 
+                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
+                        $result_useIn = mysqli_query($conn, $sql_useIn);
+                        while($row_useIn = mysqli_fetch_row($result_useIn)){
+                        ?><tr>
+                            <td>
+                                <?php echo $row_useIn[0] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_useIn[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_useIn[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_useIn[3] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_useIn[4] ?>
+                            </td>
+                        </tr>
                     <?php 
                         }
+                        }
                         ?>
+                    </tbody>
                 </table>
 
                 <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
 
-            <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_usagein">Save</button>
+                <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_usagein">Save</button>
 
             </form>
         </div>

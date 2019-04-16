@@ -6,7 +6,7 @@
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
 $mat_name = $_GET['mat_name'];
-
+$projects_name = $_GET['projects_name'];
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,11 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="viewinventory.php" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">arrow_back</i></a>
+           <form action="../server.php" method="POST">
+            <button href="viewinventory.php" data-activates="navigation" name="balik" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">arrow_back</i>
+            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+            </button>
+            </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {

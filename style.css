@@ -1032,6 +1032,7 @@ textarea.materialize-textarea {
 }
 
 .site-materials-head>tr>th {
+    cursor:pointer;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     border-radius: 2%;
@@ -1350,7 +1351,8 @@ select[name=mat_unit] {
 
 /*View Hauled*/
 
-.hauled-items-head>tr>th {
+.hauled-items-head>tr>th{
+    cursor: pointer;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     border-radius: 2%;
@@ -1618,6 +1620,7 @@ select[name=mat_unit] {
 }
 
 .account-list-head>tr>th{
+    cursor: pointer;
     background-color: #0B415E !important;
     color: #FFFFFF;
 }

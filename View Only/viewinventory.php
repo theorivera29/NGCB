@@ -204,14 +204,14 @@
                         ?>
                     <?php 
                             $sql = "SELECT
-                            materials.mat_name, 
-                            materials.mat_prevStock, 
-                            materials.delivered_material, 
-                            materials.pulled_out, 
-                            materials.accumulated_materials,
-                            materials.currentQuantity
+                            mat_name, 
+                            categories.categories_name,
+                            mat_prevStock, 
+                            delivered_material, 
+                            pulled_out, 
+                            accumulated_materials,
+                            currentQuantity
                             FROM materials 
-                            INNER JOIN projects ON materials.mat_project = projects.projects_id 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             WHERE categories.categories_name = '$categ';";
                             $result = mysqli_query($conn, $sql);
@@ -228,8 +228,6 @@
                             </form>
                         </td>
                         <td>
-                        </td>
-                        <td>
                             <?php echo $row[1] ?>
                         </td>
                         <td>
@@ -243,6 +241,9 @@
                         </td>
                         <td>
                             <?php echo $row[5] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[6] ?>
                         </td>
                         <?php 
                             }

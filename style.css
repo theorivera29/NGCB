@@ -846,7 +846,6 @@ textarea.materialize-textarea {
 .search-bar {
     width: 49% !important;
     height: 2% !important;
-    
 }
 
 .search-btn {
@@ -1161,6 +1160,14 @@ select[name=mat_unit] {
 
 .category-items-table{
     border: 1px solid black;
+}
+
+.add-mat-btn-viewinventory{
+    margin-right: 1% !important;
+}
+
+.search-viewinventory {
+    margin-left: 3% !important;
 }
 
 /*Deliver In*/

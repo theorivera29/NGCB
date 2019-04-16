@@ -141,12 +141,12 @@
         <div class="row">
             <div class="col 6 m4">
                 <form>
-                    <input class="input search-bar" type="search" placeholder="Search">
+                    <input class="input search-bar search-viewinventory" type="search" placeholder="Search">
                     <input class="submit search-btn" type="submit" value="SEARCH">
                 </form>
             </div>
 
-            <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn">
+            <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
                 Add Material</a>
         </div>
 

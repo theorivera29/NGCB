@@ -147,7 +147,7 @@
         </div>
 
         <!--To-do Container-->
-        <h5 id="panel-header-task">To-do Task</h5>
+        <h5 id="panel-header-task">Today's To-do Task</h5>
         <div class="col s7 container-task-todo">
             <div class="container-all-task">
                 <table class="striped centered view-tasks">
@@ -188,7 +188,7 @@
                                         href="#doneBtn<?php echo $row[0];?>">Done</button>
                                     <div id="doneBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
-                                            <span>Are you sure you are done with this task?</span>
+                                            <span class="modal-question-content">Are you sure you are done with this task?</span>
                                             <br>
                                             <?php echo $row[2];?>
                                         </div>
@@ -207,7 +207,7 @@
                                         href="#clearBtn<?php echo $row[0];?>">Clear</button>
                                     <div id="clearBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
-                                            <span>Are you sure you want to clear this task?</span>
+                                            <span class="modal-question-content">Are you sure you want to clear this task?</span>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>

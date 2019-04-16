@@ -1620,6 +1620,7 @@ select[name=mat_unit] {
 }
 
 .account-list-head>tr>th{
+    cursor: pointer;
     background-color: #0B415E !important;
     color: #FFFFFF;
 }

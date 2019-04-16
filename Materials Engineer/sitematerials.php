@@ -107,10 +107,7 @@
     
     <div class="row">
             <div class="col 6 m4">
-                <form>
-                    <input class="input search-bar" type="search" placeholder="Search">
-                    <input class="submit search-btn" type="submit" value="SEARCH">
-                </form>
+                <input type="text" id="search_value" onkeyup="myFunction()" placeholder="Search..">
             </div>
         </div>
     <div class="site-materials-container">
@@ -311,10 +308,10 @@
                         <td>
                             <?php echo $row[7] ?>
                         </td>
-                        <?php 
-                            }
-                        ?>
                     </tr>
+                    <?php 
+                        }
+                    ?>
                 </tbody>
                 <?php 
                     }
@@ -329,6 +326,7 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         // SIDEBAR
         $(document).ready(function () {
@@ -419,6 +417,27 @@
             }
         }
 
+        function myFunction() {
+            // Declare variables 
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search_value");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("sort");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                    } else {
+                    tr[i].style.display = "none";
+                    }
+                } 
+            }
+        }
     </script>
 </body>
 

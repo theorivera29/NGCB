@@ -1755,3 +1755,23 @@ select[name=mat_unit] {
 .view-inventory-head>tr>th:hover{
     cursor: pointer !important;
 }
+/* 
+#sort {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+  
+#sort th, #sort td {
+    text-align: left;
+    padding: 12px;
+}
+  
+#sort tr {
+    border-bottom: 1px solid #ddd;
+}
+  
+#sort tr.header, #sort tr:hover {
+    background-color: #f1f1f1;
+} */

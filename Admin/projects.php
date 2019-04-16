@@ -224,21 +224,22 @@
                         <div class="modal-content">
                             <h4>Add Project</h4>
                             <div class="row add-proj">
+                                <input type="hidden" name="project_name" value="<?php echo $row[1];?>">
                                 <div class="input-field col s12">
                                     <span>Project Name:</span>
-                                    <input id="newprojectname" type="text" placeholder="New Project Name">
+                                    <input id="newprojectname" type="text" placeholder="New Project Name" name="new_project_name">
                                 </div>
                                 <div class="input-field col s12">
                                     <span>Project Address:</span>
-                                    <input id="newprojectaddress" type="text" placeholder="New Project Address">
+                                    <input id="newprojectaddress" type="text" placeholder="New Project Address" name="new_address">
                                 </div>
                                 <div class="input-field col s12 m5">
                                     <span>Start date:</span>
-                                    <input id="newstartdate" type="date" placeholder="New start date">
+                                    <input id="newstartdate" type="date" placeholder="New start date" name="new_sdate">
                                 </div>
                                 <div class="input-field col s12 m6 offset-m1">
                                     <span>End date:</span>
-                                    <input id="newenddate" type="date" placeholder="New start date">
+                                    <input id="newenddate" type="date" placeholder="New start date" name="new_edate">
                                 </div>
                                 <div class="col s12">
                                     <div class="input-field col s12">
@@ -248,10 +249,10 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="waves-effect waves-light btn cancel-proj-btn"
-                                name="cancel-create-project">Cancel</button>
+                            <a href="" class="waves-effect waves-light btn cancel-proj-btn"
+                                name="cancel-create-project">Cancel</a>
                             <button type="submit" class="waves-effect waves-light btn save-proj-btn"
-                                name="create_project">Save</button>
+                                name="edit_project">Save</button>
                         </div>
                     </form>
                 </div>

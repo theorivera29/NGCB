@@ -155,6 +155,11 @@
         }
     }
 
+    if(isset($_POST['balik'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
+    }
+
     if(isset($_POST['fillout_hauling'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/fillouthauling.php?projects_name=$projects_name");        
@@ -162,7 +167,8 @@
 
     if(isset($_POST['open_stockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name");
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
 
     }
 
@@ -200,9 +206,9 @@
         $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
         if(strcmp($account_type,'MatEng') == 0) {
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/openhauling.php?hauling_no=$hauling_no");            
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewhaulingform.php?hauling_no=$hauling_no");            
         } else {
-        header("location: http://127.0.0.1/NGCB/View%20Only/openhauling.php?hauling_no=$hauling_no");            
+        header("location: http://127.0.0.1/NGCB/View%20Only/viewhaulingform.php?hauling_no=$hauling_no");            
         }
     }
 
@@ -428,7 +434,7 @@
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
         $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, 1, '$suppliedBy', $mat_id);";
         mysqli_query($conn, $sql);
-        echo $mat_id;
+        echo $mat_name;
             
         $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
         $result = mysqli_query($conn,$sql);
@@ -445,8 +451,6 @@
         $newQuantity = $current_delivered_material + $delivered_quantity;
         $sql = "UPDATE materials SET delivered_material = ('$newQuantity') WHERE mat_name = '$mat_name';";
         mysqli_query($conn, $sql);
-            
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added delivered in', 1, 1);";
 
         session_start();
         $account_id = "";
@@ -497,11 +501,6 @@
         $newQuantity = $total_accumulated + $usage_quantity;
         $sql = "UPDATE materials SET accumulated_materials = ('$newQuantity') WHERE mat_name = '$mat_name';";
         mysqli_query($conn, $sql);
-            
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added usage in', 1, 1);";
-        mysqli_query($conn, $sql);
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
-        exit();
 
         session_start();
         $account_id = "";
@@ -633,21 +632,4 @@
         echo json_encode($row);
     }
 
-    if (isset($_POST['add_usagein'])) {
-        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-        $usage_date = mysqli_real_escape_string($conn, $_POST['us_date']);
-        $usage_quantity = mysqli_real_escape_string($conn, $_POST['us_quantity']);
-        $usage_unit = mysqli_real_escape_string($conn, $_POST['us_unit']);
-        $pulloutby = mysqli_real_escape_string($conn, $_POST['pulloutby']);
-        $us_area = mysqli_real_escape_string($conn, $_POST['us_area']);
-        $sql = "SELECT * from usagein;";
-        $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
-        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, 1, '$pulloutby', '$us_area', 1);";
-        mysqli_query($conn, $sql);
-            
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('2019-03-18 11:27:40', 'Added usage in', 1, 1);";
-        mysqli_query($conn, $sql);
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");
-    }
 ?>

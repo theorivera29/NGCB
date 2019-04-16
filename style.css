@@ -331,7 +331,7 @@ nav {
     float: right;
     margin-right: 3%;
     font-family: Pridi;
-    font-size: 3vmin;
+    font-size: 2.5vmin;
 }
 
 .down-arrow {
@@ -641,6 +641,16 @@ textarea.materialize-textarea {
     background-color: #ECC30B;
 }
 
+.modal-question{
+    margin-top: 5%;
+    border-radius: 2%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-question-content{
+    font-size: 3vmin !important;
+}
+
 .no-btn{
     background-color: #EF5B5B;
     color: #FFFFFF;
@@ -654,6 +664,7 @@ textarea.materialize-textarea {
 .yes-btn{
     background-color: #71B340;
     color: #FFFFFF;
+    margin-right: 1% !important;
 }
 
 .yes-btn:hover{
@@ -710,22 +721,10 @@ textarea.materialize-textarea {
     width: 90px;
 }
 
-.close-container{
-    width: 100%;
-}
 
-.close-btn{
-    float: right;
-    color: red;
-    margin-right: 2%;
-    margin-top: 1%;
-    margin-bottom: 1%;
+#materialize-lean-overlay{
+    background-color: transparent !important;
 }
-
-#viewAllTask{
-    overflow-y: auto;
-}
-
 
 /*Projects*/
 .project-status {
@@ -858,21 +857,23 @@ textarea.materialize-textarea {
     background-color: #FFFFFF !important;
 }
 
-.add-mat-btn{
-    background-color: #FFFFFF !important;
-    color: #000000 !important;
-}
-
 .edit-material-btn {
-    background-color: #FFFFFF !important;
-    color: #000000 !important;
+    background-color: #156FE7 !important;
+    color: #FFFFFF !important;
 }
 
 .add-mat-btn {
-    margin-top: 2%;
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    margin-top: 1%;
     font-size: 2.2vmin !important;
     float: right !important;
-    margin-right: 3%;
+    margin-right: 3% !important;
+}
+
+#categ-title{
+    font-size: 5vmin;
+    padding-bottom: 1%;
 }
 
 .view-inventory-container {
@@ -885,6 +886,7 @@ textarea.materialize-textarea {
 .view-inventory {
     border: 1px solid black;
     border-collapse: separate;
+    background-color: #E8E8E8 !important;
 }
 
 .view-inventory-head>tr {
@@ -895,13 +897,9 @@ textarea.materialize-textarea {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.view-inventory>tr>td {
-    background-color: #FFFFFF !important;
-}
-
 .td-category {
     text-align: left !important;
-    background-color: #EBF0F7;
+    background-color: #FFFFFF !important;
     padding-left: 2%;
     font-size: 3vmin;
 }
@@ -945,17 +943,19 @@ textarea.materialize-textarea {
     background-color: #71B340 !important;
     float: right;
     font-size: 2vmin !important;
+    margin-right: 1% !important;
 }
 
 .save-mat-btn:hover {
     color: #ffffff !important;
-    background-color: #003A51 !important;
+    background-color: #5D9335 !important;
     float: right;
 }
 
 .cancel-mat-btn{
     background-color: #EF5B5B;
     color: #FFFFFF;
+    font-size: 2vmin !important;
 }
 
 .cancel-mat-btn:hover{
@@ -997,7 +997,7 @@ textarea.materialize-textarea {
 }
 
 .matname-btn {
-    background-color: #ECC30B!important;
+    background-color: #FFFFFF;
     color: #000000 !important;
 }
 
@@ -1101,11 +1101,6 @@ textarea.materialize-textarea {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.edit-mat-modal label {
-    font-size: 2.5vmin !important;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .add-mat-picker {
     text-align: center !important;
     color: #19466d !important;
@@ -1151,16 +1146,24 @@ select[name=mat_unit] {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.deliverin>tr>td {
-    background-color: #FFFFFF !important;
-}
-
 .save-stockcard-btn{
     background-color: #71B340;
 }
 
 .save-stockcard-btn:hover{
-    background-color: #71B340;
+    background-color: #5D9335 !important;
+}
+
+.stockcard-entry>td{
+    background-color: #ffffff !important;
+    text-align: center !important;
+    padding-left: 2% !important;
+    padding-right: 2% !important;
+}
+
+.deliverin-data>td{
+    margin-top: 2% !important;
+    margin-right: 2% !important;
 }
 /*Usage In*/
 .usagein-container {
@@ -1186,6 +1189,33 @@ select[name=mat_unit] {
 
 .usagein>tr>td {
     background-color: #FFFFFF !important;
+}
+
+.stockcard-btn{
+    margin-top: 1%;
+    float: right;
+}
+
+.usagein-data>td{
+    margin-top: 2% !important;
+    margin-right: 2% !important;
+}
+
+/*Edit Material*/
+.editmaterial-container {
+    width: 80%;
+    margin: 10%;
+    margin-top: 5%;
+}
+
+.edit-mat-container{
+    padding: 5%;
+    padding-top: 2%;
+}
+
+.edit-matname-btn {
+    float: right !important;
+    margin
 }
 
 /*Hauling*/
@@ -1277,7 +1307,7 @@ select[name=mat_unit] {
 }
 
 .save-hauled-btn:hover{
-    background-color: #71B340;
+    background-color: #5D9335 !important;
 }
 
 .cancel-hauled-btn{
@@ -1420,7 +1450,7 @@ select[name=mat_unit] {
 }
 
 .save-acc-btn:hover{
-    background-color: #71B340;
+    background-color: #5D9335;
 }
 
 .cancel-acc-btn{
@@ -1636,4 +1666,7 @@ select[name=mat_unit] {
 .logs-container-head>tr>th{
     background-color: #0B415E !important;
     color: #FFFFFF;
+}
+.view-inventory-head>tr>th:hover{
+    cursor: pointer !important;
 }

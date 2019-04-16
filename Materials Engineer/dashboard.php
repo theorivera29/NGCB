@@ -73,7 +73,7 @@
                 </li>
 
 
-                <ul class="collapsible">
+                <ul class="collapsible" data-collapsible="accordion">
                     <li>
                         <i class="material-icons left">place</i><a
                             class="collapsible-header waves-effect waves-blue">Site<i
@@ -89,7 +89,7 @@
 
 
 
-                <ul class="collapsible">
+                <ul class="collapsible" data-collapsible= "accordion">
                     <li>
                         <i class="material-icons left">local_shipping</i><a
                             class="collapsible-header waves-effect waves-blue">Hauling<i
@@ -147,7 +147,7 @@
         </div>
 
         <!--To-do Container-->
-        <h5 id="panel-header-task">To-do Task</h5>
+        <h5 id="panel-header-task">Today's To-do Task</h5>
         <div class="col s7 container-task-todo">
             <div class="container-all-task">
                 <table class="striped centered view-tasks">
@@ -186,10 +186,11 @@
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3];?>">
                                     <button class="waves-effect waves-light btn modal-trigger doneBtn"
                                         href="#doneBtn<?php echo $row[0];?>">Done</button>
-                                    <div id="doneBtn<?php echo $row[0];?>" class="modal">
+                                    <div id="doneBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
+                                            <span class="modal-question-content">Are you sure you are done with this task?</span>
+                                            <br>
                                             <?php echo $row[2];?>
-                                            <span>Are you sure you want to click done?</span>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
@@ -204,9 +205,9 @@
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3];?>">
                                     <button class="waves-effect waves-light btn modal-trigger clearBtn"
                                         href="#clearBtn<?php echo $row[0];?>">Clear</button>
-                                    <div id="clearBtn<?php echo $row[0];?>" class="modal">
+                                    <div id="clearBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
-                                            <span>Are you sure you want to clear this task?</span>
+                                            <span class="modal-question-content">Are you sure you want to clear this task?</span>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
@@ -225,7 +226,7 @@
                         ?>
                     </tbody>
                 </table>
-                <a class="waves-effect waves-light btn modal-trigger task-btn" href="#viewAllTask">View All Task</a>
+                <a class="waves-effect waves-light btn task-btn" href="viewalltasks.php">View All Task</a>
             </div>
         </div>
     </div>
@@ -288,83 +289,6 @@
                 ?>
             </table>
         </div>
-    </div>
-
-    <div id="viewAllTask" class="modal modal-fixed-footer">
-        <div class="close-container">
-            <a href=""><i class="material-icons close-btn">close</i></a>
-        </div>
-        <table class="striped centered view-tasks">
-            <thead class="view-tasks-head">
-                <tr class="task-headers">
-                    <th>Date</th>
-                    <th>Task</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody class="task-table-container">
-                <?php 
-                    $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id ORDER BY todo_date;";
-                    $result = mysqli_query($conn, $sql);
-                    while($row = mysqli_fetch_array($result)) {
-                ?>
-                <tr>
-                    <td class="task-data-table1">
-                        <?php echo $row[1] ;?>
-                    </td>
-                    <td class="task-data-table2">
-                        <?php echo $row[2] ;?>
-                    </td>
-                    <td class="task-data-table">
-                        <?php echo $row[3] ;?>
-                    </td>
-                    <td class="task-data-table">
-                        <form action="../server.php" method="POST">
-                            <?php
-                                if(strcasecmp($row[3], 'in progress') == 0) {
-                            ?>
-                            <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
-                            <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
-                            <button class="waves-effect waves-light btn modal-trigger doneBtn"
-                                href="#doneBtn<?php echo $row[0] ;?>"">Done</button>
-                            <div id="doneBtn<?php echo $row[0] ;?>"" class="modal modal-fixed-footer">
-                                <div class="modal-content">
-                                    <span>Are you sure want to click done?</span>
-                                </div>
-                                <div class="modal-footer">
-                                    <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
-                                    <button type="submit" name="todo_update"
-                                        class="modal-close waves-effect waves-red btn-flat yes-btn">Yes</button>
-                                </div>
-                            </div>
-                            <?php
-                                } else {
-                            ?>
-                            <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
-                            <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
-                            <button class="waves-effect waves-light btn modal-trigger" href="#clearBtn<?php echo $row[0] ;?>"">Clear</button>
-                            <div id="clearBtn<?php echo $row[0] ;?>" class="modal">
-                                <div class="modal-content">
-                                    <span>Are you sure want to clear this task</span>
-                                </div>
-                                <div class="modal-footer">
-                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
-                                    <button type="submit" name="todo_update"
-                                        class="modal-close waves-effect waves-red btn-flat">Yes</button>
-                                </div>
-                            </div>
-                            <?php
-                                }
-                            ?>
-                        </form>
-                    </td>
-                </tr>
-                <?php    
-                    }
-                ?>
-            </tbody>
-        </table>
     </div>
 
     <!--Import jQuery before materialize.js-->

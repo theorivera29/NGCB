@@ -130,7 +130,7 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-        <h5>
+        <h5 id="categ-title">
             <?php echo $row[1] ;?>
         </h5>
         <?php
@@ -201,7 +201,7 @@
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
                             <td>
-                                <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn">Edit</a>
+                                <a href="#editmaterialModal" class="waves-effect waves-light btn button modal-trigger edit-material-btn"><i class="material-icons">edit</i></a>
 
                                 <!-- EDIT SITE MATERIAL MODAL -->
                                 <form action="../server.php" method="POST">
@@ -308,7 +308,7 @@
                         </select>
                     </div>
                     <div class="input-field col add-threshold">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input only numbers" required>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate" pattern="[0-9]*" title="Input only numbers" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>

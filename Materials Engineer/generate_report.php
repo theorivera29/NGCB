@@ -63,11 +63,10 @@
         materials.mat_prevStock, 
         materials.delivered_material, 
         materials.pulled_out, 
-        (materials.delivered_material + materials.mat_prevStock), 
-        materials.currentQuantity
+        materials.accumulated_materials,
+        materials.currentQuantity,
         materials.mat_unit
         FROM materials 
-        INNER JOIN stockcard ON materials.mat_id = stockcard.stockcard_id
         INNER JOIN categories ON materials.mat_categ = categories.categories_id
         INNER JOIN projects ON materials.mat_project = projects.projects_id
         WHERE categories.categories_name = '$categ' && projects.projects_name = '$projects_name'

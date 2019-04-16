@@ -155,6 +155,11 @@
         }
     }
 
+    if(isset($_POST['balik'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
+    }
+
     if(isset($_POST['fillout_hauling'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/fillouthauling.php?projects_name=$projects_name");        
@@ -162,7 +167,8 @@
 
     if(isset($_POST['open_stockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name");
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
 
     }
 
@@ -200,9 +206,9 @@
         $hauling_no = mysqli_real_escape_string($conn, $_POST['hauling_no']);
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
         if(strcmp($account_type,'MatEng') == 0) {
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/openhauling.php?hauling_no=$hauling_no");            
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewhaulingform.php?hauling_no=$hauling_no");            
         } else {
-        header("location: http://127.0.0.1/NGCB/View%20Only/openhauling.php?hauling_no=$hauling_no");            
+        header("location: http://127.0.0.1/NGCB/View%20Only/viewhaulingform.php?hauling_no=$hauling_no");            
         }
     }
 

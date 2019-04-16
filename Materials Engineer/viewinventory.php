@@ -139,7 +139,7 @@
             if(strcmp($projects_status, "open") == 0) {
         ?>
         <div class="row">
-            <div class="col 6 m3">
+            <div class="col 6 m4">
                 <form>
                     <input class="input search-bar" type="search" placeholder="Search">
                     <input class="submit search-btn" type="submit" value="SEARCH">
@@ -172,7 +172,6 @@
                         <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
-                        <th> Action</th>
                         <?php 
                                 }
                             ?>
@@ -196,10 +195,7 @@
                             foreach($categories as $data) {
                             $categ = $data['categories_name'];
                         ?>
-                    <tr>
-                        <td colspan="10" class="td-category"> <b>
-                                <?php echo $categ; ?></b></td>
-                    </tr>
+
                     <?php 
                             $sql = "SELECT 
                             materials.mat_name, 
@@ -371,6 +367,8 @@
                         </span>
                         <div class="row">
                             <form action="../server.php" method="POST">
+                               <input type="hidden" name="account_type"
+                                    value="<?php echo $projects_name; ?>">
                                 <input type="hidden" name="account_type"
                                     value="<?php echo $_SESSION['account_type']; ?>">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
@@ -426,12 +424,12 @@
                         <select class="browser-default" name="mat_unit">
                             <option selected>Choose unit</option>
                             <?php
-                                    $sql = "SELECT DISTINCT mat_unit FROM materials;";
+                                    $sql = "SELECT DISTINCT unit.unit_name, materials.mat_unit FROM unit INNER JOIN materials ON materials.mat_id = unit.unit_id";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 
                                 ?>
-                            <option value="<?php echo $row[0]; ?>">
+                            <option value="<?php echo $row[1]; ?>">
                                 <?php echo $row[0]; ?>
                             </option>
                             <?php 
@@ -486,12 +484,13 @@
     <!-- ADD CATEGORY MODAL -->
     <div id="addcategoryModal" class="modal add-category-modal">
         <form action="../server.php" method="POST">
+            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
             <div class="modal-content add-categ-modal">
                 <span id="modal-title">Add Category</span>
                 <div class="row">
                     <div class="input-field col s12">
                         <input name="category_name" type="text" class="validate field-category"
-                            pattern="[A-Za-z0-9]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: Formworks"
+                            pattern="[A-Za-z0-9\s]*" title="Follow the format. Example: Formworks"
                             required>
                         <label for="category_name">Category Name:</label>
                     </div>

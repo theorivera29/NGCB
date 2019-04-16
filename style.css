@@ -317,6 +317,8 @@ input:focus {
 
 input[type=text]:disabled {
     color: black;
+    font-size: 2.5vmin !important;
+    text-align: center;
 }
 
 /*Side navigation*/
@@ -586,8 +588,7 @@ textarea.materialize-textarea {
     background-color: #F0F1F2;
 }
 
-.view-tasks-head>tr>th:hover {
-    cursor: pointer !important;
+.view-tasks-head>tr>th {
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     border-radius: 2%;
@@ -879,8 +880,8 @@ textarea.materialize-textarea {
 }
 
 .view-inventory-container {
-    width: 95% !important;
-    margin-left: 2%;
+    width: 98% !important;
+    margin-left: 1%;
     margin-right: 2%;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -1310,6 +1311,7 @@ select[name=mat_unit] {
 
 .hauling-form-table {
     width: 90% !important;
+    text-align: center !important;
 }
 
 .hauling-form-table-head>tr>th {
@@ -1360,6 +1362,10 @@ select[name=mat_unit] {
 
 .view-hauled-item-btn{
     background-color: #71B340 !important;
+}
+
+.view-hauled-form label{
+    color: #000000 !important;
 }
 
 /*Report*/

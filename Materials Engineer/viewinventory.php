@@ -158,6 +158,7 @@
                 <thead class="view-inventory-head">
                     <tr>
                         <th>Particulars</th>
+                        <th>Category</th>
                         <th>Previous Material Stock</th>
                         <th>Delivered Material as of
                             <?php echo date("F Y"); ?>
@@ -195,10 +196,7 @@
                             foreach($categories as $data) {
                             $categ = $data['categories_name'];
                         ?>
-                    <tr>
-                        <td colspan="10" class="td-category"> <b>
-                                <?php echo $categ; ?></b></td>
-                    </tr>
+
                     <?php 
                             $sql = "SELECT 
                             materials.mat_name, 
@@ -223,6 +221,8 @@
                                 <button class="waves-effect waves-light btn matname-btn" name="open_stockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
+                        </td>
+                        <td>
                         </td>
                         <td>
                             <?php echo $row[1] ?>

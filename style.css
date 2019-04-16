@@ -716,21 +716,6 @@ textarea.materialize-textarea {
     width: 90px;
 }
 
-.close-container{
-    width: 100%;
-}
-
-.close-btn{
-    float: right;
-    color: red;
-    margin-right: 2%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-#viewAllTask{
-    overflow-y: auto;
-}
 
 #materialize-lean-overlay{
     background-color: transparent !important;

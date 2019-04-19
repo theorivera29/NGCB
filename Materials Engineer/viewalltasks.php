@@ -110,7 +110,7 @@
                             <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
                             <button class="waves-effect waves-light btn modal-trigger doneBtn"
                                 href="#doneBtn<?php echo $row[0] ;?>">Done</button>
-                            <div id="doneBtn<?php echo $row[0] ;?>" class="modal modal-fixed-footer">
+                            <div id="doneBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to click done?</span>
                                 </div>
@@ -132,9 +132,9 @@
                                     <span>Are you sure want to clear this task</span>
                                 </div>
                                 <div class="modal-footer">
-                                    <a class="modal-close waves-effect waves-red btn-flat">No</a>
+                                    <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
                                     <button type="submit" name="todo_update"
-                                        class="modal-close waves-effect waves-red btn-flat">Yes</button>
+                                        class="modal-close waves-effect waves-red btn-flat yes-btn">Yes</button>
                                 </div>
                             </div>
                             <?php

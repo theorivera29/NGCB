@@ -636,10 +636,12 @@ textarea.materialize-textarea {
 
 .clearBtn {
     background-color: #EDC821;
+    color: #000000;
 }
 
 .clearBtn:hover {
     background-color: #ECC30B;
+    color: #000000;
 }
 
 .modal-question{

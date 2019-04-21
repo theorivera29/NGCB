@@ -76,7 +76,7 @@
 
     <div id="viewAllTask">
         <span class="task-text">ALL TASK</span>
-        <table class="striped centered view-all-tasks"> 
+        <table class="striped centered view-all-tasks">
             <thead class="view-tasks-head">
                 <tr class="task-headers">
                     <th>Date</th>
@@ -125,7 +125,7 @@
                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
-                            <button class="waves-effect waves-light btn modal-trigger"
+                            <button class="waves-effect waves-light btn modal-trigger clearBtn"
                                 href="#clearBtn<?php echo $row[0] ;?>">Clear</button>
                             <div id="clearBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
@@ -159,6 +159,7 @@
         $(document).ready(function () {
             $('.modal-trigger').leanModal();
         });
+
         function sortTable(n) {
             var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
             table = document.getElementById("sort");

@@ -83,12 +83,10 @@
         </div>
     </nav>
 
-
-
     <div class="card account-container">
         <div class="account-edit-container">
             <div class="row">
-                <h4> <i class="small material-icons">settings</i>Account Setting</h4>
+                <h4>Account Setting</h4>
             </div>
 
             <?php 
@@ -102,43 +100,46 @@
                     ?>
 
             <form action="server.php" method="POST">
-                <input type="hidden" name="userid"
-                    value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
-                <div class="input-field col account-edit-field">
-                    <input id="login-username" name="newusername" type="text" value=" <?php echo $row[0]?>">
-                    <label class="active" for="newusername">Username</label>
-                </div>
-                <div class="input-field col account-edit-field">
-                    <input id="login-username" name="newfname" type="text" value=" <?php echo $row[1]?>">
-                    <label class="active" for="newfname">First Name</label>
-                </div>
-                <div class="input-field col account-edit-field">
-                    <input id="login-username" name="newlname" type="text" value=" <?php echo $row[2]?>">
-                    <label class="active" for="newlname">Last Name</label>
-                </div>
-                <div class="input-field col account-edit-field">
-                    <input id="login-username" name="newemail" type="text" value=" <?php echo $row[3]?>">
-                    <label class="active" for="newemail">E-mail</label>
-                </div>
-                <div class="input-field col account-edit-field">
-                    <input id="login-password" name="newpassword" type="password" value=" <?php echo $row[4]?>">
-                    <label class="active" for="newpassword">Password</label>
-                </div>
+                <div class="row">
+                    <input type="hidden" name="userid"
+                        value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                    <div class="input-field col s5 account-username-field">
+                        <input id="account-username" name="newusername" type="text" value=" <?php echo $row[0]?>">
+                        <label class="active account-setting-label" for="newusername">Username</label>
+                    </div>
+                    <div class="input-field col s5 account-email-field">
+                        <input id="account-email" name="newemail" type="text" value=" <?php echo $row[3]?>">
+                        <label class="active account-setting-label" for="newemail">E-mail</label>
+                    </div>
+                    <div class="input-field col s5 account-firstname-field">
+                        <input id="account-firstname" name="newfname" type="text" value=" <?php echo $row[1]?>">
+                        <label class="active account-setting-label" for="newfname">First Name</label>
+                    </div>
+                    <div class="input-field col s5 account-lastname-field">
+                        <input id="account-lastname" name="newlname" type="text" value=" <?php echo $row[2]?>">
+                        <label class="active account-setting-label" for="newlname">Last Name</label>
+                    </div>
+                    <div class="input-field col s5 account-newpassword-field">
+                        <input id="account-password" name="newpassword" type="password" value=" <?php echo $row[4]?>">
+                        <label class="active account-setting-label" for="newpassword">New Password</label>
+                    </div>
+                    <div class="input-field col s5 account-confirmpassword-field">
+                        <input id="account-confirmpassword" name="confirmpassword" type="password" value="">
+                        <label class="active account-setting-label" for="confirmpassword">Confirm Password</label>
+                    </div>
 
-                <?php 
+                    <?php 
                         }
                     ?>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn waves-effect waves-light" type="submit"
-                            name="edit_account">Save</button>
-                    </div>
+                        <div class="col 12 account-btn">
+                            <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
+                            <button class="btn waves-effect waves-light all-btn cancel-acc-btn" type="submit"
+                                name="edit_account">Cancel</button>
+                        </div>
                 </div>
             </form>
         </div>
     </div>
-
-
 
 
     <!--Import jQuery before materialize.js-->

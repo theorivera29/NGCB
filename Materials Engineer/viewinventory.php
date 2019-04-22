@@ -146,7 +146,8 @@
                 </form>
             </div>
 
-            <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
+            <a href="#addmaterialModal"
+                class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
                 Add Material</a>
         </div>
 
@@ -154,7 +155,7 @@
             }
         ?>
         <div class="view-inventory-container">
-            <table id = "sort" class="centered view-inventory">
+            <table id="sort" class="centered view-inventory">
                 <thead class="view-inventory-head">
                     <tr>
                         <th onclick="sortTable(0)">Particulars</th>
@@ -372,8 +373,7 @@
                         </span>
                         <div class="row">
                             <form action="../server.php" method="POST">
-                               <input type="hidden" name="account_type"
-                                    value="<?php echo $projects_name; ?>">
+                                <input type="hidden" name="account_type" value="<?php echo $projects_name; ?>">
                                 <input type="hidden" name="account_type"
                                     value="<?php echo $_SESSION['account_type']; ?>">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
@@ -457,8 +457,7 @@
             </div>
         </form>
     </div>
-    
-    <div id="deliveredinNew" class="modal modal-fixed-footer add-mat-modal">
+
 
     <!-- ADD CATEGORY MODAL -->
     <div id="addcategoryModal" class="modal add-category-modal">
@@ -468,9 +467,8 @@
                 <span id="modal-title">Add Category</span>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="category_name" type="text" class="validate field-category"
-                            pattern="[A-Za-z0-9\s]*" title="Follow the format. Example: Formworks"
-                            required>
+                        <input name="category_name" type="text" class="validate field-category" pattern="[A-Za-z0-9\s]*"
+                            title="Follow the format. Example: Formworks" required>
                         <label for="category_name">Category Name:</label>
                     </div>
                 </div>
@@ -529,7 +527,6 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="../datepicker.js"></script>
     <script>
         // SIDEBAR
         $(document).ready(function () {

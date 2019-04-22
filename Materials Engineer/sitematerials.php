@@ -22,7 +22,8 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -36,7 +37,8 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
+                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -64,13 +66,16 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                        href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a
+                            class="collapsible-header waves-effect waves-blue">Site<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -84,7 +89,9 @@
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a
+                            class="collapsible-header waves-effect waves-blue">Hauling<i
+                                class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -99,20 +106,22 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                        href="report.php">Report</a>
                 </li>
             </ul>
         </div>
     </nav>
-    
+
     <div class="row">
-            <div class="col 6 m4">
-                <input type="text" id="search_value" onkeyup="myFunction()" placeholder="Search..">
-            </div>
+        <div class="col 6 m4">
+            <input type="text" id="search_value" onkeyup="myFunction()" placeholder="Search..">
         </div>
+    </div>
+
     <div class="site-materials-container">
         <div class="lighten-5">
-            <table  id="sort" class="centered site-materials-content">
+            <table id="sort" class="centered site-materials-content">
                 <thead class="site-materials-head">
                     <tr>
                         <th onclick="sortTable(0)">Particulars</th>
@@ -168,124 +177,11 @@
                         <td>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
-                                <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_sitestockcard">
+                                <button class="waves-effect waves-light btn matname-btn" type="submit"
+                                    name="open_sitestockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
-<!--
-                            <div id="stockcard" class="modal stock-card-container">
-                                <ul class="tabs">
-                                    <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
-                                    <li class="tab col s3"><a href="#usagein">Usage In </a></li>
-                                </ul>
 
-                                <div id="deliverin">
-                                    <div class="row">
-                                        <form action="../server.php" method="POST">
-                                            <table class="centered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit</th>
-                                                        <th>Supplied By</th>
-                                                        
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>                                                        
-                                                    <?php echo $row[0];?>
-                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0];?>">
-                                                        <td><input type="text" name="dev_date"></td>
-
-                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                                        <td><input type="date" min="2019-01-01" required></td>
-
-                                                        <td><input type="text" name="dev_quantity" required></td>
-                                                        <td><input type="text" name="dev_unit" value="<?php echo $row[7];?>" required></td>
-                                                        <td><input type="text" name="dev_supp" required></td>
-                                                    </tr>
-                                                    <?php 
-                                                        $dsql = "SELECT * FROM deliveredin;";
-                                                        $dresult = mysqli_query($conn, $dsql);
-                                                        while($drow = mysqli_fetch_row($dresult)){
-                                                    ?>
-                                                    <tr>
-                                                        <td><?php echo $drow[1]?></td>
-                                                        <td><?php echo $drow[2]?></td>
-                                                        <td><?php echo $drow[3]?></td>
-                                                        <td><?php echo $drow[4]?></td>
-                                                    </tr> 
-                                                    <?php 
-                                                        }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                            <div class="modal-footer">
-                                                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_deliveredin">Save</button>
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <div id="usagein">
-                                    <div class="row">
-                                        <form action="../server.php" method="POST">
-                                            <table class="centered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit</th>
-                                                        <th>Pulled Out By</th>
-                                                        <th>Area of Usage</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                                        <td><input type="text" name="us_date"></td>
-                                                        <td><input type="text" name="us_quantity" required></td>
-                                                        <td><input type="text" name="us_unit" value="<?php echo $row[7]?>" required>
-                                                        <td><input type="text" name="pulloutby" required></td>
-                                                        <td><input type="text" name="us_area" required></td>
-                                                    </tr>
-                                                    <?php 
-                        $usql = "SELECT * FROM usagein;";
-                        $uresult = mysqli_query($conn, $usql);
-                        while($urow = mysqli_fetch_row($uresult)){
-                    ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?php echo $urow[1]?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $urow[2]?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $urow[3]?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $urow[4]?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $urow[5]?>
-                                                        </td>
-                                                    </tr>
-                                                    <?php 
-                            }
-                        ?>
-                                                </tbody>
-                                            </table>
-                                            <div class="modal-footer">
-                                                <button class="waves-effect waves-light btn green" type="submit" class="validate" name="add_usagein">Save</button>
-                                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
--->
                         </td>
                         <td>
                             <?php echo $row[1] ?>
@@ -319,14 +215,14 @@
             </table>
 
         </div>
-        
+
     </div>
 
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         // SIDEBAR
         $(document).ready(function () {
@@ -337,7 +233,7 @@
             $('.modal-trigger').leanModal();
         });
 
-        $(function() {
+        $(function () {
 
             $("table").tablesorter({
                     theme: "materialize",
@@ -431,11 +327,11 @@
                 if (td) {
                     txtValue = td.textContent || td.innerText;
                     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
+                        tr[i].style.display = "";
                     } else {
-                    tr[i].style.display = "none";
+                        tr[i].style.display = "none";
                     }
-                } 
+                }
             }
         }
     </script>

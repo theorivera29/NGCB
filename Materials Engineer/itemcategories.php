@@ -272,12 +272,12 @@
                         <select class="browser-default" name="mat_unit">
                             <option selected>Choose unit</option>
                             <?php
-                                    $sql = "SELECT DISTINCT mat_unit FROM materials;";
+                                    $sql = "SELECT DISTINCT unit.unit_name, materials.mat_unit FROM unit INNER JOIN materials ON materials.mat_id = unit.unit_id";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 
                                 ?>
-                            <option value="<?php echo $row[0]; ?>">
+                            <option value="<?php echo $row[1]; ?>">
                                 <?php echo $row[0]; ?>
                             </option>
                             <?php 
@@ -286,37 +286,10 @@
                         </select>
                     </div>
                     <div class="input-field col add-threshold">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate" pattern="[0-9]*"
-                            title="Input only numbers" required>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory"
+                            pattern="[0-9]*" title="Input only numbers" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
-                </div>
-                <div class="row">
-                    <h5>Deliver In</h5>
-                    <table class="striped centered">
-                        <thead class="view-inventory-head">
-                            <tr>
-                                <th>Date</th>
-                                <th>Quantity</th>
-                                <th>Supplied By</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input type="date" min="2019-01-01" required>
-                                </td>
-                                <td>
-                                    <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
-                                        required>
-                                </td>
-                                <td>
-                                    <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
 
             </div>
@@ -327,7 +300,6 @@
             </div>
         </form>
     </div>
-
 
 
 

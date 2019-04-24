@@ -89,15 +89,16 @@
                     <tr>
                         <th onclick="sortTable(0)">Hauling forms</th>
                         <th onclick="sortTable(1)">Date</th>
-                        <th onclick="sortTable(2)">Hauled from</th>
+                        <th onclick="sortTable(2)">Project</th>
+                        <th onclick="sortTable(3)">Deliver To</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <?php
-        $sql = "SELECT * FROM  hauling;";
-        $result = mysqli_query($conn, $sql);
-        while($row = mysqli_fetch_array($result)) {
-    ?>
+                $sql = "SELECT hauling_no, hauling_date, hauling_hauledFrom, hauling_deliverTo FROM  hauling;";
+                $result = mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_array($result)) {
+                ?>
                 <tbody>
                     <td>
                         <?php echo $row[0] ;?>
@@ -105,7 +106,12 @@
                     <td>
                         <?php echo $row[1] ;?>
                     </td>
-                    <td><?php echo $row[3] ;?></td>
+                    <td>
+                        <?php echo $row[2] ;?>
+                    </td>
+                    <td>
+                        <?php echo $row[3] ;?>
+                    </td>
                     <td>
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="hauling_no" value="<?php echo $row[0]?>">

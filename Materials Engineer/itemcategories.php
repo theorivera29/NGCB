@@ -6,6 +6,7 @@
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
     $projects_name = $_GET['projects_name'];
+    $categories_id = $_GET['categories_id'];
     
     $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
     $result = mysqli_query($conn, $sql);
@@ -248,21 +249,16 @@
                     <div class="col s5">
                         <label>Category:</label>
                         <div class="input-field col s12">
-                            <select class="browser-default" id="category-option" name="mat_categ">
-                                <option selected>Choose category</option>
-                                <?php
-                                    $sql = "SELECT categories_id, categories_name FROM categories;";
+                          <?php
+                                    $sql = "SELECT categories_name FROM categories WHERE categories_id = $categories_id";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 
                                 ?>
-                                <option value="<?php echo $row[0]; ?>">
-                                    <?php echo $row[1]; ?>
-                                </option>
-                                <?php 
+                           <input id="mat_categ" name="mat_categ" type="text" class="validate" value="<?php echo $row[0]?>">
+                           <?php 
                                     }
                                 ?>
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -272,7 +268,14 @@
                         <select class="browser-default" name="mat_unit">
                             <option selected>Choose unit</option>
                             <?php
-                                    $sql = "SELECT DISTINCT unit.unit_name, materials.mat_unit FROM unit INNER JOIN materials ON materials.mat_id = unit.unit_id";
+                                    $sql = "SELECT DISTINCT 
+                                    unit.unit_name,
+                                    materials.mat_unit 
+                                    FROM 
+                                    unit 
+                                    INNER JOIN materials
+                                    ON 
+                                    materials.mat_id = unit.unit_id";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 

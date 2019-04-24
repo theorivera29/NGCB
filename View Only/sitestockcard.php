@@ -23,8 +23,8 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-                <a href="sitematerials.php"
-                    class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
+        <a href="sitematerials.php"
+                class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
                 </a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
@@ -75,7 +75,6 @@ $mat_name = $_GET['mat_name'];
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
             <li class="tab col s3"><a href="#usagein">Usage In</a></li>
-            <li class="tab col s3"><a href="#editmaterial">Edit Material</a></li>
         </ul>
     </div>
 
@@ -105,21 +104,6 @@ $mat_name = $_GET['mat_name'];
                         ?>
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-                            <td>
-                                <input type="date" min="2019-01-01" name="dev_date" required>
-                            </td>
-                            <td>
-                                <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
-                                    pattern="[0-9]*" title="Input numbers only" required>
-                            </td>
-                            <td>
-                               <input type="hidden" name="dev_unit"  value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"required>
-                            </td>
-                            <td>
-                                <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
-                            </td>
-
                         </tr>
 
                         <?php 
@@ -165,10 +149,6 @@ $mat_name = $_GET['mat_name'];
                         ?>
                     </tbody>
                 </table>
-                <div class="stockcard-btn">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredinsite">Save</button>
-                </div>
             </form>
         </div>
     </div>
@@ -200,23 +180,6 @@ $mat_name = $_GET['mat_name'];
                         ?>
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-                            <td>
-                                <input type="date" min="2019-01-01" name="us_date" required>
-                            </td>
-                            <td>
-                                <input id="delivered_quantity" name="us_quantity" type="text" class="validate"
-                                    pattern="[0-9]*" title="Input numbers only" required>
-                            </td>
-                            <td>
-                               <input type="hidden" name="us_unit"  value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"required>
-                            </td>
-                            <td>
-                                <input id="pulloutby" name="pulloutby" type="text" class="validate" required>
-                            </td>
-                            <td>
-                                <input id="us_area" name="us_area" type="text" class="validate" required>
-                            </td>
                         </tr>
                         <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
@@ -260,57 +223,9 @@ $mat_name = $_GET['mat_name'];
                         }
                             ?>
                 </table>
-                <div class="stockcard-btn">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_usageinsite">Save</button>
-                </div>
             </form>
         </div>
     </div>
-
-    <div id="editmaterial" class="col s12 card editmaterial-container">
-        <div class="edit-mat-container">
-            <form action="../server.php" method="POST">
-                <div class="row">
-                   <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-                    <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
-                    <div class="input-field col s4 material-name-field">
-                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
-                        <label for="newmaterialname">Material Name:</label>
-                    </div>
-                    <div class="input-field col s2 unit-field">
-                        <select class="browser-default" id="category-option" name="mat_unit">
-                            <option>Choose units</option>
-                            <?php
-                                $sql = "SELECT unit_id, unit_name FROM unit;";
-                                $result = mysqli_query($conn, $sql);
-                                while($row = mysqli_fetch_row($result)) {                        
-                            ?>
-                            <option value="<?php echo $row[0]; ?>">
-                                <?php echo $row[1]; ?>
-                            </option>
-                            <?php 
-                                }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="input-field col s4 threshold-field">
-                        <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
-                            title="Input numbers only" required>
-                        <label for="minquantity">Item threshold:</label>
-                    </div>
-                </div>
-
-                <div class="col s12 edit-matname-btn">
-                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials" type="submit">Save</button>
-                        <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
-
-                    </div>
-
-
-
-
-            </form>
         </div>
     </div>
 

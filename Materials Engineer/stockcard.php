@@ -86,13 +86,13 @@ $projects_name = $_GET['projects_name'];
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
-                <table class="centered deliverin striped">
+                <table id = "sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
-                            <th>Date</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Supplied By</th>
+                            <th onclick="sortTable(0)">Date</th>
+                            <th onclick="sortTable(1)">Quantity</th>
+                            <th onclick="sortTable(2)">Unit</th>
+                            <th onclick="sortTable(3)">Supplied By</th>
                         </tr>
                     </thead>
 
@@ -157,21 +157,21 @@ $projects_name = $_GET['projects_name'];
                         <?php 
                         }
                         ?>
-                        <?php 
+                    </tbody>
+                </table>
+                <div>
+                <?php 
                         $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                        <tr>
-                            <td>TOTAL:</td>
-                            <td><?php echo $row_total[0]?></td>
-                        </tr>
-                        <?php 
+                            <span>TOTAL:</span>
+                            <span><?php echo $row_total[0]?></span>
+                            <?php 
                         }
                         }
                         ?>
-                    </tbody>
-                </table>
+                    </div>
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_deliveredin">Save</button>
@@ -183,14 +183,14 @@ $projects_name = $_GET['projects_name'];
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
-                <table class="centered usagein striped">
+                <table id = "sort" class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
-                            <th>Date</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Pulled Out By</th>
-                            <th>Area of Usage</th>
+                            <th onclick="sortTable(0)">Date</th>
+                            <th onclick="sortTable(1)">Quantity</th>
+                            <th onclick="sortTable(2)">Unit</th>
+                            <th onclick="sortTable(3)">Pulled Out By</th>
+                            <th onclick="sortTable(4)">Area of Usage</th>
                         </tr>
                     </thead>
 
@@ -251,24 +251,21 @@ $projects_name = $_GET['projects_name'];
                         <?php 
                         }
                         ?>
-                        <?php 
+                      </tbody>
+                </table>
+                <div>
+                <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                        <tr>
-                            <td>
-                                TOTAL:
-                            </td>
-                            <td>
-                                <?php echo $row_total[0] ?>
-                            </td>
-                        </tr>
-                        <?php
+                            <span>TOTAL:</span>
+                            <span><?php echo $row_total[0]?></span>
+                            <?php 
                         }
                         }
-                            ?>
-                </table>
+                        ?>
+                    </div>
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_usagein">Save</button>
@@ -322,6 +319,44 @@ $projects_name = $_GET['projects_name'];
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("sort");
+            switching = true;
+            dir = "asc";
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>

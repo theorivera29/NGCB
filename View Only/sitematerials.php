@@ -141,7 +141,7 @@
                         <td>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
-                                <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_stockcard">
+                                <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_sitestockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
                         <td>

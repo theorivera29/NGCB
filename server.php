@@ -181,7 +181,11 @@
     if(isset($_POST['open_sitestockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        if(strcmp($account_type,'MatEng') == 0) {
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name");
+        } else {
+            header("location: http://127.0.0.1/NGCB/View%20Only/sitestockcard.php?mat_name=$mat_name");
+        }
 
     }
 

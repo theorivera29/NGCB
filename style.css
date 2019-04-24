@@ -976,6 +976,7 @@ textarea.materialize-textarea {
     color: #ffffff !important;
     background-color: #71B340 !important;
     font-size: 2vmin !important;
+    margin-right: .5% !important;
 }
 
 .save-mat-btn:hover {
@@ -994,7 +995,7 @@ textarea.materialize-textarea {
 }
 
 .modal-footer {
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     margin-top: 5%;
 }
 
@@ -1679,6 +1680,27 @@ select[name=mat_unit] {
 
 .pass-reset-table-head>tr>th{
     background-color: #0B415E !important;
+    color: #FFFFFF;
+}
+
+.reject-btn{
+    background-color: #EF5B5B;
+    color: #FFFFFF;
+}
+
+.reject-btn:hover{
+    background-color: #C44B4B;
+    color: #FFFFFF;
+}
+
+.accept-btn{
+    background-color: #71B340;
+    color: #FFFFFF;
+    margin-right: 1% !important;
+}
+
+.accept-btn:hover{
+    background-color: #5D9335;
     color: #FFFFFF;
 }
 

@@ -23,12 +23,9 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-            <form action="../server.php" method="POST">
-                <button href="viewinventory.php" name="back"
-                    class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
-                    <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-                </button>
-            </form>
+        <a href="sitematerials.php"
+                class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
+                </a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -152,10 +149,6 @@ $mat_name = $_GET['mat_name'];
                         ?>
                     </tbody>
                 </table>
-                <div class="stockcard-btn">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredinsite">Save</button>
-                </div>
             </form>
         </div>
     </div>
@@ -230,10 +223,6 @@ $mat_name = $_GET['mat_name'];
                         }
                             ?>
                 </table>
-                <div class="stockcard-btn">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_usageinsite">Save</button>
-                </div>
             </form>
         </div>
     </div>

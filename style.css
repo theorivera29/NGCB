@@ -589,6 +589,7 @@ textarea.materialize-textarea {
 }
 
 .view-tasks-head>tr>th {
+    cursor: pointer !important;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     border-radius: 2%;
@@ -1055,7 +1056,7 @@ textarea.materialize-textarea {
 }
 
 .site-materials-head>tr>th {
-    cursor:pointer;
+    cursor: pointer;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     border-radius: 2%;

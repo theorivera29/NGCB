@@ -26,8 +26,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
-                    class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                 if(isset($_SESSION['username'])) {
@@ -41,8 +40,7 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -69,16 +67,13 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
-                        href="admindashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="admindashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">supervisor_account</i><a
-                            class="collapsible-header waves-effect waves-blue">Accounts<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">supervisor_account</i><a class="collapsible-header waves-effect waves-blue">Accounts<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="accountcreation.php">Create Account</a>
@@ -90,19 +85,16 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">vpn_key</i><a class="waves-effect waves-blue"
-                        href="passwordrequest.php">Password Request</a>
+                    <i class="material-icons left">vpn_key</i><a class="waves-effect waves-blue" href="passwordrequest.php">Password Request</a>
                 </li>
                 <li>
-                    <i class="material-icons left">insert_drive_file</i><a class="waves-effect waves-blue"
-                        href="projects.php">Projects</a>
+                    <i class="material-icons left">insert_drive_file</i><a class="waves-effect waves-blue" href="projects.php">Projects</a>
                 </li>
                 <li>
                     <i class="material-icons left">folder</i><a class="waves-effect waves-blue" href="logs.php">Logs</a>
                 </li>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
-                        href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
                 </li>
             </ul>
         </div>
@@ -133,20 +125,17 @@
                         </div>
                         <div class="col s12">
                             <div class="input-field col s12">
-                                <span>Material Engineers Involved</span>
-                                <select id="involved" class="browser-default" name="involved">
-                                    <option disabled selected>Choose your option</option>
-
-                                </select>
+                                <span>Materials Engineer Involved</span>
+                                <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
+                                <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
+                                <input type="checkbox" name="vehicle3" value="Boat" checked> I have a boat<br>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="submit" class="waves-effect waves-light btn cancel-proj-btn"
-                                name="cancel-create-project">Cancel</button>
-                    <button type="submit" class="waves-effect waves-light btn save-proj-btn"
-                        name="create_project">Save</button>
+                    <button type="submit" class="waves-effect waves-light btn cancel-proj-btn" name="cancel-create-project">Cancel</button>
+                    <button type="submit" class="waves-effect waves-light btn save-proj-btn" name="create_project">Save</button>
                 </div>
             </form>
         </div>
@@ -180,21 +169,21 @@
                                 <?php echo $row[2] ;?>
                             </p>
                             <p>
-                                Start Date: <?php echo $row[3] ;?>
+                                Start Date:
+                                <?php echo $row[3] ;?>
                             </p>
                             <p>
 
-                                End Date: <?php echo $row[4] ;?>
+                                End Date:
+                                <?php echo $row[4] ;?>
 
                             </p>
                             <div class="row">
                                 <div class="row">
-                                    <button href="#editModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn modal-trigger edit-proj-btn">Edit</button>
+                                    <button href="#editModal<?php echo $row[0] ;?>" class="waves-effect waves-light btn modal-trigger edit-proj-btn">Edit</button>
                                 </div>
                                 <div class="row">
-                                    <a href="#closeModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn modal-trigger close-proj-btn">Close
+                                    <a href="#closeModal<?php echo $row[0] ;?>" class="waves-effect waves-light btn modal-trigger close-proj-btn">Close
                                         Project</a>
                                 </div>
                             </div>
@@ -212,8 +201,7 @@
                         <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value="<?php echo $row[1] ;?>">
-                            <button type="submit" name="close_project"
-                                class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
+                            <button type="submit" name="close_project" class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                         </form>
                     </div>
                 </div>
@@ -243,16 +231,14 @@
                                 </div>
                                 <div class="col s12">
                                     <div class="input-field col s12">
-                                        <span>Material Engineers Involved</span>
+                                        <span>Materials Engineer Involved</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a href="" class="waves-effect waves-light btn cancel-proj-btn"
-                                name="cancel-create-project">Cancel</a>
-                            <button type="submit" class="waves-effect waves-light btn save-proj-btn"
-                                name="edit_project">Save</button>
+                            <a href="" class="waves-effect waves-light btn cancel-proj-btn" name="cancel-create-project">Cancel</a>
+                            <button type="submit" class="waves-effect waves-light btn save-proj-btn" name="edit_project">Save</button>
                         </div>
                     </form>
                 </div>
@@ -280,20 +266,20 @@
                                 <?php echo $row[2] ;?>
                             </p>
                             <p>
-                                Start Date: <?php echo $row[3] ;?>
+                                Start Date:
+                                <?php echo $row[3] ;?>
                             </p>
                             <p>
-                                End Date: <?php echo $row[4] ;?>
+                                End Date:
+                                <?php echo $row[4] ;?>
                             </p>
                             <div class="row">
                                 <div class="row">
-                                    <a href="#reopenModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn modal-trigger reopen-btn">Re-open
+                                    <a href="#reopenModal<?php echo $row[0] ;?>" class="waves-effect waves-light btn modal-trigger reopen-btn">Re-open
                                         project</a>
                                 </div>
                                 <div class="row">
-                                    <a href="#deleteProjectModal<?php echo $row[0] ;?>"
-                                        class="waves-effect waves-light btn modal-trigger delete-btn ">Delete
+                                    <a href="#deleteProjectModal<?php echo $row[0] ;?>" class="waves-effect waves-light btn modal-trigger delete-btn ">Delete
                                     </a>
                                 </div>
                             </div>
@@ -309,8 +295,7 @@
                         <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value='<?php echo $row[1] ;?>'>
-                            <button type="submit" name="reopen_project"
-                                class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
+                            <button type="submit" name="reopen_project" class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                         </form>
                     </div>
                 </div>
@@ -323,10 +308,8 @@
                     <div class="modal-footer">
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value='<?php echo $row[1] ;?>'>
-                            <a href="#!"
-                                class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
-                            <button class=" modal-action modal-close waves-effect waves-light btn-flat yes-btn"
-                                type="submit" name="delete_project">Yes</button>
+                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
+                            <button class=" modal-action modal-close waves-effect waves-light btn-flat yes-btn" type="submit" name="delete_project">Yes</button>
                         </form>
                     </div>
                 </div>
@@ -342,13 +325,14 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
         });
+
     </script>
 
 </body>

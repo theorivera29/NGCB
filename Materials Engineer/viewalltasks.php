@@ -10,7 +10,6 @@
     if(isset($_SESSION['account_id'])) {
         $account_id = $_SESSION['account_id'];
     }
-    echo $account_id;
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +27,12 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <button href="dashboard.php" name="" class="button-collapse show-on-large menu-icon back-btn"><i
-                    class="material-icons menuIcon">arrow_back</i></button>
+            <form action="../server.php" method="POST">
+                <a href="dashboard.php" class="button-collapse show-on-large menu-icon back-btn"><i
+                        class="material-icons menuIcon">arrow_back</i>
+                    <input type="hidden" name="account_id" value="<?php echo $account_id?>">
+                </a>
+            </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {

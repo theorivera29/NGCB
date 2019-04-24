@@ -6,7 +6,6 @@
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
 $mat_name = $_GET['mat_name'];
-$projects_name = $_GET['projects_name'];
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +24,8 @@ $projects_name = $_GET['projects_name'];
     <nav>
         <div class="nav-wrapper">
             <form action="../server.php" method="POST">
-                <button href="viewinventory.php" name="back" class="button-collapse show-on-large menu-icon back-btn"><i
-                        class="material-icons menuIcon">arrow_back</i>
+                <button href="viewinventory.php" name="back"
+                    class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                 </button>
             </form>
@@ -79,20 +78,19 @@ $projects_name = $_GET['projects_name'];
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
             <li class="tab col s3"><a href="#usagein">Usage In</a></li>
-            <li class="tab col s3"><a href="#editmaterial">Edit Material</a></li>
         </ul>
     </div>
 
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
-                <table id = "sort" class="centered deliverin striped">
+                <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
-                            <th onclick="sortTable(0)">Date</th>
-                            <th onclick="sortTable(1)">Quantity</th>
-                            <th onclick="sortTable(2)">Unit</th>
-                            <th onclick="sortTable(3)">Supplied By</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Supplied By</th>
                         </tr>
                     </thead>
 
@@ -107,26 +105,8 @@ $projects_name = $_GET['projects_name'];
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
-
-                            <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-                            <td>
-                                <input type="date" min="2019-01-01" name="dev_date" required>
-                            </td>
-                            <td>
-                                <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
-                                    pattern="[0-9]*" title="Input numbers only" required>
-                            </td>
-                            <td>
-                                <input type="hidden" name="dev_unit" value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
-                                    required>
-                            </td>
-                            <td>
-                                <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
-                            </td>
-
                         </tr>
 
                         <?php 
@@ -157,24 +137,24 @@ $projects_name = $_GET['projects_name'];
                         <?php 
                         }
                         ?>
-                    </tbody>
-                </table>
-                <div>
-                <?php 
+                        <?php 
                         $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                            <span>TOTAL:</span>
-                            <span><?php echo $row_total[0]?></span>
-                            <?php 
+                        <tr>
+                            <td>TOTAL:</td>
+                            <td><?php echo $row_total[0]?></td>
+                        </tr>
+                        <?php 
                         }
                         }
                         ?>
-                    </div>
+                    </tbody>
+                </table>
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredin">Save</button>
+                        name="add_deliveredinsite">Save</button>
                 </div>
             </form>
         </div>
@@ -183,14 +163,14 @@ $projects_name = $_GET['projects_name'];
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
-                <table id = "sort" class="centered usagein striped">
+                <table class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
-                            <th onclick="sortTable(0)">Date</th>
-                            <th onclick="sortTable(1)">Quantity</th>
-                            <th onclick="sortTable(2)">Unit</th>
-                            <th onclick="sortTable(3)">Pulled Out By</th>
-                            <th onclick="sortTable(4)">Area of Usage</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Pulled Out By</th>
+                            <th>Area of Usage</th>
                         </tr>
                     </thead>
 
@@ -207,25 +187,6 @@ $projects_name = $_GET['projects_name'];
                         ?>
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-                            <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
-                            <td>
-                                <input type="date" min="2019-01-01" name="us_date" required>
-                            </td>
-                            <td>
-                                <input id="delivered_quantity" name="us_quantity" type="text" class="validate"
-                                    pattern="[0-9]*" title="Input numbers only" required>
-                            </td>
-                            <td>
-                                <input type="hidden" name="us_unit" value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
-                                    required>
-                            </td>
-                            <td>
-                                <input id="pulloutby" name="pulloutby" type="text" class="validate" required>
-                            </td>
-                            <td>
-                                <input id="us_area" name="us_area" type="text" class="validate" required>
-                            </td>
                         </tr>
                         <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
@@ -251,111 +212,38 @@ $projects_name = $_GET['projects_name'];
                         <?php 
                         }
                         ?>
-                      </tbody>
-                </table>
-                <div>
-                <?php 
+                        <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                            <span>TOTAL:</span>
-                            <span><?php echo $row_total[0]?></span>
-                            <?php 
+                        <tr>
+                            <td>
+                                TOTAL:
+                            </td>
+                            <td>
+                                <?php echo $row_total[0] ?>
+                            </td>
+                        </tr>
+                        <?php
                         }
                         }
-                        ?>
-                    </div>
+                            ?>
+                </table>
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_usagein">Save</button>
+                        name="add_usageinsite">Save</button>
                 </div>
             </form>
         </div>
     </div>
-
-    <div id="editmaterial" class="col s12 card editmaterial-container">
-        <div class="edit-mat-container">
-            <form action="../server.php" method="POST">
-                <div class="row">
-                    <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-                    <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
-                    <div class="input-field col s4 material-name-field">
-                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
-                        <label for="newmaterialname">Material Name:</label>
-                    </div>
-                    <div class="input-field col s2 unit-field">
-                        <select class="browser-default" id="category-option" name="mat_unit">
-                            <option>Choose units</option>
-                            <?php
-                                $sql = "SELECT unit_id, unit_name FROM unit;";
-                                $result = mysqli_query($conn, $sql);
-                                while($row = mysqli_fetch_row($result)) {                        
-                            ?>
-                            <option value="<?php echo $row[0]; ?>">
-                                <?php echo $row[1]; ?>
-                            </option>
-                            <?php 
-                                }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="input-field col s4 threshold-field">
-                        <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
-                            title="Input numbers only" required>
-                        <label for="minquantity">Item threshold:</label>
-                    </div>
-                </div>
-                <div class="col s12 edit-matname-btn">
-                    <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials"
-                        type="submit">Save</button>
-                    <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
-                </div>
-            </form>
         </div>
     </div>
 
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
-    <script>
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("sort");
-            switching = true;
-            dir = "asc";
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
-                } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
 </body>
 

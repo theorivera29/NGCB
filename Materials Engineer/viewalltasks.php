@@ -10,7 +10,6 @@
     if(isset($_SESSION['account_id'])) {
         $account_id = $_SESSION['account_id'];
     }
-    echo $account_id;
 ?>
 
 <!DOCTYPE html>

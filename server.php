@@ -6,10 +6,10 @@
         session_start();
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']); 
-        $sql = "SELECT accounts_id, accounts_password, accounts_type FROM accounts WHERE accounts_username = '$username'";
+        $sql = "SELECT accounts_id, accounts_password, accounts_type FROM accounts WHERE accounts_username = '$username';";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
-        $hash_password = $row[1];
+        $hash_password = $row[2];
         if(/*password_verify($password, $hash_password)*/true) {
             $_SESSION['account_id']= $row[0];
             $_SESSION['username'] = $username; 
@@ -169,8 +169,8 @@
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
-
     }
+
     if(isset($_POST['view_open_stockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
@@ -182,7 +182,6 @@
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name");
-
     }
 
     if(isset($_POST['open_report'])) {
@@ -419,13 +418,13 @@
             mysqli_query($conn, $sql);
             $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Updated todo task $todo_task to done', $account_id);";
             mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
         } else {
             $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
             mysqli_query($conn, $sql);
             $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
             mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
         }        
     }
 

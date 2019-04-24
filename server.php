@@ -338,11 +338,9 @@
         $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
-        $delivered_date = mysqli_real_escape_string($conn, $_POST['date']);
-        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
-        $supplied_by = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
-        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, $delivered_quantity, 0, 0, $delivered_quantity);";
+        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);";
         mysqli_query($conn, $sql);
+        echo $mat_name;
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {

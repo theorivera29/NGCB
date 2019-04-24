@@ -161,16 +161,19 @@
                         <th onclick="sortTable(0)">Particulars</th>
                         <th onclick="sortTable(1)">Category</th>
                         <th onclick="sortTable(2)">Previous Material Stock</th>
+                        <th>Unit</th>
                         <th onclick="sortTable(3)">Delivered Material as of
                             <?php echo date("F Y"); ?>
                         </th>
                         <th onclick="sortTable(4)">Material Pulled out as of
                             <?php echo date("F Y"); ?>
                         </th>
+                        <th>Unit</th>
                         <th onclick="sortTable(5)">Accumulate of Materials Delivered</th>
                         <th onclick="sortTable(6)">Material on Site as of
                             <?php echo date("F Y"); ?>
                         </th>
+                        <th>Unit</th>
                         <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
@@ -230,18 +233,21 @@
                         <td>
                             <?php echo $row[2] ?>
                         </td>
+                        <td>Unit</td>
                         <td>
                             <?php echo $row[3] ?>
                         </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
+                        <td>Unit</td>
                         <td>
                             <?php echo $row[5] ?>
                         </td>
                         <td>
                             <?php echo $row[6] ?>
                         </td>
+                        <td>Unit</td>
                         <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>

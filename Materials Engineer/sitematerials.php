@@ -113,11 +113,7 @@
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col 6 m4">
-            <input type="text" id="search_value" onkeyup="myFunction()" placeholder="Search..">
-        </div>
-    </div>
+    
 
     <div class="site-materials-container">
         <div class="lighten-5">
@@ -233,107 +229,7 @@
             $('.modal-trigger').leanModal();
         });
 
-        $(function () {
-
-            $("table").tablesorter({
-                    theme: "materialize",
-
-                    widthFixed: true,
-                    // widget code contained in the jquery.tablesorter.widgets.js file
-                    // use the zebra stripe widget if you plan on hiding any rows (filter widget)
-                    widgets: ["filter", "zebra"],
-
-                    widgetOptions: {
-                        // using the default zebra striping class name, so it actually isn't included in the theme variable above
-                        // this is ONLY needed for materialize theming if you are using the filter widget, because rows are hidden
-                        zebra: ["even", "odd"],
-
-                        // reset filters button
-                        filter_reset: ".reset",
-
-                        // extra css class name (string or array) added to the filter element (input or select)
-                        // select needs a "browser-default" class or it gets hidden
-                        filter_cssFilter: ["", "", "browser-default"]
-                    }
-                })
-                .tablesorterPager({
-
-                    // target the pager markup - see the HTML block below
-                    container: $(".ts-pager"),
-
-                    // target the pager page select dropdown - choose a page
-                    cssGoto: ".pagenum",
-
-                    // remove rows from the table to speed up the sort of large tables.
-                    // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
-                    removeRows: false,
-
-                    // output string - default is '{page}/{totalPages}';
-                    // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
-                    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
-
-                });
-
-        });
-
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("sort");
-            switching = true;
-            dir = "asc";
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
-                } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
-
-        function myFunction() {
-            // Declare variables 
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("search_value");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("sort");
-            tr = table.getElementsByTagName("tr");
-
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
+    
     </script>
 </body>
 

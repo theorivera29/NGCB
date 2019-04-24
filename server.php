@@ -465,7 +465,7 @@
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_deliver_date', 'Added delivered in of $mat_name', $account_id);";
 
         mysqli_query($conn, $sql);    
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?mat_name=$mat_name&projects_name=$projects_name");        
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");        
     }
 
     if (isset($_POST['add_usagein'])) {
@@ -515,7 +515,7 @@
         $add_usage_date = date("Y-m-d G:i:s");
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_usage_date', 'Added usage in of $delivered_matName', $account_id);";
         mysqli_query($conn, $sql); 
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?mat_name=$mat_name&projects_name=$projects_name");        
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");        
     }
 
     if (isset($_POST['add_deliveredinsite'])) {
@@ -555,7 +555,7 @@
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_deliver_date', 'Added delivered in of $mat_name', $account_id);";
 
         mysqli_query($conn, $sql);    
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name");        
     }
 
     if (isset($_POST['add_usageinsite'])) {
@@ -604,7 +604,7 @@
         $add_usage_date = date("Y-m-d G:i:s");
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_usage_date', 'Added usage in of $delivered_matName', $account_id);";
         mysqli_query($conn, $sql); 
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");        
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name");        
     }
 
 

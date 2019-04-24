@@ -5,6 +5,8 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+    $mat_name = $_GET['mat_name'];
+    $projects_name = $_GET['projects_name'];
 ?>
 
 <!DOCTYPE html>
@@ -91,76 +93,197 @@
 
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
-            <table class="centered deliverin">
-                <thead class="deliverin-head">
-                    <tr>
-                        <th>Date</th>
-                        <th>Quantity</th>
-                        <th>Unit</th>
-                        <th>Supplied By</th>
-                    </tr>
-                </thead>
+            <form action="../server.php" method="POST">
+                <table id = "sort" class="centered deliverin striped">
+                    <thead class="deliverin-head">
+                        <tr>
+                            <th onclick="sortTable(0)">Date</th>
+                            <th onclick="sortTable(1)">Quantity</th>
+                            <th onclick="sortTable(2)">Unit</th>
+                            <th onclick="sortTable(3)">Supplied By</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="date" min="2019-01-01" required>
-                        </td>
-                        <td>
-                            <input id="delivered_quantity" name="dev_quantity" type="text"
-                                class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
-                        </td>
-                        <td>
-                            <input id="delivered_quantity" name="dev_unit" type="text" class="validate view-inventory"
-                                required>
-                        </td>
-                        <td>
-                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
+                    <tbody>
+                    <?php 
+                        $sql = "SELECT 
+                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                        WHERE mat_name = '$mat_name';";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)){
+                        $mat_id = $row[1];
+                        ?>
+                    <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
+                    <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                    <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
+                        <?php 
+                        $sql_devIn = "SELECT deliveredin.delivered_date, 
+                        deliveredin.delivered_quantity, 
+                        unit.unit_name, 
+                        deliveredin.suppliedBy, 
+                        deliveredin.delivered_matName 
+                        FROM deliveredin 
+                        INNER JOIN unit ON deliveredin.delivered_unit = unit.unit_id 
+                        WHERE delivered_matName = '$mat_id'";
+                        $result_devIn = mysqli_query($conn, $sql_devIn);
+                        while($row_devIn = mysqli_fetch_row($result_devIn)){
+                        ?><tr class="deliverin-data">
+                            <td>
+                                <?php echo $row_devIn[0] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_devIn[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_devIn[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_devIn[3] ?>
+                            </td>
+                        </tr>
+                        <?php 
+                        }
+                        }
+                        ?>
+                        <?php 
+                        $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
+                        $result_total = mysqli_query($conn, $sql_total);
+                        while($row_total = mysqli_fetch_row($result_total)){
+                        ?>
+                        <tr>
+                            <td>TOTAL:</td>
+                            <td><?php echo $row_total[0]?></td>
+                        </tr>
+                        <?php 
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </form>
         </div>
     </div>
+
     <div id="usagein" class="col s12">
         <div class="usagein-container">
-            <table class="centered usagein">
-                <thead class="usagein-head">
-                    <tr>
-                        <th>Date</th>
-                        <th>Quantity</th>
-                        <th>Unit</th>
-                        <th>Pulled Out By</th>
-                        <th>Area of Usage</th>
-                    </tr>
-                </thead>
+            <form action="../server.php" method="POST">
+                <table id = "sort" class="centered usagein striped">
+                    <thead class="usagein-head">
+                        <tr>
+                            <th onclick="sortTable(0)">Date</th>
+                            <th onclick="sortTable(1)">Quantity</th>
+                            <th onclick="sortTable(2)">Unit</th>
+                            <th onclick="sortTable(3)">Pulled Out By</th>
+                            <th onclick="sortTable(4)">Area of Usage</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="date" min="2019-01-01" required>
-                        </td>
-                        <td>
-                            <input id="delivered_quantity" name="dev_quantity" type="text"
-                                class="validate view-inventory" pattern="[0-9]*" title="Input numbers only" required>
-                        </td>
-                        <td>
-                            <input id="delivered_quantity" name="dev_unit" type="text" class="validate view-inventory"
-                                required>
-                        </td>
-                        <td>
-                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
-                        </td>
-                        <td>
-                            <input id="suppliedBy" name="suppliedBy" type="text" class="validate" required>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
+                    <tbody>
+                    <?php 
+                        $sql = "SELECT 
+                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                        WHERE mat_name = '$mat_name';";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)){
+                        $mat_id = $row[1];
+                        ?>
+                        <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
+                        <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                        <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
+                        <?php 
+                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
+                        $result_useIn = mysqli_query($conn, $sql_useIn);
+                        while($row_useIn = mysqli_fetch_row($result_useIn)){
+                        ?><tr class="usagein_data">
+                            <td>
+                                <?php echo $row_useIn[0] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_useIn[1] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_useIn[2] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_useIn[3] ?>
+                            </td>
+                            <td>
+                                <?php echo $row_useIn[4] ?>
+                            </td>
+                        </tr>
+                        <?php 
+                        }
+                        ?>
+                        <?php 
+                        $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
+                        $result_total = mysqli_query($conn, $sql_total);
+                        while($row_total = mysqli_fetch_row($result_total)){
+                        ?>
+                        <tr>
+                            <td>
+                                TOTAL:
+                            </td>
+                            <td>
+                                <?php echo $row_total[0] ?>
+                            </td>
+                        </tr>
+                        <?php
+                        }
+                        }
+                        ?>
+                        </tbody>
+                </table>
+            </form>
         </div>
     </div>
+    </div>
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <script>
+        function sortTable(n) {
+            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            table = document.getElementById("sort");
+            switching = true;
+            dir = "asc";
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir == "asc") {
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    } else if (dir == "desc") {
+                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

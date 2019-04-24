@@ -24,10 +24,9 @@ $mat_name = $_GET['mat_name'];
     <nav>
         <div class="nav-wrapper">
             <form action="../server.php" method="POST">
-                <button href="viewinventory.php" name="back"
+                <a href="sitematerials.php"
                     class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
-                    <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-                </button>
+                </a>
             </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 

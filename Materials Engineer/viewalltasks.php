@@ -76,12 +76,12 @@
 
     <div id="viewAllTask">
         <span class="task-text">ALL TASK</span>
-        <table class="striped centered view-all-tasks">
+        <table id="sort" class="striped centered view-all-tasks">
             <thead class="view-tasks-head">
                 <tr class="task-headers">
-                    <th>Date</th>
-                    <th>Task</th>
-                    <th>Status</th>
+                    <th onclick="sortTable(0)">Date</th>
+                    <th onclick="sortTable(1)">Task</th>
+                    <th onclick="sortTable(2)">Status</th>
                     <th>Action</th>
                 </tr>
             </thead>

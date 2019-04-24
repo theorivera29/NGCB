@@ -12,45 +12,6 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_row($result);
     $projects_status = $row[0];
-    $output = '';
-    if(isset ($_POST['search'])) {
-        $searchq = $_POST['search'];
-        $searchq = preg_replace("#[^0-9a-z]#i","",$searchq);
-        $projects_name = $_GET['projects_name'];
-        $sql = "SELECT
-                            materials.mat_name, 
-                            materials.mat_prevStock, 
-                            materials.delivered_material, 
-                            materials.pulled_out, 
-                            materials.accumulated_materials,
-                            materials.currentQuantity
-                            FROM materials 
-                            INNER JOIN projects ON materials.mat_project = projects.projects_id 
-                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                            WHERE mat_name LIKE '%$searchq%' AND projects.projects_name = $projects_name";
-                            $query = mysqli_query($conn, $sql);
-                            $count = mysqli_num_rows($query);
-                            if($count == 0) {
-                                $output = 'There is no results.';
-                            } else {
-                                while ($row = mysqli_fetch_array($query)) {
-                                    $matname = $row['mat_name'];
-                                    $matprevstock = $row['mat_prevStock'];
-                                    $matdelivered = $row['delivered_material'];
-                                    $matpulledout = $row['pulled_out'];
-                                    $mataccumulated = $row['accumulated_materials'];
-                                    $matcurrentqty = $row['currentQuantity'];
-                                    $output .= "<div>
-                                    <td>".$matname."</td>
-                                    <td>".$matprevstock."</td>
-                                    <td>".$matdelivered."</td>
-                                    <td>".$matpulledout."</td>
-                                    <td>".$mataccumulated."</td>
-                                    <td>".$matcurrentqty."</td>
-                                    </div>";
-                                }
-                            }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -150,13 +111,10 @@
         ?>
         <div class="row">
             <div class="col s6 m4">
-                <form action="../server.php" method="POST">
-                    <input class="input search-bar" type="search" placeholder="Search...">
-                    <input class="submit search-btn" type="submit" name="search" value="SEARCH">
-                    <?php
-                     print("$output");
-                ?>
-                </form>
+                <!-- <form action="../server.php" method="POST"> -->
+                    <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search...">
+                    <!-- <input class="submit search-btn" type="submit" value="SEARCH"> -->
+                <!-- </form> -->
             </div>
             <div class="col">
 
@@ -221,30 +179,31 @@
                     <tr>
                         <td>
                             <form action="../server.php" method="POST">
-                                <input type="hidden" name="mat_name" value="<?php echo $row[0]?>">
+                            <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
+                            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                                 <button class="waves-effect waves-light btn matname-btn" type="submit"
-                                    name="open_stockcard">
+                                    name="view_open_stockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[1] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[2] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[3] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[4] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[5] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[6] ?>
-                        </td>
+                            </td>
                         <?php 
                             }
                         ?>
@@ -410,6 +369,25 @@
                 }
             }
         }
+
+        function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("sort");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
     </script>
 
 </body>

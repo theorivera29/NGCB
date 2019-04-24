@@ -251,13 +251,17 @@
                     materials.mat_name, 
                     categories.categories_name, 
                     materials.currentQuantity, 
-                    materials.mat_unit,
+                    unit.unit_name,
                     projects.projects_name,
                     materials.mat_notif
                     FROM materials 
                     INNER JOIN categories ON materials.mat_categ = categories.categories_id
                     INNER JOIN projects ON materials.mat_project = projects_id
-                    WHERE materials.mat_notif >= currentQuantity AND projects.projects_status = 'open';";
+                    INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                    INNER JOIN accounts ON accounts.accounts_id = projects.projects_mateng
+                    WHERE materials.mat_notif >= currentQuantity 
+                    AND projects.projects_status = 'open'
+                    AND accounts.accounts_id = '$account_id';";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
                 ?>

@@ -122,7 +122,7 @@
 
                 <div class="input-field col s5">
                     <input id="username" name="username" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z0-9]*" title="Input letters only" required>
+                        pattern="[A-Za-z0-9._]*" title="Input letters only" required>
                     <label for="username" class="create-account-field">Username</label>
                 </div>
 
@@ -136,11 +136,11 @@
                 <div class="col radio-container">
                     <h5>Account Type:</h5>
                     <div class="">
-                        <input id="radio-1" type="radio" name="radio-account" checked>
+                        <input id="radio-1" type="radio" name="radio-account" value="MatEng" checked>
                         <label for="radio-1">Materials Engineer</label>
                     </div>
                     <div class="">
-                        <input id="radio-2" type="radio" name="radio-account">
+                        <input id="radio-2" type="radio" name="radio-account" value="ViewOnly">
                         <label for="radio-2">View Only</label>
                     </div>
                 </div>

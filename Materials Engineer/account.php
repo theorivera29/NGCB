@@ -5,6 +5,10 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/Materials%20Engineer/loginpage.php');
     }
+    $account_id = "";
+    if(isset($_SESSION['account_id'])) {
+        $account_id = $_SESSION['account_id'];
+    }
   ?>
 
 <!DOCTYPE html>
@@ -129,10 +133,10 @@
                         $row = mysqli_fetch_row($result);
                     ?>
 
-            <form action="server.php" method="POST">
+            <form action="../server.php" method="POST">
                 <div class="row">
                     <input type="hidden" name="userid"
-                        value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
+                        value="<?php echo $account_id; ?>">
                     <div class="input-field col s5 account-username-field">
                         <input id="account-username" name="newusername" type="text" value=" <?php echo $row[0]?>">
                         <label class="active account-setting-label" for="newusername">Username</label>
@@ -163,8 +167,7 @@
                     ?>
                         <div class="col 12 account-btn">
                             <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
-                            <button class="btn waves-effect waves-light all-btn cancel-acc-btn" type="submit"
-                                name="edit_account">Cancel</button>
+                            <a class="btn waves-effect waves-light all-btn cancel-acc-btn" href="dashboard.php">Cancel</a>
                         </div>
                 </div>
             </form>

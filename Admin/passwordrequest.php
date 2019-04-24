@@ -121,7 +121,7 @@
                 <tbody>
                     <?php
                         $sql = "SELECT accounts.accounts_username, CONCAT(accounts.accounts_fname, ' ', accounts.accounts_lname), accounts.accounts_email,
-                                accounts.accounts_type, accounts.accounts_id FROM accounts INNER JOIN requests ON accounts.accounts_id = requests.requests_account;";
+                                accounts.accounts_type, accounts.accounts_id, request.req_id FROM accounts INNER JOIN request ON accounts.accounts_id = request.req_username;";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)) {
                     ?>
@@ -133,12 +133,40 @@
                         <td>
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
-                                <button type="submit" name="request_accept"
-                                    class="waves-effect waves-light btn modal-trigger all-btn">Accept</button>
+                                <button type="submit" name="request_accept"  href="#acceptRequest<?php echo $row[5]; ?>"
+                                    class="waves-effect waves-light btn modal-trigger all-btn">
+                                    Accept
+                                </button>
 
                                 <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
-                                <button type="submit" name="request_reject"
-                                    class="waves-effect waves-light btn modal-trigger all-btn">Reject</button>
+                                <button type="submit" name="request_reject"  href="#rejectRequest<?php echo $row[5]; ?>" 
+                                    class="waves-effect waves-light btn modal-trigger all-btn">
+                                    Reject
+                                </button>
+                                
+                                <div id="acceptRequest<?php echo $row[5]; ?>" class="modal modal-question">
+                                    <div class="modal-content">
+                                        <span class="modal-question-content">Are you sure you are accepting this request?</span>
+                                        <br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
+                                        <button type="submit" name="request_accept"
+                                            class="modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
+                                    </div>
+                                </div>
+
+                                <div id="rejectRequest<?php echo $row[5]; ?>" class="modal modal-question">
+                                    <div class="modal-content">
+                                        <span class="modal-question-content">Are you sure you are rejecting this request?</span>
+                                        <br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
+                                        <button type="submit" name="request_reject"
+                                            class="modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
+                                    </div>
+                                </div>
                             </form>
                         </td>
                     </tr>
@@ -152,12 +180,13 @@
     </div>
 
 
+
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        $(document).ready(function () {
+         $(document).ready(function () {
             $('.button-collapse').sideNav({
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });

@@ -6,7 +6,7 @@
     if(isset($_SESSION['loggedin'])) {
         if(isset($_SESSION['account_type'])) {
             $account_type = $_SESSION['account_type'];
-
+            echo $account_type;
             if (strcmp($account_type,"Admin") == 0) {
                 header("location: http://127.0.0.1/NGCB/Admin/admindashboard.php");
                 exit;
@@ -19,9 +19,6 @@
             }
         }
     }
-    if(isset($_SESSION['tasks'])) {
-        $task = $_SESSION['tasks'];
-    }
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +29,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link href="materialize_style.css" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="style.css">
 </head>
 

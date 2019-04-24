@@ -6,10 +6,10 @@
         session_start();
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']); 
-        $sql = "SELECT accounts_id, accounts_password, accounts_type FROM accounts WHERE accounts_username = '$username'";
+        $sql = "SELECT accounts_id, accounts_password, accounts_type FROM accounts WHERE accounts_username = '$username';";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
-        $hash_password = $row[1];
+        $hash_password = $row[2];
         if(/*password_verify($password, $hash_password)*/true) {
             $_SESSION['account_id']= $row[0];
             $_SESSION['username'] = $username; 
@@ -43,7 +43,7 @@
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $generated_password = substr(str_shuffle($characters), 0, 8);
 	    $password = password_hash($generated_password, PASSWORD_DEFAULT);
-        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        $account_type = mysqli_real_escape_string($conn, $_POST['radio-account']);
         $sql = "SELECT account_id from accounts;";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
@@ -169,8 +169,8 @@
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
-
     }
+
     if(isset($_POST['view_open_stockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
@@ -423,13 +423,13 @@
             mysqli_query($conn, $sql);
             $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Updated todo task $todo_task to done', $account_id);";
             mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
         } else {
             $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
             mysqli_query($conn, $sql);
             $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
             mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
         }        
     }
 
@@ -684,9 +684,9 @@
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
         $accounts_id = $row[0];
-        $sql = "INSERT INTO requests (requests_account) VALUES ('$accounts_id')";
-        mysqli_query($conn, $sql); 
         $password_request_date = date("Y-m-d G:i:s");
+        $sql = "INSERT INTO request (req_username, req_date) VALUES ('$accounts_id', '$password_request_date')";
+        mysqli_query($conn, $sql); 
         $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$password_request_date', 'Requested to reset password', $account_id);";
         mysqli_query($conn, $sql); 
         header("location: http://127.0.0.1/NGCB/index.php");        
@@ -697,20 +697,20 @@
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $generated_password = substr(str_shuffle($characters), 0, 8);
         $password = password_hash($generated_password, PASSWORD_DEFAULT);
-        $sql = "SELECT accounts_email, CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts;";
+        $sql = "SELECT accounts_email, CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts WHERE accounts_id = '$request_accountID';";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_row($result);
         $request_email = $row[0];
         $request_name = $row[1];
-        $accept_date = date("Y-m-d G:i:s");
+        $reject_date = date("Y-m-d G:i:s");
         mysqli_query($conn, "UPDATE accounts SET accounts_password = '$password' WHERE accounts_id = '$request_accountID';");
         mysqli_query($conn, "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$reject_date', 'Accepted request to reset password of '.$request_name, 1);");
-        mysqli_query($conn, "DELETE FROM request WHERE request_account = '$request_accountID';");
+        mysqli_query($conn, "DELETE FROM request WHERE req_username = '$request_accountID';");
         try {
             $mail->addAddress($request_email, $request_name);
             $mail->isHTML(true);                                  
             $mail->Subject = 'Password Reset';
-            $mail->Body    = 'Hello '.$request_name.'Your request to reset your password has been approved. Please use the temporary password below to login.
+            $mail->Body    = 'Hello '.$request_name.' Your request to reset your password has been approved. Please use the temporary password below to login.
                             Please change your password after logging in. <br /> <br /> Password: <b>'.$generated_password.'</b>';
             $mail->send();
         } catch (Exception $e) {}
@@ -725,7 +725,7 @@
         $request_name = $row[0];
         $reject_date = date("Y-m-d G:i:s");
         mysqli_query($conn, "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$reject_date', 'Rejected request to reset password of $request_name', 1);");
-        mysqli_query($conn, "DELETE FROM request WHERE request_account = '$request_accountID';");
+        mysqli_query($conn, "DELETE FROM request WHERE req_username = '$request_accountID';");
         header("location: http://127.0.0.1/NGCB/Admin/passwordrequest.php");
     }
 

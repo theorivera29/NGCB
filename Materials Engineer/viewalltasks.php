@@ -82,29 +82,32 @@
         <table id="sort" class="striped centered view-all-tasks">
             <thead class="view-tasks-head">
                 <tr class="task-headers">
-                    <th onclick="sortTable(0)">Date</th>
-                    <th onclick="sortTable(1)">Task</th>
-                    <th onclick="sortTable(2)">Status</th>
+                    <th onclick="sortTable(0)">Date<i
+                        class="material-icons sort-icon">code</i></th>
+                    <th onclick="sortTable(1)">Task<i
+                        class="material-icons sort-icon">code</i></th>
+                    <th onclick="sortTable(2)">Status<i
+                        class="material-icons sort-icon">code</i></th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody class="task-table-container">
+            <tbody class="all-task-table-container">
                 <?php 
                     $sql = "SELECT * FROM todo WHERE todoOf = '$account_id' ORDER BY todo_date;";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
                 ?>
                 <tr>
-                    <td class="task-data-table1">
+                    <td class="all-task-data-table1">
                         <?php echo $row[1] ;?>
                     </td>
-                    <td class="task-data-table2">
+                    <td class="all-task-data-table2">
                         <?php echo $row[2] ;?>
                     </td>
-                    <td class="task-data-table">
+                    <td class="all-task-data-table">
                         <?php echo $row[3] ;?>
                     </td>
-                    <td class="task-data-table">
+                    <td class="all-task-data-table">
                         <form action="../server.php" method="POST">
                             <?php
                                 if(strcasecmp($row[3], 'in progress') == 0) {
@@ -154,7 +157,7 @@
     </div>
 
 
-    <!--Import jQuery before materialize.js-->
+    <!--Import jQuery materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>

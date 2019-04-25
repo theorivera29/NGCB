@@ -155,7 +155,7 @@
             }
         ?>
         <div class="view-inventory-container">
-            <table id="sort" class="centered view-inventory">
+            <table id="sort" class="centered striped view-inventory">
                 <thead class="view-inventory-head">
                     <tr>
                         <th onclick="sortTable(0)">Particulars</th>

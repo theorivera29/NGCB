@@ -58,8 +58,7 @@
                         <label class="active" for="username">Username</label>
                     </div>
                     <div class="f-login password input-field col s6 m12">
-                        <input placeholder="Your password.." id="field-login-password" name="password" type="password"
-                            required>
+                        <input placeholder="Your password.." id="field-login-password" name="password" type="password" required>
                         <label class="active" for="password">Password</label>
                     </div>
                     <div class="row">

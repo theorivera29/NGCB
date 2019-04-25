@@ -24,10 +24,6 @@ body {
     padding-top: 2%;
 }
 
-
-
-
-
 .materialize-textarea {
     border-radius: 4% !important;
 }
@@ -484,6 +480,12 @@ i.right {
     background-color: #FFFFFF;
 }
 
+/*Sortable table head*/
+.sort-icon{
+    transform: rotate(90deg) !important;
+    font-weight: bold;
+}
+
 /*Add To-do Container*/
 .container-addtask {
     margin-left: 2% !important;
@@ -748,6 +750,31 @@ textarea.materialize-textarea {
 .view-all-tasks{
     margin-top: 2% !important;
     border: 1px solid black;
+}
+
+.all-task-table-container {
+    height: 5px !important;
+    max-height: 5% !important;
+}
+
+.all-task-data-table {
+    white-space: nowrap;
+    min-height: 25px;
+    position: relative;
+    width: 30%;
+    font-size: 3vmin !important;
+}
+
+.all-task-data-table1 {
+    overflow-x: hidden;
+    width: 25%;
+    font-size: 3vmin !important;
+}
+
+.all-task-data-table2 {
+    overflow-x: hidden;
+    width: 45%;
+    font-size: 3vmin !important;
 }
 
 /*Projects*/

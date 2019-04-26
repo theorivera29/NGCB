@@ -312,7 +312,7 @@ $mat_name = $_GET['mat_name'];
                 <div class="row">
                     <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
-                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
+                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
                         <label for="newmaterialname">Material Name:</label>
                     </div>
                     <div class="input-field col s2 unit-field">
@@ -333,15 +333,15 @@ $mat_name = $_GET['mat_name'];
                     </div>
                     <div class="input-field col s4 threshold-field">
                         <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
-                            title="Input numbers only" required>
+                            title="Input numbers only">
                         <label for="minquantity">Item threshold:</label>
                     </div>
                 </div>
 
                 <div class="col s12 edit-matname-btn">
                         <input type="hidden" name="update_from" value="sitestockcard">
-                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materialssite" type="submit">Save</button>
-                        <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
+                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials" type="submit">Save</button>
+                        <a class="btn waves-effect waves-light cancel-mat-btn" >Cancel</a>
 
                     </div>
 

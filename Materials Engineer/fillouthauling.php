@@ -128,7 +128,7 @@
                                     <h5 id="panel-text date-span">Date:</h5>
                                 </div>
                                 <div class="col">
-                                    <input type="date" class="todo-picker hauling-date" name="tododate" min="2019-01-01"
+                                    <input type="date" class="todo-picker hauling-date" name="haulingdate" min="2019-01-01"
                                         required>
                                 </div>
 

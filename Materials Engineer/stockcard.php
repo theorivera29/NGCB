@@ -326,7 +326,7 @@ $projects_name = $_GET['projects_name'];
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                     <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
-                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
+                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
                         <label for="newmaterialname">Material Name:</label>
                     </div>
                     <div class="input-field col s2 unit-field">
@@ -347,7 +347,7 @@ $projects_name = $_GET['projects_name'];
                     </div>
                     <div class="input-field col s4 threshold-field">
                         <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
-                            title="Input numbers only" required>
+                            title="Input numbers only">
                         <label for="minquantity">Item threshold:</label>
                     </div>
                 </div>

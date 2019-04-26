@@ -103,16 +103,19 @@
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>
+                            <th>Unit</th>
                             <th>Delivered Material as of 
                             <?php echo date("F Y"); ?>
                             </th>
                             <th>Material Pulled out as of
                             <?php echo date("F Y"); ?>
                             </th>
+                            <th>Unit</th>
                             <th>Accumulate of Materials Delivered</th>
                             <th>Material on Site as of 
                             <?php echo date("F Y"); ?>
                             </th>
+                            <th>Unit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -138,18 +141,21 @@
                             <td>
                                 <?php echo $row[1] ?>
                             </td>
+                            <td>Unit</td>
                             <td>
                                 <?php echo $row[2] ?>
                             </td>
                             <td>
                                 <?php echo $row[3] ?>
                             </td>
+                            <td>Unit</td>
                             <td>
                                 <?php echo $row[4] ?>
                             </td>
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
+                            <td>Unit</td>
                         </tr>
 
                         <?php    

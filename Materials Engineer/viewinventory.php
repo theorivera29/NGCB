@@ -145,7 +145,10 @@
                     placeholder="Search...">
 
             </div>
-
+           
+           <a href="#addUnitModal"
+                class="waves-effect waves-light btn modal-trigger add-unit-btn add-unit-btn-viewinventory">
+                Add Unit</a>
             <a href="#addmaterialModal"
                 class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
                 Add Material</a>
@@ -169,7 +172,7 @@
                             <?php echo date("F Y"); ?>
                         </th>
                         <th>Unit</th>
-                        <th onclick="sortTable(5)">Accumulate of Materials Delivered</th>
+                        <th onclick="sortTable(5)">Accumulated Materials Delivered In</th>
                         <th onclick="sortTable(6)">Material on Site as of
                             <?php echo date("F Y"); ?>
                         </th>
@@ -396,6 +399,30 @@
     ?>
         </div>
     </div>
+    
+    <!-- Add Unit Modal-->
+    
+    <div id="addUnitModal" class="modal modal-fixed-footer add-unit-modal">
+       <form action="../server.php" method="POST">
+            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+            <div class="modal-content add-categ-modal">
+                <span id="modal-title">Add Unit</span>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="category_name" type="text" class="validate field-category" pattern="[A-Za-z0-9\s]*"
+                            title="Follow the format. Example: mtrs" required>
+                        <label for="category_name">Add Unit:</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
+                <button class="modal-close waves-effect waves-light btn-flat save-mat-btn" type="submit"
+                    name="create_category">Save</button>
+            </div>
+        </form>
+    </div>
+    
 
     <!-- ADD SITE MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer add-mat-modal">

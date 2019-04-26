@@ -138,8 +138,6 @@
                     <div class="">
                         <input id="radio-1" type="radio" name="account_type" value="MatEng" checked>
                         <label for="radio-1">Materials Engineer</label>
-                    </div>
-                    <div class="">
                         <input id="radio-2" type="radio" name="account_type" value="ViewOnly">
                         <label for="radio-2">View Only</label>
                     </div>

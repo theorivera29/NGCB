@@ -98,10 +98,6 @@
                     <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
                         href="logs.php">Logs</a>
                 </li>
-                <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
-                        href="report.php">Report</a>
-                </li>
             </ul>
         </div>
     </nav>

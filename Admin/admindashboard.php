@@ -96,10 +96,6 @@
                     <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
                         href="logs.php">Logs</a>
                 </li>
-                <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
-                        href="report.php">Report</a>
-                </li>
             </ul>
         </div>
     </nav>
@@ -107,34 +103,34 @@
 
     <div class="cards-container-admin account-container-admin" onclick="location.href='listofaccounts.php';">
         <p class="text-headers">Accounts</p>
-        <p class="sub-header-number">
+        <h3 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM accounts;")) - 3;
                 echo $num_rows;
             ?>            
-        </p>
+        </h3>
         <p class="sub-header-text">active accounts</p>
     </div>
 
     <div class="cards-container-admin password-reset-container" onclick="location.href='passwordrequest.php';">
         <p class="text-headers">Password Reset</p>
-        <p class="sub-header-number">
+        <h3 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM request;"));
                 echo $num_rows;
             ?>    
-        </p>
+        </h3>
         <p class="sub-header-text">requesting for a new password</p>
     </div>
 
     <div class="cards-container-admin project-status-container"onclick="location.href='projects.php';">
         <p class="text-headers">Projects</p>
-        <p class="sub-header-number">
+        <h3 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects;")) - 3;
                 echo $num_rows;
             ?>    
-        </p>
+        </h3>
         <p class="sub-header-text">number of  projects</p>
     </div>
 

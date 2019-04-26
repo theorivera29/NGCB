@@ -93,12 +93,7 @@
                         href="projects.php">Projects</a>
                 </li>
                 <li>
-                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue"
-                        href="logs.php">Logs</a>
-                </li>
-                <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
-                        href="report.php">Report</a>
+                    <i class="material-icons left">folder</i><a class="waves-effect waves-blue" href="logs.php">Logs</a>
                 </li>
             </ul>
         </div>
@@ -128,8 +123,8 @@
 
                 <div class="input-field col s5">
                     <input id="email" name="email" type="text" class="validate create-account-field"
-                        pattern="[A-Za-z0-9._]*@[A-Za-z]*\.[A-Za-z]*" title="Follow the format. Example: email@email.com"
-                        required>
+                        pattern="[A-Za-z0-9._]*@[A-Za-z]*\.[A-Za-z]*"
+                        title="Follow the format. Example: email@email.com" required>
                     <label for="email" class="create-account-field">Email</label>
                 </div>
 
@@ -144,8 +139,9 @@
                 </div>
             </div>
             <div class="col">
-                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit"
-                    name="create_account">Create An Account</button>
+                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit" class="validate"
+                  id="#accountCreation">Create An Account</button>
+
             </div>
         </form>
     </div>

@@ -308,7 +308,6 @@ $mat_name = $_GET['mat_name'];
         <div class="edit-mat-container">
             <form action="../server.php" method="POST">
                 <div class="row">
-                   <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                     <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
                         <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
@@ -338,7 +337,7 @@ $mat_name = $_GET['mat_name'];
                 </div>
 
                 <div class="col s12 edit-matname-btn">
-                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials" type="submit">Save</button>
+                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materialssite" type="submit">Save</button>
                         <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
 
                     </div>

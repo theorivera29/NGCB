@@ -243,6 +243,7 @@
                         <div class="row">
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="categories_id" value="<?php echo $row[0]?>">
+                                <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                                 <input type="hidden" name="account_type"
                                     value="<?php echo $_SESSION['account_type']; ?>">
                                 <button class="waves-effect waves-light btn view-inventory-btn" type="submit"

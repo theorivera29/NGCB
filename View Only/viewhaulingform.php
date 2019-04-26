@@ -201,7 +201,7 @@
                                 </div>
                             </div>
                             <div class="col s6">
-                                <table class="striped centered">
+                                <table class="centered">
                                     <thead>
 
                                         <tr>

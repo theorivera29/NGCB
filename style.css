@@ -727,7 +727,7 @@ textarea.materialize-textarea {
 }
 
 .materials-left{
-    table-layout: fixed;
+    
 }
 
 
@@ -1227,7 +1227,7 @@ select[name=mat_unit] {
     margin-right: 2%;
 }
 
-.item-categories-head>tr>th:hover {
+.item-categories-head>tr>th {
     cursor: pointer;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
@@ -1649,6 +1649,11 @@ select[name=mat_unit] {
     z-index: 2;
     transition: all 100 ms ease-in;
     transform: scale(1.1);
+}
+
+.sub-header-number{
+    font-size: 3vmin !important;
+    color: yellow;
 }
 
 .text-headers {

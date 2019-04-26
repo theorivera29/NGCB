@@ -86,8 +86,8 @@
     <div class="site-materials-container">
     <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search"
                     placeholder="Search...">
-        <div class="lighten-5">
-            <table id = "sort" class="centered site-materials-content">
+        <div>
+            <table id = "sort" class="centered site-materials-content striped">
                 <thead class="site-materials-head">
                     <tr>
                     <th onClick="javascript:SortTable(0,'T');">Particulars</th>

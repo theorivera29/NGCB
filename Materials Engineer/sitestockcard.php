@@ -16,7 +16,7 @@ $mat_name = $_GET['mat_name'];
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -70,7 +70,7 @@ $mat_name = $_GET['mat_name'];
         </div>
     </nav>
 
-
+    <span class="mat-name-title"><?php echo $mat_name?></span>
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
@@ -121,7 +121,23 @@ $mat_name = $_GET['mat_name'];
                             </td>
 
                         </tr>
+                        <?php 
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                
+                <table class="centered deliverin striped">
+                    <thead class="deliverin-head">
+                        <tr>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Supplied By</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
                         <?php 
                         $sql_devIn = "SELECT deliveredin.delivered_date, 
                         deliveredin.delivered_quantity, 
@@ -161,10 +177,10 @@ $mat_name = $_GET['mat_name'];
                         </tr>
                         <?php 
                         }
-                        }
                         ?>
                     </tbody>
                 </table>
+                
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_deliveredinsite">Save</button>
@@ -176,7 +192,7 @@ $mat_name = $_GET['mat_name'];
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
-                <table class="centered usagein striped">
+                 <table class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
                             <th>Date</th>
@@ -218,6 +234,26 @@ $mat_name = $_GET['mat_name'];
                                 <input id="us_area" name="us_area" type="text" class="validate" required>
                             </td>
                         </tr>
+                        
+                        
+                        <?php
+                        
+                        }
+                            ?>
+                </table>
+                <table class="centered usagein striped">
+                    <thead class="usagein-head">
+                        <tr>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Pulled Out By</th>
+                            <th>Area of Usage</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
                         <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
@@ -256,7 +292,7 @@ $mat_name = $_GET['mat_name'];
                             </td>
                         </tr>
                         <?php
-                        }
+                        
                         }
                             ?>
                 </table>
@@ -272,7 +308,6 @@ $mat_name = $_GET['mat_name'];
         <div class="edit-mat-container">
             <form action="../server.php" method="POST">
                 <div class="row">
-                   <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                     <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
                         <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
@@ -302,7 +337,7 @@ $mat_name = $_GET['mat_name'];
                 </div>
 
                 <div class="col s12 edit-matname-btn">
-                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials" type="submit">Save</button>
+                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materialssite" type="submit">Save</button>
                         <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
 
                     </div>

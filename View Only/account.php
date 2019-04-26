@@ -15,7 +15,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -127,6 +127,10 @@
                         <input id="account-confirmpassword" name="confirmpassword" type="password" value="">
                         <label class="active account-setting-label" for="confirmpassword">Confirm Password</label>
                     </div>
+                    <div class="input-field col s5">
+                        <input type="checkbox" id="checkbox-new-password" onclick="showNewPassword()"/>
+                      <label for="checkbox-new-password">Show new password</label>
+                    </div>
 
                     <?php 
                         }
@@ -171,6 +175,20 @@
 
         btn.addEventListener('click', liGenerate);
         document.addEventListener('click', liDelete);
+        
+        function showNewPassword() {
+  var show = document.getElementById("account-password");
+  if (show.type === "password") {
+    show.type = "text";
+  } else {
+    show.type = "password";
+  }
+var showconfirm = document.getElementById("account-confirmpassword");
+  if (showconfirm.type === "password") {
+    showconfirm.type = "text";
+  } else {
+    showconfirm.type = "password";
+  }
     </script>
 
 </body>

@@ -15,7 +15,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -105,19 +105,19 @@
     </nav>
 
 
-    <div class="cards-container-admin account-container-admin">
+    <div class="cards-container-admin account-container-admin" onclick="location.href='listofaccounts.php';">
         <p class="text-headers">Accounts</p>
         <p class="sub-header-number"></p>
         <p class="sub-header-text">active accounts</p>
     </div>
 
-    <div class="cards-container-admin password-reset-container">
+    <div class="cards-container-admin password-reset-container" onclick="location.href='passwordrequest.php';">
         <p class="text-headers">Password Reset</p>
         <p class="sub-header-number"></p>
         <p class="sub-header-text">requesting for a new password</p>
     </div>
 
-    <div class="cards-container-admin project-status-container">
+    <div class="cards-container-admin project-status-container"onclick="location.href='projects.php';">
         <p class="text-headers">Projects</p>
         <p class="sub-header-number"></p>
         <p class="sub-header-number"></p>

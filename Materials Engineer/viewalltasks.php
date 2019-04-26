@@ -20,7 +20,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -83,11 +83,11 @@
             <thead class="view-tasks-head">
                 <tr class="task-headers">
                     <th onclick="sortTable(0)">Date<i
-                        class="material-icons sort-icon">code</i></th>
+                        class="material-icons tiny sort-icon">code</i></th>
                     <th onclick="sortTable(1)">Task<i
-                        class="material-icons sort-icon">code</i></th>
+                        class="material-icons tiny sort-icon">code</i></th>
                     <th onclick="sortTable(2)">Status<i
-                        class="material-icons sort-icon">code</i></th>
+                        class="material-icons tiny sort-icon">code</i></th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -119,6 +119,8 @@
                             <div id="doneBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to click done?</span>
+                                    <br>
+                                    <?php echo $row[2];?>
                                 </div>
                                 <div class="modal-footer">
                                     <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
@@ -136,6 +138,8 @@
                             <div id="clearBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to clear this task</span>
+                                    <br>
+                                    <?php echo $row[2];?>
                                 </div>
                                 <div class="modal-footer">
                                     <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>

@@ -17,7 +17,7 @@ $projects_name = $_GET['projects_name'];
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -75,17 +75,56 @@ $projects_name = $_GET['projects_name'];
     </nav>
 
 
+    <h3 class="mat-name-title"><?php echo $mat_name?></h3>
+
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
-            <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
+            <li class="tab col s3"><a href="#deliverin">Delivered In</a></li>
             <li class="tab col s3"><a href="#usagein">Usage In</a></li>
             <li class="tab col s3"><a href="#editmaterial">Edit Material</a></li>
         </ul>
     </div>
+    
 
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
+
+            <table id = "sort" class="centered deliverin striped delivered-input-table">
+                    <thead class="deliverin-head">
+                        <tr>
+                            <th onclick="sortTable(0)">Date</th>
+                            <th onclick="sortTable(1)">Quantity</th>
+                            <th onclick="sortTable(2)">Unit</th>
+                            <th onclick="sortTable(3)">Supplied By</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="stockcard-entry">
+                           
+                        </tr>
+                            <tr class="deliverin-data">
+                            <td>
+                                <input type="date" min="2019-01-01" name="dev_date" required>
+                            </td>
+                            <td>
+                                <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
+                                    pattern="[0-9]*" title="Input numbers only" required>
+                            </td>
+                            <td>
+                                <input type="hidden" name="dev_unit" value="<?php echo $row[2]; ?>">
+                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
+                                    required>
+                            </td>
+                            <td>
+                                <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <span>List of Delivered In Material</span>
                 <table id = "sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
@@ -111,22 +150,7 @@ $projects_name = $_GET['projects_name'];
                             <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-                            <td>
-                                <input type="date" min="2019-01-01" name="dev_date" required>
-                            </td>
-                            <td>
-                                <input id="delivered_quantity" name="dev_quantity" type="text" class="validate"
-                                    pattern="[0-9]*" title="Input numbers only" required>
-                            </td>
-                            <td>
-                                <input type="hidden" name="dev_unit" value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
-                                    required>
-                            </td>
-                            <td>
-                                <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
-                            </td>
-
+                            
                         </tr>
 
                         <?php 
@@ -180,6 +204,8 @@ $projects_name = $_GET['projects_name'];
         </div>
     </div>
 
+    
+    <!--Usage In-->
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
@@ -227,6 +253,21 @@ $projects_name = $_GET['projects_name'];
                                 <input id="us_area" name="us_area" type="text" class="validate" required>
                             </td>
                         </tr>
+                      </tbody>
+                </table>
+                <span>List of Usage In Material</span>
+                <table id = "sort" class="centered usagein striped">
+                    <thead class="usagein-head">
+                        <tr>
+                            <th onclick="sortTable(0)">Date</th>
+                            <th onclick="sortTable(1)">Quantity</th>
+                            <th onclick="sortTable(2)">Unit</th>
+                            <th onclick="sortTable(3)">Pulled Out By</th>
+                            <th onclick="sortTable(4)">Area of Usage</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
                         <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
@@ -253,6 +294,8 @@ $projects_name = $_GET['projects_name'];
                         ?>
                       </tbody>
                 </table>
+
+                
                 <div>
                 <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";

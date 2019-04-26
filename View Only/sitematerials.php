@@ -15,7 +15,7 @@
 <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 
 </head>
@@ -90,20 +90,23 @@
             <table id = "sort" class="centered site-materials-content">
                 <thead class="site-materials-head">
                     <tr>
-                        <th onclick="sortTable(0)">Particulars</th>
-                        <th onclick="sortTable(1)">Category</th>
-                        <th onclick="sortTable(2)">Previous Material Stock</th>
-                        <th onclick="sortTable(3)">Delivered Material as of
+                    <th onClick="javascript:SortTable(0,'T');">Particulars</th>
+                        <th onClick="javascript:SortTable(1,'T');">Category</th>
+                        <th onClick="javascript:SortTable(2,'N');">Previous Material Stock</th>
+                        <th onClick="javascript:SortTable(3,'T');">Unit</th>
+                        <th onClick="javascript:SortTable(4,'N');">Delivered Material as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onclick="sortTable(4)">Material pulled out as of
+                        <th onClick="javascript:SortTable(5,'N');">Material Pulled out as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onclick="sortTable(5)">Accumulated Materials Delivered</th>
-                        <th onclick="sortTable(6)">Material on site as of
+                        <th onClick="javascript:SortTable(6,'T');">Unit</th>
+                        <th onClick="javascript:SortTable(7,'N');">Accumulate of Materials Delivered</th>
+                        <th onClick="javascript:SortTable(8,'N');">Material on Site as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onclick="sortTable(7)">Project</th>
+                        <th onClick="javascript:SortTable(9,'T');">Unit</th>
+                        <th onClick = "javascript:SortTable(10,'T');">Project</th>
                     </tr>
                 </thead>
 
@@ -122,19 +125,23 @@
                         $categ = $data['categories_name'];
                     ?>
                     <?php 
-                        $sql = "SELECT 
-                        materials.mat_name, 
-                        categories.categories_name,
-                        materials.mat_prevStock, 
-                        materials.delivered_material, 
-                        materials.pulled_out, 
-                        materials.accumulated_materials,
-                        materials.currentQuantity,
-                        projects.projects_name
-                        FROM materials 
-                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                        INNER JOIN projects ON materials.mat_project = projects.projects_id
-                        WHERE categories.categories_name = '$categ';";
+                         $sql = "SELECT 
+                         mat_name,
+                         categories_name, 
+                         mat_prevStock, 
+                         unit_name,
+                         delivered_material, 
+                         materials.pulled_out, 
+                         unit_name,
+                         accumulated_materials,
+                         currentQuantity,
+                         unit_name,
+                         projects_name
+                         FROM materials 
+                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                         INNER JOIN projects ON materials.mat_project = projects.projects_id
+                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                         WHERE categories.categories_name = '$categ';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
@@ -145,7 +152,7 @@
                                 <button class="waves-effect waves-light btn matname-btn" type="submit" name="view_open_sitestockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
-                        <td>
+                            <td>
                             <?php echo $row[1] ?>
                         </td>
                         <td>
@@ -153,7 +160,7 @@
                         </td>
                         <td>
                             <?php echo $row[3] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
@@ -166,14 +173,23 @@
                         <td>
                             <?php echo $row[7] ?>
                         </td>
+                        <td>
+                            <?php echo $row[8] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[9] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[10] ?>
+                        </td>
                         <?php 
                             }
                         ?>
                     </tr>
+                    <?php    
+                            }
+                        ?>
                 </tbody>
-                <?php 
-                    }
-                ?>
             </table>
             
         </div>
@@ -237,42 +253,56 @@
 
         });
 
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("sort");
-            switching = true;
-            dir = "asc";
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
-                } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
+var TableIDvalue = "sort";
+var TableLastSortedColumn = -1;
+function SortTable() {
+var sortColumn = parseInt(arguments[0]);
+var type = arguments.length > 1 ? arguments[1] : 'T';
+var dateformat = arguments.length > 2 ? arguments[2] : '';
+var table = document.getElementById(TableIDvalue);
+var tbody = table.getElementsByTagName("tbody")[0];
+var rows = tbody.getElementsByTagName("tr");
+var arrayOfRows = new Array();
+type = type.toUpperCase();
+dateformat = dateformat.toLowerCase();
+for(var i=0, len=rows.length; i<len; i++) {
+	arrayOfRows[i] = new Object;
+	arrayOfRows[i].oldIndex = i;
+	var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g,"");
+	if( type=='D' ) { 
+        arrayOfRows[i].value = GetDateSortingKey(dateformat,celltext);
+    } else {
+		var re = type=="N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
+		arrayOfRows[i].value = celltext.replace(re,"").substr(0,25).toLowerCase();
+		}
+	}
+if (sortColumn == TableLastSortedColumn) { 
+    arrayOfRows.reverse(); 
+} else {
+	TableLastSortedColumn = sortColumn;
+	switch(type) {
+		case "N" : arrayOfRows.sort(CompareRowOfNumbers); break;
+		default  : arrayOfRows.sort(CompareRowOfText);
+	}
+}
+var newTableBody = document.createElement("tbody");
+for(var i=0, len=arrayOfRows.length; i<len; i++) {
+	newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
+}
+table.replaceChild(newTableBody,tbody);
+} // function SortTable()
+
+function CompareRowOfText(a,b) {
+var aval = a.value;
+var bval = b.value;
+return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
+} // function CompareRowOfText()
+
+function CompareRowOfNumbers(a,b) {
+var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
+var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
+return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
+} // function CompareRowOfNumbers()
 
         function myFunction() {
             var input, filter, table, tr, td, i, txtValue;

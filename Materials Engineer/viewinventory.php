@@ -21,7 +21,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -139,16 +139,21 @@
             if(strcmp($projects_status, "open") == 0) {
         ?>
         <div class="row">
-            <div class="col 6 m4">
+            <div class="col s6">
 
-                <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search"
+                <input class="input search-bar mat-eng-search-bar" id="myInput" onkeyup="myFunction()" type="search"
                     placeholder="Search...">
 
             </div>
+                <div class="col s6 right-align">
+                    <a href="#addUnitModal"
+                        class="waves-effect waves-light btn modal-trigger add-unit-btn add-unit-btn-viewinventory">
+                        Add Unit</a>
+                    <a href="#addmaterialModal"
+                        class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
+                        Add Material</a>
 
-            <a href="#addmaterialModal"
-                class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
-                Add Material</a>
+                </div>
         </div>
 
         <?php 
@@ -169,7 +174,7 @@
                             <?php echo date("F Y"); ?>
                         </th>
                         <th>Unit</th>
-                        <th onclick="sortTable(5)">Accumulate of Materials Delivered</th>
+                        <th onclick="sortTable(5)">Accumulated Materials Delivered In</th>
                         <th onclick="sortTable(6)">Material on Site as of
                             <?php echo date("F Y"); ?>
                         </th>
@@ -203,18 +208,23 @@
 
                     <?php 
                             $sql = "SELECT 
-                            materials.mat_name,
-                            categories.categories_name, 
-                            materials.mat_prevStock, 
-                            materials.delivered_material, 
+                            mat_name,
+                            categories_name, 
+                            mat_prevStock, 
+                            unit_name,
+                            delivered_material, 
                             materials.pulled_out, 
-                            materials.accumulated_materials,
-                            materials.currentQuantity,
-                            projects.projects_name
+                            unit_name,
+                            accumulated_materials,
+                            currentQuantity,
+                            unit_name,
+                            projects_name
                             FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             INNER JOIN projects ON materials.mat_project = projects.projects_id
-                            WHERE categories.categories_name = '$categ';";
+                            INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                            WHERE categories.categories_name = '$categ' AND
+                            projects.projects_name = '$projects_name';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
@@ -233,21 +243,27 @@
                         <td>
                             <?php echo $row[2] ?>
                         </td>
-                        <td>Unit</td>
                         <td>
                             <?php echo $row[3] ?>
                         </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
-                        <td>Unit</td>
                         <td>
                             <?php echo $row[5] ?>
                         </td>
                         <td>
                             <?php echo $row[6] ?>
                         </td>
-                        <td>Unit</td>
+                        <td>
+                            <?php echo $row[7] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[8] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[9] ?>
+                        </td>
                         <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
@@ -396,6 +412,30 @@
     ?>
         </div>
     </div>
+
+    <!-- Add Unit Modal-->
+
+    <div id="addUnitModal" class="modal modal-fixed-footer add-unit-modal">
+        <form action="../server.php" method="POST">
+            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+            <div class="modal-content add-categ-modal">
+                <span id="modal-title">Add Unit</span>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="category_name" type="text" class="validate field-category" pattern="[A-Za-z0-9\s]*"
+                            title="Follow the format. Example: mtrs" required>
+                        <label for="category_name">Add Unit:</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
+                <button class="modal-close waves-effect waves-light btn-flat save-mat-btn" type="submit"
+                    name="create_category">Save</button>
+            </div>
+        </form>
+    </div>
+
 
     <!-- ADD SITE MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer add-mat-modal">

@@ -14,7 +14,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -138,8 +138,6 @@
                     <div class="">
                         <input id="radio-1" type="radio" name="account_type" value="MatEng" checked>
                         <label for="radio-1">Materials Engineer</label>
-                    </div>
-                    <div class="">
                         <input id="radio-2" type="radio" name="account_type" value="ViewOnly">
                         <label for="radio-2">View Only</label>
                     </div>

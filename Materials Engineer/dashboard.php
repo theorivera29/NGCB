@@ -16,7 +16,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 
@@ -125,7 +125,7 @@
                             <h5 id="panel-text">Date:</h5>
                         </div>
                         <div class="col s4">
-                            <input type="date" class="todo-picker" name="tododate" min="2019-01-01" required>
+                            <input type="date" class="todo-picker" name="tododate" id="dateID" required>
                         </div>
                     </div>
                     <input type="hidden" name="todoOf"
@@ -146,7 +146,10 @@
         </div>
 
         <!--To-do Container-->
+       
         <h5 id="panel-header-task">Today's To-do Task</h5>
+        <a class="waves-effect waves-light btn task-btn" href="viewalltasks.php">View All Task</a>
+       
         <div class="col s7 container-task-todo">
             <div class="container-all-task">
                 <table class="striped centered view-tasks">
@@ -164,6 +167,7 @@
                             $date_today = date("Y-m-d");
                             $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id && todo_date = '$date_today' ORDER BY todo_task;";
                             $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0){
                             while($row = mysqli_fetch_row($result)) {
                         ?>
                         <tr>
@@ -194,7 +198,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
-                                            <button type="submit" name="todo_update"
+                                            <button type="submit" name="todo_updatedashboard"
                                                 class="modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
@@ -209,10 +213,12 @@
                                         <div class="modal-content">
                                             <span class="modal-question-content">Are you sure you want to clear this
                                                 task?</span>
+                                                <br>
+                                            <?php echo $row[2];?>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
-                                            <button type="submit" name="todo_update"
+                                            <button type="submit" name="todo_updatedashboard"
                                                 class="modal-close waves-effect waves-red btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
@@ -224,10 +230,16 @@
                         </tr>
                         <?php    
                             }
+                            } else {
+                            ?>
+                        <tr>
+                        <h1>No task today</h1>
+                        </tr>
+                        <?php
+                            }
                         ?>
                     </tbody>
                 </table>
-                <a class="waves-effect waves-light btn task-btn" href="viewalltasks.php">View All Task</a>
             </div>
         </div>
     </div>
@@ -307,6 +319,20 @@
             });
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
+
+            //Display Only Date till today // 
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var today = year + '-' + month + '-' + day;
+            $('#dateID').attr('min', today);
+
         });
 
         //For the length of textarea todo

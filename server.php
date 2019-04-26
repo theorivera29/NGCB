@@ -385,9 +385,6 @@
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
         $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);";
-        $delivered_date = mysqli_real_escape_string($conn, $_POST['date']);
-        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
-        $supplied_by = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
         $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?");
         $stmt->bind_param("s", $projects_name);
         $stmt->execute();
@@ -396,7 +393,7 @@
         $stmt->fetch();
         $stmt = $conn->prepare("INSERT INTO materials
         (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);");
         $stmt->bind_param("siiiiiiiii", $mat_name, $mat_prevStock, $mat_project, $mat_unit, $mat_categ, $mat_notif, $delivered_quantity, $pulled_out, $accumulated_materials, $delivered_material);
         $mat_prevStock = 0;
         $pulled_out = 0;
@@ -499,6 +496,34 @@
             $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
             mysqli_query($conn, $sql);
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
+        }        
+    }
+
+    if(isset($_POST['todo_updatedashboard'])) {
+        $todo_id = $_POST['todo_id'];
+        $todo_status = $_POST['todo_status'];
+        $sql = "SELECT todo_task FROM todo WHERE todo_id = '$todo_id';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $todo_task = $row[0];
+        session_start();
+        $account_id = "";
+        if(isset($_SESSION['account_id'])) {
+            $account_id = $_SESSION['account_id'];
+        }
+        $update_todo_date = date("Y-m-d G:i:s");
+        if(strcasecmp($todo_status, 'in progress') == 0) {
+            $sql = "UPDATE todo SET todo_status = 'done' WHERE todo_id = '$todo_id';";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Updated todo task $todo_task to done', $account_id);";
+            mysqli_query($conn, $sql);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+        } else {
+            $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
+            mysqli_query($conn, $sql);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
         }        
     }
 
@@ -714,6 +739,40 @@
         }
 
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");     
+    }
+
+    if(isset($_POST['edit_materialssite'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
+        session_start();
+        $account_id = "";
+        if(isset($_SESSION['account_id'])) {
+            $account_id = $_SESSION['account_id'];
+        }
+        $edit_mat_date = date("Y-m-d G:i:s");
+                if(isset($_POST['mat_unit'])) {
+            $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
+            $sql = "UPDATE materials SET mat_unit = '$mat_unit' WHERE mat_name = '$materialname';";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material unit of $materialname to $mat_unit', $account_id);";
+            mysqli_query($conn, $sql); 
+        }
+                if(isset($_POST['minquantity'])) {
+            $minquantity = mysqli_real_escape_string($conn, $_POST['minquantity']);
+            $sql = "UPDATE materials SET mat_notif = '$minquantity' WHERE mat_name = '$materialname';";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material unit of $materialname to $minquantity', $account_id);";
+            mysqli_query($conn, $sql); 
+        }
+        if(isset($_POST['newmaterialname'])) {
+            $newmaterialname = $_POST['newmaterialname'];
+            $sql = "UPDATE materials SET mat_name = '$newmaterialname' WHERE mat_name = '$materialname';";
+            mysqli_query($conn,$sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material name of $materialname to $newmaterialname', $account_id);";
+            mysqli_query($conn, $sql); 
+        }
+
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");     
     }
 
     if(isset($_POST['generate_report'])) {

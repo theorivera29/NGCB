@@ -3,5 +3,6 @@
 	$user = 'root';
 	$pass = '';
 	$db = 'ngcb';
-    $conn = mysqli_connect($host, $user, $pass, $db) or die('Cannot connect to db');
+	$conn = mysqli_connect($host, $user, $pass, $db) or die('Cannot connect to db');
+	date_default_timezone_set('Asia/Manila');
 ?>

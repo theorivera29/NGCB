@@ -43,11 +43,13 @@
         $generated_password = substr(str_shuffle($characters), 0, 8);
 	    $password = password_hash($generated_password, PASSWORD_DEFAULT);
         $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
-        $sql = "SELECT accounts_id from accounts WHERE accounts_username = '$username';";
-        $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
-        if($count != 1) {
+        $stmt = $conn->prepare("SELECT accounts_id from accounts WHERE accounts_username = ?;");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
+        if($stmt->num_rows === 0) {
             try {
+                $stmtm->close();
                 $stmt = $conn->prepare("INSERT INTO accounts (accounts_fname, accounts_lname, accounts_username, accounts_password, accounts_type, accounts_email, accounts_deletable, accounts_status)
                 VALUES ('$firstname', '$lastname', '$username', '123', '$account_type', '$email', 'yes', 'active')");
                 $stmt->bind_param("ssssssss", $firstname, $lastname, $username, $password, $account_type, $email, $deletable, $status);
@@ -70,14 +72,17 @@
                 $mail->send();
             } catch (Exception $e) {}
             header("Location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");
-        }
+        } 
     }
     
     if (isset($_POST['create_project'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projectname']);
         $projects_address = mysqli_real_escape_string($conn, $_POST['projectaddress']);
 		$start_date = mysqli_real_escape_string($conn, $_POST['startdate']);
-		$end_date = mysqli_real_escape_string($conn, $_POST['enddate']);
+        $end_date = mysqli_real_escape_string($conn, $_POST['enddate']);
+        if(strtotime($start_date) == strtotime($end_date)) {
+            header("Location: http://127.0.0.1/NGCB/Admin/projects.php");      
+        }
         $stmt = $conn->prepare("SELECT projects_name from projects WHERE = ?;");
         $stmt->bind_param("s", $projects_name);
         $stmt->execute();
@@ -191,11 +196,15 @@
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
     }
 
-    if(isset($_POST['view_open_sitestockcard'])) {
+    if(isset($_POST['view_open_stockcard'])) {
+        $view_from = $_POST['view_from'];
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        header("location: http://127.0.0.1/NGCB/View%20Only/sitestockcard.php?mat_name=$mat_name");
-
+        if(strcmp($view_from, "projects") == 0) {
+            header("location: http://127.0.0.1/NGCB/View%20Only/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
+        } else {
+            header("location: http://127.0.0.1/NGCB/View%20Only/sitestockcard.php?mat_name=$mat_name");
+        }
     }
 
     if(isset($_POST['open_sitestockcard'])) {
@@ -209,17 +218,25 @@
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/reportpage.php?projects_name=$projects_name");        
     }
 
-    if(isset($_POST['disable_account'])) {
+    if(isset($_POST['update_account_status'])) {
         $accounts_id = mysqli_real_escape_string($conn, $_POST['accounts_id']);
-        $sql = "SELECT CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts WHERE accounts_id = '$accounts_id';";
+        $sql = "SELECT CONCAT(accounts_fname, ' ', accounts_lname), accounts_status FROM accounts WHERE accounts_id = '$accounts_id';";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
         $accounts_name = $row[0];
-        $sql = "UPDATE accounts SET accounts_status = 'disabled' WHERE accounts_id = '$accounts_id';";
-        mysqli_query($conn, $sql);
-        $disable_date = date("Y-m-d G:i:s");
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$disable_date', 'Disabled account of $accounts_name', 1);";
-        mysqli_query($conn, $sql);
+        $accounts_status = $row[1];
+        $update_date = date("Y-m-d G:i:s");
+        if(strcmp($accounts_status, "disabled") == 0) {
+            $sql = "UPDATE accounts SET accounts_status = 'active' WHERE accounts_id = $accounts_id;";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_date', 'Enabled account of $accounts_name', 1);";
+            mysqli_query($conn, $sql);
+        } else {
+            $sql = "UPDATE accounts SET accounts_status = 'disabled' WHERE accounts_id = $accounts_id;";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_date', 'Disabled account of $accounts_name', 1);";
+            mysqli_query($conn, $sql);
+        }
         header("location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");        
     }
 
@@ -368,11 +385,10 @@
             $account_id = $_SESSION['account_id'];
         }
         $create_todo_date = date("Y-m-d G:i:s");
-        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf VALUES (?, ?, ?);");
-        $stmt->bind_param("ssi", $create_categ_date, $logs_message, $logs_of);
-        $edit_categ_date = date("Y-m-d G:i:s");
-        $logs_message = 'Created todo';
+        $logs_message = 'Created todo task';
         $logs_of = $account_id;
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+        $stmt->bind_param("ssi", $create_todo_date, $logs_message, $logs_of);
         $stmt->execute();
         $stmt->close();
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");        
@@ -402,7 +418,6 @@
         $stmt->execute();
         $stmtm->close();
         mysqli_query($conn, $sql);
-        echo $mat_name;
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
@@ -561,6 +576,7 @@
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($currentQuantity);
+        $stmt->fetch();
         $newQuantity = $currentQuantity + $delivered_quantity;
         $stmt->close();
         $stmt = $conn->prepare("UPDATE materials SET currentQuantity = ? WHERE mat_name = ?;");
@@ -573,6 +589,7 @@
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($current_delivered_material);
+        $stmt->fetch();
         $newQuantity = $current_delivered_material + $delivered_quantity;
         $stmt->close();
         $stmt = $conn->prepare("UPDATE materials SET delivered_material = ? WHERE mat_name = ?;");
@@ -615,6 +632,7 @@
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($currentQuantity);
+        $stmt->fetch();
         $newQuantity = $currentQuantity - $usage_quantity;
         $stmt->close();
         $stmt = $conn->prepare("UPDATE materials SET currentQuantity = ? WHERE mat_name = ?;");
@@ -627,6 +645,7 @@
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($current_pulledout);
+        $stmt->fetch();
         $newQuantity = $current_pulledout + $usage_quantity;
         $stmt->close();
         $stmt = $conn->prepare("UPDATE materials SET pulled_out = ? WHERE mat_name = ?;");
@@ -639,6 +658,7 @@
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($total_accumulated);
+        $stmt->fetch();
         $newQuantity = $total_accumulated + $usage_quantity;
         $stmt->close();
         $stmt = $conn->prepare("UPDATE materials SET accumulated_materials = ? WHERE mat_name = ?;");
@@ -759,17 +779,26 @@
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($accounts_id);
+        $stmt->fetch();
         $stmt->close();
-        $password_request_date = date("Y-m-d G:i:s");
-        $stmt = $conn->prepare("INSERT INTO request (req_username, req_date) VALUES (?, ?)");
-        $stmt->bind_param("is", $accounts_id, $password_request_date);
+        $stmt = $conn->prepare("SELECT * FROM request WHERE req_username = ?");
+        $stmt->bind_param("s", $username);
         $stmt->execute();
-        $stmt->close();
-        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
-        $stmt->bind_param("ssi", $password_request_date, $logs_message, $logs_of);
-        $logs_message = 'Requested to reset password';
-        $logs_of = $account_id;
-        $stmt->execute();
+        $stmt->store_result();
+        if($stmt->num_rows === 0) {
+            $stmt->close();
+            $password_request_date = date("Y-m-d");
+            $stmt = $conn->prepare("INSERT INTO request (req_username, req_date) VALUES (?, ?)");
+            $stmt->bind_param("is", $accounts_id, $password_request_date);
+            $stmt->execute();
+            $stmt->close();
+            $password_request_date_logs = date("Y-m-d G:i:s");
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $password_request_date_logs, $logs_message, $logs_of);
+            $logs_message = 'Requested to reset password';
+            $logs_of = $accounts_id;
+            $stmt->execute();
+        }
         $stmt->close();
         header("location: http://127.0.0.1/NGCB/index.php");        
     }
@@ -784,6 +813,7 @@
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($request_email, $request_name); 
+        $stmt->fetch();
         $stmt->close();
         $accept_date = date("Y-m-d G:i:s");
         $stmt = $conn->prepare("UPDATE accounts SET accounts_password = ? WHERE accounts_id = ?;");
@@ -800,6 +830,7 @@
         $stmt->bind_param("i", $request_accountID);
         $stmt->execute();
         $stmt->close();
+        echo $request_email;
         try {
             $mail->addAddress($request_email, $request_name);
             $mail->isHTML(true);                                  
@@ -817,7 +848,8 @@
         $stmt->bind_param("i", $request_accountID);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind($request_name);
+        $stmt->bind_result($request_name);
+        $stmt->fetch();
         $reject_date = date("Y-m-d G:i:s");        
         $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
         $stmt->bind_param("ssi", $reject_date, $logs_message, $logs_of);

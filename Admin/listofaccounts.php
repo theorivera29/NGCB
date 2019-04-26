@@ -122,49 +122,77 @@
                 <tbody>
                     <?php 
                             $sql = "SELECT accounts_id, accounts_username, concat(accounts_fname,' ', accounts_lname) as name,  
-                            accounts_email, accounts_type, accounts_status FROM accounts WHERE accounts_deletable = 'yes' AND accounts_status='active';";
+                            accounts_email, accounts_type, accounts_status FROM accounts WHERE accounts_deletable = 'yes';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
-                    <div id="disable_account" class="modal">
-                        <div class="modal-content">
-                            <h4>Disable Account?</h4>
-                            <p>Are you sure you want to disable this account?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
-                            <form action="../server.php" method="POST">
-                                <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
-                                <button type="submit" name="disable_account"
-                                    class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
-                            </form>
-                        </div>
-                    </div>
                     <tr>
                         <td>
-                            <?php echo $row[0] ?>
+                            <?php echo $row[0] ;?>
                         </td>
                         <td>
-                            <?php echo $row[1] ?>
+                            <?php echo $row[1] ;?>
                         </td>
                         <td>
-                            <?php echo $row[2] ?>
+                            <?php echo $row[2] ;?>
                         </td>
                         <td>
-                            <?php echo $row[3] ?>
+                            <?php echo $row[3] ;?>
                         </td>
                         <td>
-                            <?php echo $row[4] ?>
+                            <?php echo $row[4] ;?>
                         </td>
                         <td>
-                            <?php echo $row[5] ?>
+                            <?php echo $row[5] ;?>
                         </td>
                         <td>
+                            <?php 
+                                if(strcmp($row[5], "disabled") == 0 ) {
+                            ?>
                             <div class="row">
-                                <a href="#disable_account" class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
+                                <a href="#disable_account<?php echo $row[0] ;?>" class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
                                     href="#disableBtn">
                                     Disable</a>
                             </div>
+                            <div id="disable_account<?php echo $row[0] ;?>" class="modal">
+                                <div class="modal-content">
+                                    <h4>Disable Account?</h4>
+                                    <p>Are you sure you want to disable this account?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
+                                    <form action="../server.php" method="POST">
+                                        <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
+                                        <button type="submit" name="update_account_status"
+                                            class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <?php
+                                } else {
+                            ?>
+                                <div class="row">
+                                    <a href="#enable_account<?php echo $row[0] ;?>" class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
+                                        href="#disableBtn">
+                                        Enable</a>
+                                </div>
+                                <div id="enable_account<?php echo $row[0] ;?>" class="modal">
+                                    <div class="modal-content">
+                                        <h4>Enable Account?</h4>
+                                        <p>Are you sure you want to enable this account?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
+                                        <form action="../server.php" method="POST">
+                                            <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
+                                            <button type="submit" name="update_account_status"
+                                                class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php
+                                }
+                            ?>
                         </td>
                     </tr>
                     <?php    

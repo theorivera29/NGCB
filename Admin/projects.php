@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="projects.php" class="waves-effect waves-light btn cancel-proj-btn">Cancel</a>
+                    <a class="modal-close waves-effect waves-light btn btn-flat no-btn">Cancel</a>
                     <button type="submit" class="waves-effect waves-light btn save-proj-btn" name="create_project">Save</button>
                 </div>
             </form>
@@ -215,19 +215,19 @@
                                 <input type="hidden" name="project_name" value="<?php echo $row[1];?>">
                                 <div class="input-field col s12">
                                     <span>Project Name:</span>
-                                    <input id="newprojectname" type="text" placeholder="New Project Name" name="new_project_name" required>
+                                    <input id="newprojectname" type="text" placeholder="New Project Name" name="new_project_name">
                                 </div>
                                 <div class="input-field col s12">
                                     <span>Project Address:</span>
-                                    <input id="newprojectaddress" type="text" placeholder="New Project Address" name="new_address" required>
+                                    <input id="newprojectaddress" type="text" placeholder="New Project Address" name="new_address">
                                 </div>
                                 <div class="input-field col s12 m5">
                                     <span>Start date:</span>
-                                    <input id="newstartdate" type="date" placeholder="New start date" name="new_sdate" required>
+                                    <input id="newstartdate" type="date" placeholder="New start date" name="new_sdate">
                                 </div>
                                 <div class="input-field col s12 m6 offset-m1">
                                     <span>End date:</span>
-                                    <input id="newenddate" type="date" placeholder="New start date" name="new_edate" required>
+                                    <input id="newenddate" type="date" placeholder="New start date" name="new_edate">
                                 </div>
                                 <div class="col s12">
                                     <div class="input-field col s12">
@@ -237,7 +237,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a href="projects.php" class="waves-effect waves-light btn cancel-proj-btn" name="cancel-create-project">Cancel</a>
+                            <a href="" class="modal-close waves-effect waves-light btn btn-flat no-btn" name="cancel-create-project">Cancel</a>
                             <button type="submit" class="waves-effect waves-light btn save-proj-btn" name="edit_project">Save</button>
                         </div>
                     </form>
@@ -308,8 +308,8 @@
                     <div class="modal-footer">
                         <form action="../server.php" method="POST">
                             <input type="hidden" name="project_name" value='<?php echo $row[1] ;?>'>
-                            <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
-                            <button class=" modal-action modal-close waves-effect waves-light btn-flat yes-btn" type="submit" name="delete_project">Yes</button>
+                            <a href="#!" class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
+                            <button class="modal-action modal-close waves-effect waves-light btn-flat yes-btn" type="submit" name="delete_project">Yes</button>
                         </form>
                     </div>
                 </div>

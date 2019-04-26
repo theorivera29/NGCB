@@ -178,6 +178,7 @@
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
                                 <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+                                <input type="hidden" name="view_from" value="projects">
                                 <button class="waves-effect waves-light btn matname-btn" type="submit"
                                     name="view_open_stockcard">
                                     <?php echo $row[0] ?></button>

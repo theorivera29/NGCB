@@ -90,20 +90,23 @@
             <table id = "sort" class="centered site-materials-content">
                 <thead class="site-materials-head">
                     <tr>
-                        <th onClick = "javascript:SortTable(0,'T');">Particulars</th>
-                        <th onClick = "javascript:SortTable(1,'T');">Category</th>
-                        <th onClick = "javascript:SortTable(2,'N');">Previous Material Stock</th>
-                        <th onClick = "javascript:SortTable(3,'N');">Delivered Material as of
+                    <th onClick="javascript:SortTable(0,'T');">Particulars</th>
+                        <th onClick="javascript:SortTable(1,'T');">Category</th>
+                        <th onClick="javascript:SortTable(2,'N');">Previous Material Stock</th>
+                        <th onClick="javascript:SortTable(3,'T');">Unit</th>
+                        <th onClick="javascript:SortTable(4,'N');">Delivered Material as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onClick = "javascript:SortTable(4,'N');">Material pulled out as of
+                        <th onClick="javascript:SortTable(5,'N');">Material Pulled out as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onClick = "javascript:SortTable(5,'N');">Accumulated Materials Delivered</th>
-                        <th onClick = "javascript:SortTable(6,'N');">Material on site as of
+                        <th onClick="javascript:SortTable(6,'T');">Unit</th>
+                        <th onClick="javascript:SortTable(7,'N');">Accumulate of Materials Delivered</th>
+                        <th onClick="javascript:SortTable(8,'N');">Material on Site as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onClick = "javascript:SortTable(7,'T');">Project</th>
+                        <th onClick="javascript:SortTable(9,'T');">Unit</th>
+                        <th onClick = "javascript:SortTable(10,'T');">Project</th>
                     </tr>
                 </thead>
 
@@ -122,19 +125,23 @@
                         $categ = $data['categories_name'];
                     ?>
                     <?php 
-                        $sql = "SELECT 
-                        materials.mat_name, 
-                        categories.categories_name,
-                        materials.mat_prevStock, 
-                        materials.delivered_material, 
-                        materials.pulled_out, 
-                        materials.accumulated_materials,
-                        materials.currentQuantity,
-                        projects.projects_name
-                        FROM materials 
-                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                        INNER JOIN projects ON materials.mat_project = projects.projects_id
-                        WHERE categories.categories_name = '$categ';";
+                         $sql = "SELECT 
+                         mat_name,
+                         categories_name, 
+                         mat_prevStock, 
+                         unit_name,
+                         delivered_material, 
+                         materials.pulled_out, 
+                         unit_name,
+                         accumulated_materials,
+                         currentQuantity,
+                         unit_name,
+                         projects_name
+                         FROM materials 
+                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                         INNER JOIN projects ON materials.mat_project = projects.projects_id
+                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                         WHERE categories.categories_name = '$categ';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
@@ -145,23 +152,17 @@
                                 <button class="waves-effect waves-light btn matname-btn" type="submit" name="view_open_sitestockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
-                        <td>
+                            <td>
                             <?php echo $row[1] ?>
                         </td>
                         <td>
                             <?php echo $row[2] ?>
                         </td>
                         <td>
-                            Unit
-                        </td>
-                        <td>
                             <?php echo $row[3] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[4] ?>
-                        </td>
-                        <td>
-                            Unit
                         </td>
                         <td>
                             <?php echo $row[5] ?>
@@ -170,10 +171,16 @@
                             <?php echo $row[6] ?>
                         </td>
                         <td>
-                            Unit
+                            <?php echo $row[7] ?>
                         </td>
                         <td>
-                            <?php echo $row[7] ?>
+                            <?php echo $row[8] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[9] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[10] ?>
                         </td>
                         <?php 
                             }

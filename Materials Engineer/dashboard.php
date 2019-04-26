@@ -194,7 +194,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
-                                            <button type="submit" name="todo_update"
+                                            <button type="submit" name="todo_updatedashboard"
                                                 class="modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
@@ -209,10 +209,12 @@
                                         <div class="modal-content">
                                             <span class="modal-question-content">Are you sure you want to clear this
                                                 task?</span>
+                                                <br>
+                                            <?php echo $row[2];?>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
-                                            <button type="submit" name="todo_update"
+                                            <button type="submit" name="todo_updatedashboard"
                                                 class="modal-close waves-effect waves-red btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>

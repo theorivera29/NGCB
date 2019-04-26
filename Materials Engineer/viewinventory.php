@@ -139,19 +139,21 @@
             if(strcmp($projects_status, "open") == 0) {
         ?>
         <div class="row">
-            <div class="col 6 m4">
+            <div class="col s6">
 
-                <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search"
+                <input class="input search-bar mat-eng-search-bar" id="myInput" onkeyup="myFunction()" type="search"
                     placeholder="Search...">
 
             </div>
-           
-           <a href="#addUnitModal"
-                class="waves-effect waves-light btn modal-trigger add-unit-btn add-unit-btn-viewinventory">
-                Add Unit</a>
-            <a href="#addmaterialModal"
-                class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
-                Add Material</a>
+                <div class="col s6 right-align">
+                    <a href="#addUnitModal"
+                        class="waves-effect waves-light btn modal-trigger add-unit-btn add-unit-btn-viewinventory">
+                        Add Unit</a>
+                    <a href="#addmaterialModal"
+                        class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
+                        Add Material</a>
+
+                </div>
         </div>
 
         <?php 
@@ -242,7 +244,7 @@
                         </td>
                         <td>
                             <?php echo $row[3] ?>
-                            </td>
+                        </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
@@ -409,11 +411,11 @@
     ?>
         </div>
     </div>
-    
+
     <!-- Add Unit Modal-->
-    
+
     <div id="addUnitModal" class="modal modal-fixed-footer add-unit-modal">
-       <form action="../server.php" method="POST">
+        <form action="../server.php" method="POST">
             <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
             <div class="modal-content add-categ-modal">
                 <span id="modal-title">Add Unit</span>
@@ -432,7 +434,7 @@
             </div>
         </form>
     </div>
-    
+
 
     <!-- ADD SITE MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer add-mat-modal">

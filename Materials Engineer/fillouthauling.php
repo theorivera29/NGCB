@@ -146,7 +146,8 @@
                                         $projects_name = $_GET['projects_name'];
                                      ?>
                                 <div class="input-field col form-number-field">
-                                    <input id="formnumber" type="text" class="validate" name="formnumber" pattern="[0-9]*" title="Input numbers only" required>
+                                    <input id="formnumber" type="text" class="validate" name="formnumber"
+                                        pattern="[0-9]*" title="Input numbers only" required>
                                     <label for="formnumber">Form Number:</label>
                                 </div>
                             </div>
@@ -160,118 +161,121 @@
                                 </div>
                             </div>
                         </div>
-                    
 
-                    <div class="col hauling-table-container">
-                        <table class="hauling-form-table">
-                            <thead class="hauling-form-table-head">
-                                <tr>
-                                    <th>Categories</th>
-                                    <th>Articles</th>
-                                    <th>Unit</th>
-                                    <th>Quantity</th>
-                                </tr>
-                            </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>
-
-                                        <select id="categories" class="browser-default" name="mat_categ" required>
-                                            <option disabled selected>Choose your option</option>
-                                            <?php
-                                                $sql = "SELECT * FROM categories;";
-                                                $result = mysqli_query($conn, $sql);
-                                                while($row = mysqli_fetch_row($result)) {             
-                                            ?>
-                                            <option value="<?php echo $row[0]; ?>">
-                                                <?php echo $row[1]; ?>
-                                            </option>
-
-                                            <?php 
-                                                }
-                                            ?>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select id="materials" class="browser-default" name="articles" required>
-                                            <option disabled selected>Choose your option</option>
-                                        </select></td>
-
-                                    <td><input id="unit" readonly type="text" class="validate" name="unit" required>
-                                    </td>
-                                    <td><input type="text" name="quantity" id="quantity" class="validate " pattern="[0-9]*" title="Input numbers only" required></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s6 hauled-side-container">
-                            <div class="input-field col s10 left-align ">
-                                <input id="requested" type="text" class="validate" name="requested" pattern="[A-Za-z\s]*"
-                                    title="Input letters only" required>
-                                <label for="requested">Requested :</label>
-                            </div>
-                            <div class="input-field col s10 left-align ">
-                                <input id="hauledby" type="text" class="validate" name="hauledby" pattern="[A-Za-z\s]*"
-                                    title="Input letters only" required>
-                                <label for="hauledby">Hauled by :</label>
-                            </div>
-                            <div class="input-field col s10 left-align ">
-                                <input id="warehouseman" type="text" class="validate" name="warehouseman"
-                                    pattern="[A-Za-z\s]*" title="Input letters only" required>
-                                <label for="warehouseman">Warehouseman:</label>
-                            </div>
-                            <div class="input-field col s10 left-align ">
-                                <input id="approvedby" type="text" class="validate" name="approvedby"
-                                    pattern="[A-Za-z\s]*" title="Input letters only" required>
-                                <label for="approvedby">Approved By:</label>
-                            </div>
-                        </div>
-                        <div class="col s6">
-                            <table class="striped centered">
-                                <thead>
-
+                        <div class="col hauling-table-container">
+                            <table class="hauling-form-table">
+                                <thead class="hauling-form-table-head">
                                     <tr>
-                                        <th> </th>
-                                        <th>Truck details</th>
-                                        <th> </th>
+                                        <th>Categories</th>
+                                        <th>Articles</th>
+                                        <th>Unit</th>
+                                        <th>Quantity</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td>Type:</td>
-                                        <td><input type="text" name="truck_type" id="truck_type" pattern="[A-Za-z\s]*"
-                                                title="Input only letters" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Plate No.:</td>
-                                        <td><input type="text" name="truck_plate" id="truck_plate" pattern="[A-Z0-9\s]*" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td>P.O/R.S No.:</td>
-                                        <td><input type="text" name="truck_po" id="truck_po" minlength="6" maxlength="6"
-                                                title="Alphanumeric only" required></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hauler DR No.:</td>
-                                        <td><input type="text" name="truck_hauler" id="truck_hauler" required></td>
+                                        <td>
+
+                                            <select id="categories" class="browser-default" name="mat_categ"
+                                                required>
+                                                <option disabled selected>Choose category</option>
+                                                <?php
+                                                $sql = "SELECT * FROM categories;";
+                                                $result = mysqli_query($conn, $sql);
+                                                while($row = mysqli_fetch_row($result)) {             
+                                            ?>
+                                                <option value="<?php echo $row[0]; ?>">
+                                                    <?php echo $row[1]; ?>
+                                                </option>
+
+                                                <?php 
+                                                }
+                                            ?>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select id="materials" class="browser-default" name="articles" required>
+                                                <option disabled selected>Choose material</option>
+                                            </select></td>
+
+                                        <td><input id="unit" readonly type="text" class="validate" name="unit" required>
+                                        </td>
+                                        <td><input type="text" name="quantity" id="quantity" class="validate "
+                                                pattern="[0-9]*" title="Input numbers only" required></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+
+                        <div class="row">
+                            <div class="col s6 hauled-side-container">
+                                <div class="input-field col s10 left-align ">
+                                    <input id="requested" type="text" class="validate" name="requested"
+                                        pattern="[A-Za-z\s]*" title="Input letters only" required>
+                                    <label for="requested">Requested :</label>
+                                </div>
+                                <div class="input-field col s10 left-align ">
+                                    <input id="hauledby" type="text" class="validate" name="hauledby"
+                                        pattern="[A-Za-z\s]*" title="Input letters only" required>
+                                    <label for="hauledby">Hauled by :</label>
+                                </div>
+                                <div class="input-field col s10 left-align ">
+                                    <input id="warehouseman" type="text" class="validate" name="warehouseman"
+                                        pattern="[A-Za-z\s]*" title="Input letters only" required>
+                                    <label for="warehouseman">Warehouseman:</label>
+                                </div>
+                                <div class="input-field col s10 left-align ">
+                                    <input id="approvedby" type="text" class="validate" name="approvedby"
+                                        pattern="[A-Za-z\s]*" title="Input letters only" required>
+                                    <label for="approvedby">Approved By:</label>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <table class="striped centered">
+                                    <thead>
+
+                                        <tr>
+                                            <th> </th>
+                                            <th>Truck details</th>
+                                            <th> </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Type:</td>
+                                            <td><input type="text" name="truck_type" id="truck_type"
+                                                    pattern="[A-Za-z\s]*" title="Input only letters" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Plate No.:</td>
+                                            <td><input type="text" name="truck_plate" id="truck_plate"
+                                                    pattern="[A-Z0-9\s]*" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td>P.O/R.S No.:</td>
+                                            <td><input type="text" name="truck_po" id="truck_po" minlength="6"
+                                                    maxlength="6" title="Alphanumeric only" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hauler DR No.:</td>
+                                            <td><input type="text" name="truck_hauler" id="truck_hauler" required></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
+                    <div class="card-action right-align">
+                        <button class="waves-effect waves-light btn all-btn save-hauled-btn" type="submit"
+                            class="validate" name="create_hauling">Save</button>
+                        <a class="waves-effect waves-light btn all-btn cancel-hauled-btn" href="hauling.php">Cancel</a>
+                    </div>
+                </form>
             </div>
-            <div class="card-action right-align">
-                <button class="waves-effect waves-light btn all-btn save-hauled-btn" type="submit" class="validate"
-                    name="create_hauling">Save</button>
-                <a class="waves-effect waves-light btn all-btn cancel-hauled-btn">Cancel</a>
-            </div>
-            </form>
         </div>
-    </div>
     </div>
 
     <!--Import jQuery before materialize.js-->

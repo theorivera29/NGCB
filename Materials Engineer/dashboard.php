@@ -251,12 +251,18 @@
             <table id="sort" class="striped responsive-table materials-left centered">
                 <thead class="view-materials-head">
                     <tr class="material-headers">
-                        <th onclick="sortTable(0)">Material Name</th>
-                        <th onclick="sortTable(1)">Category</th>
-                        <th onclick="sortTable(2)">Quantity Remaining</th>
-                        <th onclick="sortTable(3)">Unit</th>
-                        <th onclick="sortTable(4)">Threshold</th>
-                        <th onclick="sortTable(5)">Project</th>
+                        <th onclick="sortTable(0)">Material Name<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(1)">Category<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(2)">Quantity Remaining<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(3)">Unit<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(4)">Threshold<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(5)">Project<i
+                        class="material-icons tiny sort-icon">code</i></th>
 
                     </tr>
                 </thead>

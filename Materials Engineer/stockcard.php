@@ -74,7 +74,6 @@ $projects_name = $_GET['projects_name'];
         </div>
     </nav>
 
-
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
@@ -82,6 +81,7 @@ $projects_name = $_GET['projects_name'];
             <li class="tab col s3"><a href="#editmaterial">Edit Material</a></li>
         </ul>
     </div>
+    
 
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">

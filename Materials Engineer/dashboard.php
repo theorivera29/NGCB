@@ -167,6 +167,7 @@
                             $date_today = date("Y-m-d");
                             $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id && todo_date = '$date_today' ORDER BY todo_task;";
                             $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0){
                             while($row = mysqli_fetch_row($result)) {
                         ?>
                         <tr>
@@ -228,6 +229,13 @@
                             </td>
                         </tr>
                         <?php    
+                            }
+                            } else {
+                            ?>
+                        <tr>
+                            <h1>No task today</h1>
+                        </tr>
+                        <?php
                             }
                         ?>
                     </tbody>

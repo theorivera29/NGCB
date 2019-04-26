@@ -1227,7 +1227,7 @@ select[name=mat_unit] {
     margin-right: 2%;
 }
 
-.item-categories-head>tr>th:hover {
+.item-categories-head>tr>th {
     cursor: pointer;
     background-color: #0B415E !important;
     font-size: 2.5vmin;

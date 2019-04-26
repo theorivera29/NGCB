@@ -90,13 +90,13 @@ $projects_name = $_GET['projects_name'];
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
 
-            <table id = "sort" class="centered deliverin striped delivered-input-table">
+            <table class="centered deliverin striped delivered-input-table">
                     <thead class="deliverin-head">
                         <tr>
-                            <th onclick="sortTable(0)">Date</th>
-                            <th onclick="sortTable(1)">Quantity</th>
-                            <th onclick="sortTable(2)">Unit</th>
-                            <th onclick="sortTable(3)">Supplied By</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Supplied By</th>
                         </tr>
                     </thead>
 
@@ -128,10 +128,10 @@ $projects_name = $_GET['projects_name'];
                 <table id = "sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
-                            <th onclick="sortTable(0)">Date</th>
-                            <th onclick="sortTable(1)">Quantity</th>
-                            <th onclick="sortTable(2)">Unit</th>
-                            <th onclick="sortTable(3)">Supplied By</th>
+                            <th onClick="javascript:SortTable(0,'D');">Date</th>
+                            <th onClick="javascript:SortTable(1,'N');">Quantity</th>
+                            <th onClick="javascript:SortTable(2,'T');">Unit</th>
+                            <th onClick="javascript:SortTable(3,'T');">Supplied By</th>
                         </tr>
                     </thead>
 
@@ -209,14 +209,14 @@ $projects_name = $_GET['projects_name'];
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
-                <table id = "sort" class="centered usagein striped">
+                <table class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
-                            <th onclick="sortTable(0)">Date</th>
-                            <th onclick="sortTable(1)">Quantity</th>
-                            <th onclick="sortTable(2)">Unit</th>
-                            <th onclick="sortTable(3)">Pulled Out By</th>
-                            <th onclick="sortTable(4)">Area of Usage</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Pulled Out By</th>
+                            <th>Area of Usage</th>
                         </tr>
                     </thead>
 
@@ -259,11 +259,11 @@ $projects_name = $_GET['projects_name'];
                 <table id = "sort" class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
-                            <th onclick="sortTable(0)">Date</th>
-                            <th onclick="sortTable(1)">Quantity</th>
-                            <th onclick="sortTable(2)">Unit</th>
-                            <th onclick="sortTable(3)">Pulled Out By</th>
-                            <th onclick="sortTable(4)">Area of Usage</th>
+                            <th onClick="javascript:SortTable(0,'D');">Date</th>
+                            <th onClick="javascript:SortTable(1,'N');">Quantity</th>
+                            <th onClick="javascript:SortTable(2,'T');">Unit</th>
+                            <th onClick="javascript:SortTable(3,'T');">Pulled Out By</th>
+                            <th onClick="javascript:SortTable(4,'T');">Area of Usage</th>
                         </tr>
                     </thead>
 
@@ -363,42 +363,83 @@ $projects_name = $_GET['projects_name'];
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("sort");
-            switching = true;
-            dir = "asc";
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
-                } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
-                }
-            }
-        }
+        var TableIDvalue = "sort";
+var TableLastSortedColumn = -1;
+function SortTable() {
+var sortColumn = parseInt(arguments[0]);
+var type = arguments.length > 1 ? arguments[1] : 'T';
+var dateformat = arguments.length > 2 ? arguments[2] : '';
+var table = document.getElementById(TableIDvalue);
+var tbody = table.getElementsByTagName("tbody")[0];
+var rows = tbody.getElementsByTagName("tr");
+var arrayOfRows = new Array();
+type = type.toUpperCase();
+dateformat = dateformat.toLowerCase();
+for(var i=0, len=rows.length; i<len; i++) {
+	arrayOfRows[i] = new Object;
+	arrayOfRows[i].oldIndex = i;
+	var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g,"");
+	if( type=='D' ) { 
+        arrayOfRows[i].value = GetDateSortingKey(dateformat,celltext);
+    } else {
+		var re = type=="N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
+		arrayOfRows[i].value = celltext.replace(re,"").substr(0,25).toLowerCase();
+		}
+	}
+if (sortColumn == TableLastSortedColumn) { 
+    arrayOfRows.reverse(); 
+} else {
+	TableLastSortedColumn = sortColumn;
+	switch(type) {
+		case "N" : arrayOfRows.sort(CompareRowOfNumbers); break;
+        case "D" : arrayOfRows.sort(CompareRowOfNumbers); break;
+		default  : arrayOfRows.sort(CompareRowOfText);
+	}
+}
+var newTableBody = document.createElement("tbody");
+for(var i=0, len=arrayOfRows.length; i<len; i++) {
+	newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
+}
+table.replaceChild(newTableBody,tbody);
+} // function SortTable()
+
+function CompareRowOfText(a,b) {
+var aval = a.value;
+var bval = b.value;
+return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
+} // function CompareRowOfText()
+
+function CompareRowOfNumbers(a,b) {
+var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
+var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
+return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
+} // function CompareRowOfNumbers()
+
+function GetDateSortingKey(format,text) {
+if( format.length < 1 ) { return ""; }
+format = format.toLowerCase();
+text = text.toLowerCase();
+text = text.replace(/^[^a-z0-9]*/,"");
+text = text.replace(/[^a-z0-9]*$/,"");
+if( text.length < 1 ) { return ""; }
+text = text.replace(/[^a-z0-9]+/g,",");
+var date = text.split(",");
+if( date.length < 3 ) { return ""; }
+var d=0, m=0, y=0;
+for( var i=0; i<3; i++ ) {
+	var ts = format.substr(i,1);
+	if( ts == "d" ) { d = date[i]; }
+	else if( ts == "m" ) { m = date[i]; }
+	else if( ts == "y" ) { y = date[i]; }
+	}
+d = d.replace(/^0/,"");
+if( d < 10 ) { d = "0" + d; }
+m = m.replace(/^0/,"");
+if( m < 10 ) { m = "0" + m; }
+y = parseInt(y);
+if( y < 100 ) { y = parseInt(y) + 2000; }
+return "" + String(y) + "" + String(m) + "" + String(d) + "";
+} // function GetDateSortingKey()
     </script>
 </body>
 

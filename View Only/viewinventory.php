@@ -157,14 +157,12 @@
                             mat_name,
                             categories_name, 
                             mat_prevStock, 
-                            unit_name,
                             delivered_material, 
                             materials.pulled_out, 
-                            unit_name,
                             accumulated_materials,
                             currentQuantity,
-                            unit_name,
-                            projects_name
+                            projects_name,
+                            unit_name
                             FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             INNER JOIN projects ON materials.mat_project = projects.projects_id
@@ -192,10 +190,16 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
+                            <?php echo $row[8] ?>
+                        </td>
+                        <td>
                             <?php echo $row[3] ?>
-                            </td>
+                        </td>
                         <td>
                             <?php echo $row[4] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[8] ?>
                         </td>
                         <td>
                             <?php echo $row[5] ?>
@@ -204,13 +208,7 @@
                             <?php echo $row[6] ?>
                         </td>
                         <td>
-                            <?php echo $row[7] ?>
-                        </td>
-                        <td>
                             <?php echo $row[8] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[9] ?>
                         </td>
                         <?php 
                             }

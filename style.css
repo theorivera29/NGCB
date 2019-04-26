@@ -1263,7 +1263,8 @@ select[name=mat_unit] {
     border-collapse: separate;
 }
 
-.deliverin-head>tr {
+.deliverin-head>tr>th {
+    cursor: pointer;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     color: #FFFFFF;
@@ -1304,7 +1305,8 @@ select[name=mat_unit] {
     border-collapse: separate;
 }
 
-.usagein-head>tr {
+.usagein-head>tr>th {
+    cursor: pointer;
     background-color: #0B415E !important;
     font-size: 2.5vmin;
     color: #FFFFFF;
@@ -1744,6 +1746,7 @@ select[name=mat_unit] {
 }
 
 .pass-reset-table-head>tr>th{
+    cursor: pointer !important;
     background-color: #0B415E !important;
     color: #FFFFFF;
 }
@@ -1854,6 +1857,7 @@ select[name=mat_unit] {
 }
 
 .logs-container-head>tr>th{
+    cursor: pointer;
     background-color: #0B415E !important;
     color: #FFFFFF;
 }

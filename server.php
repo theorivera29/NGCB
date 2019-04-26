@@ -739,6 +739,40 @@
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");     
     }
 
+    if(isset($_POST['edit_materialssite'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
+        session_start();
+        $account_id = "";
+        if(isset($_SESSION['account_id'])) {
+            $account_id = $_SESSION['account_id'];
+        }
+        $edit_mat_date = date("Y-m-d G:i:s");
+                if(isset($_POST['mat_unit'])) {
+            $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
+            $sql = "UPDATE materials SET mat_unit = '$mat_unit' WHERE mat_name = '$materialname';";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material unit of $materialname to $mat_unit', $account_id);";
+            mysqli_query($conn, $sql); 
+        }
+                if(isset($_POST['minquantity'])) {
+            $minquantity = mysqli_real_escape_string($conn, $_POST['minquantity']);
+            $sql = "UPDATE materials SET mat_notif = '$minquantity' WHERE mat_name = '$materialname';";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material unit of $materialname to $minquantity', $account_id);";
+            mysqli_query($conn, $sql); 
+        }
+        if(isset($_POST['newmaterialname'])) {
+            $newmaterialname = $_POST['newmaterialname'];
+            $sql = "UPDATE materials SET mat_name = '$newmaterialname' WHERE mat_name = '$materialname';";
+            mysqli_query($conn,$sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material name of $materialname to $newmaterialname', $account_id);";
+            mysqli_query($conn, $sql); 
+        }
+
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");     
+    }
+
     if(isset($_POST['generate_report'])) {
         $projects_name = $_POST['projects_name'];        
         session_start();

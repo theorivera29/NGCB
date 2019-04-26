@@ -17,7 +17,7 @@ $projects_name = $_GET['projects_name'];
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -74,10 +74,9 @@ $projects_name = $_GET['projects_name'];
         </div>
     </nav>
 
-<<<<<<< HEAD
-=======
+
     <h3 class="mat-name-title"><?php echo $mat_name?></h3>
->>>>>>> b0ac5d27bd1d45f64778831d0af0924a3824a417
+
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Delivered In</a></li>
@@ -125,7 +124,7 @@ $projects_name = $_GET['projects_name'];
                         </tr>
                     </tbody>
                 </table>
-                <span>List of Delivered Material</span>
+                <span>List of Delivered In Material</span>
                 <table id = "sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
@@ -206,6 +205,7 @@ $projects_name = $_GET['projects_name'];
     </div>
 
     
+    <!--Usage In-->
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
@@ -253,6 +253,21 @@ $projects_name = $_GET['projects_name'];
                                 <input id="us_area" name="us_area" type="text" class="validate" required>
                             </td>
                         </tr>
+                      </tbody>
+                </table>
+                <span>List of Usage In Material</span>
+                <table id = "sort" class="centered usagein striped">
+                    <thead class="usagein-head">
+                        <tr>
+                            <th onclick="sortTable(0)">Date</th>
+                            <th onclick="sortTable(1)">Quantity</th>
+                            <th onclick="sortTable(2)">Unit</th>
+                            <th onclick="sortTable(3)">Pulled Out By</th>
+                            <th onclick="sortTable(4)">Area of Usage</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
                         <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
@@ -279,6 +294,8 @@ $projects_name = $_GET['projects_name'];
                         ?>
                       </tbody>
                 </table>
+
+                
                 <div>
                 <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";

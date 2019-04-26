@@ -119,6 +119,8 @@
                             <div id="doneBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to click done?</span>
+                                    <br>
+                                    <?php echo $row[2];?>
                                 </div>
                                 <div class="modal-footer">
                                     <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
@@ -136,6 +138,8 @@
                             <div id="clearBtn<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
                                     <span>Are you sure want to clear this task</span>
+                                    <br>
+                                    <?php echo $row[2];?>
                                 </div>
                                 <div class="modal-footer">
                                     <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>

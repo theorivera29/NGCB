@@ -483,7 +483,6 @@ i.right {
 /*Sortable table head*/
 .sort-icon{
     transform: rotate(90deg) !important;
-    font-weight: bold;
 }
 
 /*Add To-do Container*/

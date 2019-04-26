@@ -111,10 +111,7 @@
         ?>
         <div class="row">
             <div class="col s6 m4">
-                <!-- <form action="../server.php" method="POST"> -->
                     <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search...">
-                    <!-- <input class="submit search-btn" type="submit" value="SEARCH"> -->
-                <!-- </form> -->
             </div>
             <div class="col">
 

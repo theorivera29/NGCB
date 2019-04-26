@@ -140,10 +140,10 @@
         ?>
         <div class="row">
             <div class="col 6 m4">
-                <form>
-                    <input class="input search-bar search-viewinventory" type="search" placeholder="Search">
-                    <input class="submit search-btn" type="submit" value="SEARCH">
-                </form>
+
+                <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search"
+                    placeholder="Search...">
+
             </div>
 
             <a href="#addmaterialModal"
@@ -575,6 +575,25 @@
                     if (switchcount == 0 && dir == "asc") {
                         dir = "desc";
                         switching = true;
+                    }
+                }
+            }
+        }
+
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("sort");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
                     }
                 }
             }

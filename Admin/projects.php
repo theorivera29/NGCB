@@ -134,7 +134,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" class="waves-effect waves-light btn cancel-proj-btn">Cancel</a>
+                    <a href="projects.php" class="waves-effect waves-light btn cancel-proj-btn">Cancel</a>
                     <button type="submit" class="waves-effect waves-light btn save-proj-btn" name="create_project">Save</button>
                 </div>
             </form>

@@ -42,14 +42,14 @@
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $generated_password = substr(str_shuffle($characters), 0, 8);
 	    $password = password_hash($generated_password, PASSWORD_DEFAULT);
-        $account_type = mysqli_real_escape_string($conn, $_POST['radio-account']);
+        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
         $sql = "SELECT accounts_id from accounts WHERE accounts_username = '$username';";
         $result = mysqli_query($conn,$sql);
         $count = mysqli_num_rows($result);
         if($count != 1) {
             try {
                 $stmt = $conn->prepare("INSERT INTO accounts (accounts_fname, accounts_lname, accounts_username, accounts_password, accounts_type, accounts_email, accounts_deletable, accounts_status)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                VALUES ('$firstname', '$lastname', '$username', '123', '$account_type', '$email', 'yes', 'active')");
                 $stmt->bind_param("ssssssss", $firstname, $lastname, $username, $password, $account_type, $email, $deletable, $status);
                 $deletable = "yes";
                 $status = "active";
@@ -384,6 +384,7 @@
         $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
+        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);";
         $delivered_date = mysqli_real_escape_string($conn, $_POST['date']);
         $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
         $supplied_by = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
@@ -404,6 +405,7 @@
         $stmt->execute();
         $stmtm->close();
         mysqli_query($conn, $sql);
+        echo $mat_name;
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {

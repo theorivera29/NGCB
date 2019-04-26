@@ -24,10 +24,6 @@ body {
     padding-top: 2%;
 }
 
-
-
-
-
 .materialize-textarea {
     border-radius: 4% !important;
 }
@@ -484,6 +480,11 @@ i.right {
     background-color: #FFFFFF;
 }
 
+/*Sortable table head*/
+.sort-icon{
+    transform: rotate(90deg) !important;
+}
+
 /*Add To-do Container*/
 .container-addtask {
     margin-left: 2% !important;
@@ -503,6 +504,7 @@ i.right {
 
 .container-to-do {
     background-color: #F0F1F2;
+    border: 1px solid #003A51;
     margin-top: 4% !important;
     margin-left: 3%;
     border-radius: 2%;
@@ -582,6 +584,7 @@ textarea.materialize-textarea {
     width: 60.5% !important;
     background-color: #F0F1F2;
     border-radius: 2%;
+    border: 1px solid #003A51;
 }
 
 .container-all-task {
@@ -601,7 +604,7 @@ textarea.materialize-textarea {
 
 .view-tasks {
     table-layout: auto;
-    border: 1px solid rgb(155, 155, 155);
+    border-bottom: 1px solid rgb(155, 155, 155);
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -614,17 +617,17 @@ textarea.materialize-textarea {
     white-space: nowrap;
     min-height: 25px;
     position: relative;
-    width: 5%;
+    width: 30%;
 }
 
 .task-data-table1 {
     overflow-x: hidden;
-    width: 90px;
+    width: 25%;
 }
 
 .task-data-table2 {
     overflow-x: hidden;
-    width: 90px;
+    width: 45%;
 }
 
 .doneBtn {
@@ -680,7 +683,7 @@ textarea.materialize-textarea {
     margin-top: 2%;
     color: #FFFFFF !important;
     background-color: #2F89C5 !important;
-    float: right !important;
+    margin-left: 2%;
     margin-bottom: 2%;
 }
 
@@ -696,6 +699,7 @@ textarea.materialize-textarea {
 
 .container-materials {
     background-color: #F0F1F2;
+    border: 1px solid #003A51;
     margin-top: 2%;
     margin-left: 3%;
     margin-right: 3%;
@@ -745,6 +749,31 @@ textarea.materialize-textarea {
 .view-all-tasks{
     margin-top: 2% !important;
     border: 1px solid black;
+}
+
+.all-task-table-container {
+    height: 5px !important;
+    max-height: 5% !important;
+}
+
+.all-task-data-table {
+    white-space: nowrap;
+    min-height: 25px;
+    position: relative;
+    width: 30%;
+    font-size: 3vmin !important;
+}
+
+.all-task-data-table1 {
+    overflow-x: hidden;
+    width: 25%;
+    font-size: 3vmin !important;
+}
+
+.all-task-data-table2 {
+    overflow-x: hidden;
+    width: 45%;
+    font-size: 3vmin !important;
 }
 
 /*Projects*/
@@ -976,6 +1005,7 @@ textarea.materialize-textarea {
     color: #ffffff !important;
     background-color: #71B340 !important;
     font-size: 2vmin !important;
+    margin-right: .5% !important;
 }
 
 .save-mat-btn:hover {
@@ -994,7 +1024,7 @@ textarea.materialize-textarea {
 }
 
 .modal-footer {
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     margin-top: 5%;
 }
 
@@ -1629,6 +1659,7 @@ select[name=mat_unit] {
     color: #00171F;
     font-size: 6vmin;
     font-family: Pridi;
+    padding-bottom: 2% !important;
 }
 
 .create-account-btn {
@@ -1679,6 +1710,27 @@ select[name=mat_unit] {
 
 .pass-reset-table-head>tr>th{
     background-color: #0B415E !important;
+    color: #FFFFFF;
+}
+
+.reject-btn{
+    background-color: #EF5B5B;
+    color: #FFFFFF;
+}
+
+.reject-btn:hover{
+    background-color: #C44B4B;
+    color: #FFFFFF;
+}
+
+.accept-btn{
+    background-color: #71B340;
+    color: #FFFFFF;
+    margin-right: 1% !important;
+}
+
+.accept-btn:hover{
+    background-color: #5D9335;
     color: #FFFFFF;
 }
 

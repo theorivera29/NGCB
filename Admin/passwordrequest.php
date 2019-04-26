@@ -134,13 +134,13 @@
                             <form action="../server.php" method="POST">
                                 <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
                                 <button type="submit" name="request_accept"  href="#acceptRequest<?php echo $row[5]; ?>"
-                                    class="waves-effect waves-light btn modal-trigger all-btn">
+                                    class="waves-effect waves-light btn modal-trigger all-btn accept-btn">
                                     Accept
                                 </button>
 
                                 <input type="hidden" name="request_accountID" value="<?php echo $row[4]; ?>">
                                 <button type="submit" name="request_reject"  href="#rejectRequest<?php echo $row[5]; ?>" 
-                                    class="waves-effect waves-light btn modal-trigger all-btn">
+                                    class="waves-effect waves-light btn modal-trigger all-btn reject-btn">
                                     Reject
                                 </button>
                                 

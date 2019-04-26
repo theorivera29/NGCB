@@ -88,7 +88,7 @@
 
 
 
-                <ul class="collapsible" data-collapsible= "accordion">
+                <ul class="collapsible" data-collapsible="accordion">
                     <li>
                         <i class="material-icons left">local_shipping</i><a
                             class="collapsible-header waves-effect waves-blue">Hauling<i
@@ -141,8 +141,8 @@
 
                     <button class="btn waves-effect waves-light save-todo-btn" type="submit" class="validate"
                         name="create_todo">Save</button>
+                </form>
             </div>
-            </form>
         </div>
 
         <!--To-do Container-->
@@ -187,7 +187,8 @@
                                         href="#doneBtn<?php echo $row[0];?>">Done</button>
                                     <div id="doneBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
-                                            <span class="modal-question-content">Are you sure you are done with this task?</span>
+                                            <span class="modal-question-content">Are you sure you are done with this
+                                                task?</span>
                                             <br>
                                             <?php echo $row[2];?>
                                         </div>
@@ -206,7 +207,8 @@
                                         href="#clearBtn<?php echo $row[0];?>">Clear</button>
                                     <div id="clearBtn<?php echo $row[0];?>" class="modal modal-question">
                                         <div class="modal-content">
-                                            <span class="modal-question-content">Are you sure you want to clear this task?</span>
+                                            <span class="modal-question-content">Are you sure you want to clear this
+                                                task?</span>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
@@ -234,7 +236,7 @@
     <div class="row">
         <h5 id="panel-header-materials">Materials Low in Quantity</h5>
         <div class="col container-materials">
-            <table id = "sort" class="striped responsive-table materials-left centered">
+            <table id="sort" class="striped responsive-table materials-left centered">
                 <thead class="view-materials-head">
                     <tr class="material-headers">
                         <th onclick="sortTable(0)">Material Name</th>
@@ -296,8 +298,7 @@
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="../materialize/js/materialize.min.js">
-    </script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
         // SIDEBAR
         $(document).ready(function () {

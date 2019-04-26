@@ -116,6 +116,8 @@
     
 
     <div class="site-materials-container">
+    <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search"
+                    placeholder="Search...">
         <div class="lighten-5">
             <table id="sort" class="centered site-materials-content">
                 <thead class="site-materials-head">
@@ -218,7 +220,6 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         // SIDEBAR
         $(document).ready(function () {
@@ -229,6 +230,25 @@
             $('.modal-trigger').leanModal();
         });
 
+
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("sort");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     
     </script>
 </body>

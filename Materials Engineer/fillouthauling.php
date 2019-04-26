@@ -283,7 +283,6 @@
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
         // SIDEBAR
-        // SIDEBAR
         $(document).ready(function () {
             $('.button-collapse').sideNav({
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor

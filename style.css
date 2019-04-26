@@ -1107,7 +1107,6 @@ textarea.materialize-textarea {
 
 .site-materials-content {
     border: 1px solid black;
-    
 }
 
 .site-materials-head>tr>th {
@@ -1650,6 +1649,11 @@ select[name=mat_unit] {
     z-index: 2;
     transition: all 100 ms ease-in;
     transform: scale(1.1);
+}
+
+.sub-header-number{
+    font-size: 3vmin !important;
+    color: yellow;
 }
 
 .text-headers {

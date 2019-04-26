@@ -105,19 +105,19 @@
     </nav>
 
 
-    <div class="cards-container-admin account-container-admin" onclick="window.open('listofaccounts.php')">
+    <div class="cards-container-admin account-container-admin" onclick="location.href='listofaccounts.php';">
         <p class="text-headers">Accounts</p>
         <p class="sub-header-number"></p>
         <p class="sub-header-text">active accounts</p>
     </div>
 
-    <div class="cards-container-admin password-reset-container" onclick="window.open('passwordrequest.php')">
+    <div class="cards-container-admin password-reset-container" onclick="location.href='passwordrequest.php';">
         <p class="text-headers">Password Reset</p>
         <p class="sub-header-number"></p>
         <p class="sub-header-text">requesting for a new password</p>
     </div>
 
-    <div class="cards-container-admin project-status-container" onclick="window.open('projects.php')">
+    <div class="cards-container-admin project-status-container"onclick="location.href='projects.php';">
         <p class="text-headers">Projects</p>
         <p class="sub-header-number"></p>
         <p class="sub-header-number"></p>

@@ -783,7 +783,7 @@
         $stmt->bind_param("i", $request_accountID);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($request_email, $request_name)
+        $stmt->bind_result($request_email, $request_name); 
         $stmt->close();
         $accept_date = date("Y-m-d G:i:s");
         $stmt = $conn->prepare("UPDATE accounts SET accounts_password = ? WHERE accounts_id = ?;");

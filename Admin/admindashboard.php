@@ -107,21 +107,35 @@
 
     <div class="cards-container-admin account-container-admin" onclick="location.href='listofaccounts.php';">
         <p class="text-headers">Accounts</p>
-        <p class="sub-header-number"></p>
+        <p class="sub-header-number">
+            <?php
+                $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM accounts;")) - 3;
+                echo $num_rows;
+            ?>            
+        </p>
         <p class="sub-header-text">active accounts</p>
     </div>
 
     <div class="cards-container-admin password-reset-container" onclick="location.href='passwordrequest.php';">
         <p class="text-headers">Password Reset</p>
-        <p class="sub-header-number"></p>
+        <p class="sub-header-number">
+            <?php
+                $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM request;"));
+                echo $num_rows;
+            ?>    
+        </p>
         <p class="sub-header-text">requesting for a new password</p>
     </div>
 
     <div class="cards-container-admin project-status-container"onclick="location.href='projects.php';">
         <p class="text-headers">Projects</p>
-        <p class="sub-header-number"></p>
-        <p class="sub-header-number"></p>
-        <p class="sub-header-text">open projects</p>
+        <p class="sub-header-number">
+            <?php
+                $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects;")) - 3;
+                echo $num_rows;
+            ?>    
+        </p>
+        <p class="sub-header-text">number of  projects</p>
     </div>
 
 

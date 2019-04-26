@@ -65,10 +65,11 @@
         materials.pulled_out, 
         materials.accumulated_materials,
         materials.currentQuantity,
-        materials.mat_unit
+        unit.unit_name
         FROM materials 
         INNER JOIN categories ON materials.mat_categ = categories.categories_id
         INNER JOIN projects ON materials.mat_project = projects.projects_id
+        INNER JOIN unit ON materials.mat_unit = unit.unit_id
         WHERE categories.categories_name = '$categ' && projects.projects_name = '$projects_name'
         ORDER BY materials.mat_name;";
         $pdf->SetFont('Times','B',9);

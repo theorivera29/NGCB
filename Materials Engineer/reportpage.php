@@ -169,10 +169,12 @@
                         materials.delivered_material, 
                         materials.pulled_out, 
                         (materials.delivered_material + materials.mat_prevStock), 
-                        materials.currentQuantity
+                        materials.currentQuantity,
+                        unit.unit_name
                         FROM materials 
                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
                         INNER JOIN projects ON materials.mat_project = projects.projects_id
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
                         WHERE categories.categories_name = '$categ' && projects.projects_name = '$projects_name'
                         ORDER BY materials.mat_name;";
                         $result = mysqli_query($conn, $sql);
@@ -180,27 +182,32 @@
                     ?>
                         <tr>
                             <td>
-                                <?php echo $row[0] ?></a>
-
+                                <?php echo $row[0] ;?>
                             </td>
                             <td>
-                                <?php echo $row[1] ?>
-                            </td>
-                            <td>Unit</td>
-                            <td>
-                                <?php echo $row[2] ?>
+                                <?php echo $row[1] ;?>
                             </td>
                             <td>
-                                <?php echo $row[3] ?>
-                            </td>
-                            <td>Unit</td>
-                            <td>
-                                <?php echo $row[4] ?>
+                                <?php echo $row[6] ;?>
                             </td>
                             <td>
-                                <?php echo $row[5] ?>
+                                <?php echo $row[2] ;?>
                             </td>
-                            <td>Unit</td>
+                            <td>
+                                <?php echo $row[3] ;?>
+                            </td>
+                            <td>
+                                <?php echo $row[6] ;?>
+                            </td>
+                            <td>
+                                <?php echo $row[4] ;?>
+                            </td>
+                            <td>
+                                <?php echo $row[5] ;?>
+                            </td>
+                            <td>
+                                <?php echo $row[6] ;?>
+                            </td>
                             <?php 
                         }
                     ?>

@@ -166,10 +166,11 @@
                         materials.accumulated_materials,
                         materials.currentQuantity,
                         projects.projects_name,
-                        materials.mat_unit
+                        unit.unit_name
                         FROM materials 
                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
                         INNER JOIN projects ON materials.mat_project = projects.projects_id
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
                         WHERE categories.categories_name = '$categ';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
@@ -190,14 +191,18 @@
                         <td>
                             <?php echo $row[2] ?>
                         </td>
-                        <td>Unit</td>
+                        <td>
+                            <?php echo $row[8] ?>
+                        </td>
                         <td>
                             <?php echo $row[3] ?>
                         </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
-                        <td>Unit</td>
+                        <td>
+                            <?php echo $row[8] ?>
+                        </td>
                         <td>
                             <?php echo $row[5] ?>
                         </td>
@@ -207,7 +212,9 @@
                         <td>
                             <?php echo $row[7] ?>
                         </td>
-                        <td>Unit</td>
+                        <td>
+                            <?php echo $row[8] ?>
+                        </td>
                     </tr>
                     <?php 
                         }

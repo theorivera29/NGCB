@@ -418,6 +418,8 @@
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");        
     }
 
+
+    //////////////////////////////////////////////////////////
     if(isset($_POST['edit_account'])) {
         $username = mysqli_real_escape_string($conn, $_POST['userid']);
         session_start();

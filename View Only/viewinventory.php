@@ -4,10 +4,7 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-    $projects_name = false;
-    if(isset($_GET['projects_name'])) {
-        $projects_name = $_GET['projects_name'];
-    }
+    $projects_name = $_GET['projects_name'];
     $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_row($result);
@@ -22,7 +19,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 
 </head>
@@ -123,25 +120,25 @@
                         <th onClick="javascript:SortTable(0,'T');">Particulars</th>
                         <th onClick="javascript:SortTable(1,'T');">Category</th>
                         <th onClick="javascript:SortTable(2,'N');">Previous Material Stock</th>
-                        <th>Unit</th>
-                        <th onClick="javascript:SortTable(3,'N');">Delivered Material as of
+                        <th onClick="javascript:SortTable(3,'T');">Unit</th>
+                        <th onClick="javascript:SortTable(4,'N');">Delivered Material as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onClick="javascript:SortTable(4,'N');">Material Pulled out as of
+                        <th onClick="javascript:SortTable(5,'N');">Material Pulled out as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th>Unit</th>
-                        <th onClick="javascript:SortTable(5,'N');">Accumulate of Materials Delivered</th>
-                        <th onClick="javascript:SortTable(6,'N');">Material on Site as of
+                        <th onClick="javascript:SortTable(6,'T');">Unit</th>
+                        <th onClick="javascript:SortTable(7,'N');">Accumulate of Materials Delivered</th>
+                        <th onClick="javascript:SortTable(8,'N');">Material on Site as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th>Unit</th>
+                        <th onClick="javascript:SortTable(9,'T');">Unit</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php 
-                                // $projects_name = $_GET['projects_name'];
+                                //  $projects_name = $_GET['projects_name'];
                                 $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             INNER JOIN projects ON materials.mat_project = projects.projects_id
@@ -156,17 +153,24 @@
                             $categ = $data['categories_name'];
                         ?>
                     <?php 
-                            $sql = "SELECT
-                            mat_name, 
-                            categories.categories_name,
+                            $sql = "SELECT 
+                            mat_name,
+                            categories_name, 
                             mat_prevStock, 
+                            unit_name,
                             delivered_material, 
-                            pulled_out, 
+                            materials.pulled_out, 
+                            unit_name,
                             accumulated_materials,
-                            currentQuantity
+                            currentQuantity,
+                            unit_name,
+                            projects_name
                             FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                            WHERE categories.categories_name = '$categ';";
+                            INNER JOIN projects ON materials.mat_project = projects.projects_id
+                            INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                            WHERE categories.categories_name = '$categ' AND
+                            projects.projects_name = '$projects_name';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>
@@ -187,21 +191,27 @@
                         <td>
                             <?php echo $row[2] ?>
                         </td>
-                        <td>Unit</td>
                         <td>
                             <?php echo $row[3] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
-                        <td>Unit</td>
                         <td>
                             <?php echo $row[5] ?>
                         </td>
                         <td>
                             <?php echo $row[6] ?>
                         </td>
-                        <td>Unit</td>
+                        <td>
+                            <?php echo $row[7] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[8] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[9] ?>
+                        </td>
                         <?php 
                             }
                         ?>

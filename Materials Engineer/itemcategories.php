@@ -22,7 +22,7 @@
     <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.css" rel="stylesheet">
+    <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
@@ -136,23 +136,24 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-            <h5 id="categ-title">
+             <h3 class="categ-name-title">
                 <?php echo $row[1] ;?>
-            </h5>
+            </h3>
             <?php
         }
     ?>
         </div>
         <div class="row">
-            <div class="col 6 m4">
-                <form>
-                    <input class="input search-bar" type="search" placeholder="Search">
-                    <input class="submit search-btn" type="submit" value="SEARCH">
-                </form>
+            <div class="col s6 m6">
+            <input class="input search-bar mat-eng-search-bar" id="myInput" onkeyup="myFunction()" type="search"
+                    placeholder="Search...">
             </div>
+            <div class="col s6 right-align">
+                <a href="#addmaterialModal"
+                    class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
+                    Add Material</a>
 
-            <a href="#addmaterialModal" class="waves-effect waves-light btn button add-mat-btn modal-trigger">Add
-                Material</a>
+            </div>
         </div>
         <div class="row">
             <div class="col s12">
@@ -161,10 +162,13 @@
                         <tr>
                             <th>Particulars</th>
                             <th>Previous Material Stock</th>
+                            <th>Unit</th>
                             <th>Delivered Material as of <?php echo date("F Y"); ?></th>
                             <th>Material Pulled out as of <?php echo date("F Y"); ?></th>
+                            <th>Unit</th>
                             <th>Accumulate of Materials Delivered</th>
                             <th>Material on Site as of <?php echo date("F Y"); ?></th>
+                            <th>Unit</th>
                             <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
@@ -203,18 +207,21 @@
                             <td>
                                 <?php echo $row[1] ?>
                             </td>
+                            <td> Unit </td>
                             <td>
                                 <?php echo $row[2] ?>
                             </td>
                             <td>
                                 <?php echo $row[3] ?>
                             </td>
+                            <td> Unit </td>
                             <td>
                                 <?php echo $row[4] ?>
                             </td>
                             <td>
                                 <?php echo $row[5] ?>
                             </td>
+                            <td> Unit </td>
                             <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>
@@ -249,14 +256,15 @@
                     <div class="col s5">
                         <label>Category:</label>
                         <div class="input-field col s12">
-                          <?php
+                            <?php
                                     $sql = "SELECT categories_name FROM categories WHERE categories_id = $categories_id";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 
                                 ?>
-                           <input id="mat_categ" name="mat_categ" type="text" class="validate" value="<?php echo $row[0]?>">
-                           <?php 
+                            <input id="mat_categ" name="mat_categ" type="text" class="validate"
+                                value="<?php echo $row[0]?>">
+                            <?php 
                                     }
                                 ?>
                         </div>
@@ -319,6 +327,25 @@
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
         });
+
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("sort");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 
 </body>

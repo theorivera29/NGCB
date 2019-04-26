@@ -680,11 +680,11 @@ textarea.materialize-textarea {
 }
 
 .task-btn {
-    margin-top: 2%;
     color: #FFFFFF !important;
     background-color: #2F89C5 !important;
-    margin-left: 2%;
-    margin-bottom: 2%;
+    float: right;
+    margin-top: -3%;
+    margin-right: 2%;
 }
 
 .task-btn:hover{

@@ -145,7 +145,7 @@
         </div>
         <div class="row">
             <div class="col s6 m6">
-                <input class="input search-bar mat-eng-search-bar" id="myInput" onkeyup="myFunction()" type="search"
+            <input class="input search-bar mat-eng-search-bar" id="myInput" onkeyup="myFunction()" type="search"
                     placeholder="Search...">
             </div>
             <div class="col s6 right-align">
@@ -327,6 +327,25 @@
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
         });
+
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("sort");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 
 </body>

@@ -106,12 +106,12 @@
             <table id="sort" class="account-list-table centered">
                 <thead class="account-list-head">
                     <tr>
-                        <th onclick="sortTable(0)">ID</th>
-                        <th onclick="sortTable(1)">User Name</th>
-                        <th onclick="sortTable(2)">Name</th>
-                        <th onclick="sortTable(3)">E-mail</th>
-                        <th onclick="sortTable(4)">Account Type</th>
-                        <th onclick="sortTable(5)">Status</th>
+                        <th onClick="javascript:SortTable(0,'N');">ID</th>
+                        <th onClick="javascript:SortTable(1,'T');">User Name</th>
+                        <th onClick="javascript:SortTable(2,'T');">Name</th>
+                        <th onClick="javascript:SortTable(3,'T');">E-mail</th>
+                        <th onClick="javascript:SortTable(4,'T');">Account Type</th>
+                        <th onClick="javascript:SortTable(5,'T');">Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -213,41 +213,60 @@
             $('.modal-trigger').leanModal();
         });
 
-        function sortTable(n) {
-            var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            table = document.getElementById("sort");
-            switching = true;
-            dir = "asc";
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                            shouldSwitch = true;
-                            break;
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
+        var TableIDvalue = "sort";
+        var TableLastSortedColumn = -1;
+
+        function SortTable() {
+            var sortColumn = parseInt(arguments[0]);
+            var type = arguments.length > 1 ? arguments[1] : 'T';
+            var dateformat = arguments.length > 2 ? arguments[2] : '';
+            var table = document.getElementById(TableIDvalue);
+            var tbody = table.getElementsByTagName("tbody")[0];
+            var rows = tbody.getElementsByTagName("tr");
+            var arrayOfRows = new Array();
+            type = type.toUpperCase();
+            dateformat = dateformat.toLowerCase();
+            for (var i = 0, len = rows.length; i < len; i++) {
+                arrayOfRows[i] = new Object;
+                arrayOfRows[i].oldIndex = i;
+                var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g, "");
+                if (type == 'D') {
+                    arrayOfRows[i].value = GetDateSortingKey(dateformat, celltext);
                 } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
+                    var re = type == "N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
+                    arrayOfRows[i].value = celltext.replace(re, "").substr(0, 25).toLowerCase();
                 }
             }
+            if (sortColumn == TableLastSortedColumn) {
+                arrayOfRows.reverse();
+            } else {
+                TableLastSortedColumn = sortColumn;
+                switch (type) {
+                    case "N":
+                        arrayOfRows.sort(CompareRowOfNumbers);
+                        break;
+                    default:
+                        arrayOfRows.sort(CompareRowOfText);
+                }
+            }
+            var newTableBody = document.createElement("tbody");
+            for (var i = 0, len = arrayOfRows.length; i < len; i++) {
+                newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
+            }
+            table.replaceChild(newTableBody, tbody);
+        } // function SortTable()
+
+        function CompareRowOfText(a, b) {
+            var aval = a.value;
+            var bval = b.value;
+            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+        } // function CompareRowOfText()
+
+        function CompareRowOfNumbers(a, b) {
+            var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
+            var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
+            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+        } // function CompareRowOfNumbers()
         }
     </script>
 

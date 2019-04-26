@@ -121,7 +121,23 @@ $mat_name = $_GET['mat_name'];
                             </td>
 
                         </tr>
+                        <?php 
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                
+                <table class="centered deliverin striped">
+                    <thead class="deliverin-head">
+                        <tr>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Supplied By</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
                         <?php 
                         $sql_devIn = "SELECT deliveredin.delivered_date, 
                         deliveredin.delivered_quantity, 
@@ -161,10 +177,10 @@ $mat_name = $_GET['mat_name'];
                         </tr>
                         <?php 
                         }
-                        }
                         ?>
                     </tbody>
                 </table>
+                
                 <div class="stockcard-btn">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_deliveredinsite">Save</button>
@@ -176,7 +192,7 @@ $mat_name = $_GET['mat_name'];
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
-                <table class="centered usagein striped">
+                 <table class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
                             <th>Date</th>
@@ -218,6 +234,26 @@ $mat_name = $_GET['mat_name'];
                                 <input id="us_area" name="us_area" type="text" class="validate" required>
                             </td>
                         </tr>
+                        
+                        
+                        <?php
+                        
+                        }
+                            ?>
+                </table>
+                <table class="centered usagein striped">
+                    <thead class="usagein-head">
+                        <tr>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Pulled Out By</th>
+                            <th>Area of Usage</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        
                         <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
@@ -256,7 +292,7 @@ $mat_name = $_GET['mat_name'];
                             </td>
                         </tr>
                         <?php
-                        }
+                        
                         }
                             ?>
                 </table>

@@ -122,22 +122,22 @@
             }
         ?>
         <div class="view-inventory-container">
-            <table  id="indextable" class="centered view-inventory">
+            <table  id="sort" class="centered view-inventory">
                 <thead class="view-inventory-head">
                     <tr>
-                        <th><a href="javascript:SortTable(0,'T');">Particulars</a></th>
-                        <th><a href="javascript:SortTable(1,'T');">Category</a></th>
-                        <th><a href="javascript:SortTable(2,'N');">Previous Material Stock</a></th>
-                        <th><a href="javascript:SortTable(3,'N');">Delivered Material as of
+                        <th onClick = "javascript:SortTable(0,'T');">Particulars</th>
+                        <th onClick = "javascript:SortTable(1,'T');">Category</th>
+                        <th onClick = "javascript:SortTable(2,'N');">Previous Material Stock</th>
+                        <th onClick = "javascript:SortTable(3,'N');">Delivered Material as of
                             <?php echo date("F Y"); ?>
-                        </a></th>
-                        <th><a href="javascript:SortTable(4,'N');">Material Pulled out as of
+                        </th>
+                        <th onClick = "javascript:SortTable(4,'N');">Material Pulled out as of
                             <?php echo date("F Y"); ?>
-                        </a></th>
-                        <th><a href="javascript:SortTable(5,'N');">Accumulate of Materials Delivered</a></th>
-                        <th><a href="javascript:SortTable(6,'N');">Material on Site as of
+                        </th>
+                        <th onClick = "javascript:SortTable(5,'N');">Accumulate of Materials Delivered</th>
+                        <th onClick = "javascript:SortTable(6,'N');">Material on Site as of
                             <?php echo date("F Y"); ?>
-                        </a></th>
+                        </th>
                     </tr>
                 </thead>
 
@@ -307,7 +307,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
-    <script>
+    <script type="text/javascript">
         // SIDEBAR
         $(document).ready(function () {
             $('.button-collapse').sideNav({
@@ -330,7 +330,7 @@
             });
         });
 
-var TableIDvalue = "indextable";
+var TableIDvalue = "sort";
 var TableLastSortedColumn = -1;
 function SortTable() {
 var sortColumn = parseInt(arguments[0]);

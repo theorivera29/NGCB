@@ -209,14 +209,18 @@
                             materials.mat_name,
                             categories.categories_name, 
                             materials.mat_prevStock, 
+                            unit_name,
                             materials.delivered_material, 
                             materials.pulled_out, 
+                            unit_name,
                             materials.accumulated_materials,
                             materials.currentQuantity,
+                            unit_name,
                             projects.projects_name
                             FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             INNER JOIN projects ON materials.mat_project = projects.projects_id
+                            INNER JOIN unit ON materials.mat_unit = unit.unit_id
                             WHERE categories.categories_name = '$categ';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
@@ -236,21 +240,27 @@
                         <td>
                             <?php echo $row[2] ?>
                         </td>
-                        <td>Unit</td>
                         <td>
                             <?php echo $row[3] ?>
-                        </td>
+                            </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
-                        <td>Unit</td>
                         <td>
                             <?php echo $row[5] ?>
                         </td>
                         <td>
                             <?php echo $row[6] ?>
                         </td>
-                        <td>Unit</td>
+                        <td>
+                            <?php echo $row[7] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[8] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[9] ?>
+                        </td>
                         <?php 
                                 if(strcmp($projects_status, "open") == 0) {
                             ?>

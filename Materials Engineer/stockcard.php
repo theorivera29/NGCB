@@ -197,6 +197,7 @@ $projects_name = $_GET['projects_name'];
                         ?>
                     </div>
                 <div class="stockcard-btn">
+                    <input type="hidden" name="update_from" value="stockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_deliveredin">Save</button>
                 </div>
@@ -310,6 +311,7 @@ $projects_name = $_GET['projects_name'];
                         ?>
                     </div>
                 <div class="stockcard-btn">
+                    <input type="hidden" name="update_from" value="stockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_usagein">Save</button>
                 </div>
@@ -350,9 +352,10 @@ $projects_name = $_GET['projects_name'];
                     </div>
                 </div>
                 <div class="col s12 edit-matname-btn">
+                    <input type="hidden" name="update_from" value="stockcard">
                     <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials"
                         type="submit">Save</button>
-                    <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
+                    <a class="btn waves-effect waves-light cancel-mat-btn">Cancel</a>
                 </div>
             </form>
         </div>

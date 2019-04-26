@@ -74,7 +74,7 @@ $projects_name = $_GET['projects_name'];
         </div>
     </nav>
 
-<?php echo $mat_name?>
+    <h3 class="mat-name-title"><?php echo $mat_name?></h3>
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Delivered In</a></li>
@@ -121,7 +121,7 @@ $projects_name = $_GET['projects_name'];
                         </tr>
                     </tbody>
                 </table>
-
+                <span>List of Delivered Material</span>
                 <table id = "sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>

@@ -680,11 +680,11 @@ textarea.materialize-textarea {
 }
 
 .task-btn {
-    margin-top: 2%;
     color: #FFFFFF !important;
     background-color: #2F89C5 !important;
-    margin-left: 2%;
-    margin-bottom: 2%;
+    float: right;
+    margin-top: -3%;
+    margin-right: 2%;
 }
 
 .task-btn:hover{
@@ -882,8 +882,7 @@ textarea.materialize-textarea {
 
 
 /*View Inventory - Site Materials*/
-.search-bar,
-.search-btn {
+.search-bar{
     display: inline-block !important;
     padding: 10px 15px !important;
     font-size: 2.5vmin !important;
@@ -892,14 +891,12 @@ textarea.materialize-textarea {
 }
 
 .search-bar {
-    width: 49% !important;
+    width: 30% !important;
     height: 2% !important;
 }
 
-.search-btn {
-    background-color: #19466D !important;
-    color: #FFFFFF !important;
-    margin-top: 5%;
+.view-inventory-bar{
+    margin-left: 1% !important;
 }
 
 .input[type=search] {

@@ -83,11 +83,11 @@
             <thead class="view-tasks-head">
                 <tr class="task-headers">
                     <th onclick="sortTable(0)">Date<i
-                        class="material-icons sort-icon">code</i></th>
+                        class="material-icons tiny sort-icon">code</i></th>
                     <th onclick="sortTable(1)">Task<i
-                        class="material-icons sort-icon">code</i></th>
+                        class="material-icons tiny sort-icon">code</i></th>
                     <th onclick="sortTable(2)">Status<i
-                        class="material-icons sort-icon">code</i></th>
+                        class="material-icons tiny sort-icon">code</i></th>
                     <th>Action</th>
                 </tr>
             </thead>

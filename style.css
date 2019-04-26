@@ -1102,7 +1102,7 @@ textarea.materialize-textarea {
 }
 
 .site-materials-content {
-    padding: 5%;
+    border: 1px solid black;
 }
 
 .site-materials-head>tr>th {

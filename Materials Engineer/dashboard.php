@@ -153,6 +153,12 @@
         <div class="col s7 container-task-todo">
             <div class="container-all-task">
                 <table class="striped centered view-tasks">
+                   <?php
+                        $date_today = date("Y-m-d");
+                        $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id && todo_date = '$date_today' ORDER BY todo_task;";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0){
+                    ?>
                     <thead class="view-tasks-head">
                         <tr class="task-headers">
                             <th>Date</th>
@@ -164,10 +170,6 @@
 
                     <tbody class="task-table-container">
                         <?php 
-                            $date_today = date("Y-m-d");
-                            $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id && todo_date = '$date_today' ORDER BY todo_task;";
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0){
                             while($row = mysqli_fetch_row($result)) {
                         ?>
                         <tr>
@@ -187,6 +189,7 @@
                                     ?>
                                     <input type="hidden" name="todo_id" value="<?php echo $row[0];?>">
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3];?>">
+                                    <input type="hidden" name="update_from" value="dashboard">
                                     <button class="waves-effect waves-light btn modal-trigger doneBtn"
                                         href="#doneBtn<?php echo $row[0];?>">Done</button>
                                     <div id="doneBtn<?php echo $row[0];?>" class="modal modal-question">
@@ -198,7 +201,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
-                                            <button type="submit" name="todo_updatedashboard"
+                                            <button type="submit" name="todo_update"
                                                 class="modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
@@ -207,6 +210,7 @@
                                     ?>
                                     <input type="hidden" name="todo_id" value="<?php echo $row[0];?>">
                                     <input type="hidden" name="todo_status" value="<?php echo $row[3];?>">
+                                    <input type="hidden" name="update_from" value="dashboard">
                                     <button class="waves-effect waves-light btn modal-trigger clearBtn"
                                         href="#clearBtn<?php echo $row[0];?>">Clear</button>
                                     <div id="clearBtn<?php echo $row[0];?>" class="modal modal-question">
@@ -218,7 +222,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
-                                            <button type="submit" name="todo_updatedashboard"
+                                            <button type="submit" name="todo_update"
                                                 class="modal-close waves-effect waves-red btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
@@ -251,12 +255,18 @@
             <table id="sort" class="striped responsive-table materials-left centered">
                 <thead class="view-materials-head">
                     <tr class="material-headers">
-                        <th onclick="sortTable(0)">Material Name</th>
-                        <th onclick="sortTable(1)">Category</th>
-                        <th onclick="sortTable(2)">Quantity Remaining</th>
-                        <th onclick="sortTable(3)">Unit</th>
-                        <th onclick="sortTable(4)">Threshold</th>
-                        <th onclick="sortTable(5)">Project</th>
+                        <th onclick="sortTable(0)">Material Name<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(1)">Category<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(2)">Quantity Remaining<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(3)">Unit<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(4)">Threshold<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(5)">Project<i
+                        class="material-icons tiny sort-icon">code</i></th>
 
                     </tr>
                 </thead>

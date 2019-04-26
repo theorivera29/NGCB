@@ -428,42 +428,72 @@
         $edit_account_date = date("Y-m-d G:i:s");
         if(isset($_POST['newusername'])) {
             $newusername = $_POST['newusername'];
-            $sql = "UPDATE accounts SET accounts_username = '$newusername' WHERE accounts_id = '$username';";
-            mysqli_query($conn,$sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change account username to $newusername', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_username = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $newusername, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change account username to '.$newusername;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
         if(isset($_POST['newfname'])) {
             $newfname = mysqli_real_escape_string($conn, $_POST['newfname']);
-            $sql = "UPDATE accounts SET accounts_fname = '$newfname' WHERE accounts_id = '$username';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change first name to $newfname', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_fname = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $newfname, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change first name to '.$newfname;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
 
         if(isset($_POST['newlname'])) {
             $newlname = mysqli_real_escape_string($conn, $_POST['newlname']);
-            $sql = "UPDATE accounts SET accounts_lname = '$newlname' WHERE accounts_id = '$username';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change last name to $newlname', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_lname = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $newlname, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change last name to '.$newlname;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
 
         if(isset($_POST['newemail'])) {
             $newemail = mysqli_real_escape_string($conn, $_POST['newemail']);
-            $sql = "UPDATE accounts SET accounts_email = '$newemail' WHERE accounts_id = '$username';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change email to $newemail', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_email = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $newemail, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change email to '.$newemail;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
         
         if(isset($_POST['newpassword'])) {
             $newpassword = mysqli_real_escape_string($conn, $_POST['newpassword']);
             $hash_password = password_hash($newpassword, PASSWORD_DEFAULT);
-            $sql = "UPDATE accounts SET accounts_password = '$hash_password' WHERE accounts_id = '$username';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change account password', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_password = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $hash_password, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change account password ';
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
         
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");        
@@ -472,6 +502,7 @@
     if(isset($_POST['todo_update'])) {
         $todo_id = $_POST['todo_id'];
         $todo_status = $_POST['todo_status'];
+        $update_from = $_POST['update_from'];
         $sql = "SELECT todo_task FROM todo WHERE todo_id = '$todo_id';";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
@@ -483,46 +514,33 @@
         }
         $update_todo_date = date("Y-m-d G:i:s");
         if(strcasecmp($todo_status, 'in progress') == 0) {
-            $sql = "UPDATE todo SET todo_status = 'done' WHERE todo_id = '$todo_id';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Updated todo task $todo_task to done', $account_id);";
-            mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
+            $stmt = $conn->prepare("UPDATE todo SET todo_status = 'done' WHERE todo_id = ?;");
+            $stmt->bind_param("i", $todo_id);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $update_todo_date, $logs_message, $logs_of);
+            $logs_message = 'Updated todo task '.$todo_task.' to done';
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         } else {
-            $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
-            mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
-        }        
-    }
-
-    if(isset($_POST['todo_updatedashboard'])) {
-        $todo_id = $_POST['todo_id'];
-        $todo_status = $_POST['todo_status'];
-        $sql = "SELECT todo_task FROM todo WHERE todo_id = '$todo_id';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $todo_task = $row[0];
-        session_start();
-        $account_id = "";
-        if(isset($_SESSION['account_id'])) {
-            $account_id = $_SESSION['account_id'];
+            $stmt = $conn->prepare("DELETE FROM todo WHERE todo_id = ?;");
+            $stmt->bind_param("i", $todo_id);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $update_todo_date, $logs_message, $logs_of);
+            $logs_message = 'Cleared todo task '.$todo_tassk;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
-        $update_todo_date = date("Y-m-d G:i:s");
-        if(strcasecmp($todo_status, 'in progress') == 0) {
-            $sql = "UPDATE todo SET todo_status = 'done' WHERE todo_id = '$todo_id';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Updated todo task $todo_task to done', $account_id);";
-            mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+        if(strcasecmp($update_from, 'dashboard') == 0) {   
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");  
         } else {
-            $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
-            mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
-        }        
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
+        }
     }
 
     if (isset($_POST['add_deliveredin'])) {

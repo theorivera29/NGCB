@@ -114,6 +114,7 @@
                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
+                            <input type="hidden" name="update_from" value="viewall">
                             <button class="waves-effect waves-light btn modal-trigger doneBtn"
                                 href="#doneBtn<?php echo $row[0] ;?>">Done</button>
                             <div id="doneBtn<?php echo $row[0] ;?>" class="modal">
@@ -133,6 +134,7 @@
                             ?>
                             <input type="hidden" name="todo_id" value="<?php echo $row[0] ;?>">
                             <input type="hidden" name="todo_status" value="<?php echo $row[3] ;?>">
+                            <input type="hidden" name="update_from" value="viewall">
                             <button class="waves-effect waves-light btn modal-trigger clearBtn"
                                 href="#clearBtn<?php echo $row[0] ;?>">Clear</button>
                             <div id="clearBtn<?php echo $row[0] ;?>" class="modal">

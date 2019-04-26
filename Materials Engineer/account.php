@@ -156,13 +156,17 @@
                     <div class="input-field col s5 account-newpassword-field">
                         <input id="account-password" name="newpassword" type="password" value="<?php echo $row[4]?>">
                         <label class="active account-setting-label" for="newpassword">New Password</label>
+                        
                     </div>
                     <div class="input-field col s5 account-confirmpassword-field">
                         <input id="account-confirmpassword" name="confirmpassword" type="password" value="">
                         <label class="active account-setting-label" for="confirmpassword">Confirm Password</label>
                     </div>
-
-                    <?php 
+                    <div class="input-field col s5">
+                        <input type="checkbox" id="checkbox-new-password" onclick="showNewPassword()"/>
+                      <label for="checkbox-new-password">Show new password</label>
+                    </div>
+                     <?php 
                         }
                     ?>
                         <div class="col 12 account-btn">
@@ -197,6 +201,22 @@
 
         btn.addEventListener('click', liGenerate);
         document.addEventListener('click', liDelete);
+        
+       function showNewPassword() {
+  var show = document.getElementById("account-password");
+  if (show.type === "password") {
+    show.type = "text";
+  } else {
+    show.type = "password";
+  }
+var showconfirm = document.getElementById("account-confirmpassword");
+  if (showconfirm.type === "password") {
+    showconfirm.type = "text";
+  } else {
+    showconfirm.type = "password";
+  }
+}
+        
     </script>
 
 </body>

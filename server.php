@@ -385,9 +385,6 @@
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
         $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);";
-        $delivered_date = mysqli_real_escape_string($conn, $_POST['date']);
-        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
-        $supplied_by = mysqli_real_escape_string($conn, $_POST['suppliedBy']);
         $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?");
         $stmt->bind_param("s", $projects_name);
         $stmt->execute();
@@ -396,7 +393,7 @@
         $stmt->fetch();
         $stmt = $conn->prepare("INSERT INTO materials
         (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);");
         $stmt->bind_param("siiiiiiiii", $mat_name, $mat_prevStock, $mat_project, $mat_unit, $mat_categ, $mat_notif, $delivered_quantity, $pulled_out, $accumulated_materials, $delivered_material);
         $mat_prevStock = 0;
         $pulled_out = 0;

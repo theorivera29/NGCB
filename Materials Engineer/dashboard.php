@@ -146,7 +146,10 @@
         </div>
 
         <!--To-do Container-->
+        <div>
         <h5 id="panel-header-task">Today's To-do Task</h5>
+        <a class="waves-effect waves-light btn task-btn" href="viewalltasks.php">View All Task</a>
+        <div>
         <div class="col s7 container-task-todo">
             <div class="container-all-task">
                 <table class="striped centered view-tasks">
@@ -227,7 +230,6 @@
                         ?>
                     </tbody>
                 </table>
-                <a class="waves-effect waves-light btn task-btn" href="viewalltasks.php">View All Task</a>
             </div>
         </div>
     </div>

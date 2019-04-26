@@ -727,7 +727,7 @@ textarea.materialize-textarea {
 }
 
 .materials-left{
-    table-layout: fixed;
+    
 }
 
 
@@ -1107,6 +1107,7 @@ textarea.materialize-textarea {
 
 .site-materials-content {
     border: 1px solid black;
+    
 }
 
 .site-materials-head>tr>th {

@@ -206,22 +206,23 @@
 
                     <?php 
                             $sql = "SELECT 
-                            materials.mat_name,
-                            categories.categories_name, 
-                            materials.mat_prevStock, 
+                            mat_name,
+                            categories_name, 
+                            mat_prevStock, 
                             unit_name,
-                            materials.delivered_material, 
+                            delivered_material, 
                             materials.pulled_out, 
                             unit_name,
-                            materials.accumulated_materials,
-                            materials.currentQuantity,
+                            accumulated_materials,
+                            currentQuantity,
                             unit_name,
-                            projects.projects_name
+                            projects_name
                             FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
                             INNER JOIN projects ON materials.mat_project = projects.projects_id
                             INNER JOIN unit ON materials.mat_unit = unit.unit_id
-                            WHERE categories.categories_name = '$categ';";
+                            WHERE categories.categories_name = '$categ' AND
+                            projects.projects_name = '$projects_name';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>

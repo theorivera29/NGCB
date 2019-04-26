@@ -215,15 +215,9 @@
                         <td>
                             <?php echo $row[7] ?>
                         </td>
-<<<<<<< HEAD
-                        <td>
-                            <?php echo $row[8] ?>
-                        </td>
-=======
                         <?php 
                             }
                         ?>
->>>>>>> 1432979303d1a0b91d9424a95485d3c4cfe8432f
                     </tr>
                     <?php 
                         }

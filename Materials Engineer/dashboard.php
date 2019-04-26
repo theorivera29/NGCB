@@ -125,7 +125,7 @@
                             <h5 id="panel-text">Date:</h5>
                         </div>
                         <div class="col s4">
-                            <input type="date" class="todo-picker" name="tododate" min="2019-01-01" required>
+                            <input type="date" class="todo-picker" name="tododate" id="dateID" required>
                         </div>
                     </div>
                     <input type="hidden" name="todoOf"
@@ -307,6 +307,20 @@
             });
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
+
+            //Display Only Date till today // 
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var today = year + '-' + month + '-' + day;
+            $('#dateID').attr('min', today);
+
         });
 
         //For the length of textarea todo

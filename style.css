@@ -988,6 +988,10 @@ textarea.materialize-textarea {
     background-color: #FFFFFF !important;
 }
 
+.delivered-input-table{
+    margin-bottom: 5% !important;
+}
+
 .deliverIn-container {
     height: 50% !important;
 }

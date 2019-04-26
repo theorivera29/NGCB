@@ -127,6 +127,10 @@
                         <input id="account-confirmpassword" name="confirmpassword" type="password" value="">
                         <label class="active account-setting-label" for="confirmpassword">Confirm Password</label>
                     </div>
+                    <div class="input-field col s5">
+                        <input type="checkbox" id="checkbox-new-password" onclick="showNewPassword()"/>
+                      <label for="checkbox-new-password">Show new password</label>
+                    </div>
 
                     <?php 
                         }
@@ -171,6 +175,20 @@
 
         btn.addEventListener('click', liGenerate);
         document.addEventListener('click', liDelete);
+        
+        function showNewPassword() {
+  var show = document.getElementById("account-password");
+  if (show.type === "password") {
+    show.type = "text";
+  } else {
+    show.type = "password";
+  }
+var showconfirm = document.getElementById("account-confirmpassword");
+  if (showconfirm.type === "password") {
+    showconfirm.type = "text";
+  } else {
+    showconfirm.type = "password";
+  }
     </script>
 
 </body>

@@ -110,12 +110,7 @@
             if(strcmp($projects_status, "open") == 0) {
         ?>
         <div class="row">
-            <div class="col s6 m4">
-                    <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search...">
-            </div>
-            <div class="col">
-
-            </div>
+            <input class="input search-bar view-inventory-bar" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search...">
         </div>
 
         <?php 
@@ -125,19 +120,22 @@
             <table id="sort" class="centered view-inventory">
                 <thead class="view-inventory-head">
                     <tr>
-                        <th onClick = "javascript:SortTable(0,'T');">Particulars</th>
-                        <th onClick = "javascript:SortTable(1,'T');">Category</th>
-                        <th onClick = "javascript:SortTable(2,'N');">Previous Material Stock</th>
-                        <th onClick = "javascript:SortTable(3,'N');">Delivered Material as of
+                        <th onClick="javascript:SortTable(0,'T');">Particulars</th>
+                        <th onClick="javascript:SortTable(1,'T');">Category</th>
+                        <th onClick="javascript:SortTable(2,'N');">Previous Material Stock</th>
+                        <th>Unit</th>
+                        <th onClick="javascript:SortTable(3,'N');">Delivered Material as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onClick = "javascript:SortTable(4,'N');">Material Pulled out as of
+                        <th onClick="javascript:SortTable(4,'N');">Material Pulled out as of
                             <?php echo date("F Y"); ?>
                         </th>
-                        <th onClick = "javascript:SortTable(5,'N');">Accumulate of Materials Delivered</th>
-                        <th onClick = "javascript:SortTable(6,'N');">Material on Site as of
+                        <th>Unit</th>
+                        <th onClick="javascript:SortTable(5,'N');">Accumulate of Materials Delivered</th>
+                        <th onClick="javascript:SortTable(6,'N');">Material on Site as of
                             <?php echo date("F Y"); ?>
                         </th>
+                        <th>Unit</th>
                     </tr>
                 </thead>
 
@@ -176,31 +174,34 @@
                     <tr>
                         <td>
                             <form action="../server.php" method="POST">
-                            <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
-                            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+                                <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
+                                <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                                 <button class="waves-effect waves-light btn matname-btn" type="submit"
                                     name="view_open_stockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
-                            </td>
+                        </td>
                         <td>
                             <?php echo $row[1] ?>
-                            </td>
+                        </td>
                         <td>
                             <?php echo $row[2] ?>
-                            </td>
+                        </td>
+                        <td>Unit</td>
                         <td>
                             <?php echo $row[3] ?>
-                            </td>
+                        </td>
                         <td>
                             <?php echo $row[4] ?>
-                            </td>
+                        </td>
+                        <td>Unit</td>
                         <td>
                             <?php echo $row[5] ?>
-                            </td>
+                        </td>
                         <td>
                             <?php echo $row[6] ?>
-                            </td>
+                        </td>
+                        <td>Unit</td>
                         <?php 
                             }
                         ?>
@@ -306,75 +307,80 @@
 
         });
 
-var TableIDvalue = "sort";
-var TableLastSortedColumn = -1;
-function SortTable() {
-var sortColumn = parseInt(arguments[0]);
-var type = arguments.length > 1 ? arguments[1] : 'T';
-var dateformat = arguments.length > 2 ? arguments[2] : '';
-var table = document.getElementById(TableIDvalue);
-var tbody = table.getElementsByTagName("tbody")[0];
-var rows = tbody.getElementsByTagName("tr");
-var arrayOfRows = new Array();
-type = type.toUpperCase();
-dateformat = dateformat.toLowerCase();
-for(var i=0, len=rows.length; i<len; i++) {
-	arrayOfRows[i] = new Object;
-	arrayOfRows[i].oldIndex = i;
-	var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g,"");
-	if( type=='D' ) { 
-        arrayOfRows[i].value = GetDateSortingKey(dateformat,celltext);
-    } else {
-		var re = type=="N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
-		arrayOfRows[i].value = celltext.replace(re,"").substr(0,25).toLowerCase();
-		}
-	}
-if (sortColumn == TableLastSortedColumn) { 
-    arrayOfRows.reverse(); 
-} else {
-	TableLastSortedColumn = sortColumn;
-	switch(type) {
-		case "N" : arrayOfRows.sort(CompareRowOfNumbers); break;
-		default  : arrayOfRows.sort(CompareRowOfText);
-	}
-}
-var newTableBody = document.createElement("tbody");
-for(var i=0, len=arrayOfRows.length; i<len; i++) {
-	newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
-}
-table.replaceChild(newTableBody,tbody);
-} // function SortTable()
+        var TableIDvalue = "sort";
+        var TableLastSortedColumn = -1;
 
-function CompareRowOfText(a,b) {
-var aval = a.value;
-var bval = b.value;
-return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
-} // function CompareRowOfText()
+        function SortTable() {
+            var sortColumn = parseInt(arguments[0]);
+            var type = arguments.length > 1 ? arguments[1] : 'T';
+            var dateformat = arguments.length > 2 ? arguments[2] : '';
+            var table = document.getElementById(TableIDvalue);
+            var tbody = table.getElementsByTagName("tbody")[0];
+            var rows = tbody.getElementsByTagName("tr");
+            var arrayOfRows = new Array();
+            type = type.toUpperCase();
+            dateformat = dateformat.toLowerCase();
+            for (var i = 0, len = rows.length; i < len; i++) {
+                arrayOfRows[i] = new Object;
+                arrayOfRows[i].oldIndex = i;
+                var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g, "");
+                if (type == 'D') {
+                    arrayOfRows[i].value = GetDateSortingKey(dateformat, celltext);
+                } else {
+                    var re = type == "N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
+                    arrayOfRows[i].value = celltext.replace(re, "").substr(0, 25).toLowerCase();
+                }
+            }
+            if (sortColumn == TableLastSortedColumn) {
+                arrayOfRows.reverse();
+            } else {
+                TableLastSortedColumn = sortColumn;
+                switch (type) {
+                    case "N":
+                        arrayOfRows.sort(CompareRowOfNumbers);
+                        break;
+                    default:
+                        arrayOfRows.sort(CompareRowOfText);
+                }
+            }
+            var newTableBody = document.createElement("tbody");
+            for (var i = 0, len = arrayOfRows.length; i < len; i++) {
+                newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
+            }
+            table.replaceChild(newTableBody, tbody);
+        } // function SortTable()
 
-function CompareRowOfNumbers(a,b) {
-var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
-var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
-return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
-} // function CompareRowOfNumbers()
+        function CompareRowOfText(a, b) {
+            var aval = a.value;
+            var bval = b.value;
+            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+        } // function CompareRowOfText()
 
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("sort");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
+        function CompareRowOfNumbers(a, b) {
+            var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
+            var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
+            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+        } // function CompareRowOfNumbers()
+
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("sort");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
+
 </html>

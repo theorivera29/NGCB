@@ -152,16 +152,25 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
+                            Unit
+                        </td>
+                        <td>
                             <?php echo $row[3] ?>
                         </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
                         <td>
+                            Unit
+                        </td>
+                        <td>
                             <?php echo $row[5] ?>
                         </td>
                         <td>
                             <?php echo $row[6] ?>
+                        </td>
+                        <td>
+                            Unit
                         </td>
                         <td>
                             <?php echo $row[7] ?>

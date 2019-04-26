@@ -167,6 +167,7 @@
                             $date_today = date("Y-m-d");
                             $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id && todo_date = '$date_today' ORDER BY todo_task;";
                             $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0){
                             while($row = mysqli_fetch_row($result)) {
                         ?>
                         <tr>
@@ -197,7 +198,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-light btn btn-flat no-btn">No</a>
-                                            <button type="submit" name="todo_update"
+                                            <button type="submit" name="todo_updatedashboard"
                                                 class="modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
@@ -212,10 +213,12 @@
                                         <div class="modal-content">
                                             <span class="modal-question-content">Are you sure you want to clear this
                                                 task?</span>
+                                                <br>
+                                            <?php echo $row[2];?>
                                         </div>
                                         <div class="modal-footer">
                                             <a class="modal-close waves-effect waves-red btn-flat no-btn">No</a>
-                                            <button type="submit" name="todo_update"
+                                            <button type="submit" name="todo_updatedashboard"
                                                 class="modal-close waves-effect waves-red btn-flat yes-btn">Yes</button>
                                         </div>
                                     </div>
@@ -226,6 +229,13 @@
                             </td>
                         </tr>
                         <?php    
+                            }
+                            } else {
+                            ?>
+                        <tr>
+                            <h1>No task today</h1>
+                        </tr>
+                        <?php
                             }
                         ?>
                     </tbody>

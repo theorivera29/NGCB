@@ -497,6 +497,34 @@
         }        
     }
 
+    if(isset($_POST['todo_updatedashboard'])) {
+        $todo_id = $_POST['todo_id'];
+        $todo_status = $_POST['todo_status'];
+        $sql = "SELECT todo_task FROM todo WHERE todo_id = '$todo_id';";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_row($result);
+        $todo_task = $row[0];
+        session_start();
+        $account_id = "";
+        if(isset($_SESSION['account_id'])) {
+            $account_id = $_SESSION['account_id'];
+        }
+        $update_todo_date = date("Y-m-d G:i:s");
+        if(strcasecmp($todo_status, 'in progress') == 0) {
+            $sql = "UPDATE todo SET todo_status = 'done' WHERE todo_id = '$todo_id';";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Updated todo task $todo_task to done', $account_id);";
+            mysqli_query($conn, $sql);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+        } else {
+            $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
+            mysqli_query($conn, $sql);
+            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
+            mysqli_query($conn, $sql);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+        }        
+    }
+
     if (isset($_POST['add_deliveredin'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);

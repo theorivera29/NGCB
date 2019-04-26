@@ -122,7 +122,7 @@
             }
         ?>
         <div class="view-inventory-container">
-            <table  id="sort" class="centered view-inventory">
+            <table id="sort" class="centered view-inventory">
                 <thead class="view-inventory-head">
                     <tr>
                         <th onClick = "javascript:SortTable(0,'T');">Particulars</th>
@@ -213,60 +213,6 @@
         </div>
     </div>
     </div>
-
-    <!--MODAL-->
-    <div id="modal1" class="modal modal-fixed-footer">
-        <form action="../server.php" method="POST">
-            <div class="modal- ">
-                <div class="content">
-                    <div class="row">
-
-                        <div class="col s12">
-                            <h4>DELIVER IN</h4>
-                            <table class="centered">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Supplied By</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="date" name="dev_date"></td>
-                                        <td><input type="text" name="dev_quantity"></td>
-                                        <td><input type="text" name="unit"></td>
-                                        <td><input type="text" name="dev_supp"></td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col s12">
-                            <h4>USAGE IN</h4>
-                            <table class="centered">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Quantity</th>
-                                        <th>Unit</th>
-                                        <th>Pulled Out By</th>
-                                        <th>Area of Usage</th>
-
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">CANCEL</a>
-            </div>
-        </form>
-    </div>
-
     <!--SITE CATEGORIES-->
     <div id="categories" class="col s12">
         <div class="row">
@@ -307,27 +253,57 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
-    <script type="text/javascript">
+    <script>
         // SIDEBAR
         $(document).ready(function () {
             $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'left', // Choose the horizontal origin
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
             });
-            // START OPEN
-            $('.button-collapse').sideNav('show');
+            $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
-            $(".add-row").click(function () {
-                var quantity = $("#name").val();
-                var unit = $("#email").val();
-                var articles = $('#articles').val();
-                var markup = "<tr>" +
-                    "<td><input type=\"text\" name=\"category_name[]\"></td>" +
-                    "</tr>;"
-                $("table tbody").append(markup);
-            });
+        });
+
+        $(function() {
+
+            $("table").tablesorter({
+                    theme: "materialize",
+
+                    widthFixed: true,
+                    // widget code contained in the jquery.tablesorter.widgets.js file
+                    // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+                    widgets: ["filter", "zebra"],
+
+                    widgetOptions: {
+                        // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                        // this is ONLY needed for materialize theming if you are using the filter widget, because rows are hidden
+                        zebra: ["even", "odd"],
+
+                        // reset filters button
+                        filter_reset: ".reset",
+
+                        // extra css class name (string or array) added to the filter element (input or select)
+                        // select needs a "browser-default" class or it gets hidden
+                        filter_cssFilter: ["", "", "browser-default"]
+                    }
+                })
+                .tablesorterPager({
+
+                    // target the pager markup - see the HTML block below
+                    container: $(".ts-pager"),
+
+                    // target the pager page select dropdown - choose a page
+                    cssGoto: ".pagenum",
+
+                    // remove rows from the table to speed up the sort of large tables.
+                    // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+                    removeRows: false,
+
+                    // output string - default is '{page}/{totalPages}';
+                    // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+                    output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+
+                });
+
         });
 
 var TableIDvalue = "sort";

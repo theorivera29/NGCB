@@ -551,11 +551,14 @@
         $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
         $delivered_unit = mysqli_real_escape_string($conn, $_POST['dev_unit']);
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
-        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, $delivered_unit, '$suppliedBy', $mat_id);";
-        mysqli_query($conn, $sql);
-        echo $mat_name;
+        $stmt = $conn->prepare("INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES (?, ?, ?, ?, ?);");
+        $stmt->bind_param("siiisi", $delivered_date, $delivered_quantity, $delivered_unit, $suppliedBy, $mat_id);
+        $stmt->execute();
+        $stmt->close();
             
-        $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
+        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';");
+        $stmt->bind_param("s", $mat_name);
+        $st
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
         $currentQuantity = $row[0];

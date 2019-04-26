@@ -726,6 +726,10 @@ textarea.materialize-textarea {
     width: 90px;
 }
 
+.materials-left{
+    table-layout: fixed;
+}
+
 
 #materialize-lean-overlay{
     background-color: transparent !important;

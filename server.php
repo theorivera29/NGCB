@@ -418,8 +418,6 @@
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");        
     }
 
-
-    //////////////////////////////////////////////////////////
     if(isset($_POST['edit_account'])) {
         $username = mysqli_real_escape_string($conn, $_POST['userid']);
         session_start();
@@ -430,42 +428,72 @@
         $edit_account_date = date("Y-m-d G:i:s");
         if(isset($_POST['newusername'])) {
             $newusername = $_POST['newusername'];
-            $sql = "UPDATE accounts SET accounts_username = '$newusername' WHERE accounts_id = '$username';";
-            mysqli_query($conn,$sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change account username to $newusername', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_username = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $newusername, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change account username to '.$newusername;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
         if(isset($_POST['newfname'])) {
             $newfname = mysqli_real_escape_string($conn, $_POST['newfname']);
-            $sql = "UPDATE accounts SET accounts_fname = '$newfname' WHERE accounts_id = '$username';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change first name to $newfname', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_fname = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $newfname, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change first name to '.$newfname;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
 
         if(isset($_POST['newlname'])) {
             $newlname = mysqli_real_escape_string($conn, $_POST['newlname']);
-            $sql = "UPDATE accounts SET accounts_lname = '$newlname' WHERE accounts_id = '$username';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change last name to $newlname', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_lname = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $newlname, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change last name to '.$newlname;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
 
         if(isset($_POST['newemail'])) {
             $newemail = mysqli_real_escape_string($conn, $_POST['newemail']);
-            $sql = "UPDATE accounts SET accounts_email = '$newemail' WHERE accounts_id = '$username';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change email to $newemail', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_email = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $newemail, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change email to '.$newemail;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
         
         if(isset($_POST['newpassword'])) {
             $newpassword = mysqli_real_escape_string($conn, $_POST['newpassword']);
             $hash_password = password_hash($newpassword, PASSWORD_DEFAULT);
-            $sql = "UPDATE accounts SET accounts_password = '$hash_password' WHERE accounts_id = '$username';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$edit_account_date', 'Change account password', $account_id);";
-            mysqli_query($conn, $sql);
+            $stmt = $conn->prepare("UPDATE accounts SET accounts_password = ? WHERE accounts_id = ?;");
+            $stmt->bind_param("si", $hash_password, $username);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
+            $logs_message = 'Change account password ';
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
         
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");        
@@ -474,6 +502,7 @@
     if(isset($_POST['todo_update'])) {
         $todo_id = $_POST['todo_id'];
         $todo_status = $_POST['todo_status'];
+        $update_from = $_POST['update_from'];
         $sql = "SELECT todo_task FROM todo WHERE todo_id = '$todo_id';";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_row($result);
@@ -485,46 +514,33 @@
         }
         $update_todo_date = date("Y-m-d G:i:s");
         if(strcasecmp($todo_status, 'in progress') == 0) {
-            $sql = "UPDATE todo SET todo_status = 'done' WHERE todo_id = '$todo_id';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Updated todo task $todo_task to done', $account_id);";
-            mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
+            $stmt = $conn->prepare("UPDATE todo SET todo_status = 'done' WHERE todo_id = ?;");
+            $stmt->bind_param("i", $todo_id);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $update_todo_date, $logs_message, $logs_of);
+            $logs_message = 'Updated todo task '.$todo_task.' to done';
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         } else {
-            $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
-            mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
-        }        
-    }
-
-    if(isset($_POST['todo_updatedashboard'])) {
-        $todo_id = $_POST['todo_id'];
-        $todo_status = $_POST['todo_status'];
-        $sql = "SELECT todo_task FROM todo WHERE todo_id = '$todo_id';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $todo_task = $row[0];
-        session_start();
-        $account_id = "";
-        if(isset($_SESSION['account_id'])) {
-            $account_id = $_SESSION['account_id'];
+            $stmt = $conn->prepare("DELETE FROM todo WHERE todo_id = ?;");
+            $stmt->bind_param("i", $todo_id);
+            $stmt->execute();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $update_todo_date, $logs_message, $logs_of);
+            $logs_message = 'Cleared todo task '.$todo_tassk;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
-        $update_todo_date = date("Y-m-d G:i:s");
-        if(strcasecmp($todo_status, 'in progress') == 0) {
-            $sql = "UPDATE todo SET todo_status = 'done' WHERE todo_id = '$todo_id';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Updated todo task $todo_task to done', $account_id);";
-            mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+        if(strcasecmp($update_from, 'dashboard') == 0) {   
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");  
         } else {
-            $sql = "DELETE FROM todo WHERE todo_id = '$todo_id';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$update_todo_date', 'Cleared todo task $todo_tassk', $account_id);";
-            mysqli_query($conn, $sql);
-            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
-        }        
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewalltasks.php");
+        }
     }
 
     if (isset($_POST['add_deliveredin'])) {
@@ -535,25 +551,34 @@
         $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
         $delivered_unit = mysqli_real_escape_string($conn, $_POST['dev_unit']);
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
-        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, $delivered_unit, '$suppliedBy', $mat_id);";
-        mysqli_query($conn, $sql);
-        echo $mat_name;
+        $stmt = $conn->prepare("INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES (?, ?, ?, ?, ?);");
+        $stmt->bind_param("siiisi", $delivered_date, $delivered_quantity, $delivered_unit, $suppliedBy, $mat_id);
+        $stmt->execute();
+        $stmt->close();
             
-        $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $currentQuantity = $row[0];
+        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';");
+        $stmt->bind_param("s", $mat_name);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($currentQuantity);
         $newQuantity = $currentQuantity + $delivered_quantity;
-        $sql = "UPDATE materials SET currentQuantity = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
-            
-        $sql = "SELECT delivered_material FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $current_delivered_material = $row[0];
+        $stmt->close();
+        $stmt = $conn->prepare("UPDATE materials SET currentQuantity = ? WHERE mat_name = ?;");
+        $stmt->bind_param("is", $newQuantity, $mat_name);
+        $stmt->execute();
+        $stmt->close();
+           
+        $stmt = $conn->prepare("SELECT delivered_material FROM materials WHERE mat_name='$mat_name';");
+        $stmt->bind_param("s", $mat_name);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($current_delivered_material);
         $newQuantity = $current_delivered_material + $delivered_quantity;
-        $sql = "UPDATE materials SET delivered_material = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
+        $stmt->close();
+        $stmt = $conn->prepare("UPDATE materials SET delivered_material = ? WHERE mat_name = ?;");
+        $stmt->bind_param("is", $newQuantity, $mat_name);
+        $stmt->execute();
+        $stmt->close();
 
         session_start();
         $account_id = "";
@@ -561,9 +586,12 @@
             $account_id = $_SESSION['account_id'];
         }
         $add_deliver_date = date("Y-m-d G:i:s");
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_deliver_date', 'Added delivered in of $mat_name', $account_id);";
-
-        mysqli_query($conn, $sql);    
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+        $stmt->bind_param("ssi", $add_deliver_date, $logs_message, $logs_of);
+        $logs_message = 'Added delivered in of '.$mat_name;
+        $logs_of = $account_id;
+        $stmt->execute();
+        $stmt->close();
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");        
     }
 
@@ -576,203 +604,121 @@
         $usage_unit = mysqli_real_escape_string($conn, $_POST['us_unit']);
         $pulloutby = mysqli_real_escape_string($conn, $_POST['pulloutby']);
         $us_area = mysqli_real_escape_string($conn, $_POST['us_area']);
-        $sql = "SELECT * from usagein;";
-        $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
-        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, $usage_unit, '$pulloutby', '$us_area', $mat_id);";
-        mysqli_query($conn, $sql);
-            
-        $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $currentQuantity = $row[0];
+        $update_from = $_POST['update_from'];
+        $stmt = $conn->prepare("INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES (?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("siissi", $usage_date, $usage_quantity, $usage_unit, $pulloutby, $us_area, $mat_id);
+        $stmt->execute();
+        $stmt->close();
+        
+        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';");
+        $stmt->bind_param("s", $mat_name);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($currentQuantity);
         $newQuantity = $currentQuantity - $usage_quantity;
-        $sql = "UPDATE materials SET currentQuantity = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
-            
-        $sql = "SELECT pulled_out FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $current_pulledout = $row[0];
+        $stmt->close();
+        $stmt = $conn->prepare("UPDATE materials SET currentQuantity = ? WHERE mat_name = ?;");
+        $stmt->bind_param("is", $newQuantity, $mat_name);
+        $stmt->execute();
+        $stmt->close();
+        
+        $stmt = $conn->prepare("SELECT pulled_out FROM materials WHERE mat_name='$mat_name';");
+        $stmt->bind_param("s", $mat_name);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($current_pulledout);
         $newQuantity = $current_pulledout + $usage_quantity;
-        $sql = "UPDATE materials SET pulled_out = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
-            
-        $sql = "SELECT accumulated_materials FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $total_accumulated = $row[0];
+        $stmt->close();
+        $stmt = $conn->prepare("UPDATE materials SET pulled_out = ? WHERE mat_name = ?;");
+        $stmt->bind_param("is", $newQuantity, $mat_name);
+        $stmt->execute();
+        $stmt->close();
+        
+        $stmt = $conn->prepare("SELECT accumulated_materials FROM materials WHERE mat_name='$mat_name';");
+        $stmt->bind_param("s", $mat_name);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($total_accumulated);
         $newQuantity = $total_accumulated + $usage_quantity;
-        $sql = "UPDATE materials SET accumulated_materials = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
+        $stmt->close();
+        $stmt = $conn->prepare("UPDATE materials SET accumulated_materials = ? WHERE mat_name = ?;");
+        $stmt->bind_param("is", $newQuantity, $mat_name);
+        $stmt->execute();
+        $stmt->close();
 
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
             $account_id = $_SESSION['account_id'];
         }
-        $add_usage_date = date("Y-m-d G:i:s");
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_usage_date', 'Added usage in of $delivered_matName', $account_id);";
-        mysqli_query($conn, $sql); 
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");        
+        $add_usage_date = date("Y-m-d G:i:s");        
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+        $stmt->bind_param("ssi", $add_usage_date, $logs_message, $logs_of);
+        $logs_message = 'Added usage in of '.$mat_name;
+        $logs_of = $account_id;
+        $stmt->execute();
+        $stmt->close();
+        if(strcasecmp($update_from, 'stockcard') == 0) {   
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name"); 
+        } else {
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name"); 
+        }       
     }
-
-    if (isset($_POST['add_deliveredinsite'])) {
-        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);
-        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-        $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
-        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
-        $delivered_unit = mysqli_real_escape_string($conn, $_POST['dev_unit']);
-        $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
-        $sql = "INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES ('$delivered_date', $delivered_quantity, $delivered_unit, '$suppliedBy', $mat_id);";
-        mysqli_query($conn, $sql);
-        echo $mat_name;
-            
-        $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $currentQuantity = $row[0];
-        $newQuantity = $currentQuantity + $delivered_quantity;
-        $sql = "UPDATE materials SET currentQuantity = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
-            
-        $sql = "SELECT delivered_material FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $current_delivered_material = $row[0];
-        $newQuantity = $current_delivered_material + $delivered_quantity;
-        $sql = "UPDATE materials SET delivered_material = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
-
-        session_start();
-        $account_id = "";
-        if(isset($_SESSION['account_id'])) {
-            $account_id = $_SESSION['account_id'];
-        }
-        $add_deliver_date = date("Y-m-d G:i:s");
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_deliver_date', 'Added delivered in of $mat_name', $account_id);";
-
-        mysqli_query($conn, $sql);    
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name");        
-    }
-
-    if (isset($_POST['add_usageinsite'])) {
-        $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);
-        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
-        $usage_date = mysqli_real_escape_string($conn, $_POST['us_date']);
-        $usage_quantity = mysqli_real_escape_string($conn, $_POST['us_quantity']);
-        $usage_unit = mysqli_real_escape_string($conn, $_POST['us_unit']);
-        $pulloutby = mysqli_real_escape_string($conn, $_POST['pulloutby']);
-        $us_area = mysqli_real_escape_string($conn, $_POST['us_area']);
-        $sql = "SELECT * from usagein;";
-        $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
-        $sql = "INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES ('$usage_date', $usage_quantity, $usage_unit, '$pulloutby', '$us_area', $mat_id);";
-        mysqli_query($conn, $sql);
-            
-        $sql = "SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $currentQuantity = $row[0];
-        $newQuantity = $currentQuantity - $usage_quantity;
-        $sql = "UPDATE materials SET currentQuantity = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
-            
-        $sql = "SELECT pulled_out FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $current_pulledout = $row[0];
-        $newQuantity = $current_pulledout + $usage_quantity;
-        $sql = "UPDATE materials SET pulled_out = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
-            
-        $sql = "SELECT accumulated_materials FROM materials WHERE mat_name='$mat_name';";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $total_accumulated = $row[0];
-        $newQuantity = $total_accumulated + $usage_quantity;
-        $sql = "UPDATE materials SET accumulated_materials = ('$newQuantity') WHERE mat_name = '$mat_name';";
-        mysqli_query($conn, $sql);
-
-        session_start();
-        $account_id = "";
-        if(isset($_SESSION['account_id'])) {
-            $account_id = $_SESSION['account_id'];
-        }
-        $add_usage_date = date("Y-m-d G:i:s");
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$add_usage_date', 'Added usage in of $delivered_matName', $account_id);";
-        mysqli_query($conn, $sql); 
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name");        
-    }
-
 
     if(isset($_POST['edit_materials'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
+        $update_from = $_POST['update_from'];
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
             $account_id = $_SESSION['account_id'];
         }
         $edit_mat_date = date("Y-m-d G:i:s");
-                if(isset($_POST['mat_unit'])) {
+        if(isset($_POST['mat_unit'])) {
             $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
-            $sql = "UPDATE materials SET mat_unit = '$mat_unit' WHERE mat_name = '$materialname';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material unit of $materialname to $mat_unit', $account_id);";
-            mysqli_query($conn, $sql); 
+            $stmt = $conn->prepare("UPDATE materials SET mat_unit = ? WHERE mat_name = ?;");
+            $stmt->bind_param("is", $mat_unit, $materialname);
+            $stmt->execute();
+            $stmt->close(); 
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_mat_date, $logs_message, $logs_of);
+            $logs_message = 'Change material unit of '.$materialname.' to '.$mat_unit;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
-                if(isset($_POST['minquantity'])) {
-            $minquantity = mysqli_real_escape_string($conn, $_POST['minquantity']);
-            $sql = "UPDATE materials SET mat_notif = '$minquantity' WHERE mat_name = '$materialname';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material unit of $materialname to $minquantity', $account_id);";
-            mysqli_query($conn, $sql); 
+        if(isset($_POST['minquantity'])) {
+            $minquantity = mysqli_real_escape_string($conn, $_POST['minquantity']);            
+            $stmt = $conn->prepare("UPDATE materials SET mat_notif = ? WHERE mat_name = ?;");
+            $stmt->bind_param("is", $minquantity, $materialname);
+            $stmt->execute();
+            $stmt->close(); 
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_mat_date, $logs_message, $logs_of);
+            $logs_message = 'Change minimum quantity of '.$materialname.' to '.$minquantity;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
         if(isset($_POST['newmaterialname'])) {
             $newmaterialname = $_POST['newmaterialname'];
-            $sql = "UPDATE materials SET mat_name = '$newmaterialname' WHERE mat_name = '$materialname';";
-            mysqli_query($conn,$sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material name of $materialname to $newmaterialname', $account_id);";
-            mysqli_query($conn, $sql); 
+            $stmt = $conn->prepare("UPDATE materials SET mat_name = ? WHERE mat_name = ?;");
+            $stmt->bind_param("is", $newmaterialname, $materialname);
+            $stmt->execute();
+            $stmt->close(); 
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $edit_mat_date, $logs_message, $logs_of);
+            $logs_message = 'Change material name of '.$materialname.' to '.$newmaterialname;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
         }
-
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");     
-    }
-
-    if(isset($_POST['edit_materialssite'])) {
-        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
-        session_start();
-        $account_id = "";
-        if(isset($_SESSION['account_id'])) {
-            $account_id = $_SESSION['account_id'];
-        }
-        $edit_mat_date = date("Y-m-d G:i:s");
-                if(isset($_POST['mat_unit'])) {
-            $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
-            $sql = "UPDATE materials SET mat_unit = '$mat_unit' WHERE mat_name = '$materialname';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material unit of $materialname to $mat_unit', $account_id);";
-            mysqli_query($conn, $sql); 
-        }
-                if(isset($_POST['minquantity'])) {
-            $minquantity = mysqli_real_escape_string($conn, $_POST['minquantity']);
-            $sql = "UPDATE materials SET mat_notif = '$minquantity' WHERE mat_name = '$materialname';";
-            mysqli_query($conn, $sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material unit of $materialname to $minquantity', $account_id);";
-            mysqli_query($conn, $sql); 
-        }
-        if(isset($_POST['newmaterialname'])) {
-            $newmaterialname = $_POST['newmaterialname'];
-            $sql = "UPDATE materials SET mat_name = '$newmaterialname' WHERE mat_name = '$materialname';";
-            mysqli_query($conn,$sql);
-            $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$edit_mat_date', 'Change material name of $materialname to $newmaterialname', $account_id);";
-            mysqli_query($conn, $sql); 
-        }
-
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");     
+        if(strcasecmp($update_from, 'stockcard') == 0) {   
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");   
+        } else {
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");     
+        }         
     }
 
     if(isset($_POST['generate_report'])) {
@@ -808,15 +754,23 @@
 
     if(isset($_POST['password_request'])) {
         $request_username = mysqli_real_escape_string($conn, $_POST['username_request']);
-        $sql = "SELECT accounts_id FROM accounts WHERE accounts_username = '$request_username'";
-        $result = mysqli_query($conn,$sql);
-        $row = mysqli_fetch_row($result);
-        $accounts_id = $row[0];
+        $stmt = $conn->prepare("SELECT accounts_id FROM accounts WHERE accounts_username = ?");
+        $stmt->bind_param("s", $request_username);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($accounts_id);
+        $stmt->close();
         $password_request_date = date("Y-m-d G:i:s");
-        $sql = "INSERT INTO request (req_username, req_date) VALUES ('$accounts_id', '$password_request_date')";
-        mysqli_query($conn, $sql); 
-        $sql = "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf, logs_itemname) VALUES ('$password_request_date', 'Requested to reset password', $account_id);";
-        mysqli_query($conn, $sql); 
+        $stmt = $conn->prepare("INSERT INTO request (req_username, req_date) VALUES (?, ?)");
+        $stmt->bind_param("is", $accounts_id, $password_request_date);
+        $stmt->execute();
+        $stmt->close();
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+        $stmt->bind_param("ssi", $password_request_date, $logs_message, $logs_of);
+        $logs_message = 'Requested to reset password';
+        $logs_of = $account_id;
+        $stmt->execute();
+        $stmt->close();
         header("location: http://127.0.0.1/NGCB/index.php");        
     }
 
@@ -825,15 +779,27 @@
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $generated_password = substr(str_shuffle($characters), 0, 8);
         $password = password_hash($generated_password, PASSWORD_DEFAULT);
-        $sql = "SELECT accounts_email, CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts WHERE accounts_id = '$request_accountID';";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_row($result);
-        $request_email = $row[0];
-        $request_name = $row[1];
-        $reject_date = date("Y-m-d G:i:s");
-        mysqli_query($conn, "UPDATE accounts SET accounts_password = '$password' WHERE accounts_id = '$request_accountID';");
-        mysqli_query($conn, "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$reject_date', 'Accepted request to reset password of '.$request_name, 1);");
-        mysqli_query($conn, "DELETE FROM request WHERE req_username = '$request_accountID';");
+        $stmt = $conn->prepare("SELECT accounts_email, CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts WHERE accounts_id = ?;");
+        $stmt->bind_param("i", $request_accountID);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($request_email, $request_name)
+        $stmt->close();
+        $accept_date = date("Y-m-d G:i:s");
+        $stmt = $conn->prepare("UPDATE accounts SET accounts_password = ? WHERE accounts_id = ?;");
+        $stmt->bind_param("si", $password, $request_accountID);
+        $stmt->execute();
+        $stmt->close();
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+        $stmt->bind_param("ssi", $accept_date, $logs_message, $logs_of);
+        $logs_message = 'Accepted request to reset password of '.$request_name;
+        $logs_of = 1;
+        $stmt->execute();
+        $stmt->close();
+        $stmt = $conn->prepare("DELETE FROM request WHERE req_username = ?;");
+        $stmt->bind_param("i", $request_accountID);
+        $stmt->execute();
+        $stmt->close();
         try {
             $mail->addAddress($request_email, $request_name);
             $mail->isHTML(true);                                  
@@ -847,13 +813,22 @@
 
     if(isset($_POST['request_reject'])) {
         $request_accountID = mysqli_real_escape_string($conn, $_POST['request_accountID']);
-        $sql = "SELECT CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts WHERE accounts_id = '$request_accountID';";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_row($result);
-        $request_name = $row[0];
-        $reject_date = date("Y-m-d G:i:s");
-        mysqli_query($conn, "INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES ('$reject_date', 'Rejected request to reset password of $request_name', 1);");
-        mysqli_query($conn, "DELETE FROM request WHERE req_username = '$request_accountID';");
+        $stmt = $conn->prepare("SELECT CONCAT(accounts_fname, ' ', accounts_lname) FROM accounts WHERE accounts_id = ?;");
+        $stmt->bind_param("i", $request_accountID);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind($request_name);
+        $reject_date = date("Y-m-d G:i:s");        
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+        $stmt->bind_param("ssi", $reject_date, $logs_message, $logs_of);
+        $logs_message = 'Rejected request to reset password of '.$request_name;
+        $logs_of = 1;
+        $stmt->execute();
+        $stmt->close();
+        $stmt = $conn->prepare("DELETE FROM request WHERE req_username = ?;");
+        $stmt->bind_param("i", $request_accountID);
+        $stmt->execute();
+        $stmt->close();
         header("location: http://127.0.0.1/NGCB/Admin/passwordrequest.php");
     }
 

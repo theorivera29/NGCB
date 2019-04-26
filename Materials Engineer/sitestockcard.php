@@ -182,6 +182,7 @@ $mat_name = $_GET['mat_name'];
                 </table>
                 
                 <div class="stockcard-btn">
+                    <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_deliveredinsite">Save</button>
                 </div>
@@ -297,6 +298,7 @@ $mat_name = $_GET['mat_name'];
                             ?>
                 </table>
                 <div class="stockcard-btn">
+                    <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_usageinsite">Save</button>
                 </div>
@@ -337,6 +339,7 @@ $mat_name = $_GET['mat_name'];
                 </div>
 
                 <div class="col s12 edit-matname-btn">
+                        <input type="hidden" name="update_from" value="sitestockcard">
                         <button class="btn waves-effect waves-light save-mat-btn" name="edit_materialssite" type="submit">Save</button>
                         <button class="btn waves-effect waves-light cancel-mat-btn" type="submit">Cancel</button>
 

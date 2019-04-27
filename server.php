@@ -211,8 +211,9 @@
 
     if(isset($_POST['open_sitestockcard'])) {
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
+        $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name");
+        header("location: http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name&mat_id=$mat_id");
     }
     
     if(isset($_POST['open_report'])) {
@@ -624,6 +625,46 @@
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");        
     }
 
+    if (isset($_POST['add_deliveredinsite'])) {
+        $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);
+        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
+        $delivered_date = mysqli_real_escape_string($conn, $_POST['dev_date']);
+        $delivered_quantity = mysqli_real_escape_string($conn, $_POST['dev_quantity']);
+        $delivered_unit = mysqli_real_escape_string($conn, $_POST['dev_unit']);
+        $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
+        $stmt = $conn->prepare("INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES (?, ?, ?, ?, ?);");
+        $stmt->bind_param("siisi", $delivered_date, $delivered_quantity, $delivered_unit, $suppliedBy, $mat_id);
+        $stmt->execute();
+        $stmt->close();
+            
+        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name = ?;");
+        $stmt->bind_param("s", $mat_name);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($currentQuantity);
+        $stmt->fetch();
+        $newQuantity = $currentQuantity + $delivered_quantity;
+        $stmt->close();
+        $stmt = $conn->prepare("UPDATE materials SET currentQuantity = ? WHERE mat_name = ?;");
+        $stmt->bind_param("is", $newQuantity, $mat_name);
+        $stmt->execute();
+        $stmt->close();
+
+        session_start();
+        $account_id = "";
+        if(isset($_SESSION['account_id'])) {
+            $account_id = $_SESSION['account_id'];
+        }
+        $add_deliver_date = date("Y-m-d G:i:s");
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+        $stmt->bind_param("ssi", $add_deliver_date, $logs_message, $logs_of);
+        $logs_message = 'Added delivered in of '.$mat_name;
+        $logs_of = $account_id;
+        $stmt->execute();
+        $stmt->close();
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name&mat_id=$mat_id");        
+    }
+
     if (isset($_POST['add_usagein'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);
@@ -690,11 +731,49 @@
         $logs_of = $account_id;
         $stmt->execute();
         $stmt->close();
-        if(strcasecmp($update_from, 'stockcard') == 0) {   
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name"); 
-        } else {
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name"); 
-        }       
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
+    }
+
+    if (isset($_POST['add_usageinsite'])) {
+        $mat_id = mysqli_real_escape_string($conn, $_POST['mat_id']);
+        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
+        $usage_date = mysqli_real_escape_string($conn, $_POST['us_date']);
+        $usage_quantity = mysqli_real_escape_string($conn, $_POST['us_quantity']);
+        $usage_unit = mysqli_real_escape_string($conn, $_POST['us_unit']);
+        $pulloutby = mysqli_real_escape_string($conn, $_POST['pulloutby']);
+        $us_area = mysqli_real_escape_string($conn, $_POST['us_area']);
+        $update_from = $_POST['update_from'];
+        $stmt = $conn->prepare("INSERT INTO usagein (usage_date, usage_quantity, usage_unit, pulledOutBy, usage_areaOfUsage, usage_matname) VALUES (?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("siissi", $usage_date, $usage_quantity, $usage_unit, $pulloutby, $us_area, $mat_id);
+        $stmt->execute();
+        $stmt->close();
+        
+        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name=' ?';");
+        $stmt->bind_param("s", $mat_name);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result($currentQuantity);
+        $stmt->fetch();
+        $newQuantity = $currentQuantity - $usage_quantity;
+        $stmt->close();
+        $stmt = $conn->prepare("UPDATE materials SET currentQuantity = ? WHERE mat_name = ?;");
+        $stmt->bind_param("is", $newQuantity, $mat_name);
+        $stmt->execute();
+        $stmt->close();
+
+        session_start();
+        $account_id = "";
+        if(isset($_SESSION['account_id'])) {
+            $account_id = $_SESSION['account_id'];
+        }
+        $add_usage_date = date("Y-m-d G:i:s");        
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+        $stmt->bind_param("ssi", $add_usage_date, $logs_message, $logs_of);
+        $logs_message = 'Added usage in of '.$mat_name;
+        $logs_of = $account_id;
+        $stmt->execute();
+        $stmt->close();
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitestockcard.php?mat_name=$mat_name&mat_id=$mat_id");
     }
 
     if(isset($_POST['edit_materials'])) {

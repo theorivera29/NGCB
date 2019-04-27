@@ -200,6 +200,7 @@ $projects_name = $_GET['projects_name'];
                     <input type="hidden" name="update_from" value="stockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_deliveredin">Save</button>
+                        <a class="btn waves-effect waves-light cancel-mat-btn">Cancel</a>
                 </div>
             </form>
         </div>
@@ -314,6 +315,7 @@ $projects_name = $_GET['projects_name'];
                     <input type="hidden" name="update_from" value="stockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_usagein">Save</button>
+                        <a class="btn waves-effect waves-light cancel-mat-btn">Cancel</a>
                 </div>
             </form>
         </div>

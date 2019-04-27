@@ -4,8 +4,10 @@
 
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
-    }
-$mat_name = $_GET['mat_name'];
+    }   
+    $mat_name = $_GET['mat_name'];
+    $row = mysqli_fetch_row(mysqli_query($conn, "SELECT mat_id FROM materials WHERE mat_name = '$mat_name';"));
+    $mat_id = $row[0];
 ?>
 
 <!DOCTYPE html>

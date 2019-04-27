@@ -5,7 +5,7 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-$mat_name = $_GET['mat_name'];
+    $mat_name = $_GET['mat_name'];
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +21,10 @@ $mat_name = $_GET['mat_name'];
 </head>
 
 <body>
-    <nav>
+<nav>
         <div class="nav-wrapper">
-        <a href="sitematerials.php"
-                class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
-                </a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
+                    class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -66,10 +65,24 @@ $mat_name = $_GET['mat_name'];
                         }
                     ?>
                 </h3>
+
+                <li>
+                    <i class="material-icons left">assignment</i><a class="waves-effect waves-blue"
+                        href="projects.php">Projects</a>
+                </li>
+
+                <li>
+                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                        href="hauleditems.php">Hauled Materials</a>
+                </li>
+
+                <li>
+                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                        href="sitematerials.php">Site Materials</a>
+                </li>
             </ul>
         </div>
     </nav>
-
     <h3 class="mat-name-title"><?php echo $mat_name?></h3>
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
@@ -81,7 +94,7 @@ $mat_name = $_GET['mat_name'];
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
-                <table id="sort" class="centered deliverin striped">
+                <table id = "sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
                             <th onClick = "javascript:SortTable(0,'D');">Date</th>
@@ -92,8 +105,7 @@ $mat_name = $_GET['mat_name'];
                     </thead>
 
                     <tbody>
-                        <tr class="stockcard-entry">
-                            <?php 
+                    <?php 
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
@@ -102,10 +114,8 @@ $mat_name = $_GET['mat_name'];
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
-                            <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
-                            <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-                        </tr>
-
+                    <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                    <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                         <?php 
                         $sql_devIn = "SELECT deliveredin.delivered_date, 
                         deliveredin.delivered_quantity, 
@@ -146,7 +156,7 @@ $mat_name = $_GET['mat_name'];
                             <span><?php echo $row_total[0]?></span>
                             <?php 
                         }
-                    }   
+                        }
                         ?>
                     </div>
             </form>
@@ -166,6 +176,7 @@ $mat_name = $_GET['mat_name'];
                             <th onClick = "javascript:SortTable(4,'T');">Area of Usage</th>
                         </tr>
                     </thead>
+
                     <tbody>
                     <?php 
                         $sql = "SELECT 
@@ -176,12 +187,13 @@ $mat_name = $_GET['mat_name'];
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
+                        <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                        <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                         <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
                         while($row_useIn = mysqli_fetch_row($result_useIn)){
-                        ?>
-                        <tr class="usagein_data">
+                        ?><tr class="usagein_data">
                             <td>
                                 <?php echo $row_useIn[0] ?>
                             </td>
@@ -222,11 +234,10 @@ $mat_name = $_GET['mat_name'];
 
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
-    </script>
+    <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
-          var TableIDvalue = "sort";
+        var TableIDvalue = "sort";
 var TableLastSortedColumn = -1;
 function SortTable() {
 var sortColumn = parseInt(arguments[0]);
@@ -303,7 +314,18 @@ y = parseInt(y);
 if( y < 100 ) { y = parseInt(y) + 2000; }
 return "" + String(y) + "" + String(m) + "" + String(d) + "";
 } // function GetDateSortingKey()
-        </script>
+    </script>
+    <script>
+        // SIDEBAR
+        $(document).ready(function () {
+            $('.button-collapse').sideNav({
+                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            });
+            $('.collapsible').collapsible();
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+
 </body>
 
 </html>

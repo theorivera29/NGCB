@@ -22,8 +22,7 @@
 <body class="site-materials-body">
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
-                    class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -37,8 +36,7 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -66,16 +64,13 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
-                        href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a
-                            class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -89,9 +84,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a
-                            class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -106,18 +99,16 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
-                        href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    
+
 
     <div class="site-materials-container">
-    <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search"
-                    placeholder="Search...">
+        <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search...">
         <div class="lighten-5">
             <table id="sort" class="centered striped site-materials-content">
                 <thead class="site-materials-head">
@@ -143,7 +134,7 @@
                 </thead>
 
                 <tbody>
-                <?php 
+                    <?php 
                     $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
                     INNER JOIN categories ON materials.mat_categ = categories.categories_id
                     INNER JOIN projects ON materials.mat_project = projects.projects_id
@@ -161,7 +152,8 @@
                     categories_name, 
                     mat_prevStock, 
                     projects_name,
-                    unit_name
+                    unit_name,
+                    mat_id
                     FROM materials 
                     INNER JOIN categories ON materials.mat_categ = categories.categories_id
                     INNER JOIN projects ON materials.mat_project = projects.projects_id
@@ -184,9 +176,9 @@
                     <tr>
                         <td>
                             <form action="../server.php" method="POST">
+                                <input type="hidden" name="mat_id" value="<?php echo $row[5]?>">
                                 <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
-                                <button class="waves-effect waves-light btn matname-btn" type="submit"
-                                    name="open_sitestockcard">
+                                <button class="waves-effect waves-light btn matname-btn" type="submit" name="open_sitestockcard">
                                     <?php echo $row[0] ?></button>
                             </form>
 
@@ -253,7 +245,7 @@
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
@@ -334,7 +326,7 @@
                 }
             }
         }
-    
+
     </script>
 </body>
 

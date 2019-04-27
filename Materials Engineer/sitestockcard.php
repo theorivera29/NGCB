@@ -6,6 +6,7 @@
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
 $mat_name = $_GET['mat_name'];
+$mat_id = $_GET['mat_id'];
 ?>
 
 <!DOCTYPE html>
@@ -153,7 +154,7 @@ $mat_name = $_GET['mat_name'];
                         WHERE delivered_matName = '$mat_id'";
                         $result_devIn = mysqli_query($conn, $sql_devIn);
                         while($row_devIn = mysqli_fetch_row($result_devIn)){
-                        ?><tr class="deliverin-data">
+                        ?><tr>
                             <td>
                                 <?php echo $row_devIn[0] ?>
                             </td>
@@ -174,7 +175,7 @@ $mat_name = $_GET['mat_name'];
                 </table>
                 <div class="total">
                     <?php 
-                        $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
+                        $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_name';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
@@ -216,7 +217,7 @@ $mat_name = $_GET['mat_name'];
                         $mat_id = $row[1];
                         ?>
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
-                            <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
+                            <input type="hidden" name="mat_id" value="<?php echo $mat_id; ?>">
                             <td>
                                 <input type="date" min="2019-01-01" name="us_date" required>
                             </td>
@@ -246,7 +247,7 @@ $mat_name = $_GET['mat_name'];
                 <div class="stockcard-btn">
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredinsite">Save</button>
+                        name="add_usageinsite">Save</button>
                 </div><br><br>
                 <span>List of Delivered In Material</span>
                 <table class="centered usagein striped">

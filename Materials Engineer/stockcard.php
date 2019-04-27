@@ -101,7 +101,11 @@ $projects_name = $_GET['projects_name'];
 
                     <tbody>
                         <tr class="stockcard-entry">
+<<<<<<< HEAD
                             <?php 
+=======
+                        <?php 
+>>>>>>> 7e626318d7996deb8d23e6e68c3a450ac6d860cb
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
@@ -110,8 +114,13 @@ $projects_name = $_GET['projects_name'];
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
+<<<<<<< HEAD
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
+=======
+                        </tr>
+                            <tr class="deliverin-data">
+>>>>>>> 7e626318d7996deb8d23e6e68c3a450ac6d860cb
                             <td>
                                 <input type="date" min="2019-01-01" name="dev_date" required>
                             </td>
@@ -151,6 +160,18 @@ $projects_name = $_GET['projects_name'];
                     </thead>
 
                     <tbody>
+<<<<<<< HEAD
+=======
+                        <tr class="stockcard-entry">
+                        
+
+                            <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
+                            <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                            <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
+                            
+                        </tr>
+
+>>>>>>> 7e626318d7996deb8d23e6e68c3a450ac6d860cb
                         <?php 
                         $sql_devIn = "SELECT deliveredin.delivered_date, 
                         deliveredin.delivered_quantity, 

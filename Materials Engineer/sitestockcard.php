@@ -5,8 +5,8 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-$mat_name = $_GET['mat_name'];
-$mat_id = $_GET['mat_id'];
+    $mat_name = $_GET['mat_name'];
+    $mat_id = $_GET['mat_id'];
 ?>
 
 <!DOCTYPE html>
@@ -103,7 +103,7 @@ $mat_id = $_GET['mat_id'];
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_row($result)){
                             ?>
-                            <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                            <input type="hidden" name="mat_name" value="<?php echo urlencode($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
                                 <input type="date" min="2019-01-01" name="dev_date" required>

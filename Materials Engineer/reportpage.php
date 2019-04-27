@@ -135,7 +135,7 @@
                             <th>Delivered Material as of <?php echo date("F Y"); ?></th>
                             <th>Material Pulled out as of <?php echo date("F Y"); ?></th>
                             <th>Unit</th>
-                            <th>Accumulate of Materials Delivered</th>
+                            <th>Accumulated of Materials Delivered</th>
                             <th>Material on Site as of <?php echo date("F Y"); ?></th>
                             <th>Unit</th>
                         </tr>
@@ -166,10 +166,6 @@
                             $sql = "SELECT 
                             mat_name,
                             mat_prevStock, 
-                            delivered_material, 
-                            materials.pulled_out, 
-                            accumulated_materials,
-                            currentQuantity,
                             projects_name,
                             unit_name
                             FROM materials 
@@ -200,7 +196,7 @@
                                 <?php echo $row[1] ;?>
                             </td>
                             <td>
-                                <?php echo $row[7] ;?>
+                                <?php echo $row[3] ;?>
                             </td>
                             <td>
                                 <?php 
@@ -221,16 +217,16 @@
                                 ?>
                             </td>
                             <td>
-                                <?php echo $row[7] ;?>
+                                <?php echo $row[3] ;?>
                             </td>
                             <td>
-                                <?php echo $row[1]-$row1[0] ;?>
+                                <?php echo $row[1]+$row1[0] ;?>
                             </td>
                             <td>
-                                <?php echo ($row[1]-$row1[0])-$row2[0] ;?>
+                                <?php echo ($row[1]+$row1[0])-$row2[0] ;?>
                             </td>
                             <td>
-                                <?php echo $row[7] ;?>
+                                <?php echo $row[3] ;?>
                             </td>
                             <?php 
                         }

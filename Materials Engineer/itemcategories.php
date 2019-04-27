@@ -183,10 +183,6 @@
                             $sql = "SELECT 
                         materials.mat_name, 
                         materials.mat_prevStock, 
-                        materials.delivered_material, 
-                        materials.pulled_out, 
-                        materials.accumulated_materials,
-                        materials.currentQuantity,
                         projects.projects_name,
                         unit.unit_name
                         FROM materials 
@@ -196,6 +192,16 @@
                         WHERE mat_categ = '$categories_id';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
+                            $sql1 = "SELECT delivered_quantity FROM deliveredin
+                            INNER JOIN materials ON deliveredin.delivered_matName = materials.mat_id
+                            WHERE materials.mat_name = '$row[0]';";
+                            $result1 = mysqli_query($conn, $sql1);
+                            $row1 = mysqli_fetch_row($result1);
+                            $sql2 = "SELECT usage_quantity FROM usagein
+                            INNER JOIN materials ON usagein.usage_matName = materials.mat_id
+                            WHERE materials.mat_name = '$row[0]';";
+                            $result2 = mysqli_query($conn, $sql2);
+                            $row2 = mysqli_fetch_row($result2);
                         ?>
                         <tr>
                             <td>
@@ -210,25 +216,37 @@
                                 <?php echo $row[1] ?>
                             </td>
                             <td>
-                            <?php echo $row[7] ?>
+                            <?php echo $row[3] ?>
                             </td>
                             <td>
-                                <?php echo $row[2] ?>
+                                <?php 
+                                    if($row1[0] == null ){
+                                        echo 0;
+                                    } else {
+                                        echo $row1[0];
+                                    }
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    if($row2[0] == null ){
+                                        echo 0;
+                                    } else {
+                                        echo $row2[0];
+                                    }
+                                ?>
                             </td>
                             <td>
                                 <?php echo $row[3] ?>
                             </td>
                             <td>
-                                <?php echo $row[7] ?>
+                                <?php echo $row[1]+$row1[0] ?>
                             </td>
                             <td>
-                                <?php echo $row[4] ?>
+                                <?php echo ($row[1]+$row1[0])-$row2[0]  ?>
                             </td>
                             <td>
-                                <?php echo $row[5] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[7] ?>
+                                <?php echo $row[3] ?>
                             </td>
                             <?php 
                                 if(strcmp($projects_status, "open") == 0) {
@@ -237,11 +255,9 @@
                                 }
                             ?>
                         </tr>
-
                         <?php    
                             }
                         ?>
-
                     </tbody>
                 </table>
             </div>
@@ -265,16 +281,14 @@
                         <label>Category:</label>
                         <div class="input-field col s12">
                             <?php
-                                    $sql = "SELECT categories_name FROM categories WHERE categories_id = $categories_id";
-                                    $result = mysqli_query($conn, $sql);
-                                    while($row = mysqli_fetch_row($result)) {                         
+                                $sql = "SELECT categories_name FROM categories WHERE categories_id = $categories_id";
+                                $result = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_row($result);                       
 
-                                ?>
-                            <input id="mat_categ" name="mat_categ" type="text" class="validate"
+                            ?>
+                            <input type="hidden" name="mat_categ" value="<?php echo $categories_id ;?>">
+                            <input id="mat_categ" type="text" class="validate"
                                 value="<?php echo $row[0]?>">
-                            <?php 
-                                    }
-                                ?>
                         </div>
                     </div>
                 </div>

@@ -208,10 +208,6 @@
                         mat_name,
                         categories_name, 
                         mat_prevStock, 
-                        delivered_material, 
-                        materials.pulled_out, 
-                        accumulated_materials,
-                        currentQuantity,
                         projects_name,
                         unit_name
                         FROM materials 
@@ -250,7 +246,7 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
                             <?php 
@@ -271,7 +267,7 @@
                             ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
                             <?php echo $row[2]+$row1[0] ?>
@@ -280,7 +276,7 @@
                             <?php echo ($row[2]+$row1[0])-$row2[0]  ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <?php 
                                 if(strcmp($projects_status, "open") == 0) {

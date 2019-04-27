@@ -200,9 +200,11 @@
         $view_from = $_POST['view_from'];
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        if(strcmp($view_from, "projects") == 0) {
+        if(strcmp($view_from, "projects" ) == 0) {
             header("location: http://127.0.0.1/NGCB/View%20Only/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
-        } else {
+        } else if (strcmp($view_from, "categories" ) == 0) {
+            header("location: http://127.0.0.1/NGCB/View%20Only/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
+        }else {
             header("location: http://127.0.0.1/NGCB/View%20Only/sitestockcard.php?mat_name=$mat_name");
         }
     }

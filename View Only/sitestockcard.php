@@ -2,8 +2,21 @@
     include "../db_connection.php";
     session_start();
 
-    if(!isset($_SESSION['loggedin'])) {
-      header('Location: http://127.0.0.1/NGCB/index.php');
+    if(isset($_SESSION['loggedin'])) {
+        if(isset($_SESSION['account_type'])) {
+            $account_type = $_SESSION['account_type'];
+            echo $account_type;
+            if (strcmp($account_type,"Admin") == 0) {
+                header("location: http://127.0.0.1/NGCB/Admin/admindashboard.php");
+                exit;
+            } else if (strcmp($account_type,"MatEng") == 0) {
+                header("location: http://127.0.0.1/NGCB/Materials%20Engineer/dashboard.php");
+                exit;
+            } else {
+                header("location: http://127.0.0.1/NGCB/View%20Only/projects.php");
+                exit;
+            }
+        }
     }
     $mat_name = $_GET['mat_name'];
 ?>

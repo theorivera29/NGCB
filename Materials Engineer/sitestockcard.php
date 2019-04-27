@@ -114,9 +114,6 @@ $mat_id = $_GET['mat_id'];
                             <td>
                                 <input type="hidden" name="dev_unit" value="<?php echo $row[2]; ?>">
                                 <input value="<?php echo " $row[0]"; ?>" id="delivered_unit" type="text" class="validate"required>
-
-                                <input type="hidden" name="dev_unit" value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate" required>
                             </td>
                             <td>
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>

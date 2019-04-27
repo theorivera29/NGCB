@@ -1805,7 +1805,7 @@ select[name=mat_unit] {
 .save-proj-btn{
     color: #FFFFFF !important;
     background-color: #71B340 !important;
-    margin-right: 1%;
+    margin-right: 2% !important;
 }
     
 .save-proj-btn:hover{

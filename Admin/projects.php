@@ -170,15 +170,21 @@
                                 <?php echo $row[1] ;?>
                             </span>
                             <p>
-                                <?php echo $row[2] ;?>
+                                <span class="card-text">
+                                    <?php echo $row[2] ;?>
+                                </span>
                             </p>
                             <p>
-                                Start Date:
+                                <span class="card-text">
+                                    Start Date:
+                                </span>
                                 <?php echo $row[3] ;?>
+
                             </p>
                             <p>
-
-                                End Date:
+                                <span class="card-text">
+                                    End Date:
+                                </span>
                                 <?php echo $row[4] ;?>
 
                             </p>
@@ -200,7 +206,7 @@
                 <!--CLOSE MODAL-->
                 <div id="closeModal<?php echo $row[0] ;?>" class="modal">
                     <div class="modal-content">
-                        <h4>Close Project?</h4>
+                        <h4>Close Project</h4>
                         <p>Are you sure you want to close this project?</p>
                     </div>
                     <div class="modal-footer">
@@ -274,14 +280,20 @@
                                 <?php echo $row[1] ;?>
                             </span>
                             <p>
-                                <?php echo $row[2] ;?>
+                                <span class="card-text">
+                                    <?php echo $row[2] ;?>
+                                </span>
                             </p>
                             <p>
-                                Start Date:
+                                <span class="card-text">
+                                    Start Date:
+                                </span>
                                 <?php echo $row[3] ;?>
                             </p>
                             <p>
-                                End Date:
+                                <span class="card-text">
+                                    End Date:
+                                </span>
                                 <?php echo $row[4] ;?>
                             </p>
                             <div class="row">
@@ -301,7 +313,7 @@
                 </div>
                 <div id="reopenModal<?php echo $row[0] ;?>" class="modal">
                     <div class="modal-content">
-                        <h4>Reopen Project?</h4>
+                        <h4>Reopen Project</h4>
                         <p>Are you sure you want to reopen this project?</p>
                     </div>
                     <div class="modal-footer">

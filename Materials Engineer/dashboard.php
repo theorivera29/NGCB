@@ -305,7 +305,7 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
-                            <?php echo $row[5] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
                             <?php echo $row[3] ?>

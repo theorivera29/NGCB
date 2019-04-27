@@ -128,11 +128,7 @@
         <h3 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects;"));
-<<<<<<< HEAD
-                echo $num_rows;
-=======
                 echo "<p style='font-size:25px;'>".$num_rows."</p>";
->>>>>>> ac11cb880d32f448af3939e073d71220fe4cabc9
             ?>    
         </h3>
         <p class="sub-header-text">number of  projects</p>

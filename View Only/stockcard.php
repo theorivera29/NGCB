@@ -148,7 +148,7 @@
                         ?>
                     </tbody>
                 </table>
-                <div>
+                <div class="total">
                 <?php 
                         $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
@@ -218,7 +218,7 @@
                         ?>
                         </tbody>
                 </table>
-                <div>
+                <div class="total">
                 <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);

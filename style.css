@@ -1885,3 +1885,10 @@ select[name=mat_unit] {
 .view-inventory-head>tr>th:hover{
     cursor: pointer !important;
 }
+
+/*View Only*/
+.item-categories-table{
+    border: 1px solid black;
+    margin-bottom: 3%;
+    font-size: 3vmin;
+}

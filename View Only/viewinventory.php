@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <nav>
+<nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -71,17 +71,17 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">assignment</i><a class="waves-effect waves-blue"
                         href="projects.php">Projects</a>
                 </li>
 
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
+                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
@@ -117,7 +117,7 @@
             <table id="sort" class="centered view-inventory">
                 <thead class="view-inventory-head">
                     <tr>
-                        <th onClick="javascript:SortTable(0,'T');">Particulars</th>
+                        <th onClick="javascript:SortTable(0,'T');" id="particular-cell">Particulars</th>
                         <th onClick="javascript:SortTable(1,'T');">Category</th>
                         <th onClick="javascript:SortTable(2,'N');">Previous Material Stock</th>
                         <th onClick="javascript:SortTable(3,'T');">Unit</th>

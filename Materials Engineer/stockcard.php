@@ -84,13 +84,13 @@ $projects_name = $_GET['projects_name'];
             <li class="tab col s3"><a href="#editmaterial">Edit Material</a></li>
         </ul>
     </div>
-    
+
 
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
 
-            <table class="centered deliverin striped delivered-input-table">
+                <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
                             <th>Date</th>
@@ -102,7 +102,7 @@ $projects_name = $_GET['projects_name'];
 
                     <tbody>
                         <tr class="stockcard-entry">
-                        <?php 
+                            <?php 
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
@@ -112,7 +112,7 @@ $projects_name = $_GET['projects_name'];
                         $mat_id = $row[1];
                         ?>
                         </tr>
-                            <tr class="deliverin-data">
+                        <tr class="deliverin-data">
                             <td>
                                 <input type="date" min="2019-01-01" name="dev_date" required>
                             </td>
@@ -134,8 +134,15 @@ $projects_name = $_GET['projects_name'];
                         ?>
                     </tbody>
                 </table>
-                <span>List of Delivered In Material</span>
-                <table id = "sort" class="centered deliverin striped">
+
+                <div class="stockcard-deliverin-btn">
+                    <input type="hidden" name="update_from" value="stockcard">
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
+                        name="add_deliveredin">Save</button>
+                </div>
+                
+                <span class="stockcard-span">List of Delivered In Material</span>
+                <table id="sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
                             <th onClick="javascript:SortTable(0,'D');">Date</th>
@@ -151,7 +158,7 @@ $projects_name = $_GET['projects_name'];
                             <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-                            
+
                         </tr>
 
                         <?php 
@@ -185,27 +192,22 @@ $projects_name = $_GET['projects_name'];
                     </tbody>
                 </table>
                 <div class="total">
-                <?php 
+                    <?php 
                         $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                            <span>TOTAL:</span>
-                            <span><?php echo $row_total[0]?></span>
-                            <?php 
+                    <span>TOTAL:</span>
+                    <span><?php echo $row_total[0]?></span>
+                    <?php 
                         }
                         ?>
-                    </div>
-                <div class="stockcard-btn">
-                    <input type="hidden" name="update_from" value="stockcard">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredin">Save</button>
                 </div>
             </form>
         </div>
     </div>
 
-    
+
     <!--Usage In-->
     <div id="usagein" class="col s12">
         <div class="usagein-container">
@@ -254,10 +256,15 @@ $projects_name = $_GET['projects_name'];
                                 <input id="us_area" name="us_area" type="text" class="validate" required>
                             </td>
                         </tr>
-                      </tbody>
+                    </tbody>
                 </table>
-                <span>List of Usage In Material</span>
-                <table id = "sort" class="centered usagein striped">
+                <div class="stockcard-usagein-btn">
+                    <input type="hidden" name="update_from" value="stockcard">
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
+                        name="add_usagein">Save</button>
+                </div>
+                <span class="stockcard-span">List of Usage In Material</span>
+                <table id="sort" class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
                             <th onClick="javascript:SortTable(0,'D');">Date</th>
@@ -293,28 +300,24 @@ $projects_name = $_GET['projects_name'];
                         <?php 
                         }
                         ?>
-                      </tbody>
+                    </tbody>
                 </table>
 
-                
+
                 <div class="total">
-                <?php 
+                    <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                            <span>TOTAL:</span>
-                            <span><?php echo $row_total[0]?></span>
-                            <?php 
+                    <span>TOTAL:</span>
+                    <span><?php echo $row_total[0]?></span>
+                    <?php 
                         }
                         }
                         ?>
-                    </div>
-                <div class="stockcard-btn">
-                    <input type="hidden" name="update_from" value="stockcard">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_usagein">Save</button>
                 </div>
+                
             </form>
         </div>
     </div>
@@ -367,82 +370,106 @@ $projects_name = $_GET['projects_name'];
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
         var TableIDvalue = "sort";
-var TableLastSortedColumn = -1;
-function SortTable() {
-var sortColumn = parseInt(arguments[0]);
-var type = arguments.length > 1 ? arguments[1] : 'T';
-var dateformat = arguments.length > 2 ? arguments[2] : '';
-var table = document.getElementById(TableIDvalue);
-var tbody = table.getElementsByTagName("tbody")[0];
-var rows = tbody.getElementsByTagName("tr");
-var arrayOfRows = new Array();
-type = type.toUpperCase();
-dateformat = dateformat.toLowerCase();
-for(var i=0, len=rows.length; i<len; i++) {
-	arrayOfRows[i] = new Object;
-	arrayOfRows[i].oldIndex = i;
-	var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g,"");
-	if( type=='D' ) { 
-        arrayOfRows[i].value = GetDateSortingKey(dateformat,celltext);
-    } else {
-		var re = type=="N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
-		arrayOfRows[i].value = celltext.replace(re,"").substr(0,25).toLowerCase();
-		}
-	}
-if (sortColumn == TableLastSortedColumn) { 
-    arrayOfRows.reverse(); 
-} else {
-	TableLastSortedColumn = sortColumn;
-	switch(type) {
-		case "N" : arrayOfRows.sort(CompareRowOfNumbers); break;
-        case "D" : arrayOfRows.sort(CompareRowOfNumbers); break;
-		default  : arrayOfRows.sort(CompareRowOfText);
-	}
-}
-var newTableBody = document.createElement("tbody");
-for(var i=0, len=arrayOfRows.length; i<len; i++) {
-	newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
-}
-table.replaceChild(newTableBody,tbody);
-} // function SortTable()
+        var TableLastSortedColumn = -1;
 
-function CompareRowOfText(a,b) {
-var aval = a.value;
-var bval = b.value;
-return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
-} // function CompareRowOfText()
+        function SortTable() {
+            var sortColumn = parseInt(arguments[0]);
+            var type = arguments.length > 1 ? arguments[1] : 'T';
+            var dateformat = arguments.length > 2 ? arguments[2] : '';
+            var table = document.getElementById(TableIDvalue);
+            var tbody = table.getElementsByTagName("tbody")[0];
+            var rows = tbody.getElementsByTagName("tr");
+            var arrayOfRows = new Array();
+            type = type.toUpperCase();
+            dateformat = dateformat.toLowerCase();
+            for (var i = 0, len = rows.length; i < len; i++) {
+                arrayOfRows[i] = new Object;
+                arrayOfRows[i].oldIndex = i;
+                var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g, "");
+                if (type == 'D') {
+                    arrayOfRows[i].value = GetDateSortingKey(dateformat, celltext);
+                } else {
+                    var re = type == "N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
+                    arrayOfRows[i].value = celltext.replace(re, "").substr(0, 25).toLowerCase();
+                }
+            }
+            if (sortColumn == TableLastSortedColumn) {
+                arrayOfRows.reverse();
+            } else {
+                TableLastSortedColumn = sortColumn;
+                switch (type) {
+                    case "N":
+                        arrayOfRows.sort(CompareRowOfNumbers);
+                        break;
+                    case "D":
+                        arrayOfRows.sort(CompareRowOfNumbers);
+                        break;
+                    default:
+                        arrayOfRows.sort(CompareRowOfText);
+                }
+            }
+            var newTableBody = document.createElement("tbody");
+            for (var i = 0, len = arrayOfRows.length; i < len; i++) {
+                newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
+            }
+            table.replaceChild(newTableBody, tbody);
+        } // function SortTable()
 
-function CompareRowOfNumbers(a,b) {
-var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
-var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
-return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
-} // function CompareRowOfNumbers()
+        function CompareRowOfText(a, b) {
+            var aval = a.value;
+            var bval = b.value;
+            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+        } // function CompareRowOfText()
 
-function GetDateSortingKey(format,text) {
-if( format.length < 1 ) { return ""; }
-format = format.toLowerCase();
-text = text.toLowerCase();
-text = text.replace(/^[^a-z0-9]*/,"");
-text = text.replace(/[^a-z0-9]*$/,"");
-if( text.length < 1 ) { return ""; }
-text = text.replace(/[^a-z0-9]+/g,",");
-var date = text.split(",");
-if( date.length < 3 ) { return ""; }
-var d=0, m=0, y=0;
-for( var i=0; i<3; i++ ) {
-	var ts = format.substr(i,1);
-	if( ts == "d" ) { d = date[i]; }
-	else if( ts == "m" ) { m = date[i]; }
-	else if( ts == "y" ) { y = date[i]; }
-	}
-d = d.replace(/^0/,"");
-if( d < 10 ) { d = "0" + d; }
-m = m.replace(/^0/,"");
-if( m < 10 ) { m = "0" + m; }
-y = parseInt(y);
-if( y < 100 ) { y = parseInt(y) + 2000; }
-return "" + String(y) + "" + String(m) + "" + String(d) + "";
-} // function GetDateSortingKey()
+        function CompareRowOfNumbers(a, b) {
+            var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
+            var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
+            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+        } // function CompareRowOfNumbers()
+
+        function GetDateSortingKey(format, text) {
+            if (format.length < 1) {
+                return "";
+            }
+            format = format.toLowerCase();
+            text = text.toLowerCase();
+            text = text.replace(/^[^a-z0-9]*/, "");
+            text = text.replace(/[^a-z0-9]*$/, "");
+            if (text.length < 1) {
+                return "";
+            }
+            text = text.replace(/[^a-z0-9]+/g, ",");
+            var date = text.split(",");
+            if (date.length < 3) {
+                return "";
+            }
+            var d = 0,
+                m = 0,
+                y = 0;
+            for (var i = 0; i < 3; i++) {
+                var ts = format.substr(i, 1);
+                if (ts == "d") {
+                    d = date[i];
+                } else if (ts == "m") {
+                    m = date[i];
+                } else if (ts == "y") {
+                    y = date[i];
+                }
+            }
+            d = d.replace(/^0/, "");
+            if (d < 10) {
+                d = "0" + d;
+            }
+            m = m.replace(/^0/, "");
+            if (m < 10) {
+                m = "0" + m;
+            }
+            y = parseInt(y);
+            if (y < 100) {
+                y = parseInt(y) + 2000;
+            }
+            return "" + String(y) + "" + String(m) + "" + String(d) + "";
+        } // function GetDateSortingKey()
     </script>
 </body>
 

@@ -1676,8 +1676,9 @@ select[name=mat_unit] {
 }
 
 .sub-header-number{
-    font-size: 3vmin !important;
-    color: yellow;
+    color: #FFFFFF !important;
+    text-align: center;
+    margin-right: 10%;
 }
 
 .text-headers {

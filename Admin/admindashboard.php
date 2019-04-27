@@ -103,12 +103,12 @@
 
     <div class="cards-container-admin account-container-admin" onclick="location.href='listofaccounts.php';">
         <p class="text-headers">Accounts</p>
-        <h3 class="sub-header-number">
+        <h1 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM accounts;")) - 3;
-                echo $num_rows;
+                echo "<p style='font-size:25px;'>".$num_rows."</p>";
             ?>            
-        </h3>
+        </h1>
         <p class="sub-header-text">active accounts</p>
     </div>
 
@@ -117,7 +117,7 @@
         <h3 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM request;"));
-                echo $num_rows;
+                echo "<p style='font-size:25px;'>".$num_rows."</p>";
             ?>    
         </h3>
         <p class="sub-header-text">requesting for a new password</p>
@@ -128,7 +128,7 @@
         <h3 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects;"));
-                echo $num_rows;
+                echo "<p style='font-size:25px;'>".$num_rows."</p>";
             ?>    
         </h3>
         <p class="sub-header-text">number of  projects</p>

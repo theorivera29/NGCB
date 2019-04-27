@@ -160,7 +160,7 @@
                 <table id="sort" class="centered striped category-items-table">
                     <thead class="item-categories-head">
                         <tr>
-                            <th onClick="javascript:SortTable(0,'T');">Particulars</th>
+                            <th onClick="javascript:SortTable(0,'T');" id="particular-cell">Particulars</th>
                             <th onClick="javascript:SortTable(0,'N');">Previous Material Stock</th>
                             <th onClick="javascript:SortTable(0,'T');">Unit</th>
                             <th onClick="javascript:SortTable(0,'N');">Delivered Material as of <?php echo date("F Y"); ?></th>

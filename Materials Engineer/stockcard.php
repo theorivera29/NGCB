@@ -102,6 +102,7 @@ $projects_name = $_GET['projects_name'];
 
                     <tbody>
                         <tr class="stockcard-entry">
+<<<<<<< HEAD
                            <?php 
                                 $sql = "SELECT 
                                 unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
@@ -110,6 +111,17 @@ $projects_name = $_GET['projects_name'];
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_row($result)){
                             ?>
+=======
+                        <?php 
+                        $sql = "SELECT 
+                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                        WHERE mat_name = '$mat_name';";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)){
+                        $mat_id = $row[1];
+                        ?>
+>>>>>>> 7e381d4d6abd23cf22f5a949b2f37669bdc373c6
                         </tr>
                             <tr class="deliverin-data">
                             <td>
@@ -146,15 +158,6 @@ $projects_name = $_GET['projects_name'];
 
                     <tbody>
                         <tr class="stockcard-entry">
-                            <?php 
-                        $sql = "SELECT 
-                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
-                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
-                        WHERE mat_name = '$mat_name';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                        $mat_id = $row[1];
-                        ?>
 
                             <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
@@ -209,7 +212,6 @@ $projects_name = $_GET['projects_name'];
                     <input type="hidden" name="update_from" value="stockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_deliveredin">Save</button>
-                        <a class="btn waves-effect waves-light cancel-mat-btn">Cancel</a>
                 </div>
             </form>
         </div>
@@ -324,7 +326,6 @@ $projects_name = $_GET['projects_name'];
                     <input type="hidden" name="update_from" value="stockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
                         name="add_usagein">Save</button>
-                        <a class="btn waves-effect waves-light cancel-mat-btn">Cancel</a>
                 </div>
             </form>
         </div>
@@ -337,7 +338,7 @@ $projects_name = $_GET['projects_name'];
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                     <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
-                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
+                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
                         <label for="newmaterialname">Material Name:</label>
                     </div>
                     <div class="input-field col s2 unit-field">
@@ -358,7 +359,7 @@ $projects_name = $_GET['projects_name'];
                     </div>
                     <div class="input-field col s4 threshold-field">
                         <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
-                            title="Input numbers only">
+                            title="Input numbers only" required>
                         <label for="minquantity">Item threshold:</label>
                     </div>
                 </div>

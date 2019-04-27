@@ -70,7 +70,7 @@ $mat_name = $_GET['mat_name'];
         </div>
     </nav>
 
-
+    <h3 class="mat-name-title"><?php echo $mat_name?></h3>
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>

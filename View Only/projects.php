@@ -171,6 +171,10 @@
                                     <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
                                     <input type="hidden" name="account_type"
                                         value="<?php echo $_SESSION['account_type']; ?>">
+                                        <div class="row">
+                                        <button class="waves-effect waves-light btn viewinventory-btn" type="submit"
+                                            name="view_inventory">View Inventory</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>

@@ -138,40 +138,49 @@
 
                 <tbody>
                     <?php 
-                                //  $projects_name = $_GET['projects_name'];
-                                $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
-                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                            INNER JOIN projects ON materials.mat_project = projects.projects_id
-                            WHERE projects.projects_name = '$projects_name'
-                            ORDER BY categories.categories_name;";
-                            $result = mysqli_query($conn, $sql_categ);
-                            $categories = array();
-                            while($row_categ = mysqli_fetch_assoc($result)){
-                                $categories[] = $row_categ;
-                            }
-                            foreach($categories as $data) {
-                            $categ = $data['categories_name'];
-                        ?>
-                    <?php 
-                            $sql = "SELECT 
-                            mat_name,
-                            categories_name, 
-                            mat_prevStock, 
-                            delivered_material, 
-                            materials.pulled_out, 
-                            accumulated_materials,
-                            currentQuantity,
-                            projects_name,
-                            unit_name
-                            FROM materials 
-                            INNER JOIN categories ON materials.mat_categ = categories.categories_id
-                            INNER JOIN projects ON materials.mat_project = projects.projects_id
-                            INNER JOIN unit ON materials.mat_unit = unit.unit_id
-                            WHERE categories.categories_name = '$categ' AND
-                            projects.projects_name = '$projects_name';";
-                            $result = mysqli_query($conn, $sql);
-                            while($row = mysqli_fetch_row($result)){
-                        ?>
+                        $sql_categ = "SELECT DISTINCT categories.categories_name FROM materials 
+                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                        INNER JOIN projects ON materials.mat_project = projects.projects_id
+                        WHERE projects.projects_name = '$projects_name'
+                        ORDER BY categories.categories_name;";
+                        $result = mysqli_query($conn, $sql_categ);
+                        $categories = array();
+                        while($row_categ = mysqli_fetch_assoc($result)){
+                            $categories[] = $row_categ;
+                        }
+
+                        foreach($categories as $data) {
+                        $categ = $data['categories_name'];
+                        $sql = "SELECT 
+                        mat_name,
+                        categories_name, 
+                        mat_prevStock, 
+                        delivered_material, 
+                        materials.pulled_out, 
+                        accumulated_materials,
+                        currentQuantity,
+                        projects_name,
+                        unit_name
+                        FROM materials 
+                        INNER JOIN categories ON materials.mat_categ = categories.categories_id
+                        INNER JOIN projects ON materials.mat_project = projects.projects_id
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                        WHERE categories.categories_name = '$categ' AND
+                        projects.projects_name = '$projects_name'
+                        ORDER BY 1;";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)){
+                            $sql1 = "SELECT delivered_quantity FROM deliveredin
+                            INNER JOIN materials ON deliveredin.delivered_matName = materials.mat_id
+                            WHERE materials.mat_name = '$row[0]';";
+                            $result1 = mysqli_query($conn, $sql1);
+                            $row1 = mysqli_fetch_row($result1);
+                            $sql2 = "SELECT usage_quantity FROM usagein
+                            INNER JOIN materials ON usagein.usage_matName = materials.mat_id
+                            WHERE materials.mat_name = '$row[0]';";
+                            $result2 = mysqli_query($conn, $sql2);
+                            $row2 = mysqli_fetch_row($result2);
+                    ?>
 
                     <tr>
                         <td>
@@ -194,24 +203,40 @@
                             <?php echo $row[8] ?>
                         </td>
                         <td>
-                            <?php echo $row[3] ?>
+                            <?php 
+                                if($row1[0] == null ){
+                                    echo 0;
+                                } else {
+                                    echo $row1[0];
+                                }
+                            ?>
                         </td>
                         <td>
-                            <?php echo $row[4] ?>
+                            <?php 
+                                if($row2[0] == null ){
+                                    echo 0;
+                                } else {
+                                    echo $row2[0];
+                                }
+                            ?>
                         </td>
                         <td>
                             <?php echo $row[8] ?>
                         </td>
                         <td>
-                            <?php echo $row[5] ?>
+                            <?php echo $row[2]+$row1[0] ?>
                         </td>
                         <td>
-                            <?php echo $row[6] ?>
+                            <?php echo ($row[2]+$row1[0])-$row2[0]  ?>
                         </td>
                         <td>
                             <?php echo $row[8] ?>
                         </td>
                         <?php 
+                                if(strcmp($projects_status, "open") == 0) {
+                            ?>
+                        <?php 
+                                }
                             }
                         ?>
                     </tr>

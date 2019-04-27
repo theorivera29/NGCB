@@ -82,14 +82,32 @@
         $result = mysqli_query($conn, $sql);
         $pdf->SetFont('Times','',9);
         while($row = mysqli_fetch_row($result)){
+            $sql1 = "SELECT delivered_quantity FROM deliveredin
+                    INNER JOIN materials ON deliveredin.delivered_matName = materials.mat_id
+                    WHERE materials.mat_name = '$row[0]';";
+            $result1 = mysqli_query($conn, $sql1);
+            $row1 = mysqli_fetch_row($result1);
+            $sql2 = "SELECT usage_quantity FROM usagein
+            INNER JOIN materials ON usagein.usage_matName = materials.mat_id
+            WHERE materials.mat_name = '$row[0]';";
+            $result2 = mysqli_query($conn, $sql2);
+            $row2 = mysqli_fetch_row($result2);
             $pdf->Cell(50,10,$row[0],1,0,'C',true);
             $pdf->Cell(12,10,$row[1],1,0,'C',true);
             $pdf->Cell(10,10,$row[6],1,0,'C',true);
-            $pdf->Cell(22,10,$row[2],1,0,'C',true);
-            $pdf->Cell(21,10,$row[3],1,0,'C',true);
+            if($row1[0] == null) {
+                $pdf->Cell(22,10,0,1,0,'C',true);
+            } else {                
+                $pdf->Cell(22,10,$row1[0],1,0,'C',true);
+            } 
+            if($row2[0] == null) {
+                $pdf->Cell(21,10,0,1,0,'C',true);
+            } else {                
+                $pdf->Cell(21,10,$row2[0],1,0,'C',true);
+            }
             $pdf->Cell(10,10,$row[6],1,0,'C',true);
-            $pdf->Cell(29,10,$row[4],1,0,'C',true);
-            $pdf->Cell(25,10,$row[5],1,0,'C',true);
+            $pdf->Cell(29,10,$row[1]-$row1[0],1,0,'C',true);
+            $pdf->Cell(25,10,($row[1]-$row1[0])-$row2[0],1,0,'C',true);
             $pdf->Cell(10,10,$row[6],1,0,'C',true);
             $pdf->Ln();
         }

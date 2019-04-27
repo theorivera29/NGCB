@@ -262,6 +262,7 @@
     }
 
     if (isset($_POST['create_hauling'])) {
+        // conflict yung dbase sa requestedby. magulo masyado
         $hauling_no = mysqli_real_escape_string($conn, $_POST['formnumber']);
         $hauling_date = mysqli_real_escape_string($conn, $_POST['haulingdate']);
 		$hauling_deliverTo = mysqli_real_escape_string($conn, $_POST['delivername']);
@@ -270,6 +271,7 @@
         $hauling_unit = mysqli_real_escape_string($conn, $_POST['unit']);
         $hauling_matname = mysqli_real_escape_string($conn, $_POST['articles']);
         $hauling_hauledBy = mysqli_real_escape_string($conn, $_POST['hauledby']);
+        $hauling_requested = mysqli_real_escape_string($conn, $_POST['requested']);
         $hauling_warehouseman = mysqli_real_escape_string($conn, $_POST['warehouseman']);
         $hauling_approvedBy = mysqli_real_escape_string($conn, $_POST['approvedby']);
         $hauling_truckDetailsType = mysqli_real_escape_string($conn, $_POST['truck_type']);
@@ -279,12 +281,12 @@
         
         $stmt = $conn->prepare("INSERT INTO hauling 
         (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, 
-        hauling_hauledBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, 
+        hauling_hauledBy, hauling_requestedBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, 
         hauling_truckDetailsPo, hauling_truckDetailsHaulerDr) 
         VALUES 
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("isssiiisissssss", $hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, 
-        $hauling_unit, $hauling_matname, $hauling_hauledBy, $hauling_warehouseman, $hauling_approvedBy, $hauling_truckDetailsType, 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("isssiiisisssssss", $hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, 
+        $hauling_unit, $hauling_matname, $hauling_hauledBy, $hauling_requested, $hauling_warehouseman, $hauling_approvedBy, $hauling_truckDetailsType, 
         $hauling_truckDetailsPlateNo, $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr);
         $stmt->execute();
         $stmt->close();
@@ -305,33 +307,39 @@
         if(isset($_SESSION['account_id'])) {
             $account_id = $_SESSION['account_id'];
         }
-        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf VALUES (?, ?, ?);");
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
         $stmt->bind_param("ssi", $create_haul_date, $logs_message, $logs_of);
         $create_haul_date = date("Y-m-d G:i:s");
         $logs_message = 'Added Hauling No. '.$hauling_no;
         $logs_of = $account_id;
         $stmt->execute();
         $stmt->close();
-        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauleditems.php");        
+        // header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauleditems.php");        
     }
 
     if(isset($_POST['create_category'])) {
         $category_name = mysqli_real_escape_string($conn, $_POST['category_name']);
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        $sql = "INSERT INTO categories (categories_name, categories_project) VALUES ('$category_name', 1);";
-        mysqli_query($conn, $sql);
-        session_start();
-        $account_id = "";
-        if(isset($_SESSION['account_id'])) {
-            $account_id = $_SESSION['account_id'];
-        }
-        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf VALUES (?, ?, ?);");
-        $stmt->bind_param("ssi", $create_categ_date, $logs_message, $logs_of);
-        $create_categ_date = date("Y-m-d G:i:s");
-        $logs_message = 'Created category '.$category_name;
-        $logs_of = $account_id;
+        $stmt = $conn->prepare("SELECT categories_name FROM categories WHERE categories_name = ?");
+        $stmt->bind_param("s", $category_name);
         $stmt->execute();
-        $stmt->close();
+        $stmt->store_result();
+        if($stmt->num_rows === 0) {
+            $sql = "INSERT INTO categories (categories_name, categories_project) VALUES ('$category_name', 1);";
+            mysqli_query($conn, $sql);
+            session_start();
+            $account_id = "";
+            if(isset($_SESSION['account_id'])) {
+                $account_id = $_SESSION['account_id'];
+            }
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $create_categ_date, $logs_message, $logs_of);
+            $create_categ_date = date("Y-m-d G:i:s");
+            $logs_message = 'Created category '.$category_name;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
+        }
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");        
     }
 
@@ -343,26 +351,25 @@
         $stmt->bind_param("s", $category_name);
         $stmt->execute();
         $stmt->store_result();
-        if($stmt->num_rows === 1) {
+        if($stmt->num_rows > 0) {
             $stmt = $conn->prepare("UPDATE categories SET categories_name = ? WHERE categories_name = ?;");
             $stmt->bind_param("ss", $new_category_name, $category_name);
             $stmt->execute();
             $stmt->close();
-
             session_start();
             $account_id = "";
             if(isset($_SESSION['account_id'])) {
                 $account_id = $_SESSION['account_id'];
             }
-            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf VALUES (?, ?, ?);");
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
             $stmt->bind_param("ssi", $create_categ_date, $logs_message, $logs_of);
             $edit_categ_date = date("Y-m-d G:i:s");
             $logs_message = 'Edited category '.$category_name;
             $logs_of = $account_id;
             $stmt->execute();
             $stmt->close();
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
         }
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
     }
 
     if(isset($_POST['viewtodo'])) {
@@ -400,7 +407,7 @@
         $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
-        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);";
+        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity) VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);";
         $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?");
         $stmt->bind_param("s", $projects_name);
         $stmt->execute();
@@ -408,22 +415,20 @@
         $stmt->bind_result($mat_project);
         $stmt->fetch();
         $stmt = $conn->prepare("INSERT INTO materials
-        (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity, pulled_out, accumulated_materials, delivered_material) 
-        VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);");
-        $stmt->bind_param("siiiiiiiii", $mat_name, $mat_prevStock, $mat_project, $mat_unit, $mat_categ, $mat_notif, $delivered_quantity, $pulled_out, $accumulated_materials, $delivered_material);
+        (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity) 
+        VALUES (?, ?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("siiiiii", $mat_name, $mat_prevStock, $mat_project, $mat_unit, $mat_categ, $mat_notif, $currentQuantity);
         $mat_prevStock = 0;
-        $pulled_out = 0;
-        $accumulated_materials = 0;
-        $delivered_material = 0;
+        $currentQuantity = 0;
         $stmt->execute();
-        $stmtm->close();
+        $stmt->close();
         mysqli_query($conn, $sql);
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
             $account_id = $_SESSION['account_id'];
         }
-        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf VALUES (?, ?, ?);");
+        $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
         $stmt->bind_param("ssi", $create_categ_date, $logs_message, $logs_of);
         $create_mat_date = date("Y-m-d G:i:s");
         $logs_message = 'Created material '.$mat_name;
@@ -724,7 +729,7 @@
         if(isset($_POST['newmaterialname'])) {
             $newmaterialname = $_POST['newmaterialname'];
             $stmt = $conn->prepare("UPDATE materials SET mat_name = ? WHERE mat_name = ?;");
-            $stmt->bind_param("is", $newmaterialname, $materialname);
+            $stmt->bind_param("ss", $newmaterialname, $materialname);
             $stmt->execute();
             $stmt->close(); 
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
@@ -734,6 +739,7 @@
             $stmt->execute();
             $stmt->close();
         }
+        echo $mat_unit;
         if(strcasecmp($update_from, 'stockcard') == 0) {   
             header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");   
         } else {

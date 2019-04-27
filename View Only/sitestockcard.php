@@ -81,7 +81,7 @@ $mat_name = $_GET['mat_name'];
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
-                <table id="sort" class="centered deliverin striped">
+                <table id="sort2" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
                             <th onClick = "javascript:SortTable(0,'D');">Date</th>
@@ -156,7 +156,7 @@ $mat_name = $_GET['mat_name'];
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
-                <table id = "sort" class="centered usagein striped">
+                <table id = "sort2" class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
                             <th onClick = "javascript:SortTable(0,'D');">Date</th>
@@ -226,7 +226,7 @@ $mat_name = $_GET['mat_name'];
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-          var TableIDvalue = "sort";
+          var TableIDvalue = "sort2";
 var TableLastSortedColumn = -1;
 function SortTable() {
 var sortColumn = parseInt(arguments[0]);

@@ -105,12 +105,18 @@
             <table id="sort" class="account-list-table centered">
                 <thead class="account-list-head">
                     <tr>
-                        <th onClick="javascript:SortTable(0,'N');">ID</th>
-                        <th onClick="javascript:SortTable(1,'T');">User Name</th>
-                        <th onClick="javascript:SortTable(2,'T');">Name</th>
-                        <th onClick="javascript:SortTable(3,'T');">E-mail</th>
-                        <th onClick="javascript:SortTable(4,'T');">Account Type</th>
-                        <th onClick="javascript:SortTable(5,'T');">Status</th>
+                        <th onClick="javascript:SortTable(0,'N');">ID<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(1,'T');">User Name<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(2,'T');">Name<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(3,'T');">E-mail<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(4,'T');">Account Type<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(5,'T');">Status<i
+                        class="material-icons tiny sort-icon">code</i></th>
                         <th>Action</th>
                     </tr>
                 </thead>

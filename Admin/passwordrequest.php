@@ -107,10 +107,14 @@
             <table id="sort" class="centered pass-reset-table">
                 <thead class="centered pass-reset-table-head">
                     <tr>
-                        <th onClick="javascript:SortTable(0,'T');">Username</th>
-                        <th onClick="javascript:SortTable(1,'T');">Name</th>
-                        <th onClick="javascript:SortTable(2,'T');">E-mail</th>
-                        <th onClick="javascript:SortTable(3,'T');">Account Type</th>
+                        <th onClick="javascript:SortTable(0,'T');">Username<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(1,'T');">Name<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(2,'T');">E-mail<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(3,'T');">Account Type<i
+                        class="material-icons tiny sort-icon">code</i></th>
                         <th>Action</th>
                     </tr>
                 </thead>

@@ -89,7 +89,8 @@ $projects_name = $_GET['projects_name'];
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
-                <table class="centered deliverin striped">
+
+            <table class="centered deliverin striped delivered-input-table">
                     <thead class="deliverin-head">
                         <tr>
                             <th>Date</th>
@@ -101,11 +102,7 @@ $projects_name = $_GET['projects_name'];
 
                     <tbody>
                         <tr class="stockcard-entry">
-<<<<<<< HEAD
-                            <?php 
-=======
                         <?php 
->>>>>>> 7e626318d7996deb8d23e6e68c3a450ac6d860cb
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
@@ -114,13 +111,8 @@ $projects_name = $_GET['projects_name'];
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
-<<<<<<< HEAD
-                            <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
-                            <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
-=======
                         </tr>
                             <tr class="deliverin-data">
->>>>>>> 7e626318d7996deb8d23e6e68c3a450ac6d860cb
                             <td>
                                 <input type="date" min="2019-01-01" name="dev_date" required>
                             </td>
@@ -138,32 +130,21 @@ $projects_name = $_GET['projects_name'];
                             </td>
 
                         </tr>
-                        <?php 
-                        }
-                        ?>
                     </tbody>
                 </table>
-                <div class="stockcard-btn">
-                    <input type="hidden" name="update_from" value="sitestockcard">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredinsite">Save</button>
-                </div><br><br>
                 <span>List of Delivered In Material</span>
-                <table class="centered deliverin striped">
+                <table id = "sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
-                            <th>Date</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Supplied By</th>
+                            <th onClick="javascript:SortTable(0,'D');">Date</th>
+                            <th onClick="javascript:SortTable(1,'N');">Quantity</th>
+                            <th onClick="javascript:SortTable(2,'T');">Unit</th>
+                            <th onClick="javascript:SortTable(3,'T');">Supplied By</th>
                         </tr>
                     </thead>
 
                     <tbody>
-<<<<<<< HEAD
-=======
                         <tr class="stockcard-entry">
-                        
 
                             <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
@@ -171,7 +152,6 @@ $projects_name = $_GET['projects_name'];
                             
                         </tr>
 
->>>>>>> 7e626318d7996deb8d23e6e68c3a450ac6d860cb
                         <?php 
                         $sql_devIn = "SELECT deliveredin.delivered_date, 
                         deliveredin.delivered_quantity, 
@@ -202,19 +182,23 @@ $projects_name = $_GET['projects_name'];
                         ?>
                     </tbody>
                 </table>
-                <div class="total">
-                    <?php 
+                <div>
+                <?php 
                         $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                    <tr>
-                        <td>TOTAL:</td>
-                        <td><?php echo $row_total[0]?></td>
-                    </tr>
-                    <?php 
+                            <span>TOTAL:</span>
+                            <span><?php echo $row_total[0]?></span>
+                            <?php 
+                        }
                         }
                         ?>
+                    </div>
+                <div class="stockcard-btn">
+                    <input type="hidden" name="update_from" value="stockcard">
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
+                        name="add_deliveredin">Save</button>
                 </div>
             </form>
         </div>
@@ -271,11 +255,6 @@ $projects_name = $_GET['projects_name'];
                         </tr>
                       </tbody>
                 </table>
-                <div class="stockcard-btn">
-                    <input type="hidden" name="update_from" value="sitestockcard">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredinsite">Save</button>
-                </div><br><br>
                 <span>List of Usage In Material</span>
                 <table id = "sort" class="centered usagein striped">
                     <thead class="usagein-head">
@@ -315,7 +294,9 @@ $projects_name = $_GET['projects_name'];
                         ?>
                       </tbody>
                 </table>
-                <div class="total">
+
+                
+                <div>
                 <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
@@ -328,6 +309,11 @@ $projects_name = $_GET['projects_name'];
                         }
                         ?>
                     </div>
+                <div class="stockcard-btn">
+                    <input type="hidden" name="update_from" value="stockcard">
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
+                        name="add_usagein">Save</button>
+                </div>
             </form>
         </div>
     </div>
@@ -339,7 +325,7 @@ $projects_name = $_GET['projects_name'];
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                     <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
-                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
+                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
                         <label for="newmaterialname">Material Name:</label>
                     </div>
                     <div class="input-field col s2 unit-field">
@@ -360,7 +346,7 @@ $projects_name = $_GET['projects_name'];
                     </div>
                     <div class="input-field col s4 threshold-field">
                         <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
-                            title="Input numbers only">
+                            title="Input numbers only" required>
                         <label for="minquantity">Item threshold:</label>
                     </div>
                 </div>

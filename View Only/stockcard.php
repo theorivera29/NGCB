@@ -126,7 +126,7 @@
                         deliveredin.delivered_matName 
                         FROM deliveredin 
                         INNER JOIN unit ON deliveredin.delivered_unit = unit.unit_id 
-                        WHERE delivered_matName = '$mat_id'";
+                        WHERE delivered_matName = '$mat_id' ORDER BY 1 DESC";
                         $result_devIn = mysqli_query($conn, $sql_devIn);
                         while($row_devIn = mysqli_fetch_row($result_devIn)){
                         ?><tr class="deliverin-data">
@@ -193,7 +193,7 @@
                         <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                         <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                         <?php 
-                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
+                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id' ORDER BY 1 DESC;";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
                         while($row_useIn = mysqli_fetch_row($result_useIn)){
                         ?><tr class="usagein_data">

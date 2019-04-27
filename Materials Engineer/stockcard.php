@@ -149,7 +149,7 @@ $projects_name = $_GET['projects_name'];
                         <tr class="stockcard-entry">
 
                             <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
-                            <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                            <input type="hidden" name="mat_name" value="<?php echo urlencode($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             
                         </tr>
@@ -232,7 +232,7 @@ $projects_name = $_GET['projects_name'];
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
-                            <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                            <input type="hidden" name="mat_name" value="<?php echo urlencode($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <td>
@@ -324,7 +324,7 @@ $projects_name = $_GET['projects_name'];
             <form action="../server.php" method="POST">
                 <div class="row">
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-                    <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
+                    <input type="hidden" name="materialname" value="<?php echo urlencode($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
                         <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
                         <label for="newmaterialname">Material Name:</label>

@@ -217,7 +217,7 @@
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
-                            <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                            <input type="hidden" name="mat_name" value="<?php echo urlencode($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $mat_id; ?>">
                             <td>
                                 <input type="date" min="2019-01-01" name="us_date" required>
@@ -314,7 +314,7 @@
         <div class="edit-mat-container">
             <form action="../server.php" method="POST">
                 <div class="row">
-                    <input type="hidden" name="materialname" value="<?php echo htmlentities($mat_name)?>">
+                    <input type="hidden" name="materialname" value="<?php echo urlencode($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
                         <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
                         <label for="newmaterialname">Material Name:</label>

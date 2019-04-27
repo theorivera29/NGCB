@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -76,12 +76,12 @@
                 </li>
 
                 <li>
-                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
@@ -107,7 +107,8 @@
             if(strcmp($projects_status, "open") == 0) {
         ?>
         <div class="row">
-            <input class="input search-bar view-inventory-bar" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search...">
+            <input class="input search-bar view-inventory-bar" id="myInput" onkeyup="myFunction()" type="search"
+                placeholder="Search...">
         </div>
 
         <?php 
@@ -128,7 +129,7 @@
                             <?php echo date("F Y"); ?>
                         </th>
                         <th onClick="javascript:SortTable(6,'T');">Unit</th>
-                        <th onClick="javascript:SortTable(7,'N');">Accumulate of Materials Delivered</th>
+                        <th onClick="javascript:SortTable(7,'N');">Accumulated Materials Delivered</th>
                         <th onClick="javascript:SortTable(8,'N');">Material on Site as of
                             <?php echo date("F Y"); ?>
                         </th>
@@ -295,7 +296,7 @@
             $('.modal-trigger').leanModal();
         });
 
-        $(function() {
+        $(function () {
 
             $("table").tablesorter({
                     theme: "materialize",

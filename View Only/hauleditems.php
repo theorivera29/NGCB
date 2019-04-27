@@ -19,7 +19,7 @@
     <link rel="stylesheet" text="type/css" href="../style.css">
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -70,12 +70,12 @@
                 </li>
 
                 <li>
-                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
@@ -84,13 +84,17 @@
 
     <div class="container">
         <div class="card">
-            <table id = "sort" class="striped centered">
+            <table id="sort" class="striped centered">
                 <thead class="hauled-items-head">
                     <tr>
-                        <th onClick = "javascript:SortTable(0,'N');">Hauling forms</th>
-                        <th onClick = "javascript:SortTable(0,'D');">Date</th>
-                        <th onClick = "javascript:SortTable(0,'T');">Project</th>
-                        <th onClick = "javascript:SortTable(0,'T');">Deliver To</th>
+                        <th onClick="javascript:SortTable(0,'N');">Hauling forms<i
+                                class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(0,'D');">Date<i class="material-icons tiny sort-icon">code</i>
+                        </th>
+                        <th onClick="javascript:SortTable(0,'T');">Project<i
+                                class="material-icons tiny sort-icon">code</i></th>
+                        <th onClick="javascript:SortTable(0,'T');">Deliver To<i
+                                class="material-icons tiny sort-icon">code</i></th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -154,84 +158,107 @@
             $('.modal-trigger').leanModal();
         });
 
-var TableIDvalue = "sort";
-var TableLastSortedColumn = -1;
-function SortTable() {
-var sortColumn = parseInt(arguments[0]);
-var type = arguments.length > 1 ? arguments[1] : 'T';
-var dateformat = arguments.length > 2 ? arguments[2] : '';
-var table = document.getElementById(TableIDvalue);
-var tbody = table.getElementsByTagName("tbody")[0];
-var rows = tbody.getElementsByTagName("tr");
-var arrayOfRows = new Array();
-type = type.toUpperCase();
-dateformat = dateformat.toLowerCase();
-for(var i=0, len=rows.length; i<len; i++) {
-	arrayOfRows[i] = new Object;
-	arrayOfRows[i].oldIndex = i;
-	var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g,"");
-	if( type=='D' ) { 
-        arrayOfRows[i].value = GetDateSortingKey(dateformat,celltext);
-    } else {
-		var re = type=="N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
-		arrayOfRows[i].value = celltext.replace(re,"").substr(0,25).toLowerCase();
-		}
-	}
-if (sortColumn == TableLastSortedColumn) { 
-    arrayOfRows.reverse(); 
-} else {
-	TableLastSortedColumn = sortColumn;
-	switch(type) {
-		case "N" : arrayOfRows.sort(CompareRowOfNumbers); break;
-        case "D" : arrayOfRows.sort(CompareRowOfNumbers); break;
-		default  : arrayOfRows.sort(CompareRowOfText);
-	}
-}
-var newTableBody = document.createElement("tbody");
-for(var i=0, len=arrayOfRows.length; i<len; i++) {
-	newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
-}
-table.replaceChild(newTableBody,tbody);
-} // function SortTable()
+        var TableIDvalue = "sort";
+        var TableLastSortedColumn = -1;
 
-function CompareRowOfText(a,b) {
-var aval = a.value;
-var bval = b.value;
-return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
-} // function CompareRowOfText()
+        function SortTable() {
+            var sortColumn = parseInt(arguments[0]);
+            var type = arguments.length > 1 ? arguments[1] : 'T';
+            var dateformat = arguments.length > 2 ? arguments[2] : '';
+            var table = document.getElementById(TableIDvalue);
+            var tbody = table.getElementsByTagName("tbody")[0];
+            var rows = tbody.getElementsByTagName("tr");
+            var arrayOfRows = new Array();
+            type = type.toUpperCase();
+            dateformat = dateformat.toLowerCase();
+            for (var i = 0, len = rows.length; i < len; i++) {
+                arrayOfRows[i] = new Object;
+                arrayOfRows[i].oldIndex = i;
+                var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g, "");
+                if (type == 'D') {
+                    arrayOfRows[i].value = GetDateSortingKey(dateformat, celltext);
+                } else {
+                    var re = type == "N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
+                    arrayOfRows[i].value = celltext.replace(re, "").substr(0, 25).toLowerCase();
+                }
+            }
+            if (sortColumn == TableLastSortedColumn) {
+                arrayOfRows.reverse();
+            } else {
+                TableLastSortedColumn = sortColumn;
+                switch (type) {
+                    case "N":
+                        arrayOfRows.sort(CompareRowOfNumbers);
+                        break;
+                    case "D":
+                        arrayOfRows.sort(CompareRowOfNumbers);
+                        break;
+                    default:
+                        arrayOfRows.sort(CompareRowOfText);
+                }
+            }
+            var newTableBody = document.createElement("tbody");
+            for (var i = 0, len = arrayOfRows.length; i < len; i++) {
+                newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
+            }
+            table.replaceChild(newTableBody, tbody);
+        } // function SortTable()
 
-function CompareRowOfNumbers(a,b) {
-var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
-var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
-return( aval == bval ? 0 : (aval > bval ? 1 : -1) );
-} // function CompareRowOfNumbers()
+        function CompareRowOfText(a, b) {
+            var aval = a.value;
+            var bval = b.value;
+            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+        } // function CompareRowOfText()
 
-function GetDateSortingKey(format,text) {
-if( format.length < 1 ) { return ""; }
-format = format.toLowerCase();
-text = text.toLowerCase();
-text = text.replace(/^[^a-z0-9]*/,"");
-text = text.replace(/[^a-z0-9]*$/,"");
-if( text.length < 1 ) { return ""; }
-text = text.replace(/[^a-z0-9]+/g,",");
-var date = text.split(",");
-if( date.length < 3 ) { return ""; }
-var d=0, m=0, y=0;
-for( var i=0; i<3; i++ ) {
-	var ts = format.substr(i,1);
-	if( ts == "d" ) { d = date[i]; }
-	else if( ts == "m" ) { m = date[i]; }
-	else if( ts == "y" ) { y = date[i]; }
-	}
-d = d.replace(/^0/,"");
-if( d < 10 ) { d = "0" + d; }
-m = m.replace(/^0/,"");
-if( m < 10 ) { m = "0" + m; }
-y = parseInt(y);
-if( y < 100 ) { y = parseInt(y) + 2000; }
-return "" + String(y) + "" + String(m) + "" + String(d) + "";
-} // function GetDateSortingKey()
+        function CompareRowOfNumbers(a, b) {
+            var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
+            var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
+            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
+        } // function CompareRowOfNumbers()
 
+        function GetDateSortingKey(format, text) {
+            if (format.length < 1) {
+                return "";
+            }
+            format = format.toLowerCase();
+            text = text.toLowerCase();
+            text = text.replace(/^[^a-z0-9]*/, "");
+            text = text.replace(/[^a-z0-9]*$/, "");
+            if (text.length < 1) {
+                return "";
+            }
+            text = text.replace(/[^a-z0-9]+/g, ",");
+            var date = text.split(",");
+            if (date.length < 3) {
+                return "";
+            }
+            var d = 0,
+                m = 0,
+                y = 0;
+            for (var i = 0; i < 3; i++) {
+                var ts = format.substr(i, 1);
+                if (ts == "d") {
+                    d = date[i];
+                } else if (ts == "m") {
+                    m = date[i];
+                } else if (ts == "y") {
+                    y = date[i];
+                }
+            }
+            d = d.replace(/^0/, "");
+            if (d < 10) {
+                d = "0" + d;
+            }
+            m = m.replace(/^0/, "");
+            if (m < 10) {
+                m = "0" + m;
+            }
+            y = parseInt(y);
+            if (y < 100) {
+                y = parseInt(y) + 2000;
+            }
+            return "" + String(y) + "" + String(m) + "" + String(d) + "";
+        } // function GetDateSortingKey()
     </script>
 </body>
 

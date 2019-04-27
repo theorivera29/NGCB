@@ -102,16 +102,6 @@ $projects_name = $_GET['projects_name'];
 
                     <tbody>
                         <tr class="stockcard-entry">
-<<<<<<< HEAD
-                           <?php 
-                                $sql = "SELECT 
-                                unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
-                                INNER JOIN unit ON materials.mat_unit = unit.unit_id
-                                WHERE mat_name = '$mat_name';";
-                                $result = mysqli_query($conn, $sql);
-                                while($row = mysqli_fetch_row($result)){
-                            ?>
-=======
                         <?php 
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
@@ -121,7 +111,6 @@ $projects_name = $_GET['projects_name'];
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
->>>>>>> 7e381d4d6abd23cf22f5a949b2f37669bdc373c6
                         </tr>
                             <tr class="deliverin-data">
                             <td>
@@ -204,7 +193,6 @@ $projects_name = $_GET['projects_name'];
                             <span>TOTAL:</span>
                             <span><?php echo $row_total[0]?></span>
                             <?php 
-                        }
                         }
                         ?>
                     </div>

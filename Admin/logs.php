@@ -102,7 +102,7 @@
     </nav>
 
     <div class="logs-container">
-        <table id="sort" class="logs-contaienr-table centered striped">
+        <table id="sort" class="logs-container-table centered striped">
             <thead class="logs-container-head">
                 <tr>
                     <th onClick="javascript:SortTable(0,'D');">Date</th>

@@ -237,7 +237,7 @@
                             } else {
                             ?>
                         <tr>
-                        <h3 class="">No task for today</h3>
+                        <h3 id="no-task-text">No task for today</h3>
                         </tr>
                         <?php
                             }

@@ -5,6 +5,8 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
+    $projects_name = $_GET['projects_name'];
+    $categories_id = $_GET['categories_id'];
 ?>
 
 <!DOCTYPE html>
@@ -143,9 +145,15 @@
                                 $row2 = mysqli_fetch_row($result2);
                         ?>
                     <tr>
-                        <td>
-                            <?php echo $row[0] ?>
-                        </td>
+                    <td>
+                                <form action="../server.php" method="POST">
+                                <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+                                <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
+                                <input type="hidden" name="view_from" value="categories">
+                                    <button class="waves-effect waves-light btn matname-btn" name="view_open_stockcard">
+                                        <?php echo $row[0] ?></button>
+                                </form>
+                            </td>
                         <td>
                             <?php echo $row[1] ?>
                         </td>

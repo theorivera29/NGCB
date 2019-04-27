@@ -145,10 +145,10 @@ $projects_name = $_GET['projects_name'];
                 <table id="sort" class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
-                            <th onClick="javascript:SortTable(0,'D');">Date</th>
-                            <th onClick="javascript:SortTable(1,'N');">Quantity</th>
-                            <th onClick="javascript:SortTable(2,'T');">Unit</th>
-                            <th onClick="javascript:SortTable(3,'T');">Supplied By</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Supplied By</th>
                         </tr>
                     </thead>
 
@@ -169,7 +169,7 @@ $projects_name = $_GET['projects_name'];
                         deliveredin.delivered_matName 
                         FROM deliveredin 
                         INNER JOIN unit ON deliveredin.delivered_unit = unit.unit_id 
-                        WHERE delivered_matName = '$mat_id'";
+                        WHERE delivered_matName = '$mat_id' ORDER BY 1 DESC";
                         $result_devIn = mysqli_query($conn, $sql_devIn);
                         while($row_devIn = mysqli_fetch_row($result_devIn)){
                         ?><tr class="deliverin-data">
@@ -267,17 +267,17 @@ $projects_name = $_GET['projects_name'];
                 <table id="sort" class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
-                            <th onClick="javascript:SortTable(0,'D');">Date</th>
-                            <th onClick="javascript:SortTable(1,'N');">Quantity</th>
-                            <th onClick="javascript:SortTable(2,'T');">Unit</th>
-                            <th onClick="javascript:SortTable(3,'T');">Pulled Out By</th>
-                            <th onClick="javascript:SortTable(4,'T');">Area of Usage</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Pulled Out By</th>
+                            <th>Area of Usage</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <?php 
-                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
+                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id' ORDER BY 1 DESC;";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
                         while($row_useIn = mysqli_fetch_row($result_useIn)){
                         ?><tr class="usagein_data">
@@ -368,109 +368,6 @@ $projects_name = $_GET['projects_name'];
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
-    <script>
-        var TableIDvalue = "sort";
-        var TableLastSortedColumn = -1;
-
-        function SortTable() {
-            var sortColumn = parseInt(arguments[0]);
-            var type = arguments.length > 1 ? arguments[1] : 'T';
-            var dateformat = arguments.length > 2 ? arguments[2] : '';
-            var table = document.getElementById(TableIDvalue);
-            var tbody = table.getElementsByTagName("tbody")[0];
-            var rows = tbody.getElementsByTagName("tr");
-            var arrayOfRows = new Array();
-            type = type.toUpperCase();
-            dateformat = dateformat.toLowerCase();
-            for (var i = 0, len = rows.length; i < len; i++) {
-                arrayOfRows[i] = new Object;
-                arrayOfRows[i].oldIndex = i;
-                var celltext = rows[i].getElementsByTagName("td")[sortColumn].innerHTML.replace(/<[^>]*>/g, "");
-                if (type == 'D') {
-                    arrayOfRows[i].value = GetDateSortingKey(dateformat, celltext);
-                } else {
-                    var re = type == "N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
-                    arrayOfRows[i].value = celltext.replace(re, "").substr(0, 25).toLowerCase();
-                }
-            }
-            if (sortColumn == TableLastSortedColumn) {
-                arrayOfRows.reverse();
-            } else {
-                TableLastSortedColumn = sortColumn;
-                switch (type) {
-                    case "N":
-                        arrayOfRows.sort(CompareRowOfNumbers);
-                        break;
-                    case "D":
-                        arrayOfRows.sort(CompareRowOfNumbers);
-                        break;
-                    default:
-                        arrayOfRows.sort(CompareRowOfText);
-                }
-            }
-            var newTableBody = document.createElement("tbody");
-            for (var i = 0, len = arrayOfRows.length; i < len; i++) {
-                newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
-            }
-            table.replaceChild(newTableBody, tbody);
-        } // function SortTable()
-
-        function CompareRowOfText(a, b) {
-            var aval = a.value;
-            var bval = b.value;
-            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
-        } // function CompareRowOfText()
-
-        function CompareRowOfNumbers(a, b) {
-            var aval = /\d/.test(a.value) ? parseFloat(a.value) : 0;
-            var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
-            return (aval == bval ? 0 : (aval > bval ? 1 : -1));
-        } // function CompareRowOfNumbers()
-
-        function GetDateSortingKey(format, text) {
-            if (format.length < 1) {
-                return "";
-            }
-            format = format.toLowerCase();
-            text = text.toLowerCase();
-            text = text.replace(/^[^a-z0-9]*/, "");
-            text = text.replace(/[^a-z0-9]*$/, "");
-            if (text.length < 1) {
-                return "";
-            }
-            text = text.replace(/[^a-z0-9]+/g, ",");
-            var date = text.split(",");
-            if (date.length < 3) {
-                return "";
-            }
-            var d = 0,
-                m = 0,
-                y = 0;
-            for (var i = 0; i < 3; i++) {
-                var ts = format.substr(i, 1);
-                if (ts == "d") {
-                    d = date[i];
-                } else if (ts == "m") {
-                    m = date[i];
-                } else if (ts == "y") {
-                    y = date[i];
-                }
-            }
-            d = d.replace(/^0/, "");
-            if (d < 10) {
-                d = "0" + d;
-            }
-            m = m.replace(/^0/, "");
-            if (m < 10) {
-                m = "0" + m;
-            }
-            y = parseInt(y);
-            if (y < 100) {
-                y = parseInt(y) + 2000;
-            }
-            return "" + String(y) + "" + String(m) + "" + String(d) + "";
-        } // function GetDateSortingKey()
-    </script>
 </body>
 
 </html>

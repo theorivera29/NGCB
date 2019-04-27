@@ -1650,6 +1650,12 @@ select[name=mat_unit] {
     transform: scale(1.1);
 }
 
+.dashcount{
+    font-family: Galyon;
+    font-size: 10vmin !important;
+    text-align: center !important;
+}
+
 .password-reset-container {
     float: left;
     width: 25%;
@@ -1688,6 +1694,8 @@ select[name=mat_unit] {
     color: #FFFFFF !important;
     text-align: center;
     margin-right: 10%;
+    font-family: Galyon;
+    font-size: 5vmin !important;
 }
 
 .text-headers {
@@ -1703,6 +1711,8 @@ select[name=mat_unit] {
 
 .sub-header-text {
     margin-top: 10% !important;
+    text-align: center !important;
+    font-size: 3vmin !important;
 }
 
 /*Account Creation*/
@@ -1767,6 +1777,16 @@ select[name=mat_unit] {
 
 .disable-btn:hover{
     background-color: #C44B4B;
+    color: #FFFFFF;
+}
+
+.enable-btn{
+    background-color: #71B340;
+    color: #FFFFFF;
+}
+
+.enable-btn:hover{
+    background-color: #5D9335;
     color: #FFFFFF;
 }
 

@@ -152,7 +152,7 @@
                             </div>
                             <div id="disable_account<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
-                                    <h4>Disable Account?</h4>
+                                    <h4>Disable Account</h4>
                                     <p>Are you sure you want to disable this account?</p>
                                 </div>
                                 <div class="modal-footer">
@@ -170,13 +170,13 @@
                             ?>
                             <div class="row">
                                 <a href="#enable_account<?php echo $row[0] ;?>"
-                                    class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
-                                    href="#disableBtn">
+                                    class="waves-effect waves-light btn modal-trigger all-btn enable-btn"
+                                    href="#enableBtn">
                                     Enable</a>
                             </div>
                             <div id="enable_account<?php echo $row[0] ;?>" class="modal">
                                 <div class="modal-content">
-                                    <h4>Enable Account?</h4>
+                                    <h4>Enable Account</h4>
                                     <p>Are you sure you want to enable this account?</p>
                                 </div>
                                 <div class="modal-footer">

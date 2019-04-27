@@ -106,7 +106,7 @@
         <h1 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM accounts;")) - 3;
-                echo "<p style='font-size:25px;'>".$num_rows."</p>";
+                echo "<h2 class='dashcount'>".$num_rows."</h2>";
             ?>            
         </h1>
         <p class="sub-header-text">active accounts</p>
@@ -117,7 +117,7 @@
         <h3 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM request;"));
-                echo "<p style='font-size:25px;'>".$num_rows."</p>";
+                echo "<h2 class='dashcount'>".$num_rows."</h2>";
             ?>    
         </h3>
         <p class="sub-header-text">requesting for a new password</p>
@@ -128,7 +128,7 @@
         <h3 class="sub-header-number">
             <?php
                 $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects;"));
-                echo "<p style='font-size:25px;'>".$num_rows."</p>";
+                echo "<h2 class='dashcount'>".$num_rows."</h2>";
             ?>    
         </h3>
         <p class="sub-header-text">number of  projects</p>

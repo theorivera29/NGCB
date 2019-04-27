@@ -135,13 +135,13 @@ $projects_name = $_GET['projects_name'];
                     </tbody>
                 </table>
                 <span>List of Delivered In Material</span>
-                <table id = "sort" class="centered deliverin striped">
+                <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
-                            <th onClick="javascript:SortTable(0,'D');">Date</th>
-                            <th onClick="javascript:SortTable(1,'N');">Quantity</th>
-                            <th onClick="javascript:SortTable(2,'T');">Unit</th>
-                            <th onClick="javascript:SortTable(3,'T');">Supplied By</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Supplied By</th>
                         </tr>
                     </thead>
 
@@ -260,11 +260,11 @@ $projects_name = $_GET['projects_name'];
                 <table id = "sort" class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
-                            <th onClick="javascript:SortTable(0,'D');">Date</th>
-                            <th onClick="javascript:SortTable(1,'N');">Quantity</th>
-                            <th onClick="javascript:SortTable(2,'T');">Unit</th>
-                            <th onClick="javascript:SortTable(3,'T');">Pulled Out By</th>
-                            <th onClick="javascript:SortTable(4,'T');">Area of Usage</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Pulled Out By</th>
+                            <th>Area of Usage</th>
                         </tr>
                     </thead>
 

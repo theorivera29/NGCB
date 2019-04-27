@@ -113,8 +113,14 @@ $mat_id = $_GET['mat_id'];
                                     pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
+<<<<<<< HEAD
                                <input type="hidden" name="dev_unit"  value="<?php echo $row[2]; ?>">
                                 <input value="<?php echo "$row[0]"; ?>" id="delivered_unit" type="text" class="validate"required>
+=======
+                                <input type="hidden" name="dev_unit" value="<?php echo $row[2]; ?>">
+                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
+                                    required>
+>>>>>>> 7e381d4d6abd23cf22f5a949b2f37669bdc373c6
                             </td>
                             <td>
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>

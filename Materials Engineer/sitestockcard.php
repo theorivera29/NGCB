@@ -174,19 +174,17 @@
                 </table>
                 <div class="total">
                     <?php 
-                        $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_name' ORDER BY 1 DESC;";
+                        $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin  WHERE delivered_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
-                        while($row_total = mysqli_fetch_row($result_total)){
+                        $row_total = mysqli_fetch_row($result_total);
+                        $row_total[0];
                         ?>
                     <tr>
                         <td>TOTAL:</td>
                         <td>
-                            <?php echo $row_total[0]?>
+                            <?php echo $row_total[0];?>
                         </td>
                     </tr>
-                    <?php 
-                        }
-                        ?>
                 </div>
             </form>
         </div>
@@ -289,6 +287,7 @@
                 </table>
                 <div class="total">
                     <?php 
+                    
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
@@ -302,9 +301,8 @@
                         </td>
                     </tr>
                     <?php
-                        
                         }
-                            ?>
+                    ?>
                 </div>
             </form>
         </div>

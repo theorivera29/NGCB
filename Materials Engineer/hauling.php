@@ -111,6 +111,14 @@
             </ul>
         </div>
     </nav>
+    <?php
+        $row = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects INNER JOIN accounts ON projects.projects_mateng = accounts.accounts_ID 
+        WHERE accounts.accounts_username = '$username'"));
+        if($row == 0) {
+            echo "You don't have any project.";
+        } else {
+    ?>
+
 
     <div class="container hauling-projects">
         <div class="row">
@@ -164,6 +172,9 @@
 
         </div>
     </div>
+    <?php  
+        }
+    ?>  
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>

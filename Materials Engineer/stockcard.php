@@ -5,8 +5,11 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-$mat_name = $_GET['mat_name'];
-$projects_name = $_GET['projects_name'];
+    $mat_name = urldecode($_GET['mat_name']);
+    $projects_name = $_GET['projects_name'];
+
+    $row = mysqli_fetch_row(mysqli_query($conn, "SELECT mat_id FROM materials WHERE mat_name = '$mat_name';"));
+    $mat_id = $row[0];
 ?>
 
 <!DOCTYPE html>
@@ -109,7 +112,6 @@ $projects_name = $_GET['projects_name'];
                         WHERE mat_name = '$mat_name';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
-                        $mat_id = $row[1];
                         ?>
                         </tr>
                         <tr class="deliverin-data">
@@ -329,7 +331,7 @@ $projects_name = $_GET['projects_name'];
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                     <input type="hidden" name="materialname" value="<?php echo urlencode($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
-                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate" required>
+                        <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
                         <label for="newmaterialname">Material Name:</label>
                     </div>
                     <div class="input-field col s2 unit-field">
@@ -350,7 +352,7 @@ $projects_name = $_GET['projects_name'];
                     </div>
                     <div class="input-field col s4 threshold-field">
                         <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
-                            title="Input numbers only" required>
+                            title="Input numbers only">
                         <label for="minquantity">Item threshold:</label>
                     </div>
                 </div>

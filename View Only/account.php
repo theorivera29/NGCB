@@ -120,7 +120,7 @@
                         <label class="active account-setting-label" for="newlname">Last Name</label>
                     </div>
                     <div class="input-field col s5 account-newpassword-field">
-                        <input id="account-password" name="newpassword" type="password" value=" <?php echo $row[4]?>">
+                        <input id="account-password" name="newpassword" type="password">
                         <label class="active account-setting-label" for="newpassword">New Password</label>
                     </div>
                     <div class="input-field col s5 account-confirmpassword-field">
@@ -135,19 +135,10 @@
                     <?php 
                         }
                     ?>
-<<<<<<< HEAD
                         <div class="col 12 account-btn">
                             <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
                             <a href="dashboard.php" class="btn waves-effect waves-light all-btn cancel-acc-btn">Cancel</a>
                         </div>
-=======
-                    <div class="col 12 account-btn">
-                        <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit"
-                            name="edit_account">Save</button>
-                        <button class="btn waves-effect waves-light all-btn cancel-acc-btn" type="submit"
-                            name="edit_account">Cancel</button>
-                    </div>
->>>>>>> 051dbf98fddce718a93c7f6fbf0d9e90d6589d34
                 </div>
             </form>
         </div>

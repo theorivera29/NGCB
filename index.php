@@ -46,12 +46,6 @@
             <input type='checkbox' id='form-switch'>
             <form id="login-form" action="server.php" method="POST">
                 <h2 class="header header-two">Log In</h2>
-                <?php
-                    if(isset($_SESSION['login_error'])) {
-                    echo "Incorrect username or password.";
-                    unset($_SESSION['login_error']);
-                    }
-                ?>
                 <div class="co-login">
                     <div class="f-login username input-field col s6 m12">
                         <input placeholder="Your username.." id="field-login-username" name="username" type="text" required>
@@ -76,7 +70,12 @@
                         </div>
                     </div>
                 </div>
-
+                <?php
+                    if(isset($_SESSION['login_error'])) {
+                        echo "Incorrect username or password.";
+                        unset($_SESSION['login_error']);
+                    }
+                ?>
             </form>
 
             <form id="password-form" action="server.php" method="POST">

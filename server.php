@@ -12,7 +12,7 @@
         $stmt->store_result();
         $stmt->bind_result($accounts_id, $accounts_password, $accounts_type);
         $stmt->fetch();
-        if(/*password_verify($password, $accounts_password)*/true) {
+        if(password_verify($password, $accounts_password)) {
             $_SESSION['account_id']= $accounts_id;
             $_SESSION['username'] = $username; 
             $_SESSION['loggedin' ] = true;
@@ -51,10 +51,8 @@
             try {
                 $stmt->close();
                 $stmt = $conn->prepare("INSERT INTO accounts (accounts_fname, accounts_lname, accounts_username, accounts_password, accounts_type, accounts_email, accounts_deletable, accounts_status)
-                VALUES ('$firstname', '$lastname', '$username', '123', '$account_type', '$email', 'yes', 'active')");
-                $stmt->bind_param("ssssssss", $firstname, $lastname, $username, $password, $account_type, $email, $deletable, $status);
-                $deletable = "yes";
-                $status = "active";
+                VALUES (?, ?, ?, ?, ?, ?, 'yes', 'active')");
+                $stmt->bind_param("ssssss", $firstname, $lastname, $username, $password, $account_type, $email);
                 $stmt->execute();
                 $full_name = $firstname." ".$lastname;
                 $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?,?,?);");
@@ -153,7 +151,7 @@
                 $stmt3->execute();
                 $stmt3->close();
             } 
-            
+
             if(!strcmp($new_project_name, null) == 0) {
                 $stmt = $conn->prepare("UPDATE projects SET projects_name = ? WHERE projects_name = ?");
                 $stmt->bind_param("ss", $new_project_name, $projects_name);
@@ -497,6 +495,7 @@
             $logs_of = $account_id;
             $stmt->execute();
             $stmt->close();
+            $_SESSION['username'] = $newusername; 
         }
         if(isset($_POST['newfname'])) {
             $newfname = mysqli_real_escape_string($conn, $_POST['newfname']);
@@ -809,13 +808,14 @@
 
     if(isset($_POST['edit_materials'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-        $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
+        $materialname = urldecode(mysqli_real_escape_string($conn, $_POST['materialname']));
         $update_from = $_POST['update_from'];   
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
             $account_id = $_SESSION['account_id'];
         }
+        echo $materialname;
         $edit_mat_date = date("Y-m-d G:i:s");
         if(isset($_POST['mat_unit'])) {
             $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
@@ -856,11 +856,11 @@
             $stmt->execute();
             $stmt->close();
         }
-        // if(strcasecmp($update_from, 'stockcard') == 0) {   
-        //     header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");   
-        // } else {
-        //     header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");     
-        // }         
+        if(strcasecmp($update_from, 'stockcard') == 0) {   
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");   
+        } else {
+            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");     
+        }         
     }
 
     if(isset($_POST['generate_report'])) {

@@ -154,12 +154,12 @@
                         <label class="active account-setting-label" for="newlname">Last Name</label>
                     </div>
                     <div class="input-field col s5 account-newpassword-field">
-                        <input id="account-password" name="newpassword" type="password" value="<?php echo $row[4]?>">
+                        <input id="account-password" name="newpassword" type="password">
                         <label class="active account-setting-label" for="newpassword">New Password</label>
                         
                     </div>
                     <div class="input-field col s5 account-confirmpassword-field">
-                        <input id="account-confirmpassword" name="confirmpassword" type="password" value="">
+                        <input id="account-confirmpassword" name="confirmpassword" type="password">
                         <label class="active account-setting-label" for="confirmpassword">Confirm Password</label>
                     </div>
                     <div class="input-field col s5">

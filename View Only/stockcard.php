@@ -22,10 +22,14 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
-                    class="material-icons menuIcon">menu</i></a>
+            <form action="../server.php" method="POST">
+                <button href="viewinventory.php" name="back" class="button-collapse show-on-large menu-icon back-btn"><i
+                        class="material-icons menuIcon">arrow_back</i>
+                    <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+                </button>
+            </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -73,12 +77,12 @@
                 </li>
 
                 <li>
-                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
@@ -106,7 +110,7 @@
                     </thead>
 
                     <tbody>
-                    <?php 
+                        <?php 
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
@@ -115,9 +119,9 @@
                         while($row = mysqli_fetch_row($result)){
                         $mat_id = $row[1];
                         ?>
-                    <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
-                    <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
-                    <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
+                        <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
+                        <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
+                        <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                         <?php 
                         $sql_devIn = "SELECT deliveredin.delivered_date, 
                         deliveredin.delivered_quantity, 
@@ -149,18 +153,18 @@
                     </tbody>
                 </table>
                 <div class="total-stockcard-delin">
-                <?php 
+                    <?php 
                         $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                            <span>TOTAL:</span>
-                            <span><?php echo $row_total[0]?></span>
-                            <?php 
+                    <span>TOTAL:</span>
+                    <span><?php echo $row_total[0]?></span>
+                    <?php 
                         }
                         }
                         ?>
-                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -180,7 +184,7 @@
                     </thead>
 
                     <tbody>
-                    <?php 
+                        <?php 
                         $sql = "SELECT 
                         unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
                         INNER JOIN unit ON materials.mat_unit = unit.unit_id
@@ -216,24 +220,24 @@
                         <?php 
                         }
                         ?>
-                        </tbody>
+                    </tbody>
                 </table>
                 <div class="total">
-                <?php 
+                    <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                            <span>TOTAL:</span>
-                            <span><?php echo $row_total[0]?></span>
-                            <?php 
+                    <span>TOTAL:</span>
+                    <span><?php echo $row_total[0]?></span>
+                    <?php 
                         }
                     }   
                         ?>
-                    </div>
+                </div>
             </form>
         </div>
-                </div>
+    </div>
 
 
     <!--Import jQuery before materialize.js-->

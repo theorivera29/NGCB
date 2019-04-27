@@ -86,7 +86,6 @@
     </nav>
 
     <div class="item-categories">
-
         <?php
         $categories_id = $_GET['categories_id'];
         $sql = "SELECT * FROM  categories WHERE categories_id = '$categories_id';";
@@ -98,6 +97,7 @@
         <?php
         }
     ?>
+        <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search...">
         <div class="row">
 
             <table id="sort" class="striped centered item-categories-table">
@@ -145,15 +145,15 @@
                                 $row2 = mysqli_fetch_row($result2);
                         ?>
                     <tr>
-                    <td>
-                                <form action="../server.php" method="POST">
+                        <td>
+                            <form action="../server.php" method="POST">
                                 <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                                 <input type="hidden" name="mat_name" value="<?php echo urlencode($row[0])?>">
                                 <input type="hidden" name="view_from" value="categories">
-                                    <button class="waves-effect waves-light btn matname-btn" name="view_open_stockcard">
-                                        <?php echo $row[0] ?></button>
-                                </form>
-                            </td>
+                                <button class="waves-effect waves-light btn matname-btn" name="view_open_stockcard">
+                                    <?php echo $row[0] ?></button>
+                            </form>
+                        </td>
                         <td>
                             <?php echo $row[1] ?>
                         </td>
@@ -267,6 +267,25 @@
             var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
             return (aval == bval ? 0 : (aval > bval ? 1 : -1));
         } // function CompareRowOfNumbers()
+
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("sort");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 
 </body>

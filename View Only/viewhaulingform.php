@@ -19,7 +19,7 @@
     <link rel="stylesheet" text="type/css" href="../style.css">
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -70,12 +70,12 @@
                 </li>
 
                 <li>
-                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>

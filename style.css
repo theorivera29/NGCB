@@ -1305,7 +1305,9 @@ select[name=mat_unit] {
     text-align: center !important;
     margin-top: 2% !important;
     margin-right: 2% !important;
+    background-color: #FFFFFF;
 }
+
 /*Usage In*/
 .usagein-container {
     width: 95% !important;

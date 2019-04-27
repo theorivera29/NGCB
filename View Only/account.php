@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <nav>
+<nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -71,12 +71,12 @@
                 </li>
 
                 <li>
-                    <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                    <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
@@ -128,19 +128,18 @@
                         <label class="active account-setting-label" for="confirmpassword">Confirm Password</label>
                     </div>
                     <div class="input-field col s5">
-                        <input type="checkbox" id="checkbox-new-password" onclick="showNewPassword()" />
-                        <label for="checkbox-new-password">Show new password</label>
+                        <input type="checkbox" id="checkbox-new-password" onclick="showNewPassword()"/>
+                      <label for="checkbox-new-password">Show new password</label>
                     </div>
 
                     <?php 
                         }
                     ?>
-                    <div class="col 12 account-btn">
-                        <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit"
-                            name="edit_account">Save</button>
-                        <button class="btn waves-effect waves-light all-btn cancel-acc-btn" type="submit"
-                            name="edit_account">Cancel</button>
-                    </div>
+                        <div class="col 12 account-btn">
+                            <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
+                            <button class="btn waves-effect waves-light all-btn cancel-acc-btn" type="submit"
+                                name="edit_account">Cancel</button>
+                        </div>
                 </div>
             </form>
         </div>
@@ -148,8 +147,9 @@
 
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
+    </script>
     <script>
         $(document).ready(function () {
             $('.button-collapse').sideNav({
@@ -158,29 +158,37 @@
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
         });
+            //DATEPICKER
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15, // Creates a dropdown of 15 years to control year,
+                closeOnSelect: false // Close upon selecting a date,
+            });
+
+        });
 
         const btn = document.querySelector('#li-generate');
         const inpt = document.querySelector('#inputValue');
         const ul = document.querySelector('.ulList');
 
+        //const deleteLi = document.querySelector('.remove');
 
         btn.addEventListener('click', liGenerate);
         document.addEventListener('click', liDelete);
-
+        
         function showNewPassword() {
-            var show = document.getElementById("account-password");
-            if (show.type === "password") {
-                show.type = "text";
-            } else {
-                show.type = "password";
-            }
-            var showconfirm = document.getElementById("account-confirmpassword");
-            if (showconfirm.type === "password") {
-                showconfirm.type = "text";
-            } else {
-                showconfirm.type = "password";
-            }
-        }
+  var show = document.getElementById("account-password");
+  if (show.type === "password") {
+    show.type = "text";
+  } else {
+    show.type = "password";
+  }
+var showconfirm = document.getElementById("account-confirmpassword");
+  if (showconfirm.type === "password") {
+    showconfirm.type = "text";
+  } else {
+    showconfirm.type = "password";
+  }
     </script>
 
 </body>

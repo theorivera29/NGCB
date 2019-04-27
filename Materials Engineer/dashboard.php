@@ -299,11 +299,8 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
-<<<<<<< HEAD
                             <?php echo $row[4] ?>
-=======
                             <?php echo $row[2] ?>
->>>>>>> 305f09f2d7992fa4987a61a4304b613aae744d2d
                         </td>
                         <td>
                             <?php echo $row[3] ?>

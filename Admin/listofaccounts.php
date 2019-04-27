@@ -148,7 +148,7 @@
                         </td>
                         <td>
                             <?php 
-                                if(strcmp($row[5], "disabled") == 0 ) {
+                                if(strcmp($row[5], "active") == 0 ) {
                             ?>
                             <div class="row">
                                 <a href="#disable_account<?php echo $row[0] ;?>"

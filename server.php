@@ -128,45 +128,38 @@
     if(isset($_POST['edit_project'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['project_name']);
 
-        if(isset($_POST['new_project_name'])) {
             $new_project_name = mysqli_real_escape_string($conn, $_POST['new_project_name']);
+            $new_address = mysqli_real_escape_string($conn, $_POST['new_address']);
+            $new_sdate = mysqli_real_escape_string($conn, $_POST['new_sdate']);
+            $new_edate = mysqli_real_escape_string($conn, $_POST['new_edate']);
+
+            if(!strcmp($new_address, null) == 0) {
+                $stmt1 = $conn->prepare("UPDATE projects SET projects_address = ? WHERE projects_name = ?");
+                $stmt1->bind_param("ss", $new_address, $projects_name);
+                $stmt1->execute();
+                $stmt1->close();
+            }
+
+            if(!strcmp($new_sdate, null) == 0) {
+                $stmt2 = $conn->prepare("UPDATE projects SET projects_sdate = ? WHERE projects_name = ?");
+                $stmt2->bind_param("ss", $new_sdate, $projects_name);
+                $stmt2->execute();
+                $stmt2->close();
+            }
+
+            if(!strcmp($new_edate, null) == 0) {
+                $stmt3 = $conn->prepare("UPDATE projects SET projects_edate = ? WHERE projects_name = ?");
+                $stmt3->bind_param("ss", $new_edate, $projects_name);
+                $stmt3->execute();
+                $stmt3->close();
+            } 
+            
             if(!strcmp($new_project_name, null) == 0) {
-                $stmt = $conn->prepare("UPDATE projects SET projects_name = ? WHERE projects_name = ?;");
+                $stmt = $conn->prepare("UPDATE projects SET projects_name = ? WHERE projects_name = ?");
                 $stmt->bind_param("ss", $new_project_name, $projects_name);
                 $stmt->execute();
                 $stmt->close();
             }
-        }
-
-        if(isset($_POST['new_address'])) {
-            $new_address = mysqli_real_escape_string($conn, $_POST['new_address']);
-            if(!strcmp($new_address, null) == 0) {
-                $stmt = $conn->prepare("UPDATE projects SET projects_address = ? WHERE projects_name = ?;");
-                $stmt->bind_param("ss", $new_address, $projects_name);
-                $stmt->execute();
-                $stmt->close();
-            }
-        }
-
-        if(isset($_POST['new_sdate'])) {
-            $new_sdate = mysqli_real_escape_string($conn, $_POST['new_sdate']);
-            if(!strcmp($new_sdate, null) == 0) {
-                $stmt = $conn->prepare("UPDATE projects SET projects_sdate = ? WHERE projects_name = ?;");
-                $stmt->bind_param("ss", $new_sdate, $projects_name);
-                $stmt->execute();
-                $stmt->close();
-            }
-        }
-
-        if(isset($_POST['new_edate'])) {
-            $new_edate = mysqli_real_escape_string($conn, $_POST['new_edate']);
-            if(!strcmp($new_edate, null) == 0) {
-                $stmt = $conn->prepare("UPDATE projects SET projects_edate = ? WHERE projects_name = ?;");
-                $stmt->bind_param("ss", $new_edate, $projects_name);
-                $stmt->execute();
-                $stmt->close();
-            }
-        }
         header("location: http://127.0.0.1/NGCB/Admin/projects.php");        
     } 
 
@@ -959,7 +952,6 @@
         $stmt->bind_param("i", $request_accountID);
         $stmt->execute();
         $stmt->close();
-        echo $request_email;
         try {
             $mail->addAddress($request_email, $request_name);
             $mail->isHTML(true);                                  
@@ -969,6 +961,12 @@
             $mail->send();
         } catch (Exception $e) {}
         header("location: http://127.0.0.1/NGCB/Admin/passwordrequest.php");        
+    }
+
+    if(isset($_POST['delete_project'])) {
+        $project_name = $_POST['project_name'];
+        mysqli_query($conn, "DELETE FROM projects WHERE projects_name = '$project_name';");
+        header("location: http://127.0.0.1/NGCB/Admin/projects.php");
     }
 
     if(isset($_POST['request_reject'])) {

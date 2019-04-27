@@ -121,7 +121,9 @@
         $sql = "SELECT 
         logs.logs_datetime,
         logs.logs_activity,
-        accounts.accounts_fname
+        CONCAT(accounts.accounts_fname, ' ', accounts.accounts_lname),
+        accounts.accounts_type,
+        accounts.accounts_id
         FROM 
         logs
         INNER JOIN accounts ON logs.logs_logsOf  = accounts.accounts_id
@@ -132,8 +134,28 @@
                 <tr>
                     <td><?php echo $row[0]; ?></td>
                     <td><?php echo $row[1]; ?></td>
-                    <td><?php echo $row[2]; ?></td>
-                    <td>ACC TYPE DAPAT</td>
+                    <td>
+                        <?php 
+                            if($row[4] == 1) {
+                                echo "Admin";
+                            } else if($row[4] == 2) {
+                                echo "MatEng";
+                            } else {
+                                echo "ViewOnly";
+                            }
+                        ?>
+                    </td>
+                    <td>
+                        <?php 
+                            if(strcmp($row[3], "MatEng") == 0) {
+                                echo "Materials Engineer";
+                            } else if(strcmp($row[3], "ViewOnly") == 0) {
+                                echo "View Only";
+                            } else {
+                                echo "Admin";
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <?php 
             }

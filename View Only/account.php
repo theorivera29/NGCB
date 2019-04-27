@@ -99,7 +99,7 @@
                         $row = mysqli_fetch_row($result);
                     ?>
 
-            <form action="server.php" method="POST">
+            <form action="../server.php" method="POST">
                 <div class="row">
                     <input type="hidden" name="userid"
                         value="<?php if(isset($_SESSION['tasks'])) {echo $_SESSION['tasks'];}?>">
@@ -137,8 +137,7 @@
                     ?>
                         <div class="col 12 account-btn">
                             <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
-                            <button class="btn waves-effect waves-light all-btn cancel-acc-btn" type="submit"
-                                name="edit_account">Cancel</button>
+                            <a href="dashboard.php" class="btn waves-effect waves-light all-btn cancel-acc-btn">Cancel</a>
                         </div>
                 </div>
             </form>

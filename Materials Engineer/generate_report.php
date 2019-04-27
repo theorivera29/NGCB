@@ -61,10 +61,6 @@
         $sql = "SELECT 
         materials.mat_name, 
         materials.mat_prevStock, 
-        materials.delivered_material, 
-        materials.pulled_out, 
-        materials.accumulated_materials,
-        materials.currentQuantity,
         unit.unit_name
         FROM materials 
         INNER JOIN categories ON materials.mat_categ = categories.categories_id
@@ -94,7 +90,7 @@
             $row2 = mysqli_fetch_row($result2);
             $pdf->Cell(50,10,$row[0],1,0,'C',true);
             $pdf->Cell(12,10,$row[1],1,0,'C',true);
-            $pdf->Cell(10,10,$row[6],1,0,'C',true);
+            $pdf->Cell(10,10,$row[2],1,0,'C',true);
             if($row1[0] == null) {
                 $pdf->Cell(22,10,0,1,0,'C',true);
             } else {                
@@ -105,10 +101,10 @@
             } else {                
                 $pdf->Cell(21,10,$row2[0],1,0,'C',true);
             }
-            $pdf->Cell(10,10,$row[6],1,0,'C',true);
-            $pdf->Cell(29,10,$row[1]-$row1[0],1,0,'C',true);
-            $pdf->Cell(25,10,($row[1]-$row1[0])-$row2[0],1,0,'C',true);
-            $pdf->Cell(10,10,$row[6],1,0,'C',true);
+            $pdf->Cell(10,10,$row[2],1,0,'C',true);
+            $pdf->Cell(29,10,$row[1]+$row1[0],1,0,'C',true);
+            $pdf->Cell(25,10,($row[1]+$row1[0])-$row2[0],1,0,'C',true);
+            $pdf->Cell(10,10,$row[2],1,0,'C',true);
             $pdf->Ln();
         }
     }

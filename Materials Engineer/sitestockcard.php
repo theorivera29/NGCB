@@ -95,14 +95,13 @@ $mat_name = $_GET['mat_name'];
                     <tbody>
                         <tr class="stockcard-entry">
                             <?php 
-                        $sql = "SELECT 
-                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
-                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
-                        WHERE mat_name = '$mat_name';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                        $mat_id = $row[1];
-                        ?>
+                                $sql = "SELECT 
+                                unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
+                                INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                                WHERE mat_name = '$mat_name';";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)){
+                            ?>
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">
                             <input type="hidden" name="mat_id" value="<?php echo $row[1]; ?>">
                             <td>
@@ -113,9 +112,14 @@ $mat_name = $_GET['mat_name'];
                                     pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
+<<<<<<< HEAD
+                               <input type="hidden" name="dev_unit"  value="<?php echo $row[2]; ?>">
+                                <input value="<?php echo "$row[0]"; ?>" id="delivered_unit" type="text" class="validate"required>
+=======
                                 <input type="hidden" name="dev_unit" value="<?php echo $row[2]; ?>">
                                 <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
                                     required>
+>>>>>>> 7e381d4d6abd23cf22f5a949b2f37669bdc373c6
                             </td>
                             <td>
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
@@ -123,7 +127,7 @@ $mat_name = $_GET['mat_name'];
 
                         </tr>
                         <?php 
-                        }
+                            }
                         ?>
                     </tbody>
                 </table>

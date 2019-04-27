@@ -129,10 +129,6 @@
                          mat_name,
                          categories_name, 
                          mat_prevStock, 
-                         delivered_material, 
-                         materials.pulled_out, 
-                         accumulated_materials,
-                         currentQuantity,
                          projects_name,
                          unit_name
                          FROM materials 
@@ -142,6 +138,16 @@
                          WHERE categories.categories_name = '$categ';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
+                            $sql1 = "SELECT delivered_quantity FROM deliveredin
+                                INNER JOIN materials ON deliveredin.delivered_matName = materials.mat_id
+                                WHERE materials.mat_name = '$row[0]';";
+                            $result1 = mysqli_query($conn, $sql1);
+                            $row1 = mysqli_fetch_row($result1);
+                            $sql2 = "SELECT usage_quantity FROM usagein
+                            INNER JOIN materials ON usagein.usage_matName = materials.mat_id
+                            WHERE materials.mat_name = '$row[0]';";
+                            $result2 = mysqli_query($conn, $sql2);
+                            $row2 = mysqli_fetch_row($result2);
                     ?>
                     <tr>
                         <td>
@@ -158,28 +164,40 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
-                            <?php echo $row[3] ?>
+                            <?php 
+                                if($row1[0] == null ){
+                                    echo 0;
+                                } else {
+                                    echo $row1[0];
+                                }
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                if($row2[0] == null ){
+                                    echo 0;
+                                } else {
+                                    echo $row2[0];
+                                }
+                            ?>
                         </td>
                         <td>
                             <?php echo $row[4] ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[2]+$row1[0] ?>
                         </td>
                         <td>
-                            <?php echo $row[5] ?>
+                            <?php echo ($row[2]+$row1[0])-$row2[0]  ?>
                         </td>
                         <td>
-                            <?php echo $row[6] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[7] ?>
+                            <?php echo $row[3] ?>
                         </td>
                         <?php 
                             }

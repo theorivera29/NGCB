@@ -7,6 +7,8 @@
     }
 
     $projects_name = $_GET['projects_name'];
+    $row = mysqli_fetch_row(mysqli_query($conn, "SELECT projects_id FROM projects WHERE projects_name = '$projects_name';"));
+    $projects_id = $row[0];
 
     $sql = "SELECT projects_status FROM projects WHERE projects_name = '$projects_name'";
     $result = mysqli_query($conn, $sql);
@@ -436,16 +438,16 @@
                 <span id="modal-title">Add Unit</span>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="category_name" type="text" class="validate field-category" pattern="[A-Za-z0-9\s]*"
+                        <input name="unit_name" type="text" class="validate field-category" pattern="[A-Za-z0-9\s]*"
                             title="Follow the format. Example: mtrs" required>
-                        <label for="category_name">Add Unit:</label>
+                        <label for="unit_name">Add Unit:</label>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
                 <button class="modal-close waves-effect waves-light btn-flat save-mat-btn" type="submit"
-                    name="create_category">Save</button>
+                    name="create_unit">Save</button>
             </div>
         </form>
     </div>
@@ -468,7 +470,7 @@
                             <select class="browser-default" id="category-option" name="mat_categ">
                                 <option selected>Choose category</option>
                                 <?php
-                                    $sql = "SELECT categories_id, categories_name FROM categories;";
+                                    $sql = "SELECT categories_id, categories_name FROM categories WHERE categories_project = '$projects_id';";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 

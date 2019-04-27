@@ -334,8 +334,11 @@
             $stmt->store_result();
             $stmt->bind_result($projects_id);
             $stmt->fetch();
-            $sql = "INSERT INTO categories (categories_name, categories_project) VALUES ('$category_name', $projects_id);";
-            mysqli_query($conn, $sql);
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO categories (categories_name, categories_project) VALUES (?, ?);");
+            $stmt->bind_param("si", $category_name, $projects_id);
+            $stmt->execute();
+            $stmt->close();
             session_start();
             $account_id = "";
             if(isset($_SESSION['account_id'])) {
@@ -379,6 +382,41 @@
             $stmt->close();
         }
         header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");
+    }
+
+    if(isset($_POST['create_unit'])) {
+        $unit_name = $_POST['unit_name'];
+        $projects_name = $_POST['projects_name'];
+        $stmt = $conn->prepare("SELECT unit_name FROM unit WHERE unit_name = ?");
+        $stmt->bind_param("s", $category_name);
+        $stmt->execute();
+        $stmt->store_result();
+        if($stmt->num_rows === 0) {
+            $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?");
+            $stmt->bind_param("s", $projects_name);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($projects_id);
+            $stmt->fetch();
+            $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO unit (unit_name) VALUES (?);");
+            $stmt->bind_param("s", $unit_name);
+            $stmt->execute();
+            $stmt->close();
+            session_start();
+            $account_id = "";
+            if(isset($_SESSION['account_id'])) {
+                $account_id = $_SESSION['account_id'];
+            }
+            $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
+            $stmt->bind_param("ssi", $create_categ_date, $logs_message, $logs_of);
+            $create_categ_date = date("Y-m-d G:i:s");
+            $logs_message = 'Created category '.$category_name;
+            $logs_of = $account_id;
+            $stmt->execute();
+            $stmt->close();
+        }
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");        
     }
 
     if(isset($_POST['viewtodo'])) {

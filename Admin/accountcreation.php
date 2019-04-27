@@ -140,7 +140,7 @@
             </div>
             <div class="col">
                 <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit" class="validate"
-                  id="#accountCreation">Create An Account</button>
+                  id="#accountCreation" name="create_account">Create An Account</button>
 
             </div>
         </form>

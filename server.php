@@ -49,7 +49,7 @@
         $stmt->store_result();
         if($stmt->num_rows === 0) {
             try {
-                $stmtm->close();
+                $stmt->close();
                 $stmt = $conn->prepare("INSERT INTO accounts (accounts_fname, accounts_lname, accounts_username, accounts_password, accounts_type, accounts_email, accounts_deletable, accounts_status)
                 VALUES ('$firstname', '$lastname', '$username', '123', '$account_type', '$email', 'yes', 'active')");
                 $stmt->bind_param("ssssssss", $firstname, $lastname, $username, $password, $account_type, $email, $deletable, $status);
@@ -83,7 +83,7 @@
         if(strtotime($start_date) == strtotime($end_date)) {
             header("Location: http://127.0.0.1/NGCB/Admin/projects.php");      
         }
-        $stmt = $conn->prepare("SELECT projects_name from projects WHERE = ?;");
+        $stmt = $conn->prepare("SELECT projects_name FROM projects WHERE projects_name = ?;");
         $stmt->bind_param("s", $projects_name);
         $stmt->execute();
         $stmt->store_result();
@@ -320,14 +320,20 @@
     }
 
     if(isset($_POST['create_category'])) {
-        $category_name = mysqli_real_escape_string($conn, $_POST['category_name']);
-        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        $category_name = $_POST['category_name'];
+        $projects_name = $_POST['projects_name'];
         $stmt = $conn->prepare("SELECT categories_name FROM categories WHERE categories_name = ?");
         $stmt->bind_param("s", $category_name);
         $stmt->execute();
         $stmt->store_result();
         if($stmt->num_rows === 0) {
-            $sql = "INSERT INTO categories (categories_name, categories_project) VALUES ('$category_name', 1);";
+            $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?");
+            $stmt->bind_param("s", $projects_name);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($projects_id);
+            $stmt->fetch();
+            $sql = "INSERT INTO categories (categories_name, categories_project) VALUES ('$category_name', $projects_id);";
             mysqli_query($conn, $sql);
             session_start();
             $account_id = "";

@@ -1270,9 +1270,9 @@ select[name=mat_unit] {
 
 .deliverin {
     border: 1px solid black;
-    border-collapse: separate;
     margin-bottom: 3%;
     text-align: center;
+    table-layout: fixed;
 }
 
 .deliverin-head>tr>th {
@@ -1302,9 +1302,12 @@ select[name=mat_unit] {
 }
 
 .deliverin-data>td{
+    text-align: center !important;
     margin-top: 2% !important;
     margin-right: 2% !important;
+    background-color: #FFFFFF;
 }
+
 /*Usage In*/
 .usagein-container {
     width: 95% !important;
@@ -1452,6 +1455,7 @@ select[name=mat_unit] {
     padding-left: 5% !important;
     padding-top: 5% !important;
 }
+
 
 .save-hauled-btn{
     background-color: #71B340;
@@ -1893,4 +1897,10 @@ select[name=mat_unit] {
     border: 1px solid black;
     margin-bottom: 3%;
     font-size: 3vmin;
+}
+
+.total-stockcard-delin{
+    margin-left: 31%;
+    font-size: 2.5vmin;
+    font-weight: bold;
 }

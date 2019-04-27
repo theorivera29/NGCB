@@ -102,7 +102,7 @@
     </nav>
 
     <div class="logs-container">
-        <table id="sort" class="logs-contaienr-table centered striped">
+        <table id="sort" class="logs-container-table centered striped">
             <thead class="logs-container-head">
                 <tr>
                     <th onClick="javascript:SortTable(0,'D');">Date</th>
@@ -138,9 +138,8 @@
 
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
-    </script>
+    <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.button-collapse').sideNav({

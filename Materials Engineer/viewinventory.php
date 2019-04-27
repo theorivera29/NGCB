@@ -25,7 +25,7 @@
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
-<body>
+<body class="view-inventory-body">
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
@@ -163,7 +163,7 @@
             <table id="sort" class="centered striped view-inventory">
                 <thead class="view-inventory-head">
                     <tr>
-                        <th onClick="javascript:SortTable(0,'T');">Particulars</th>
+                        <th onClick="javascript:SortTable(0,'T');" id="particular-cell">Particulars</th>
                         <th onClick="javascript:SortTable(1,'T');">Category</th>
                         <th onClick="javascript:SortTable(2,'N');">Previous Material Stock</th>
                         <th onClick="javascript:SortTable(3,'T');">Unit</th>
@@ -208,10 +208,6 @@
                         mat_name,
                         categories_name, 
                         mat_prevStock, 
-                        delivered_material, 
-                        materials.pulled_out, 
-                        accumulated_materials,
-                        currentQuantity,
                         projects_name,
                         unit_name
                         FROM materials 
@@ -250,7 +246,7 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
                             <?php 
@@ -271,7 +267,7 @@
                             ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
                             <?php echo $row[2]+$row1[0] ?>
@@ -280,7 +276,7 @@
                             <?php echo ($row[2]+$row1[0])-$row2[0]  ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <?php 
                                 if(strcmp($projects_status, "open") == 0) {

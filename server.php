@@ -421,11 +421,10 @@
         $stmt->bind_result($mat_project);
         $stmt->fetch();
         $stmt = $conn->prepare("INSERT INTO materials
-        (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity) 
-        VALUES (?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("siiiiii", $mat_name, $mat_prevStock, $mat_project, $mat_unit, $mat_categ, $mat_notif, $currentQuantity);
+        (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif) 
+        VALUES (?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("siiiii", $mat_name, $mat_prevStock, $mat_project, $mat_unit, $mat_categ, $mat_notif);
         $mat_prevStock = 0;
-        $currentQuantity = 0;
         $stmt->execute();
         $stmt->close();
         mysqli_query($conn, $sql);

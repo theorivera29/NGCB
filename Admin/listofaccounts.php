@@ -8,6 +8,7 @@
 ?>
 
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -16,7 +17,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
     <link rel="stylesheet" text="type/css" href="../style.css">
-
 </head>
 
 <body>
@@ -44,7 +44,6 @@
                 </ul>
                 <ul id="dropdown" class="dropdown-content collection">
                     <li><a class="waves-effect waves-blue" href="../logout.php">Logout</a></li>
-
                 </ul>
             </span>
             <ul class="side-nav" id="navigation">
@@ -146,7 +145,8 @@
                                 if(strcmp($row[5], "disabled") == 0 ) {
                             ?>
                             <div class="row">
-                                <a href="#disable_account<?php echo $row[0] ;?>" class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
+                                <a href="#disable_account<?php echo $row[0] ;?>"
+                                    class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
                                     href="#disableBtn">
                                     Disable</a>
                             </div>
@@ -156,7 +156,8 @@
                                     <p>Are you sure you want to disable this account?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
+                                    <a href="#!"
+                                        class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
                                     <form action="../server.php" method="POST">
                                         <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
                                         <button type="submit" name="update_account_status"
@@ -167,25 +168,27 @@
                             <?php
                                 } else {
                             ?>
-                                <div class="row">
-                                    <a href="#enable_account<?php echo $row[0] ;?>" class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
-                                        href="#disableBtn">
-                                        Enable</a>
+                            <div class="row">
+                                <a href="#enable_account<?php echo $row[0] ;?>"
+                                    class="waves-effect waves-light btn modal-trigger all-btn disable-btn"
+                                    href="#disableBtn">
+                                    Enable</a>
+                            </div>
+                            <div id="enable_account<?php echo $row[0] ;?>" class="modal">
+                                <div class="modal-content">
+                                    <h4>Enable Account?</h4>
+                                    <p>Are you sure you want to enable this account?</p>
                                 </div>
-                                <div id="enable_account<?php echo $row[0] ;?>" class="modal">
-                                    <div class="modal-content">
-                                        <h4>Enable Account?</h4>
-                                        <p>Are you sure you want to enable this account?</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a href="#!" class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
-                                        <form action="../server.php" method="POST">
-                                            <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
-                                            <button type="submit" name="update_account_status"
-                                                class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
-                                        </form>
-                                    </div>
+                                <div class="modal-footer">
+                                    <a href="#!"
+                                        class=" modal-action modal-close waves-effect waves-light btn-flat no-btn">No</a>
+                                    <form action="../server.php" method="POST">
+                                        <input type="hidden" name="accounts_id" value='<?php echo $row[0] ?>'>
+                                        <button type="submit" name="update_account_status"
+                                            class="modal-action modal-close waves-effect waves-light btn-flat yes-btn">Yes</button>
+                                    </form>
                                 </div>
+                            </div>
                             <?php
                                 }
                             ?>
@@ -201,9 +204,8 @@
 
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
-    </script>
+    <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.button-collapse').sideNav({
@@ -267,7 +269,7 @@
             var bval = /\d/.test(b.value) ? parseFloat(b.value) : 0;
             return (aval == bval ? 0 : (aval > bval ? 1 : -1));
         } // function CompareRowOfNumbers()
-        }
+
     </script>
 
 </body>

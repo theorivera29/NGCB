@@ -89,7 +89,7 @@ body {
 .view-inventory {
     background-color: #DEE0E1;
     font-size: 2.5vmin;
-
+    table-layout: fixed;
 }
 
 /* Style for Site > Site Materials */
@@ -726,11 +726,6 @@ textarea.materialize-textarea {
     width: 90px;
 }
 
-.materials-left{
-    
-}
-
-
 #materialize-lean-overlay{
     background-color: transparent !important;
 }
@@ -774,6 +769,12 @@ textarea.materialize-textarea {
     overflow-x: hidden;
     width: 45%;
     font-size: 3vmin !important;
+}
+
+#no-task-text{
+    text-align: center;
+    margin-top: 15% !important;
+    color: #C0C0C0;
 }
 
 /*Projects*/
@@ -838,6 +839,11 @@ textarea.materialize-textarea {
 }
 
 /*View Inventory*/
+.site-materials-body,
+.view-inventory-body{
+    overflow-y: scroll;
+}
+
 .project-name-inventory {
     font-weight: bold !important;
     text-align: center;
@@ -952,6 +958,7 @@ textarea.materialize-textarea {
     border: 1px solid black;
     border-collapse: separate;
     background-color: #E8E8E8 !important;
+    margin-bottom: 3%;
 }
 
 .view-inventory-head>tr {
@@ -969,6 +976,9 @@ textarea.materialize-textarea {
     font-size: 3vmin;
 }
 
+#particular-cell{
+    width: 20%;
+}
 
 /*Stockard*/
 .back-btn{
@@ -1029,7 +1039,6 @@ textarea.materialize-textarea {
     color: #ffffff !important;
     background-color: #71B340 !important;
     font-size: 2vmin !important;
-    margin-right: .5% !important;
 }
 
 .save-mat-btn:hover {
@@ -1098,15 +1107,16 @@ textarea.materialize-textarea {
 }
 
 .site-materials-container {
-    width: 96%;
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
     margin-top: 2%;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .site-materials-content {
     border: 1px solid black;
+    margin-bottom: 3%;
 }
 
 .site-materials-head>tr>th {
@@ -1261,6 +1271,8 @@ select[name=mat_unit] {
 .deliverin {
     border: 1px solid black;
     border-collapse: separate;
+    margin-bottom: 3%;
+    text-align: center;
 }
 
 .deliverin-head>tr>th {
@@ -1274,6 +1286,8 @@ select[name=mat_unit] {
 
 .save-stockcard-btn{
     background-color: #71B340;
+    margin-bottom: 2% !important;
+    margin-top: -20%;
 }
 
 .save-stockcard-btn:hover{
@@ -1288,6 +1302,8 @@ select[name=mat_unit] {
 }
 
 .deliverin-data>td{
+    background-color: #ffffff !important;
+    text-align: center !important;
     margin-top: 2% !important;
     margin-right: 2% !important;
 }
@@ -1303,6 +1319,7 @@ select[name=mat_unit] {
 .usagein{
     border: 1px solid black;
     border-collapse: separate;
+    margin-bottom: 3%;
 }
 
 .usagein-head>tr>th {
@@ -1326,6 +1343,13 @@ select[name=mat_unit] {
 .usagein-data>td{
     margin-top: 2% !important;
     margin-right: 2% !important;
+}
+
+.total{
+    margin-left: 23%;
+    margin-bottom: 3%;
+    font-size: 2.5vmin;
+    font-weight: bold;
 }
 
 /*Edit Material*/
@@ -1430,6 +1454,7 @@ select[name=mat_unit] {
     padding-left: 5% !important;
     padding-top: 5% !important;
 }
+
 
 .save-hauled-btn{
     background-color: #71B340;
@@ -1654,8 +1679,9 @@ select[name=mat_unit] {
 }
 
 .sub-header-number{
-    font-size: 3vmin !important;
-    color: yellow;
+    color: #FFFFFF !important;
+    text-align: center;
+    margin-right: 10%;
 }
 
 .text-headers {
@@ -1782,7 +1808,7 @@ select[name=mat_unit] {
 .save-proj-btn{
     color: #FFFFFF !important;
     background-color: #71B340 !important;
-            
+    margin-right: 2% !important;
 }
     
 .save-proj-btn:hover{
@@ -1863,4 +1889,11 @@ select[name=mat_unit] {
 }
 .view-inventory-head>tr>th:hover{
     cursor: pointer !important;
+}
+
+/*View Only*/
+.item-categories-table{
+    border: 1px solid black;
+    margin-bottom: 3%;
+    font-size: 3vmin;
 }

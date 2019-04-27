@@ -19,7 +19,7 @@
     <link rel="stylesheet" text="type/css" href="../style.css">
 </head>
 
-<body>
+<body class="site-materials-body">
     <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
@@ -119,10 +119,10 @@
     <input class="input search-bar" id="myInput" onkeyup="myFunction()" type="search"
                     placeholder="Search...">
         <div class="lighten-5">
-            <table id="sort" class="centered site-materials-content">
+            <table id="sort" class="centered striped site-materials-content">
                 <thead class="site-materials-head">
                     <tr>
-                        <th onClick="javascript:SortTable(0,'T');">Particulars</th>
+                        <th onClick="javascript:SortTable(0,'T');" id="particular-cell">Particulars</th>
                         <th onClick="javascript:SortTable(1,'T');">Category</th>
                         <th onClick="javascript:SortTable(2,'N');">Previous Material Stock</th>
                         <th onClick="javascript:SortTable(3,'T');">Unit</th>
@@ -160,10 +160,6 @@
                     mat_name,
                     categories_name, 
                     mat_prevStock, 
-                    delivered_material, 
-                    materials.pulled_out, 
-                    accumulated_materials,
-                    currentQuantity,
                     projects_name,
                     unit_name
                     FROM materials 
@@ -202,7 +198,7 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
                             <?php 
@@ -223,7 +219,7 @@
                             ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
                             <?php echo $row[2]+$row1[0] ?>
@@ -232,10 +228,10 @@
                             <?php echo ($row[2]+$row1[0])-$row2[0]  ?>
                         </td>
                         <td>
-                            <?php echo $row[8] ?>
+                            <?php echo $row[4] ?>
                         </td>
                         <td>
-                            <?php echo $row[7] ?>
+                            <?php echo $row[3] ?>
                         </td>
                         <?php 
                             }

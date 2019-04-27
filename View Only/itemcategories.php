@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<nav>
+    <nav>
         <div class="nav-wrapper">
             <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
                     class="material-icons menuIcon">menu</i></a>
@@ -71,12 +71,12 @@
                 </li>
 
                 <li>
-                <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">local_shipping</i><a class="waves-effect waves-blue"
                         href="hauleditems.php">Hauled Materials</a>
                 </li>
 
                 <li>
-                <i class="material-icons left">place</i><a class="waves-effect waves-blue"
+                    <i class="material-icons left">place</i><a class="waves-effect waves-blue"
                         href="sitematerials.php">Site Materials</a>
                 </li>
             </ul>
@@ -84,50 +84,46 @@
     </nav>
 
     <div class="item-categories">
-        
+
         <?php
         $categories_id = $_GET['categories_id'];
         $sql = "SELECT * FROM  categories WHERE categories_id = '$categories_id';";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-    
-        <h4><?php echo $row[1] ;?></h4>
+
+        <h4 class="project-name-inventory"><?php echo $row[1] ;?></h4>
         <?php
         }
     ?>
         <div class="row">
-            <div class="col s12">
-                <table id="sort" class="centered ">
-                    <thead class="item-categories-head">
-                        <tr>
-                            <th onClick="javascript:SortTable(0,'T');">Particulars</th>
-                            <th onClick="javascript:SortTable(1,'N');">Previous Material Stock</th>
-                            <th onClick="javascript:SortTable(2,'T');">Unit</th>
-                            <th onClick="javascript:SortTable(3,'N');">Delivered Material as of 
+
+            <table id="sort" class="striped centered item-categories-table">
+                <thead class="item-categories-head">
+                    <tr>
+                        <th onClick="javascript:SortTable(0,'T');" id="particular-cell">Particulars</th>
+                        <th onClick="javascript:SortTable(1,'N');">Previous Material Stock</th>
+                        <th onClick="javascript:SortTable(2,'T');">Unit</th>
+                        <th onClick="javascript:SortTable(3,'N');">Delivered Material as of
                             <?php echo date("F Y"); ?>
-                            </th>
-                            <th onClick="javascript:SortTable(4,'N');">Material Pulled out as of
+                        </th>
+                        <th onClick="javascript:SortTable(4,'N');">Material Pulled out as of
                             <?php echo date("F Y"); ?>
-                            </th>
-                            <th onClick="javascript:SortTable(5,'T');">Unit</th>
-                            <th onClick="javascript:SortTable(6,'N');">Accumulate of Materials Delivered</th>
-                            <th onClick="javascript:SortTable(7,'N');">Material on Site as of 
+                        </th>
+                        <th onClick="javascript:SortTable(5,'T');">Unit</th>
+                        <th onClick="javascript:SortTable(6,'N');">Accumulate of Materials Delivered</th>
+                        <th onClick="javascript:SortTable(7,'N');">Material on Site as of
                             <?php echo date("F Y"); ?>
-                            </th>
-                            <th onClick="javascript:SortTable(8,'T');">Unit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
+                        </th>
+                        <th onClick="javascript:SortTable(8,'T');">Unit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
                             $categories_id = $_GET['categories_id'];
                             $sql = "SELECT
                             materials.mat_name, 
                             materials.mat_prevStock, 
-                            materials.delivered_material, 
-                            materials.pulled_out, 
-                            materials.accumulated_materials,
-                            materials.currentQuantity,
                             unit.unit_name
                             FROM materials 
                             INNER JOIN categories ON materials.mat_categ = categories.categories_id
@@ -135,48 +131,64 @@
                             WHERE categories.categories_id = '$categories_id';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
+                                $sql1 = "SELECT delivered_quantity FROM deliveredin
+                                INNER JOIN materials ON deliveredin.delivered_matName = materials.mat_id
+                                WHERE materials.mat_name = '$row[0]';";
+                                $result1 = mysqli_query($conn, $sql1);
+                                $row1 = mysqli_fetch_row($result1);
+                                $sql2 = "SELECT usage_quantity FROM usagein
+                                INNER JOIN materials ON usagein.usage_matName = materials.mat_id
+                                WHERE materials.mat_name = '$row[0]';";
+                                $result2 = mysqli_query($conn, $sql2);
+                                $row2 = mysqli_fetch_row($result2);
                         ?>
-                        <tr>
-                            <td>
-                                <?php echo $row[0] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[1] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[6] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[2] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[3] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[6] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[4] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[5] ?>
-                            </td>
-                            <td>
-                                <?php echo $row[6] ?>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <?php echo $row[0] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[1] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[2] ?>
+                        </td>
+                        <td>
+                            <?php 
+                                    if($row1[0] == null ){
+                                        echo 0;
+                                    } else {
+                                        echo $row1[0];
+                                    }
+                                ?>
+                        </td>
+                        <td>
+                            <?php 
+                                    if($row2[0] == null ){
+                                        echo 0;
+                                    } else {
+                                        echo $row2[0];
+                                    }
+                                ?>
+                        </td>
+                        <td>
+                            <?php echo $row[2] ?>
+                        </td>
+                        <td>
+                            <?php echo $row[1]+$row1[0] ?>
+                        </td>
+                        <td>
+                            <?php echo ($row[1]+$row1[0])-$row2[0]  ?>
+                        </td>
+                        <td>
+                            <?php echo $row[2] ?>
+                        </td>
+                    </tr>
 
-                        <?php    
+                    <?php    
                             }
                         ?>
-                        <!-- LALABAS LANG TO IF MAY ITEM NA NAKALAGAY, HINDI KO ALAM IF PAANO AYA ICOCOMMENT KO MUNA TO
-                        <a href="#" class="waves-effect waves-teal btn modal-trigger">Open</a>
-                        <a href="#" class="waves-effect waves-red btn modal-trigger">Delete</a>
-                        -->
-
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
 

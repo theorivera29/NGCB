@@ -1302,6 +1302,8 @@ select[name=mat_unit] {
 }
 
 .deliverin-data>td{
+    background-color: #ffffff !important;
+    text-align: center !important;
     margin-top: 2% !important;
     margin-right: 2% !important;
 }

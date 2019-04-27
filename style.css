@@ -773,7 +773,8 @@ textarea.materialize-textarea {
 
 #no-task-text{
     text-align: center;
-    margin-top: 3%;
+    margin-top: 15% !important;
+    color: #C0C0C0;
 }
 
 /*Projects*/

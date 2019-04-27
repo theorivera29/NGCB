@@ -272,8 +272,7 @@
                 <?php 
                     $sql = "SELECT 
                     materials.mat_name, 
-                    categories.categories_name, 
-                    materials.currentQuantity, 
+                    categories.categories_name,  
                     unit.unit_name,
                     projects.projects_name,
                     materials.mat_notif
@@ -282,8 +281,8 @@
                     INNER JOIN projects ON materials.mat_project = projects_id
                     INNER JOIN unit ON materials.mat_unit = unit.unit_id
                     INNER JOIN accounts ON accounts.accounts_id = projects.projects_mateng
-                    WHERE materials.mat_notif >= currentQuantity 
-                    AND projects.projects_status = 'open'
+                    WHERE  
+                    projects.projects_status = 'open'
                     AND accounts.accounts_id = '$account_id';";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_array($result)) {
@@ -300,13 +299,10 @@
                             <?php echo $row[2] ?>
                         </td>
                         <td>
+                            <?php echo $row[2] ?>
+                        </td>
+                        <td>
                             <?php echo $row[3] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[5] ?>
-                        </td>
-                        <td>
-                            <?php echo $row[4] ?>
                         </td>
                     </tr>
                     <?php

@@ -127,7 +127,7 @@
         <p class="text-headers">Projects</p>
         <h3 class="sub-header-number">
             <?php
-                $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects;")) - 3;
+                $num_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects;"));
                 echo $num_rows;
             ?>    
         </h3>

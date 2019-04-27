@@ -817,7 +817,7 @@
     if(isset($_POST['edit_materials'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $materialname = mysqli_real_escape_string($conn, $_POST['materialname']);
-        $update_from = $_POST['update_from'];
+        $update_from = $_POST['update_from'];   
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {
@@ -863,12 +863,11 @@
             $stmt->execute();
             $stmt->close();
         }
-        echo $mat_unit;
-        if(strcasecmp($update_from, 'stockcard') == 0) {   
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");   
-        } else {
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");     
-        }         
+        // if(strcasecmp($update_from, 'stockcard') == 0) {   
+        //     header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");   
+        // } else {
+        //     header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/sitematerials.php");     
+        // }         
     }
 
     if(isset($_POST['generate_report'])) {

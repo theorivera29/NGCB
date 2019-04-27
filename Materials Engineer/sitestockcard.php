@@ -5,8 +5,8 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-$mat_name = $_GET['mat_name'];
-$mat_id = $_GET['mat_id'];
+    $mat_name = $_GET['mat_name'];
+    $mat_id = $_GET['mat_id'];
 ?>
 
 <!DOCTYPE html>

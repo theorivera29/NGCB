@@ -102,7 +102,15 @@ $projects_name = $_GET['projects_name'];
 
                     <tbody>
                         <tr class="stockcard-entry">
-                           
+                        <?php 
+                        $sql = "SELECT 
+                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
+                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
+                        WHERE mat_name = '$mat_name';";
+                        $result = mysqli_query($conn, $sql);
+                        while($row = mysqli_fetch_row($result)){
+                        $mat_id = $row[1];
+                        ?>
                         </tr>
                             <tr class="deliverin-data">
                             <td>
@@ -137,15 +145,7 @@ $projects_name = $_GET['projects_name'];
 
                     <tbody>
                         <tr class="stockcard-entry">
-                            <?php 
-                        $sql = "SELECT 
-                        unit.unit_name, materials.mat_id, unit.unit_id FROM materials 
-                        INNER JOIN unit ON materials.mat_unit = unit.unit_id
-                        WHERE mat_name = '$mat_name';";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                        $mat_id = $row[1];
-                        ?>
+                        
 
                             <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
                             <input type="hidden" name="mat_name" value="<?php echo htmlentities($mat_name); ?>">

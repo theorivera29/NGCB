@@ -1270,6 +1270,8 @@ select[name=mat_unit] {
 .deliverin {
     border: 1px solid black;
     border-collapse: separate;
+    margin-bottom: 3%;
+    text-align: center;
 }
 
 .deliverin-head>tr>th {
@@ -1283,6 +1285,8 @@ select[name=mat_unit] {
 
 .save-stockcard-btn{
     background-color: #71B340;
+    margin-bottom: 2% !important;
+    margin-top: -20%;
 }
 
 .save-stockcard-btn:hover{
@@ -1312,6 +1316,7 @@ select[name=mat_unit] {
 .usagein{
     border: 1px solid black;
     border-collapse: separate;
+    margin-bottom: 3%;
 }
 
 .usagein-head>tr>th {
@@ -1335,6 +1340,13 @@ select[name=mat_unit] {
 .usagein-data>td{
     margin-top: 2% !important;
     margin-right: 2% !important;
+}
+
+.total{
+    margin-left: 23%;
+    margin-bottom: 3%;
+    font-size: 2.5vmin;
+    font-weight: bold;
 }
 
 /*Edit Material*/

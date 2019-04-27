@@ -23,9 +23,9 @@ $mat_name = $_GET['mat_name'];
 <body>
     <nav>
         <div class="nav-wrapper">
-                <a href="sitematerials.php"
-                    class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
-                </a>
+            <a href="sitematerials.php" class="button-collapse show-on-large menu-icon back-btn"><i
+                    class="material-icons menuIcon">arrow_back</i>
+            </a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -70,7 +70,7 @@ $mat_name = $_GET['mat_name'];
         </div>
     </nav>
 
-    <span class="mat-name-title"><?php echo $mat_name?></span>
+    <h3 class="mat-name-title"><?php echo $mat_name?></h3>
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Deliver In</a></li>
@@ -113,8 +113,9 @@ $mat_name = $_GET['mat_name'];
                                     pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
-                               <input type="hidden" name="dev_unit"  value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"required>
+                                <input type="hidden" name="dev_unit" value="<?php echo $row[2]; ?>">
+                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
+                                    required>
                             </td>
                             <td>
                                 <input id="suppliedBy" name="dev_supp" type="text" class="validate" required>
@@ -126,7 +127,12 @@ $mat_name = $_GET['mat_name'];
                         ?>
                     </tbody>
                 </table>
-                
+                <div class="stockcard-btn">
+                    <input type="hidden" name="update_from" value="sitestockcard">
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
+                        name="add_deliveredinsite">Save</button>
+                </div><br><br>
+                <span>List of Delivered In Material</span>
                 <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
@@ -166,25 +172,21 @@ $mat_name = $_GET['mat_name'];
                         <?php 
                         }
                         ?>
-                        <?php 
+                    </tbody>
+                </table>
+                <div class="total">
+                    <?php 
                         $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                        <tr>
-                            <td>TOTAL:</td>
-                            <td><?php echo $row_total[0]?></td>
-                        </tr>
-                        <?php 
+                    <tr>
+                        <td>TOTAL:</td>
+                        <td><?php echo $row_total[0]?></td>
+                    </tr>
+                    <?php 
                         }
                         ?>
-                    </tbody>
-                </table>
-                
-                <div class="stockcard-btn">
-                    <input type="hidden" name="update_from" value="sitestockcard">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_deliveredinsite">Save</button>
                 </div>
             </form>
         </div>
@@ -193,7 +195,7 @@ $mat_name = $_GET['mat_name'];
     <div id="usagein" class="col s12">
         <div class="usagein-container">
             <form action="../server.php" method="POST">
-                 <table class="centered usagein striped">
+                <table class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
                             <th>Date</th>
@@ -225,8 +227,9 @@ $mat_name = $_GET['mat_name'];
                                     pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
-                               <input type="hidden" name="us_unit"  value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"required>
+                                <input type="hidden" name="us_unit" value="<?php echo $row[2]; ?>">
+                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
+                                    required>
                             </td>
                             <td>
                                 <input id="pulloutby" name="pulloutby" type="text" class="validate" required>
@@ -235,13 +238,19 @@ $mat_name = $_GET['mat_name'];
                                 <input id="us_area" name="us_area" type="text" class="validate" required>
                             </td>
                         </tr>
-                        
-                        
+
+
                         <?php
                         
                         }
                             ?>
                 </table>
+                <div class="stockcard-btn">
+                    <input type="hidden" name="update_from" value="sitestockcard">
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
+                        name="add_deliveredinsite">Save</button>
+                </div><br><br>
+                <span>List of Delivered In Material</span>
                 <table class="centered usagein striped">
                     <thead class="usagein-head">
                         <tr>
@@ -254,7 +263,7 @@ $mat_name = $_GET['mat_name'];
                     </thead>
 
                     <tbody>
-                        
+
                         <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
@@ -279,28 +288,25 @@ $mat_name = $_GET['mat_name'];
                         <?php 
                         }
                         ?>
-                        <?php 
+                </table>
+                <div class="total">
+                    <?php 
                         $sql_total = "SELECT SUM(usage_quantity) FROM usagein as total_usagein  WHERE usage_matname = '$mat_id';";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
-                        <tr>
-                            <td>
-                                TOTAL:
-                            </td>
-                            <td>
-                                <?php echo $row_total[0] ?>
-                            </td>
-                        </tr>
-                        <?php
+                    <tr>
+                        <td>
+                            TOTAL:
+                        </td>
+                        <td>
+                            <?php echo $row_total[0] ?>
+                        </td>
+                    </tr>
+                    <?php
                         
                         }
                             ?>
-                </table>
-                <div class="stockcard-btn">
-                    <input type="hidden" name="update_from" value="sitestockcard">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_usageinsite">Save</button>
                 </div>
             </form>
         </div>
@@ -339,11 +345,12 @@ $mat_name = $_GET['mat_name'];
                 </div>
 
                 <div class="col s12 edit-matname-btn">
-                        <input type="hidden" name="update_from" value="sitestockcard">
-                        <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials" type="submit">Save</button>
-                        <a class="btn waves-effect waves-light cancel-mat-btn" >Cancel</a>
+                    <input type="hidden" name="update_from" value="sitestockcard">
+                    <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials"
+                        type="submit">Save</button>
+                    <a class="btn waves-effect waves-light cancel-mat-btn">Cancel</a>
 
-                    </div>
+                </div>
 
 
 

@@ -105,9 +105,14 @@
         <table id="sort" class="logs-container-table centered striped">
             <thead class="logs-container-head">
                 <tr>
-                    <th onClick="javascript:SortTable(0,'D');">Date</th>
-                    <th onClick="javascript:SortTable(1,'T');">Activity</th>
-                    <th onClick="javascript:SortTable(2,'T');">Account</th>
+                    <th onClick="javascript:SortTable(0,'D');">Date<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                    <th onClick="javascript:SortTable(1,'T');">Activity<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                    <th onClick="javascript:SortTable(2,'T');">Account<i
+                        class="material-icons tiny sort-icon">code</i></th>
+                    <th onClick="javascript:SortTable(3,'T');">Account Type<i
+                        class="material-icons tiny sort-icon">code</i></th>
                 </tr>
             </thead>
 
@@ -128,6 +133,7 @@
                     <td><?php echo $row[0]; ?></td>
                     <td><?php echo $row[1]; ?></td>
                     <td><?php echo $row[2]; ?></td>
+                    <td>ACC TYPE DAPAT</td>
                 </tr>
                 <?php 
             }

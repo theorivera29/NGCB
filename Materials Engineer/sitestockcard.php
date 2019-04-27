@@ -5,8 +5,8 @@
     if(!isset($_SESSION['loggedin'])) {
       header('Location: http://127.0.0.1/NGCB/index.php');
     }
-$mat_name = $_GET['mat_name'];
-$mat_id = $_GET['mat_id'];
+    $mat_name = $_GET['mat_name'];
+    $mat_id = $_GET['mat_id'];
 ?>
 
 <!DOCTYPE html>
@@ -174,7 +174,7 @@ $mat_id = $_GET['mat_id'];
                 </table>
                 <div class="total">
                     <?php 
-                        $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_name';";
+                        $sql_total = "SELECT SUM(delivered_quantity) FROM deliveredin as total_deliveredin  WHERE delivered_matname = '$mat_name' ORDER BY 1 DESC;";
                         $result_total = mysqli_query($conn, $sql_total);
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
@@ -262,7 +262,7 @@ $mat_id = $_GET['mat_id'];
                     <tbody>
 
                         <?php 
-                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id';";
+                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id' ORDER BY 1 DESC;";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
                         while($row_useIn = mysqli_fetch_row($result_useIn)){
                         ?>

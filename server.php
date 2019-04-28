@@ -78,6 +78,7 @@
         $projects_address = mysqli_real_escape_string($conn, $_POST['projectaddress']);
 		$start_date = mysqli_real_escape_string($conn, $_POST['startdate']);
         $end_date = mysqli_real_escape_string($conn, $_POST['enddate']);
+        $mateng = mysqli_real_escape_string($conn, $_POST['mateng']);
         if(strtotime($start_date) == strtotime($end_date)) {
             header("Location: http://127.0.0.1/NGCB/Admin/projects.php");      
         }
@@ -86,19 +87,32 @@
         $stmt->execute();
         $stmt->store_result();
         if($stmt->num_rows === 0) {
-            $stmt = $conn->prepare("INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status, projects_mateng)
-                    VALUES (?, ?, ?, ?, ?, ?);");
-            $stmt->bind_param("sssssi", $projects_name, $projects_address, $start_date, $end_date, $projects_status, $projects_mateng);
+            $stmt = $conn->prepare("INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status)
+                    VALUES (?, ?, ?, ?, ?);");
+            $stmt->bind_param("sssss", $projects_name, $projects_address, $start_date, $end_date, $projects_status);
             $projects_status = "open";
-            $projects_mateng = 2;
             $stmt->execute();
             $stmt->close();
+            
+            $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?;");
+            $stmt->bind_param("s", $projects_name);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($account_id);
+            $stmt->fetch();
+            
+            
+             $stmt = $conn->prepare("INSERT INTO projacc (projacc_project, projacc_mateng)
+                    VALUES (?, ?);");
+            $stmt->bind_param("ii", $account_id, $mateng);
+            $stmt->execute();
+            $stmt->close();
+            
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?,?,?);");
             $stmt->bind_param("ssi", $create_proj_date, $logs_message, $logs_of);
             $create_proj_date = date("Y-m-d G:i:s");
             $logs_message = 'Created project '.$projects_name;
             $logs_of = 1;
-            mysqli_query($conn, $sql);
             header("Location: http://127.0.0.1/NGCB/Admin/projects.php");            
         }
     }
@@ -555,7 +569,7 @@
             $stmt->execute();
             $stmt->close();
         }
-        
+        echo $newpassword;
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");        
     }
 

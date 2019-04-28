@@ -129,23 +129,23 @@
                 <div class="row">
                     <input type="hidden" name="userid" value="<?php echo $account_id; ?>">
                     <div class="input-field col s5 account-username-field">
-                        <input id="account-username" name="newusername" type="text" value="<?php echo $row[0]?>">
+                        <input id="account-username" name="newusername" type="text" placeholder="<?php echo $row[0]?>">
                         <label class="active account-setting-label" for="newusername">Username</label>
                     </div>
                     <div class="input-field col s5 account-email-field">
-                        <input id="account-email" name="newemail" type="text" value="<?php echo $row[3]?>">
+                        <input id="account-email" name="newemail" type="text" placeholder="<?php echo $row[3]?>">
                         <label class="active account-setting-label" for="newemail">E-mail</label>
                     </div>
                     <div class="input-field col s5 account-firstname-field">
-                        <input id="account-firstname" name="newfname" type="text" value="<?php echo $row[1]?>">
+                        <input id="account-firstname" name="newfname" type="text" placeholder="<?php echo $row[1]?>">
                         <label class="active account-setting-label" for="newfname">First Name</label>
                     </div>
                     <div class="input-field col s5 account-lastname-field">
-                        <input id="account-lastname" name="newlname" type="text" value="<?php echo $row[2]?>">
+                        <input id="account-lastname" name="newlname" type="text" placeholder="<?php echo $row[2]?>">
                         <label class="active account-setting-label" for="newlname">Last Name</label>
                     </div>
                     <div class="input-field col s5 account-newpassword-field">
-                        <input id="account-password" name="newpassword" value="<?php echo $row[4]?>" type="password">
+                        <input id="account-password" name="newpassword" type="password">
                         <label class="active account-setting-label" for="newpassword">New Password</label>
 
                     </div>

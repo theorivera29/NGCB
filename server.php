@@ -278,8 +278,8 @@
         hauling_hauledBy, hauling_requestedBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, 
         hauling_truckDetailsPo, hauling_truckDetailsHaulerDr) 
         VALUES 
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("isssiiisisssssss", $hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, );");
+        $stmt->bind_param("isssiisssssssii", $hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, 
         $hauling_unit, $hauling_matname, $hauling_hauledBy, $hauling_requested, $hauling_warehouseman, $hauling_approvedBy, $hauling_truckDetailsType, 
         $hauling_truckDetailsPlateNo, $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr);
         $stmt->execute();
@@ -610,11 +610,11 @@
         $delivered_unit = mysqli_real_escape_string($conn, $_POST['dev_unit']);
         $suppliedBy = mysqli_real_escape_string($conn, $_POST['dev_supp']);
         $stmt = $conn->prepare("INSERT INTO deliveredin (delivered_date, delivered_quantity, delivered_unit, suppliedBy, delivered_matName) VALUES (?, ?, ?, ?, ?);");
-        $stmt->bind_param("siiisi", $delivered_date, $delivered_quantity, $delivered_unit, $suppliedBy, $mat_id);
+        $stmt->bind_param("siisi", $delivered_date, $delivered_quantity, $delivered_unit, $suppliedBy, $mat_id);
         $stmt->execute();
         $stmt->close();
             
-        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';");
+        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name = ?;");
         $stmt->bind_param("s", $mat_name);
         $stmt->execute();
         $stmt->store_result();
@@ -623,19 +623,6 @@
         $newQuantity = $currentQuantity + $delivered_quantity;
         $stmt->close();
         $stmt = $conn->prepare("UPDATE materials SET currentQuantity = ? WHERE mat_name = ?;");
-        $stmt->bind_param("is", $newQuantity, $mat_name);
-        $stmt->execute();
-        $stmt->close();
-           
-        $stmt = $conn->prepare("SELECT delivered_material FROM materials WHERE mat_name='$mat_name';");
-        $stmt->bind_param("s", $mat_name);
-        $stmt->execute();
-        $stmt->store_result();
-        $stmt->bind_result($current_delivered_material);
-        $stmt->fetch();
-        $newQuantity = $current_delivered_material + $delivered_quantity;
-        $stmt->close();
-        $stmt = $conn->prepare("UPDATE materials SET delivered_material = ? WHERE mat_name = ?;");
         $stmt->bind_param("is", $newQuantity, $mat_name);
         $stmt->execute();
         $stmt->close();
@@ -710,7 +697,7 @@
         $stmt->execute();
         $stmt->close();
         
-        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name='$mat_name';");
+        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name=' ?';");
         $stmt->bind_param("s", $mat_name);
         $stmt->execute();
         $stmt->store_result();
@@ -719,32 +706,6 @@
         $newQuantity = $currentQuantity - $usage_quantity;
         $stmt->close();
         $stmt = $conn->prepare("UPDATE materials SET currentQuantity = ? WHERE mat_name = ?;");
-        $stmt->bind_param("is", $newQuantity, $mat_name);
-        $stmt->execute();
-        $stmt->close();
-        
-        $stmt = $conn->prepare("SELECT pulled_out FROM materials WHERE mat_name='$mat_name';");
-        $stmt->bind_param("s", $mat_name);
-        $stmt->execute();
-        $stmt->store_result();
-        $stmt->bind_result($current_pulledout);
-        $stmt->fetch();
-        $newQuantity = $current_pulledout + $usage_quantity;
-        $stmt->close();
-        $stmt = $conn->prepare("UPDATE materials SET pulled_out = ? WHERE mat_name = ?;");
-        $stmt->bind_param("is", $newQuantity, $mat_name);
-        $stmt->execute();
-        $stmt->close();
-        
-        $stmt = $conn->prepare("SELECT accumulated_materials FROM materials WHERE mat_name='$mat_name';");
-        $stmt->bind_param("s", $mat_name);
-        $stmt->execute();
-        $stmt->store_result();
-        $stmt->bind_result($total_accumulated);
-        $stmt->fetch();
-        $newQuantity = $total_accumulated + $usage_quantity;
-        $stmt->close();
-        $stmt = $conn->prepare("UPDATE materials SET accumulated_materials = ? WHERE mat_name = ?;");
         $stmt->bind_param("is", $newQuantity, $mat_name);
         $stmt->execute();
         $stmt->close();

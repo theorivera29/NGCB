@@ -125,7 +125,7 @@
                         ?>
                     </tbody>
                 </table>
-                <div class="stockcard-btn">
+                <div class="stockcard-deliverin-btn">
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredinsite">Save</button>
                 </div><br><br>
@@ -241,7 +241,7 @@
                         }
                             ?>
                 </table>
-                <div class="stockcard-btn">
+                <div class="stockcard-usagein-btn">
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_usageinsite">Save</button>
                 </div><br><br>

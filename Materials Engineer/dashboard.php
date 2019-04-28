@@ -146,14 +146,14 @@
         </div>
 
         <!--To-do Container-->
-       
+
         <h5 id="panel-header-task">Today's To-do Task</h5>
         <a class="waves-effect waves-light btn task-btn" href="viewalltasks.php">View All Task</a>
-       
+
         <div class="col s7 container-task-todo">
             <div class="container-all-task">
                 <table class="striped centered view-tasks">
-                   <?php
+                    <?php
                         $date_today = date("Y-m-d");
                         $sql = "SELECT * FROM todo WHERE todo.todoOf = $account_id && todo_date = '$date_today' ORDER BY todo_task;";
                         $result = mysqli_query($conn, $sql);
@@ -217,7 +217,7 @@
                                         <div class="modal-content">
                                             <span class="modal-question-content">Are you sure you want to clear this
                                                 task?</span>
-                                                <br>
+                                            <br>
                                             <?php echo $row[2];?>
                                         </div>
                                         <div class="modal-footer">
@@ -237,7 +237,7 @@
                             } else {
                             ?>
                         <tr>
-                        <h3 id="no-task-text">No task for today</h3>
+                            <h3 id="no-task-text">No task for today</h3>
                         </tr>
                         <?php
                             }
@@ -255,18 +255,13 @@
             <table id="sort" class="striped responsive-table materials-left centered">
                 <thead class="view-materials-head">
                     <tr class="material-headers">
-                        <th onclick="sortTable(0)">Material Name<i
-                        class="material-icons tiny sort-icon">code</i></th>
-                        <th onclick="sortTable(1)">Category<i
-                        class="material-icons tiny sort-icon">code</i></th>
-                        <th onclick="sortTable(2)">Quantity Remaining<i
-                        class="material-icons tiny sort-icon">code</i></th>
-                        <th onclick="sortTable(3)">Unit<i
-                        class="material-icons tiny sort-icon">code</i></th>
-                        <th onclick="sortTable(4)">Threshold<i
-                        class="material-icons tiny sort-icon">code</i></th>
-                        <th onclick="sortTable(5)">Project<i
-                        class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(0)">Material Name<i class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(1)">Category<i class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(2)">Quantity Remaining<i class="material-icons tiny sort-icon">code</i>
+                        </th>
+                        <th onclick="sortTable(3)">Unit<i class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(4)">Threshold<i class="material-icons tiny sort-icon">code</i></th>
+                        <th onclick="sortTable(5)">Project<i class="material-icons tiny sort-icon">code</i></th>
                     </tr>
                 </thead>
                 <?php 
@@ -351,6 +346,19 @@
             var length = $(this).val().length;
             var length = maxLength - length;
             $('#characters').text(length);
+        });
+
+        $('textarea').keypress(function (event) {
+            if ((event.keyCode || event.which) == 13) {
+                event.preventDefault();;
+                return false;
+            }
+        });
+        $('textarea').keyup(function () {
+            var keyed = $(this).val().replace(/\n/g, '<br/>');
+
+            $(this).html(keyed);
+
         });
 
         function sortTable(n) {

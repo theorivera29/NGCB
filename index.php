@@ -87,8 +87,8 @@
                             <label class="active" for="password">Username</label>
                         </div>
                         <div class="row">
-                                <button class="btn waves-effect waves-light reset-password-btn" type="submit"
-                                    name="password_request">Submit</button>
+                                <button class="btn waves-effect waves-light modal-trigger reset-password-btn" type="submit"
+                                    name="password_request" href="password-reset-modal">Submit</button>
                                 <a href="index.php" class="btn waves-effect waves-light reset-password-btn"> Cancel</a>
                         </div>
                     </form>
@@ -96,6 +96,20 @@
             </form>
         </div>
     </div>
-</body>
 
+    <div id="password-reset-modal" class="modal create-account-modal">
+        <form action="../server.php" method="POST">
+                    <h3 id="create-modal-text">You have successfully created an account</h3>
+                    <button class="btn waves-effect waves-light ok-btn all-btn" name="">Okay</button> 
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+    <script>        
+            $('.modal-trigger').leanModal({
+		dismissible: false
+	});
+});
+    </script>
 </html>

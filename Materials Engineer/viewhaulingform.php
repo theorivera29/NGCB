@@ -122,7 +122,7 @@
         unit.unit_name, 
         materials.mat_name, 
         hauling.hauling_hauledBy, 
-        CONCAT(accounts.accounts_fname, ' ', accounts.accounts_lname),
+        hauling.hauling_requestedBy,
         hauling.hauling_warehouseman, 
         hauling.hauling_approvedBy, 
         hauling.hauling_truckDetailsType, 
@@ -131,8 +131,7 @@
         hauling.hauling_truckDetailsHaulerDr 
         FROM hauling 
         INNER JOIN unit ON hauling.hauling_unit = unit.unit_id 
-        INNER JOIN materials ON hauling.hauling_matname = materials.mat_id 
-        INNER JOIN accounts ON hauling.hauling_requestedBy = accounts.accounts_id
+        INNER JOIN materials ON hauling.hauling_matname = materials.mat_id
         WHERE hauling_no = '$hauling_no';";
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_row($result)){

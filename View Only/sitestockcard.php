@@ -32,6 +32,7 @@
                     </button>
 </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
+            <a href="sitematerials.php"><i class="material-icons menuIcon">arrow_back</i></a>
             <?php 
                             if(isset($_SESSION['username'])) {
                             $username = $_SESSION['username'];

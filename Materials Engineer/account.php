@@ -16,7 +16,7 @@
 <html>
 
 <head>
-<title>NGCBDC</title>
+    <title>NGCBDC</title>
     <link rel="icon" type="image/png" href="../Images/NGCB_logo.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" text="type/css" href="../materialize/css/materialize.css">
@@ -26,8 +26,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
-                    class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -41,8 +40,7 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -70,16 +68,13 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
-                        href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a
-                            class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -93,9 +88,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a
-                            class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -110,8 +103,7 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
-                        href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
                 </li>
             </ul>
         </div>
@@ -135,8 +127,7 @@
 
             <form action="../server.php" method="POST">
                 <div class="row">
-                    <input type="hidden" name="userid"
-                        value="<?php echo $account_id; ?>">
+                    <input type="hidden" name="userid" value="<?php echo $account_id; ?>">
                     <div class="input-field col s5 account-username-field">
                         <input id="account-username" name="newusername" type="text" value="<?php echo $row[0]?>">
                         <label class="active account-setting-label" for="newusername">Username</label>
@@ -156,23 +147,23 @@
                     <div class="input-field col s5 account-newpassword-field">
                         <input id="account-password" name="newpassword" type="password">
                         <label class="active account-setting-label" for="newpassword">New Password</label>
-                        
+
                     </div>
                     <div class="input-field col s5 account-confirmpassword-field">
                         <input id="account-confirmpassword" name="confirmpassword" type="password">
                         <label class="active account-setting-label" for="confirmpassword">Confirm Password</label>
                     </div>
                     <div class="input-field col s5">
-                        <input type="checkbox" id="checkbox-new-password" onclick="showNewPassword()"/>
-                      <label for="checkbox-new-password">Show new password</label>
+                        <input type="checkbox" id="checkbox-new-password" onclick="showNewPassword()" />
+                        <label for="checkbox-new-password">Show new password</label>
                     </div>
-                     <?php 
+                    <?php 
                         }
                     ?>
-                        <div class="col 12 account-btn">
-                            <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
-                            <a class="btn waves-effect waves-light all-btn cancel-acc-btn" href="dashboard.php">Cancel</a>
-                        </div>
+                    <div class="col 12 account-btn">
+                        <button class="btn waves-effect waves-light all-btn save-acc-btn" type="submit" name="edit_account">Save</button>
+                        <a class="btn waves-effect waves-light all-btn cancel-acc-btn" href="dashboard.php">Cancel</a>
+                    </div>
                 </div>
             </form>
         </div>
@@ -185,7 +176,7 @@
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
@@ -201,22 +192,21 @@
 
         btn.addEventListener('click', liGenerate);
         document.addEventListener('click', liDelete);
-        
-       function showNewPassword() {
-  var show = document.getElementById("account-password");
-  if (show.type === "password") {
-    show.type = "text";
-  } else {
-    show.type = "password";
-  }
-var showconfirm = document.getElementById("account-confirmpassword");
-  if (showconfirm.type === "password") {
-    showconfirm.type = "text";
-  } else {
-    showconfirm.type = "password";
-  }
-}
-        
+
+        function showNewPassword() {
+            var show = document.getElementById("account-password");
+            if (show.type === "password") {
+                show.type = "text";
+            } else {
+                show.type = "password";
+            }
+            var showconfirm = document.getElementById("account-confirmpassword");
+            if (showconfirm.type === "password") {
+                showconfirm.type = "text";
+            } else {
+                showconfirm.type = "password";
+            }
+        }
     </script>
 
 </body>

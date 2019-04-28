@@ -127,8 +127,7 @@
             <div class="row">
                 <?php
                         $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate, projects_id FROM projects
-                        WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
-                        && projects_status = 'open';";
+                        WHERE projects_status = 'open'";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>

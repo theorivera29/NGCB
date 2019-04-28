@@ -143,7 +143,7 @@
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredin">Save</button>
                 </div><br><br>
-                <span>List of Delivered In Material</span>
+                <span  class="stockcard-span">List of Delivered In Material</span>
                 <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>

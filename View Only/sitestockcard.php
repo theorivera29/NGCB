@@ -23,8 +23,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-                <a href="sitematerials.php"><i class="material-icons menuIcon">arrow_back</i>
-            </a>
+                <a href="sitematerials.php"><i class="material-icons menuIcon">arrow_back</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {

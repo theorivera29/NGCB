@@ -265,7 +265,7 @@
                     </tr>
                 </thead>
                 <?php 
-                    $sql = "SELECT 
+                    $sql = "SELECT DISTINCT
                     materials.mat_name, 
                     categories.categories_name,  
                     materials.currentQuantity,

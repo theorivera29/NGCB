@@ -128,17 +128,15 @@
                                     <h5 id="panel-text date-span">Date:</h5>
                                 </div>
                                 <div class="col">
-                                    <input type="date" class="todo-picker hauling-date" name="haulingdate" min="2019-01-01"
-                                        required>
+                                    <input type="date" class="todo-picker hauling-date" name="haulingdate" min="<?php echo date("Y-m-d");?>">
                                 </div>
-
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12">
                                 <div class="input-field col deliver-to-field">
                                     <input id="delivername" type="text" class="validate" name="delivername"
-                                        pattern="[A-Za-z0-9\s]*" title="Input only letters" required>
+                                        pattern="[A-Za-z0-9\s]*" title="Input only letters">
 
                                     <label for="delivername">Deliver To:</label>
                                 </div>
@@ -147,7 +145,7 @@
                                      ?>
                                 <div class="input-field col form-number-field">
                                     <input id="formnumber" type="text" class="validate" name="formnumber"
-                                        pattern="[0-9]*" title="Input numbers only" required>
+                                        pattern="[0-9]*" title="Input numbers only">
                                     <label for="formnumber">Form Number:</label>
                                 </div>
                             </div>
@@ -164,7 +162,7 @@
 
 
                         <div class="col hauling-table-container">
-                            <table class="hauling-form-table">
+                            <table class="hauling-form-table" id="table_mat">
                                 <thead class="hauling-form-table-head">
                                     <tr>
                                         <th>Categories</th>
@@ -177,12 +175,15 @@
                                 <tbody>
                                     <tr>
                                         <td>
-
-                                            <select id="categories" class="browser-default" name="mat_categ"
-                                                required>
+                                            <select id="categories" class="browser-default" name="mat_categ">
                                                 <option disabled selected>Choose category</option>
                                                 <?php
-                                                $sql = "SELECT * FROM categories;";
+                                                $row = mysqli_fetch_row(mysqli_query($conn, "SELECT projects_id FROM projects WHERE projects_name = '$projects_name';"));
+                                                $projects_id = $row[0];
+                                                echo "<option>".$projects_id."ASD</option>";
+                                                $sql = "SELECT DISTINCT categories.categories_id, categories.categories_name 
+                                                FROM categories INNER JOIN materials ON categories.categories_project = materials.mat_categ
+                                                WHERE materials.mat_project = $projects_id;";
                                                 $result = mysqli_query($conn, $sql);
                                                 while($row = mysqli_fetch_row($result)) {             
                                             ?>
@@ -196,14 +197,14 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <select id="materials" class="browser-default" name="articles" required>
+                                            <select id="materials" class="browser-default" name="articles">
                                                 <option disabled selected>Choose material</option>
-                                            </select></td>
-
-                                        <td><input id="unit" readonly type="text" class="validate" name="unit" required>
+                                            </select>
+                                        </td>
+                                        <td><input id="unit" readonly type="text" name="unit">
                                         </td>
                                         <td><input type="text" name="quantity" id="quantity" class="validate "
-                                                pattern="[0-9]*" title="Input numbers only" required></td>
+                                                pattern="[0-9]*" title="Input numbers only"></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -213,22 +214,22 @@
                             <div class="col s6 hauled-side-container">
                                 <div class="input-field col s10 left-align ">
                                     <input id="requested" type="text" class="validate" name="requested"
-                                        pattern="[A-Za-z\s]*" title="Input letters only" required>
+                                        pattern="[A-Za-z\s]*" title="Input letters only">
                                     <label for="requested">Requested :</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
                                     <input id="hauledby" type="text" class="validate" name="hauledby"
-                                        pattern="[A-Za-z\s]*" title="Input letters only" required>
+                                        pattern="[A-Za-z\s]*" title="Input letters only">
                                     <label for="hauledby">Hauled by :</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
                                     <input id="warehouseman" type="text" class="validate" name="warehouseman"
-                                        pattern="[A-Za-z\s]*" title="Input letters only" required>
+                                        pattern="[A-Za-z\s]*" title="Input letters only">
                                     <label for="warehouseman">Warehouseman:</label>
                                 </div>
                                 <div class="input-field col s10 left-align ">
                                     <input id="approvedby" type="text" class="validate" name="approvedby"
-                                        pattern="[A-Za-z\s]*" title="Input letters only" required>
+                                        pattern="[A-Za-z\s]*" title="Input letters only">
                                     <label for="approvedby">Approved By:</label>
                                 </div>
                             </div>
@@ -244,21 +245,20 @@
                                         <tr>
                                             <td>Type:</td>
                                             <td><input type="text" name="truck_type" id="truck_type"
-                                                    pattern="[A-Za-z\s]*" title="Input only letters" required></td>
+                                                    pattern="[A-Za-z\s]*" title="Input only letters"></td>
                                         </tr>
                                         <tr>
                                             <td>Plate No.:</td>
-                                            <td><input type="text" name="truck_plate" id="truck_plate"
-                                                    pattern="[A-Z0-9\s]*" required></td>
+                                            <td><input type="text" name="truck_plate" id="truck_plate"></td>
                                         </tr>
                                         <tr>
                                             <td>P.O/R.S No.:</td>
                                             <td><input type="text" name="truck_po" id="truck_po" minlength="6"
-                                                    maxlength="6" title="Alphanumeric only" required></td>
+                                                    maxlength="6" title="Alphanumeric only"></td>
                                         </tr>
                                         <tr>
                                             <td>Hauler DR No.:</td>
-                                            <td><input type="text" name="truck_hauler" id="truck_hauler" required></td>
+                                            <td><input type="text" name="truck_hauler" id="truck_hauler"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -275,7 +275,6 @@
         </div>
     </div>
 
-    <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
@@ -288,46 +287,27 @@
             $('.modal-trigger').leanModal();
         });
 
-
-        $(document).ready(function () {
-            $(".add-row").click(function () {
-                var quantity = $("#name").val();
-                var unit = $("#email").val();
-                var articles = $('#articles').val();
-                var markup = "<tr>" +
-                    "<td><input type=\"text\" name=\"quantity[]\"></td>" +
-                    "<td><input type=\"text\" name=\"unit[]\"></td>" +
-                    "<td><input type=\"text\" name=\"articles[]\"></td>" +
-                    "</tr>;"
-                $("table tbody").append(markup);
-            });
-        });
-
         $('#categories').on('change', function () {
             $.get('http://localhost/NGCB/Materials%20Engineer/../server.php?category_id=' + $(this).children(
                 'option:selected').val(), function (data) {
                 var d = JSON.parse(data)
-                var loobNgSelect = '';
-                loobNgSelect = loobNgSelect + `<option disabled selected>Choose your option</option>`
+                var print_options = '';
+                print_options = print_options + `<option disabled selected>Choose your option</option>`
                 d.forEach(function (da) {
-                    loobNgSelect = loobNgSelect + `<option value="${da[0]}">${da[1]}</option>`
+                    print_options = print_options + `<option value="${da[0]}">${da[1]}</option>`
                 })
-                $('#materials').html(loobNgSelect)
+                $('#materials').html(print_options)
             })
-
         })
 
         $('#materials').on('change', function () {
             console.log($(this).children('option:selected').val())
             $.get('http://localhost/NGCB/Materials%20Engineer/../server.php?mat_name=' + $(this).children(
                 'option:selected').val(), function (data) {
-                var d = JSON.parse(data)
-                //                console.log(d)
+                var d = JSON.parse(data);
                 $('#unit').val(d[0][0])
             })
         })
     </script>
-
 </body>
-
 </html>

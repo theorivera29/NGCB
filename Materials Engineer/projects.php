@@ -126,7 +126,7 @@
         <div id="ongoing" class="col s12">
             <div class="row">
                 <?php
-                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
+                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate, projects_id FROM projects
                         WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
                         && projects_status = 'open';";
                         $result = mysqli_query($conn, $sql);
@@ -157,6 +157,7 @@
                             <div class="row">
                                 <form action="../server.php" method="POST">
                                     <input type="hidden" name="projects_name" value="<?php echo $row[0] ?>">
+                                    <input type="hidden" name="projects_id" value="<?php echo $row[4] ?>">
                                     <input type="hidden" name="account_type"
                                         value="<?php echo $_SESSION['account_type']; ?>">
                                     <div class="row">

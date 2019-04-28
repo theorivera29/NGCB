@@ -308,7 +308,7 @@
         $logs_of = $account_id;
         $stmt->execute();
         $stmt->close();
-        // header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauleditems.php");        
+        header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/hauleditems.php");        
     }
 
     if(isset($_POST['create_category'])) {
@@ -441,11 +441,11 @@
 
     if (isset($_POST['create_materials'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+        $projects_id = mysqli_real_escape_string($conn, $_POST['projects_id']);
         $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
         $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
-        $sql = "INSERT INTO materials (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity) VALUES ('$mat_name', 0, 1, $mat_unit, $mat_categ, $mat_notif, 0, 0, 0, 0);";
         $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?");
         $stmt->bind_param("s", $projects_name);
         $stmt->execute();
@@ -453,13 +453,12 @@
         $stmt->bind_result($mat_project);
         $stmt->fetch();
         $stmt = $conn->prepare("INSERT INTO materials
-        (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif) 
-        VALUES (?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("siiiii", $mat_name, $mat_prevStock, $mat_project, $mat_unit, $mat_categ, $mat_notif);
+        (mat_name, mat_prevStock, mat_project, mat_unit, mat_categ, mat_notif, currentQuantity) 
+        VALUES (?, ?, ?, ?, ?, ?, 0);");
+        $stmt->bind_param("siiiii", $mat_name, $mat_prevStock, $projects_id,  $mat_unit, $mat_categ, $mat_notif);
         $mat_prevStock = 0;
         $stmt->execute();
         $stmt->close();
-        mysqli_query($conn, $sql);
         session_start();
         $account_id = "";
         if(isset($_SESSION['account_id'])) {

@@ -461,6 +461,7 @@
                 <span id="modal-title">Add Material</span>
                 <div class="row">
                     <div class="input-field col add-material-name">
+                        <input name="projects_id" type="hidden" value="<?php echo $projects_id; ?>">
                         <input id="mat_name" name="mat_name" type="text" class="validate" required>
                         <label for="mat_name">Material Name:</label>
                     </div>

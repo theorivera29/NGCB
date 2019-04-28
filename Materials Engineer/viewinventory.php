@@ -542,6 +542,13 @@
                 <button class="modal-close waves-effect waves-light btn-flat save-mat-btn" type="submit"
                     name="create_category">Save</button>
             </div>
+            
+            <?php
+                    if(isset($_SESSION['login_error'])) {
+                        echo "Category already exists!";
+                    }
+                ?>
+            
         </form>
     </div>
 

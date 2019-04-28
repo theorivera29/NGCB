@@ -132,15 +132,6 @@
                 <span  class="stockcard-span">List of Delivered In Material</span>
                 <table class="centered deliverin striped">
                     <thead class="deliverin-head">
-                        <tr>
-                            <th>Date</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Supplied By</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
                         <?php 
                         $sql_devIn = "SELECT deliveredin.delivered_date, 
                         deliveredin.delivered_quantity, 
@@ -151,8 +142,18 @@
                         INNER JOIN unit ON deliveredin.delivered_unit = unit.unit_id 
                         WHERE delivered_matName = '$mat_id'";
                         $result_devIn = mysqli_query($conn, $sql_devIn);
+                        if (mysqli_num_rows($result_devIn) > 0){
                         while($row_devIn = mysqli_fetch_row($result_devIn)){
                         ?>
+                        <tr>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Supplied By</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
                         <tr>
                             <td>
                                 <?php echo $row_devIn[0] ?>
@@ -169,6 +170,13 @@
                         </tr>
                         <?php 
                         }
+                        } else {
+                            ?>
+                        <tr>
+                            <h3 id="no-task-text">No delivered in for this material.</h3>
+                        </tr>
+                        <?php
+                            }
                         ?>
                     </tbody>
                 </table>
@@ -247,6 +255,13 @@
                 </div><br><br>
                 <span  class="stockcard-span">List of Usage In Material</span>
                 <table class="centered usagein striped">
+
+                        <?php 
+                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id' ORDER BY 1 DESC;";
+                        $result_useIn = mysqli_query($conn, $sql_useIn);
+                        if (mysqli_num_rows($result_useIn) > 0){
+                        while($row_useIn = mysqli_fetch_row($result_useIn)){
+                        ?>
                     <thead class="usagein-head">
                         <tr>
                             <th>Date</th>
@@ -258,12 +273,6 @@
                     </thead>
 
                     <tbody>
-
-                        <?php 
-                        $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id' ORDER BY 1 DESC;";
-                        $result_useIn = mysqli_query($conn, $sql_useIn);
-                        while($row_useIn = mysqli_fetch_row($result_useIn)){
-                        ?>
                         <tr class="usagein_data">
                             <td>
                                 <?php echo $row_useIn[0] ?>
@@ -283,6 +292,13 @@
                         </tr>
                         <?php 
                         }
+                        }else {
+                            ?>
+                        <tr>
+                            <h3 id="no-task-text">No usage in for this material!</h3>
+                        </tr>
+                        <?php
+                            }
                         ?>
                 </table>
                 <div class="total">

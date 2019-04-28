@@ -28,10 +28,10 @@
     <nav>
         <div class="nav-wrapper">
             <form action="../server.php" method="POST">
-            <button href="viewinventory.php" name="backsite-view-only" class="button-collapse show-on-large menu-icon back-btn"><i
+                <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+                <button name="backsite-view-only" type="submit" class="show-on-large menu-icon back-btn"><i
                         class="material-icons menuIcon">arrow_back</i>
-                        <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-                    </button>
+                </button>
             </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 

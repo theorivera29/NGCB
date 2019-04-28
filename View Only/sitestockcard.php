@@ -30,7 +30,7 @@
             <button name="backsitestockcard-view-only" class="button-collapse show-on-large menu-icon back-btn"><i
                         class="material-icons menuIcon">arrow_back</i>
                     </button>
-</form>
+        </form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <a href="sitematerials.php"><i class="material-icons menuIcon">arrow_back</i></a>
             <?php 

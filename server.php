@@ -192,7 +192,7 @@
 
     if(isset($_POST['backsite-view-only'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
-            header("location: http://127.0.0.1/NGCB/View%20Only/viewinventory.php?projects_name=$projects_name");            
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
     }
 
     if(isset($_POST['backsite-mat-eng'])) {
@@ -203,6 +203,11 @@
     if(isset($_POST['backsitestockcard-view-only'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
             header("location: http://127.0.0.1/NGCB/View%20Only/sitematerials.php?projects_name=$projects_name");            
+    }
+
+    if(isset($_POST['ok-account-creation'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+            header("location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");            
     }
 
     if(isset($_POST['fillout_hauling'])) {

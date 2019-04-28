@@ -139,18 +139,16 @@
                 </div>
             </div>
             <div class="col">
-                <button class="btn waves-effect waves-light modal-trigger create-account-btn all-btn" type="submit"
+                <button class="btn waves-effect waves-light modal-trigger create-account-btn all-btn"
                     class="validate" href="#accountCreation">Create An Account</button>
 
             </div>
-        </form>
     </div>
 
     
     <div id="accountCreation" class="modal create-account-modal">
-        <form action="../server.php" method="POST">
                     <h3 id="create-modal-text">You have successfully created an account</h3>
-                    <button class="btn waves-effect waves-light ok-btn all-btn" name="ok-account-creation">OK</button> 
+                    <button class="btn waves-effect waves-light ok-btn all-btn" type="submit" name="create_account">OK</button> 
         </form>
     </div>
 

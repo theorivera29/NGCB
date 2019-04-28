@@ -578,11 +578,6 @@
                     </div>
                 </div>
             </div>
-            <?php
-                    if(])) {
-                        echo "Category already exists.";
-                    }
-                ?>
 
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>

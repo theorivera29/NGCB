@@ -996,6 +996,14 @@ textarea.materialize-textarea {
     font-family: Galyon; 
 }
 
+.stockcard-btn{
+    float: right !important;
+    background-color: #ECC30B !important;
+    color: white !important;
+    margin-top: -6%;
+    margin-right: 2%;
+}
+
 .stockcard-status {
     margin-top: 10% !important;
 }
@@ -1776,7 +1784,7 @@ select[name=mat_unit] {
 .account-list-container{
     width: 80%;
     margin-left: 10%;
-    margin-top: 8%;
+    margin-top: 2%;
 }
 
 .account-list-head>tr>th{

@@ -78,6 +78,7 @@
         $projects_address = mysqli_real_escape_string($conn, $_POST['projectaddress']);
 		$start_date = mysqli_real_escape_string($conn, $_POST['startdate']);
         $end_date = mysqli_real_escape_string($conn, $_POST['enddate']);
+        $mateng = mysqli_real_escape_string($conn, $_POST['mateng']);
         if(strtotime($start_date) == strtotime($end_date)) {
             header("Location: http://127.0.0.1/NGCB/Admin/projects.php");      
         }
@@ -86,19 +87,32 @@
         $stmt->execute();
         $stmt->store_result();
         if($stmt->num_rows === 0) {
-            $stmt = $conn->prepare("INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status, projects_mateng)
-                    VALUES (?, ?, ?, ?, ?, ?);");
-            $stmt->bind_param("sssssi", $projects_name, $projects_address, $start_date, $end_date, $projects_status, $projects_mateng);
+            $stmt = $conn->prepare("INSERT INTO projects (projects_name, projects_address, projects_sdate, projects_edate, projects_status)
+                    VALUES (?, ?, ?, ?, ?);");
+            $stmt->bind_param("sssss", $projects_name, $projects_address, $start_date, $end_date, $projects_status);
             $projects_status = "open";
-            $projects_mateng = 2;
             $stmt->execute();
             $stmt->close();
+            
+            $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?;");
+            $stmt->bind_param("s", $projects_name);
+            $stmt->execute();
+            $stmt->store_result();
+            $stmt->bind_result($account_id);
+            $stmt->fetch();
+            
+            
+             $stmt = $conn->prepare("INSERT INTO projacc (projacc_project, projacc_mateng)
+                    VALUES (?, ?);");
+            $stmt->bind_param("ii", $account_id, $mateng);
+            $stmt->execute();
+            $stmt->close();
+            
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?,?,?);");
             $stmt->bind_param("ssi", $create_proj_date, $logs_message, $logs_of);
             $create_proj_date = date("Y-m-d G:i:s");
             $logs_message = 'Created project '.$projects_name;
             $logs_of = 1;
-            mysqli_query($conn, $sql);
             header("Location: http://127.0.0.1/NGCB/Admin/projects.php");            
         }
     }
@@ -176,9 +190,24 @@
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
     }
 
-    if(isset($_POST['backsite'])) {
+    if(isset($_POST['backsite-view-only'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
             header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
+    }
+
+    if(isset($_POST['backsite-mat-eng'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+            header("location: http://127.0.0.1/NGCB/Materials%20Engineer/viewinventory.php?projects_name=$projects_name");            
+    }
+
+    if(isset($_POST['backsitestockcard-view-only'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+            header("location: http://127.0.0.1/NGCB/View%20Only/sitematerials.php?projects_name=$projects_name");            
+    }
+
+    if(isset($_POST['ok-account-creation'])) {
+        $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
+            header("location: http://127.0.0.1/NGCB/Admin/listofaccounts.php");            
     }
 
     if(isset($_POST['fillout_hauling'])) {
@@ -556,7 +585,7 @@
             $logs_of = $account_id;
             $stmt->execute();
             $stmt->close();
-        }        
+        }
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");        
     }
 

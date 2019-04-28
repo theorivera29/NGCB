@@ -150,7 +150,7 @@
     <div id="accountCreation" class="modal create-account-modal">
         <form action="../server.php" method="POST">
                     <h3 id="create-modal-text">You have successfully created an account</h3>
-                    <button class="btn waves-effect waves-light ok-btn all-btn" name="">OK</button> 
+                    <button class="btn waves-effect waves-light ok-btn all-btn" name="ok-account-creation">OK</button> 
         </form>
     </div>
 

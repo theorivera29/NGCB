@@ -28,7 +28,7 @@
     <nav>
         <div class="nav-wrapper">
             <form action="../server.php" method="POST">
-                <button href="viewinventory.php" name="backsite" class="button-collapse show-on-large menu-icon back-btn"><i
+                <button href="viewinventory.php" name="backsite-mat-eng" class="button-collapse show-on-large menu-icon back-btn"><i
                         class="material-icons menuIcon">arrow_back</i>
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                 </button>
@@ -79,7 +79,10 @@
 
 
     <h3 class="mat-name-title"><?php echo $mat_name?></h3>
-
+    <input type="hidden" name="projects_name" value="<?php echo $_GET['projects_name'];?>">
+                <button class="waves-effect waves-light btn stockcard-btn" type="submit" name="generate_stockcard">
+                    <i class="material-icons left">print</i>Generate Report
+                </button>
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Delivered In</a></li>
@@ -140,7 +143,7 @@
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredin">Save</button>
                 </div><br><br>
-                <span>List of Delivered In Material</span>
+                <span  class="stockcard-span">List of Delivered In Material</span>
                 <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>

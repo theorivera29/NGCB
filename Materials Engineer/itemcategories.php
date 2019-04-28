@@ -12,6 +12,11 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_row($result);
     $projects_status = $row[0];
+
+    $sql = "SELECT projects_id FROM projects WHERE projects_name = '$projects_name'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_row($result);
+    $projects_id = $row[0];
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +34,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i
-                    class="material-icons menuIcon">menu</i></a>
+            <a href="#" data-activates="navigation" class="button-collapse show-on-large menu-icon"><i class="material-icons menuIcon">menu</i></a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {
@@ -44,8 +48,7 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -73,16 +76,13 @@
                 </h3>
 
                 <li>
-                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue"
-                        href="dashboard.php">Dashboard</a>
+                    <i class="material-icons left">dashboard</i><a class="waves-effect waves-blue" href="dashboard.php">Dashboard</a>
                 </li>
 
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">place</i><a
-                            class="collapsible-header waves-effect waves-blue">Site<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">place</i><a class="collapsible-header waves-effect waves-blue">Site<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a class="waves-effect waves-blue" href="projects.php">Projects</a></li>
@@ -96,9 +96,7 @@
 
                 <ul class="collapsible">
                     <li>
-                        <i class="material-icons left">local_shipping</i><a
-                            class="collapsible-header waves-effect waves-blue">Hauling<i
-                                class="material-icons right">keyboard_arrow_down</i></a>
+                        <i class="material-icons left">local_shipping</i><a class="collapsible-header waves-effect waves-blue">Hauling<i class="material-icons right">keyboard_arrow_down</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
@@ -113,8 +111,7 @@
                     </li>
                 </ul>
                 <li>
-                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue"
-                        href="report.php">Report</a>
+                    <i class="material-icons left">receipt</i><a class="waves-effect waves-blue" href="report.php">Report</a>
                 </li>
             </ul>
         </div>
@@ -136,7 +133,7 @@
         $result = mysqli_query($conn, $sql);
         while($row = mysqli_fetch_array($result)) {
     ?>
-             <h3 class="categ-name-title">
+            <h3 class="categ-name-title">
                 <?php echo $row[1] ;?>
             </h3>
             <?php
@@ -145,12 +142,10 @@
         </div>
         <div class="row">
             <div class="col s6 m6">
-            <input class="input search-bar mat-eng-search-bar" id="myInput" onkeyup="myFunction()" type="search"
-                    placeholder="Search...">
+                <input class="input search-bar mat-eng-search-bar" id="myInput" onkeyup="myFunction()" type="search" placeholder="Search...">
             </div>
             <div class="col s6 right-align">
-                <a href="#addmaterialModal"
-                    class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
+                <a href="#addmaterialModal" class="waves-effect waves-light btn modal-trigger add-mat-btn add-mat-btn-viewinventory">
                     Add Material</a>
 
             </div>
@@ -163,11 +158,17 @@
                             <th onClick="javascript:SortTable(0,'T');" id="particular-cell">Particulars</th>
                             <th onClick="javascript:SortTable(0,'N');">Previous Material Stock</th>
                             <th onClick="javascript:SortTable(0,'T');">Unit</th>
-                            <th onClick="javascript:SortTable(0,'N');">Delivered Material as of <?php echo date("F Y"); ?></th>
-                            <th onClick="javascript:SortTable(0,'N');">Material Pulled out as of <?php echo date("F Y"); ?></th>
+                            <th onClick="javascript:SortTable(0,'N');">Delivered Material as of
+                                <?php echo date("F Y"); ?>
+                            </th>
+                            <th onClick="javascript:SortTable(0,'N');">Material Pulled out as of
+                                <?php echo date("F Y"); ?>
+                            </th>
                             <th onClick="javascript:SortTable(0,'T');">Unit</th>
                             <th onClick="javascript:SortTable(0,'N');">Accumulate of Materials Delivered</th>
-                            <th onClick="javascript:SortTable(0,'N');">Material on Site as of <?php echo date("F Y"); ?></th>
+                            <th onClick="javascript:SortTable(0,'N');">Material on Site as of
+                                <?php echo date("F Y"); ?>
+                            </th>
                             <th onClick="javascript:SortTable(0,'T');">Unit</th>
                             <?php 
                                 if(strcmp($projects_status, "open") == 0) {
@@ -216,7 +217,7 @@
                                 <?php echo $row[1] ?>
                             </td>
                             <td>
-                            <?php echo $row[3] ?>
+                                <?php echo $row[3] ?>
                             </td>
                             <td>
                                 <?php 
@@ -269,11 +270,12 @@
     <!-- ADD SITE MATERIAL MODAL -->
     <div id="addmaterialModal" class="modal modal-fixed-footer add-mat-modal">
         <form action="../server.php" method="POST">
-            <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
+            <input type="hidden" name="projects_name" value="<?php echo $projects_name; ?>">
             <div class="modal-content">
                 <span id="modal-title">Add Material</span>
                 <div class="row">
                     <div class="input-field col add-material-name">
+                        <input name="projects_id" type="hidden" value="<?php echo $projects_id; ?>">
                         <input id="mat_name" name="mat_name" type="text" class="validate" required>
                         <label for="mat_name">Material Name:</label>
                     </div>
@@ -287,8 +289,7 @@
 
                             ?>
                             <input type="hidden" name="mat_categ" value="<?php echo $categories_id ;?>">
-                            <input id="mat_categ" type="text" class="validate"
-                                value="<?php echo $row[0]?>">
+                            <input id="mat_categ" type="text" class="validate" value="<?php echo $row[0]?>">
                         </div>
                     </div>
                 </div>
@@ -298,20 +299,13 @@
                         <select class="browser-default" name="mat_unit">
                             <option selected>Choose unit</option>
                             <?php
-                                    $sql = "SELECT DISTINCT 
-                                    unit.unit_name,
-                                    materials.mat_unit 
-                                    FROM 
-                                    unit 
-                                    INNER JOIN materials
-                                    ON 
-                                    materials.mat_id = unit.unit_id";
+                                    $sql = "SELECT * FROM unit;";
                                     $result = mysqli_query($conn, $sql);
                                     while($row = mysqli_fetch_row($result)) {                         
 
                                 ?>
-                            <option value="<?php echo $row[1]; ?>">
-                                <?php echo $row[0]; ?>
+                            <option value="<?php echo $row[0]; ?>">
+                                <?php echo $row[1]; ?>
                             </option>
                             <?php 
                                     }
@@ -319,8 +313,7 @@
                         </select>
                     </div>
                     <div class="input-field col add-threshold">
-                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory"
-                            pattern="[0-9]*" title="Input only numbers" required>
+                        <input id="mat_notif" name="mat_notif" type="text" class="validate view-inventory" pattern="[0-9]*" title="Input only numbers" required>
                         <label for="mat_notif">Item threshold:</label>
                     </div>
                 </div>
@@ -328,21 +321,17 @@
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-light btn-flat cancel-mat-btn">Cancel</a>
-                <button type="submit" class="waves-effect waves-light btn-flat save-mat-btn"
-                    name="create_materials">Save</button>
+                <button type="submit" class="waves-effect waves-light btn-flat save-mat-btn" name="create_materials">Save</button>
             </div>
         </form>
     </div>
-
-
-
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
     <script>
         // SIDEBAR
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('.button-collapse').sideNav({
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
@@ -423,6 +412,7 @@
                 }
             }
         }
+
     </script>
 
 </body>

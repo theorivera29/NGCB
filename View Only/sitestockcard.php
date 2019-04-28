@@ -23,12 +23,8 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <form action="../server.php" method="POST">
-                <button href="viewinventory.php" name="back" class="button-collapse show-on-large menu-icon back-btn"><i
-                        class="material-icons menuIcon">arrow_back</i>
-                    <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
-                </button>
-            </form>
+                <a href="sitematerials.php"><i class="material-icons menuIcon">arrow_back</i>
+            </a>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <?php 
                             if(isset($_SESSION['username'])) {

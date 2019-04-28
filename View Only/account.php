@@ -150,20 +150,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.js">
     </script>
     <script>
-        $(document).ready(function () {
+       $(document).ready(function() {
             $('.button-collapse').sideNav({
                 closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             });
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
-        });
-        //DATEPICKER
-        $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15, // Creates a dropdown of 15 years to control year,
-        closeOnSelect: false // Close upon selecting a date,
-        });
-
         });
 
         const btn = document.querySelector('#li-generate');
@@ -188,6 +180,7 @@
             } else {
                 showconfirm.type = "password";
             }
+        }
     </script>
 
 </body>

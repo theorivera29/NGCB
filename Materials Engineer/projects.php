@@ -127,8 +127,7 @@
             <div class="row">
                 <?php
                         $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate, projects_id FROM projects
-                        WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
-                        && projects_status = 'open';";
+                        WHERE projects_status = 'open'";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>
@@ -178,9 +177,8 @@
         <div id="closed" class="col s12">
             <div class="row">
                 <?php
-                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
-                        WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
-                        && projects_status = 'closed';";
+                        $sql = "SELECT DISTINCT projects.projects_name, projects.projects_address, projects.projects_sdate, projects.projects_edate, projects.projects_id, projacc.projacc_mateng  FROM projects
+                        INNER JOIN projacc WHERE projects_status = 'open' AND projacc.projacc_mateng = '2';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>

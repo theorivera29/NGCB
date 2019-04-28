@@ -112,8 +112,8 @@
         </div>
     </nav>
     <?php
-        $row = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM projects INNER JOIN accounts ON projects.projects_mateng = accounts.accounts_ID 
-        WHERE accounts.accounts_username = '$username'"));
+        $row = mysqli_num_rows(mysqli_query($conn, "SELECT DISTINCT projects.projects_name, projects.projects_address, projects.projects_sdate, projects.projects_edate, projects.projects_id, projacc.projacc_mateng  FROM projects
+                        INNER JOIN projacc WHERE projects_status = 'open' AND projacc.projacc_mateng = '2';"));
         if($row == 0) {
             echo "You don't have any project.";
         } else {
@@ -126,9 +126,8 @@
                 <div class="row">
                     <?php
 
-                            $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate FROM projects
-                            WHERE projects_mateng =  (SELECT accounts_id FROM accounts WHERE accounts_username = '$username')
-                            && projects_status = 'open';";
+                            $sql = "SELECT DISTINCT projects.projects_name, projects.projects_address, projects.projects_sdate, projects.projects_edate, projects.projects_id, projacc.projacc_mateng  FROM projects
+                        INNER JOIN projacc WHERE projects_status = 'open' AND projacc.projacc_mateng = '2';";
                             $result = mysqli_query($conn, $sql);
                             while($row = mysqli_fetch_row($result)){
                         ?>

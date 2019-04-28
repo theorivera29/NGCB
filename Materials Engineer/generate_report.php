@@ -107,8 +107,9 @@
             $pdf->Cell(10,10,$row[2],1,0,'C',true);
             $pdf->Ln();
         }
-    }
 
+        
+    }
     //OUTPUT TO PDF
     $pdf->Output('D', "INVENTORY REPORT ".date("F Y").".pdf");
 ?>

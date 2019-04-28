@@ -261,7 +261,6 @@
     }
 
     if (isset($_POST['create_hauling'])) {
-        // conflict yung dbase sa requestedby. magulo masyado
         $hauling_no = mysqli_real_escape_string($conn, $_POST['formnumber']);
         $hauling_date = mysqli_real_escape_string($conn, $_POST['haulingdate']);
 		$hauling_deliverTo = mysqli_real_escape_string($conn, $_POST['delivername']);
@@ -277,14 +276,13 @@
         $hauling_truckDetailsPlateNo = mysqli_real_escape_string($conn, $_POST['truck_plate']);
         $hauling_truckDetailsPo = mysqli_real_escape_string($conn, $_POST['truck_po']);
         $hauling_truckDetailsHaulerDr = mysqli_real_escape_string($conn, $_POST['truck_hauler']);
-        
         $stmt = $conn->prepare("INSERT INTO hauling 
         (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, 
         hauling_hauledBy, hauling_requestedBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, 
         hauling_truckDetailsPo, hauling_truckDetailsHaulerDr) 
         VALUES 
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, );");
-        $stmt->bind_param("isssiisssssssii", $hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("isssiiisssssss", $hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, 
         $hauling_unit, $hauling_matname, $hauling_hauledBy, $hauling_requested, $hauling_warehouseman, $hauling_approvedBy, $hauling_truckDetailsType, 
         $hauling_truckDetailsPlateNo, $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr);
         $stmt->execute();
@@ -968,7 +966,7 @@
 
     if (isset($_GET['mat_name'])) {
         $name = $_GET['mat_name'];
-        $sql = "SELECT mat_unit FROM materials WHERE mat_id = '$name'";
+        $sql = "SELECT unit.unit_name FROM materials INNER JOIN unit ON materials.mat_unit = unit.unit_id WHERE mat_id = '$name'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_all($result);
         echo json_encode($row);

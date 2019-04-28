@@ -163,7 +163,7 @@
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_row($result)) {
                 ?>
-                <div class="col s12 m6 project-container">
+                <div class="col s12 m5 project-container">
                     <div class="card center project-container-card">
                         <div class="card-content">
                             <span class="card-title">

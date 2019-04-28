@@ -79,7 +79,10 @@
 
 
     <h3 class="mat-name-title"><?php echo $mat_name?></h3>
-
+    <input type="hidden" name="projects_name" value="<?php echo $_GET['projects_name'];?>">
+                <button class="waves-effect waves-light btn stockcard-btn" type="submit" name="generate_stockcard">
+                    <i class="material-icons left">print</i>Generate Report
+                </button>
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Delivered In</a></li>

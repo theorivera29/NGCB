@@ -570,12 +570,7 @@
             $logs_of = $account_id;
             $stmt->execute();
             $stmt->close();
-<<<<<<< HEAD
         }
-        echo $newpassword;
-=======
-        }        
->>>>>>> e9d1d7f53afa33cc43cfb29c360b22c65d3d94a3
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");        
     }
 

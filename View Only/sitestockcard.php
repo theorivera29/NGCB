@@ -5,7 +5,10 @@
     if(!isset($_SESSION['loggedin'])) {
         header('Location: http://127.0.0.1/NGCB/index.php');
     }
-    $mat_name = $_GET['mat_name'];
+    $mat_name = urldecode($_GET['mat_name']);
+
+    $row = mysqli_fetch_row(mysqli_query($conn, "SELECT mat_id FROM materials WHERE mat_name = '$mat_name';"));
+    $mat_id = $row[0];
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +26,11 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-                
+        <form action="../server.php" method="POST">
+            <button name="backsitestockcard-view-only" class="button-collapse show-on-large menu-icon back-btn"><i
+                        class="material-icons menuIcon">arrow_back</i>
+                    </button>
+</form>
             <span id="NGCB">NEW GOLDEN CITY BUILDERS AND DEVELOPMENT CORPORATION</span>
             <a href="sitematerials.php"><i class="material-icons menuIcon">arrow_back</i></a>
             <?php 
@@ -236,17 +243,6 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="../materialize/js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
-    <script>
-        // SIDEBAR
-        $(document).ready(function () {
-            $('.button-collapse').sideNav({
-                closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            });
-            $('.collapsible').collapsible();
-            $('.modal-trigger').leanModal();
-        });
-    </script>
-
 </body>
 
 </html>

@@ -28,7 +28,7 @@
     <nav>
         <div class="nav-wrapper">
             <form action="../server.php" method="POST">
-                <button href="viewinventory.php" name="backsite" class="button-collapse show-on-large menu-icon back-btn"><i
+                <button href="viewinventory.php" name="backsite-mat-eng" class="button-collapse show-on-large menu-icon back-btn"><i
                         class="material-icons menuIcon">arrow_back</i>
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                 </button>

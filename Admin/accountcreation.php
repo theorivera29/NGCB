@@ -139,10 +139,18 @@
                 </div>
             </div>
             <div class="col">
-                <button class="btn waves-effect waves-light create-account-btn all-btn" type="submit" class="validate"
-                  id="#accountCreation" name="create_account">Create An Account</button>
+                <button class="btn waves-effect waves-light modal-trigger create-account-btn all-btn" type="submit"
+                    class="validate" href="#accountCreation">Create An Account</button>
 
             </div>
+        </form>
+    </div>
+
+    
+    <div id="accountCreation" class="modal create-account-modal">
+        <form action="../server.php" method="POST">
+                    <h3 id="create-modal-text">You have successfully created an account</h3>
+                    <button class="btn waves-effect waves-light ok-btn all-btn" name="">Okay</button> 
         </form>
     </div>
 
@@ -156,7 +164,11 @@
             });
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
-        });
+        
+            $('.modal-trigger').leanModal({
+		dismissible: false
+	});
+});
     </script>
 
 </body>

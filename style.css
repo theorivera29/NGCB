@@ -1757,11 +1757,27 @@ select[name=mat_unit] {
     margin-left: 8%;
 }
 
+.create-account-modal{
+    width: 40%;
+    height: 25%;
+}
+
+#create-modal-text{
+    font-size: 3vmin !important;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.ok-btn{
+    float: right;
+    margin-right: 5%;
+    margin-top: 5%;
+}
 /*List of Accounts*/
 .account-list-container{
     width: 80%;
     margin-left: 10%;
-    margin-top: 2%;
+    margin-top: 8%;
 }
 
 .account-list-head>tr>th{

@@ -145,6 +145,7 @@
 
                 <input class="input search-bar mat-eng-search-bar" id="myInput" onkeyup="myFunction()" type="search"
                     placeholder="Search...">
+                    
 
             </div>
                 <div class="col s6 right-align">

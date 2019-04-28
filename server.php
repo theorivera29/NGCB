@@ -290,18 +290,21 @@
         $hauling_truckDetailsPlateNo = mysqli_real_escape_string($conn, $_POST['truck_plate']);
         $hauling_truckDetailsPo = mysqli_real_escape_string($conn, $_POST['truck_po']);
         $hauling_truckDetailsHaulerDr = mysqli_real_escape_string($conn, $_POST['truck_hauler']);
-        $stmt = $conn->prepare("INSERT INTO hauling 
-        (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, hauling_unit, hauling_matname, 
-        hauling_hauledBy, hauling_requestedBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, hauling_truckDetailsPlateNo, 
-        hauling_truckDetailsPo, hauling_truckDetailsHaulerDr) 
-        VALUES 
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-        $stmt->bind_param("isssiiisssssss", $hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, 
+
+        $row = mysqli_fetch_row(mysqli_query($conn, "SELECT unit_id FROM unit WHERE unit_name = '$hauling_unit';"));
+        $hauling_unit = $row[0];
+
+        $stmt = $conn->prepare("INSERT INTO hauling (hauling_no, hauling_date, hauling_deliverTo, hauling_hauledFrom, hauling_quantity, 
+        hauling_unit, hauling_matname, hauling_hauledBy, hauling_requestedBy, hauling_warehouseman, hauling_approvedBy, hauling_truckDetailsType, 
+        hauling_truckDetailsPlateNo, hauling_truckDetailsPo, hauling_truckDetailsHaulerDr)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        $stmt->bind_param("isssiiissssssss", $hauling_no, $hauling_date, $hauling_deliverTo, $hauling_hauledFrom, $hauling_quantity, 
         $hauling_unit, $hauling_matname, $hauling_hauledBy, $hauling_requested, $hauling_warehouseman, $hauling_approvedBy, $hauling_truckDetailsType, 
         $hauling_truckDetailsPlateNo, $hauling_truckDetailsPo, $hauling_truckDetailsHaulerDr);
         $stmt->execute();
         $stmt->close();
-        
+        echo $hauling_unit;
+
         $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name = ?;");
         $stmt->bind_param("s", $hauling_matname);
         $stmt->execute();
@@ -502,7 +505,7 @@
         if(isset($_POST['newusername'])) {
             $newusername = $_POST['newusername'];
             $stmt = $conn->prepare("UPDATE accounts SET accounts_username = ? WHERE accounts_id = ?;");
-            $stmt->bind_param("si", $newusername, $username);
+            $stmt->bind_param("si", $newusername, $account_id);
             $stmt->execute();
             $stmt->close();
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
@@ -521,7 +524,7 @@
             $stmt->close();
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
             $stmt->bind_param("ssi", $edit_account_date, $logs_message, $logs_of);
-            $logs_message = 'Change first name to '.$newfname;
+            $logs_message = 'Change first name to '.$account_id;
             $logs_of = $account_id;
             $stmt->execute();
             $stmt->close();
@@ -530,7 +533,7 @@
         if(isset($_POST['newlname'])) {
             $newlname = mysqli_real_escape_string($conn, $_POST['newlname']);
             $stmt = $conn->prepare("UPDATE accounts SET accounts_lname = ? WHERE accounts_id = ?;");
-            $stmt->bind_param("si", $newlname, $username);
+            $stmt->bind_param("si", $newlname, $account_id);
             $stmt->execute();
             $stmt->close();
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
@@ -540,11 +543,10 @@
             $stmt->execute();
             $stmt->close();
         }
-
         if(isset($_POST['newemail'])) {
             $newemail = mysqli_real_escape_string($conn, $_POST['newemail']);
             $stmt = $conn->prepare("UPDATE accounts SET accounts_email = ? WHERE accounts_id = ?;");
-            $stmt->bind_param("si", $newemail, $username);
+            $stmt->bind_param("si", $newemail, $account_id);
             $stmt->execute();
             $stmt->close();
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
@@ -559,7 +561,7 @@
             $newpassword = mysqli_real_escape_string($conn, $_POST['newpassword']);
             $hash_password = password_hash($newpassword, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("UPDATE accounts SET accounts_password = ? WHERE accounts_id = ?;");
-            $stmt->bind_param("si", $hash_password, $username);
+            $stmt->bind_param("si", $hash_password, $account_id);
             $stmt->execute();
             $stmt->close();
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?, ?, ?);");
@@ -568,8 +570,12 @@
             $logs_of = $account_id;
             $stmt->execute();
             $stmt->close();
+<<<<<<< HEAD
         }
         echo $newpassword;
+=======
+        }        
+>>>>>>> e9d1d7f53afa33cc43cfb29c360b22c65d3d94a3
         header("location: http://127.0.0.1/NGCB/Materials%20Engineer/account.php");        
     }
 

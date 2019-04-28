@@ -178,7 +178,7 @@
             <div class="row">
                 <?php
                         $sql = "SELECT DISTINCT projects.projects_name, projects.projects_address, projects.projects_sdate, projects.projects_edate, projects.projects_id, projacc.projacc_mateng  FROM projects
-                        INNER JOIN projacc WHERE projects_status = 'open' AND projacc.projacc_mateng = '2';";
+                        INNER JOIN projacc WHERE projects_status = 'closed' AND projacc.projacc_mateng = '2';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>

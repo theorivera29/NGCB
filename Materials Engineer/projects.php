@@ -32,6 +32,7 @@
                             $sql = "SELECT * FROM accounts WHERE accounts_username = '$username'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_row($result);
+                            $account_id = $row[0];
                         ?>
             <span id="acName">
                 <ul>
@@ -126,11 +127,12 @@
         <div id="ongoing" class="col s12">
             <div class="row">
                 <?php
-                        $sql = "SELECT projects_name, projects_address, projects_sdate, projects_edate, projects_id FROM projects
-                        WHERE projects_status = 'open'";
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result)){
-                    ?>
+                    $sql = "SELECT projects.projects_name, projects.projects_address, projects.projects_sdate, projects.projects_edate, projects.projects_id FROM projects 
+                    INNER JOIN projacc ON projects.projects_id = projacc.projacc_project
+                    WHERE projects.projects_status = 'open' AND projacc.projacc_mateng = '$account_id';";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_row($result)){
+                ?>
                 <div class="col s12 m5 project-container">
                     <div class="card center project-container-card">
                         <div class="card-content">
@@ -177,8 +179,9 @@
         <div id="closed" class="col s12">
             <div class="row">
                 <?php
-                        $sql = "SELECT DISTINCT projects.projects_name, projects.projects_address, projects.projects_sdate, projects.projects_edate, projects.projects_id, projacc.projacc_mateng  FROM projects
-                        INNER JOIN projacc WHERE projects_status = 'closed' AND projacc.projacc_mateng = '2';";
+                        $sql = "SELECT projects.projects_name, projects.projects_address, projects.projects_sdate, projects.projects_edate, projects.projects_id FROM projects 
+                        INNER JOIN projacc ON projects.projects_id = projacc.projacc_project
+                        WHERE projects.projects_status = 'closed' AND projacc.projacc_mateng = '$account_id';";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
                     ?>

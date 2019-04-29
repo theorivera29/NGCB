@@ -121,21 +121,22 @@
                             <input id="enddate" name="enddate" type="date">
                         </div>
                         <div class="col s12">
-                            <div class="input-field col s12">
-                                <span>Materials Engineer Involved</span>
-                            </div>
+                        
+                        <select class="browser-default" name="mateng">
+                            <option>Materials engineer involved</option>
                             <?php
-                            $sqlmateng = "SELECT accounts_username, accounts_id FROM accounts WHERE accounts_type = 'MatEng';";
-                            $resultmateng = mysqli_query($conn, $sqlmateng);
+                                $sqlmateng = "SELECT accounts_username, accounts_id FROM accounts WHERE accounts_type = 'MatEng';";
+                                $resultmateng = mysqli_query($conn, $sqlmateng);
                             while($rowmateng = mysqli_fetch_row($resultmateng)){
                             ?>
-                            <p>
-                                <input type="checkbox" id="mateng" name="mateng" value="<?php echo $rowmateng[1]?>" />
-                                <label for="mateng"><?php echo $rowmateng[0]?></label>
-                            </p>
+                            <option value="<?php echo $rowmateng[0]; ?>">
+                                <?php echo $rowmateng[0]; ?>
+                            </option>
+
                             <?php 
-                            }
-                        ?>
+                                }
+                            ?>
+                        </select>                        
                         </div>
                     </div>
                 </div>

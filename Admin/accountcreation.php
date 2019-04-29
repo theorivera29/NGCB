@@ -147,8 +147,8 @@
 
     
     <div id="accountCreation" class="modal create-account-modal">
-                    <h3 id="create-modal-text">You have successfully created an account</h3>
-                    <button class="btn waves-effect waves-light ok-btn all-btn" type="submit" name="create_account">OK</button> 
+                <h3 id="create-modal-text">You have successfully created an account</h3>
+                <button class="btn waves-effect waves-light ok-btn all-btn" type="submit" name="create_account">OK</button> 
         </form>
     </div>
 

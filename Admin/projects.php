@@ -130,10 +130,8 @@
                             while($rowmateng = mysqli_fetch_row($resultmateng)){
                             ?>
                             <p>
-                                <label>
-                                    <input type="checkbox" id="mateng" name="mateng" value="<?php echo $rowmateng[1]?>"/>
-                                    <span for="mateng"><?php echo $rowmateng[0]?></span><br>
-                                </label>
+                                <input type="checkbox" id="mateng" name="mateng" value="<?php echo $rowmateng[1]?>" />
+                                <label for="mateng"><?php echo $rowmateng[0]?></label>
                             </p>
                             <?php 
                             }
@@ -351,6 +349,14 @@
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
         });
+        
+          $(document).ready(function() {
+      $('input[type=checkbox]').each(function() {
+        if(this.nextSibling.nodeName != 'label') {
+          $(this).after('<label for="'+this.id+'"></label>')
+        }
+      })
+    })
 
     </script>
 

@@ -128,7 +128,7 @@
                                 $resultmateng = mysqli_query($conn, $sqlmateng);
                             while($rowmateng = mysqli_fetch_row($resultmateng)){
                             ?>
-                            <option value="<?php echo $rowmateng[0]; ?>">
+                            <option value="<?php echo $rowmateng[1]; ?>">
                                 <?php echo $rowmateng[0]; ?>
                             </option>
 

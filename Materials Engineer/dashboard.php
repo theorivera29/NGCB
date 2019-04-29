@@ -276,7 +276,7 @@
                     INNER JOIN categories ON materials.mat_categ = categories.categories_id
                     INNER JOIN projects ON materials.mat_project = projects_id
                     INNER JOIN unit ON materials.mat_unit = unit.unit_id
-                    INNER JOIN projacc
+                    INNER JOIN projacc ON projacc.projacc_project = materials.mat_project
                     WHERE  
                     projects.projects_status = 'open'
                     AND projacc.projacc_mateng = '$account_id'

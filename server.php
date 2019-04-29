@@ -482,7 +482,6 @@
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
         $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?");
-        echo urldecode($mat_name);
         $stmt->bind_param("s", $projects_name);
         $stmt->execute();
         $stmt->store_result();

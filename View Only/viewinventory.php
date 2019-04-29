@@ -167,12 +167,12 @@
                         ORDER BY 1;";
                         $result = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_row($result)){
-                            $sql1 = "SELECT delivered_quantity FROM deliveredin
+                            $sql1 = "SELECT SUM(delivered_quantity) FROM deliveredin
                             INNER JOIN materials ON deliveredin.delivered_matName = materials.mat_id
                             WHERE materials.mat_name = '$row[0]';";
                             $result1 = mysqli_query($conn, $sql1);
                             $row1 = mysqli_fetch_row($result1);
-                            $sql2 = "SELECT usage_quantity FROM usagein
+                            $sql2 = "SELECT SUM(usage_quantity) FROM usagein
                             INNER JOIN materials ON usagein.usage_matName = materials.mat_id
                             WHERE materials.mat_name = '$row[0]';";
                             $result2 = mysqli_query($conn, $sql2);

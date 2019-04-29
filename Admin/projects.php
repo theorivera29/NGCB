@@ -120,8 +120,7 @@
                             <span>End date:</span>
                             <input id="enddate" name="enddate" type="date">
                         </div>
-                        <div class="col s12">
-                        
+                        <div class="col s12"> 
                         <select class="browser-default" name="mateng">
                             <option>Materials engineer involved</option>
                             <?php

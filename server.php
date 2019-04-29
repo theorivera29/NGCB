@@ -477,11 +477,12 @@
     if (isset($_POST['create_materials'])) {
         $projects_name = mysqli_real_escape_string($conn, $_POST['projects_name']);
         $projects_id = mysqli_real_escape_string($conn, $_POST['projects_id']);
-        $mat_name = mysqli_real_escape_string($conn, $_POST['mat_name']);
+        $mat_name = str_replace("\\", '', mysqli_real_escape_string($conn, $_POST['mat_name']));
         $mat_unit = mysqli_real_escape_string($conn, $_POST['mat_unit']);
         $mat_categ = mysqli_real_escape_string($conn, $_POST['mat_categ']);
         $mat_notif = mysqli_real_escape_string($conn, $_POST['mat_notif']);
         $stmt = $conn->prepare("SELECT projects_id FROM projects WHERE projects_name = ?");
+        echo urldecode($mat_name);
         $stmt->bind_param("s", $projects_name);
         $stmt->execute();
         $stmt->store_result();

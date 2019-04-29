@@ -130,7 +130,7 @@
                 echo $account_id;
                     $sql = "SELECT projects.projects_name, projects.projects_address, projects.projects_sdate, projects.projects_edate, projects.projects_id FROM projects 
                     INNER JOIN projacc ON projects.projects_id = projacc.projacc_project
-                    WHERE projects.projects_status = 'closed' AND projacc.projacc_mateng = '$account_id';";
+                    WHERE projects.projects_status = 'open' AND projacc.projacc_mateng = '$account_id';";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_row($result)){
                 ?>

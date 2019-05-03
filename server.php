@@ -73,11 +73,12 @@
     }
     
     if (isset($_POST['create_project'])) {
+        $mateng = $_POST['mateng']; 
         $projects_name = mysqli_real_escape_string($conn, $_POST['projectname']);
         $projects_address = mysqli_real_escape_string($conn, $_POST['projectaddress']);
 		$start_date = mysqli_real_escape_string($conn, $_POST['startdate']);
         $end_date = mysqli_real_escape_string($conn, $_POST['enddate']);
-        $mateng = mysqli_real_escape_string($conn, $_POST['mateng']);
+      
         if(strtotime($start_date) == strtotime($end_date)) {
             header("Location: http://127.0.0.1/NGCB/Admin/projects.php");      
         }
@@ -99,21 +100,22 @@
             $stmt->store_result();
             $stmt->bind_result($account_id);
             $stmt->fetch();
-            
-            
-            
-             $stmt = $conn->prepare("INSERT INTO projacc (projacc_project, projacc_mateng)
+            for($x = 0; $x < sizeof($mateng); $x++){
+           
+                $stmt = $conn->prepare("INSERT INTO projacc (projacc_project, projacc_mateng)
                     VALUES (?, ?);");
-            $stmt->bind_param("ii", $account_id, $mateng);
-            $stmt->execute();
-            $stmt->close();
+                $stmt->bind_param("ii", $account_id, $mateng[$x]);
+                $stmt->execute();
+                $stmt->close();
+                
+                }
             
             $stmt = $conn->prepare("INSERT INTO logs (logs_datetime, logs_activity, logs_logsOf) VALUES (?,?,?);");
             $stmt->bind_param("ssi", $create_proj_date, $logs_message, $logs_of);
             $create_proj_date = date("Y-m-d G:i:s");
             $logs_message = 'Created project '.$projects_name;
             $logs_of = 1;
-            header("Location: http://127.0.0.1/NGCB/Admin/projects.php");            
+            header("Location: http://127.0.0.1/NGCB/Admin/projects.php");  
         }
     }
     

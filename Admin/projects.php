@@ -120,22 +120,21 @@
                             <span>End date:</span>
                             <input id="enddate" name="enddate" type="date">
                         </div>
-                        <div class="col s12"> 
-                        <select class="browser-default" name="mateng">
-                            <option>Materials engineer involved</option>
-                            <?php
+                        <div>
+                             <?php
                                 $sqlmateng = "SELECT accounts_username, accounts_id FROM accounts WHERE accounts_type = 'MatEng';";
                                 $resultmateng = mysqli_query($conn, $sqlmateng);
                             while($rowmateng = mysqli_fetch_row($resultmateng)){
                             ?>
-                            <option value="<?php echo $rowmateng[1]; ?>">
-                                <?php echo $rowmateng[0]; ?>
-                            </option>
-
-                            <?php 
+                            <p>
+                                <label>
+                                    <input type="checkbox" name="mateng[]" value="<?php echo $rowmateng[1]?>"/>
+                                    <span><?php echo $rowmateng[0]?></span>
+                                </label>
+                            </p>
+                              <?php 
                                 }
                             ?>
-                        </select>                        
                         </div>
                     </div>
                 </div>
@@ -349,14 +348,14 @@
             $('.collapsible').collapsible();
             $('.modal-trigger').leanModal();
         });
-        
-          $(document).ready(function() {
-      $('input[type=checkbox]').each(function() {
-        if(this.nextSibling.nodeName != 'label') {
-          $(this).after('<label for="'+this.id+'"></label>')
-        }
-      })
-    })
+
+        $(document).ready(function() {
+            $('input[type=checkbox]').each(function() {
+                if (this.nextSibling.nodeName != 'label') {
+                    $(this).after('<label for="' + this.id + '"></label>')
+                }
+            })
+        })
 
     </script>
 

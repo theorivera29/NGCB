@@ -28,8 +28,7 @@
     <nav>
         <div class="nav-wrapper">
             <form action="../server.php" method="POST">
-                <button href="viewinventory.php" name="backsite-mat-eng" class="button-collapse show-on-large menu-icon back-btn"><i
-                        class="material-icons menuIcon">arrow_back</i>
+                <button href="viewinventory.php" name="backsite-mat-eng" class="button-collapse show-on-large menu-icon back-btn"><i class="material-icons menuIcon">arrow_back</i>
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                 </button>
             </form>
@@ -46,8 +45,7 @@
                     <?php echo $row[1]." ".$row[2]; ?>
                     <li class="down-arrow">
 
-                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i
-                                class="material-icons dropdown-button">keyboard_arrow_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown" data-beloworigin="true"><i class="material-icons dropdown-button">keyboard_arrow_down</i></a>
                     </li>
 
                 </ul>
@@ -78,11 +76,13 @@
     </nav>
 
 
-    <h3 class="mat-name-title"><?php echo $mat_name?></h3>
+    <h3 class="mat-name-title">
+        <?php echo $mat_name?>
+    </h3>
     <input type="hidden" name="projects_name" value="<?php echo $_GET['projects_name'];?>">
-                <button class="waves-effect waves-light btn stockcard-btn" type="submit" name="generate_stockcard">
-                    <i class="material-icons left">print</i>Generate Report
-                </button>
+    <button class="waves-effect waves-light btn stockcard-btn" type="submit" name="generate_stockcard">
+        <i class="material-icons left">print</i>Generate Report
+    </button>
     <div class="col view-inventory-slider">
         <ul class="tabs tabs-inventory">
             <li class="tab col s3"><a href="#deliverin">Delivered In</a></li>
@@ -92,7 +92,7 @@
     </div>
 
 
-            
+
     <div id="deliverin" class="col s12">
         <div class="deliverin-container">
             <form action="../server.php" method="POST">
@@ -143,7 +143,7 @@
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredin">Save</button>
                 </div><br><br>
-                <span  class="stockcard-span">List of Delivered In Material</span>
+                <span class="stockcard-span">List of Delivered In Material</span>
                 <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <tr>
@@ -238,13 +238,11 @@
                                 <input type="date" min="2019-01-01" name="us_date" required>
                             </td>
                             <td>
-                                <input id="delivered_quantity" name="us_quantity" type="text" class="validate"
-                                    pattern="[0-9]*" title="Input numbers only" required>
+                                <input id="delivered_quantity" name="us_quantity" type="text" class="validate" pattern="[0-9]*" title="Input numbers only" required>
                             </td>
                             <td>
                                 <input type="hidden" name="us_unit" value="<?php echo $row[2]; ?>">
-                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate"
-                                    required>
+                                <input value="<?php echo $row[0]; ?>" id="delivered_unit" type="text" class="validate" required>
                             </td>
                             <td>
                                 <input id="pulloutby" name="pulloutby" type="text" class="validate" required>
@@ -257,8 +255,7 @@
                 </table>
                 <div class="stockcard-usagein-btn">
                     <input type="hidden" name="update_from" value="stockcard">
-                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate"
-                        name="add_usagein">Save</button>
+                    <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_usagein">Save</button>
                 </div>
                 <span class="stockcard-span">List of Usage In Material</span>
                 <table id="sort" class="centered usagein striped">
@@ -277,7 +274,8 @@
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id' ORDER BY 1 DESC;";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
                         while($row_useIn = mysqli_fetch_row($result_useIn)){
-                        ?><tr class="usagein_data">
+                        ?>
+                        <tr class="usagein_data">
                             <td>
                                 <?php echo $row_useIn[0] ?>
                             </td>
@@ -308,13 +306,14 @@
                         while($row_total = mysqli_fetch_row($result_total)){
                         ?>
                     <span>TOTAL:</span>
-                    <span><?php echo $row_total[0]?></span>
+                    <span>
+                        <?php echo $row_total[0]?></span>
                     <?php 
                         }
                         }
                         ?>
                 </div>
-                
+
             </form>
         </div>
     </div>
@@ -326,8 +325,16 @@
                     <input type="hidden" name="projects_name" value="<?php echo $projects_name?>">
                     <input type="hidden" name="materialname" value="<?php echo urlencode($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
+                        <?php
+                                $sql = "SELECT mat_name FROM materials WHERE mat_name = '$mat_name';";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                        
+                            ?>
                         <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
-                        <label for="newmaterialname">Material Name:</label>
+                        <label for="newmaterialname"><?php echo $row[0]; ?></label>
+                        <?php 
+                                }
+                            ?>
                     </div>
                     <div class="input-field col s2 unit-field">
                         <select class="browser-default" id="category-option" name="mat_unit">
@@ -346,15 +353,21 @@
                         </select>
                     </div>
                     <div class="input-field col s4 threshold-field">
-                        <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*"
-                            title="Input numbers only">
-                        <label for="minquantity">Item threshold:</label>
+                        <?php
+                                $sql = "SELECT mat_notif FROM materials WHERE mat_name = '$mat_name';";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                        
+                            ?>
+                        <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*" title="Input numbers only">
+                        <label for="minquantity"><?php echo $row[0]; ?> </label>
+                        <?php 
+                                }
+                            ?>
                     </div>
                 </div>
                 <div class="col s12 edit-matname-btn">
                     <input type="hidden" name="update_from" value="stockcard">
-                    <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials"
-                        type="submit">Save</button>
+                    <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials" type="submit">Save</button>
                     <a class="btn waves-effect waves-light cancel-mat-btn">Cancel</a>
                 </div>
             </form>

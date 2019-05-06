@@ -129,7 +129,7 @@
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_deliveredinsite">Save</button>
                 </div><br><br>
-                <span  class="stockcard-span">List of Delivered In Material</span>
+                <span class="stockcard-span">List of Delivered In Material</span>
                 <table class="centered deliverin striped">
                     <thead class="deliverin-head">
                         <?php 
@@ -253,10 +253,10 @@
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="waves-effect waves-light btn save-stockcard-btn" type="submit" class="validate" name="add_usageinsite">Save</button>
                 </div><br><br>
-                <span  class="stockcard-span">List of Usage In Material</span>
+                <span class="stockcard-span">List of Usage In Material</span>
                 <table class="centered usagein striped">
 
-                        <?php 
+                    <?php 
                         $sql_useIn = "SELECT usagein.usage_date, usagein.usage_quantity, unit.unit_name, usagein.pulledOutBy, usagein.usage_areaOfUsage FROM usagein INNER JOIN unit ON usagein.usage_unit = unit.unit_id WHERE usage_matname = '$mat_id' ORDER BY 1 DESC;";
                         $result_useIn = mysqli_query($conn, $sql_useIn);
                         if (mysqli_num_rows($result_useIn) > 0){
@@ -330,8 +330,17 @@
                 <div class="row">
                     <input type="hidden" name="materialname" value="<?php echo urlencode($mat_name)?>">
                     <div class="input-field col s4 material-name-field">
+                        <?php
+                                $sql = "SELECT mat_name FROM materials WHERE mat_name = '$mat_name';";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                        
+                            ?>
                         <input id="newmaterialname" name="newmaterialname" type="text" class="validate">
-                        <label for="newmaterialname">Material Name:</label>
+                        <label for="newmaterialname">
+                            <?php echo $row[0]; ?></label>
+                        <?php 
+                                }
+                            ?>
                     </div>
                     <div class="input-field col s2 unit-field">
                         <select class="browser-default" id="category-option" name="mat_unit">
@@ -350,8 +359,17 @@
                         </select>
                     </div>
                     <div class="input-field col s4 threshold-field">
+                        <?php
+                                $sql = "SELECT mat_notif FROM materials WHERE mat_name = '$mat_name';";
+                                $result = mysqli_query($conn, $sql);
+                                while($row = mysqli_fetch_row($result)) {                        
+                            ?>
                         <input id="minquantity" name="minquantity" type="text" class="validate" pattern="[0-9]*" title="Input numbers only">
-                        <label for="minquantity">Item threshold:</label>
+                        <label for="minquantity">
+                            <?php echo $row[0]; ?> </label>
+                        <?php 
+                                }
+                            ?>
                     </div>
                 </div>
 
@@ -359,12 +377,7 @@
                     <input type="hidden" name="update_from" value="sitestockcard">
                     <button class="btn waves-effect waves-light save-mat-btn" name="edit_materials" type="submit">Save</button>
                     <a class="btn waves-effect waves-light cancel-mat-btn">Cancel</a>
-
                 </div>
-
-
-
-
             </form>
         </div>
     </div>

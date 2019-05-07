@@ -737,7 +737,7 @@
         $stmt->execute();
         $stmt->close();
         
-        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name=' ?';");
+        $stmt = $conn->prepare("SELECT currentQuantity FROM materials WHERE mat_name = ?;");
         $stmt->bind_param("s", $mat_name);
         $stmt->execute();
         $stmt->store_result();
@@ -762,7 +762,7 @@
         $logs_of = $account_id;
         $stmt->execute();
         $stmt->close();
-            header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
+         //   header("Location:http://127.0.0.1/NGCB/Materials%20Engineer/stockcard.php?mat_name=$mat_name&projects_name=$projects_name");
     }
 
     if (isset($_POST['add_usageinsite'])) {

@@ -212,7 +212,8 @@
                         categories_name, 
                         mat_prevStock, 
                         projects_name,
-                        unit_name
+                        unit_name,
+                        currentQuantity
                         FROM materials 
                         INNER JOIN categories ON materials.mat_categ = categories.categories_id
                         INNER JOIN projects ON materials.mat_project = projects.projects_id
@@ -276,7 +277,7 @@
                             <?php echo $row[2]+$row1[0] ?>
                         </td>
                         <td>
-                            <?php echo ($row[2]+$row1[0])-$row2[0]  ?>
+                            <?php echo $row[5]  ?>
                         </td>
                         <td>
                             <?php echo $row[4] ?>

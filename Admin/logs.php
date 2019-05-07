@@ -135,15 +135,7 @@
                     <td><?php echo $row[0]; ?></td>
                     <td><?php echo $row[1]; ?></td>
                     <td>
-                        <?php 
-                            if($row[4] == 1) {
-                                echo "Admin";
-                            } else if($row[4] == 2) {
-                                echo "MatEng";
-                            } else {
-                                echo "ViewOnly";
-                            }
-                        ?>
+                        <?php echo $row[2]; ?>
                     </td>
                     <td>
                         <?php 
